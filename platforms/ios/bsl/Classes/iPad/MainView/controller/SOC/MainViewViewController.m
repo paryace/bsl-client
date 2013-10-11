@@ -19,6 +19,7 @@
 #import "AutoShowRecord.h"
 #import "FMDBManager.h"
 #import "FMDatabaseQueue.h"
+#import "BaseNavViewController.h"
 #import "HTTPRequest.h"
 #import "Announcement.h"
 
@@ -636,6 +637,7 @@
         
     }
     
+    
     CGRect frame = self.view.frame;
     frame.size.width =CGRectGetHeight(self.view.frame)/2+2;
     frame.size.height= CGRectGetWidth(self.view.frame);
@@ -644,7 +646,6 @@
     bCubeWebViewController.title = module.name;
     [bCubeWebViewController loadWebPageWithModule:module  frame:frame  didFinishBlock: ^(){
         //如果webView加载成功  这显示放大缩小按钮
-        
         bCubeWebViewController.webView.scrollView.bounces=NO;
         bCubeWebViewController.closeButton.hidden = NO;
         if (!fullScreanBtn) {
@@ -708,9 +709,16 @@
 //移除之前的view  显示
 -(void)showDetailViewController:(UIViewController*)vc{
     [self addBadge];
+    
+    float top=0.0f;
+    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+        top=20.0f;
+    }
+    
     CGRect frame = vc.view.frame;
+    frame.origin.y=top;
     frame.size.width =CGRectGetWidth(self.view.frame)/2+2.0f;
-    frame.size.height= CGRectGetWidth(self.view.frame);
+    frame.size.height= CGRectGetWidth(self.view.frame)-top;
     vc.view.frame = frame;
     
     self.detailController = nil;
@@ -724,7 +732,7 @@
     }
     self.detailView = nil;
     
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    BaseNavViewController *nav = [[BaseNavViewController alloc]initWithRootViewController:vc];
     self.detailController = nav;
     
     nav.view.frame = frame;
@@ -760,8 +768,11 @@
     
     self.view.userInteractionEnabled=NO;
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(){
-        self.detailView.frame = CGRectMake(CGRectGetWidth(self.view.bounds) - CGRectGetWidth(vc.view.frame), 0,
-                                           CGRectGetWidth(vc.view.frame), CGRectGetHeight(vc.view.frame));
+        CGRect rect=self.detailView.frame;
+        rect.origin.x=CGRectGetWidth(self.view.bounds) - CGRectGetWidth(vc.view.frame);
+        self.detailView.frame =rect;
+        //CGRectMake(CGRectGetWidth(self.view.bounds) - CGRectGetWidth(vc.view.frame), top,
+        //                            CGRectGetWidth(vc.view.frame), CGRectGetHeight(vc.view.frame));
         
     } completion:^(BOOL finished){
         self.view.userInteractionEnabled=YES;
@@ -798,8 +809,9 @@
         self.view.userInteractionEnabled = NO;
         
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.detailView.frame = CGRectMake(finalX, 0,
-                                               CGRectGetWidth(self.detailView.frame), CGRectGetHeight(self.detailView.frame));
+            CGRect rect=self.detailView.frame;
+            rect.origin.x=finalX;
+            self.detailView.frame=rect;
         } completion:^(BOOL finished) {
             self.view.userInteractionEnabled = YES;
         }];
@@ -811,9 +823,11 @@
     self.view.userInteractionEnabled = NO;
     
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^(){
-        CGFloat detailViewWidth = 520;
-        self.detailView.frame = CGRectMake(CGRectGetWidth(self.view.bounds), 0,
-                                           detailViewWidth, CGRectGetHeight(self.detailView.frame));
+        CGRect rect=self.detailView.frame;
+        rect.origin.x=CGRectGetWidth(self.view.bounds);
+        self.detailView.frame=rect;
+        //        self.detailView.frame = CGRectMake(CGRectGetWidth(self.view.bounds), 0,
+        //                                      detailViewWidth, CGRectGetHeight(self.detailView.frame));
     } completion:^(BOOL finished){
         if (fullScreanBtn) {
             [fullScreanBtn removeFromSuperview];

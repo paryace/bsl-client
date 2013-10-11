@@ -292,11 +292,21 @@
         [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
         return;
     }
+    
+    if(![chatLogic checkTheGroupIsConnect]){
+        [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+        return;
+    }
+
 
     
     NSString *content = [__chatPanel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if([content length]>0){
-        [chatLogic sendMessage:content messageId:self.messageId isGroup:self.isGroupChat name:self.chatName];
+        if(![chatLogic sendMessage:content messageId:self.messageId isGroup:self.isGroupChat name:self.chatName]){
+            [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+
+            return;
+        }
     }
     //把输入框清空
     __chatPanel.text = @"";
@@ -308,6 +318,11 @@
         AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
         if (![[appDelegate xmpp] isConnected]) {
             [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
+            return;
+        }
+        
+        if(![chatLogic checkTheGroupIsConnect]){
+            [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
             return;
         }
 
@@ -340,12 +355,19 @@
             [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
             return;
         }
+        if(![chatLogic checkTheGroupIsConnect]){
+            [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+            return;
+        }
+
 
         if(addInterval>1.5f){
             @autoreleasepool {
                 NSData* fileData = [NSData dataWithContentsOfURL:recorder.recordFile];
                 
-                [chatLogic sendVoice:[Base64 stringByEncodingData:fileData] urlVoiceFile:recorder.recordFile messageId:self.messageId isGroup:self.isGroupChat name:self.chatName];
+                if(![chatLogic sendVoice:[Base64 stringByEncodingData:fileData] urlVoiceFile:recorder.recordFile messageId:self.messageId isGroup:self.isGroupChat name:self.chatName]){
+                    [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+                }
 
             }
         }
@@ -372,6 +394,12 @@
         [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
         return;
     }
+    
+    if(![chatLogic checkTheGroupIsConnect]){
+        [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+        return;
+    }
+
 
     //fanty 暂屏蔽功能
     if([[[[UIDevice currentDevice] model] lowercaseString] rangeOfString:@"ipod"].length>0){
@@ -510,7 +538,9 @@
                 [chatLogic uploadImageToServer:image finish:^(NSString* fileId,NSString* path){
                     if([fileId length]>0){
                         [SVProgressHUD dismiss];
-                        [chatLogic sendfile:fileId path:path messageId:self.messageId isGroup:self.isGroupChat name:self.chatName];
+                        if(![chatLogic sendfile:fileId path:path messageId:self.messageId isGroup:self.isGroupChat name:self.chatName]){
+                            [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+                        }
                     }
                     else{
                         [SVProgressHUD dismiss];
@@ -638,6 +668,10 @@
 -(void)voiceButtonClick:(UIButton*)button{
     [chatPanel resignFirstResponder];
     VoiceCell* cell=(VoiceCell*)button.superview;
+    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+        cell=(VoiceCell*)cell.superview;
+    }
+
     for(UITableViewCell* __cell in [tableView visibleCells]){
         if([__cell isKindOfClass:[VoiceCell class]]){
             [((VoiceCell*)__cell) playAnimated:NO];

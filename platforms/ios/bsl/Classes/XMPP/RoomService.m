@@ -473,7 +473,7 @@
             messageEntity.messageId=roomId;
             messageEntity.sendUser=[NSString stringWithFormat:@"%@@@%@",senderUser,kXMPPDomin];
             messageEntity.receiveUser=[[xmpp.xmppStream myJID]bare];
-            
+            messageEntity.statue=[NSNumber numberWithInt:1];
             RectangleChatContentType rectangleChatContentType=RectangleChatContentTypeMessage;
             
             

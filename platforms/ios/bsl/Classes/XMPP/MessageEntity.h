@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSDate   * sendDate;
 @property (nonatomic, strong) NSNumber * flag_readed;
 @property (nonatomic, strong) NSString * type;
-@property (nonatomic, strong) NSString * statue;
+@property (nonatomic, strong) NSNumber * statue;
 @property (nonatomic, strong) NSString * fileId;
 
 //fanty 

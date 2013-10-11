@@ -16,6 +16,8 @@
 @property(nonatomic,strong) NSString* roomJID;
 
 
+-(BOOL)checkTheGroupIsConnect;
+
 -(void)sendNotificationMessage:(NSString* )content messageId:(NSString*)messageId isGroup:(BOOL)isGroup name:(NSString*)name onlyUpdateChat:(BOOL)onlyUpdateChat;
 
 -(BOOL)sendMessage:(NSString* )content messageId:(NSString*)messageId isGroup:(BOOL)isGroup name:(NSString*)name;

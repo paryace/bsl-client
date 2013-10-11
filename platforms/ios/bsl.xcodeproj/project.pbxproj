@@ -751,11 +751,11 @@
 		39D9E93817F27C03001ED6F5 /* btn_red.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844E17E8C77E0067A023 /* btn_red.png */; };
 		39D9E93917F27C03001ED6F5 /* icon_sel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844F17E8C77E0067A023 /* icon_sel_mark.png */; };
 		39D9E93A17F27C03001ED6F5 /* icon_unsel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845017E8C77E0067A023 /* icon_unsel_mark.png */; };
-		39D9E93B17F27C03001ED6F5 /* icon-announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* icon-announcement.png */; };
+		39D9E93B17F27C03001ED6F5 /* Announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* Announcement.png */; };
 		39D9E93C17F27C03001ED6F5 /* icon-feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845217E8C77E0067A023 /* icon-feedback.png */; };
 		39D9E93D17F27C03001ED6F5 /* VOIPSenderVoiceNodeBkgHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626D17EE898300C84A6A /* VOIPSenderVoiceNodeBkgHL@2x.png */; };
-		39D9E93E17F27C03001ED6F5 /* icon-im.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* icon-im.png */; };
-		39D9E93F17F27C03001ED6F5 /* icon-push.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* icon-push.png */; };
+		39D9E93E17F27C03001ED6F5 /* XMPPFriends.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* XMPPFriends.png */; };
+		39D9E93F17F27C03001ED6F5 /* MessageRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* MessageRecord.png */; };
 		39D9E94017F27C03001ED6F5 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7617F007FC00F9CA68 /* logo.jpg */; };
 		39D9E94117F27C03001ED6F5 /* landview_headline.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7017F007FC00F9CA68 /* landview_headline.png */; };
 		39D9E94217F27C03001ED6F5 /* icon-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845517E8C77E0067A023 /* icon-settings.png */; };
@@ -1041,7 +1041,6 @@
 		39D9EA6317F27C03001ED6F5 /* RectangleChat.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828D17E8BFBB0067A023 /* RectangleChat.m */; };
 		39D9EA6417F27C03001ED6F5 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828F17E8BFBB0067A023 /* UserInfo.m */; };
 		39D9EA6517F27C03001ED6F5 /* XMPP_Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F54D829017E8BFBB0067A023 /* XMPP_Model.xcdatamodeld */; };
-		39D9EA6617F27C03001ED6F5 /* XMPPIM_Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = F54D829817E8BFBB0067A023 /* XMPPIM_Model.xcdatamodel */; };
 		39D9EA6717F27C03001ED6F5 /* XMPPIMActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829A17E8BFBB0067A023 /* XMPPIMActor.m */; };
 		39D9EA6817F27C03001ED6F5 /* RoomService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968621917EE7C8800C84A6A /* RoomService.m */; };
 		39D9EA6A17F27C03001ED6F5 /* XMPPSqlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829E17E8BFBB0067A023 /* XMPPSqlManager.m */; };
@@ -1344,11 +1343,11 @@
 		39E0521217F00AEA00BCF7F8 /* btn_red.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844E17E8C77E0067A023 /* btn_red.png */; };
 		39E0521317F00AEA00BCF7F8 /* icon_sel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844F17E8C77E0067A023 /* icon_sel_mark.png */; };
 		39E0521417F00AEA00BCF7F8 /* icon_unsel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845017E8C77E0067A023 /* icon_unsel_mark.png */; };
-		39E0521517F00AEA00BCF7F8 /* icon-announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* icon-announcement.png */; };
+		39E0521517F00AEA00BCF7F8 /* Announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* Announcement.png */; };
 		39E0521617F00AEA00BCF7F8 /* icon-feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845217E8C77E0067A023 /* icon-feedback.png */; };
 		39E0521717F00AEA00BCF7F8 /* VOIPSenderVoiceNodeBkgHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626D17EE898300C84A6A /* VOIPSenderVoiceNodeBkgHL@2x.png */; };
-		39E0521817F00AEA00BCF7F8 /* icon-im.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* icon-im.png */; };
-		39E0521917F00AEA00BCF7F8 /* icon-push.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* icon-push.png */; };
+		39E0521817F00AEA00BCF7F8 /* XMPPFriends.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* XMPPFriends.png */; };
+		39E0521917F00AEA00BCF7F8 /* MessageRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* MessageRecord.png */; };
 		39E0521A17F00AEA00BCF7F8 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7617F007FC00F9CA68 /* logo.jpg */; };
 		39E0521B17F00AEA00BCF7F8 /* landview_headline.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7017F007FC00F9CA68 /* landview_headline.png */; };
 		39E0521C17F00AEA00BCF7F8 /* icon-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845517E8C77E0067A023 /* icon-settings.png */; };
@@ -1634,7 +1633,6 @@
 		39E0534117F00AEA00BCF7F8 /* RectangleChat.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828D17E8BFBB0067A023 /* RectangleChat.m */; };
 		39E0534217F00AEA00BCF7F8 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828F17E8BFBB0067A023 /* UserInfo.m */; };
 		39E0534317F00AEA00BCF7F8 /* XMPP_Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F54D829017E8BFBB0067A023 /* XMPP_Model.xcdatamodeld */; };
-		39E0534417F00AEA00BCF7F8 /* XMPPIM_Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = F54D829817E8BFBB0067A023 /* XMPPIM_Model.xcdatamodel */; };
 		39E0534517F00AEA00BCF7F8 /* XMPPIMActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829A17E8BFBB0067A023 /* XMPPIMActor.m */; };
 		39E0534617F00AEA00BCF7F8 /* RoomService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968621917EE7C8800C84A6A /* RoomService.m */; };
 		39E0534817F00AEA00BCF7F8 /* XMPPSqlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829E17E8BFBB0067A023 /* XMPPSqlManager.m */; };
@@ -1658,6 +1656,7 @@
 		39E0535B17F00AEA00BCF7F8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		39E0535C17F00AEA00BCF7F8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		39E0535E17F00AEA00BCF7F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C023708B9AC24DB48757A8FC /* libPods.a */; };
+		39F029FC18078D3300051656 /* soc_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FB18078D3300051656 /* soc_home.png */; };
 		39F23A3A1805A6F60035FCF8 /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F23A391805A6F60035FCF8 /* ScrollTextView.m */; };
 		39F23A3B1805A6F60035FCF8 /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F23A391805A6F60035FCF8 /* ScrollTextView.m */; };
 		39F23A3C1805A6F60035FCF8 /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F23A391805A6F60035FCF8 /* ScrollTextView.m */; };
@@ -1983,11 +1982,11 @@
 		39FF0ACC17F13CBB0086B76C /* btn_red.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844E17E8C77E0067A023 /* btn_red.png */; };
 		39FF0ACD17F13CBB0086B76C /* icon_sel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844F17E8C77E0067A023 /* icon_sel_mark.png */; };
 		39FF0ACE17F13CBB0086B76C /* icon_unsel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845017E8C77E0067A023 /* icon_unsel_mark.png */; };
-		39FF0ACF17F13CBB0086B76C /* icon-announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* icon-announcement.png */; };
+		39FF0ACF17F13CBB0086B76C /* Announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* Announcement.png */; };
 		39FF0AD017F13CBB0086B76C /* icon-feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845217E8C77E0067A023 /* icon-feedback.png */; };
 		39FF0AD117F13CBB0086B76C /* VOIPSenderVoiceNodeBkgHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626D17EE898300C84A6A /* VOIPSenderVoiceNodeBkgHL@2x.png */; };
-		39FF0AD217F13CBB0086B76C /* icon-im.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* icon-im.png */; };
-		39FF0AD317F13CBB0086B76C /* icon-push.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* icon-push.png */; };
+		39FF0AD217F13CBB0086B76C /* XMPPFriends.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* XMPPFriends.png */; };
+		39FF0AD317F13CBB0086B76C /* MessageRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* MessageRecord.png */; };
 		39FF0AD417F13CBB0086B76C /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7617F007FC00F9CA68 /* logo.jpg */; };
 		39FF0AD517F13CBB0086B76C /* landview_headline.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7017F007FC00F9CA68 /* landview_headline.png */; };
 		39FF0AD617F13CBB0086B76C /* icon-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845517E8C77E0067A023 /* icon-settings.png */; };
@@ -2271,7 +2270,6 @@
 		39FF0BF917F13CBB0086B76C /* RectangleChat.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828D17E8BFBB0067A023 /* RectangleChat.m */; };
 		39FF0BFA17F13CBB0086B76C /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828F17E8BFBB0067A023 /* UserInfo.m */; };
 		39FF0BFB17F13CBB0086B76C /* XMPP_Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F54D829017E8BFBB0067A023 /* XMPP_Model.xcdatamodeld */; };
-		39FF0BFC17F13CBB0086B76C /* XMPPIM_Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = F54D829817E8BFBB0067A023 /* XMPPIM_Model.xcdatamodel */; };
 		39FF0BFD17F13CBB0086B76C /* XMPPIMActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829A17E8BFBB0067A023 /* XMPPIMActor.m */; };
 		39FF0BFE17F13CBB0086B76C /* RoomService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968621917EE7C8800C84A6A /* RoomService.m */; };
 		39FF0C0017F13CBB0086B76C /* XMPPSqlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829E17E8BFBB0067A023 /* XMPPSqlManager.m */; };
@@ -2497,7 +2495,6 @@
 		F54D83C617E8BFBC0067A023 /* RectangleChat.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828D17E8BFBB0067A023 /* RectangleChat.m */; };
 		F54D83C717E8BFBC0067A023 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D828F17E8BFBB0067A023 /* UserInfo.m */; };
 		F54D83C817E8BFBC0067A023 /* XMPP_Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F54D829017E8BFBB0067A023 /* XMPP_Model.xcdatamodeld */; };
-		F54D83CA17E8BFBC0067A023 /* XMPPIM_Model.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = F54D829817E8BFBB0067A023 /* XMPPIM_Model.xcdatamodel */; };
 		F54D83CB17E8BFBC0067A023 /* XMPPIMActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829A17E8BFBB0067A023 /* XMPPIMActor.m */; };
 		F54D83CD17E8BFBC0067A023 /* XMPPSqlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D829E17E8BFBB0067A023 /* XMPPSqlManager.m */; };
 		F54D83CE17E8C5840067A023 /* Config-foss-test.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FAD17E8BFB90067A023 /* Config-foss-test.m */; };
@@ -2627,10 +2624,10 @@
 		F54D852217E8C77E0067A023 /* btn_red.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844E17E8C77E0067A023 /* btn_red.png */; };
 		F54D852317E8C77E0067A023 /* icon_sel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844F17E8C77E0067A023 /* icon_sel_mark.png */; };
 		F54D852417E8C77E0067A023 /* icon_unsel_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845017E8C77E0067A023 /* icon_unsel_mark.png */; };
-		F54D852517E8C77E0067A023 /* icon-announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* icon-announcement.png */; };
+		F54D852517E8C77E0067A023 /* Announcement.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845117E8C77E0067A023 /* Announcement.png */; };
 		F54D852617E8C77E0067A023 /* icon-feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845217E8C77E0067A023 /* icon-feedback.png */; };
-		F54D852717E8C77E0067A023 /* icon-im.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* icon-im.png */; };
-		F54D852817E8C77E0067A023 /* icon-push.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* icon-push.png */; };
+		F54D852717E8C77E0067A023 /* XMPPFriends.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845317E8C77E0067A023 /* XMPPFriends.png */; };
+		F54D852817E8C77E0067A023 /* MessageRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845417E8C77E0067A023 /* MessageRecord.png */; };
 		F54D852917E8C77E0067A023 /* icon-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845517E8C77E0067A023 /* icon-settings.png */; };
 		F54D852A17E8C77E0067A023 /* last_talk_friends_icon_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845617E8C77E0067A023 /* last_talk_friends_icon_clicked.png */; };
 		F54D852B17E8C77E0067A023 /* last_talk_friends_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D845717E8C77E0067A023 /* last_talk_friends_icon.png */; };
@@ -3522,6 +3519,7 @@
 		39D9EA8617F27C05001ED6F5 /* bsl copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl copy3-Info.plist"; path = "/Users/fanty/Documents/project/bsl-client/platforms/ios/bsl copy3-Info.plist"; sourceTree = "<absolute>"; };
 		39E0536317F00AEA00BCF7F8 /* 变色龙.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "变色龙.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E0536417F00AEC00BCF7F8 /* bsl copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl copy-Info.plist"; path = "/Users/fanty/Documents/project/temp/bsl-client/platforms/ios/bsl copy-Info.plist"; sourceTree = "<absolute>"; };
+		39F029FB18078D3300051656 /* soc_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soc_home.png; sourceTree = "<group>"; };
 		39F23A381805A6F60035FCF8 /* ScrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextView.h; sourceTree = "<group>"; };
 		39F23A391805A6F60035FCF8 /* ScrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTextView.m; sourceTree = "<group>"; };
 		39F23A681805B2520035FCF8 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
@@ -3927,7 +3925,6 @@
 		F54D829317E8BFBB0067A023 /* XMPP_Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPP_Model.xcdatamodel; sourceTree = "<group>"; };
 		F54D829417E8BFBB0067A023 /* XMPP_Model1308.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPP_Model1308.xcdatamodel; sourceTree = "<group>"; };
 		F54D829517E8BFBB0067A023 /* XMPP_Model1309.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPP_Model1309.xcdatamodel; sourceTree = "<group>"; };
-		F54D829817E8BFBB0067A023 /* XMPPIM_Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPIM_Model.xcdatamodel; sourceTree = "<group>"; };
 		F54D829917E8BFBB0067A023 /* XMPPIMActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActor.h; sourceTree = "<group>"; };
 		F54D829A17E8BFBB0067A023 /* XMPPIMActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActor.m; sourceTree = "<group>"; };
 		F54D829D17E8BFBB0067A023 /* XMPPSqlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPSqlManager.h; sourceTree = "<group>"; };
@@ -4058,10 +4055,10 @@
 		F54D844E17E8C77E0067A023 /* btn_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_red.png; sourceTree = "<group>"; };
 		F54D844F17E8C77E0067A023 /* icon_sel_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sel_mark.png; sourceTree = "<group>"; };
 		F54D845017E8C77E0067A023 /* icon_unsel_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_unsel_mark.png; sourceTree = "<group>"; };
-		F54D845117E8C77E0067A023 /* icon-announcement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-announcement.png"; sourceTree = "<group>"; };
+		F54D845117E8C77E0067A023 /* Announcement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Announcement.png; sourceTree = "<group>"; };
 		F54D845217E8C77E0067A023 /* icon-feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-feedback.png"; sourceTree = "<group>"; };
-		F54D845317E8C77E0067A023 /* icon-im.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-im.png"; sourceTree = "<group>"; };
-		F54D845417E8C77E0067A023 /* icon-push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-push.png"; sourceTree = "<group>"; };
+		F54D845317E8C77E0067A023 /* XMPPFriends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XMPPFriends.png; sourceTree = "<group>"; };
+		F54D845417E8C77E0067A023 /* MessageRecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageRecord.png; sourceTree = "<group>"; };
 		F54D845517E8C77E0067A023 /* icon-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-settings.png"; sourceTree = "<group>"; };
 		F54D845617E8C77E0067A023 /* last_talk_friends_icon_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = last_talk_friends_icon_clicked.png; sourceTree = "<group>"; };
 		F54D845717E8C77E0067A023 /* last_talk_friends_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = last_talk_friends_icon.png; sourceTree = "<group>"; };
@@ -5586,10 +5583,10 @@
 				1801377B17F3D1AA00261B66 /* local_module.plist */,
 				F54D83DD17E8C77D0067A023 /* emotions */,
 				F54D844D17E8C77E0067A023 /* GroupChat */,
-				F54D845117E8C77E0067A023 /* icon-announcement.png */,
+				F54D845117E8C77E0067A023 /* Announcement.png */,
 				F54D845217E8C77E0067A023 /* icon-feedback.png */,
-				F54D845317E8C77E0067A023 /* icon-im.png */,
-				F54D845417E8C77E0067A023 /* icon-push.png */,
+				F54D845317E8C77E0067A023 /* XMPPFriends.png */,
+				F54D845417E8C77E0067A023 /* MessageRecord.png */,
 				F54D845517E8C77E0067A023 /* icon-settings.png */,
 				F54D845617E8C77E0067A023 /* last_talk_friends_icon_clicked.png */,
 				F54D845717E8C77E0067A023 /* last_talk_friends_icon.png */,
@@ -6843,7 +6840,6 @@
 				F54D828E17E8BFBB0067A023 /* UserInfo.h */,
 				F54D828F17E8BFBB0067A023 /* UserInfo.m */,
 				F54D829017E8BFBB0067A023 /* XMPP_Model.xcdatamodeld */,
-				F54D829817E8BFBB0067A023 /* XMPPIM_Model.xcdatamodel */,
 				F54D829917E8BFBB0067A023 /* XMPPIMActor.h */,
 				F54D829A17E8BFBB0067A023 /* XMPPIMActor.m */,
 				F54D829D17E8BFBB0067A023 /* XMPPSqlManager.h */,
@@ -7126,6 +7122,7 @@
 				3926908B17F51F1C00F1500B /* line_shadow@2x.png */,
 				F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */,
 				F5A96C4F17F007FC00F9CA68 /* Background_Portrait.png */,
+				39F029FB18078D3300051656 /* soc_home.png */,
 				F5A96C5017F007FC00F9CA68 /* blueArrow.png */,
 				F5A96C5117F007FC00F9CA68 /* blueArrow@2x.png */,
 				F5A96C5217F007FC00F9CA68 /* buttongroup_bg@2x.png */,
@@ -7667,11 +7664,11 @@
 				F54D852217E8C77E0067A023 /* btn_red.png in Resources */,
 				F54D852317E8C77E0067A023 /* icon_sel_mark.png in Resources */,
 				F54D852417E8C77E0067A023 /* icon_unsel_mark.png in Resources */,
-				F54D852517E8C77E0067A023 /* icon-announcement.png in Resources */,
+				F54D852517E8C77E0067A023 /* Announcement.png in Resources */,
 				F54D852617E8C77E0067A023 /* icon-feedback.png in Resources */,
 				396862A317EE898300C84A6A /* VOIPSenderVoiceNodeBkgHL@2x.png in Resources */,
-				F54D852717E8C77E0067A023 /* icon-im.png in Resources */,
-				F54D852817E8C77E0067A023 /* icon-push.png in Resources */,
+				F54D852717E8C77E0067A023 /* XMPPFriends.png in Resources */,
+				F54D852817E8C77E0067A023 /* MessageRecord.png in Resources */,
 				F5A96CD717F007FC00F9CA68 /* logo.jpg in Resources */,
 				F5A96CD117F007FC00F9CA68 /* landview_headline.png in Resources */,
 				F54D852917E8C77E0067A023 /* icon-settings.png in Resources */,
@@ -8200,14 +8197,14 @@
 				39D9E93817F27C03001ED6F5 /* btn_red.png in Resources */,
 				39D9E93917F27C03001ED6F5 /* icon_sel_mark.png in Resources */,
 				39D9E93A17F27C03001ED6F5 /* icon_unsel_mark.png in Resources */,
-				39D9E93B17F27C03001ED6F5 /* icon-announcement.png in Resources */,
+				39D9E93B17F27C03001ED6F5 /* Announcement.png in Resources */,
 				39D9E93C17F27C03001ED6F5 /* icon-feedback.png in Resources */,
 				18E9C5881803AB1200B874B8 /* 电子书目录_phone.png in Resources */,
 				18E9C4801803AB1200B874B8 /* Wind.xib in Resources */,
 				18E9C4BB1803AB1200B874B8 /* LandingViewController_Phone_backup.xib in Resources */,
 				39D9E93D17F27C03001ED6F5 /* VOIPSenderVoiceNodeBkgHL@2x.png in Resources */,
-				39D9E93E17F27C03001ED6F5 /* icon-im.png in Resources */,
-				39D9E93F17F27C03001ED6F5 /* icon-push.png in Resources */,
+				39D9E93E17F27C03001ED6F5 /* XMPPFriends.png in Resources */,
+				39D9E93F17F27C03001ED6F5 /* MessageRecord.png in Resources */,
 				39D9E94017F27C03001ED6F5 /* logo.jpg in Resources */,
 				39D9E94117F27C03001ED6F5 /* landview_headline.png in Resources */,
 				39D9E94217F27C03001ED6F5 /* icon-settings.png in Resources */,
@@ -8669,11 +8666,11 @@
 				39E0521217F00AEA00BCF7F8 /* btn_red.png in Resources */,
 				39E0521317F00AEA00BCF7F8 /* icon_sel_mark.png in Resources */,
 				39E0521417F00AEA00BCF7F8 /* icon_unsel_mark.png in Resources */,
-				39E0521517F00AEA00BCF7F8 /* icon-announcement.png in Resources */,
+				39E0521517F00AEA00BCF7F8 /* Announcement.png in Resources */,
 				39E0521617F00AEA00BCF7F8 /* icon-feedback.png in Resources */,
 				39E0521717F00AEA00BCF7F8 /* VOIPSenderVoiceNodeBkgHL@2x.png in Resources */,
-				39E0521817F00AEA00BCF7F8 /* icon-im.png in Resources */,
-				39E0521917F00AEA00BCF7F8 /* icon-push.png in Resources */,
+				39E0521817F00AEA00BCF7F8 /* XMPPFriends.png in Resources */,
+				39E0521917F00AEA00BCF7F8 /* MessageRecord.png in Resources */,
 				39E0521A17F00AEA00BCF7F8 /* logo.jpg in Resources */,
 				39E0521B17F00AEA00BCF7F8 /* landview_headline.png in Resources */,
 				39E0521C17F00AEA00BCF7F8 /* icon-settings.png in Resources */,
@@ -8998,6 +8995,7 @@
 				39FF0A6D17F13CBB0086B76C /* f049.png in Resources */,
 				39FF0A6E17F13CBB0086B76C /* f050.png in Resources */,
 				39FF0A6F17F13CBB0086B76C /* f051.png in Resources */,
+				39F029FC18078D3300051656 /* soc_home.png in Resources */,
 				39FF0A7017F13CBB0086B76C /* option_webview_fullscreen.png in Resources */,
 				39FF0A7117F13CBB0086B76C /* f052.png in Resources */,
 				39FF0A7217F13CBB0086B76C /* f053.png in Resources */,
@@ -9095,11 +9093,11 @@
 				39FF0ACC17F13CBB0086B76C /* btn_red.png in Resources */,
 				39FF0ACD17F13CBB0086B76C /* icon_sel_mark.png in Resources */,
 				39FF0ACE17F13CBB0086B76C /* icon_unsel_mark.png in Resources */,
-				39FF0ACF17F13CBB0086B76C /* icon-announcement.png in Resources */,
+				39FF0ACF17F13CBB0086B76C /* Announcement.png in Resources */,
 				39FF0AD017F13CBB0086B76C /* icon-feedback.png in Resources */,
 				39FF0AD117F13CBB0086B76C /* VOIPSenderVoiceNodeBkgHL@2x.png in Resources */,
-				39FF0AD217F13CBB0086B76C /* icon-im.png in Resources */,
-				39FF0AD317F13CBB0086B76C /* icon-push.png in Resources */,
+				39FF0AD217F13CBB0086B76C /* XMPPFriends.png in Resources */,
+				39FF0AD317F13CBB0086B76C /* MessageRecord.png in Resources */,
 				39FF0AD417F13CBB0086B76C /* logo.jpg in Resources */,
 				39FF0AD517F13CBB0086B76C /* landview_headline.png in Resources */,
 				39FF0AD617F13CBB0086B76C /* icon-settings.png in Resources */,
@@ -9578,7 +9576,6 @@
 				F54D83C617E8BFBC0067A023 /* RectangleChat.m in Sources */,
 				F54D83C717E8BFBC0067A023 /* UserInfo.m in Sources */,
 				F54D83C817E8BFBC0067A023 /* XMPP_Model.xcdatamodeld in Sources */,
-				F54D83CA17E8BFBC0067A023 /* XMPPIM_Model.xcdatamodel in Sources */,
 				F54D83CB17E8BFBC0067A023 /* XMPPIMActor.m in Sources */,
 				3968621A17EE7C8800C84A6A /* RoomService.m in Sources */,
 				F54D83CD17E8BFBC0067A023 /* XMPPSqlManager.m in Sources */,
@@ -10146,7 +10143,6 @@
 				39E0534117F00AEA00BCF7F8 /* RectangleChat.m in Sources */,
 				39E0534217F00AEA00BCF7F8 /* UserInfo.m in Sources */,
 				39E0534317F00AEA00BCF7F8 /* XMPP_Model.xcdatamodeld in Sources */,
-				39E0534417F00AEA00BCF7F8 /* XMPPIM_Model.xcdatamodel in Sources */,
 				39E0534517F00AEA00BCF7F8 /* XMPPIMActor.m in Sources */,
 				39E0534617F00AEA00BCF7F8 /* RoomService.m in Sources */,
 				39E0534817F00AEA00BCF7F8 /* XMPPSqlManager.m in Sources */,
@@ -10328,7 +10324,6 @@
 				39FF0BF917F13CBB0086B76C /* RectangleChat.m in Sources */,
 				39FF0BFA17F13CBB0086B76C /* UserInfo.m in Sources */,
 				39FF0BFB17F13CBB0086B76C /* XMPP_Model.xcdatamodeld in Sources */,
-				39FF0BFC17F13CBB0086B76C /* XMPPIM_Model.xcdatamodel in Sources */,
 				39FF0BFD17F13CBB0086B76C /* XMPPIMActor.m in Sources */,
 				39FF0BFE17F13CBB0086B76C /* RoomService.m in Sources */,
 				39FF0C0017F13CBB0086B76C /* XMPPSqlManager.m in Sources */,
@@ -10574,7 +10569,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "变色龙";
-				PROVISIONING_PROFILE = "A39395A2-3605-4253-85F4-4D87013A0FF8";
+				PROVISIONING_PROFILE = "114E349F-5E87-4AED-913E-2A70E4CA88C8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -10606,7 +10601,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "变色龙";
-				PROVISIONING_PROFILE = "A39395A2-3605-4253-85F4-4D87013A0FF8";
+				PROVISIONING_PROFILE = "114E349F-5E87-4AED-913E-2A70E4CA88C8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

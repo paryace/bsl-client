@@ -40,9 +40,12 @@
 {
     [super viewDidLoad];
     
-    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone)
-    {
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone){
+#ifdef MOBILE_BSL
+        UIImage *image = [UIImage imageNamed:@"soc_home.png"];
+#else
         UIImage *image = [UIImage imageNamed:@"home.png"];
+#endif
         self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.closeButton setImage:image forState:UIControlStateNormal];
         if(iPhone5){

@@ -228,7 +228,7 @@
     }
     userId = [userId stringByAppendingFormat:@"@%@",kXMPPDomin];
     
-    [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"Cube_Client11"]];
+    [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"Cube_Client"]];
     
     [xmppStream setHostName:kXMPPHost];
 	[xmppStream setHostPort:kXMPPPort];
@@ -505,7 +505,8 @@
                 messageEntity.messageId=result;
                 messageEntity.sendUser=result;
                 messageEntity.receiveUser=[[self.xmppStream myJID]bare];
-                
+                messageEntity.statue=[NSNumber numberWithInt:1];
+
                 if ([ [[message elementForName:@"subject"] stringValue] isEqualToString:@"voice"]) {
                     //将字符串转换成nsdata
                     NSData* fileData =  [Base64 decodeString:msg];

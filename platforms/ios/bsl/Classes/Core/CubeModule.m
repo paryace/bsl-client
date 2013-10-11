@@ -286,17 +286,23 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     module.identifier = [jsonObject objectForKey:@"identifier"];
     module.name = [jsonObject objectForKey:@"name"];
     module.releaseNote = [jsonObject objectForKey:@"releaseNote"];
-    module.icon = [jsonObject objectForKey:@"icon"];
-    module.url = [jsonObject objectForKey:@"url"];
+    module.local = [jsonObject objectForKey:@"local"];
+    if ([module.local length]>0) {
+        module.icon = [NSString stringWithFormat:@"local:%@.png",module.local];
+    }else{
+        module.icon = [jsonObject objectForKey:@"icon"];
+    }
+    
     module.bundle = [jsonObject objectForKey:@"bundle"];
     module.package = [jsonObject objectForKey:@"package"];
     module.version = [jsonObject objectForKey:@"version"];
     module.build = [[jsonObject objectForKey:@"build"] integerValue];
     module.installed = [[jsonObject objectForKey:@"installed"] boolValue];
-    module.local = [jsonObject objectForKey:@"local"];
+    module.url = [jsonObject objectForKey:@"url"];
     module.localImageUrl = [jsonObject objectForKey:@"localImageUrl"];
     module.category = [jsonObject objectForKey:@"category"];
     module.privileges = [jsonObject objectForKey:@"privileges"];
+    
     module.pushMsgLink = [jsonObject objectForKey:@"pushMsgLink"];
     module.discription = [jsonObject objectForKey:@"discription"];
     module.sortingWeight = [[jsonObject objectForKey:@"sortingWeight"] intValue];
