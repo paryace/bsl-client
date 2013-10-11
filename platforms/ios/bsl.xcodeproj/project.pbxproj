@@ -12,6 +12,8 @@
 		1801377E17F3D1AA00261B66 /* local_module.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1801377B17F3D1AA00261B66 /* local_module.plist */; };
 		18240E0D1803C6C400846FF9 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 18240E0C1803C6C400846FF9 /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
+		188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
+		188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		18E9C4611803AB1200B874B8 /* AbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4621803AB1200B874B8 /* EbookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1ED1803AB0E00B874B8 /* EbookListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4631803AB1200B874B8 /* About.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1F11803AB0E00B874B8 /* About.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -2854,6 +2856,8 @@
 		18240E0C1803C6C400846FF9 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		18240E0E1803D04400846FF9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		18240E111804EBFC00846FF9 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		188487F21807A41E0039F67F /* CubeAccountPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAccountPlugin.h; path = CubeAccount/CubeAccountPlugin.h; sourceTree = "<group>"; };
+		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
 		18E9C1E81803AB0E00B874B8 /* AbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTableViewController.h; sourceTree = "<group>"; };
 		18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractTableViewController.m; sourceTree = "<group>"; };
 		18E9C1EC1803AB0E00B874B8 /* EbookListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EbookListViewController.h; sourceTree = "<group>"; };
@@ -4378,6 +4382,15 @@
 			name = Classes;
 			path = bsl/Classes;
 			sourceTree = SOURCE_ROOT;
+		};
+		188487F11807A3CE0039F67F /* CubeAccount */ = {
+			isa = PBXGroup;
+			children = (
+				188487F21807A41E0039F67F /* CubeAccountPlugin.h */,
+				188487F31807A41E0039F67F /* CubeAccountPlugin.m */,
+			);
+			name = CubeAccount;
+			sourceTree = "<group>";
 		};
 		18E9C1E51803AAED00B874B8 /* pilot */ = {
 			isa = PBXGroup;
@@ -6587,6 +6600,7 @@
 		F54D814F17E8BFBA0067A023 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				188487F11807A3CE0039F67F /* CubeAccount */,
 				F5A96C3717F006B400F9CA68 /* org.apache.cordova.core.device */,
 				F5A96C3A17F006B400F9CA68 /* org.apache.cordova.core.dialogs */,
 				F5A96C3D17F006B400F9CA68 /* org.apache.cordova.core.file */,
@@ -9432,6 +9446,7 @@
 				F54D82CC17E8BFBB0067A023 /* iphoneAboutViewController.m in Sources */,
 				F54D82CE17E8BFBB0067A023 /* AnnouncementTableViewController.m in Sources */,
 				F54D82D017E8BFBB0067A023 /* AnnouncementTableViewCell.m in Sources */,
+				188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */,
 				F54D82D217E8BFBB0067A023 /* Announcement.m in Sources */,
 				F54D82D317E8BFBB0067A023 /* BaseViewController.m in Sources */,
 				F54D82D417E8BFBB0067A023 /* DownLoadingDetialViewController.m in Sources */,
@@ -9808,6 +9823,7 @@
 				39D9EA1F17F27C03001ED6F5 /* MessageRecordTableViewController.m in Sources */,
 				18E9C4C61803AB1200B874B8 /* ManifestTableViewCell.m in Sources */,
 				39D9EA2017F27C03001ED6F5 /* MessageRecordHeaderView.m in Sources */,
+				188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */,
 				18E9C5AA1803AB1200B874B8 /* NSData+DES.m in Sources */,
 				18E9C47B1803AB1200B874B8 /* Turn.m in Sources */,
 				18E9C4EB1803AB1200B874B8 /* Member.m in Sources */,

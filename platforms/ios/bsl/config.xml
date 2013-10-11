@@ -19,6 +19,9 @@
     <feature name="Vibration">
         <param name="ios-package" value="CDVVibration" />
     </feature>
+    <feature name="CubeAccount">
+        <param name="ios-package" value="CubeAccountPlugin" />
+    </feature>
     <feature name="CubeModuleOperator">
         <param name="ios-package" value="CubeModuleOperatorPlugin" />
     </feature>

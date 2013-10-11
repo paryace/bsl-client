@@ -113,9 +113,7 @@
                 if([SVProgressHUD isVisible]){
                     [SVProgressHUD dismiss];
                 }
-
-                NSLog(@"%@",message);
-                UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"用户名或密码不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 alert=nil;
             }else{

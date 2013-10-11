@@ -386,17 +386,19 @@ var loadModuleList = function(plugin, action, type, callback) {
                  console.log("进入exec获取accountName");
                  var a = $.parseJSON(account);
                  accountName = a.accountname;
+                 if (accountName !== "") {
+                 accountName = " " + accountName + " ";
+                 }
+                 $('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
+                 
                  
                  }, function(err) {
                  accountName = "";
+                 $('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
+                 
                  }, "CubeAccount", "getAccount", []);
-	if (accountName !== "") {
-		accountName = " " + accountName + " ";
-	}
-	$('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
 	$(".mainContent").html("");
-	$(".mainContent").remove();
-    
+    $(".mainContent").remove();
 	var mainContent = $('<div class="mainContent"><ul id="myul" class="scrollContent nav nav-list"></ul>');
 	$("#scroller").append(mainContent);
 	$(".mainContent").css('padding-bottom', '50px');
