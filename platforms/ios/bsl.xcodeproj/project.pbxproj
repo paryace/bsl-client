@@ -9950,7 +9950,6 @@
 				18E9C4621803AB1200B874B8 /* EbookListViewController.m in Sources */,
 				18E9C48E1803AB1200B874B8 /* FPHeaderProgress View.m in Sources */,
 				39D9EA6517F27C03001ED6F5 /* XMPP_Model.xcdatamodeld in Sources */,
-				39D9EA6617F27C03001ED6F5 /* XMPPIM_Model.xcdatamodel in Sources */,
 				18E9C5031803AB1200B874B8 /* ReaderContentView.m in Sources */,
 				18E9C5B21803AB1200B874B8 /* UINavigationBar+Extention.m in Sources */,
 				18E9C4ED1803AB1200B874B8 /* PilotTask.m in Sources */,

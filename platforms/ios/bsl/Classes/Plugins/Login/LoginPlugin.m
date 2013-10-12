@@ -128,7 +128,7 @@
                     [defaults setObject:userName forKey:@"username"];
                     [defaults setObject:userPass forKey:@"password"];
                 }else{
-                    [defaults setObject:@"" forKey:@"username"];
+                    [defaults setObject:userName forKey:@"username"];
                     [defaults setObject:@"" forKey:@"password"];
                     [defaults setBool:NO forKey:@"switchIsOn"];
                 }
