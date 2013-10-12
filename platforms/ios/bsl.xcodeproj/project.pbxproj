@@ -479,8 +479,6 @@
 		39D9E81417F27C03001ED6F5 /* photo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9717F007FC00F9CA68 /* photo_icon.png */; };
 		39D9E81517F27C03001ED6F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		39D9E81617F27C03001ED6F5 /* AlbumListLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623B17EE898300C84A6A /* AlbumListLine@2x.png */; };
-		39D9E81717F27C03001ED6F5 /* ModuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FC917E8BFBA0067A023 /* ModuleCell.xib */; };
-		39D9E81817F27C03001ED6F5 /* ModulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FCC17E8BFBA0067A023 /* ModulesViewController.xib */; };
 		39D9E81917F27C03001ED6F5 /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
 		39D9E81A17F27C03001ED6F5 /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		39D9E81B17F27C03001ED6F5 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FF817E8BFBA0067A023 /* DetailView.xib */; };
@@ -892,8 +890,6 @@
 		39D9E9C817F27C03001ED6F5 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC217E8BFBA0067A023 /* HTTPRequest.m */; };
 		39D9E9C917F27C03001ED6F5 /* MessageDelayHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC417E8BFBA0067A023 /* MessageDelayHandler.m */; };
 		39D9E9CA17F27C03001ED6F5 /* MessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC617E8BFBA0067A023 /* MessageObject.m */; };
-		39D9E9CB17F27C03001ED6F5 /* ModuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC817E8BFBA0067A023 /* ModuleCell.m */; };
-		39D9E9CC17F27C03001ED6F5 /* ModulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCB17E8BFBA0067A023 /* ModulesViewController.m */; };
 		39D9E9CD17F27C03001ED6F5 /* OperateLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCE17E8BFBA0067A023 /* OperateLog.m */; };
 		39D9E9CE17F27C03001ED6F5 /* PushGetMessageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD017E8BFBA0067A023 /* PushGetMessageInfo.m */; };
 		39D9E9CF17F27C03001ED6F5 /* ServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD217E8BFBA0067A023 /* ServerAPI.m */; };
@@ -998,16 +994,12 @@
 		39D9EA3717F27C03001ED6F5 /* LoginPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D815D17E8BFBA0067A023 /* LoginPlugin.m */; };
 		39D9EA3817F27C03001ED6F5 /* DownQueueActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816017E8BFBA0067A023 /* DownQueueActor.m */; };
 		39D9EA3917F27C03001ED6F5 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A96C3F17F006B400F9CA68 /* CDVFile.m */; };
-		39D9EA3A17F27C03001ED6F5 /* AnimateNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816317E8BFBA0067A023 /* AnimateNavigationController.m */; };
 		39D9EA3B17F27C03001ED6F5 /* ButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816517E8BFBA0067A023 /* ButtonGroup.m */; };
 		39D9EA3C17F27C03001ED6F5 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816717E8BFBA0067A023 /* CustomNavigationBar.m */; };
-		39D9EA3D17F27C03001ED6F5 /* KeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816917E8BFBA0067A023 /* KeyboardToolbar.m */; };
 		39D9EA3E17F27C03001ED6F5 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816B17E8BFBA0067A023 /* NSData+Hex.m */; };
 		39D9EA3F17F27C03001ED6F5 /* NSObject+propertyList.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816D17E8BFBA0067A023 /* NSObject+propertyList.m */; };
 		39D9EA4017F27C03001ED6F5 /* RepositoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816F17E8BFBA0067A023 /* RepositoryManager.m */; };
 		39D9EA4117F27C03001ED6F5 /* SearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817117E8BFBA0067A023 /* SearchDataSource.m */; };
-		39D9EA4217F27C03001ED6F5 /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817317E8BFBA0067A023 /* SVSegmentedControl.m */; };
-		39D9EA4317F27C03001ED6F5 /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817517E8BFBA0067A023 /* SVSegmentedThumb.m */; };
 		39D9EA4417F27C03001ED6F5 /* SwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817717E8BFBB0067A023 /* SwitchButton.m */; };
 		39D9EA4517F27C03001ED6F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817917E8BFBB0067A023 /* UIColor+expanded.m */; };
 		39D9EA4617F27C03001ED6F5 /* UIView+CG.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817B17E8BFBB0067A023 /* UIView+CG.m */; };
@@ -1073,8 +1065,6 @@
 		39E050EF17F00AEA00BCF7F8 /* photo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9717F007FC00F9CA68 /* photo_icon.png */; };
 		39E050F017F00AEA00BCF7F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		39E050F117F00AEA00BCF7F8 /* AlbumListLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623B17EE898300C84A6A /* AlbumListLine@2x.png */; };
-		39E050F217F00AEA00BCF7F8 /* ModuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FC917E8BFBA0067A023 /* ModuleCell.xib */; };
-		39E050F317F00AEA00BCF7F8 /* ModulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FCC17E8BFBA0067A023 /* ModulesViewController.xib */; };
 		39E050F417F00AEA00BCF7F8 /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
 		39E050F517F00AEA00BCF7F8 /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		39E050F617F00AEA00BCF7F8 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FF817E8BFBA0067A023 /* DetailView.xib */; };
@@ -1483,8 +1473,6 @@
 		39E052A217F00AEA00BCF7F8 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC217E8BFBA0067A023 /* HTTPRequest.m */; };
 		39E052A317F00AEA00BCF7F8 /* MessageDelayHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC417E8BFBA0067A023 /* MessageDelayHandler.m */; };
 		39E052A417F00AEA00BCF7F8 /* MessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC617E8BFBA0067A023 /* MessageObject.m */; };
-		39E052A517F00AEA00BCF7F8 /* ModuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC817E8BFBA0067A023 /* ModuleCell.m */; };
-		39E052A617F00AEA00BCF7F8 /* ModulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCB17E8BFBA0067A023 /* ModulesViewController.m */; };
 		39E052A717F00AEA00BCF7F8 /* OperateLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCE17E8BFBA0067A023 /* OperateLog.m */; };
 		39E052A817F00AEA00BCF7F8 /* PushGetMessageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD017E8BFBA0067A023 /* PushGetMessageInfo.m */; };
 		39E052A917F00AEA00BCF7F8 /* ServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD217E8BFBA0067A023 /* ServerAPI.m */; };
@@ -1589,16 +1577,12 @@
 		39E0531517F00AEA00BCF7F8 /* LoginPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D815D17E8BFBA0067A023 /* LoginPlugin.m */; };
 		39E0531617F00AEA00BCF7F8 /* DownQueueActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816017E8BFBA0067A023 /* DownQueueActor.m */; };
 		39E0531717F00AEA00BCF7F8 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A96C3F17F006B400F9CA68 /* CDVFile.m */; };
-		39E0531817F00AEA00BCF7F8 /* AnimateNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816317E8BFBA0067A023 /* AnimateNavigationController.m */; };
 		39E0531917F00AEA00BCF7F8 /* ButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816517E8BFBA0067A023 /* ButtonGroup.m */; };
 		39E0531A17F00AEA00BCF7F8 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816717E8BFBA0067A023 /* CustomNavigationBar.m */; };
-		39E0531B17F00AEA00BCF7F8 /* KeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816917E8BFBA0067A023 /* KeyboardToolbar.m */; };
 		39E0531C17F00AEA00BCF7F8 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816B17E8BFBA0067A023 /* NSData+Hex.m */; };
 		39E0531D17F00AEA00BCF7F8 /* NSObject+propertyList.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816D17E8BFBA0067A023 /* NSObject+propertyList.m */; };
 		39E0531E17F00AEA00BCF7F8 /* RepositoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816F17E8BFBA0067A023 /* RepositoryManager.m */; };
 		39E0531F17F00AEA00BCF7F8 /* SearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817117E8BFBA0067A023 /* SearchDataSource.m */; };
-		39E0532017F00AEA00BCF7F8 /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817317E8BFBA0067A023 /* SVSegmentedControl.m */; };
-		39E0532117F00AEA00BCF7F8 /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817517E8BFBA0067A023 /* SVSegmentedThumb.m */; };
 		39E0532217F00AEA00BCF7F8 /* SwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817717E8BFBB0067A023 /* SwitchButton.m */; };
 		39E0532317F00AEA00BCF7F8 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817917E8BFBB0067A023 /* UIColor+expanded.m */; };
 		39E0532417F00AEA00BCF7F8 /* UIView+CG.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817B17E8BFBB0067A023 /* UIView+CG.m */; };
@@ -1731,8 +1715,6 @@
 		39FF09AB17F13CBB0086B76C /* photo_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9717F007FC00F9CA68 /* photo_icon.png */; };
 		39FF09AC17F13CBB0086B76C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		39FF09AD17F13CBB0086B76C /* AlbumListLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623B17EE898300C84A6A /* AlbumListLine@2x.png */; };
-		39FF09AE17F13CBB0086B76C /* ModuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FC917E8BFBA0067A023 /* ModuleCell.xib */; };
-		39FF09AF17F13CBB0086B76C /* ModulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FCC17E8BFBA0067A023 /* ModulesViewController.xib */; };
 		39FF09B017F13CBB0086B76C /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
 		39FF09B117F13CBB0086B76C /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		39FF09B217F13CBB0086B76C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FF817E8BFBA0067A023 /* DetailView.xib */; };
@@ -2141,8 +2123,6 @@
 		39FF0B5C17F13CBB0086B76C /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC217E8BFBA0067A023 /* HTTPRequest.m */; };
 		39FF0B5D17F13CBB0086B76C /* MessageDelayHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC417E8BFBA0067A023 /* MessageDelayHandler.m */; };
 		39FF0B5E17F13CBB0086B76C /* MessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC617E8BFBA0067A023 /* MessageObject.m */; };
-		39FF0B5F17F13CBB0086B76C /* ModuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC817E8BFBA0067A023 /* ModuleCell.m */; };
-		39FF0B6017F13CBB0086B76C /* ModulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCB17E8BFBA0067A023 /* ModulesViewController.m */; };
 		39FF0B6117F13CBB0086B76C /* OperateLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCE17E8BFBA0067A023 /* OperateLog.m */; };
 		39FF0B6217F13CBB0086B76C /* PushGetMessageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD017E8BFBA0067A023 /* PushGetMessageInfo.m */; };
 		39FF0B6317F13CBB0086B76C /* ServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD217E8BFBA0067A023 /* ServerAPI.m */; };
@@ -2245,16 +2225,12 @@
 		39FF0BCD17F13CBB0086B76C /* LoginPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D815D17E8BFBA0067A023 /* LoginPlugin.m */; };
 		39FF0BCE17F13CBB0086B76C /* DownQueueActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816017E8BFBA0067A023 /* DownQueueActor.m */; };
 		39FF0BCF17F13CBB0086B76C /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A96C3F17F006B400F9CA68 /* CDVFile.m */; };
-		39FF0BD017F13CBB0086B76C /* AnimateNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816317E8BFBA0067A023 /* AnimateNavigationController.m */; };
 		39FF0BD117F13CBB0086B76C /* ButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816517E8BFBA0067A023 /* ButtonGroup.m */; };
 		39FF0BD217F13CBB0086B76C /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816717E8BFBA0067A023 /* CustomNavigationBar.m */; };
-		39FF0BD317F13CBB0086B76C /* KeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816917E8BFBA0067A023 /* KeyboardToolbar.m */; };
 		39FF0BD417F13CBB0086B76C /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816B17E8BFBA0067A023 /* NSData+Hex.m */; };
 		39FF0BD517F13CBB0086B76C /* NSObject+propertyList.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816D17E8BFBA0067A023 /* NSObject+propertyList.m */; };
 		39FF0BD617F13CBB0086B76C /* RepositoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816F17E8BFBA0067A023 /* RepositoryManager.m */; };
 		39FF0BD717F13CBB0086B76C /* SearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817117E8BFBA0067A023 /* SearchDataSource.m */; };
-		39FF0BD817F13CBB0086B76C /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817317E8BFBA0067A023 /* SVSegmentedControl.m */; };
-		39FF0BD917F13CBB0086B76C /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817517E8BFBA0067A023 /* SVSegmentedThumb.m */; };
 		39FF0BDA17F13CBB0086B76C /* SwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817717E8BFBB0067A023 /* SwitchButton.m */; };
 		39FF0BDB17F13CBB0086B76C /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817917E8BFBB0067A023 /* UIColor+expanded.m */; };
 		39FF0BDC17F13CBB0086B76C /* UIView+CG.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817B17E8BFBB0067A023 /* UIView+CG.m */; };
@@ -2332,10 +2308,6 @@
 		F54D82B117E8BFBB0067A023 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC217E8BFBA0067A023 /* HTTPRequest.m */; };
 		F54D82B217E8BFBB0067A023 /* MessageDelayHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC417E8BFBA0067A023 /* MessageDelayHandler.m */; };
 		F54D82B317E8BFBB0067A023 /* MessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC617E8BFBA0067A023 /* MessageObject.m */; };
-		F54D82B417E8BFBB0067A023 /* ModuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FC817E8BFBA0067A023 /* ModuleCell.m */; };
-		F54D82B517E8BFBB0067A023 /* ModuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FC917E8BFBA0067A023 /* ModuleCell.xib */; };
-		F54D82B617E8BFBB0067A023 /* ModulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCB17E8BFBA0067A023 /* ModulesViewController.m */; };
-		F54D82B717E8BFBB0067A023 /* ModulesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FCC17E8BFBA0067A023 /* ModulesViewController.xib */; };
 		F54D82B817E8BFBB0067A023 /* OperateLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FCE17E8BFBA0067A023 /* OperateLog.m */; };
 		F54D82B917E8BFBB0067A023 /* PushGetMessageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD017E8BFBA0067A023 /* PushGetMessageInfo.m */; };
 		F54D82BA17E8BFBB0067A023 /* ServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FD217E8BFBA0067A023 /* ServerAPI.m */; };
@@ -2468,16 +2440,12 @@
 		F54D838F17E8BFBB0067A023 /* LocalDBPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D815A17E8BFBA0067A023 /* LocalDBPlugin.m */; };
 		F54D839017E8BFBB0067A023 /* LoginPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D815D17E8BFBA0067A023 /* LoginPlugin.m */; };
 		F54D839117E8BFBB0067A023 /* DownQueueActor.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816017E8BFBA0067A023 /* DownQueueActor.m */; };
-		F54D839217E8BFBB0067A023 /* AnimateNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816317E8BFBA0067A023 /* AnimateNavigationController.m */; };
 		F54D839317E8BFBB0067A023 /* ButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816517E8BFBA0067A023 /* ButtonGroup.m */; };
 		F54D839417E8BFBB0067A023 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816717E8BFBA0067A023 /* CustomNavigationBar.m */; };
-		F54D839517E8BFBB0067A023 /* KeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816917E8BFBA0067A023 /* KeyboardToolbar.m */; };
 		F54D839617E8BFBB0067A023 /* NSData+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816B17E8BFBA0067A023 /* NSData+Hex.m */; };
 		F54D839717E8BFBB0067A023 /* NSObject+propertyList.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816D17E8BFBA0067A023 /* NSObject+propertyList.m */; };
 		F54D839817E8BFBB0067A023 /* RepositoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D816F17E8BFBA0067A023 /* RepositoryManager.m */; };
 		F54D839917E8BFBB0067A023 /* SearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817117E8BFBA0067A023 /* SearchDataSource.m */; };
-		F54D839A17E8BFBB0067A023 /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817317E8BFBA0067A023 /* SVSegmentedControl.m */; };
-		F54D839B17E8BFBB0067A023 /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817517E8BFBA0067A023 /* SVSegmentedThumb.m */; };
 		F54D839C17E8BFBB0067A023 /* SwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817717E8BFBB0067A023 /* SwitchButton.m */; };
 		F54D839D17E8BFBB0067A023 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817917E8BFBB0067A023 /* UIColor+expanded.m */; };
 		F54D839E17E8BFBB0067A023 /* UIView+CG.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D817B17E8BFBB0067A023 /* UIView+CG.m */; };
@@ -3624,12 +3592,6 @@
 		F54D7FC417E8BFBA0067A023 /* MessageDelayHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDelayHandler.m; sourceTree = "<group>"; };
 		F54D7FC517E8BFBA0067A023 /* MessageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageObject.h; sourceTree = "<group>"; };
 		F54D7FC617E8BFBA0067A023 /* MessageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageObject.m; sourceTree = "<group>"; };
-		F54D7FC717E8BFBA0067A023 /* ModuleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleCell.h; sourceTree = "<group>"; };
-		F54D7FC817E8BFBA0067A023 /* ModuleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleCell.m; sourceTree = "<group>"; };
-		F54D7FC917E8BFBA0067A023 /* ModuleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModuleCell.xib; sourceTree = "<group>"; };
-		F54D7FCA17E8BFBA0067A023 /* ModulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModulesViewController.h; sourceTree = "<group>"; };
-		F54D7FCB17E8BFBA0067A023 /* ModulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModulesViewController.m; sourceTree = "<group>"; };
-		F54D7FCC17E8BFBA0067A023 /* ModulesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModulesViewController.xib; sourceTree = "<group>"; };
 		F54D7FCD17E8BFBA0067A023 /* OperateLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperateLog.h; sourceTree = "<group>"; };
 		F54D7FCE17E8BFBA0067A023 /* OperateLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperateLog.m; sourceTree = "<group>"; };
 		F54D7FCF17E8BFBA0067A023 /* PushGetMessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushGetMessageInfo.h; sourceTree = "<group>"; };
@@ -3856,14 +3818,10 @@
 		F54D815D17E8BFBA0067A023 /* LoginPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPlugin.m; sourceTree = "<group>"; };
 		F54D815F17E8BFBA0067A023 /* DownQueueActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownQueueActor.h; sourceTree = "<group>"; };
 		F54D816017E8BFBA0067A023 /* DownQueueActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownQueueActor.m; sourceTree = "<group>"; };
-		F54D816217E8BFBA0067A023 /* AnimateNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimateNavigationController.h; sourceTree = "<group>"; };
-		F54D816317E8BFBA0067A023 /* AnimateNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimateNavigationController.m; sourceTree = "<group>"; };
 		F54D816417E8BFBA0067A023 /* ButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonGroup.h; sourceTree = "<group>"; };
 		F54D816517E8BFBA0067A023 /* ButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonGroup.m; sourceTree = "<group>"; };
 		F54D816617E8BFBA0067A023 /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
 		F54D816717E8BFBA0067A023 /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
-		F54D816817E8BFBA0067A023 /* KeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardToolbar.h; sourceTree = "<group>"; };
-		F54D816917E8BFBA0067A023 /* KeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardToolbar.m; sourceTree = "<group>"; };
 		F54D816A17E8BFBA0067A023 /* NSData+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Hex.h"; sourceTree = "<group>"; };
 		F54D816B17E8BFBA0067A023 /* NSData+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Hex.m"; sourceTree = "<group>"; };
 		F54D816C17E8BFBA0067A023 /* NSObject+propertyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+propertyList.h"; sourceTree = "<group>"; };
@@ -3872,10 +3830,6 @@
 		F54D816F17E8BFBA0067A023 /* RepositoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoryManager.m; sourceTree = "<group>"; };
 		F54D817017E8BFBA0067A023 /* SearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDataSource.h; sourceTree = "<group>"; };
 		F54D817117E8BFBA0067A023 /* SearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDataSource.m; sourceTree = "<group>"; };
-		F54D817217E8BFBA0067A023 /* SVSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedControl.h; sourceTree = "<group>"; };
-		F54D817317E8BFBA0067A023 /* SVSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedControl.m; sourceTree = "<group>"; };
-		F54D817417E8BFBA0067A023 /* SVSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedThumb.h; sourceTree = "<group>"; };
-		F54D817517E8BFBA0067A023 /* SVSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedThumb.m; sourceTree = "<group>"; };
 		F54D817617E8BFBB0067A023 /* SwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchButton.h; sourceTree = "<group>"; };
 		F54D817717E8BFBB0067A023 /* SwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchButton.m; sourceTree = "<group>"; };
 		F54D817817E8BFBB0067A023 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -5879,12 +5833,6 @@
 				F54D7FC417E8BFBA0067A023 /* MessageDelayHandler.m */,
 				F54D7FC517E8BFBA0067A023 /* MessageObject.h */,
 				F54D7FC617E8BFBA0067A023 /* MessageObject.m */,
-				F54D7FC717E8BFBA0067A023 /* ModuleCell.h */,
-				F54D7FC817E8BFBA0067A023 /* ModuleCell.m */,
-				F54D7FC917E8BFBA0067A023 /* ModuleCell.xib */,
-				F54D7FCA17E8BFBA0067A023 /* ModulesViewController.h */,
-				F54D7FCB17E8BFBA0067A023 /* ModulesViewController.m */,
-				F54D7FCC17E8BFBA0067A023 /* ModulesViewController.xib */,
 				F54D7FCD17E8BFBA0067A023 /* OperateLog.h */,
 				F54D7FCE17E8BFBA0067A023 /* OperateLog.m */,
 				F54D7FCF17E8BFBA0067A023 /* PushGetMessageInfo.h */,
@@ -6650,14 +6598,10 @@
 		F54D816117E8BFBA0067A023 /* util */ = {
 			isa = PBXGroup;
 			children = (
-				F54D816217E8BFBA0067A023 /* AnimateNavigationController.h */,
-				F54D816317E8BFBA0067A023 /* AnimateNavigationController.m */,
 				F54D816417E8BFBA0067A023 /* ButtonGroup.h */,
 				F54D816517E8BFBA0067A023 /* ButtonGroup.m */,
 				F54D816617E8BFBA0067A023 /* CustomNavigationBar.h */,
 				F54D816717E8BFBA0067A023 /* CustomNavigationBar.m */,
-				F54D816817E8BFBA0067A023 /* KeyboardToolbar.h */,
-				F54D816917E8BFBA0067A023 /* KeyboardToolbar.m */,
 				F54D816A17E8BFBA0067A023 /* NSData+Hex.h */,
 				F54D816B17E8BFBA0067A023 /* NSData+Hex.m */,
 				F54D816C17E8BFBA0067A023 /* NSObject+propertyList.h */,
@@ -6666,10 +6610,6 @@
 				F54D816F17E8BFBA0067A023 /* RepositoryManager.m */,
 				F54D817017E8BFBA0067A023 /* SearchDataSource.h */,
 				F54D817117E8BFBA0067A023 /* SearchDataSource.m */,
-				F54D817217E8BFBA0067A023 /* SVSegmentedControl.h */,
-				F54D817317E8BFBA0067A023 /* SVSegmentedControl.m */,
-				F54D817417E8BFBA0067A023 /* SVSegmentedThumb.h */,
-				F54D817517E8BFBA0067A023 /* SVSegmentedThumb.m */,
 				F54D817617E8BFBB0067A023 /* SwitchButton.h */,
 				F54D817717E8BFBB0067A023 /* SwitchButton.m */,
 				F54D817817E8BFBB0067A023 /* UIColor+expanded.h */,
@@ -6685,25 +6625,13 @@
 			children = (
 				F54D817D17E8BFBB0067A023 /* AFAppDotNetAPIClient.h */,
 				F54D817E17E8BFBB0067A023 /* AFAppDotNetAPIClient.m */,
-				F54D819417E8BFBB0067A023 /* AsyncSocket */,
 				F54D819517E8BFBB0067A023 /* Base64 */,
-				F54D819917E8BFBB0067A023 /* FMDB */,
-				F54D819A17E8BFBB0067A023 /* GDataXML */,
 				F54D819B17E8BFBB0067A023 /* GridView */,
 				F54D81A817E8BFBB0067A023 /* IdentifierAddition */,
 				F54D81AD17E8BFBB0067A023 /* Lib */,
-				F54D81CA17E8BFBB0067A023 /* SSZipArchive */,
-				F54D81CC17E8BFBB0067A023 /* SVProgressHUD */,
 				F54D81CD17E8BFBB0067A023 /* ViewDeck */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		F54D819417E8BFBB0067A023 /* AsyncSocket */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AsyncSocket;
 			sourceTree = "<group>";
 		};
 		F54D819517E8BFBB0067A023 /* Base64 */ = {
@@ -6714,20 +6642,6 @@
 				F54D819817E8BFBB0067A023 /* Base64Defines.h */,
 			);
 			path = Base64;
-			sourceTree = "<group>";
-		};
-		F54D819917E8BFBB0067A023 /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FMDB;
-			sourceTree = "<group>";
-		};
-		F54D819A17E8BFBB0067A023 /* GDataXML */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GDataXML;
 			sourceTree = "<group>";
 		};
 		F54D819B17E8BFBB0067A023 /* GridView */ = {
@@ -6791,28 +6705,6 @@
 				F54D81C917E8BFBB0067A023 /* UIView+ViewID.m */,
 			);
 			path = Lib;
-			sourceTree = "<group>";
-		};
-		F54D81CA17E8BFBB0067A023 /* SSZipArchive */ = {
-			isa = PBXGroup;
-			children = (
-				F54D81CB17E8BFBB0067A023 /* minizip */,
-			);
-			path = SSZipArchive;
-			sourceTree = "<group>";
-		};
-		F54D81CB17E8BFBB0067A023 /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = minizip;
-			sourceTree = "<group>";
-		};
-		F54D81CC17E8BFBB0067A023 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		F54D81CD17E8BFBB0067A023 /* ViewDeck */ = {
@@ -7386,8 +7278,6 @@
 				F5A96CF817F007FC00F9CA68 /* photo_icon.png in Resources */,
 				30A0434914DC770100060A13 /* Localizable.strings in Resources */,
 				3968627417EE898300C84A6A /* AlbumListLine@2x.png in Resources */,
-				F54D82B517E8BFBB0067A023 /* ModuleCell.xib in Resources */,
-				F54D82B717E8BFBB0067A023 /* ModulesViewController.xib in Resources */,
 				F54D82BE17E8BFBB0067A023 /* Login_IpadViewController.xib in Resources */,
 				F54D82C017E8BFBB0067A023 /* MainViewViewController.xib in Resources */,
 				F54D82C917E8BFBB0067A023 /* DetailView.xib in Resources */,
@@ -8394,8 +8284,6 @@
 				39E050EF17F00AEA00BCF7F8 /* photo_icon.png in Resources */,
 				39E050F017F00AEA00BCF7F8 /* Localizable.strings in Resources */,
 				39E050F117F00AEA00BCF7F8 /* AlbumListLine@2x.png in Resources */,
-				39E050F217F00AEA00BCF7F8 /* ModuleCell.xib in Resources */,
-				39E050F317F00AEA00BCF7F8 /* ModulesViewController.xib in Resources */,
 				39E050F417F00AEA00BCF7F8 /* Login_IpadViewController.xib in Resources */,
 				39E050F517F00AEA00BCF7F8 /* MainViewViewController.xib in Resources */,
 				39E050F617F00AEA00BCF7F8 /* DetailView.xib in Resources */,
@@ -8823,8 +8711,6 @@
 				39FF09AB17F13CBB0086B76C /* photo_icon.png in Resources */,
 				39FF09AC17F13CBB0086B76C /* Localizable.strings in Resources */,
 				39FF09AD17F13CBB0086B76C /* AlbumListLine@2x.png in Resources */,
-				39FF09AE17F13CBB0086B76C /* ModuleCell.xib in Resources */,
-				39FF09AF17F13CBB0086B76C /* ModulesViewController.xib in Resources */,
 				39FF09B017F13CBB0086B76C /* Login_IpadViewController.xib in Resources */,
 				39FF09B117F13CBB0086B76C /* MainViewViewController.xib in Resources */,
 				39FF09B217F13CBB0086B76C /* DetailView.xib in Resources */,
@@ -9442,8 +9328,6 @@
 				F54D82B117E8BFBB0067A023 /* HTTPRequest.m in Sources */,
 				F54D82B217E8BFBB0067A023 /* MessageDelayHandler.m in Sources */,
 				F54D82B317E8BFBB0067A023 /* MessageObject.m in Sources */,
-				F54D82B417E8BFBB0067A023 /* ModuleCell.m in Sources */,
-				F54D82B617E8BFBB0067A023 /* ModulesViewController.m in Sources */,
 				F54D82B817E8BFBB0067A023 /* OperateLog.m in Sources */,
 				F54D82B917E8BFBB0067A023 /* PushGetMessageInfo.m in Sources */,
 				F54D82BA17E8BFBB0067A023 /* ServerAPI.m in Sources */,
@@ -9552,17 +9436,13 @@
 				F54D839017E8BFBB0067A023 /* LoginPlugin.m in Sources */,
 				F54D839117E8BFBB0067A023 /* DownQueueActor.m in Sources */,
 				F5A96C4817F006B400F9CA68 /* CDVFile.m in Sources */,
-				F54D839217E8BFBB0067A023 /* AnimateNavigationController.m in Sources */,
 				F54D839317E8BFBB0067A023 /* ButtonGroup.m in Sources */,
 				39F23A3A1805A6F60035FCF8 /* ScrollTextView.m in Sources */,
 				F54D839417E8BFBB0067A023 /* CustomNavigationBar.m in Sources */,
-				F54D839517E8BFBB0067A023 /* KeyboardToolbar.m in Sources */,
 				F54D839617E8BFBB0067A023 /* NSData+Hex.m in Sources */,
 				F54D839717E8BFBB0067A023 /* NSObject+propertyList.m in Sources */,
 				F54D839817E8BFBB0067A023 /* RepositoryManager.m in Sources */,
 				F54D839917E8BFBB0067A023 /* SearchDataSource.m in Sources */,
-				F54D839A17E8BFBB0067A023 /* SVSegmentedControl.m in Sources */,
-				F54D839B17E8BFBB0067A023 /* SVSegmentedThumb.m in Sources */,
 				F54D839C17E8BFBB0067A023 /* SwitchButton.m in Sources */,
 				F54D839D17E8BFBB0067A023 /* UIColor+expanded.m in Sources */,
 				F54D839E17E8BFBB0067A023 /* UIView+CG.m in Sources */,
@@ -9891,7 +9771,6 @@
 				39D9EA3717F27C03001ED6F5 /* LoginPlugin.m in Sources */,
 				39D9EA3817F27C03001ED6F5 /* DownQueueActor.m in Sources */,
 				39D9EA3917F27C03001ED6F5 /* CDVFile.m in Sources */,
-				39D9EA3A17F27C03001ED6F5 /* AnimateNavigationController.m in Sources */,
 				39D9EA3B17F27C03001ED6F5 /* ButtonGroup.m in Sources */,
 				39F23A3D1805A6F60035FCF8 /* ScrollTextView.m in Sources */,
 				39D9EA3C17F27C03001ED6F5 /* CustomNavigationBar.m in Sources */,
@@ -9908,8 +9787,6 @@
 				18E9C4851803AB1200B874B8 /* FPOptionTableViewCell.m in Sources */,
 				18E9C4931803AB1200B874B8 /* FPHealthDeclarationViewController.m in Sources */,
 				39D9EA4117F27C03001ED6F5 /* SearchDataSource.m in Sources */,
-				39D9EA4217F27C03001ED6F5 /* SVSegmentedControl.m in Sources */,
-				39D9EA4317F27C03001ED6F5 /* SVSegmentedThumb.m in Sources */,
 				39D9EA4417F27C03001ED6F5 /* SwitchButton.m in Sources */,
 				39D9EA4517F27C03001ED6F5 /* UIColor+expanded.m in Sources */,
 				39D9EA4617F27C03001ED6F5 /* UIView+CG.m in Sources */,
@@ -10014,8 +9891,6 @@
 				39E052A217F00AEA00BCF7F8 /* HTTPRequest.m in Sources */,
 				39E052A317F00AEA00BCF7F8 /* MessageDelayHandler.m in Sources */,
 				39E052A417F00AEA00BCF7F8 /* MessageObject.m in Sources */,
-				39E052A517F00AEA00BCF7F8 /* ModuleCell.m in Sources */,
-				39E052A617F00AEA00BCF7F8 /* ModulesViewController.m in Sources */,
 				39E052A717F00AEA00BCF7F8 /* OperateLog.m in Sources */,
 				39E052A817F00AEA00BCF7F8 /* PushGetMessageInfo.m in Sources */,
 				39E052A917F00AEA00BCF7F8 /* ServerAPI.m in Sources */,
@@ -10123,17 +9998,13 @@
 				39E0531517F00AEA00BCF7F8 /* LoginPlugin.m in Sources */,
 				39E0531617F00AEA00BCF7F8 /* DownQueueActor.m in Sources */,
 				39E0531717F00AEA00BCF7F8 /* CDVFile.m in Sources */,
-				39E0531817F00AEA00BCF7F8 /* AnimateNavigationController.m in Sources */,
 				39E0531917F00AEA00BCF7F8 /* ButtonGroup.m in Sources */,
 				39F23A3B1805A6F60035FCF8 /* ScrollTextView.m in Sources */,
 				39E0531A17F00AEA00BCF7F8 /* CustomNavigationBar.m in Sources */,
-				39E0531B17F00AEA00BCF7F8 /* KeyboardToolbar.m in Sources */,
 				39E0531C17F00AEA00BCF7F8 /* NSData+Hex.m in Sources */,
 				39E0531D17F00AEA00BCF7F8 /* NSObject+propertyList.m in Sources */,
 				39E0531E17F00AEA00BCF7F8 /* RepositoryManager.m in Sources */,
 				39E0531F17F00AEA00BCF7F8 /* SearchDataSource.m in Sources */,
-				39E0532017F00AEA00BCF7F8 /* SVSegmentedControl.m in Sources */,
-				39E0532117F00AEA00BCF7F8 /* SVSegmentedThumb.m in Sources */,
 				39E0532217F00AEA00BCF7F8 /* SwitchButton.m in Sources */,
 				39E0532317F00AEA00BCF7F8 /* UIColor+expanded.m in Sources */,
 				39E0532417F00AEA00BCF7F8 /* UIView+CG.m in Sources */,
@@ -10197,8 +10068,6 @@
 				39FF0B5C17F13CBB0086B76C /* HTTPRequest.m in Sources */,
 				39FF0B5D17F13CBB0086B76C /* MessageDelayHandler.m in Sources */,
 				39FF0B5E17F13CBB0086B76C /* MessageObject.m in Sources */,
-				39FF0B5F17F13CBB0086B76C /* ModuleCell.m in Sources */,
-				39FF0B6017F13CBB0086B76C /* ModulesViewController.m in Sources */,
 				39FF0B6117F13CBB0086B76C /* OperateLog.m in Sources */,
 				39FF0B6217F13CBB0086B76C /* PushGetMessageInfo.m in Sources */,
 				39FF0B6317F13CBB0086B76C /* ServerAPI.m in Sources */,
@@ -10304,18 +10173,14 @@
 				39FF0BCD17F13CBB0086B76C /* LoginPlugin.m in Sources */,
 				39FF0BCE17F13CBB0086B76C /* DownQueueActor.m in Sources */,
 				39FF0BCF17F13CBB0086B76C /* CDVFile.m in Sources */,
-				39FF0BD017F13CBB0086B76C /* AnimateNavigationController.m in Sources */,
 				39FF0BD117F13CBB0086B76C /* ButtonGroup.m in Sources */,
 				39FF0BD217F13CBB0086B76C /* CustomNavigationBar.m in Sources */,
 				39F23A3C1805A6F60035FCF8 /* ScrollTextView.m in Sources */,
-				39FF0BD317F13CBB0086B76C /* KeyboardToolbar.m in Sources */,
 				39FF0BD417F13CBB0086B76C /* NSData+Hex.m in Sources */,
 				39FF0BD517F13CBB0086B76C /* NSObject+propertyList.m in Sources */,
 				390E10AC1809339B00B2BC81 /* Main_IphoneViewController.m in Sources */,
 				39FF0BD617F13CBB0086B76C /* RepositoryManager.m in Sources */,
 				39FF0BD717F13CBB0086B76C /* SearchDataSource.m in Sources */,
-				39FF0BD817F13CBB0086B76C /* SVSegmentedControl.m in Sources */,
-				39FF0BD917F13CBB0086B76C /* SVSegmentedThumb.m in Sources */,
 				39FF0BDA17F13CBB0086B76C /* SwitchButton.m in Sources */,
 				39FF0BDB17F13CBB0086B76C /* UIColor+expanded.m in Sources */,
 				39FF0BDC17F13CBB0086B76C /* UIView+CG.m in Sources */,
@@ -10595,7 +10460,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "变色龙IOS测试";
-				PROVISIONING_PROFILE = "CC5F5963-C1CD-48A7-85C2-09DBBEB54204";
+				PROVISIONING_PROFILE = "5C89342D-7C7E-4CBC-8F50-98F0EEFE4754";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -10626,7 +10491,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "变色龙";
+				PRODUCT_NAME = "变色龙IOS测试";
 				PROVISIONING_PROFILE = "5C89342D-7C7E-4CBC-8F50-98F0EEFE4754";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

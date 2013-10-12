@@ -18,6 +18,20 @@
 @dynamic datetime;
 
 
+-(id)init{
+    self=[super init];
+    
+    if(self){
+        self.action=@"";
+        self.appName=@"";
+        self.moduleName=@"";
+        self.username=@"";
+        self.datetime=@"";
+    }
+    
+    return self;
+}
+
 +(NSArray*)findAllLog
 {
     
@@ -39,11 +53,18 @@
 
 +(void)recordOperateLogWithIdentifier:(NSString*)identifier
 {
-    NSString *identifer = [[NSBundle mainBundle]bundleIdentifier];
+    NSString *bundleIdentifier = [[NSBundle mainBundle]bundleIdentifier];
     NSString *userName  = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
+    
+    if([identifier length]<1){
+        NSLog(@"why");
+    }
+
+    
     OperateLog *log = [OperateLog insert];
     [log setAction:@"Module"];
-    [log setAppName:identifer];
+    [log setAppName:bundleIdentifier];
+    
     [log setModuleName:identifier];
     [log setUsername:userName];
     NSDate *  senddate=[NSDate date];

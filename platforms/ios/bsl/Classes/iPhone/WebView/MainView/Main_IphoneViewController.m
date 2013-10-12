@@ -576,29 +576,24 @@
             [[FMDBManager getInstance] createTable:(@"AutoDownLoadRecord") withObject:record];
             record=nil;
         }
-        if(downloadArray && downloadArray.count>0)
-        {
+        if(downloadArray && downloadArray.count>0){
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSMutableArray *records = [[NSMutableArray alloc]initWithCapacity:0];
-            for(CubeModule *module in downloadArray)
-            {
+            for(CubeModule *module in downloadArray){
                 AutoDownLoadRecord *record = [[AutoDownLoadRecord alloc]init];
                 [record setHasShow:@"1"];
                 [record setIdentifier:module.identifier];
                 [record setUserName:[defaults valueForKey:@"username"]];
                 [records addObject:record];
+                record=nil;
             }
             [[FMDBManager getInstance] batchInsertToTable:records withtableName:@"AutoDownLoadRecord"];
             //                [copyArray release];
         }
         //        });
-        if(buttonIndex == 0)
-        {
-            if(downloadArray && downloadArray.count>0)
-            {
-                
-                for(CubeModule *module in downloadArray)
-                {
+        if(buttonIndex == 0){
+            if(downloadArray && downloadArray.count>0){
+                for(CubeModule *module in downloadArray){
                     module.isDownloading = YES;
                     [[CubeApplication currentApplication] installModule:module];
                 }
@@ -612,12 +607,10 @@
         {
             
             CubeApplication *cubeApp = [CubeApplication currentApplication];
-            for(CubeModule *module in downloadArray)
-            {
+            for(CubeModule *module in downloadArray){
                 [[cubeApp availableModules] removeObject:module];
                 module.isDownloading = NO;
                 [cubeApp uninstallModule:module];
-                
             }
             [[[CubeApplication currentApplication] downloadingModules] removeAllObjects];
             return;

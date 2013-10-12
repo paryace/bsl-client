@@ -55,11 +55,11 @@
 #import "IMServerAPI.h"
 #import "ChatLogic.h"
 #import "JSONKit.h"
-#ifndef _DEBUG
+//#ifndef _DEBUG
 
-#define _DEBUG
+//#define _DEBUG
 
-#endif
+//#endif
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);
@@ -421,11 +421,35 @@ void uncaughtExceptionHandler(NSException*exception){
     NSMutableArray *dictArray = [[NSMutableArray alloc]initWithCapacity:0];
     for (OperateLog *log in array) {
         NSMutableDictionary * dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
-        [dictionary setObject:log.action forKey:@"action"];
-        [dictionary setObject:log.appName forKey:@"appName"];
-        [dictionary setObject:log.moduleName forKey:@"moduleName"];
-        [dictionary setObject:log.username forKey:@"username"];
-        [dictionary setObject:log.datetime forKey:@"datetime"];
+        if([log.action length]>0)
+            [dictionary setObject:log.action forKey:@"action"];
+        else{
+            NSLog(@"postOpreateLog empty 1");
+        }
+        if([log.appName length]>0)
+            [dictionary setObject:log.appName forKey:@"appName"];
+        else{
+            NSLog(@"postOpreateLog empty 2");
+
+        }
+        if([log.moduleName length]>0)
+            [dictionary setObject:log.moduleName forKey:@"moduleName"];
+        else{
+            NSLog(@"postOpreateLog empty 3");
+
+        }
+        if([log.username length]>0)
+            [dictionary setObject:log.username forKey:@"username"];
+        else{
+            NSLog(@"postOpreateLog empty 4");
+
+        }
+        if([log.datetime length]>0)
+            [dictionary setObject:log.datetime forKey:@"datetime"];
+        else{
+            NSLog(@"postOpreateLog empty 5");
+
+        }
         [dictionary setObject:@"" forKey:@"className"];
         [dictionary setObject:@"" forKey:@"methodName"];
         [dictArray addObject:dictionary];

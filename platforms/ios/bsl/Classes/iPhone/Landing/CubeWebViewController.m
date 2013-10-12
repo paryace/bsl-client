@@ -7,7 +7,6 @@
 //
 
 #import "CubeWebViewController.h"
-#import "ModulesViewController.h"
 #import "NSFileManager+Extra.h"
 #import "JSONKit.h"
 #import "OperateLog.h"

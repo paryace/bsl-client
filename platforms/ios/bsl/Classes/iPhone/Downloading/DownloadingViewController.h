@@ -33,7 +33,6 @@
 #import <UIKit/UIKit.h>
 #import "DownloadingTableViewCell.h"
 #import "IphoneDownloadingTableViewCell.h"
-#import "SVSegmentedControl.h"
 #import "BaseViewController.h"
 #import "SearchDataSource.h"
 typedef enum
@@ -53,7 +52,6 @@ typedef enum
 @interface DownloadingViewController : BaseViewController <UITableViewDataSource,UITableViewDelegate,DownloadCellDelegate,IconButtonDelegate,UIScrollViewDelegate,UIAlertViewDelegate>
 {
     BOOL desktopIconEnable;     //TRUE: 桌面视图模式 FALSE:  列表视图模式
-    SVSegmentedControl *_svsSegment;
     
     int Select_Segment_index; //记录选中状态
     
