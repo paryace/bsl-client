@@ -19,12 +19,15 @@
 #import "HTTPRequest.h"
 #import "AutoDownLoadRecord.h"
 #import "OperateLog.h"
+#import "AutoShowRecord.h"
 
 #import "DownLoadingDetialViewController.h"
 #import "SettingMainViewController.h"
 
 
-@interface Main_IphoneViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,UIGestureRecognizerDelegate>
+@interface Main_IphoneViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,UIGestureRecognizerDelegate>{
+    BOOL isFirst;
+}
 @end
 
 @implementation Main_IphoneViewController
@@ -54,7 +57,9 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:KNOTIFICATION_DETIALPAGE_INSTALLSUCCESS object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didProgressUpdate:) name:@"queue_module_download_progressupdate" object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkModules) name:CubeSyncFinishedNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFinishedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFailedNotification object:nil];
 
     }
     return self;
@@ -90,16 +95,6 @@
             [alertView show];
         }];
         
-    }
-    
-    
-    //模块自动加载
-    NSMutableArray * modulesArray = [[CubeApplication currentApplication]modules];
-    for (CubeModule *module in modulesArray) {
-        if([module moduleIsInstalled]&& module.isAutoShow){
-            [self showWebViewModue:module];
-            
-        }
     }
 	
 }
@@ -168,8 +163,17 @@
 }
 
 
+-(void)moduleSysFinsh{
+    [self checkModules];
+    if (!isFirst) {
+        [self autoShowModule];
+        isFirst = true;
+    }
+}
+
 -(void)checkModules{
     //检测是否需要自动安装
+    [self autoShowModule];
     
     NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
     if(downloadArray && downloadArray.count>0)
@@ -214,6 +218,111 @@
         
     }
 }
+
+//异步判断哪个模块打开
+-(void)autoShowModule
+{
+    NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
+    NSMutableArray * modulesArray = [[CubeApplication currentApplication]modules];
+    for (CubeModule *module in modulesArray) {
+        if([module moduleIsInstalled])
+        {
+            if(module.isAutoShow && module.privileges )
+            {
+                //建表保存用户，模块名 弹出时间，判断时间间隔内不再弹出模块
+                if(![[FMDBManager getInstance].database tableExists:@"AutoShowRecord"])
+                {
+                    AutoShowRecord *record = [[AutoShowRecord alloc]init];
+                    [[FMDBManager getInstance]createTable:@"AutoShowRecord" withObject:record];
+                }
+                
+                if(![[FMDBManager getInstance]recordIsExist:@"identifier" withtableName:@"AutoShowRecord" withConditios:userName])
+                {
+                    [self showWebViewModue:module];
+                    AutoShowRecord *newRecord = [[AutoShowRecord alloc]init];
+                    newRecord.identifier = module.identifier;
+                    newRecord.userName = userName;
+                    long time = [[NSDate date]timeIntervalSince1970];
+                    newRecord.showTime = [NSString stringWithFormat:@"%ld",time];
+                    [[FMDBManager getInstance]insertToTable:newRecord withTableName:@"AutoShowRecord" andOtherDB:nil];
+                    
+                    break;
+                }
+                else
+                {
+                    NSString *sql = [NSString stringWithFormat:@"select * from AutoShowRecord where identifier='%@' and userName='%@'",module.identifier,userName];
+                    FMResultSet *result = [[[FMDBManager getInstance] database] executeQuery:sql];
+                    while([result next])
+                    {
+                        NSString * showTimeTmp = [result objectForColumnName:@"showTime"];
+                        long showTime = [showTimeTmp longLongValue];
+                        
+                        if([module.timeUnit isEqualToString:@"H"])
+                        {
+                            long currentTime = [[NSDate date]timeIntervalSince1970];
+                            if((currentTime-showTime)>module.showIntervalTime*60*60)
+                            {
+                                [self showWebViewModue:module];
+                                //更新表
+                                [self updateAuthoShowTime:module.identifier];
+                                return;
+                            }
+                            
+                        }
+                        else if([module.timeUnit isEqualToString:@"M"])
+                        {
+                            long currentTime = [[NSDate date]timeIntervalSince1970];
+                            if((currentTime-showTime)>module.showIntervalTime*60)
+                            {
+                                [self showWebViewModue:module];
+                                //更新表
+                                [self updateAuthoShowTime:module.identifier];
+                                return;
+                            }
+                            
+                        }
+                        else if([module.timeUnit isEqualToString:@"S"])
+                        {
+                            
+                            long currentTime = [[NSDate date]timeIntervalSince1970];
+                            //                            NSLog(@"%ld------%ld-------%ld",currentTime,showTime,(currentTime-showTime));
+                            if((currentTime-showTime)>module.showIntervalTime)
+                            {
+                                [self showWebViewModue:module];
+                                //更新表
+                                [self updateAuthoShowTime:module.identifier];
+                                return;
+                            }
+                            
+                        }
+                        
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+-(void)updateAuthoShowTime:(NSString*)identifier
+{
+    long currentTime = [[NSDate date]timeIntervalSince1970];
+    NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
+    NSString *sql = [NSString stringWithFormat:@"update AutoShowRecord set showTime='%ld' where identifier='%@' and userName='%@'",currentTime,identifier,userName];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        FMDatabase *database = [[FMDBManager getInstance]database ];
+        if (![database open])
+        {
+            [database open];
+        }
+        [database executeUpdate:sql];
+        
+    });
+    
+}
+
+
 
 #pragma mark - 皮肤功能
 
@@ -444,7 +553,10 @@
     
     if(alertView.tag == 830){
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
-        
+//        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//        self.navigationItem.hidesBackButton =YES;
+//        self.navigationItem.leftBarButtonItem =nil;
+//    
         if(![[FMDBManager getInstance].database tableExists:@"AutoDownLoadRecord"])
         {
             AutoDownLoadRecord *record = [[AutoDownLoadRecord alloc]init];

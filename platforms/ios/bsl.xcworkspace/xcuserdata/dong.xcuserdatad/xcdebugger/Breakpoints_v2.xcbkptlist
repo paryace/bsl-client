@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-            timestampString = "403169303.261309"
+            timestampString = "403176257.703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "916"
-            endingLineNumber = "916"
+            startingLineNumber = "921"
+            endingLineNumber = "921"
             landmarkName = "-modueToJson:"
             landmarkType = "5">
          </BreakpointContent>

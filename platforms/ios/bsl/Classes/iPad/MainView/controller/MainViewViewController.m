@@ -385,6 +385,11 @@
     if(alertView.tag == 830)
     {
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
+        
+//        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//        self.navigationItem.hidesBackButton =YES;
+//        self.navigationItem.leftBarButtonItem =nil;
+//        
         //        NSMutableArray *copyArray = [NSMutableArray arrayWithArray:downloadArray];
         //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if(![[FMDBManager getInstance].database tableExists:@"AutoDownLoadRecord"])

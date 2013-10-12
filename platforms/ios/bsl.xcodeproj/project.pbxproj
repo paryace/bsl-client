@@ -10665,7 +10665,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "变色龙IOS测试";
+				PRODUCT_NAME = "变色龙";
 				PROVISIONING_PROFILE = "5C89342D-7C7E-4CBC-8F50-98F0EEFE4754";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
