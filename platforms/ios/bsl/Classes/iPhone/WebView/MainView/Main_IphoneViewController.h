@@ -15,5 +15,7 @@
     CubeWebViewController *aCubeWebViewController;
 }
 
+@property(nonatomic,strong) UINavigationController* navController;
+
 @property (strong, nonatomic) NSString *selectedModule;
 @end

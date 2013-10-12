@@ -7,17 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CubeWebViewController.h"
-#import "DownLoadingDetialViewController.h"
-#import "SettingMainViewController.h"
-#import "SkinView.h"
-#import "FMDBManager.h"
-#import "AutoDownLoadRecord.h"
 
-typedef void (^DidFinishWebViewViewBlock)(void);
-
-
-@interface MainViewViewController : UIViewController<DownloadCellDelegate,SettingMainViewControllerDelegate,SkinViewDelegate,UIGestureRecognizerDelegate>{
+@class CubeWebViewController;
+@class SkinView;
+@interface MainViewViewController : UIViewController{
     UIViewController * detailController;
     UIViewController * mainController;
     CubeWebViewController *aCubeWebViewController ;

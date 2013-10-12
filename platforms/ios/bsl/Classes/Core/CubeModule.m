@@ -105,6 +105,19 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
         NSString *iconName = [icon substringFromIndex:6];
         return [[[NSBundle mainBundle] URLForResource:iconName withExtension:nil] absoluteString];
     } else {
+        NSFileManager *fileMgr = [NSFileManager defaultManager];
+        NSString* runURLStr =  [[self runtimeURL] path];
+        NSString* absoluteRunStr =[[self runtimeURL] absoluteString];
+        if ([fileMgr fileExistsAtPath:runURLStr]) {
+            if ([fileMgr fileExistsAtPath:[runURLStr stringByAppendingString:@"/icon.img"]]) {
+                return [absoluteRunStr stringByAppendingString:@"/icon.img"];
+            }else if ([fileMgr fileExistsAtPath:[runURLStr stringByAppendingString:@"/icon.png"]]){
+                 return [absoluteRunStr stringByAppendingString:@"/icon.png"] ;
+            }else{
+                return [ServerAPI urlForAttachmentId:icon];
+            }
+        }
+        
         return [ServerAPI urlForAttachmentId:icon];
     }
 }
@@ -136,7 +149,6 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
             }
          
             NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:downUrl]];
-            
             AFHTTPRequestOperation * httpConnection = [[AFHTTPRequestOperation alloc]initWithRequest:request];
             [httpConnection setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [self downloadFinished:responseObject];
@@ -264,8 +276,24 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
                 
                 [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
             }
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"queue_module_download_progressupdate" object:self userInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0.101],self.identifier,nil] forKeys:[NSArray arrayWithObjects:@"newProgress",@"key",nil]]];
+            NSDictionary *missingModules = [self missingDependencies];
+            NSArray *needInstall = [missingModules objectForKey:kMissingDependencyNeedInstallKey];
+            NSArray *needUpgrade = [missingModules objectForKey:kMissingDependencyNeedUpgradeKey];
+              CubeApplication *cubeApp = [CubeApplication currentApplication];
+            
+            if ([needInstall count] > 0 || [needUpgrade count] > 0) {
+                for (NSString* module in needInstall) {
+                    CubeModule* cubeModule = [cubeApp availableModuleForIdentifier:module];
+                    if (cubeModule) {
+                        [cubeModule install];
+                    }
+                }
+                for (NSString* module in needUpgrade) {
+                    CubeModule* cubeModule = [cubeApp moduleForIdentifier:module];
+                    [cubeModule install];
+                }
+            }
             
             [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleInstallDidFinishNotification object:self];
         });

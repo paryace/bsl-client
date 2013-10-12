@@ -481,6 +481,7 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex==2)return;
+    
     if([[[[UIDevice currentDevice] model] lowercaseString] rangeOfString:@"ipod"].length>0 && buttonIndex==1)return;
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -511,6 +512,9 @@
         [popover dismissPopoverAnimated:NO];
         popover=nil;
         popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+            [picker.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+        }
         popover.delegate=self;
         [popover presentPopoverFromRect:CGRectMake(0.0f, 0.0f, 320.0f, 600.0f) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 
@@ -709,7 +713,7 @@
 -(void)deleteMember:(GroupMemberManagerViewController *)controller{
     self.isQuit=YES;
     [chatPanel hideAllControlPanel];
-
+    [self createRightNavBarButton];
 }
 
 #pragma mark method
@@ -803,6 +807,11 @@
 
 -(void)createRightNavBarButton{
     
+    if(self.isQuit){
+        self.navigationItem.rightBarButtonItem=nil;
+        
+    }
+    else{
         UIButton *navRightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 7, 63, 30)];
         
         
@@ -828,8 +837,7 @@
             
         }
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navRightButton];
-
-    
+    }
 }
 
 

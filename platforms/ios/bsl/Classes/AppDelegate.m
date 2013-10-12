@@ -54,12 +54,12 @@
 #import "OperateLog.h"
 #import "IMServerAPI.h"
 #import "ChatLogic.h"
+#import "JSONKit.h"
+#ifndef _DEBUG
 
-//#ifndef _DEBUG
+#define _DEBUG
 
-//#define _DEBUG
-
-//#endif
+#endif
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);
@@ -80,7 +80,6 @@ void uncaughtExceptionHandler(NSException*exception){
 @synthesize navControl;
 @synthesize uc;
 @synthesize xmpp;
-@synthesize xmppPustActor;
 @synthesize moduleReceiveMsg;
 
 - (id)init{
@@ -108,7 +107,6 @@ void uncaughtExceptionHandler(NSException*exception){
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions{
     
     [UIApplication sharedApplication].idleTimerDisabled=YES;
-    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     if (launchOptions){
@@ -134,7 +132,8 @@ void uncaughtExceptionHandler(NSException*exception){
     [self referencePushSound];
     
 //    [self registerDevice];
-    self.downQueueActor = [[DownQueueActor alloc]init];
+    //项目发现未见有使用该代码
+//    self.downQueueActor = [[DownQueueActor alloc]init];
     CubeApplication *cubeApp = [CubeApplication currentApplication];
     
     if(!cubeApp.installed){
@@ -151,6 +150,8 @@ void uncaughtExceptionHandler(NSException*exception){
         
         [application setStatusBarStyle:UIStatusBarStyleLightContent];
     }
+    
+    
     
     self.window.autoresizesSubviews = YES;
     
@@ -556,18 +557,15 @@ void uncaughtExceptionHandler(NSException*exception){
     [[PushGetMessageInfo sharedInstance] updatePushMessage];
     [navControl popToRootViewControllerAnimated:NO];
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone){
+        [self.navControl popToRootViewControllerAnimated:NO];
         
         Main_IphoneViewController* main=[[Main_IphoneViewController alloc] init];
 //         UINavigationController *__navControl =[[[NSBundle mainBundle] loadNibNamed:@"MainNewWindow" owner:self options:nil] objectAtIndex:0];
 //        self.window.rootViewController = __navControl;
-        [self.navControl popToRootViewControllerAnimated:NO];
-        [self.navControl pushViewController:main animated:NO];
-        main=nil;
-        //修改为HTML5界面
-        if([SVProgressHUD isVisible]){
-            [SVProgressHUD dismiss];
-        }
-  
+        main.navController=self.navControl;
+        UIView* view=main.view;
+        view=nil;
+        main=nil;  
     }else{
         
         [self.navControl popToRootViewControllerAnimated:NO];

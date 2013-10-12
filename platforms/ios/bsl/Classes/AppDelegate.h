@@ -32,11 +32,9 @@
 
 #import "UpdateChecker.h"
 
-#import "DownQueueActor.h"
 
 @class DDMenuController;
 @class XMPPIMActor;
-@class XMPPPustActor;
 
 @interface AppDelegate : NSObject
 // invoke string is passed to your app on launch, this is only valid if you
@@ -49,10 +47,8 @@
 //@property (nonatomic, strong) IBOutlet CDVViewController* viewController;
 
 
-@property (nonatomic,strong)XMPPPustActor *xmppPustActor;
 @property (nonatomic,strong)XMPPIMActor *xmpp;
 
-@property (nonatomic,strong)DownQueueActor *downQueueActor;
 //记录各个模块消息收到的时间
 @property (nonatomic,strong) NSMutableDictionary *moduleReceiveMsg;
 

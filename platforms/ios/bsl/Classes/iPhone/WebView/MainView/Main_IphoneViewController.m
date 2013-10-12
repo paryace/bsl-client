@@ -28,9 +28,13 @@
 @interface Main_IphoneViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,UIGestureRecognizerDelegate>{
     BOOL isFirst;
 }
+
+@property(strong,nonatomic) id selfObj;
+
 @end
 
 @implementation Main_IphoneViewController
+@synthesize navController;
 
 -(id)init{
     self=[super init];
@@ -67,35 +71,38 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.selfObj=self;
+
+    aCubeWebViewController = [[CubeWebViewController alloc]init];
+    aCubeWebViewController.title=@"登录";
+    aCubeWebViewController.wwwFolderName = @"www";
+    aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/index.html"] absoluteString];
     
-    if (!aCubeWebViewController) {
-        aCubeWebViewController = [[CubeWebViewController alloc]init];
-        aCubeWebViewController.title=@"登录";
-        aCubeWebViewController.wwwFolderName = @"www";
-        aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/index.html"] absoluteString];
-        
-        CGRect rect=self.view.bounds;
-        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-            rect.origin.y=20.0f;
-            rect.size.height-=20.0f;
-        }
-        aCubeWebViewController.view.frame = rect;
-        [self.view addSubview:aCubeWebViewController.view];
-        aCubeWebViewController.view.hidden=YES;
-        aCubeWebViewController.webView.scrollView.bounces=NO;        
-        [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/index.html"] absoluteString] didFinishBlock: ^(){
-            aCubeWebViewController.view.hidden=NO;
-            aCubeWebViewController.closeButton.hidden = YES;
-            [aCubeWebViewController viewWillAppear:NO];
-            [aCubeWebViewController viewDidAppear:NO];
-            
-            [self addBadge];
-        }didErrorBlock:^(){
-            UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alertView show];
-        }];
-        
+    CGRect rect=self.view.bounds;
+    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+        rect.origin.y=20.0f;
+        rect.size.height-=20.0f;
     }
+    aCubeWebViewController.view.frame = rect;
+    [self.view addSubview:aCubeWebViewController.view];
+    aCubeWebViewController.webView.scrollView.bounces=NO;
+    [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/index.html"] absoluteString] didFinishBlock: ^(){
+        [self.navController pushViewController:self animated:NO];
+        self.navController=nil;
+        
+        aCubeWebViewController.closeButton.hidden = YES;
+        [aCubeWebViewController viewWillAppear:NO];
+        [aCubeWebViewController viewDidAppear:NO];
+        [self addBadge];
+        self.selfObj=nil;
+        
+    }didErrorBlock:^(){
+        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        self.navController=nil;
+        self.selfObj=nil;
+        
+    }];
 	
 }
 
@@ -175,47 +182,51 @@
     //检测是否需要自动安装
     [self autoShowModule];
     
-    NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
-    if(downloadArray && downloadArray.count>0)
-    {
-        NSMutableString *message = [[NSMutableString alloc] init];
-        [message appendString:@"检测到有以下模块需要下载:\n"];
-        for(CubeModule *module in downloadArray)
-        {
-            [message appendFormat:@"%@\n", module.name];
+    @autoreleasepool {
+#ifndef MOBILE_BSL
+        NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
+#else
+        NSMutableArray *downloadArray = [[CubeApplication currentApplication] availableModules];
+#endif
+        if(downloadArray && downloadArray.count>0){
+            NSMutableString *message = [[NSMutableString alloc] init];
+            [message appendString:@"检测到有以下模块需要下载:\n"];
+            for(CubeModule *module in downloadArray){
+                [message appendFormat:@"%@\n", module.name];
+            }
+            UIAlertView *alertView  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"立即下载" otherButtonTitles:@"取消",nil];
+            alertView.tag =830;
+            [alertView show];
+            
+            return;
         }
-        UIAlertView *alertView  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"立即下载" otherButtonTitles:@"取消",nil];
-        alertView.tag =830;
-        [alertView show];
-        return;
-    }
-    else
-    {
-        [self checkAutoUpdate];
+        else
+        {
+            [self checkAutoUpdate];
+        }
     }
     
 }
 
 -(void)checkAutoUpdate{
     NSMutableArray *updateModules = [[CubeApplication currentApplication] updatableModules];
-    NSMutableString *message = [[NSMutableString alloc] init];
-    if(updateModules.count>0)
-    {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [message appendString:@"以下模块可以更新:\n"];
-        for(CubeModule *module in updateModules)
-        {
-            [message appendFormat:@"%@\n", module.name];
+    if(updateModules.count>0){
+        @autoreleasepool {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSMutableString *message = [[NSMutableString alloc] init];
+            [message appendString:@"以下模块可以更新:\n"];
+            for(CubeModule *module in updateModules){
+                [message appendFormat:@"%@\n", module.name];
+            }
+            //        [defaults setBool:NO forKey:@"firstTime"];
+            if(![defaults boolForKey:@"firstTime"]){
+                [defaults setBool:YES forKey:@"firstTime"];
+                UIAlertView *alertView  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+                alertView.tag =829;
+                [alertView show];
+            }
+            message=nil;
         }
-        //        [defaults setBool:NO forKey:@"firstTime"];
-        if(![defaults boolForKey:@"firstTime"])
-        {
-            [defaults setBool:YES forKey:@"firstTime"];
-            UIAlertView *alertView  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
-            alertView.tag =829;
-            [alertView show];
-        }
-        
     }
 }
 
@@ -305,8 +316,7 @@
 }
 
 
--(void)updateAuthoShowTime:(NSString*)identifier
-{
+-(void)updateAuthoShowTime:(NSString*)identifier{
     long currentTime = [[NSDate date]timeIntervalSince1970];
     NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
     NSString *sql = [NSString stringWithFormat:@"update AutoShowRecord set showTime='%ld' where identifier='%@' and userName='%@'",currentTime,identifier,userName];
@@ -382,6 +392,7 @@
             }
             [self.navigationController setNavigationBarHidden:NO animated:YES];
             [self.navigationController pushViewController:localController animated:YES];
+            localController=nil;
             return;
         }else{
             [self showWebViewModue:module];
@@ -436,6 +447,8 @@
             funDetialVC.iconImage.category=funDetialVC.curCubeModlue.category;
         }
         [self.navigationController pushViewController:funDetialVC animated:YES];
+        funDetialVC=nil;
+
     }
 }
 
@@ -540,9 +553,6 @@
                 m.isDownloading = YES;
                 [[CubeApplication currentApplication] installModule:m];
             }
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstTime"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            return;
         }else{
             [self  checkAutoUpdate];
         }
@@ -552,15 +562,19 @@
     }
     
     if(alertView.tag == 830){
+#ifndef MOBILE_BSL
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
+#else
+        NSMutableArray *downloadArray = [[CubeApplication currentApplication] availableModules];
+#endif
 //        [self.navigationController setNavigationBarHidden:NO animated:YES];
 //        self.navigationItem.hidesBackButton =YES;
 //        self.navigationItem.leftBarButtonItem =nil;
 //    
-        if(![[FMDBManager getInstance].database tableExists:@"AutoDownLoadRecord"])
-        {
+        if(![[FMDBManager getInstance].database tableExists:@"AutoDownLoadRecord"]){
             AutoDownLoadRecord *record = [[AutoDownLoadRecord alloc]init];
             [[FMDBManager getInstance] createTable:(@"AutoDownLoadRecord") withObject:record];
+            record=nil;
         }
         if(downloadArray && downloadArray.count>0)
         {

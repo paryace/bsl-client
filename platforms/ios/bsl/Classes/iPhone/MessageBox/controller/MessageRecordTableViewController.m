@@ -408,29 +408,28 @@
         // Delete the row from the data source
         
         NSMutableArray *moduleRecords = [presentModulesDic objectForKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
-        
-                
         NSArray *newModuleRecords = [MessageRecord findForModuleIdentifier:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
         //删除的是本地模块
         MessageRecord *record = [moduleRecords objectAtIndex:indexPath.row];
-         [record remove];
+        [record remove];
+        [MessageRecord save];
         
-        if(newModuleRecords.count == 0 ){
+        if(newModuleRecords.count <2 ){
            [presentModulesDic setObject:[MessageRecord findSystemRecord] forKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
-           
+            
+            [expandDic setObject:[NSNumber numberWithBool:NO] forKey:[NSNumber numberWithInteger:[indexPath section]]];
 
+            
         }else{
-           
-
             [presentModulesDic setObject:newModuleRecords forKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
             
             MessageRecordHeaderView *headerView  = (MessageRecordHeaderView *)[__tableView viewWithTag:indexPath.section + 100];
             
             headerView.messageCountLabel.text = [NSString stringWithFormat:@"%d",[newModuleRecords count]];
-            
-            
         }
-        [__tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        [self delayLoadTimerEvent];
+        //[__tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         
     }
@@ -469,7 +468,9 @@
     if(![messageRecord.isRead boolValue]){
         messageRecord.isRead=[NSNumber numberWithBool:YES];
         messageRecord.isMessageBadge=[NSNumber numberWithInt:0];
-
+        int isIconBadge=[messageRecord.isIconBadge intValue]-1;
+        if(isIconBadge<0)isIconBadge=0;
+        messageRecord.isIconBadge=[NSNumber numberWithInt:isIconBadge];
         [messageRecord save];
         
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:[indexPath section]] withRowAnimation:UITableViewRowAnimationAutomatic];

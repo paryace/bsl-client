@@ -142,7 +142,7 @@
     contentLabel.frame=CGRectMake(offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f, 0.0f);
     [contentLabel sizeToFit];
     
-    timeLabel.frame=CGRectMake(w-150.0f-OFFSET, CGRectGetMaxY(contentLabel.frame)+3.0f, w-OFFSET*2.0f, 20.0f);
+    timeLabel.frame=CGRectMake(w-150.0f-OFFSET, CGRectGetMaxY(contentLabel.frame)+3.0f, 150.0f, 20.0f);
 
 }
 

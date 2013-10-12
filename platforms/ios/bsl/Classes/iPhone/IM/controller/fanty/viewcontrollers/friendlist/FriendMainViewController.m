@@ -36,19 +36,12 @@
     self=[super init];
     if(self){
         self.title=@"即时通讯";
-        
-        
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
             self.edgesForExtendedLayout = UIRectEdgeNone;
             self.extendedLayoutIncludesOpaqueBars = NO;
             self.modalPresentationCapturesStatusBarAppearance = NO;
         }
-        
-
-        
         NSManagedObjectContext* managedObjectContext = [ShareAppDelegate xmpp].managedObjectContext;
-        
-        
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"RectangleChat" inManagedObjectContext:managedObjectContext];
@@ -57,7 +50,6 @@
         NSSortDescriptor*sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"updateDate"ascending:NO];
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor1,nil];
         [fetchRequest setSortDescriptors:sortDescriptors];
-
         fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
         fetchedResultsController.delegate = self;
         

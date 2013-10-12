@@ -35,6 +35,7 @@
     UIImageView* bgImageView =  [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,CGRectGetHeight([[UIScreen mainScreen] bounds]), CGRectGetWidth([[UIScreen mainScreen] bounds]))];
     bgImageView.image = [UIImage imageNamed:@"Default-Landscape~ipad.png"];
     [self.view addSubview:bgImageView];
+    
     aCubeWebViewController  = [[CubeWebViewController alloc] init];
     //aCubeWebViewController.title=module.name;
     //加载本地的登录界面页
@@ -47,13 +48,18 @@
     [self.view addSubview:aCubeWebViewController.view];
     aCubeWebViewController.view.hidden=YES;
     [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"pad/login.html"] absoluteString] didFinishBlock: ^(){
-        aCubeWebViewController.view.hidden=NO;
-        [aCubeWebViewController viewWillAppear:NO];
-        [aCubeWebViewController viewDidAppear:NO];
+        [self performSelector:@selector(showWebViewController) withObject:nil afterDelay:1.0f];
     }didErrorBlock:^(){
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
     }];
+}
+
+-(void)showWebViewController{
+    aCubeWebViewController.view.hidden=NO;
+    [aCubeWebViewController viewWillAppear:NO];
+    [aCubeWebViewController viewDidAppear:NO];
+
 }
 
 - (void)didReceiveMemoryWarning{

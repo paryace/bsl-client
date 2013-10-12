@@ -139,8 +139,7 @@
         self.navigationItem.titleView= vv;
     }
 }
-
-
+    
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -252,7 +251,11 @@
         [announcent save];
         
         MessageRecord* messageRecord=[MessageRecord findMessageRecordByAnounceId:announcent.recordId];
-        messageRecord.isIconBadge=[NSNumber numberWithInt:0];
+        
+        int isIconBadge=[messageRecord.isIconBadge intValue]-1;
+        if(isIconBadge<0)isIconBadge=0;
+        messageRecord.isIconBadge=[NSNumber numberWithInt:isIconBadge];
+
         messageRecord.isRead=[NSNumber numberWithBool:YES];
         messageRecord.isMessageBadge=[NSNumber numberWithInt:0];
 

@@ -267,8 +267,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 
 
 -(void)installJS{
-    NSLog(@"安装js文件");
-    // [self installCoreBundle];
+    NSLog(@"安装js文件");    // [self installCoreBundle];
     NSURL * folderWWWUrl = [[NSFileManager wwwBundleDirectory] URLByAppendingPathComponent:@"cordova.js"];
     NSURL * documentFolderWWWUrl =  [[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"cordova.js"];
     NSError * error = nil;

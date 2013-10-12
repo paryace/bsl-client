@@ -387,7 +387,8 @@
 		30A0434814DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434314DC770100060A13 /* Localizable.strings */; };
 		30A0434914DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		390BA039180649E8000177D8 /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FE717E8BFBA0067A023 /* MainViewViewController.m */; };
+		390E10AB1809339800B2BC81 /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FE417E8BFBA0067A023 /* MainViewViewController.m */; };
+		390E10AC1809339B00B2BC81 /* Main_IphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D814517E8BFBA0067A023 /* Main_IphoneViewController.m */; };
 		3926908C17F51F1C00F1500B /* line_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3926908B17F51F1C00F1500B /* line_shadow@2x.png */; };
 		3926908D17F51F1C00F1500B /* line_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3926908B17F51F1C00F1500B /* line_shadow@2x.png */; };
 		3926908E17F51F1C00F1500B /* line_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3926908B17F51F1C00F1500B /* line_shadow@2x.png */; };
@@ -949,7 +950,6 @@
 		39D9EA0317F27C03001ED6F5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BA17E8BFBA0067A023 /* NSMutableArray+Additions.m */; };
 		39D9EA0417F27C03001ED6F5 /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BC17E8BFBA0067A023 /* UIScrollView+SpiralPullToRefresh.m */; };
 		39D9EA0517F27C03001ED6F5 /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
-		39D9EA0617F27C03001ED6F5 /* ChatRoomMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CC17E8BFBA0067A023 /* ChatRoomMessage.m */; };
 		39D9EA0717F27C03001ED6F5 /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
 		39D9EA0817F27C03001ED6F5 /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
 		39D9EA0917F27C03001ED6F5 /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
@@ -1541,7 +1541,6 @@
 		39E052E017F00AEA00BCF7F8 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BA17E8BFBA0067A023 /* NSMutableArray+Additions.m */; };
 		39E052E117F00AEA00BCF7F8 /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BC17E8BFBA0067A023 /* UIScrollView+SpiralPullToRefresh.m */; };
 		39E052E217F00AEA00BCF7F8 /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
-		39E052E417F00AEA00BCF7F8 /* ChatRoomMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CC17E8BFBA0067A023 /* ChatRoomMessage.m */; };
 		39E052E517F00AEA00BCF7F8 /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
 		39E052E617F00AEA00BCF7F8 /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
 		39E052E717F00AEA00BCF7F8 /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
@@ -2199,7 +2198,6 @@
 		39FF0B9917F13CBB0086B76C /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BA17E8BFBA0067A023 /* NSMutableArray+Additions.m */; };
 		39FF0B9A17F13CBB0086B76C /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BC17E8BFBA0067A023 /* UIScrollView+SpiralPullToRefresh.m */; };
 		39FF0B9B17F13CBB0086B76C /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
-		39FF0B9C17F13CBB0086B76C /* ChatRoomMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CC17E8BFBA0067A023 /* ChatRoomMessage.m */; };
 		39FF0B9D17F13CBB0086B76C /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
 		39FF0B9E17F13CBB0086B76C /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
 		39FF0B9F17F13CBB0086B76C /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
@@ -2313,7 +2311,6 @@
 		39FF0C1417F13CBB0086B76C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		39FF0C1617F13CBB0086B76C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C023708B9AC24DB48757A8FC /* libPods.a */; };
 		39FF0C1D17F14FB10086B76C /* Config-soc.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FB117E8BFB90067A023 /* Config-soc.m */; };
-		39FF0C1E17F173710086B76C /* Main_IphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D814717E8BFBA0067A023 /* Main_IphoneViewController.m */; };
 		39FF0C2D17F189150086B76C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 39FF0C2C17F189150086B76C /* www */; };
 		39FF0C2E17F189150086B76C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 39FF0C2C17F189150086B76C /* www */; };
 		5AA0E66D1729F45B000DC89A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0E66C1729F45B000DC89A /* OpenAL.framework */; };
@@ -2406,7 +2403,6 @@
 		F54D833C17E8BFBB0067A023 /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BC17E8BFBA0067A023 /* UIScrollView+SpiralPullToRefresh.m */; };
 		F54D834217E8BFBB0067A023 /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
 		F54D834317E8BFBB0067A023 /* XMPPShowImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80C617E8BFBA0067A023 /* XMPPShowImageViewController.xib */; };
-		F54D834617E8BFBB0067A023 /* ChatRoomMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CC17E8BFBA0067A023 /* ChatRoomMessage.m */; };
 		F54D834717E8BFBB0067A023 /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
 		F54D834817E8BFBB0067A023 /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
 		F54D834917E8BFBB0067A023 /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
@@ -3650,7 +3646,6 @@
 		F54D7FE317E8BFBA0067A023 /* MainViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewViewController.h; sourceTree = "<group>"; };
 		F54D7FE417E8BFBA0067A023 /* MainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewViewController.m; sourceTree = "<group>"; };
 		F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewViewController.xib; sourceTree = "<group>"; };
-		F54D7FE717E8BFBA0067A023 /* MainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewViewController.m; sourceTree = "<group>"; };
 		F54D7FE917E8BFBA0067A023 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
 		F54D7FEA17E8BFBA0067A023 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 		F54D7FEB17E8BFBA0067A023 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -3754,8 +3749,6 @@
 		F54D80C417E8BFBA0067A023 /* XMPPShowImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPShowImageViewController.h; sourceTree = "<group>"; };
 		F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPShowImageViewController.m; sourceTree = "<group>"; };
 		F54D80C617E8BFBA0067A023 /* XMPPShowImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XMPPShowImageViewController.xib; sourceTree = "<group>"; };
-		F54D80CB17E8BFBA0067A023 /* ChatRoomMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRoomMessage.h; sourceTree = "<group>"; };
-		F54D80CC17E8BFBA0067A023 /* ChatRoomMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoomMessage.m; sourceTree = "<group>"; };
 		F54D80CE17E8BFBA0067A023 /* IMServerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMServerAPI.h; sourceTree = "<group>"; };
 		F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMServerAPI.m; sourceTree = "<group>"; };
 		F54D80D117E8BFBA0067A023 /* AudioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioView.h; sourceTree = "<group>"; };
@@ -3847,7 +3840,6 @@
 		F54D814217E8BFBA0067A023 /* Login_IphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login_IphoneViewController.m; sourceTree = "<group>"; };
 		F54D814417E8BFBA0067A023 /* Main_IphoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main_IphoneViewController.h; sourceTree = "<group>"; };
 		F54D814517E8BFBA0067A023 /* Main_IphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Main_IphoneViewController.m; sourceTree = "<group>"; };
-		F54D814717E8BFBA0067A023 /* Main_IphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Main_IphoneViewController.m; sourceTree = "<group>"; };
 		F54D814817E8BFBA0067A023 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
 		F54D814917E8BFBA0067A023 /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
 		F54D815017E8BFBA0067A023 /* CallPhonePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallPhonePlugin.h; sourceTree = "<group>"; };
@@ -6013,17 +6005,8 @@
 				F54D7FE317E8BFBA0067A023 /* MainViewViewController.h */,
 				F54D7FE417E8BFBA0067A023 /* MainViewViewController.m */,
 				F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */,
-				F54D7FE617E8BFBA0067A023 /* SOC */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		F54D7FE617E8BFBA0067A023 /* SOC */ = {
-			isa = PBXGroup;
-			children = (
-				F54D7FE717E8BFBA0067A023 /* MainViewViewController.m */,
-			);
-			path = SOC;
 			sourceTree = "<group>";
 		};
 		F54D7FE817E8BFBA0067A023 /* simpleView */ = {
@@ -6176,7 +6159,6 @@
 			isa = PBXGroup;
 			children = (
 				F54D803117E8BFBA0067A023 /* controller */,
-				F54D80CA17E8BFBA0067A023 /* Entity */,
 				F54D80CD17E8BFBA0067A023 /* tool */,
 				F54D80D017E8BFBA0067A023 /* view */,
 			);
@@ -6361,15 +6343,6 @@
 				3968622917EE7D1D00C84A6A /* RecentTalkView.m */,
 			);
 			path = friendlist;
-			sourceTree = "<group>";
-		};
-		F54D80CA17E8BFBA0067A023 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				F54D80CB17E8BFBA0067A023 /* ChatRoomMessage.h */,
-				F54D80CC17E8BFBA0067A023 /* ChatRoomMessage.m */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		F54D80CD17E8BFBA0067A023 /* tool */ = {
@@ -6602,7 +6575,6 @@
 			children = (
 				F54D814017E8BFBA0067A023 /* Login */,
 				F54D814317E8BFBA0067A023 /* MainView */,
-				F54D814617E8BFBA0067A023 /* SOC */,
 			);
 			path = WebView;
 			sourceTree = "<group>";
@@ -6623,14 +6595,6 @@
 				F54D814517E8BFBA0067A023 /* Main_IphoneViewController.m */,
 			);
 			path = MainView;
-			sourceTree = "<group>";
-		};
-		F54D814617E8BFBA0067A023 /* SOC */ = {
-			isa = PBXGroup;
-			children = (
-				F54D814717E8BFBA0067A023 /* Main_IphoneViewController.m */,
-			);
-			path = SOC;
 			sourceTree = "<group>";
 		};
 		F54D814F17E8BFBA0067A023 /* Plugins */ = {
@@ -9539,7 +9503,6 @@
 				F54D833B17E8BFBB0067A023 /* NSMutableArray+Additions.m in Sources */,
 				F54D833C17E8BFBB0067A023 /* UIScrollView+SpiralPullToRefresh.m in Sources */,
 				F54D834217E8BFBB0067A023 /* XMPPShowImageViewController.m in Sources */,
-				F54D834617E8BFBB0067A023 /* ChatRoomMessage.m in Sources */,
 				F54D834717E8BFBB0067A023 /* IMServerAPI.m in Sources */,
 				F54D834817E8BFBB0067A023 /* AudioView.m in Sources */,
 				F54D834917E8BFBB0067A023 /* GroupPeopleViewViewController.m in Sources */,
@@ -10111,7 +10074,6 @@
 				39E052E017F00AEA00BCF7F8 /* NSMutableArray+Additions.m in Sources */,
 				39E052E117F00AEA00BCF7F8 /* UIScrollView+SpiralPullToRefresh.m in Sources */,
 				39E052E217F00AEA00BCF7F8 /* XMPPShowImageViewController.m in Sources */,
-				39E052E417F00AEA00BCF7F8 /* ChatRoomMessage.m in Sources */,
 				39E052E517F00AEA00BCF7F8 /* IMServerAPI.m in Sources */,
 				39E052E617F00AEA00BCF7F8 /* AudioView.m in Sources */,
 				39E052E717F00AEA00BCF7F8 /* GroupPeopleViewViewController.m in Sources */,
@@ -10230,6 +10192,7 @@
 				39FF0B5817F13CBB0086B76C /* cube.xcdatamodeld in Sources */,
 				39FF0B5917F13CBB0086B76C /* CubeApplication.m in Sources */,
 				39FF0B5A17F13CBB0086B76C /* CubeModule.m in Sources */,
+				390E10AB1809339800B2BC81 /* MainViewViewController.m in Sources */,
 				39FF0B5B17F13CBB0086B76C /* CudeModuleDownDictionary.m in Sources */,
 				39FF0B5C17F13CBB0086B76C /* HTTPRequest.m in Sources */,
 				39FF0B5D17F13CBB0086B76C /* MessageDelayHandler.m in Sources */,
@@ -10293,7 +10256,6 @@
 				39FF0B9917F13CBB0086B76C /* NSMutableArray+Additions.m in Sources */,
 				39FF0B9A17F13CBB0086B76C /* UIScrollView+SpiralPullToRefresh.m in Sources */,
 				39FF0B9B17F13CBB0086B76C /* XMPPShowImageViewController.m in Sources */,
-				39FF0B9C17F13CBB0086B76C /* ChatRoomMessage.m in Sources */,
 				39FF0B9D17F13CBB0086B76C /* IMServerAPI.m in Sources */,
 				39FF0B9E17F13CBB0086B76C /* AudioView.m in Sources */,
 				39FF0B9F17F13CBB0086B76C /* GroupPeopleViewViewController.m in Sources */,
@@ -10349,6 +10311,7 @@
 				39FF0BD317F13CBB0086B76C /* KeyboardToolbar.m in Sources */,
 				39FF0BD417F13CBB0086B76C /* NSData+Hex.m in Sources */,
 				39FF0BD517F13CBB0086B76C /* NSObject+propertyList.m in Sources */,
+				390E10AC1809339B00B2BC81 /* Main_IphoneViewController.m in Sources */,
 				39FF0BD617F13CBB0086B76C /* RepositoryManager.m in Sources */,
 				39FF0BD717F13CBB0086B76C /* SearchDataSource.m in Sources */,
 				39FF0BD817F13CBB0086B76C /* SVSegmentedControl.m in Sources */,
@@ -10361,9 +10324,7 @@
 				39FF0BDE17F13CBB0086B76C /* FaviorContactView.m in Sources */,
 				39FF0BDF17F13CBB0086B76C /* Base64.m in Sources */,
 				39FF0BE017F13CBB0086B76C /* GMGridView.m in Sources */,
-				39FF0C1E17F173710086B76C /* Main_IphoneViewController.m in Sources */,
 				39FF0BE117F13CBB0086B76C /* GMGridViewCell.m in Sources */,
-				390BA039180649E8000177D8 /* MainViewViewController.m in Sources */,
 				39FF0BE217F13CBB0086B76C /* GMGridViewLayoutStrategies.m in Sources */,
 				39FF0BE317F13CBB0086B76C /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */,
 				39FF0BE417F13CBB0086B76C /* UIView+GMGridViewAdditions.m in Sources */,
@@ -10634,7 +10595,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "变色龙IOS测试";
-				PROVISIONING_PROFILE = "5C89342D-7C7E-4CBC-8F50-98F0EEFE4754";
+				PROVISIONING_PROFILE = "CC5F5963-C1CD-48A7-85C2-09DBBEB54204";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

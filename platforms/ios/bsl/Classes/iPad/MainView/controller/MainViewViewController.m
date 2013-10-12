@@ -13,6 +13,7 @@
 #import "DownLoadingDetialViewController.h"
 #import "MessageRecord.h"
 #import "JSONKit.h"
+#import "SkinView.h"
 #import "NSFileManager+Extra.h"
 #import "ServerAPI.h"
 #import "OperateLog.h"
@@ -21,12 +22,14 @@
 #import "FMDatabaseQueue.h"
 #import "BaseNavViewController.h"
 #import "HTTPRequest.h"
-#import "Announcement.h"
+#import "AutoDownLoadRecord.h"
+#import "SVProgressHUD.h"
+
 
 #define SHOW_DETAILVIEW  @"SHOW_DETAILVIEW"  //展示模块
 
 
-@interface MainViewViewController (){
+@interface MainViewViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,SkinViewDelegate,UIGestureRecognizerDelegate>{
     BOOL isFirst;
 }
 @property (nonatomic,strong)  UIViewController * detailController;
@@ -108,6 +111,9 @@
     [self.view addSubview:aCubeWebViewController.view];
 
     [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"pad/main.html"] absoluteString] didFinishBlock: ^(){
+        if([SVProgressHUD isVisible]){
+            [SVProgressHUD dismiss];
+        }
 
         [self.navController pushViewController:self animated:NO];
         self.navController=nil;
@@ -117,6 +123,10 @@
         [self addBadge];
         self.selfObj=nil;
     }didErrorBlock:^(){
+        if([SVProgressHUD isVisible]){
+            [SVProgressHUD dismiss];
+        }
+
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         self.navController=nil;
@@ -170,7 +180,11 @@
 -(void)checkModules{
     //检测是否需要自动安装
     
+#ifndef MOBILE_BSL
     NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
+#else
+    NSMutableArray *downloadArray = [[CubeApplication currentApplication] availableModules];
+#endif
     if(downloadArray && downloadArray.count>0)
     {
         NSMutableString *message = [[NSMutableString alloc] init];
@@ -210,7 +224,7 @@
             alertView.tag =829;
             [alertView show];
         }
-        
+    
     }
 }
 
@@ -384,7 +398,11 @@
     }
     if(alertView.tag == 830)
     {
+#ifndef MOBILE_BSL
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
+#else
+        NSMutableArray *downloadArray = [[CubeApplication currentApplication] availableModules];
+#endif
         
 //        [self.navigationController setNavigationBarHidden:NO animated:YES];
 //        self.navigationItem.hidesBackButton =YES;
