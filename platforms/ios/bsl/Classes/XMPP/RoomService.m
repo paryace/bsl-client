@@ -451,7 +451,10 @@
         }
         
         XMPPIMActor* xmpp=[ShareAppDelegate xmpp];
-        
+        if(uqID==nil){
+            uqID=[NSString stringWithFormat:@"rect_%f",[[NSDate date] timeIntervalSince1970]];
+        }
+
         if(uqID!=nil && [xmpp fetchMessageFromUqID:uqID messageId:roomId]!=nil)
             return;
         
@@ -480,6 +483,7 @@
             if ([ subject isEqualToString:@"voice"]) {
                 //将字符串转换成nsdata
                 
+                /*
                 NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex: 0];
                 NSURL* urlVoiceFile= [NSURL fileURLWithPath:[docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.%@", [NSDate timeIntervalSinceReferenceDate] * 1000.0, @"caf"]]];
 
@@ -489,7 +493,10 @@
                 }
                 
                 messageEntity.content = [urlVoiceFile absoluteString];
+                 */
+                messageEntity.content=msg;
                 messageEntity.type = @"voice";
+                messageEntity.statue=[NSNumber numberWithInt:-2];
                 rectangleChatContentType=RectangleChatContentTypeVoice;
             }
             else if ([ subject isEqualToString:@"image"]) {

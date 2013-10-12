@@ -29,4 +29,6 @@ typedef void (^DidFinishWebViewViewBlock)(void);
     int selectedTabIndex;
 }
 
+@property(nonatomic,strong) UINavigationController* navController;
+
 @end

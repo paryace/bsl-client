@@ -545,6 +545,9 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 //解析json数据 转成cubemodule
 -(void)getmodulesFromJson:(id)remote_json{
     
+    if (self.installed)
+        [self mergeNewLocalModules];
+    
     NSArray *remote_modules_json = [remote_json objectForKey:@"modules"];
     
     NSMutableArray *deleteArr=[NSMutableArray array];
@@ -746,7 +749,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     NSMutableArray *visibleModules = [[NSMutableArray alloc] init];
     for(int i = 0; i < modules.count; i++){
         CubeModule *module=[modules objectAtIndex:i];
-        if((module.privileges && ![module.privileges isEqual:[NSNull null]]) || [module.local length]>0)
+        if((module.privileges && ![module.privileges isEqual:[NSNull null]]) )
             [visibleModules addObject:module];
     }
     return visibleModules;

@@ -8,7 +8,8 @@
 
 #import "ImageScroller.h"
 #import "AsyncImageView.h"
-#import "ServerAPI.h"
+
+#import "GTGZImageDownloadedManager.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ImageScroller
@@ -59,8 +60,8 @@
     
 }
 
--(void)showImage:(UIImage*)image{
-    imageView.image=image;
+-(void)showImage:(NSString*)url{
+    imageView.image=[[GTGZImageDownloadedManager sharedInstance] originImageByUrl:url];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

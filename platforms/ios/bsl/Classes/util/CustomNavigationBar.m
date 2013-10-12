@@ -24,6 +24,7 @@
 {
     imageName = (imageName == nil) ? @"nav_bg.png" : imageName;
     UIImage *image = [UIImage imageNamed:imageName];
+    [image stretchableImageWithLeftCapWidth:20 topCapHeight:20];
     [image drawInRect:rect];
 }
 

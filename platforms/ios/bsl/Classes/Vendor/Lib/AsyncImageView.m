@@ -287,6 +287,7 @@
                 size=CGSizeMake(800.0f, 600.0f);
             }
             if(rawImage!=nil ){
+                /*
                 if((rawImage.size.width>size.width || rawImage.size.height>size.height)){
                     size.height=size.width/(rawImage.size.width/rawImage.size.height);
                     UIImage *image=[AsyncImageView imageWithThumbnail:rawImage size:size];
@@ -294,6 +295,8 @@
                     downloadData=nil;
                     downloadData=UIImagePNGRepresentation(image);
                 }
+                 */
+                rawImage=nil;
                 [[Cache instance] setData:downloadData forKey:urlString];
                 [objSelf loadImageFromData:downloadData animated:YES];
                 downloadData=nil;

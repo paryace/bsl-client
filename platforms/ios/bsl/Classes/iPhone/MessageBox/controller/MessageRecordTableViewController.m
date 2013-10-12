@@ -12,36 +12,33 @@
 #import "CubeModule.h"
 #import "MessageRecord.h"
 #import "MessageRecordTableViewCell.h"
-#import "CubeWebViewController.h"
 #import "AnnouncementTableViewController.h"
-@interface MessageRecordTableViewController ()<UITableViewDataSource,UITableViewDelegate>
--(void)delayLoadTimerEvent;
 
+#import "CubeWebViewController.h"
+#import "MessageRecordCell.h"
+
+
+@interface MessageRecordTableViewController ()<UITableViewDataSource,UITableViewDelegate,MessageRecordHeaderViewDelegate>{
+    NSMutableDictionary *presentModulesDic;
+    NSMutableDictionary *expandDic;
+    NSMutableDictionary *flagDictionary;
+    NSString *selectedModule;
+    
+}
+-(void)delayLoadTimerEvent;
 @end
 
 @implementation MessageRecordTableViewController
 
-@synthesize presentModulesDic,editing,expandDic;
-@synthesize flagDictionary;
-- (id)init
-{
+- (id)init{
     self = [super init];
     if (self) {
-        
-        
-         if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-         self.edgesForExtendedLayout = UIRectEdgeNone;
-         self.extendedLayoutIncludesOpaqueBars = NO;
-         self.modalPresentationCapturesStatusBarAppearance = YES;
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+            self.extendedLayoutIncludesOpaqueBars = NO;
+            self.modalPresentationCapturesStatusBarAppearance = YES;
          }
-        
-
-        
-        // Custom initialization
-        self.navigationItem.title = @"消息推送";
-        
-        editing = NO;
-        
+        self.title = @"消息推送";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessageRevice:) name:MESSAGE_RECORD_DID_SAVE_NOTIFICATION object:nil];
         
     }
@@ -65,22 +62,57 @@
 
     self.view.frame=rect;
     
+    flagDictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
+    presentModulesDic = [[NSMutableDictionary alloc] init];
+    
+    expandDic = [[NSMutableDictionary alloc] init];
+    
     tableView=[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    
     tableView.backgroundColor=[UIColor whiteColor];
     tableView.delegate=self;
     tableView.dataSource=self;
+    
+    
+    UIView* v=[[UIView alloc] init];
+    v.backgroundColor=[UIColor clearColor];
+    tableView.tableFooterView=v;
+    tableView.tableHeaderView=v;
+    v=nil;
+    
     [self.view addSubview:tableView];
 
     
     [self loadData];
-     [self setExtraCellLineHidden:tableView];
-    flagDictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
+    
 }
+
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+    presentModulesDic=nil;
+    expandDic=nil;
+    flagDictionary=nil;
+    selectedModule=nil;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
 
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [tableView reloadData];
+    
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+        UIView* vv=[[UIView alloc] initWithFrame:CGRectMake(floor(0.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
+        
+        UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(floor(-10.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
+        label.text = @"消息推送";
+        label.font =[UIFont boldSystemFontOfSize:20];
+        label.textColor= [UIColor whiteColor];
+        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment =NSTextAlignmentCenter;
+        [vv addSubview:label];
+        self.navigationItem.titleView= vv;
+    }
 }
 
 
@@ -118,51 +150,19 @@
     
 }
 
-
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)didReceiveMemoryWarning{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
--(void)edit{
-    
-    if(editing){
-        editing = NO;
-        [tableView setEditing:NO animated:YES];
-        
-    }else{
-        editing = YES;
-        [tableView setEditing:YES animated:YES];
-    }
-    
 }
 
 -(void)loadData{
     
     NSArray *modules = [[CubeApplication currentApplication] modules];
     
-    if(!presentModulesDic){
-        
-        presentModulesDic = [[NSMutableDictionary alloc] init];
-    }
-    
-    if(!expandDic){
-    
-        expandDic = [[NSMutableDictionary alloc] init];
-    }
-    
     NSArray *systemRecords = [MessageRecord findSystemRecord];
     
     if(systemRecords && systemRecords.count > 0){
         [presentModulesDic setObject:systemRecords forKey:@"0system"];
     }
-    
-    
     //装入本地模块
     for(CubeModule *each in modules){
         if (![each.identifier isEqualToString:@"com.foss.chat"]) {
@@ -188,41 +188,19 @@
         }
     }
     
-    
-    
 }
 
 -(void)delayLoadTimerEvent{
     [delayLoadTimer invalidate];
     delayLoadTimer=nil;
     [self loadData];
-    
     [tableView reloadData];
-
 }
 
 -(void)newMessageRevice:(NSNotification*)notification{
-    
-    //  MessageRecord *record =  (MessageRecord *)notification.object;
-    
     [delayLoadTimer invalidate];
     delayLoadTimer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(delayLoadTimerEvent) userInfo:nil repeats:NO];
 }
-
-
-- (void)setExtraCellLineHidden: (UITableView *)__tableView{
-    
-    UIView *view =[ [UIView alloc]init];
-    
-    view.backgroundColor = [UIColor clearColor];
-    
-    [__tableView setTableFooterView:view];
-    
-    [__tableView setTableHeaderView:view];
-    
-    
-}
-
 
 #pragma mark - Table view data source
 
@@ -235,67 +213,47 @@
     // Return the number of rows in the section.
     //[[self.expandDic objectForKey:moduleId] isEqualToNumber:[NSNumber numberWithBool:YES] ]
     
-    if([[self.expandDic objectForKey:[NSNumber numberWithInteger:section]] isEqualToNumber:[NSNumber numberWithBool:YES]]){
-        
+    if([[expandDic objectForKey:[NSNumber numberWithInteger:section]] isEqualToNumber:[NSNumber numberWithBool:YES]]){
         return [[presentModulesDic objectForKey:[[presentModulesDic allKeys] objectAtIndex:section]] count];
-    
     }
-    
     return 0;
     
     
 }
 
-- (UITableViewCell *)tableView:(UITableView *)__tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)__tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
-    MessageRecordTableViewCell *cell = [__tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MessageRecordCell *cell = [__tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[MessageRecordTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[MessageRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
     MessageRecord *messageRecord = [[presentModulesDic objectForKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
-    CubeModule *module = [[CubeApplication currentApplication] moduleForIdentifier:messageRecord.module ];
+    [cell title:messageRecord.alert content:messageRecord.content time:messageRecord.reviceTime isRead:[messageRecord.isRead boolValue]];
     
-    if(module){
-        [cell configureWithModuleName:module.name reviceTime:messageRecord.reviceTime alert:messageRecord.alert];
-    }else{
-        [cell configureWithModuleName:messageRecord.alert reviceTime:messageRecord.reviceTime alert:messageRecord.content];
-    }
-    if([messageRecord.isRead intValue] == 0)
-    {
-        cell.isReadLabel.text = @"未读";
-    }
-    else
-    {
-        cell.isReadLabel.text = @"";
-        
-    }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)__tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [self tableView:__tableView cellForRowAtIndexPath:indexPath];
+    MessageRecord *messageRecord = [[presentModulesDic objectForKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+
+    return [MessageRecordCell cellHeight:messageRecord.content width:__tableView.frame.size.width];
     
-    return cell.frame.size.height;
-    
-    
-    //    return 82.0;
 }
 
 -(void)shouldShowCellInModule:(NSString *)moduleId atIndex:(NSInteger)section{
     
     [flagDictionary setValue:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d",section]];
     int sectionIndex =  [[presentModulesDic  allKeys] indexOfObject:moduleId];
-    if([[self.expandDic objectForKey:[NSNumber numberWithInteger:sectionIndex]] isEqualToNumber:[NSNumber numberWithBool:YES] ]){
+    if([[expandDic objectForKey:[NSNumber numberWithInteger:sectionIndex]] isEqualToNumber:[NSNumber numberWithBool:YES] ]){
         
-        [self.expandDic setObject:[NSNumber numberWithBool:NO] forKey:[NSNumber numberWithInteger:sectionIndex]];
+        [expandDic setObject:[NSNumber numberWithBool:NO] forKey:[NSNumber numberWithInteger:sectionIndex]];
     }else{
     
-        [self.expandDic setObject:[NSNumber numberWithBool:YES] forKey:[NSNumber numberWithInteger:sectionIndex]];
+        [expandDic setObject:[NSNumber numberWithBool:YES] forKey:[NSNumber numberWithInteger:sectionIndex]];
     }
 
     [tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -313,8 +271,7 @@
     
     int msgcount = 0;
     NSArray *array = [presentModulesDic objectForKey:[[presentModulesDic allKeys]objectAtIndex:section]];
-    for(MessageRecord *msr in array)
-    {
+    for(MessageRecord *msr in array){
 //        if([flagDictionary valueForKey:[NSString stringWithFormat:@"%d",section]] != [NSNumber numberWithBool:YES])
         {
             if([msr.isRead intValue] == 0)
@@ -338,7 +295,7 @@
     
     UIImageView* arrowImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"xmpp_arrow.png"]];
     arrowImageView.frame= CGRectMake(17, 15, 10, 11);
-    if([[self.expandDic objectForKey:[NSNumber numberWithInteger:section]] isEqualToNumber:[NSNumber numberWithBool:YES]]){
+    if([[expandDic objectForKey:[NSNumber numberWithInteger:section]] isEqualToNumber:[NSNumber numberWithBool:YES]]){
         arrowImageView.image  = [self imageTransform:arrowImageView.image rotation:UIImageOrientationRight];
     }
     [headerView addSubview:arrowImageView];
@@ -424,7 +381,7 @@
     [presentModulesDic removeObjectForKey:moduleIdendity];
     NSIndexSet *set = [NSIndexSet indexSetWithIndex:section];
    
-    [self.expandDic setObject:[NSNumber numberWithBool:NO] forKey:[NSNumber numberWithInteger:section]];
+    [expandDic setObject:[NSNumber numberWithBool:NO] forKey:[NSNumber numberWithInteger:section]];
     
     [tableView deleteSections:set withRowAnimation:UITableViewRowAnimationFade];
     
@@ -446,8 +403,7 @@
 
 
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)__tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)__tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         
@@ -587,7 +543,7 @@
                     
                 }
                 
-                self.selectedModule = module.identifier;
+                selectedModule = module.identifier;
                 UIAlertView *dependsAlert = [[UIAlertView alloc] initWithTitle:@"缺少依赖模块"
                                                                        message:message
                                                                       delegate:self
@@ -644,7 +600,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex==0) {
-        CubeModule *module = [[CubeApplication currentApplication] moduleForIdentifier:self.selectedModule];
+        CubeModule *module = [[CubeApplication currentApplication] moduleForIdentifier:selectedModule];
         //需要下载的模块
         NSArray *missingModules = [[module missingDependencies] objectForKey:kMissingDependencyNeedInstallKey];
         for (NSString *missingModule in missingModules) {

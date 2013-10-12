@@ -38,7 +38,7 @@
         
         
         imageView=[[ImageDownloadedView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(checkboxImageView.frame)+15.0f, (CELL_HEIGHT-37.0f)*0.5f, 37.0f,37.0f)];
-        imageView.radius=3.0f;
+//        imageView.radius=3.0f;
         [self addSubview:imageView];
         
         

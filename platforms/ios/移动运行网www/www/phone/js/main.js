@@ -40,107 +40,111 @@ var refreshMainPage = function() {
 	});
 };
 // 初始化界面
+var isOver = 0;
 var loadModuleList = function(plugin, action, type, callback) {
-	var i = 0;
-	$("#swipe").html("");
-	$("#position").html("");
-	console.log('AAAAAA------------------ZHE');
-	// cordova.exec(success,failed,plugin,action,[]);
-	cordova.exec(function(data) {
-		data = $.parseJSON(data);
+	if (isOver === 0) {
+		isOver = isOver + 1;
+		var i = 0;
+		$("#swipe").html("");
+		$("#position").html("");
+		console.log('AAAAAA------------------ZHE');
+		// cordova.exec(success,failed,plugin,action,[]);
+		cordova.exec(function(data) {
+			data = $.parseJSON(data);
 
-		var valueArray = new Array;
-		var keyArray = new Array;
-		var s = 3;
+			var valueArray = new Array;
+			var keyArray = new Array;
+			var s = 3;
 
-		_.each(data, function(value, key) {
-			if (key === "首页") {
-				keyArray[0] = key;
-				valueArray[0] = value;
-			} else if (key === "次页") {
-				keyArray[1] = key;
-				valueArray[1] = value;
-			} else if (key === "基础包") {
-				keyArray[2] = key;
-				valueArray[2] = value;
-			} else {
+			_.each(data, function(value, key) {
+				if (key === "首页") {
+					keyArray[0] = key;
+					valueArray[0] = value;
+				} else if (key === "次页") {
+					keyArray[1] = key;
+					valueArray[1] = value;
+				} else if (key === "基础包") {
+					keyArray[2] = key;
+					valueArray[2] = value;
+				} else {
 
-				keyArray[s] = key;
-				valueArray[s] = value;
-				s++;
-			}
-			console.log(s);
-
-		});
-		console.log("keyArray0 " + keyArray[0]);
-		console.log("keyArray1 " + keyArray[1]);
-		console.log("valueArray0 " + valueArray[0]);
-		console.log("valueArray1 " + valueArray[1]);
-		console.log("AAAAAA-----1DATA");
-		_.each(valueArray, function(value) {
-			//alert(JSON.stringify(value));
-			var len = value.length;
-			var j = 0;
-
-			//排列
-
-			value = _.sortBy(value, function(v) {
-				console.log("v.sortingWeight " + v.sortingWeight + "");
-				console.log("v. " + v.stringify);
-				return v.sortingWeight;
-
-			});
-			downloadFile(value.icon + "", packageName + "/moduleIcon", function(entry) {
-				// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
-				value.icon = entry.fullPath;
-			});
-
-			console.log("value2 = " + value.sortingWeight);
-
-			_.each((value), function(value, key) {
-				if (j % 12 === 0) {
-					i++;
-					$("#swipe").append("<div class='page_div'><ul id='myul" + i + "' clsss='scrollContent'></ul></div>");
-					$("#position").append("<li></li>");
+					keyArray[s] = key;
+					valueArray[s] = value;
+					s++;
 				}
-
-				// var mark = value.icon;
-				// if (mark.indexOf("?") > -1) {
-				// 	mark = mark.substring(0, mark.indexOf("?"));
-				// }
-				// if (window.localStorage[mark] !== undefined) {
-				// 	value.icon = window.localStorage[mark];
-				// }
-				console.log("aaaa --" + value.sortingWeight + "");
-				$("#myul" + i).append(
-					_.template($("#module_div_ul").html(), {
-						'icon': value.icon,
-						'name': value.name,
-						'identifier': value.identifier,
-						'moduleType': value.moduleType,
-						'msgCount': value.msgCount
-					}));
-				j++;
+				console.log(s);
 
 			});
+			console.log("keyArray0 " + keyArray[0]);
+			console.log("keyArray1 " + keyArray[1]);
+			console.log("valueArray0 " + valueArray[0]);
+			console.log("valueArray1 " + valueArray[1]);
+			console.log("AAAAAA-----1DATA");
+			_.each(valueArray, function(value) {
+				//alert(JSON.stringify(value));
+				var len = value.length;
+				var j = 0;
 
-		});
-		$("#position").children("li:nth-child(1)").addClass("on");
-		console.log("i=" + i);
-		if (callback !== undefined) {
-			callback();
-		}
+				//排列
 
-	}, function(err) {
-		alert("获取页面出错");
-	}, plugin, action, []);
+				value = _.sortBy(value, function(v) {
+					console.log("v.sortingWeight " + v.sortingWeight + "");
+					console.log("v. " + v.stringify);
+					return v.sortingWeight;
 
+				});
+				downloadFile(value.icon + "", packageName + "/moduleIcon", function(entry) {
+					// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
+					value.icon = entry.fullPath;
+				});
 
+				console.log("value2 = " + value.sortingWeight);
+
+				_.each((value), function(value, key) {
+					if (j % 12 === 0) {
+						i++;
+						$("#swipe").append("<div class='page_div'><ul id='myul" + i + "' clsss='scrollContent'></ul></div>");
+						$("#position").append("<li></li>");
+					}
+
+					// var mark = value.icon;
+					// if (mark.indexOf("?") > -1) {
+					// 	mark = mark.substring(0, mark.indexOf("?"));
+					// }
+					// if (window.localStorage[mark] !== undefined) {
+					// 	value.icon = window.localStorage[mark];
+					// }
+					console.log("aaaa --" + value.sortingWeight + "");
+					$("#myul" + i).append(
+						_.template($("#module_div_ul").html(), {
+							'icon': value.icon,
+							'name': value.name,
+							'identifier': value.identifier,
+							'moduleType': value.moduleType,
+							'msgCount': value.msgCount
+						}));
+					j++;
+
+				});
+
+			});
+			$("#position").children("li:nth-child(1)").addClass("on");
+			console.log("i=" + i);
+			if (callback !== undefined) {
+				callback();
+			}
+			isOver = isOver - 1;
+		}, function(err) {
+			alert("获取页面出错");
+		}, plugin, action, []);
+
+	}
 };
+
 //设置按键
-$("#setting_btn").click(function() {
-	cordovaExec("CubeModuleOperator", "setting");
-});
+// $("#setting_btn").click(function() {
+// 	cordovaExec("CubeModuleOperator", "setting");
+// });
 //搜索按键
 $("#search_btn").click(function() {
 	//搜索事件
@@ -194,84 +198,154 @@ $("#search_btn").click(function() {
 });
 
 
+//机场天气模块点击
 
-$("li[identifier]").live("click", function() {
+$("#weatherContent").click(function() {
+
 	console.log("模块点击");
-	/*var type = $(this).attr("moduleType");*/
 	var type = "main";
-	var identifier = $(this).attr("identifier");
-	console.log("module_click----" + identifier);
+	var identifier = "com.csair.airport";
+	console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
+
 	cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
 });
 
+//模块点击
 
-//登陆
-var socLogin = function() {
+$("li[identifier]").live("click", function() {
 
-	getDate();
+	console.log("模块点击");
+	var type = "main";
+	var identifier = $(this).attr("identifier");
+	console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
 
-	$("#loader").attr({
-		'style': 'display:block'
-	});
-	var username = window.localStorage["username"];
-	var password = window.localStorage["password"];
+	var applicationCompetence = "111";
+	var aircrewCompetence = "111";
+	var crewmenCompetence = "111";
 
+	//判断当前账号是否有权限进入此模块
+	if (identifier === "com.csair.application") {
 
+		if (applicationCompetence) {
+			cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
 
-	$.ajax({
-		timeout: 2000 * 1000,
-		url: "http://58.248.56.101/opws-mobile-web/j_spring_security_check",
-		type: "get",
-		data: {
-			"username": username,
-			"password": password
-		},
-		dataType: "json",
-		success: function(data, textStatus, jqXHR) {
-			console.log('列表数据加载成功：' + textStatus + " response:[" + data + "]");
+		} else {
 
+			Toast("对不起,您暂无权限进入此模块", null);
 
-
-			if (data.login === true) {
-
-
-				window.localStorage["socUserInfo"] = JSON.stringify(data);
-				getWeather();
-
-			} else {
-
-
-
-				Toast("登陆失败,请检查用户名和密码!", null);
-			}
-
-			closeLoader();
-		},
-		error: function(e, xhr, type) {
-
-
-			console.error('列表数据加载失败：' + e + "/" + type + "/" + xhr);
-			closeLoader();
-
-
-			Toast("登陆失败,请检查网络连接!", null);
 		}
-	});
+
+
+
+	} else if (identifier === "com.csair.aircrew") {
+
+
+		if (aircrewCompetence) {
+			cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+
+		} else {
+
+			Toast("对不起,您暂无权限进入此模块", null);
+
+		}
+
+	} else if (identifier === "com.csair.crewmen") {
+
+
+		if (crewmenCompetence) {
+
+			cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+		} else {
+
+			Toast("对不起,您暂无权限进入此模块", null);
+
+		}
+	} else if (identifier === "com.csair.setting") {
+
+		cordovaExec("CubeModuleOperator", "setting");
+	} else {
+
+		cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+	}
+
+
+});
+//没有权限的模块灰色显示
+
+var unCompetence = function() {
+
 
 
 };
 
+// //登陆
+// var socLogin = function() {
+
+// 	getDate();
+
+// 	$("#loader").attr({
+// 		'style': 'display:block'
+// 	});
+// 	var username = window.localStorage["username"];
+// 	var password = window.localStorage["password"];
+
+
+
+// 	$.ajax({
+// 		timeout: 2000 * 1000,
+// 		url: "http://58.248.56.101/opws-mobile-web/j_spring_security_check",
+// 		type: "get",
+// 		data: {
+// 			"username": username,
+// 			"password": password
+// 		},
+// 		dataType: "json",
+// 		success: function(data, textStatus, jqXHR) {
+// 			console.log('列表数据加载成功：' + textStatus + " response:[" + data + "]");
+
+
+
+// 			if (data.login === true) {
+
+
+// 				window.localStorage["socUserInfo"] = JSON.stringify(data);
+// 				getWeather();
+
+// 			} else {
+
+
+
+// 				Toast("登陆失败,请检查用户名和密码!", null);
+// 			}
+
+// 			closeLoader();
+// 		},
+// 		error: function(e, xhr, type) {
+
+
+// 			console.error('列表数据加载失败：' + e + "/" + type + "/" + xhr);
+// 			closeLoader();
+
+
+// 			Toast("登陆失败,请检查网络连接!", null);
+// 		}
+// 	});
+
+
+// };
+
 //获取天气信息
 var getWeather = function() {
-
+	var me = this;
 	//admin登陆后台接口传过来的基地为null，默认为广州
-	var loginMessage = JSON.parse(window.localStorage["logigMessage"]);
-	var base = "广州"; //loginMessage.userInfo.base;
+	var loginMessage = JSON.parse(window.localStorage["socUserInfo"]);
 
-	$("#base").html(base);
+	var base = loginMessage.chnBase;
+	console.log(base);
+	//$("#base").html(base);
 
 	$.ajax({
-		timeout: 2000 * 1000,
+		timeout: 10 * 1000,
 		url: "http://58.248.56.101/opws-mobile-web/mobile/flightinfo-FlightWeather-findWeather.action",
 		type: "get",
 		data: {
@@ -281,9 +355,24 @@ var getWeather = function() {
 		success: function(data, textStatus, jqXHR) {
 			console.log('列表数据加载成功：' + textStatus + " response:[" + data + "]");
 
+
+			me.hasWeather = true;
+
+
+			console.log("data=====================");
+			console.log(data);
+
+			console.log(data.weather.tempreture);
+			console.log(data.weather.rmk);
+
 			if (data.weather.rmk) {
 
 				$("#weather").html(data.weather.rmk);
+
+			}
+
+			if (data.weather.tempreture) {
+
 				$("#degree").html(data.weather.tempreture + "°");
 			}
 
@@ -308,6 +397,54 @@ var getWeather = function() {
 
 };
 
+
+// //登陆
+// var socLogin = function() {
+
+
+// 	var me = this;
+// 	var username = window.localStorage["username"];
+// 	var password = window.localStorage["password"];
+
+
+// 	console.log(username + "=======================" + password);
+// 	$.ajax({
+// 		timeout: 2000 * 1000,
+// 		url: "http://58.248.56.101/opws-mobile-web/j_spring_security_check",
+// 		type: "get",
+// 		data: {
+// 			"username": username,
+// 			"password": password,
+// 			"loginFrom": "web"
+// 		},
+// 		dataType: "json",
+// 		success: function(data, textStatus, jqXHR) {
+// 			console.log('列表数据加载成功：' + textStatus + " response:[" + data + "]");
+// 			console.log("登陆成功");
+// 			console.log(data);
+
+// 			if (data.login === true) {
+
+// 				me.loginSuccess = true;
+// 				window.localStorage["socUserInfo"] = JSON.stringify(data);
+
+
+// 			}
+
+// 		},
+// 		error: function(e, xhr, type) {
+
+
+// 			console.error('列表数据加载失败：' + e + "/" + type + "/" + xhr);
+
+// 		}
+// 	});
+
+
+// };
+
+
+
 var closeLoader = function() {
 
 
@@ -316,6 +453,49 @@ var closeLoader = function() {
 		'style': 'display:none'
 	});
 };
+
+
+
+this.hasWeather = false;
+var me = this;
+
+
+
+var timeWeather = setInterval(function() {
+
+	console.log("获取天气信息开始");
+
+
+
+	if (me.hasWeather) {
+
+		console.log("获取天气信息成功");
+
+		clearInterval(timeWeather);
+
+
+
+	} else {
+
+		// console.log("获取天气信息失败");
+
+		// var loginMessage = JSON.parse(window.localStorage["socUserInfo"]);
+
+		// if (loginMessage) {
+
+		// 	console.log("基地信息存在====================");
+
+
+		getWeather();
+
+		// } else {
+		// 	console.log("基地信息不存在====================");
+
+		// 	socLogin();
+		// }
+	}
+}, 10 * 1000);
+
 
 
 //冒泡提示信息: msg:提示内容, duration:停留时间
@@ -337,7 +517,12 @@ var Toast = function(msg, duration) {
 
 var getDate = function() {
 
+	//admin登陆后台接口传过来的基地为null，默认为广州
+	var loginMessage = JSON.parse(window.localStorage["socUserInfo"]);
 
+	var base = loginMessage.chnBase;
+	console.log(base);
+	$("#base").html(base);
 	var weekday = new Array(7);
 	weekday[1] = "星期一";
 	weekday[2] = "星期二";
@@ -378,7 +563,7 @@ var app = {
 	},
 	receivedEvent: function(id) {
 		getDate();
-		//socLogin();
+
 		console.info("2222888");
 		//loadModuleList("CubeModuleList", "mainList", "main");
 

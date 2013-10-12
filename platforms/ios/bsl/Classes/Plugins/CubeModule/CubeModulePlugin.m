@@ -86,10 +86,7 @@
  */
 -(void)mainList:(CDVInvokedUrlCommand*)command
 {
-    
-    
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DISMISS_VIEW" object:[NSNumber numberWithInt:0]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DISMISS_VIEW" object:[NSNumber numberWithInt:1]];
     CubeApplication *cubeApp = [CubeApplication currentApplication];
     //循环获取所有安装模块的category
     NSMutableDictionary *moduleCategoryDictionary = [self getCategoryFromArray:cubeApp.modules];

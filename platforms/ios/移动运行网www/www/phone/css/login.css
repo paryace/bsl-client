@@ -37,6 +37,40 @@ html,body,img,div,ul,li,a,h3{
 	padding-bottom: 10%;
 }
 
+.loginBlock.wait{
+	-webkit-animation: logoCenter 2s;
+	-webkit-animation-fill-mode: forwards;
+	position: relative;
+}
+
+@-webkit-keyframes logoCenter {  
+   0% { -webkit-transform:translateY(0px) ;} 
+   100% { -webkit-transform:translateY(100px);}  
+	
+} 
+
+.logo.wait{
+	-webkit-animation: bslrun 5s alternate infinite;
+	
+}
+
+@-webkit-keyframes bslrun {    
+   0% { -webkit-filter: hue-rotate(30deg); }    
+   10% { -webkit-filter: hue-rotate(60deg); }    
+   20% { -webkit-filter: hue-rotate(90deg); }   
+   30% { -webkit-filter: hue-rotate(120deg); }   
+   40% { -webkit-filter: hue-rotate(150deg); }   
+   50% { -webkit-filter: hue-rotate(180deg); }    
+   60% { -webkit-filter: hue-rotate(210deg); }   
+   68% { -webkit-filter: hue-rotate(240deg); }   
+   76% { -webkit-filter: hue-rotate(270deg); }   
+   84% { -webkit-filter: hue-rotate(300deg); }   
+   92% { -webkit-filter: hue-rotate(330deg); }   
+   100% { -webkit-filter: hue-rotate(360deg); }   
+} 
+
+
+
 .user_content{
 	margin-left: 20px;
 	margin-right: 20px;
@@ -49,6 +83,33 @@ html,body,img,div,ul,li,a,h3{
 	background: #ffffff;
 
 }
+
+
+@-webkit-keyframes loginHide {  
+   0% { opacity: 1; }  
+   100% { opacity: 0; }  
+	
+} 
+
+.user_content.wait, .remember_content.wait, .login_btn_content.wait{
+	-webkit-animation: loginHide 1s;
+	-webkit-animation-fill-mode: forwards;
+} 
+
+.login_text{
+	display: none;
+	text-align: center;
+	font-size: 22px;
+	position: relative;
+	top:20px;
+	color: white;
+}
+
+.login_text.wait{
+	display: block;
+}
+
+
 .username_content,.password_content{
 	position: relative;
 	display: block;
@@ -145,6 +206,10 @@ html,body,img,div,ul,li,a,h3{
 	color: #ffffff;
 	position: relative;
 	z-index: 2;
+}
+
+#login_btn:active{
+	background:green;
 }
 
 .bottom_content{

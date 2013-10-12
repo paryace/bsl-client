@@ -227,8 +227,9 @@
 {
     NSLog(@"请求页面: %@", [request URL]);
     if ([@"cube://exit" isEqualToString:[[request URL] absoluteString]]) {
-        
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        
+        
     }
     NSURL* url = [request URL];
     
@@ -244,7 +245,11 @@
         
         
         if ([@"pop" isEqualToString:action]) {
-            [self.navigationController popViewControllerAnimated:YES];
+            if([self.navigationController.viewControllers count]>1){
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"POP_DISMISS_VIEW" object:nil];
+            }
         } else if([@"push" isEqualToString:action]) {
             
             //remove ?cube-action

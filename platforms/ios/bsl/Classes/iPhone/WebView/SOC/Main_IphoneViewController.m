@@ -42,9 +42,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteModuleFromNotification:) name:KNOTIFICATION_DETIALPAGE_DELETESUCCESS object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:KNOTIFICATION_DETIALPAGE_INSTALLSUCCESS object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didProgressUpdate:) name:@"queue_module_download_progressupdate" object:nil];
-
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissView) name:@"DISMISS_VIEW" object:nil];
-
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkModules) name:CubeSyncFinishedNotification object:nil];
 
     }

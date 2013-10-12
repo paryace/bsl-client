@@ -79,7 +79,18 @@
         UIButton* backButton = [self backButtonWith:[UIImage imageNamed:@"nav_back.png"] highlight:[UIImage imageNamed:@"nav_back_active.png"]];
         [backButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
         navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton] ;
-
+     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+    UIView* vv=[[UIView alloc] initWithFrame:CGRectMake(floor(0.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
+    
+    UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(floor(-80.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
+    label.text = self.title;
+    label.font =[UIFont boldSystemFontOfSize:20];
+    label.textColor= [UIColor whiteColor];
+    label.backgroundColor = [UIColor clearColor];
+    label.textAlignment =NSTextAlignmentCenter;
+    [vv addSubview:label];
+    navItem.titleView = vv;
+     }
     [bar pushNavigationItem:navItem animated:NO];
     
     [self.view addSubview:bar];
@@ -109,7 +120,15 @@
     [self.view addSubview:imageUploaded];
 
     [self loadShowData];
+    
+   
 
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{

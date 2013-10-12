@@ -33,7 +33,7 @@
 @property (nonatomic,strong)  UIViewController * mainController;
 @property (nonatomic,strong)  UIView* detailView;
 @property (strong, nonatomic) NSString *selectedModule;
-
+@property(strong,nonatomic) id selfObj;
 @end
 
 @implementation MainViewViewController
@@ -41,11 +41,14 @@
 @synthesize mainController;
 @synthesize detailController;
 @synthesize detailView;
+@synthesize navController;
 
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
+        
+        
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
             self.edgesForExtendedLayout = UIRectEdgeNone;
             self.extendedLayoutIncludesOpaqueBars = NO;
@@ -59,6 +62,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:CubeModuleInstallDidFinishNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSkinView) name:@"SHOW_SETTHEME_VIEW" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissView:) name:@"DISMISS_VIEW" object:nil];
+         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(POPdismissView) name:@"POP_DISMISS_VIEW" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadge) name:@"MESSAGE_RECORD_DID_Change_NOTIFICATION" object:nil];
         //收到消息时候的广播
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadge) name:MESSAGE_RECORD_DID_SAVE_NOTIFICATION object:nil];
@@ -74,8 +78,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.view.hidden=YES;
-    
+
+    self.selfObj=self;
+
     //读取文件信息
     @autoreleasepool {
         NSURL* documentUrl =  [NSFileManager applicationDocumentsDirectory];
@@ -99,18 +104,23 @@
 
     aCubeWebViewController.view.frame = rect;
     aCubeWebViewController.webView.scrollView.bounces=NO;
-    aCubeWebViewController.view.hidden=YES;
+
     [self.view addSubview:aCubeWebViewController.view];
 
     [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"pad/main.html"] absoluteString] didFinishBlock: ^(){
-        self.view.hidden=NO;
+
+        [self.navController pushViewController:self animated:NO];
+        self.navController=nil;
         [aCubeWebViewController viewWillAppear:NO];
         [aCubeWebViewController viewDidAppear:NO];
         aCubeWebViewController.view.hidden=NO;
         [self addBadge];
+        self.selfObj=nil;
     }didErrorBlock:^(){
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
+        self.navController=nil;
+        self.selfObj=nil;
     }];
     isFullScrean = NO;
 }
@@ -316,9 +326,10 @@
     if(selectedTabIndex!=[number intValue])
         [self dismissDetailViewController];
     selectedTabIndex=[number intValue];
-
 }
-
+-(void)POPdismissView{
+    [self dismissDetailViewController];
+}
 
 -(void)addBadge{
     NSLog(@"addBadge");
@@ -335,6 +346,8 @@
             [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"receiveMessage('%@',%d,true);",moduleIdentifier,count]];
         }
     }
+    NSLog(@"addBadge end");
+
 }
 
 -(void)showSetting{
@@ -364,9 +377,6 @@
                     [[CubeApplication currentApplication] installModule:m];
                 });
             }
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstTime"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            return;
         }
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstTime"];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -496,8 +506,8 @@
             }
             UIViewController* controller=self.detailController;
             if([controller isKindOfClass:[UINavigationController class]]){
-                UINavigationController* navController=(UINavigationController*)self.detailController;
-                controller=[navController topViewController];
+                UINavigationController* __navController=(UINavigationController*)self.detailController;
+                controller=[__navController topViewController];
             }
             if([controller isKindOfClass:NSClassFromString(iphoneLocal)]){
                 return;
@@ -517,8 +527,8 @@
         
         UIViewController* controller=self.detailController;
         if([controller isKindOfClass:[UINavigationController class]]){
-            UINavigationController* navController=(UINavigationController*)self.detailController;
-            controller=[navController topViewController];
+            UINavigationController* __navController=(UINavigationController*)self.detailController;
+            controller=[__navController topViewController];
         }
         if([controller isKindOfClass:[DownLoadingDetialViewController class]]){
             
@@ -578,8 +588,8 @@
 -(void)showWebViewModue:(CubeModule*)module{
     UIViewController* controller=self.detailController;
     if([controller isKindOfClass:[UINavigationController class]]){
-        UINavigationController* navController=(UINavigationController*)self.detailController;
-        controller=[navController topViewController];
+        UINavigationController* __navController=(UINavigationController*)self.detailController;
+        controller=[__navController topViewController];
     }
 
     if([controller isKindOfClass:[CubeWebViewController class]]){

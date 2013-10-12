@@ -11,7 +11,7 @@
     UIImageView* imageView;
 }
 
--(void)showImage:(UIImage*)image;
+-(void)showImage:(NSString*)url;
 
 -(void)showInView:(UIView*)view;
 

@@ -17,6 +17,7 @@
 
 @interface ChatLogic()
 -(NSString*)juingNewId;
+@property(nonatomic,strong) HTTPRequest* request;
 @end
 
 @implementation ChatLogic
@@ -30,6 +31,8 @@
 }
 
 -(void)dealloc{
+    
+    [self.request cancel];
     self.roomJID=nil;
 }
 
@@ -288,75 +291,6 @@
     return YES;
 }
 
-
--(BOOL)sendVoice:(NSString* )content urlVoiceFile:(NSURL*)urlVoiceFile messageId:(NSString*)messageId isGroup:(BOOL)isGroup name:(NSString*)name{
-    XMPPRoom *room=nil;
-    if(self.roomJID!=nil)
-        room=[[ShareAppDelegate xmpp].roomService findRoomByJid:self.roomJID];
-    
-    if(room!=nil && !room.isJoined)return NO;
-
-    NSString* uqID=[self juingNewId];
-
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-
-    @autoreleasepool {
-        NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
-        [body setStringValue:content];
-        
-        NSXMLElement *message = [NSXMLElement elementWithName:@"message" ];
-        [message addAttributeWithName:@"uqID" stringValue:uqID];
-        
-        //拼写xml格式的xmpp消息
-        if(!isGroup){
-            //消息发送者
-            [message addAttributeWithName:@"type" stringValue:@"chat"];
-            [message addAttributeWithName:@"from" stringValue:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]];
-            //消息接受者
-            [message addAttributeWithName:@"to" stringValue:messageId];
-            
-            [message addChild:body];
-            NSXMLNode* subject = [NSXMLNode elementWithName:@"subject" stringValue:@"voice"];//告诉接受方 传送的是文件 还是 聊天内容
-            [message addChild:subject];
-        }
-        else{
-            //消息发送者
-            [message addAttributeWithName:@"type" stringValue:@"groupchat"];
-            [message addAttributeWithName:@"from" stringValue:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]];
-            //消息接受者
-            [message addAttributeWithName:@"to" stringValue:[[room roomJID] full]];
-            [message addChild:body];
-            NSXMLNode* subject = [NSXMLNode elementWithName:@"subject" stringValue:@"voice"];//告诉接受方 传送的是文件 还是 聊天内容
-            [message addChild:subject];
-        }
-        //发送消息
-        [appDelegate.xmpp.xmppStream sendElement:message];
-    }
-
-    
-    @autoreleasepool {
-        //新建消息的entity
-        
-        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"MessageEntity" inManagedObjectContext:appDelegate.xmpp.managedObjectContext];
-        
-        [newManagedObject setValue:uqID forKey:@"uqID"];
-        [newManagedObject setValue:[urlVoiceFile absoluteString] forKey:@"content"];
-        [newManagedObject setValue:@"voice" forKey:@"type"];
-        [newManagedObject setValue:[NSNumber numberWithInt:1] forKey:@"statue"];
-        [newManagedObject setValue:[NSDate date] forKey:@"sendDate"];
-        [newManagedObject setValue:messageId forKey:@"messageId"];
-        [newManagedObject setValue:messageId forKey:@"receiveUser"];
-        [newManagedObject setValue:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare] forKey:@"sendUser"];
-        
-        
-        [appDelegate.xmpp newRectangleMessage:messageId name:name content:content contentType:RectangleChatContentTypeVoice isGroup:isGroup createrJid:nil];
-        
-        [appDelegate.xmpp saveContext];
-    }
-    
-    return YES;
-}
-
 -(BOOL)isInFaviorContacts:(NSString*)chatWithUser{
     
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -458,80 +392,75 @@
      NSString* token=[[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     NSURL *requestURL = [NSURL URLWithString:[kFileUploadUrl stringByAppendingFormat:@"?sessionKey=%@&&appKey=%@",token,kAPPKey]];
   
-    FormDataRequest* request = [FormDataRequest requestWithURL:requestURL];
-    request.timeOutSeconds=10.0f;
-    request.persistentConnectionTimeoutSeconds=10.0f;
-    __block FormDataRequest* __request=request;
-    request.delegate = self;
+    [self.request cancel];
+    self.request = [FormDataRequest requestWithURL:requestURL];
+    self.request.timeOutSeconds=10.0f;
+    self.request.persistentConnectionTimeoutSeconds=10.0f;
+    __block FormDataRequest* __request=(FormDataRequest*)self.request;
+    __block ChatLogic* objSelf=self;
     @autoreleasepool {
+        CGSize size=CGSizeMake(450.0f, 600.0f);
+        if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+            size=CGSizeMake(960.0f, 700.0f);
+        }
+
+        if((image.size.width>size.width || image.size.height>size.height)){
+            size.height=size.width/(image.size.width/image.size.height);
+            image=[AsyncImageView imageWithThumbnail:image size:size];
+        }
+        
         NSData *imageData = UIImagePNGRepresentation(image);
 
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithCapacity:0];
         [dict setObject:imageData forKey:@"file"];
-        [request setUserInfo:dict];
+        [__request setUserInfo:dict];
         
-        [request setData:imageData forKey:@"file"];
+        [__request setData:imageData forKey:@"file"];
         dict=nil;
         imageData=nil;
+        
     }
 
-    [request setCompletionBlock:^{
+    [self.request setCompletionBlock:^{
         
+        NSDictionary *dict = [[__request responseString] objectFromJSONString];
         
-        NSString *resultStr = [__request responseString];
         NSData *imageData = [[__request userInfo] valueForKey:@"file"];
-        NSDictionary *dict = [resultStr objectFromJSONString];
         NSString *fileId = [dict valueForKey:@"id"];
+
         
-        NSString* path=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        path=[path stringByAppendingPathComponent:[[[ShareAppDelegate xmpp].xmppStream myJID]bare]];
+        NSString* path=[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        path=[path stringByAppendingPathComponent:@"images"];
         NSFileManager* fileManager=[NSFileManager defaultManager];
         if(![fileManager fileExistsAtPath:path]){
             [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
         }
         path = [[path stringByAppendingPathComponent:fileId] stringByAppendingString:@".png"];
         if(imageData!=nil){
-            
-            @autoreleasepool {
-                
-                UIImage *rawImage = [[UIImage alloc] initWithData:imageData];
-                CGSize size=CGSizeMake(420.0f, 600.0f);
-                if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
-                    size=CGSizeMake(800.0f, 640.0f);
-                }
-                if(rawImage!=nil &&(rawImage.size.width>size.width || rawImage.size.height>size.height)){
-                    size.height=size.width/(rawImage.size.width/rawImage.size.height);
-                    UIImage *image=[AsyncImageView imageWithThumbnail:rawImage size:size];
-                    
-                    NSData* newData=UIImagePNGRepresentation(image);
-                    
-                    [newData writeToFile:path atomically:YES];
-                    
-                }
-                else{
-                    [imageData writeToFile:path atomically:YES];
-                    
-                }
-                rawImage=nil;
-                
-            }
-
+            [imageData writeToFile:path atomically:YES];
         }
+        
         if(finish!=nil)
             finish(fileId,path);
-        [__request cancel];
+
+        [objSelf.request cancel];
     }];
     
-    [request setFailedBlock:^{
+    [self.request setFailedBlock:^{
         if(finish!=nil)
             finish(nil,nil);
-        [__request cancel];
+
+        [objSelf.request cancel];
     }];
     
-    [request startAsynchronous];
+    [self.request startAsynchronous];
         
     return YES;
+}
+
+-(void)cancel{
+    [self.request cancel];
 }
 
 @end

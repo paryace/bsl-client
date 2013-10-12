@@ -23,7 +23,7 @@
         
 
         imageView=[[ImageDownloadedView alloc] initWithFrame:CGRectMake(9.0f, 10.0f, 45.0f,45.0f)];
-        imageView.radius=5.0f;
+//        imageView.radius=5.0f;
         [self addSubview:imageView];
         
         numberView=[[NumberView alloc] init];

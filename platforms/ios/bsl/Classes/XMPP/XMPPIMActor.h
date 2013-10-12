@@ -116,7 +116,7 @@
 
 -(void)findFriendsList;
 
-
+-(void)fetchAllLoadingMessageToFailed;
 -(MessageEntity*)fetchMessageFromUqID:(NSString*)uqID messageId:(NSString*)messageId;
 -(RectangleChat*)fetchRectangleChatFromJid:(NSString*)messageId isGroup:(BOOL)isGroup;
 

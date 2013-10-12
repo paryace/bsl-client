@@ -1657,6 +1657,26 @@
 		39E0535C17F00AEA00BCF7F8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		39E0535E17F00AEA00BCF7F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C023708B9AC24DB48757A8FC /* libPods.a */; };
 		39F029FC18078D3300051656 /* soc_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FB18078D3300051656 /* soc_home.png */; };
+		39F02A001807C24300051656 /* privacy_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FF1807C24300051656 /* privacy_tick@2x.png */; };
+		39F02A011807C24300051656 /* privacy_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FF1807C24300051656 /* privacy_tick@2x.png */; };
+		39F02A021807C24300051656 /* privacy_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FF1807C24300051656 /* privacy_tick@2x.png */; };
+		39F02A031807C24300051656 /* privacy_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FF1807C24300051656 /* privacy_tick@2x.png */; };
+		39F02A051807C24F00051656 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F02A041807C24F00051656 /* warning@2x.png */; };
+		39F02A061807C24F00051656 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F02A041807C24F00051656 /* warning@2x.png */; };
+		39F02A071807C24F00051656 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F02A041807C24F00051656 /* warning@2x.png */; };
+		39F02A081807C24F00051656 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F02A041807C24F00051656 /* warning@2x.png */; };
+		39F02A0C1807C3B300051656 /* VoiceUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A0B1807C3B300051656 /* VoiceUploadManager.m */; };
+		39F02A0D1807C3B300051656 /* VoiceUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A0B1807C3B300051656 /* VoiceUploadManager.m */; };
+		39F02A0E1807C3B300051656 /* VoiceUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A0B1807C3B300051656 /* VoiceUploadManager.m */; };
+		39F02A0F1807C3B300051656 /* VoiceUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A0B1807C3B300051656 /* VoiceUploadManager.m */; };
+		39F02A13180810BE00051656 /* MessageRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A12180810BE00051656 /* MessageRecordCell.m */; };
+		39F02A14180810BE00051656 /* MessageRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A12180810BE00051656 /* MessageRecordCell.m */; };
+		39F02A15180810BE00051656 /* MessageRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A12180810BE00051656 /* MessageRecordCell.m */; };
+		39F02A16180810BF00051656 /* MessageRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A12180810BE00051656 /* MessageRecordCell.m */; };
+		39F02A1A18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A1918082DBB00051656 /* GTGZImageDownloadedManager.m */; };
+		39F02A1B18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A1918082DBB00051656 /* GTGZImageDownloadedManager.m */; };
+		39F02A1C18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A1918082DBB00051656 /* GTGZImageDownloadedManager.m */; };
+		39F02A1D18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F02A1918082DBB00051656 /* GTGZImageDownloadedManager.m */; };
 		39F23A3A1805A6F60035FCF8 /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F23A391805A6F60035FCF8 /* ScrollTextView.m */; };
 		39F23A3B1805A6F60035FCF8 /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F23A391805A6F60035FCF8 /* ScrollTextView.m */; };
 		39F23A3C1805A6F60035FCF8 /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F23A391805A6F60035FCF8 /* ScrollTextView.m */; };
@@ -2704,6 +2724,10 @@
 		F54D857217E8C77E0067A023 /* xmpp_02.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D84A217E8C77E0067A023 /* xmpp_02.png */; };
 		F54D857317E8C77E0067A023 /* xmpp_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D84A317E8C77E0067A023 /* xmpp_arrow.png */; };
 		F54D857417E8C77E0067A023 /* xmpp_user.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D84A417E8C77E0067A023 /* xmpp_user.png */; };
+		F552F75D1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F552F75C1807DBDC009A5EFE /* nav_bg_pad@2x.png */; };
+		F552F75E1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F552F75C1807DBDC009A5EFE /* nav_bg_pad@2x.png */; };
+		F552F75F1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F552F75C1807DBDC009A5EFE /* nav_bg_pad@2x.png */; };
+		F552F7601807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F552F75C1807DBDC009A5EFE /* nav_bg_pad@2x.png */; };
 		F5A96C4617F006B400F9CA68 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A96C3917F006B400F9CA68 /* CDVDevice.m */; };
 		F5A96C4717F006B400F9CA68 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A96C3C17F006B400F9CA68 /* CDVNotification.m */; };
 		F5A96C4817F006B400F9CA68 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A96C3F17F006B400F9CA68 /* CDVFile.m */; };
@@ -3517,9 +3541,17 @@
 		39D9E80117F26A87001ED6F5 /* btn_remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_remove@2x.png"; sourceTree = "<group>"; };
 		39D9EA8517F27C03001ED6F5 /* 南航移动应用.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "南航移动应用.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D9EA8617F27C05001ED6F5 /* bsl copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl copy3-Info.plist"; path = "/Users/fanty/Documents/project/bsl-client/platforms/ios/bsl copy3-Info.plist"; sourceTree = "<absolute>"; };
-		39E0536317F00AEA00BCF7F8 /* 变色龙.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "变色龙.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39E0536317F00AEA00BCF7F8 /* 变色龙IOS测试.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "变色龙IOS测试.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E0536417F00AEC00BCF7F8 /* bsl copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl copy-Info.plist"; path = "/Users/fanty/Documents/project/temp/bsl-client/platforms/ios/bsl copy-Info.plist"; sourceTree = "<absolute>"; };
 		39F029FB18078D3300051656 /* soc_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soc_home.png; sourceTree = "<group>"; };
+		39F029FF1807C24300051656 /* privacy_tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "privacy_tick@2x.png"; sourceTree = "<group>"; };
+		39F02A041807C24F00051656 /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
+		39F02A0A1807C3B300051656 /* VoiceUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceUploadManager.h; sourceTree = "<group>"; };
+		39F02A0B1807C3B300051656 /* VoiceUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceUploadManager.m; sourceTree = "<group>"; };
+		39F02A11180810BE00051656 /* MessageRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageRecordCell.h; sourceTree = "<group>"; };
+		39F02A12180810BE00051656 /* MessageRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageRecordCell.m; sourceTree = "<group>"; };
+		39F02A1818082DBB00051656 /* GTGZImageDownloadedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTGZImageDownloadedManager.h; sourceTree = "<group>"; };
+		39F02A1918082DBB00051656 /* GTGZImageDownloadedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTGZImageDownloadedManager.m; sourceTree = "<group>"; };
 		39F23A381805A6F60035FCF8 /* ScrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextView.h; sourceTree = "<group>"; };
 		39F23A391805A6F60035FCF8 /* ScrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTextView.m; sourceTree = "<group>"; };
 		39F23A681805B2520035FCF8 /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
@@ -4135,6 +4167,7 @@
 		F54D84A217E8C77E0067A023 /* xmpp_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xmpp_02.png; sourceTree = "<group>"; };
 		F54D84A317E8C77E0067A023 /* xmpp_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xmpp_arrow.png; sourceTree = "<group>"; };
 		F54D84A417E8C77E0067A023 /* xmpp_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xmpp_user.png; sourceTree = "<group>"; };
+		F552F75C1807DBDC009A5EFE /* nav_bg_pad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg_pad@2x.png"; sourceTree = "<group>"; };
 		F5A96C3817F006B400F9CA68 /* CDVDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVDevice.h; sourceTree = "<group>"; };
 		F5A96C3917F006B400F9CA68 /* CDVDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVDevice.m; sourceTree = "<group>"; };
 		F5A96C3B17F006B400F9CA68 /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVNotification.h; sourceTree = "<group>"; };
@@ -5507,7 +5540,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* chameleon.app */,
-				39E0536317F00AEA00BCF7F8 /* 变色龙.app */,
+				39E0536317F00AEA00BCF7F8 /* 变色龙IOS测试.app */,
 				39FF0C1B17F13CBB0086B76C /* 移动运行网2.0.app */,
 				39D9EA8517F27C03001ED6F5 /* 南航移动应用.app */,
 			);
@@ -6285,9 +6318,13 @@
 			isa = PBXGroup;
 			children = (
 				F54D806217E8BFBA0067A023 /* ChatLogic.h */,
+				39F02A1818082DBB00051656 /* GTGZImageDownloadedManager.h */,
+				39F02A1918082DBB00051656 /* GTGZImageDownloadedManager.m */,
 				F54D806317E8BFBA0067A023 /* ChatLogic.m */,
 				F54D806417E8BFBA0067A023 /* Recorder.h */,
 				F54D806517E8BFBA0067A023 /* Recorder.m */,
+				39F02A0A1807C3B300051656 /* VoiceUploadManager.h */,
+				39F02A0B1807C3B300051656 /* VoiceUploadManager.m */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -6475,6 +6512,8 @@
 				F54D811517E8BFBA0067A023 /* MessageRecordTableViewController.h */,
 				F54D811617E8BFBA0067A023 /* MessageRecordTableViewController.m */,
 				F54D811817E8BFBA0067A023 /* view */,
+				39F02A11180810BE00051656 /* MessageRecordCell.h */,
+				39F02A12180810BE00051656 /* MessageRecordCell.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -7117,7 +7156,10 @@
 		F5A96C4B17F007FB00F9CA68 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F552F75C1807DBDC009A5EFE /* nav_bg_pad@2x.png */,
 				F5A96C4C17F007FC00F9CA68 /* announcement_local.png */,
+				39F02A041807C24F00051656 /* warning@2x.png */,
+				39F029FF1807C24300051656 /* privacy_tick@2x.png */,
 				F5A96C4D17F007FC00F9CA68 /* avatar_msg.png */,
 				3926908B17F51F1C00F1500B /* line_shadow@2x.png */,
 				F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */,
@@ -7283,7 +7325,7 @@
 			);
 			name = bsl_fanty_test;
 			productName = bsl;
-			productReference = 39E0536317F00AEA00BCF7F8 /* 变色龙.app */;
+			productReference = 39E0536317F00AEA00BCF7F8 /* 变色龙IOS测试.app */;
 			productType = "com.apple.product-type.application";
 		};
 		39FF099F17F13CBB0086B76C /* 移动运行网 */ = {
@@ -7538,6 +7580,7 @@
 				39F23A8A1805B2520035FCF8 /* Default.png in Resources */,
 				F54D84D517E8C77E0067A023 /* f032.png in Resources */,
 				F54D84D617E8C77E0067A023 /* f033.png in Resources */,
+				39F02A051807C24F00051656 /* warning@2x.png in Resources */,
 				3926908C17F51F1C00F1500B /* line_shadow@2x.png in Resources */,
 				F54D84D717E8C77E0067A023 /* f034.png in Resources */,
 				3968628217EE898300C84A6A /* ToolViewEmotionHL@2x.png in Resources */,
@@ -7726,6 +7769,7 @@
 				F5A96CCC17F007FC00F9CA68 /* installbtn_updatable.png in Resources */,
 				F5A96CDA17F007FC00F9CA68 /* menu_button.png in Resources */,
 				F54D854B17E8C77E0067A023 /* laba.png in Resources */,
+				F552F75D1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */,
 				F54D854C17E8C77E0067A023 /* voice_local_btn.png in Resources */,
 				F5A96CAE17F007FC00F9CA68 /* avatar_msg.png in Resources */,
 				F54D854D17E8C77E0067A023 /* amp_land_1.png in Resources */,
@@ -7787,6 +7831,7 @@
 				F54D856F17E8C77E0067A023 /* voiceSend.png in Resources */,
 				F54D857017E8C77E0067A023 /* voiceSend_select.png in Resources */,
 				F54D857117E8C77E0067A023 /* xmpp_01.png in Resources */,
+				39F02A001807C24300051656 /* privacy_tick@2x.png in Resources */,
 				F54D857217E8C77E0067A023 /* xmpp_02.png in Resources */,
 				F54D857317E8C77E0067A023 /* xmpp_arrow.png in Resources */,
 				F54D857417E8C77E0067A023 /* xmpp_user.png in Resources */,
@@ -8029,6 +8074,7 @@
 				39F23A8C1805B2520035FCF8 /* Default.png in Resources */,
 				39D9E8BA17F27C03001ED6F5 /* f032.png in Resources */,
 				39D9E8BB17F27C03001ED6F5 /* f033.png in Resources */,
+				39F02A081807C24F00051656 /* warning@2x.png in Resources */,
 				3926908F17F51F1C00F1500B /* line_shadow@2x.png in Resources */,
 				39D9E8BC17F27C03001ED6F5 /* f034.png in Resources */,
 				18E9C58D1803AB1200B874B8 /* Cell_DisclosureIndicator.png in Resources */,
@@ -8280,6 +8326,7 @@
 				39D9E97517F27C03001ED6F5 /* installbtn_updatable.png in Resources */,
 				39D9E97617F27C03001ED6F5 /* menu_button.png in Resources */,
 				39D9E97717F27C03001ED6F5 /* laba.png in Resources */,
+				F552F7601807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */,
 				39D9E97817F27C03001ED6F5 /* voice_local_btn.png in Resources */,
 				39D9E97917F27C03001ED6F5 /* avatar_msg.png in Resources */,
 				39D9E97A17F27C03001ED6F5 /* amp_land_1.png in Resources */,
@@ -8363,6 +8410,7 @@
 				39D9E9B417F27C03001ED6F5 /* voiceSend_select.png in Resources */,
 				18E9C4721803AB1200B874B8 /* FCTextFieldTableViewCell.xib in Resources */,
 				39D9E9B517F27C03001ED6F5 /* xmpp_01.png in Resources */,
+				39F02A031807C24300051656 /* privacy_tick@2x.png in Resources */,
 				39D9E9B617F27C03001ED6F5 /* xmpp_02.png in Resources */,
 				39D9E9B717F27C03001ED6F5 /* xmpp_arrow.png in Resources */,
 				39D9E9B817F27C03001ED6F5 /* xmpp_user.png in Resources */,
@@ -8540,6 +8588,7 @@
 				39F23A8B1805B2520035FCF8 /* Default.png in Resources */,
 				39E0519717F00AEA00BCF7F8 /* f032.png in Resources */,
 				39E0519817F00AEA00BCF7F8 /* f033.png in Resources */,
+				39F02A061807C24F00051656 /* warning@2x.png in Resources */,
 				3926908D17F51F1C00F1500B /* line_shadow@2x.png in Resources */,
 				39E0519917F00AEA00BCF7F8 /* f034.png in Resources */,
 				39E0519A17F00AEA00BCF7F8 /* ToolViewEmotionHL@2x.png in Resources */,
@@ -8728,6 +8777,7 @@
 				39E0524F17F00AEA00BCF7F8 /* installbtn_updatable.png in Resources */,
 				39E0525017F00AEA00BCF7F8 /* menu_button.png in Resources */,
 				39E0525117F00AEA00BCF7F8 /* laba.png in Resources */,
+				F552F75E1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */,
 				39E0525217F00AEA00BCF7F8 /* voice_local_btn.png in Resources */,
 				39E0525317F00AEA00BCF7F8 /* avatar_msg.png in Resources */,
 				39E0525417F00AEA00BCF7F8 /* amp_land_1.png in Resources */,
@@ -8789,6 +8839,7 @@
 				39E0528D17F00AEA00BCF7F8 /* voiceSend.png in Resources */,
 				39E0528E17F00AEA00BCF7F8 /* voiceSend_select.png in Resources */,
 				39E0528F17F00AEA00BCF7F8 /* xmpp_01.png in Resources */,
+				39F02A011807C24300051656 /* privacy_tick@2x.png in Resources */,
 				39E0529017F00AEA00BCF7F8 /* xmpp_02.png in Resources */,
 				39E0529117F00AEA00BCF7F8 /* xmpp_arrow.png in Resources */,
 				39E0529217F00AEA00BCF7F8 /* xmpp_user.png in Resources */,
@@ -8851,6 +8902,7 @@
 				39FF09DB17F13CBB0086B76C /* iphoneLandingViewController_retina4.xib in Resources */,
 				39FF09DC17F13CBB0086B76C /* iphoneVoiceDetailViewController.xib in Resources */,
 				39FF09DD17F13CBB0086B76C /* DetailViewController.xib in Resources */,
+				39F02A021807C24300051656 /* privacy_tick@2x.png in Resources */,
 				39FF09DE17F13CBB0086B76C /* iphoneLadingViewNew.xib in Resources */,
 				39FF09DF17F13CBB0086B76C /* iphoneMsgListCell.xib in Resources */,
 				39FF09E017F13CBB0086B76C /* local_icon.png in Resources */,
@@ -9039,6 +9091,7 @@
 				39FF0A9517F13CBB0086B76C /* f071.png in Resources */,
 				39FF0A9617F13CBB0086B76C /* f072.png in Resources */,
 				39FF0A9717F13CBB0086B76C /* f073.png in Resources */,
+				39F02A071807C24F00051656 /* warning@2x.png in Resources */,
 				39FF0A9817F13CBB0086B76C /* f074.png in Resources */,
 				39FF0A9917F13CBB0086B76C /* f075.png in Resources */,
 				39FF0A9A17F13CBB0086B76C /* f076.png in Resources */,
@@ -9129,6 +9182,7 @@
 				39FF0AF017F13CBB0086B76C /* login_select.png in Resources */,
 				39FF0AF117F13CBB0086B76C /* announcement_local.png in Resources */,
 				39FF0AF217F13CBB0086B76C /* login_title.png in Resources */,
+				F552F75F1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */,
 				39FF0AF317F13CBB0086B76C /* messageDeleteSelect.png in Resources */,
 				39FF0AF417F13CBB0086B76C /* login_view.jpg in Resources */,
 				39FF0AF517F13CBB0086B76C /* online.png in Resources */,
@@ -9437,6 +9491,7 @@
 				F54D82C317E8BFBB0067A023 /* MenuViewController.m in Sources */,
 				F54D82C417E8BFBB0067A023 /* RootViewController.m in Sources */,
 				F54D82C517E8BFBB0067A023 /* StackScrollViewController.m in Sources */,
+				39F02A13180810BE00051656 /* MessageRecordCell.m in Sources */,
 				F54D82C617E8BFBB0067A023 /* UIViewWithShadow.m in Sources */,
 				F54D82C717E8BFBB0067A023 /* AAPanelView.m in Sources */,
 				F54D82C817E8BFBB0067A023 /* CloverTabBar.m in Sources */,
@@ -9456,6 +9511,7 @@
 				F54D82E017E8BFBB0067A023 /* FunctionDetailScrollView.m in Sources */,
 				F5A96C4717F006B400F9CA68 /* CDVNotification.m in Sources */,
 				F54D82E117E8BFBB0067A023 /* FunctionDetailScrollViewWrapper.m in Sources */,
+				39F02A1A18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				F54D82E217E8BFBB0067A023 /* IphoneDownloadingTableViewCell.m in Sources */,
 				F54D82E517E8BFBB0067A023 /* MenuView.m in Sources */,
 				F54D82E917E8BFBB0067A023 /* ChatCell.m in Sources */,
@@ -9514,6 +9570,7 @@
 				F54D837617E8BFBB0067A023 /* RemoteDebuggerViewController.m in Sources */,
 				3968622A17EE7D1D00C84A6A /* ContactListView.m in Sources */,
 				F54D837717E8BFBB0067A023 /* DownloadedAsync.m in Sources */,
+				39F02A0C1807C3B300051656 /* VoiceUploadManager.m in Sources */,
 				F54D837817E8BFBB0067A023 /* ThreadTask.m in Sources */,
 				F54D837917E8BFBB0067A023 /* AboutViewController.m in Sources */,
 				F54D837D17E8BFBB0067A023 /* SettingMainViewController.m in Sources */,
@@ -9659,6 +9716,7 @@
 				39D9E9D717F27C03001ED6F5 /* StackScrollViewController.m in Sources */,
 				18E9C53A1803AB1200B874B8 /* EbookQuery.m in Sources */,
 				18E9C5B81803AB1200B874B8 /* DCRoundSwitchToggleLayer.m in Sources */,
+				39F02A16180810BF00051656 /* MessageRecordCell.m in Sources */,
 				39D9E9D817F27C03001ED6F5 /* UIViewWithShadow.m in Sources */,
 				39D9E9D917F27C03001ED6F5 /* AAPanelView.m in Sources */,
 				39D9E9DA17F27C03001ED6F5 /* CloverTabBar.m in Sources */,
@@ -9698,6 +9756,7 @@
 				39D9E9E917F27C03001ED6F5 /* FunctionDetailScrollViewWrapper.m in Sources */,
 				18E9C48A1803AB1200B874B8 /* FPFlightReportViewController.m in Sources */,
 				18E9C53D1803AB1200B874B8 /* FlightTaskQuery.m in Sources */,
+				39F02A1D18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				39D9E9EA17F27C03001ED6F5 /* IphoneDownloadingTableViewCell.m in Sources */,
 				39D9E9EB17F27C03001ED6F5 /* MenuView.m in Sources */,
 				18E9C59F1803AB1200B874B8 /* CDataScanner_Extensions.m in Sources */,
@@ -9841,6 +9900,7 @@
 				39D9EA2617F27C03001ED6F5 /* DownloadedAsync.m in Sources */,
 				18E9C5971803AB1200B874B8 /* DES.m in Sources */,
 				18E9C53F1803AB1200B874B8 /* NetworkSpeedTestService.m in Sources */,
+				39F02A0F1807C3B300051656 /* VoiceUploadManager.m in Sources */,
 				39D9EA2717F27C03001ED6F5 /* ThreadTask.m in Sources */,
 				18E9C5A61803AB1200B874B8 /* MBProgressHUD.m in Sources */,
 				39D9EA2817F27C03001ED6F5 /* AboutViewController.m in Sources */,
@@ -10004,6 +10064,7 @@
 				39E052B017F00AEA00BCF7F8 /* MenuViewController.m in Sources */,
 				39E052B117F00AEA00BCF7F8 /* RootViewController.m in Sources */,
 				39E052B217F00AEA00BCF7F8 /* StackScrollViewController.m in Sources */,
+				39F02A14180810BE00051656 /* MessageRecordCell.m in Sources */,
 				39E052B317F00AEA00BCF7F8 /* UIViewWithShadow.m in Sources */,
 				39E052B417F00AEA00BCF7F8 /* AAPanelView.m in Sources */,
 				39E052B517F00AEA00BCF7F8 /* CloverTabBar.m in Sources */,
@@ -10022,6 +10083,7 @@
 				39E052C217F00AEA00BCF7F8 /* FunctionDetailScrollView.m in Sources */,
 				39E052C317F00AEA00BCF7F8 /* CDVNotification.m in Sources */,
 				39E052C417F00AEA00BCF7F8 /* FunctionDetailScrollViewWrapper.m in Sources */,
+				39F02A1B18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				39E052C517F00AEA00BCF7F8 /* IphoneDownloadingTableViewCell.m in Sources */,
 				39E052C617F00AEA00BCF7F8 /* MenuView.m in Sources */,
 				39E052C917F00AEA00BCF7F8 /* ChatCell.m in Sources */,
@@ -10080,6 +10142,7 @@
 				39E0530217F00AEA00BCF7F8 /* RemoteDebuggerViewController.m in Sources */,
 				39E0530317F00AEA00BCF7F8 /* ContactListView.m in Sources */,
 				39E0530417F00AEA00BCF7F8 /* DownloadedAsync.m in Sources */,
+				39F02A0D1807C3B300051656 /* VoiceUploadManager.m in Sources */,
 				39E0530517F00AEA00BCF7F8 /* ThreadTask.m in Sources */,
 				39E0530617F00AEA00BCF7F8 /* AboutViewController.m in Sources */,
 				39E0530717F00AEA00BCF7F8 /* SettingMainViewController.m in Sources */,
@@ -10184,6 +10247,7 @@
 				39FF0B6B17F13CBB0086B76C /* RootViewController.m in Sources */,
 				39FF0B6C17F13CBB0086B76C /* StackScrollViewController.m in Sources */,
 				39FF0B6D17F13CBB0086B76C /* UIViewWithShadow.m in Sources */,
+				39F02A15180810BE00051656 /* MessageRecordCell.m in Sources */,
 				39FF0B6E17F13CBB0086B76C /* AAPanelView.m in Sources */,
 				39FF0B6F17F13CBB0086B76C /* CloverTabBar.m in Sources */,
 				39FF0B7017F13CBB0086B76C /* SkinView.m in Sources */,
@@ -10202,6 +10266,7 @@
 				39FF0B7D17F13CBB0086B76C /* CDVNotification.m in Sources */,
 				39FF0B7E17F13CBB0086B76C /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39FF0B7F17F13CBB0086B76C /* IphoneDownloadingTableViewCell.m in Sources */,
+				39F02A1C18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				39FF0B8017F13CBB0086B76C /* MenuView.m in Sources */,
 				39FF0B8317F13CBB0086B76C /* ChatCell.m in Sources */,
 				39FF0B8417F13CBB0086B76C /* CDVVibration.m in Sources */,
@@ -10260,6 +10325,7 @@
 				39FF0BBB17F13CBB0086B76C /* ContactListView.m in Sources */,
 				39FF0BBC17F13CBB0086B76C /* DownloadedAsync.m in Sources */,
 				39FF0BBD17F13CBB0086B76C /* ThreadTask.m in Sources */,
+				39F02A0E1807C3B300051656 /* VoiceUploadManager.m in Sources */,
 				39FF0BBE17F13CBB0086B76C /* AboutViewController.m in Sources */,
 				39FF0BBF17F13CBB0086B76C /* SettingMainViewController.m in Sources */,
 				39FF0BC017F13CBB0086B76C /* CDVFileTransfer.m in Sources */,
@@ -10567,8 +10633,8 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "变色龙";
-				PROVISIONING_PROFILE = "114E349F-5E87-4AED-913E-2A70E4CA88C8";
+				PRODUCT_NAME = "变色龙IOS测试";
+				PROVISIONING_PROFILE = "5C89342D-7C7E-4CBC-8F50-98F0EEFE4754";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -10599,8 +10665,8 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_NAME = "变色龙";
-				PROVISIONING_PROFILE = "114E349F-5E87-4AED-913E-2A70E4CA88C8";
+				PRODUCT_NAME = "变色龙IOS测试";
+				PROVISIONING_PROFILE = "5C89342D-7C7E-4CBC-8F50-98F0EEFE4754";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

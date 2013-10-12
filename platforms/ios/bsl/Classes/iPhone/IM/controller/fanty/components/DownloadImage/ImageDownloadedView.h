@@ -8,18 +8,25 @@
 
 #import "AsyncImageView.h"
 
-typedef enum{
-    ImageDownloadedViewNone=0,
-    ImageDownloadedViewDownloading,
-    ImageDownloadedViewFinish
-}ImageDownloadedViewType;
+typedef enum _ImageViewDownloadedStatus {
+	ImageViewDownloadedStatusNone = 0,
+    ImageViewDownloadedStatusDownloading,
+    ImageViewDownloadedStatusFinish,
+    ImageViewDownloadedStatusFail,
+} ImageViewDownloadedStatus;
 
-@interface ImageDownloadedView : AsyncImageView{
+
+@interface ImageDownloadedView : UIImageView{
+    ImageViewDownloadedStatus status;
+    
     UIImageView* loadingView;
-    ImageDownloadedViewType type;
+    
+    UIActivityIndicatorView* activityView;
 }
 
-@property(nonatomic,assign) float radius;
+@property(nonatomic,strong) NSString* url;
 @property(nonatomic,strong) NSString* loadingImageName;
--(void)setUrl:(NSString*)url;
+@property(nonatomic,assign) BOOL showLoading;
+@property(nonatomic,readonly) ImageViewDownloadedStatus status;
+
 @end

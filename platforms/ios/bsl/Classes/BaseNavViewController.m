@@ -49,9 +49,15 @@
     
     //if (UI_USER_INTERFACE_IDIOM() !=  UIUserInterfaceIdiomPad){
         self.delegate=self;
-        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg.png"] forBarMetrics:UIBarMetricsDefault];
-        
+    
+        UIImage *image = [UIImage imageNamed:(UI_USER_INTERFACE_IDIOM() !=  UIUserInterfaceIdiomPad) ? @"nav_bg.png":@"nav_bg_pad.png"];
+        [image stretchableImageWithLeftCapWidth:20 topCapHeight:0];
+        [self.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    
+    
+    
     //}
+    
 }
 
 - (void)didReceiveMemoryWarning{

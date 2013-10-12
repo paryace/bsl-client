@@ -7,11 +7,11 @@
 //
 
 #import "ChatImageCell.h"
-#import "AsyncImageView.h"
+#import "ImageDownloadedView.h"
 #import "ServerAPI.h"
 #define CELL_SIZE 100.0f
 
-@interface ChatImageCell()<AsyncImageViewDelegate>
+@interface ChatImageCell()
 -(void)avatorClick;
 @end
 
@@ -25,20 +25,12 @@
         self.accessoryType=UITableViewCellAccessoryNone;
         self.selectionStyle=UITableViewCellSelectionStyleNone;
         
+        CGRect rect=CGRectMake(0.0f, 0.0f, 55.0f, 55.0f);
         
-        noHeaderView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoHeaderImge.png"]];
-        
-        CGRect rect=noHeaderView.frame;
-        rect.size=CGSizeMake(55.0f, 55.0f);
-        noHeaderView.frame=rect;
-
-        
-        imageView=[[AsyncImageView alloc] initWithFrame:noHeaderView.frame];
-        imageView.delegate=self;
+        imageView=[[ImageDownloadedView alloc] initWithFrame:rect];
+        imageView.loadingImageName=@"NoHeaderImge.png";
         //        imageView.radius=4.0f;
         [self addSubview:imageView];
-        
-        [self addSubview:noHeaderView];
         
         nameLabel=[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, rect.size.width, 15.0f)];
         nameLabel.font=[UIFont systemFontOfSize:11.0f];
@@ -61,14 +53,12 @@
         
         [self addSubview:avatorView];
 
-        noContentView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shake_-transportphoto_without_icon.png"]];
-        noContentView.frame=CGRectMake(6.0f, 6.0f, avatorView.frame.size.width-12.0f, avatorView.frame.size.height-12.0f);
         
-        contentImageView=[[AsyncImageView alloc] initWithFrame:avatorView.bounds];
-        contentImageView.delegate=self;
+        contentImageView=[[ImageDownloadedView alloc] initWithFrame:avatorView.bounds];
+        contentImageView.loadingImageName=@"shake_-transportphoto_without_icon.png";
+        contentImageView.showLoading=YES;
         [avatorView addSubview:contentImageView];
         
-        [avatorView addSubview:noContentView];
         
         
         dateLabel=[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 150.0f, 20.0f)];
@@ -82,38 +72,22 @@
     return self;
 }
 
--(void)dealloc{
-    imageView.delegate=nil;
-    contentImageView.delegate=nil;
-}
-
 +(float)cellHeight:(NSBubbleType)bubbleType{
     return CELL_SIZE+70.0f;
 }
 
 -(void)headerUrl:(NSString*)headerUrl name:(NSString*)name imageFile:(NSString*)imageFile sendDate:(NSDate*)date bubbleType:(NSBubbleType)bubbleType{
-    noHeaderView.hidden=NO;
-    noContentView.hidden=NO;
     
-    if([headerUrl length]>0)
-        [imageView loadImageWithURLString:headerUrl];
+    [imageView setUrl:headerUrl];
     //imageFile=@"T1saYTByxT1RCvBVdK";
-    if([imageFile length]>0){
-        
-        if([[NSFileManager defaultManager] fileExistsAtPath:imageFile]){
-            @autoreleasepool {
-                contentImageView.image=[UIImage imageWithContentsOfFile:imageFile];
-
-            }
-        }
-        else{
-            NSString *url = [ServerAPI urlForAttachmentId:imageFile];
-
-            url=[url stringByAppendingFormat:@"?sessionKey=%@&appKey=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey];
-            [contentImageView loadImageWithURLString:url];
-        }
-        noContentView.hidden=(contentImageView.image!=nil);
-
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:imageFile]){
+        [contentImageView setUrl:imageFile];
+    }
+    else{
+        NSString *url = [ServerAPI urlForAttachmentId:imageFile];
+        url=[url stringByAppendingFormat:@"?sessionKey=%@&appKey=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey];
+        [contentImageView setUrl:url];
     }
     
     nameLabel.text=name;
@@ -176,27 +150,14 @@
         rect.origin.y=(bubbleView.frame.size.height-rect.size.height)*0.5f-3.0f+25.0f;
         avatorView.frame=rect;
     }
-
-    noHeaderView.frame=imageView.frame;
     
 }
 
 -(void)avatorClick{
     if(contentImageView.image!=nil){
-        if([self.delegate respondsToSelector:@selector(chatImageCellDidSelect:image:)])
-            [self.delegate chatImageCellDidSelect:self image:contentImageView.image];
+        if([self.delegate respondsToSelector:@selector(chatImageCellDidSelect:url:)])
+            [self.delegate chatImageCellDidSelect:self url:contentImageView.url];
     }
 }
-
-#pragma mark  async delegate
-
-- (void)asyncImageView:(AsyncImageView *)asyncImageView didLoadImageFormURL:(NSURL*)aURL{
-    if([asyncImageView isEqual:imageView])
-        noHeaderView.hidden=YES;
-    else if([asyncImageView isEqual:contentImageView])
-        noContentView.hidden=YES;
-}
-
-
 
 @end

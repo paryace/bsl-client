@@ -43,7 +43,7 @@ static PushGetMessageInfo* instance=nil;
     updateTimer=nil;
 
     if(callNow){
-        updateTimer=[NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(updatePushMessage) userInfo:nil repeats:NO];
+        updateTimer=[NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(updatePushMessage) userInfo:nil repeats:NO];
     }
     else{
         updateTimer=[NSTimer scheduledTimerWithTimeInterval:300.0f target:self selector:@selector(updatePushMessage) userInfo:nil repeats:NO];

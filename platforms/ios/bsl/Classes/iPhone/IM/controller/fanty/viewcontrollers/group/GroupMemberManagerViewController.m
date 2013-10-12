@@ -67,8 +67,18 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
 
     [self loadData];
     
-    
-    
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+        UIView* vv=[[UIView alloc] initWithFrame:CGRectMake(floor(0.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
+        
+        UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(floor(-80.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
+        label.text = self.title;
+        label.font =[UIFont boldSystemFontOfSize:20];
+        label.textColor= [UIColor whiteColor];
+        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment =NSTextAlignmentCenter;
+        [vv addSubview:label];
+        self.navigationItem.titleView= vv;
+    }
     
 }
 
@@ -314,7 +324,7 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
     
     if([self.delegate respondsToSelector:@selector(deleteMember:)])
         [self.delegate deleteMember:self];
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

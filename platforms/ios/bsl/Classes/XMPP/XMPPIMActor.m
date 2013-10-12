@@ -23,6 +23,9 @@
 
 #import "IMServerAPI.h"
 
+#import "VoiceUploadManager.h"
+
+
 @interface XMPPIMActor ()
 
 @end
@@ -57,6 +60,10 @@
     [xmppMUC deactivate];
 
 	[xmppStream disconnect];
+    
+    
+    [[VoiceUploadManager sharedInstance] cance];
+    [self fetchAllLoadingMessageToFailed];
     
     roomService=nil;
     xmppStream = nil;
@@ -102,6 +109,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)setupXmppStream{
+    
+    [[VoiceUploadManager sharedInstance] cance];
+    [self fetchAllLoadingMessageToFailed];
+
+    
     //初始化XMPPStream
     if(!xmppStream){
         xmppStream = [[XMPPStream alloc] init];
@@ -461,7 +473,8 @@
                 userInfo.userMessageCount =  @"1";
                 if ([[[message elementForName:@"subject"] stringValue] isEqualToString:@"voice"]) {
                     userInfo.userLastMessage = @"发送了一段语音给您";
-                    
+                    rectangleChatContentType=RectangleChatContentTypeVoice;
+
                 }
                 else if ([[[message elementForName:@"subject"] stringValue] isEqualToString:@"image"]) {
                     rectangleChatContentType=RectangleChatContentTypeImage;
@@ -497,7 +510,9 @@
             //查询到数据库中未显示的消息条数
             [MessageRecord createModuleBadge:@"com.foss.chat" num: [XMPPSqlManager getMessageCount]];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"module_badgeCount_change" object:self];
-            
+            if(uqID==nil){
+                uqID=[NSString stringWithFormat:@"rect_%f",[[NSDate date] timeIntervalSince1970]];
+            }
             if(uqID==nil || [self fetchMessageFromUqID:uqID messageId:result]==nil){
                 MessageEntity *messageEntity = [NSEntityDescription insertNewObjectForEntityForName:@"MessageEntity" inManagedObjectContext: self.managedObjectContext];
                 
@@ -509,6 +524,7 @@
 
                 if ([ [[message elementForName:@"subject"] stringValue] isEqualToString:@"voice"]) {
                     //将字符串转换成nsdata
+                    /*
                     NSData* fileData =  [Base64 decodeString:msg];
                     NSString *docDir = [NSSearchPathForDirectoriesInDomains(
                                                                             NSDocumentDirectory,
@@ -522,7 +538,9 @@
                     
                     NSURL* urlVoiceFile= [NSURL fileURLWithPath:[docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.%@", [NSDate timeIntervalSinceReferenceDate] * 1000.0, @"caf"]]];
                     [fileData writeToURL:urlVoiceFile atomically:YES];
-                    messageEntity.content = [urlVoiceFile absoluteString];
+                    */
+                    messageEntity.statue=[NSNumber numberWithInt:-2];
+                    messageEntity.content = msg;
                     messageEntity.type = @"voice";
                 }
                 else if ([ [[message elementForName:@"subject"] stringValue] isEqualToString:@"image"]) {
@@ -590,6 +608,19 @@
     }
     return fetchedPerson;
 }
+
+-(void)fetchAllLoadingMessageToFailed{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"statue == %d ",0];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"MessageEntity"];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray *fetchedPersonArray = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    for(MessageEntity* messageEntity in fetchedPersonArray){
+        messageEntity.statue=[NSNumber numberWithInt:-1];
+    }
+    [self saveContext];
+}
+
 
 -(MessageEntity*)fetchMessageFromUqID:(NSString*)uqID messageId:(NSString*)messageId{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uqID=%@ and messageId=%@",uqID,messageId];

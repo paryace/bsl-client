@@ -98,7 +98,7 @@ typedef enum{
         [recordSettings setObject:[NSNumber numberWithInt: AVAudioQualityHigh] forKey: AVEncoderAudioQualityKey];
     }
     //获取document 目录
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) objectAtIndex: 0];
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex: 0];
     
     
     docDir=[docDir stringByAppendingPathComponent:[[[ShareAppDelegate xmpp].xmppStream myJID]bare]];
@@ -108,11 +108,11 @@ typedef enum{
     }
     
     
-    recordFile= [NSURL fileURLWithPath:[docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.%@", [NSDate timeIntervalSinceReferenceDate] * 1000.0, @"aac"]]];
+    recordFile= [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.%@", [NSDate timeIntervalSinceReferenceDate] * 1000.0, @"aac"]];
     
         
     NSError *error = nil;
-    audioRecorder = [[ AVAudioRecorder alloc] initWithURL:recordFile settings:recordSettings error:&error];
+    audioRecorder = [[ AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:recordFile] settings:recordSettings error:&error];
     audioRecorder.delegate=self;
     [audioRecorder prepareToRecord];
     [audioRecorder record];
@@ -178,7 +178,8 @@ typedef enum{
     [self stop];
     
     NSFileManager* fileManeger = [NSFileManager defaultManager];
-    [fileManeger removeItemAtURL:recordFile error:nil];
+    [fileManeger removeItemAtPath:recordFile error:nil];
+
     recordFile=nil;
 }
 

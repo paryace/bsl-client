@@ -55,11 +55,11 @@
 #import "IMServerAPI.h"
 #import "ChatLogic.h"
 
-#ifndef _DEBUG
+//#ifndef _DEBUG
 
-#define _DEBUG
+//#define _DEBUG
 
-#endif
+//#endif
 
 void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"CRASH: %@", exception);
@@ -203,12 +203,13 @@ void uncaughtExceptionHandler(NSException*exception){
         if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone){
             Login_IphoneViewController* controller=[[Login_IphoneViewController alloc] init];
            // self.window.rootViewController=controller;
-              [navControl pushViewController:controller animated:NO];
+              [self.navControl pushViewController:controller animated:NO];
             controller=nil;
         }else{
             Login_IpadViewController* controller = [[Login_IpadViewController alloc]initWithNibName:@"Login_IpadViewController" bundle:nil];
 //            self.window.rootViewController=controller;
 
+            
             [self.navControl pushViewController:controller animated:NO];
             controller=nil;
         }
@@ -572,7 +573,11 @@ void uncaughtExceptionHandler(NSException*exception){
         [self.navControl popToRootViewControllerAnimated:NO];
         
         MainViewViewController* main=[[MainViewViewController alloc] initWithNibName:@"MainViewViewController" bundle:nil];
-        [self.navControl pushViewController:main animated:NO];
+        main.navController=self.navControl;
+        //this isvery import
+        UIView* view=main.view;
+        view=nil;
+        //
         main=nil;
     }
 }

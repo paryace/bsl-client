@@ -7,7 +7,7 @@
 //
 
 #import "VoiceCell.h"
-#import "AsyncImageView.h"
+#import "ImageDownloadedView.h"
 
 #define MAX_WIDTH  180.0f
 
@@ -17,18 +17,20 @@ static UIImage* receiveHLImg=nil;
 static UIImage* senderImg=nil;
 static UIImage* senderHLImg=nil;
 
-@interface VoiceCell()<AsyncImageViewDelegate>
+@interface VoiceCell()
 
 @end
 
 @implementation VoiceCell
 
 @synthesize type;
+@synthesize status;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        status=-2;
         
         if(receiveImg==nil){
             receiveImg=[UIImage imageNamed:@"VOIPReceiverVoiceNodeBkg.png"];
@@ -53,17 +55,13 @@ static UIImage* senderHLImg=nil;
         self.selectionStyle=UITableViewCellSelectionStyleNone;
         
         
-        noHeaderView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NoHeaderImge.png"]];
-        CGRect rect=noHeaderView.frame;
-        rect.size=CGSizeMake(55.0f, 55.0f);
-        noHeaderView.frame=rect;
+        CGRect rect=CGRectMake(0.0f, 0.0f, 55.0f, 55.0f);
 
-        imageView=[[AsyncImageView alloc] initWithFrame:noHeaderView.frame];
-        //        imageView.radius=4.0f;
-        imageView.delegate=self;
-        [self addSubview:imageView];
         
-        [self addSubview:noHeaderView];
+        imageView=[[ImageDownloadedView alloc] initWithFrame:rect];
+        //        imageView.radius=4.0f;
+        imageView.loadingImageName=@"NoHeaderImge.png";
+        [self addSubview:imageView];
         
         
         nameLabel=[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, rect.size.width, 15.0f)];
@@ -103,14 +101,9 @@ static UIImage* senderHLImg=nil;
     return self;
 }
 
--(void)dealloc{
-    imageView.delegate=nil;
-}
-
 -(void)headerUrl:(NSString*)headerUrl{
-    noHeaderView.hidden=NO;
-    if([headerUrl length]>0)
-        [imageView loadImageWithURLString:headerUrl];
+    
+        [imageView setUrl:headerUrl];
     
 }
 
@@ -186,6 +179,41 @@ static UIImage* senderHLImg=nil;
 
 }
 
+-(void)setStatus:(int)value{
+    if(status==value)return;
+    status=value;
+    if(status==0){
+        [statusView removeFromSuperview];
+        statusView=nil;
+        UIActivityIndicatorView* __statusView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        __statusView.color=[UIColor blackColor];
+        __statusView.frame=CGRectMake(0.0f, 0.0f, 16.0f, 16.0f);
+        [self addSubview:__statusView];
+        [__statusView startAnimating];
+        statusView=__statusView;
+    }
+    else if(status==1){
+        [statusView removeFromSuperview];
+        statusView=nil;
+        UIImageView* __statusView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"privacy_tick.png"]];
+        [self addSubview:__statusView];
+        statusView=__statusView;
+    }
+    else if(status==-1){
+        [statusView removeFromSuperview];
+        statusView=nil;
+        UIImageView* __statusView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+        [self addSubview:__statusView];
+        statusView=__statusView;
+
+    }
+    else{
+        [statusView removeFromSuperview];
+        statusView=nil;
+
+    }
+}
+
 
 +(float)cellHeight:(NSBubbleType)type{
     return 90.0f;
@@ -226,6 +254,11 @@ static UIImage* senderHLImg=nil;
         voiceImageView.frame=rect;
         
         
+        rect=statusView.frame;
+        rect.origin.x=CGRectGetMaxX(button.frame)+5.0f;
+        rect.origin.y=CGRectGetMinY(button.frame)+(button.frame.size.height-rect.size.height)*0.5f;
+        statusView.frame=rect;
+        
     }
     else {
         CGRect rect=nameLabel.frame;
@@ -255,9 +288,12 @@ static UIImage* senderHLImg=nil;
         rect.origin.y=(button.frame.size.height-rect.size.height)*0.5f;
         voiceImageView.frame=rect;
 
+        
+        rect=statusView.frame;
+        rect.origin.x=CGRectGetMinX(button.frame)-rect.size.width-5.0f;
+        rect.origin.y=CGRectGetMinY(button.frame)+(button.frame.size.height-rect.size.height)*0.5f;
+        statusView.frame=rect;
     }
-    
-    noHeaderView.frame=imageView.frame;
 }
 
 
@@ -267,8 +303,5 @@ static UIImage* senderHLImg=nil;
 
 #pragma mark  asyncimage delegate
 
-- (void)asyncImageView:(AsyncImageView *)asyncImageView didLoadImageFormURL:(NSURL*)aURL{
-    noHeaderView.hidden=YES;
-}
 
 @end
