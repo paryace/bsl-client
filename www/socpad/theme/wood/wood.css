@@ -1,0 +1,16 @@
+html,body{
+	/*background-image: url(../../theme/wood/wood.jpg);*/
+}
+
+.leftContent {
+	/*background:-webkit-gradient(linear, 10% 20%, 100% 100%, from(#E2C093), to(#D9AF7D));*/
+}
+
+/*.middleContent {
+	background-color: rgba(232,232,232, 1);
+	background: rgba(232,232,232, 1);
+
+	-moz-box-shadow: 5px 0px 42px #D9AF7D;
+	-webkit-box-shadow: 5px 0px 42px #D9AF7D;
+	box-shadow: 5px 0px 42px #D9AF7D;
+}*/

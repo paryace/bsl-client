@@ -16,5 +16,5 @@
 
 -(void)removeCubeModuleIdentity:(NSString*)identity;
 
-
+    
 @end

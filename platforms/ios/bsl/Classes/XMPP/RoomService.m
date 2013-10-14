@@ -52,6 +52,7 @@
             @autoreleasepool {
                 
                 for(NSDictionary* dict in array){
+                    if(![dict isKindOfClass:[NSDictionary class]])continue;
                     NSString* jid=[dict objectForKey:@"roomId"];
                     NSString* userJid=[dict objectForKey:@"creator"];
                     NSString* roomName=[dict objectForKey:@"roomName"];

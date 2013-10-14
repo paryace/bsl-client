@@ -282,10 +282,12 @@
         @autoreleasepool {
             NSData* downloadData=[__request responseData];
             UIImage *rawImage = [[UIImage alloc] initWithData:downloadData];
+            /*
             CGSize size=CGSizeMake(420.0f, 600.0f);
             if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
                 size=CGSizeMake(800.0f, 600.0f);
             }
+             */
             if(rawImage!=nil ){
                 /*
                 if((rawImage.size.width>size.width || rawImage.size.height>size.height)){

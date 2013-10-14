@@ -278,7 +278,7 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
 -(void)tableView:(UITableView *)_tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    if([indexPath section]==1 && !self.isQuit){
+    if([indexPath section]==1 && !self.isQuit && isMyGroup){
         
         UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"修改群组名" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alert.alertViewStyle=UIAlertViewStylePlainTextInput;

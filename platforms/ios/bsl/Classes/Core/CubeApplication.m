@@ -18,7 +18,7 @@
 #import "AutoDownLoadRecord.h"
 #import "Reachability.h"
 
-
+NSString *const CubeSyncClickNotification = @"CubeSyncClickNotification";
 NSString *const CubeSyncStartedNotification = @"CubeSyncStartedNotification";
 NSString *const CubeSyncFinishedNotification = @"CubeSyncFinishedNotification";
 NSString *const CubeSyncFailedNotification = @"CubeSyncFailedNotification";

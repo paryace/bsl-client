@@ -358,18 +358,17 @@ var loadModuleList = function(plugin, action, type, callback) {
 					value.releaseNote = subStrByCnLen(value.releaseNote, 25);
 					// packageName
 
-<<<<<<< .mine
+
 					/*downloadFile(value.icon, packageName + "/moduleIcon", function(entry) {
 						value.icon = entry.fullPath;
 						console.log("下载成功 " + value.icon);
 					});*/
-=======
 					// downloadFile(value.icon, packageName + "/moduleIcon", function(entry) {
 					// 	// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
 					// 	value.icon = entry.fullPath;
 					// 	console.log("下载成功 " + value.icon);
 					// });
->>>>>>> .r4129
+
 
 					value.classname = key;
 					var moduleItemHtml = _.template(moduleItemTemplate, value);

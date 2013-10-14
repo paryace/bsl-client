@@ -31,6 +31,8 @@
 
 @interface MainViewViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,SkinViewDelegate,UIGestureRecognizerDelegate>{
     BOOL isFirst;
+    
+    CubeWebViewController *bCubeWebViewController;
 }
 @property (nonatomic,strong)  UIViewController * detailController;
 @property (nonatomic,strong)  UIViewController * mainController;
@@ -57,7 +59,8 @@
             self.extendedLayoutIncludesOpaqueBars = NO;
             self.modalPresentationCapturesStatusBarAppearance = NO;
         }
-        
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cubeSyncClick) name:CubeSyncClickNotification object:nil];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showView:) name:SHOW_DETAILVIEW object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSetting) name:@"SHOW_SETTING_VIEW" object:nil];
@@ -155,6 +158,7 @@
     skinView=nil;
 
     aCubeWebViewController=nil;
+    bCubeWebViewController=nil;
     self.detailController=nil;
     self.mainController=self;
     self.detailView=nil;
@@ -163,6 +167,8 @@
 }
 
 - (void)dealloc{
+    aCubeWebViewController=nil;
+    bCubeWebViewController=nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.mainController=self;
     
@@ -330,6 +336,12 @@
         [database executeUpdate:sql];
  
     });
+
+}
+
+-(void)cubeSyncClick{
+    [self dismissDetailViewController];
+    selectedTabIndex=-1;
 
 }
 
@@ -673,7 +685,9 @@
     frame.size.width =CGRectGetHeight(self.view.frame)/2+2;
     frame.size.height= CGRectGetWidth(self.view.frame);
     
-    __block CubeWebViewController *bCubeWebViewController  = [[CubeWebViewController alloc] init];
+    [bCubeWebViewController.view removeFromSuperview];
+    bCubeWebViewController=nil;
+    bCubeWebViewController  = [[CubeWebViewController alloc] init];
     bCubeWebViewController.title = module.name;
     [bCubeWebViewController loadWebPageWithModule:module  frame:frame  didFinishBlock: ^(){
         //如果webView加载成功  这显示放大缩小按钮
@@ -691,14 +705,13 @@
             fullScreanBtn.alpha = 0.6;
             [self showDetailViewController:bCubeWebViewController];
         }
+        bCubeWebViewController=nil;
     }didErrorBlock:^(){
         NSLog(@"error loading %@", bCubeWebViewController.webView.request.URL);
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@模块加载失败。",aCubeWebViewController.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
+        bCubeWebViewController=nil;
     }];
-    
-    
-    
 }
 
 

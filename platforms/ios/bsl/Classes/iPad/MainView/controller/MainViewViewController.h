@@ -11,7 +11,7 @@
 @class CubeWebViewController;
 @class SkinView;
 @interface MainViewViewController : UIViewController{
-    UIViewController * detailController;
+    UIViewController * detaselectedTabIndexilController;
     UIViewController * mainController;
     CubeWebViewController *aCubeWebViewController ;
     

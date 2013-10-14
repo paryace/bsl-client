@@ -29,5 +29,6 @@ static NSMutableDictionary* moduleDownDictionary;
 -(void)removeCubeModuleIdentity:(NSString*)identity{
     [moduleDownDictionary setValue: [NSNumber numberWithBool:NO] forKey:identity];
 }
+    
 
 @end

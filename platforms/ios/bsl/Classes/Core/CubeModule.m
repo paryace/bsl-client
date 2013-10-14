@@ -161,7 +161,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
            [httpConnection setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
                [self setProgress:totalBytesExpectedToRead/totalBytesRead];
            }];
-            [httpConnection start];
+            [httpConnection start]; 
             [self downloadStarted];
         }
     }
@@ -187,7 +187,8 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
 
 -(BOOL)uninstall
 {
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[[self runtimeURL] path]]) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[[self runtimeURL] path]]) {
+         [[NSFileManager defaultManager] removeItemAtPath:[[self runtimeURL] path] error:nil];
         return YES;
     }
     return  YES;
@@ -203,7 +204,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
 
 -(void)downloadStarted
 {
-    [[CudeModuleDownDictionary shareModuleDownDictionary] removeObjectForKey:self.identifier];
+    [[CudeModuleDownDictionary shareModuleDownDictionary] setObject:[NSNumber numberWithBool:YES] forKey:self.identifier];
     NSLog(@"开始下载模块");
     self.isDownloading = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleDownloadDidStartNotification object:self];

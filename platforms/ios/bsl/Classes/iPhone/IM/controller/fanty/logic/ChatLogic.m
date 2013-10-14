@@ -318,6 +318,17 @@
     [appDelegate.xmpp saveContext];
 
     for(NSDictionary* dict in users){
+        if(![dict isKindOfClass:[NSDictionary class]])continue;
+        
+        NSString* username=[dict objectForKey:@"username"];
+        NSString* jid=[dict objectForKey:@"jid"];
+        
+        if([[jid class] isSubclassOfClass:[NSNull class]]  || [jid length]<1)
+            continue;
+
+        if([[username class] isSubclassOfClass:[NSNull class]]  || [username length]<1)continue;
+
+        
         NSManagedObject *newManagedObject=[NSEntityDescription insertNewObjectForEntityForName:@"FaviorUserInfo" inManagedObjectContext:appDelegate.xmpp.managedObjectContext];
         
         /*
@@ -325,8 +336,9 @@
         if(![[group class] isSubclassOfClass:[NSNull class]] &&[group length]>0)
             [newManagedObject setValue:group forKey:@"userGroup"];
         */
-        [newManagedObject setValue:[dict objectForKey:@"username"] forKey:@"userName"];
-        [newManagedObject setValue:[dict objectForKey:@"jid"] forKey:@"userJid"];
+        
+        [newManagedObject setValue:username forKey:@"userName"];
+        [newManagedObject setValue:jid forKey:@"userJid"];
         
         /*
         NSString* subscription=[dict objectForKey:@"userSubscription"];
@@ -425,9 +437,16 @@
     [self.request setCompletionBlock:^{
         
         NSDictionary *dict = [[__request responseString] objectFromJSONString];
+        NSString *fileId = [dict valueForKey:@"id"];
+        
+        if(![fileId isKindOfClass:[NSString class]] || [fileId length]<1){
+            if(finish!=nil)
+                finish(nil,nil);
+            [objSelf.request cancel];
+            return ;
+        }
         
         NSData *imageData = [[__request userInfo] valueForKey:@"file"];
-        NSString *fileId = [dict valueForKey:@"id"];
 
         
         NSString* path=[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];

@@ -24,9 +24,16 @@
 #import "DownLoadingDetialViewController.h"
 #import "SettingMainViewController.h"
 
+#import "KKProgressToolbar.h"
+#import "CudeModuleDownDictionary.h"
 
-@interface Main_IphoneViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,UIGestureRecognizerDelegate>{
+
+@interface Main_IphoneViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,UIGestureRecognizerDelegate,KKProgressToolbarDelegate>{
+    KKProgressToolbar* statusToolbar;
     BOOL isFirst;
+    
+    CubeWebViewController *bCubeWebViewController;
+    int allDownCount;
 }
 
 @property(strong,nonatomic) id selfObj;
@@ -101,22 +108,23 @@
         [alertView show];
         self.navController=nil;
         self.selfObj=nil;
-        
     }];
 	
+    
 }
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    [aCubeWebViewController.view removeFromSuperview];
     aCubeWebViewController=nil;
+    
+    bCubeWebViewController=nil;
     self.selectedModule=nil;
 }
 
 
 - (void)dealloc{
-    [aCubeWebViewController.view removeFromSuperview];
     aCubeWebViewController=nil;
+    bCubeWebViewController=nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.selectedModule=nil;
 }
@@ -133,7 +141,6 @@
     if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate) withObject:nil afterDelay:0.8f];
     }
-
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -157,7 +164,6 @@
                 {
                     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"receiveMessage('%@',%d,true);",moduleIdentifier,count]];
                 }
-                
             }
         }
     }
@@ -180,7 +186,7 @@
 
 -(void)checkModules{
     //检测是否需要自动安装
-    [self autoShowModule];
+    
     
     @autoreleasepool {
 #ifndef MOBILE_BSL
@@ -503,7 +509,9 @@
     frame.size.width =CGRectGetHeight(self.view.frame)/2+2;
     frame.size.height= CGRectGetWidth(self.view.frame);
     
-    CubeWebViewController *bCubeWebViewController  = [[CubeWebViewController alloc] init];
+    [bCubeWebViewController.view removeFromSuperview];
+    bCubeWebViewController=nil;
+    bCubeWebViewController  = [[CubeWebViewController alloc] init];
     //记录html5模块点击begin
     [OperateLog recordOperateLog:module];
     //end
@@ -513,10 +521,12 @@
         bCubeWebViewController.webView.scrollView.bounces=NO;
         [self.navigationController pushViewController:bCubeWebViewController animated:YES];
         bCubeWebViewController.closeButton.hidden = NO;
+        bCubeWebViewController=nil;
     }didErrorBlock:^(){
         NSLog(@"error loading %@", bCubeWebViewController.webView.request.URL);
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@模块加载失败。",bCubeWebViewController.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
+        bCubeWebViewController=nil;
     }];
 }
 
@@ -591,14 +601,25 @@
             //                [copyArray release];
         }
         //        });
-        if(buttonIndex == 0){
-            if(downloadArray && downloadArray.count>0){
+        if(buttonIndex == 0)
+        {
+            
+            if(downloadArray && downloadArray.count>0)
+            {
+               
+                allDownCount = downloadArray.count;
                 for(CubeModule *module in downloadArray){
                     module.isDownloading = YES;
                     [[CubeApplication currentApplication] installModule:module];
                 }
                 [[[CubeApplication currentApplication] downloadingModules] removeAllObjects];
                 
+                CGRect statusToolbarFrame = CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, 44);
+                statusToolbar = [[KKProgressToolbar alloc] initWithFrame:statusToolbarFrame];
+                statusToolbar.actionDelegate = self;
+                [self.view addSubview:statusToolbar];
+                
+                 [self startUILoading];
             }
             return;
             
@@ -645,9 +666,7 @@
             am.isDownloading = YES;
             [[CubeApplication currentApplication] installModule:am];
         }
-        
     }
-    
 }
 
 
@@ -698,11 +717,20 @@
     NSString* JSO=   [[NSString alloc] initWithData:moduleDictionary.JSONData encoding:NSUTF8StringEncoding];
     NSString * javaScript = [NSString stringWithFormat:@"refreshModule('%@','install','%@');",m.identifier,JSO];
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
-    
 }
 
 -(void)moduleDidInstalled:(NSNotification*)note
 {
+    if (statusToolbar) {
+        int count = [self getDownMouleCount];
+        NSLog(@"count =%d , allcount =%d   last = %d",count,allDownCount,allDownCount - count);
+        if ( count <= 0 ) {
+            [self stopUILoading];
+        }else{
+            [self startUILoading];
+        }
+    }
+    
     CubeModule *newModule = [note object];
     if (newModule) {
         @autoreleasepool {
@@ -723,9 +751,11 @@
             }
             
             JSO=nil;
-            
         }
     }
+    
+    
+    
 }
 
 
@@ -785,6 +815,31 @@
     }
     return NO;
 }
+    
+    
+#pragma mark -- KKProgressToolbar delegate
+- (void)didCancelButtonPressed:(KKProgressToolbar *)toolbar {
+    [statusToolbar hide:YES completion:^(BOOL finished) {
+        
+    }];
+}
 
-
+-(void)startUILoading{
+    int count =[self getDownMouleCount];
+    statusToolbar.statusLabel.text = [NSString stringWithFormat:@"正在下载... %d/%d",(allDownCount - count) ,allDownCount];
+    statusToolbar.progressBar.progress = count/allDownCount;
+    [statusToolbar show:YES completion:^(BOOL finished) {
+    }];
+}
+    
+-(void)stopUILoading{
+    [statusToolbar hide:YES completion:^(BOOL finished) {
+        [statusToolbar removeFromSuperview];
+        statusToolbar = nil;
+    }];
+}
+-(int)getDownMouleCount{
+    return [[CudeModuleDownDictionary shareModuleDownDictionary]  count];
+}
+    
 @end

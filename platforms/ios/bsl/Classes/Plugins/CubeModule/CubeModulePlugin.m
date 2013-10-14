@@ -115,10 +115,8 @@
             
             NSArray* eachArray = [moduleCategoryDictionary objectForKey:category];
             NSMutableArray* mudoleArray = [[NSMutableArray alloc]init];
-            
             for (CubeModule *each in eachArray) {
                 if (!hide || !each.hidden) {
-                    
                     [mudoleArray addObject:  [self modueToJson:each]];
                 }
             }

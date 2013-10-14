@@ -1,0 +1,7 @@
+@media screen and (max-device-width:320px){
+	.searchContent .inputContent #searchInput{
+		padding-left: 2.1em;
+		width: 150px;
+		min-width: 150px;
+	}
+}

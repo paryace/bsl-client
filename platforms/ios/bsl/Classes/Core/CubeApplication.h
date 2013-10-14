@@ -63,6 +63,7 @@
 
 @end
 
+extern NSString* const CubeSyncClickNotification;
 extern NSString* const CubeSyncStartedNotification;
 extern NSString* const CubeSyncFinishedNotification;
 extern NSString* const CubeTokenTimeOutNotification;

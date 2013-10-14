@@ -106,6 +106,10 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.cdvCommand.callbackId];
 }
 
+-(void)fragmenthide:(CDVInvokedUrlCommand*)command{
+    NSLog(@"mainSync click............");
+    
+}
 
 //同步数据
 -(void)sync:(CDVInvokedUrlCommand*)command{
@@ -118,6 +122,9 @@
     self.cdvCommand = command;
     CubeApplication *cubeApp = [CubeApplication currentApplication];
     [cubeApp sync];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncClickNotification object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchTokemTimeOurInfoForFilter) name:CubeTokenTimeOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeAppUpdateFinishNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeSyncFailedNotification object:nil];

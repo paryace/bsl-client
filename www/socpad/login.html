@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+  <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Le styles -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
+  <!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="vendor/bootstrap/ico/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="vendor/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="vendor/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="vendor/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="vendor/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+  <style></style>
+</head>
+<body>
+  <div id="loginContent" class="container">
+
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="span4"></div>
+      <div class="span4" style="margin-top:50px;">
+        <div>
+          <img src="img/logo4.png" alt="logo"></div>
+        <div id="user_div"style="margin-top:20px;">
+         
+              <input id"username" type="text" class="input-block-level" id="username" name="username" value="" placeholder="账号：请输入账号">
+              <div id="username_del" class="del_content">
+                  <img id="username_del" src="img/app_search_close.png"></img>
+             
+               </div>
+         
+              <input id="password" class="input-block-level" id="password" name="password" type="password" value="" placeholder="密码：请输入密码">
+              <div id="password_del" class="del_content">
+                <img id="password_del" src="img/app_search_close.png"></img>
+              </div>
+         
+          
+            
+        </div>
+
+        <!--    <div class="cube-form-fieldset" style="margin-top:380px;">
+        <div>
+          <div class="cube-form-field">
+            <div class="cube-form-label">
+              <span class="icon-user"></span>
+              &nbsp;&nbsp;&nbsp;&nbsp;帐号:
+            </div>
+            <div class="cube-form-textfield">
+              <input id="username" name="username" value="" placeholder="请输入12位数字"></div>
+          </div>
+          <div class="cube-form-field">
+            <div class="cube-form-label">
+              <span class="icon-lock"></span>
+              &nbsp;&nbsp;&nbsp;&nbsp;密码:
+            </div>
+            <div class="cube-form-textfield">
+              <input id="password" name="password" type="password" value="" placeholder="请输入6位密码"></div>
+          </div>
+        </div>
+      </div>
+      -->
+      <div class="rememberMe">
+        <input id="isRemember" type="checkbox" value="true">
+        <span style="display: block;margin-top:-20px;margin-left: 30px;">记住我</span>
+      </div>
+      <div class="loginBtn">
+        <button id="LoginBtn" class="btn btn-block" type="button">登录</button>
+      </div>
+    </div>
+    <div class="span4"></div>
+  </div>
+
+</div>
+<!-- /container -->
+<script type="text/javascript" type="text/javascript" src="../cordova.js"></script>
+<script type="text/javascript" src="vendor/zepto/zepto.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>
