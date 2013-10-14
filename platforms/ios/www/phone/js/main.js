@@ -445,7 +445,7 @@ $('#top_left_btn')
                                'none');
        
        
-       $('#title').html("变色龙");
+       $('#title').html("南航移动应用");
        $('#manager_btn').show();
        $('#top_left_btn .set_img').show();
        // 删除左边按键class标志

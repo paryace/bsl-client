@@ -594,9 +594,9 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
         else
         {
             //测试用删除掉
-            if([remote_module.local isEqualToString:@"FilghtCaleMenu"])
-                NSLog(@"%@",remote_module.local);
-            remote_module.icon = [NSString stringWithFormat:@"local:%@ViewController.png",remote_module.local ];
+//            if([remote_module.local isEqualToString:@"FilghtCaleMenu"])
+//                NSLog(@"%@",remote_module.local);
+//            remote_module.icon = [NSString stringWithFormat:@"local:%@ViewController.png",remote_module.local ];
         }
         //获取网络版本CubeModule
         CubeModule *local_module = [self moduleForIdentifier:remote_module.identifier];

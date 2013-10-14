@@ -291,11 +291,11 @@
 		18E9C5741803AB1200B874B8 /* cb_glossy_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3C61803AB1100B874B8 /* cb_glossy_off@2x.png */; };
 		18E9C5751803AB1200B874B8 /* cb_glossy_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3C71803AB1100B874B8 /* cb_glossy_on.png */; };
 		18E9C5761803AB1200B874B8 /* cb_glossy_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3C81803AB1100B874B8 /* cb_glossy_on@2x.png */; };
-		18E9C5771803AB1200B874B8 /* EbookListViewController.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3CE1803AB1100B874B8 /* EbookListViewController.png */; };
-		18E9C5781803AB1200B874B8 /* FilghtCaleMenuViewController.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3CF1803AB1100B874B8 /* FilghtCaleMenuViewController.png */; };
-		18E9C5791803AB1200B874B8 /* FlightPlanViewController.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3D01803AB1100B874B8 /* FlightPlanViewController.png */; };
-		18E9C57A1803AB1200B874B8 /* FlightScheduleViewController.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3D11803AB1100B874B8 /* FlightScheduleViewController.png */; };
-		18E9C57B1803AB1200B874B8 /* FPTaskListViewController.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3D21803AB1100B874B8 /* FPTaskListViewController.png */; };
+		18E9C5771803AB1200B874B8 /* EbookList.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3CE1803AB1100B874B8 /* EbookList.png */; };
+		18E9C5781803AB1200B874B8 /* FilghtCaleMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3CF1803AB1100B874B8 /* FilghtCaleMenu.png */; };
+		18E9C5791803AB1200B874B8 /* FlightPlan.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3D01803AB1100B874B8 /* FlightPlan.png */; };
+		18E9C57A1803AB1200B874B8 /* FlightSchedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3D11803AB1100B874B8 /* FlightSchedule.png */; };
+		18E9C57B1803AB1200B874B8 /* FPTaskList.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3D21803AB1100B874B8 /* FPTaskList.png */; };
 		18E9C57C1803AB1200B874B8 /* Icon_member_56X56.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3D31803AB1100B874B8 /* Icon_member_56X56.png */; };
 		18E9C57D1803AB1200B874B8 /* NavigationBar_BackG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3DB1803AB1100B874B8 /* NavigationBar_BackG.png */; };
 		18E9C57E1803AB1200B874B8 /* NavigationBar_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3DC1803AB1100B874B8 /* NavigationBar_BG.png */; };
@@ -3285,11 +3285,11 @@
 		18E9C3C61803AB1100B874B8 /* cb_glossy_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_glossy_off@2x.png"; sourceTree = "<group>"; };
 		18E9C3C71803AB1100B874B8 /* cb_glossy_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_glossy_on.png; sourceTree = "<group>"; };
 		18E9C3C81803AB1100B874B8 /* cb_glossy_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_glossy_on@2x.png"; sourceTree = "<group>"; };
-		18E9C3CE1803AB1100B874B8 /* EbookListViewController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EbookListViewController.png; sourceTree = "<group>"; };
-		18E9C3CF1803AB1100B874B8 /* FilghtCaleMenuViewController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FilghtCaleMenuViewController.png; sourceTree = "<group>"; };
-		18E9C3D01803AB1100B874B8 /* FlightPlanViewController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlightPlanViewController.png; sourceTree = "<group>"; };
-		18E9C3D11803AB1100B874B8 /* FlightScheduleViewController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlightScheduleViewController.png; sourceTree = "<group>"; };
-		18E9C3D21803AB1100B874B8 /* FPTaskListViewController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPTaskListViewController.png; sourceTree = "<group>"; };
+		18E9C3CE1803AB1100B874B8 /* EbookList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EbookList.png; sourceTree = "<group>"; };
+		18E9C3CF1803AB1100B874B8 /* FilghtCaleMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FilghtCaleMenu.png; sourceTree = "<group>"; };
+		18E9C3D01803AB1100B874B8 /* FlightPlan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlightPlan.png; sourceTree = "<group>"; };
+		18E9C3D11803AB1100B874B8 /* FlightSchedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlightSchedule.png; sourceTree = "<group>"; };
+		18E9C3D21803AB1100B874B8 /* FPTaskList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPTaskList.png; sourceTree = "<group>"; };
 		18E9C3D31803AB1100B874B8 /* Icon_member_56X56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_member_56X56.png; sourceTree = "<group>"; };
 		18E9C3DB1803AB1100B874B8 /* NavigationBar_BackG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavigationBar_BackG.png; sourceTree = "<group>"; };
 		18E9C3DC1803AB1100B874B8 /* NavigationBar_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavigationBar_BG.png; sourceTree = "<group>"; };
@@ -5165,11 +5165,11 @@
 		18E9C3CD1803AB1100B874B8 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				18E9C3CE1803AB1100B874B8 /* EbookListViewController.png */,
-				18E9C3CF1803AB1100B874B8 /* FilghtCaleMenuViewController.png */,
-				18E9C3D01803AB1100B874B8 /* FlightPlanViewController.png */,
-				18E9C3D11803AB1100B874B8 /* FlightScheduleViewController.png */,
-				18E9C3D21803AB1100B874B8 /* FPTaskListViewController.png */,
+				18E9C3CE1803AB1100B874B8 /* EbookList.png */,
+				18E9C3CF1803AB1100B874B8 /* FilghtCaleMenu.png */,
+				18E9C3D01803AB1100B874B8 /* FlightPlan.png */,
+				18E9C3D11803AB1100B874B8 /* FlightSchedule.png */,
+				18E9C3D21803AB1100B874B8 /* FPTaskList.png */,
 				18E9C3D31803AB1100B874B8 /* Icon_member_56X56.png */,
 			);
 			path = Icon;
@@ -7709,8 +7709,6 @@
 				18E9C5581803AB1200B874B8 /* Button_Blue_X2.png in Resources */,
 				18E9C5891803AB1200B874B8 /* 离线浏览_phone.png in Resources */,
 				18E9C5731803AB1200B874B8 /* cb_glossy_off.png in Resources */,
-				39D9E81717F27C03001ED6F5 /* ModuleCell.xib in Resources */,
-				39D9E81817F27C03001ED6F5 /* ModulesViewController.xib in Resources */,
 				39D9E81917F27C03001ED6F5 /* Login_IpadViewController.xib in Resources */,
 				39D9E81A17F27C03001ED6F5 /* MainViewViewController.xib in Resources */,
 				39D9E81B17F27C03001ED6F5 /* DetailView.xib in Resources */,
@@ -7769,7 +7767,7 @@
 				39D9E84717F27C03001ED6F5 /* iphoneLadingViewNew.xib in Resources */,
 				39D9E84817F27C03001ED6F5 /* iphoneMsgListCell.xib in Resources */,
 				39D9E84917F27C03001ED6F5 /* local_icon.png in Resources */,
-				18E9C5781803AB1200B874B8 /* FilghtCaleMenuViewController.png in Resources */,
+				18E9C5781803AB1200B874B8 /* FilghtCaleMenu.png in Resources */,
 				18E9C5761803AB1200B874B8 /* cb_glossy_on@2x.png in Resources */,
 				18E9C4A51803AB1200B874B8 /* FPDocListViewController_Phone.xib in Resources */,
 				39D9E84A17F27C03001ED6F5 /* installbtn_installed.png in Resources */,
@@ -7811,7 +7809,7 @@
 				39D9E86B17F27C03001ED6F5 /* grid_background@2x.png in Resources */,
 				39D9E86C17F27C03001ED6F5 /* add_friend_icon.png in Resources */,
 				39D9E86D17F27C03001ED6F5 /* Add_Module_Icon.png in Resources */,
-				18E9C57A1803AB1200B874B8 /* FlightScheduleViewController.png in Resources */,
+				18E9C57A1803AB1200B874B8 /* FlightSchedule.png in Resources */,
 				39D9E86E17F27C03001ED6F5 /* TypeSelectorBtnHL_Black@2x.png in Resources */,
 				39D9E86F17F27C03001ED6F5 /* all_friends_icon_clicked.png in Resources */,
 				18E9C5631803AB1200B874B8 /* Button_Phone_Consult.png in Resources */,
@@ -8057,7 +8055,7 @@
 				39D9E91A17F27C03001ED6F5 /* StarsBackground.png in Resources */,
 				39F23A8F1805B2520035FCF8 /* Default@2x.png in Resources */,
 				39D9E91B17F27C03001ED6F5 /* f089.png in Resources */,
-				18E9C5791803AB1200B874B8 /* FlightPlanViewController.png in Resources */,
+				18E9C5791803AB1200B874B8 /* FlightPlan.png in Resources */,
 				39D9E91C17F27C03001ED6F5 /* f090.png in Resources */,
 				39D9E91D17F27C03001ED6F5 /* f091.png in Resources */,
 				39D9E91E17F27C03001ED6F5 /* switch_btn_right_active@2x.png in Resources */,
@@ -8123,7 +8121,7 @@
 				39D9E94A17F27C03001ED6F5 /* login.png in Resources */,
 				39D9E94B17F27C03001ED6F5 /* fullBtn1.png in Resources */,
 				39D9E94C17F27C03001ED6F5 /* login_back-568h@2x.png in Resources */,
-				18E9C5771803AB1200B874B8 /* EbookListViewController.png in Resources */,
+				18E9C5771803AB1200B874B8 /* EbookList.png in Resources */,
 				18E9C57D1803AB1200B874B8 /* NavigationBar_BackG.png in Resources */,
 				39D9E94D17F27C03001ED6F5 /* login_back.png in Resources */,
 				39D9E94E17F27C03001ED6F5 /* Login_Background_Landscape.jpg in Resources */,
@@ -8233,7 +8231,7 @@
 				39D9E99D17F27C03001ED6F5 /* emotions.png in Resources */,
 				39D9E99F17F27C03001ED6F5 /* nav_leftbtn_nor.png in Resources */,
 				39D9E9A017F27C03001ED6F5 /* menu_new_background.png in Resources */,
-				18E9C57B1803AB1200B874B8 /* FPTaskListViewController.png in Resources */,
+				18E9C57B1803AB1200B874B8 /* FPTaskList.png in Resources */,
 				39D9E9A117F27C03001ED6F5 /* chatroom_female_outline.jpg in Resources */,
 				39F23A741805B2520035FCF8 /* 114.png in Resources */,
 				39D9E9A217F27C03001ED6F5 /* chatroom_male_online.jpg in Resources */,
@@ -9524,8 +9522,6 @@
 				18E9C4911803AB1200B874B8 /* FPHealthDeclarationTableViewCell.m in Sources */,
 				18E9C4741803AB1200B874B8 /* Fuel.m in Sources */,
 				18E9C59E1803AB1200B874B8 /* CJSONSerializedData.m in Sources */,
-				39D9E9CB17F27C03001ED6F5 /* ModuleCell.m in Sources */,
-				39D9E9CC17F27C03001ED6F5 /* ModulesViewController.m in Sources */,
 				18E9C4E41803AB1200B874B8 /* ExamInfo.m in Sources */,
 				18E9C4F11803AB1200B874B8 /* User.m in Sources */,
 				39D9E9CD17F27C03001ED6F5 /* OperateLog.m in Sources */,
@@ -9668,7 +9664,6 @@
 				18E9C4C21803AB1200B874B8 /* FlightTaskViewController.m in Sources */,
 				18E9C5B01803AB1200B874B8 /* PilotTabBarViewController.m in Sources */,
 				18E9C5091803AB1200B874B8 /* ReaderThumbQueue.m in Sources */,
-				39D9EA0617F27C03001ED6F5 /* ChatRoomMessage.m in Sources */,
 				39D9EA0717F27C03001ED6F5 /* IMServerAPI.m in Sources */,
 				18E9C4A81803AB1200B874B8 /* FPOtherTaskViewController.m in Sources */,
 				18E9C4DE1803AB1200B874B8 /* CabinOrder.m in Sources */,
@@ -9776,7 +9771,6 @@
 				39D9EA3C17F27C03001ED6F5 /* CustomNavigationBar.m in Sources */,
 				18E9C5251803AB1200B874B8 /* PDFChatperViewController.m in Sources */,
 				18E9C5AB1803AB1200B874B8 /* NSData+Hex.m in Sources */,
-				39D9EA3D17F27C03001ED6F5 /* KeyboardToolbar.m in Sources */,
 				39D9EA3E17F27C03001ED6F5 /* NSData+Hex.m in Sources */,
 				18E9C50F1803AB1200B874B8 /* ThumbsMainToolbar.m in Sources */,
 				18E9C5191803AB1200B874B8 /* FontFile.m in Sources */,
