@@ -80,9 +80,24 @@ var updateProgress = function(identifier, count) {
 			$(".module_div ul li .module_li_img .progress[identifier='" + identifier + "']").css('display', 'block');
 		}
 		$(".module_div ul li .module_li_img .progress[identifier='" + identifier + "'] .bar").css('width', count + "%");
+
+		var $crud_btn_2 = $(".module_li .curd_btn[identifier='" + identifier + "']");
+		console.log("adafasdfasfadsfasdfsfsdfsfasfasfsdfsdaf");
+		var btn_title_2 = $crud_btn_2.html();
+		console.log("adfasfasdfasdfdadsfs "+btn_title_2);
+		if (btn_title_2 == "安装") {
+			$crud_btn_2.html("正在安装");
+		} else if (btn_title_2 == "删除") {
+			$crud_btn_2.html("正在删除");
+		} else if (btn_title_2 == "更新") {
+			$crud_btn_2.html("正在更新");
+		}
+		$crud_btn_2.attr("disabled");
+
+
+
 	} else if (count == 101) {
 		$(".module_div ul li .module_li_img .progress[identifier='" + identifier + "']").css('display', 'none');
-
 
 
 		var $crud_btn = $(".module_li .curd_btn[identifier='" + identifier + "']");
@@ -96,7 +111,6 @@ var updateProgress = function(identifier, count) {
 			$crud_btn.html("更新");
 		}
 		$crud_btn.removeAttr("disabled");
-
 
 	}
 
@@ -823,6 +837,7 @@ $(".buttomContent .buttom_btn_group .btn").click(function() {
 			if ($('#listview_btn').hasClass('active')) {
 				listLayout();
 			}
+
 			if (myScroll) {
 				myScroll.refresh();
 			}

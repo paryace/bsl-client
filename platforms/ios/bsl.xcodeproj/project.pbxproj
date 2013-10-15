@@ -506,13 +506,10 @@
 		39D9E83617F27C03001ED6F5 /* iphoneMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D802C17E8BFBA0067A023 /* iphoneMenuView.xib */; };
 		39D9E83717F27C03001ED6F5 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D802F17E8BFBA0067A023 /* MenuView.xib */; };
 		39D9E83817F27C03001ED6F5 /* XMPPShowImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80C617E8BFBA0067A023 /* XMPPShowImageViewController.xib */; };
-		39D9E83917F27C03001ED6F5 /* GroupPeopleViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D517E8BFBA0067A023 /* GroupPeopleViewViewController.xib */; };
 		39D9E83A17F27C03001ED6F5 /* pic_bg_03.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9B17F007FC00F9CA68 /* pic_bg_03.png */; };
 		39D9E83B17F27C03001ED6F5 /* local_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7417F007FC00F9CA68 /* local_pic.png */; };
 		39D9E83C17F27C03001ED6F5 /* VoiceSearchLoading004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626317EE898300C84A6A /* VoiceSearchLoading004@2x.png */; };
-		39D9E83D17F27C03001ED6F5 /* IMFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D817E8BFBA0067A023 /* IMFriendsCell.xib */; };
 		39D9E83E17F27C03001ED6F5 /* options_close@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9517F007FC00F9CA68 /* options_close@simple.png */; };
-		39D9E83F17F27C03001ED6F5 /* MultiSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80DD17E8BFBA0067A023 /* MultiSelectTableViewCell.xib */; };
 		39D9E84017F27C03001ED6F5 /* feedback_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */; };
 		39D9E84117F27C03001ED6F5 /* menu_button3.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7B17F007FC00F9CA68 /* menu_button3.png */; };
 		39D9E84217F27C03001ED6F5 /* iphoneLandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EA17E8BFBA0067A023 /* iphoneLandingViewController.xib */; };
@@ -947,11 +944,7 @@
 		39D9EA0417F27C03001ED6F5 /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BC17E8BFBA0067A023 /* UIScrollView+SpiralPullToRefresh.m */; };
 		39D9EA0517F27C03001ED6F5 /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
 		39D9EA0717F27C03001ED6F5 /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
-		39D9EA0817F27C03001ED6F5 /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
-		39D9EA0917F27C03001ED6F5 /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
-		39D9EA0A17F27C03001ED6F5 /* IMFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D717E8BFBA0067A023 /* IMFriendsCell.m */; };
 		39D9EA0B17F27C03001ED6F5 /* MRZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DA17E8BFBA0067A023 /* MRZoomScrollView.m */; };
-		39D9EA0C17F27C03001ED6F5 /* MultiSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DC17E8BFBA0067A023 /* MultiSelectTableViewCell.m */; };
 		39D9EA0D17F27C03001ED6F5 /* MySelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DF17E8BFBA0067A023 /* MySelfView.m */; };
 		39D9EA0E17F27C03001ED6F5 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E117E8BFBA0067A023 /* SwipeView.m */; };
 		39D9EA1117F27C03001ED6F5 /* iphoneLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E917E8BFBA0067A023 /* iphoneLandingViewController.m */; };
@@ -1092,13 +1085,10 @@
 		39E0511117F00AEA00BCF7F8 /* iphoneMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D802C17E8BFBA0067A023 /* iphoneMenuView.xib */; };
 		39E0511217F00AEA00BCF7F8 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D802F17E8BFBA0067A023 /* MenuView.xib */; };
 		39E0511417F00AEA00BCF7F8 /* XMPPShowImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80C617E8BFBA0067A023 /* XMPPShowImageViewController.xib */; };
-		39E0511617F00AEA00BCF7F8 /* GroupPeopleViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D517E8BFBA0067A023 /* GroupPeopleViewViewController.xib */; };
 		39E0511717F00AEA00BCF7F8 /* pic_bg_03.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9B17F007FC00F9CA68 /* pic_bg_03.png */; };
 		39E0511817F00AEA00BCF7F8 /* local_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7417F007FC00F9CA68 /* local_pic.png */; };
 		39E0511917F00AEA00BCF7F8 /* VoiceSearchLoading004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626317EE898300C84A6A /* VoiceSearchLoading004@2x.png */; };
-		39E0511A17F00AEA00BCF7F8 /* IMFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D817E8BFBA0067A023 /* IMFriendsCell.xib */; };
 		39E0511B17F00AEA00BCF7F8 /* options_close@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9517F007FC00F9CA68 /* options_close@simple.png */; };
-		39E0511C17F00AEA00BCF7F8 /* MultiSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80DD17E8BFBA0067A023 /* MultiSelectTableViewCell.xib */; };
 		39E0511D17F00AEA00BCF7F8 /* feedback_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */; };
 		39E0511E17F00AEA00BCF7F8 /* menu_button3.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7B17F007FC00F9CA68 /* menu_button3.png */; };
 		39E0511F17F00AEA00BCF7F8 /* iphoneLandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EA17E8BFBA0067A023 /* iphoneLandingViewController.xib */; };
@@ -1530,11 +1520,7 @@
 		39E052E117F00AEA00BCF7F8 /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BC17E8BFBA0067A023 /* UIScrollView+SpiralPullToRefresh.m */; };
 		39E052E217F00AEA00BCF7F8 /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
 		39E052E517F00AEA00BCF7F8 /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
-		39E052E617F00AEA00BCF7F8 /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
-		39E052E717F00AEA00BCF7F8 /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
-		39E052E817F00AEA00BCF7F8 /* IMFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D717E8BFBA0067A023 /* IMFriendsCell.m */; };
 		39E052E917F00AEA00BCF7F8 /* MRZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DA17E8BFBA0067A023 /* MRZoomScrollView.m */; };
-		39E052EA17F00AEA00BCF7F8 /* MultiSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DC17E8BFBA0067A023 /* MultiSelectTableViewCell.m */; };
 		39E052EB17F00AEA00BCF7F8 /* MySelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DF17E8BFBA0067A023 /* MySelfView.m */; };
 		39E052EC17F00AEA00BCF7F8 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E117E8BFBA0067A023 /* SwipeView.m */; };
 		39E052EF17F00AEA00BCF7F8 /* iphoneLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E917E8BFBA0067A023 /* iphoneLandingViewController.m */; };
@@ -1742,13 +1728,10 @@
 		39FF09CD17F13CBB0086B76C /* iphoneMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D802C17E8BFBA0067A023 /* iphoneMenuView.xib */; };
 		39FF09CE17F13CBB0086B76C /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D802F17E8BFBA0067A023 /* MenuView.xib */; };
 		39FF09CF17F13CBB0086B76C /* XMPPShowImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80C617E8BFBA0067A023 /* XMPPShowImageViewController.xib */; };
-		39FF09D017F13CBB0086B76C /* GroupPeopleViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D517E8BFBA0067A023 /* GroupPeopleViewViewController.xib */; };
 		39FF09D117F13CBB0086B76C /* pic_bg_03.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9B17F007FC00F9CA68 /* pic_bg_03.png */; };
 		39FF09D217F13CBB0086B76C /* local_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7417F007FC00F9CA68 /* local_pic.png */; };
 		39FF09D317F13CBB0086B76C /* VoiceSearchLoading004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626317EE898300C84A6A /* VoiceSearchLoading004@2x.png */; };
-		39FF09D417F13CBB0086B76C /* IMFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D817E8BFBA0067A023 /* IMFriendsCell.xib */; };
 		39FF09D517F13CBB0086B76C /* options_close@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9517F007FC00F9CA68 /* options_close@simple.png */; };
-		39FF09D617F13CBB0086B76C /* MultiSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80DD17E8BFBA0067A023 /* MultiSelectTableViewCell.xib */; };
 		39FF09D717F13CBB0086B76C /* feedback_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */; };
 		39FF09D817F13CBB0086B76C /* menu_button3.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7B17F007FC00F9CA68 /* menu_button3.png */; };
 		39FF09D917F13CBB0086B76C /* iphoneLandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EA17E8BFBA0067A023 /* iphoneLandingViewController.xib */; };
@@ -2179,11 +2162,7 @@
 		39FF0B9A17F13CBB0086B76C /* UIScrollView+SpiralPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80BC17E8BFBA0067A023 /* UIScrollView+SpiralPullToRefresh.m */; };
 		39FF0B9B17F13CBB0086B76C /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
 		39FF0B9D17F13CBB0086B76C /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
-		39FF0B9E17F13CBB0086B76C /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
-		39FF0B9F17F13CBB0086B76C /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
-		39FF0BA017F13CBB0086B76C /* IMFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D717E8BFBA0067A023 /* IMFriendsCell.m */; };
 		39FF0BA117F13CBB0086B76C /* MRZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DA17E8BFBA0067A023 /* MRZoomScrollView.m */; };
-		39FF0BA217F13CBB0086B76C /* MultiSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DC17E8BFBA0067A023 /* MultiSelectTableViewCell.m */; };
 		39FF0BA317F13CBB0086B76C /* MySelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DF17E8BFBA0067A023 /* MySelfView.m */; };
 		39FF0BA417F13CBB0086B76C /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E117E8BFBA0067A023 /* SwipeView.m */; };
 		39FF0BA717F13CBB0086B76C /* iphoneLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E917E8BFBA0067A023 /* iphoneLandingViewController.m */; };
@@ -2376,14 +2355,7 @@
 		F54D834217E8BFBB0067A023 /* XMPPShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80C517E8BFBA0067A023 /* XMPPShowImageViewController.m */; };
 		F54D834317E8BFBB0067A023 /* XMPPShowImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80C617E8BFBA0067A023 /* XMPPShowImageViewController.xib */; };
 		F54D834717E8BFBB0067A023 /* IMServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */; };
-		F54D834817E8BFBB0067A023 /* AudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D217E8BFBA0067A023 /* AudioView.m */; };
-		F54D834917E8BFBB0067A023 /* GroupPeopleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */; };
-		F54D834A17E8BFBB0067A023 /* GroupPeopleViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D517E8BFBA0067A023 /* GroupPeopleViewViewController.xib */; };
-		F54D834B17E8BFBB0067A023 /* IMFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80D717E8BFBA0067A023 /* IMFriendsCell.m */; };
-		F54D834C17E8BFBB0067A023 /* IMFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80D817E8BFBA0067A023 /* IMFriendsCell.xib */; };
 		F54D834D17E8BFBB0067A023 /* MRZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DA17E8BFBA0067A023 /* MRZoomScrollView.m */; };
-		F54D834E17E8BFBB0067A023 /* MultiSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DC17E8BFBA0067A023 /* MultiSelectTableViewCell.m */; };
-		F54D834F17E8BFBB0067A023 /* MultiSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80DD17E8BFBA0067A023 /* MultiSelectTableViewCell.xib */; };
 		F54D835017E8BFBB0067A023 /* MySelfView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80DF17E8BFBA0067A023 /* MySelfView.m */; };
 		F54D835117E8BFBB0067A023 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E117E8BFBA0067A023 /* SwipeView.m */; };
 		F54D835417E8BFBB0067A023 /* iphoneLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D80E917E8BFBA0067A023 /* iphoneLandingViewController.m */; };
@@ -3717,19 +3689,8 @@
 		F54D80C617E8BFBA0067A023 /* XMPPShowImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XMPPShowImageViewController.xib; sourceTree = "<group>"; };
 		F54D80CE17E8BFBA0067A023 /* IMServerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMServerAPI.h; sourceTree = "<group>"; };
 		F54D80CF17E8BFBA0067A023 /* IMServerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMServerAPI.m; sourceTree = "<group>"; };
-		F54D80D117E8BFBA0067A023 /* AudioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioView.h; sourceTree = "<group>"; };
-		F54D80D217E8BFBA0067A023 /* AudioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioView.m; sourceTree = "<group>"; };
-		F54D80D317E8BFBA0067A023 /* GroupPeopleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupPeopleViewViewController.h; sourceTree = "<group>"; };
-		F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupPeopleViewViewController.m; sourceTree = "<group>"; };
-		F54D80D517E8BFBA0067A023 /* GroupPeopleViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupPeopleViewViewController.xib; sourceTree = "<group>"; };
-		F54D80D617E8BFBA0067A023 /* IMFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFriendsCell.h; sourceTree = "<group>"; };
-		F54D80D717E8BFBA0067A023 /* IMFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFriendsCell.m; sourceTree = "<group>"; };
-		F54D80D817E8BFBA0067A023 /* IMFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMFriendsCell.xib; sourceTree = "<group>"; };
 		F54D80D917E8BFBA0067A023 /* MRZoomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRZoomScrollView.h; sourceTree = "<group>"; };
 		F54D80DA17E8BFBA0067A023 /* MRZoomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRZoomScrollView.m; sourceTree = "<group>"; };
-		F54D80DB17E8BFBA0067A023 /* MultiSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSelectTableViewCell.h; sourceTree = "<group>"; };
-		F54D80DC17E8BFBA0067A023 /* MultiSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSelectTableViewCell.m; sourceTree = "<group>"; };
-		F54D80DD17E8BFBA0067A023 /* MultiSelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiSelectTableViewCell.xib; sourceTree = "<group>"; };
 		F54D80DE17E8BFBA0067A023 /* MySelfView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelfView.h; sourceTree = "<group>"; };
 		F54D80DF17E8BFBA0067A023 /* MySelfView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySelfView.m; sourceTree = "<group>"; };
 		F54D80E017E8BFBA0067A023 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
@@ -6311,19 +6272,8 @@
 		F54D80D017E8BFBA0067A023 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				F54D80D117E8BFBA0067A023 /* AudioView.h */,
-				F54D80D217E8BFBA0067A023 /* AudioView.m */,
-				F54D80D317E8BFBA0067A023 /* GroupPeopleViewViewController.h */,
-				F54D80D417E8BFBA0067A023 /* GroupPeopleViewViewController.m */,
-				F54D80D517E8BFBA0067A023 /* GroupPeopleViewViewController.xib */,
-				F54D80D617E8BFBA0067A023 /* IMFriendsCell.h */,
-				F54D80D717E8BFBA0067A023 /* IMFriendsCell.m */,
-				F54D80D817E8BFBA0067A023 /* IMFriendsCell.xib */,
 				F54D80D917E8BFBA0067A023 /* MRZoomScrollView.h */,
 				F54D80DA17E8BFBA0067A023 /* MRZoomScrollView.m */,
-				F54D80DB17E8BFBA0067A023 /* MultiSelectTableViewCell.h */,
-				F54D80DC17E8BFBA0067A023 /* MultiSelectTableViewCell.m */,
-				F54D80DD17E8BFBA0067A023 /* MultiSelectTableViewCell.xib */,
 				F54D80DE17E8BFBA0067A023 /* MySelfView.h */,
 				F54D80DF17E8BFBA0067A023 /* MySelfView.m */,
 				F54D80E017E8BFBA0067A023 /* SwipeView.h */,
@@ -7323,13 +7273,10 @@
 				F54D82E417E8BFBB0067A023 /* iphoneMenuView.xib in Resources */,
 				F54D82E617E8BFBB0067A023 /* MenuView.xib in Resources */,
 				F54D834317E8BFBB0067A023 /* XMPPShowImageViewController.xib in Resources */,
-				F54D834A17E8BFBB0067A023 /* GroupPeopleViewViewController.xib in Resources */,
 				F5A96CFC17F007FC00F9CA68 /* pic_bg_03.png in Resources */,
 				F5A96CD517F007FC00F9CA68 /* local_pic.png in Resources */,
 				3968629917EE898300C84A6A /* VoiceSearchLoading004@2x.png in Resources */,
-				F54D834C17E8BFBB0067A023 /* IMFriendsCell.xib in Resources */,
 				F5A96CF617F007FC00F9CA68 /* options_close@simple.png in Resources */,
-				F54D834F17E8BFBB0067A023 /* MultiSelectTableViewCell.xib in Resources */,
 				F5A96CB817F007FC00F9CA68 /* feedback_arrow@2x.png in Resources */,
 				F5A96CDC17F007FC00F9CA68 /* menu_button3.png in Resources */,
 				F54D835517E8BFBB0067A023 /* iphoneLandingViewController.xib in Resources */,
@@ -7764,14 +7711,11 @@
 				18E9C4C71803AB1200B874B8 /* ManifestTableViewCell_Pad.xib in Resources */,
 				39D9E83717F27C03001ED6F5 /* MenuView.xib in Resources */,
 				39D9E83817F27C03001ED6F5 /* XMPPShowImageViewController.xib in Resources */,
-				39D9E83917F27C03001ED6F5 /* GroupPeopleViewViewController.xib in Resources */,
 				39D9E83A17F27C03001ED6F5 /* pic_bg_03.png in Resources */,
 				18E9C46A1803AB1200B874B8 /* CDA1.xib in Resources */,
 				39D9E83B17F27C03001ED6F5 /* local_pic.png in Resources */,
 				39D9E83C17F27C03001ED6F5 /* VoiceSearchLoading004@2x.png in Resources */,
-				39D9E83D17F27C03001ED6F5 /* IMFriendsCell.xib in Resources */,
 				39D9E83E17F27C03001ED6F5 /* options_close@simple.png in Resources */,
-				39D9E83F17F27C03001ED6F5 /* MultiSelectTableViewCell.xib in Resources */,
 				39D9E84017F27C03001ED6F5 /* feedback_arrow@2x.png in Resources */,
 				18E9C4891803AB1200B874B8 /* FPFlightNoticeCell.xib in Resources */,
 				39D9E84117F27C03001ED6F5 /* menu_button3.png in Resources */,
@@ -8327,13 +8271,10 @@
 				39E0511117F00AEA00BCF7F8 /* iphoneMenuView.xib in Resources */,
 				39E0511217F00AEA00BCF7F8 /* MenuView.xib in Resources */,
 				39E0511417F00AEA00BCF7F8 /* XMPPShowImageViewController.xib in Resources */,
-				39E0511617F00AEA00BCF7F8 /* GroupPeopleViewViewController.xib in Resources */,
 				39E0511717F00AEA00BCF7F8 /* pic_bg_03.png in Resources */,
 				39E0511817F00AEA00BCF7F8 /* local_pic.png in Resources */,
 				39E0511917F00AEA00BCF7F8 /* VoiceSearchLoading004@2x.png in Resources */,
-				39E0511A17F00AEA00BCF7F8 /* IMFriendsCell.xib in Resources */,
 				39E0511B17F00AEA00BCF7F8 /* options_close@simple.png in Resources */,
-				39E0511C17F00AEA00BCF7F8 /* MultiSelectTableViewCell.xib in Resources */,
 				39E0511D17F00AEA00BCF7F8 /* feedback_arrow@2x.png in Resources */,
 				39E0511E17F00AEA00BCF7F8 /* menu_button3.png in Resources */,
 				39E0511F17F00AEA00BCF7F8 /* iphoneLandingViewController.xib in Resources */,
@@ -8752,13 +8693,10 @@
 				39FF09CD17F13CBB0086B76C /* iphoneMenuView.xib in Resources */,
 				39FF09CE17F13CBB0086B76C /* MenuView.xib in Resources */,
 				39FF09CF17F13CBB0086B76C /* XMPPShowImageViewController.xib in Resources */,
-				39FF09D017F13CBB0086B76C /* GroupPeopleViewViewController.xib in Resources */,
 				39FF09D117F13CBB0086B76C /* pic_bg_03.png in Resources */,
 				39FF09D217F13CBB0086B76C /* local_pic.png in Resources */,
 				39FF09D317F13CBB0086B76C /* VoiceSearchLoading004@2x.png in Resources */,
-				39FF09D417F13CBB0086B76C /* IMFriendsCell.xib in Resources */,
 				39FF09D517F13CBB0086B76C /* options_close@simple.png in Resources */,
-				39FF09D617F13CBB0086B76C /* MultiSelectTableViewCell.xib in Resources */,
 				39FF09D717F13CBB0086B76C /* feedback_arrow@2x.png in Resources */,
 				39FF09D817F13CBB0086B76C /* menu_button3.png in Resources */,
 				39FF09D917F13CBB0086B76C /* iphoneLandingViewController.xib in Resources */,
@@ -9402,11 +9340,7 @@
 				F54D833C17E8BFBB0067A023 /* UIScrollView+SpiralPullToRefresh.m in Sources */,
 				F54D834217E8BFBB0067A023 /* XMPPShowImageViewController.m in Sources */,
 				F54D834717E8BFBB0067A023 /* IMServerAPI.m in Sources */,
-				F54D834817E8BFBB0067A023 /* AudioView.m in Sources */,
-				F54D834917E8BFBB0067A023 /* GroupPeopleViewViewController.m in Sources */,
-				F54D834B17E8BFBB0067A023 /* IMFriendsCell.m in Sources */,
 				F54D834D17E8BFBB0067A023 /* MRZoomScrollView.m in Sources */,
-				F54D834E17E8BFBB0067A023 /* MultiSelectTableViewCell.m in Sources */,
 				F54D835017E8BFBB0067A023 /* MySelfView.m in Sources */,
 				F54D835117E8BFBB0067A023 /* SwipeView.m in Sources */,
 				F54D835417E8BFBB0067A023 /* iphoneLandingViewController.m in Sources */,
@@ -9686,14 +9620,10 @@
 				18E9C4DE1803AB1200B874B8 /* CabinOrder.m in Sources */,
 				18E9C4C91803AB1200B874B8 /* ManifestViewController.m in Sources */,
 				18E9C46D1803AB1200B874B8 /* CloudBase.m in Sources */,
-				39D9EA0817F27C03001ED6F5 /* AudioView.m in Sources */,
-				39D9EA0917F27C03001ED6F5 /* GroupPeopleViewViewController.m in Sources */,
-				39D9EA0A17F27C03001ED6F5 /* IMFriendsCell.m in Sources */,
 				18E9C48D1803AB1200B874B8 /* FPCoordinatingController.m in Sources */,
 				39D9EA0B17F27C03001ED6F5 /* MRZoomScrollView.m in Sources */,
 				18E9C52C1803AB1200B874B8 /* PDFOutlineUtil.m in Sources */,
 				18E9C5071803AB1200B874B8 /* ReaderThumbCache.m in Sources */,
-				39D9EA0C17F27C03001ED6F5 /* MultiSelectTableViewCell.m in Sources */,
 				39D9EA0D17F27C03001ED6F5 /* MySelfView.m in Sources */,
 				39D9EA0E17F27C03001ED6F5 /* SwipeView.m in Sources */,
 				18E9C5BD1803AB1200B874B8 /* StringInputTableViewCell.m in Sources */,
@@ -9962,11 +9892,7 @@
 				39E052E117F00AEA00BCF7F8 /* UIScrollView+SpiralPullToRefresh.m in Sources */,
 				39E052E217F00AEA00BCF7F8 /* XMPPShowImageViewController.m in Sources */,
 				39E052E517F00AEA00BCF7F8 /* IMServerAPI.m in Sources */,
-				39E052E617F00AEA00BCF7F8 /* AudioView.m in Sources */,
-				39E052E717F00AEA00BCF7F8 /* GroupPeopleViewViewController.m in Sources */,
-				39E052E817F00AEA00BCF7F8 /* IMFriendsCell.m in Sources */,
 				39E052E917F00AEA00BCF7F8 /* MRZoomScrollView.m in Sources */,
-				39E052EA17F00AEA00BCF7F8 /* MultiSelectTableViewCell.m in Sources */,
 				39E052EB17F00AEA00BCF7F8 /* MySelfView.m in Sources */,
 				39E052EC17F00AEA00BCF7F8 /* SwipeView.m in Sources */,
 				39E052EF17F00AEA00BCF7F8 /* iphoneLandingViewController.m in Sources */,
@@ -10139,11 +10065,7 @@
 				39FF0B9A17F13CBB0086B76C /* UIScrollView+SpiralPullToRefresh.m in Sources */,
 				39FF0B9B17F13CBB0086B76C /* XMPPShowImageViewController.m in Sources */,
 				39FF0B9D17F13CBB0086B76C /* IMServerAPI.m in Sources */,
-				39FF0B9E17F13CBB0086B76C /* AudioView.m in Sources */,
-				39FF0B9F17F13CBB0086B76C /* GroupPeopleViewViewController.m in Sources */,
-				39FF0BA017F13CBB0086B76C /* IMFriendsCell.m in Sources */,
 				39FF0BA117F13CBB0086B76C /* MRZoomScrollView.m in Sources */,
-				39FF0BA217F13CBB0086B76C /* MultiSelectTableViewCell.m in Sources */,
 				39FF0BA317F13CBB0086B76C /* MySelfView.m in Sources */,
 				39FF0BA417F13CBB0086B76C /* SwipeView.m in Sources */,
 				39FF0BA717F13CBB0086B76C /* iphoneLandingViewController.m in Sources */,
@@ -10385,7 +10307,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;

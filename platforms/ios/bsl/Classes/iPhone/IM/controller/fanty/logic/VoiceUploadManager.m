@@ -100,7 +100,10 @@ static VoiceUploadManager* instance=nil;
         
         NSDictionary *dict = [[requestT responseString] objectFromJSONString];
         NSString *fileId = [dict valueForKey:@"id"];
-        [objSelf finishAndSendXmpp:fileId];
+        if(![fileId isKindOfClass:[NSString class]] || [fileId length]<1)
+            [objSelf failed];
+        else
+            [objSelf finishAndSendXmpp:fileId];
     }];
     
     [request setFailedBlock:^{
@@ -328,7 +331,7 @@ static VoiceUploadManager* instance=nil;
         [fileManager createDirectoryAtPath:docDir withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
-    return [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"receiver_%@.caf", uqID]];
+    return [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"receiver_%@.aac", uqID]];
 }
 
 

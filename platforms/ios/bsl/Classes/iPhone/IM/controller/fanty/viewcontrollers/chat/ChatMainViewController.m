@@ -746,7 +746,7 @@
         if([entity.statue intValue]==-1 || [entity.statue intValue]==-2){
             if([entity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]){
                 playingIndex=-1;
-                if(![[VoiceUploadManager sharedInstance] sendVoice:[NSURL fileURLWithPath:entity.content] messageId:self.messageId isGroup:self.isGroupChat name:self.chatName uqId:entity.uqID])
+                if(![[VoiceUploadManager sharedInstance] sendVoice:entity.content messageId:self.messageId isGroup:self.isGroupChat name:self.chatName uqId:entity.uqID])
                     [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
             }
             else{

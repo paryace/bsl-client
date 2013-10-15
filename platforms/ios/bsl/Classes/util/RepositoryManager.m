@@ -110,7 +110,23 @@ static RepositoryManager *instance;
          
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+//        abort();
+        // Delete file
+        if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL.path]) {
+            if (![[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error]) {
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                abort();
+            }
+        }
+        
+        if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
+        {
+            // Handle the error.
+            NSLog(@"Error: %@",error);
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+            
+        }
     }
     
     return _persistentStoreCoordinator;

@@ -60,7 +60,7 @@
             self.modalPresentationCapturesStatusBarAppearance = NO;
         }
 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cubeSyncClick) name:CubeSyncClickNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cubeSyncClick:) name:CubeSyncClickNotification object:nil];
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showView:) name:SHOW_DETAILVIEW object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSetting) name:@"SHOW_SETTING_VIEW" object:nil];
@@ -339,10 +339,8 @@
 
 }
 
--(void)cubeSyncClick{
+-(void)cubeSyncClick:(NSNotification*)notification{
     [self dismissDetailViewController];
-    selectedTabIndex=-1;
-
 }
 
 

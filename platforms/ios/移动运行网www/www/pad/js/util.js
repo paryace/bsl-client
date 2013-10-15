@@ -80,32 +80,43 @@ var Store = {
 };
 //下载文件
 var downloadFile = function(sourceUrl, targetUrl, callback) {
-
+	console.log("图片显示地址："+sourceUrl);
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, null);
 
 	var fileName = sourceUrl;
 	if (fileName.indexOf("?") > -1) {
 		fileName = fileName.substring(0, fileName.indexOf("?"));
 	}
-
 	if (fileName.indexOf("file://") > -1) {
 		var fileEntry = new Object;
 		fileEntry.fullPath = sourceUrl;
 		showPic(fileEntry);
+		return;
 	}
 
 	fileName = fileName.substring(fileName.lastIndexOf("/") + 1, fileName.lenght);
-	//如果文件名包括.png,替代为.img
+
+
 	if(fileName.indexOf(".png") > -1){
+		console.log("替换之前："+filename);
 		fileName.replace(/.png/,".img");
+		console.log("替换之后："+filename);
 	}
-
-
+	console.log("filename2 " + fileName);
+	if(fileName ==""||fileName == undefined || fileName == null){
+		fileName = "img/default_icon2.png";
+		var fileEntry = new Object;
+		fileEntry.fullPath = fileName;
+		showPic(fileEntry);
+		return;
+	}
 	function gotFS(fileSystem) {
 		fileSystem.root.getDirectory(targetUrl, {
 			create: true,
 			exclusive: false
-		}, writerFile, null);
+		}, writerFile, function(e) {
+			console.log("创建文件夹失败");
+		});
 	}
 
 	function writerFile(newFile) {
@@ -113,12 +124,15 @@ var downloadFile = function(sourceUrl, targetUrl, callback) {
 			newFile.getFile(fileName, {
 				create: true,
 				exclusive: false
-			}, gotFileEntry, null);
+			}, gotFileEntry, function(){
+				
+			});
 		});
 	}
 
 	function showPic(fileEntry) {
 		//文件存在就直接显示  
+		console.log("文件存在就直接显示");
 		callback(fileEntry);
 	}
 

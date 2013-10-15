@@ -28,20 +28,7 @@ html,body,img,div,ul,li,a{
   	user-select: none;
 	-webkit-tap-highlight-color: transparent; 
 }
-.title {
-position: absolute;
-top: 0;
-left: 0;
-display: block;
-width: 100%;
-font-size: 20px;
-font-weight: bold;
-line-height: 44px;
-color: #fff;
-text-align: center;
-text-shadow: 0 -1px rgba(0,0,0,0.5);
-white-space: nowrap;
-}
+
 html{
 	background: black;
 	/*border:solid 0px #000000;
@@ -197,8 +184,6 @@ header{
 	outline: none;
 	padding: 0px;
 	margin: 0px;
-	text-indent: 10px;
-
 
 }	
 .search_input_content #search_btn{ 

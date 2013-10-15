@@ -110,7 +110,7 @@
         
         if(!lastReceiveTime || now - lrt > 5){//第一次收到该模块消息,或超过十秒
             //播放系统短信提示音
-            [appDelegate ativatePushSound];
+//            [appDelegate ativatePushSound];
             
             NSString *nowStr = [NSString stringWithFormat:@"%ld",now];
             if(module){

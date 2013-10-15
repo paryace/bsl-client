@@ -207,7 +207,6 @@
     }
     
     Announcement* announcent = [list objectAtIndex:[indexPath section]];
-    cell.editing=__tableView.editing;
     [cell title:announcent.title content:announcent.content time:announcent.reviceTime isRead:[announcent.isRead boolValue]];
     return cell;
     

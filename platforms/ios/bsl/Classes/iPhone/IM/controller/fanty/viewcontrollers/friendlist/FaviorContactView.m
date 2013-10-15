@@ -120,7 +120,6 @@
     }
     UserInfo* model=[list objectAtIndex:[indexPath row]];
     [cell headerUrl:@"" nickname:[model name]];
-    cell.editing=self.editing;
     return cell;
 }
 

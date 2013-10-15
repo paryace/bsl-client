@@ -376,14 +376,11 @@
         }
     }
     
-   int section =  [[presentModulesDic  allKeys] indexOfObject:moduleIdendity];
-    
     [presentModulesDic removeObjectForKey:moduleIdendity];
-    NSIndexSet *set = [NSIndexSet indexSetWithIndex:section];
-   
-    [expandDic setObject:[NSNumber numberWithBool:NO] forKey:[NSNumber numberWithInteger:section]];
+    [self delayLoadTimerEvent];
     
-    [tableView deleteSections:set withRowAnimation:UITableViewRowAnimationFade];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"module_badgeCount_change" object:nil];
+
     
     //保存数据
     UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"删除成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

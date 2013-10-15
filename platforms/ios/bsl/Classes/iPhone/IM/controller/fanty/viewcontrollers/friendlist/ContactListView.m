@@ -139,7 +139,7 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
 }
 
 -(void)loadData{
-    if(friendListTimeOut!=nil || isLoadingUserInfo)return;
+    if(friendListTimeOut!=nil || isLoadingUserInfo || [ShareAppDelegate xmpp].friendListIsFinded)return;
     if(isFirstLoadData || [[fetchedResultsController sections] count]== 0){
         isFirstLoadData=NO;
         if ([[ShareAppDelegate xmpp] isConnected]) {

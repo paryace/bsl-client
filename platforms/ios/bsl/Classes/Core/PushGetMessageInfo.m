@@ -43,7 +43,7 @@ static PushGetMessageInfo* instance=nil;
     updateTimer=nil;
 
     if(callNow){
-        updateTimer=[NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(updatePushMessage) userInfo:nil repeats:NO];
+        updateTimer=[NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(updatePushMessage) userInfo:nil repeats:NO];
     }
     else{
         updateTimer=[NSTimer scheduledTimerWithTimeInterval:300.0f target:self selector:@selector(updatePushMessage) userInfo:nil repeats:NO];
@@ -150,6 +150,9 @@ static PushGetMessageInfo* instance=nil;
                     [MessageRecord.managedObjectContext save:nil];
                     
                     [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_RECORD_DID_SAVE_NOTIFICATION object:nil];
+
+                    //播放系统短信提示音
+                    [ShareAppDelegate ativatePushSound];
 
                 }
                 if(hasAnnouncemnt){

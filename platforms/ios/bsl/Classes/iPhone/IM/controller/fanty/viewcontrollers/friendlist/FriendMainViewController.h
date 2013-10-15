@@ -26,6 +26,8 @@
 
     NumberView* numberView;
     NSFetchedResultsController* fetchedResultsController;
+    
+    float tableViewHeight;
 }
 
 

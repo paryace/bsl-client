@@ -48,6 +48,7 @@
 @synthesize roomService;
 - (void)teardownStream
 {
+    self.friendListIsFinded=NO;
     [roomService tearDown];
 	[xmppStream removeDelegate:self];
     [xmppRoster removeDelegate:self];
@@ -109,7 +110,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)setupXmppStream{
-    
+    self.friendListIsFinded=NO;
     [[VoiceUploadManager sharedInstance] cance];
     [self fetchAllLoadingMessageToFailed];
 
@@ -743,6 +744,8 @@
 
 //查询好友的列表
 -(void)findFriendsList{
+    if(self.friendListIsFinded)return;
+    
     NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
     [iq addAttributeWithName:@"xmlns" stringValue:@"jabber:client"];
     //消息类型
@@ -759,12 +762,14 @@
 
 - (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq{
     if( [[[iq attributeForName:@"type"] stringValue] isEqualToString:@"result"]){
-        
+
         //发送通知  告诉列表不刷新数据
         
         NSXMLElement *query = [iq elementForName:@"query"];
         NSArray *items = [query elementsForName:@"item"];
         if ([items count]>0) {
+            self.friendListIsFinded=YES;
+
             [[NSNotificationCenter defaultCenter] postNotificationName:@"STOPRREFRESHTABLEVIEW" object:nil];
             
             
@@ -795,6 +800,7 @@
             [self saveContext];
         }else{
 
+            self.friendListIsFinded=NO;
             //remove by fanty 
             //[SVProgressHUD showErrorWithStatus:@"没有好友" ];
             

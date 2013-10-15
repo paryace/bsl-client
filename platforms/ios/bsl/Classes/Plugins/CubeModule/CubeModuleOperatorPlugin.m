@@ -24,10 +24,14 @@
  */
 -(void)install:(CDVInvokedUrlCommand*)command
 {
+    NSLog(@"CubeModuleOperatorPlugin install");
     CubeApplication* cubeApp = [CubeApplication currentApplication];
     NSString* identifier = [command.arguments objectAtIndex:0];
     CubeModule *module = [cubeApp availableModuleForIdentifier:identifier];
     [cubeApp installModule:module];
+    
+    NSLog(@"CubeModuleOperatorPlugin install end");
+
 }
 
 /**
@@ -38,11 +42,15 @@
  */
 -(void)uninstall:(CDVInvokedUrlCommand*)command
 {
+    NSLog(@"CubeModuleOperatorPlugin uninstall");
+
     CubeApplication* cubeApp = [CubeApplication currentApplication];
     NSString* identifier = [command.arguments objectAtIndex:0];
     CubeModule *module = [cubeApp moduleForIdentifier:identifier];
     [cubeApp uninstallModule:module];
    
+    NSLog(@"CubeModuleOperatorPlugin uninstall end");
+
 }
 
 /**
@@ -52,6 +60,8 @@
  *	@param 	command 	command.arguments 参数中 第一个参数是模块的identifier
  */
 -(void)upgrade:(CDVInvokedUrlCommand*)command{
+    NSLog(@"CubeModuleOperatorPlugin update");
+
     CubeApplication* cubeApp = [CubeApplication currentApplication];
     NSString* identifier = [command.arguments objectAtIndex:0];
     CubeModule *module = [cubeApp updatableModuleModuleForIdentifier:identifier];
@@ -59,6 +69,9 @@
         [cubeApp uninstallModule:module];
     }
     [cubeApp updateModule:module];
+    
+    NSLog(@"CubeModuleOperatorPlugin update end");
+
 }
 
 
@@ -70,13 +83,20 @@
  */
 -(void)showModule:(CDVInvokedUrlCommand*)command
 {
-    NSString* identifier = [command.arguments objectAtIndex:0];
+    //NSString* identifier = [command.arguments objectAtIndex:0];
+    /*
     if (![identifier isEqualToString:@"com.foss.chat"]) {
         [MessageRecord dismissModuleBadge:identifier];
     }
+     */
+    NSLog(@"CubeModuleOperatorPlugin showModule");
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOW_DETAILVIEW" object:command.arguments];
     CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK ];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.cdvCommand.callbackId];
+    
+    NSLog(@"CubeModuleOperatorPlugin showModule end");
+
 }
 
 /**
@@ -87,9 +107,15 @@
  */
 -(void)setting:(CDVInvokedUrlCommand*)command
 {
+    
+    NSLog(@"CubeModuleOperatorPlugin setting");
+
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SETTING_VIEW object:self];
     CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK ];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.cdvCommand.callbackId];
+    
+    NSLog(@"CubeModuleOperatorPlugin setting end");
+
 }
 
 
@@ -101,14 +127,20 @@
  */
 -(void)setTheme:(CDVInvokedUrlCommand*)command
 {
+    NSLog(@"CubeModuleOperatorPlugin setTheme");
+
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_SETTHEME_VIEW object:self];
     CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK ];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.cdvCommand.callbackId];
+    
+    NSLog(@"CubeModuleOperatorPlugin setTheme end");
+
 }
 
 -(void)fragmenthide:(CDVInvokedUrlCommand*)command{
-    NSLog(@"mainSync click............");
-    
+    NSLog(@"fragmenthide click............");
+    [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncClickNotification object:[NSNumber numberWithInt:1]];
+
 }
 
 //同步数据
@@ -123,7 +155,7 @@
     CubeApplication *cubeApp = [CubeApplication currentApplication];
     [cubeApp sync];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncClickNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncClickNotification object:[NSNumber numberWithInt:0]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchTokemTimeOurInfoForFilter) name:CubeTokenTimeOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeAppUpdateFinishNotification object:nil];

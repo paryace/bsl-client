@@ -25,10 +25,15 @@ $(window).resize(function() {
 });
 var refreshMainPage = function() {
 	/*$(".mainContent").html("");
-	$(".mainContent").remove();
-	loadModuleList("CubeModuleList", "mainList", "main");*/
-	$(".home_btn").trigger("click");
+	$(".mainContent").remove();*/
+	console.log("刷新了主页面。。。。");
+	loadModuleList("CubeModuleList", "mainList", "main");
+	// $(".home_btn").trigger("click");
 }
+$(".title").click(function(){
+	console.log("点击了title");
+	loadModuleList("CubeModuleList", "mainList", "main");
+});
 //封装cordova的执行方法，加上回调函数
 var cordovaExec = function(plugin, action, parameters, callback) {
 	cordova.exec(function(data) {
@@ -102,13 +107,16 @@ var checkModule = function() {
 
 
 var addModule = function(identifier, type, moduleMessage) {
-	console.log("addModuleaddModuleaddModuleaddModuleaddModule");
 	var mm = $.parseJSON(moduleMessage);
+	var page = $(".menuItem.active").attr("data");
 	//如果该模块不存在，则生成
 	if ($(".moduleTitle[modulename='" + mm.category + "']").size() < 1) {
 		//获取模板名
+		console.log("分组不存在了。");
 		var moduleContentTemplate = $("#moduleContentTemplate").html();
-
+	/*	if(page === "home" && type !=="uninstall" ){
+			type = "main";
+		}*/
 		var moduleContentHtml = _.template(moduleContentTemplate, {
 			'moduleTitle': mm.category,
 			'moduleItem': "",
@@ -129,7 +137,21 @@ var addModule = function(identifier, type, moduleMessage) {
 
 	var moduleItemHtml = _.template(moduleItemTemplate, mm);
 
-	$(".moduleTitle[modulename='" + mm.category + "'][moduletype='" + type + "']").after(moduleItemHtml);
+	if ($(".moduleManageBar .manager-btn.active").attr("data") === type && mm.hidden == false) {
+		console.log("进入addddddddd type "+type);
+		$(".moduleTitle[modulename='" + mm.category + "'][moduletype='" + type + "']").after(moduleItemHtml);
+	}
+	console.log("进入addddddddd222 type "+type);
+	if(page === "home" && type !=="uninstall"  &&mm.hidden ==false){
+		console.log("addddd 主页面");
+		var size = $(".moduleTitle[modulename='" + mm.category + "'][moduletype='" + "main" + "']").size();
+		console.log("size   "+size);
+		mm.moduleType = "main";
+		moduleItemHtml = _.template(moduleItemTemplate, mm);
+		$(".moduleTitle[modulename='" + mm.category + "'][moduletype='" + "main" + "']").after(moduleItemHtml);
+	}
+
+	triggerBodyClick();
 
 };
 
@@ -144,12 +166,15 @@ $(".menuItem").tap(function() {
 	if (type === "home") {
 		//非管理页面，隐藏管理菜单
 		$(".moduleManageBar").css("display", "none");
-		$('.account_content').show();
+		//$('.account_content').show();
+		//隐藏右边fragment
+		cordovaExec("CubeModuleOperator", "fragmenthide",[]);
 		//点击首页，加载首页已安装模块列表
 		loadModuleList("CubeModuleList", "mainList", "main");
+
 	} else if (type === "module") {
 		$(".moduleManageBar").css("display", "block");
-		$('.account_content').hide();
+		//$('.account_content').hide();
 		activeModuleManageBarItem("uninstall");
 		//点击模块管理，加载未安装模块列表(先同步，再获取未安装列表)
 		cordovaExec("CubeModuleOperator", "sync", [], function() {
@@ -262,111 +287,123 @@ var getAccountName = function() {
 };
 
 //加载列表，渲染成html
+var isOver = 0;
 var loadModuleList = function(plugin, action, type, callback) {
-	$(".mainContent").html("");
-	$(".mainContent").remove();
-	var mainContent = $('<div id="mainContent" class="mainContent"><div id="scroller"><ul class="scrollContent nav nav-list bs-docs-sidenav affix-top"></ul></div></div>');
-	$(".middleContent").append(mainContent);
-	var allModuleContentHtml = "";
+	console.log("isOver "+isOver);
+	if (isOver ===0) {
+		isOver = isOver + 1;
 
-	cordova.exec(function(data) {
-		data = $.parseJSON(data);
-		//处理成功加载首页模块列表
-		var valueArray = new Array;
-		var keyArray = new Array;
-		var s = 3;
-		_.each(data, function(value, key) {
-			if (key === "首页") {
-				keyArray[0] = key;
-				valueArray[0] = value;
-			} else if (key === "次页") {
-				keyArray[1] = key;
-				valueArray[1] = value;
-			} else if (key === "基本包") {
-				keyArray[2] = key;
-				valueArray[2] = value;
-			} else {
-				keyArray[s] = key;
-				valueArray[s] = value;
-				s++;
-			}
-		});
-		console.log("keyArray0 "+keyArray[0]);
-		console.log("keyArray1 "+keyArray[1]);
-		console.log("valueArray0 "+valueArray[0]);
-		console.log("valueArray1 "+valueArray[1]);
-		var i = 0;
-		_.each(valueArray, function(value) {
-			var moduleItemHtmlContent = "";
-			var moduleItemTemplate = $("#moduleItemTemplate").html();
+		$(".mainContent").html("");
+		$(".mainContent").remove();
+		var mainContent = $('<div id="mainContent" class="mainContent"><div id="scroller"><ul class="scrollContent nav nav-list bs-docs-sidenav affix-top"></ul></div></div>');
+		$(".middleContent").append(mainContent);
+		var allModuleContentHtml = "";
 
-			value = _.sortBy(value, function(v) {
-				return v.sortingWeight;
-
+		cordova.exec(function(data) {
+			data = $.parseJSON(data);
+			//处理成功加载首页模块列表
+			var valueArray = new Array;
+			var keyArray = new Array;
+			var s = 3;
+			_.each(data, function(value, key) {
+				if (key === "首页") {
+					keyArray[0] = key;
+					valueArray[0] = value;
+				} else if (key === "次页") {
+					keyArray[1] = key;
+					valueArray[1] = value;
+				} else if (key === "基本包") {
+					keyArray[2] = key;
+					valueArray[2] = value;
+				} else {
+					keyArray[s] = key;
+					valueArray[s] = value;
+					s++;
+				}
 			});
+			console.log("keyArray0 " + keyArray[0]);
+			console.log("keyArray1 " + keyArray[1]);
+			console.log("valueArray0 " + valueArray[0]);
+			console.log("valueArray1 " + valueArray[1]);
+			var i = 0;
+			_.each(valueArray, function(value) {
+				var moduleItemHtmlContent = "";
+				var moduleItemTemplate = $("#moduleItemTemplate").html();
 
-			_.each(value, function(value) {
-				value.moduleType = type;
-				//处理，只有在首页的时候才显示有统计数据
-				if (type !== "main") {
-					value.msgCount = 0;
-				}
-				//更新的图标，如果在未安装里面，不应该出现
-				if (type === 'uninstall') {
-					value.updatable = false;
-				}
-				// var mark = value.icon;
-				// if (mark.indexOf("?") > -1) {
-				// 	mark = mark.substring(0, mark.indexOf("?"));
-				// }
-				// if (window.localStorage[mark] !== undefined) {
-				// 	value.icon = window.localStorage[mark];
-				// }
+				value = _.sortBy(value, function(v) {
+					return v.sortingWeight;
 
-				downloadFile(value.icon, packageName + "/moduleIcon", function(entry) {
-					// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
-					value.icon = entry.fullPath;
-					console.log("下载成功 " + value.icon);
 				});
 
-				value.classname = keyArray[i];
-				var moduleItemHtml = _.template(moduleItemTemplate, value);
-				moduleItemHtmlContent = moduleItemHtmlContent + moduleItemHtml;
-			});
-			//获取模板名
-			var moduleContentTemplate = $("#moduleContentTemplate").html();
+				_.each(value, function(value) {
+					value.moduleType = type;
+					//处理，只有在首页的时候才显示有统计数据
+					if (type !== "main") {
+						value.msgCount = 0;
+					}
+					//更新的图标，如果在未安装里面，不应该出现
+					if (type === 'uninstall') {
+						value.updatable = false;
+					}
+					// var mark = value.icon;
+					// if (mark.indexOf("?") > -1) {
+					// 	mark = mark.substring(0, mark.indexOf("?"));
+					// }
+					// if (window.localStorage[mark] !== undefined) {
+					// 	value.icon = window.localStorage[mark];
+					// }	
 
-			var moduleContentHtml = _.template(moduleContentTemplate, {
-				'moduleTitle': keyArray[i],
-				'moduleItem': moduleItemHtmlContent,
-				'moduleType': type
+
+					/*downloadFile(value.icon, packageName + "/moduleIcon", function(entry) {
+						value.icon = entry.fullPath;
+						console.log("下载成功 " + value.icon);
+					});*/
+					// downloadFile(value.icon, packageName + "/moduleIcon", function(entry) {
+					// 	// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
+					// 	value.icon = entry.fullPath;
+					// 	console.log("下载成功 " + value.icon);
+					// });
+
+					value.classname = keyArray[i];
+					var moduleItemHtml = _.template(moduleItemTemplate, value);
+					moduleItemHtmlContent = moduleItemHtmlContent + moduleItemHtml;
+				});
+				//获取模板名
+				var moduleContentTemplate = $("#moduleContentTemplate").html();
+
+				var moduleContentHtml = _.template(moduleContentTemplate, {
+					'moduleTitle': keyArray[i],
+					'moduleItem': moduleItemHtmlContent,
+					'moduleType': type
+				});
+				if (moduleItemHtmlContent.trim().length > 0) {
+					allModuleContentHtml = allModuleContentHtml + moduleContentHtml;
+				}
+				i++;
 			});
-			if (moduleItemHtmlContent.trim().length > 0) {
-				allModuleContentHtml = allModuleContentHtml + moduleContentHtml;
+			$(".mainContent").find(".scrollContent").append(allModuleContentHtml);
+
+			$(".mainContent").height($(window).height() - 50);
+
+			// if (!browser.versions.android) {
+			myScroll = null;
+			myScroll = new iScroll('mainContent', {
+				checkDOMChanges: true
+			});
+			isOver = isOver - 1;
+			// }
+
+			//如果回调方法不为空，则执行该回调方法
+			if (callback !== undefined) {
+				callback();
 			}
-			i++;
-		});
-		$(".mainContent").find(".scrollContent").append(allModuleContentHtml);
-
-		$(".mainContent").height($(window).height() - 50);
-
-		// if (!browser.versions.android) {
-		myScroll = null;
-		myScroll = new iScroll('mainContent', {
-			checkDOMChanges: true
-		});
-		// }
-
-		//如果回调方法不为空，则执行该回调方法
-		if (callback !== undefined) {
-			callback();
-		}
 
 
-	}, function(err) {
-		//showAlert(err, null, "提示", "确定");
-	}, plugin, action, []);
-
+		}, function(err) {
+			//showAlert(err, null, "提示", "确定");
+			isOver = isOver - 1;
+		}, plugin, action, []);
+	}
 };
 
 var triggerBodyClick = function() {
@@ -434,7 +471,7 @@ var app = {
 	},
 	receivedEvent: function(id) {
 		socLogin();
-		getAccountName();
+		//getAccountName();
 		cordovaExec("CubeModuleOperator", "sync", [], function() {
 			var osPlatform = device.platform;
 			if (osPlatform.toLowerCase() == "android") {
@@ -491,7 +528,7 @@ var socLogin = function() {
 		success: function(data, textStatus, jqXHR) {
 			console.log('列表数据加载成功：' + textStatus + " response:[" + data + "]");
 
-
+			closeLoader();
 
 			if (data.login === true) {
 
@@ -501,8 +538,6 @@ var socLogin = function() {
 
 			} else {
 
-
-				closeLoader();
 
 
 				Toast("登陆失败,请检查用户名和密码!", null);
@@ -545,9 +580,10 @@ var getWeather = function() {
 			console.log('列表数据加载成功：' + textStatus + " response:[" + data + "]");
 
 
-if (data.weather.rmk) {
-			$("#weather").html(data.weather.rmk);
-			$("#degree").html(data.weather.tempreture + "°");}
+			if (data.weather.rmk) {
+				$("#weather").html(data.weather.rmk);
+				$("#degree").html(data.weather.tempreture + "°");
+			}
 
 		},
 		error: function(e, xhr, type) {
@@ -561,7 +597,7 @@ if (data.weather.rmk) {
 
 		complete: function(xhr, status) {
 
-			closeLoader();
+			// closeLoader();
 
 
 

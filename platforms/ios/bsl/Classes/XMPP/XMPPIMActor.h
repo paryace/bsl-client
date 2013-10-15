@@ -70,7 +70,11 @@
     NSString* oldLoginUser;
     
     NSMutableArray*turnSockets;
+    
 }
+
+@property(nonatomic,assign) BOOL friendListIsFinded;
+
 @property (nonatomic,assign ) id<ChatDelegate> chatDelegate;
 
 @property (nonatomic,assign ) BOOL islogin;

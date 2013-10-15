@@ -80,6 +80,11 @@
 
     self.view.frame=rect;
     [self initTabBar];
+    
+    
+    tableViewHeight=self.view.frame.size.height-CGRectGetMaxY(tabView.frame);
+
+    
     [self openOrCreateListView:1];
     
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
@@ -94,6 +99,8 @@
         [vv addSubview:label];
         self.navigationItem.titleView= vv;
     }
+    
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -185,9 +192,10 @@
     contactListView.hidden=YES;
     faviorContactView.hidden=YES;
     [self filterClick];
+
     if(tab==0){
         if(recentTalkView==nil){
-            recentTalkView=[[RecentTalkView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabView.frame), self.view.frame.size.width, self.view.frame.size.height-CGRectGetMaxY(tabView.frame)) style:UITableViewStylePlain];
+            recentTalkView=[[RecentTalkView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabView.frame), self.view.frame.size.width, tableViewHeight) style:UITableViewStylePlain];
             recentTalkView.rectentDelegate=self;
             [self.view addSubview:recentTalkView];
         }
@@ -196,7 +204,8 @@
     }
     else if(tab==1){
         if(contactListView==nil){
-            contactListView=[[ContactListView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabView.frame), self.view.frame.size.width, self.view.frame.size.height-CGRectGetMaxY(tabView.frame))];
+            
+            contactListView=[[ContactListView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabView.frame), self.view.frame.size.width, tableViewHeight)];
             contactListView.delegate=self;
             [self.view addSubview:contactListView];
             
@@ -206,7 +215,7 @@
     }
     else if(tab==2){
         if(faviorContactView==nil){
-            faviorContactView=[[FaviorContactView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabView.frame), self.view.frame.size.width, self.view.frame.size.height-CGRectGetMaxY(tabView.frame)) style:UITableViewStylePlain];
+            faviorContactView=[[FaviorContactView alloc] initWithFrame:CGRectMake(0.0f, CGRectGetMaxY(tabView.frame), self.view.frame.size.width, tableViewHeight) style:UITableViewStylePlain];
             faviorContactView.faviorDelegate=self;
             [self.view addSubview:faviorContactView];
         }
