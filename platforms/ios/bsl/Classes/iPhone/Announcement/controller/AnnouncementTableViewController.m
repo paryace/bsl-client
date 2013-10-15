@@ -98,6 +98,10 @@
             Announcement *announcement=obj;
             if([announcement.recordId isEqualToString:self.recordId]){
                 slideIndex = index;
+                if(![announcement.isRead boolValue]){
+                    announcement.isRead=[NSNumber numberWithBool:YES];
+                    [announcement save];
+                }
                 *stop=YES;
             }
         }];
@@ -230,12 +234,28 @@
         int index=[indexPath section];
         
         Announcement* announcent=[self.list objectAtIndex:index];
+        if(![announcent.isRead boolValue]){
+            MessageRecord* messageRecord=[MessageRecord findMessageRecordByAnounceId:announcent.recordId];
+            int isIconBadge=[messageRecord.isIconBadge intValue]-1;
+            if(isIconBadge<0)isIconBadge=0;
+            messageRecord.isIconBadge=[NSNumber numberWithInt:isIconBadge];
+            
+            messageRecord.isRead=[NSNumber numberWithBool:YES];
+            messageRecord.isMessageBadge=[NSNumber numberWithInt:0];
+            
+            [messageRecord save];
+
+        }
         [announcent remove];
+
         [self.list removeObjectAtIndex:index];
         
         [__tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
         if([self.list count]<1)
             self.navigationItem.rightBarButtonItem=nil;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"module_badgeCount_change" object:nil];
+
     }
 }
 

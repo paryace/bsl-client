@@ -107,7 +107,15 @@
     [super layoutSubviews];
     
     float w=self.frame.size.width;
+    
+    if(self.showingDeleteConfirmation){
+        w-=60.0f;
+    }
     float offset=OFFSET;
+    if(self.editing){
+        offset+=40.0f;
+    }
+
     
     isReadLabel.frame=CGRectMake(w-50.0f-OFFSET, 10.0f, 50.0f, 25.0f);
     titleLabel.frame=CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabel.frame)-offset, 25.0f);
@@ -115,8 +123,10 @@
     contentLabel.frame=CGRectMake(offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f, 0.0f);
     [contentLabel sizeToFit];
     
-    CGRect rect=CGRectMake(w-150.0f-OFFSET, CGRectGetMaxY(contentLabel.frame)+3.0f, 150.0f, 20.0f);
-    timeLabel.frame=rect;
+    timeLabel.frame=CGRectMake(w-150.0f-OFFSET, CGRectGetMaxY(contentLabel.frame)+3.0f, 150.0f, 20.0f);
+    
+    
+    
     
 }
 

@@ -696,7 +696,7 @@
                 if(__cell.tag==playingIndex){
                     MessageEntity* entity=[messageArray objectAtIndex:playingIndex];
                     [((VoiceCell*)__cell) playAnimated:YES];
-                    [recorder play:[NSURL URLWithString:entity.content]];
+                    [recorder play:[NSURL fileURLWithPath:entity.content]];
                 }
             }
         }
@@ -755,7 +755,7 @@
         }
         else{
             [cell playAnimated:YES];
-            [recorder play:[NSURL URLWithString:entity.content]];
+            [recorder play:[NSURL fileURLWithPath:entity.content]];
         }
     }
 }

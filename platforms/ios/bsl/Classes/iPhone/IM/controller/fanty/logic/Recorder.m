@@ -108,7 +108,7 @@ typedef enum{
     }
     
     
-    recordFile= [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.aac", [NSDate timeIntervalSinceReferenceDate] * 1000.0]];
+    recordFile= [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.caf", [NSDate timeIntervalSinceReferenceDate] * 1000.0]];
     
         
     NSError *error = nil;

@@ -364,17 +364,24 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
     [friendsListDict removeAllObjects];
     
     for(id<NSFetchedResultsSectionInfo> sectionInfo in [fetchedResultsController sections]){
-        NSString* key=NSLocalizedString([sectionInfo name],nil);
         
-        NSMutableArray* array=[[NSMutableArray alloc] initWithCapacity:2];
-        for(UserInfo* info in [fetchedResultsController fetchedObjects]){
-            if([info.userGroup isEqualToString:key]){
-                [array addObject:info];
+        @autoreleasepool {
+            
+            NSString* key=NSLocalizedString([sectionInfo name],nil);
+            
+            NSMutableArray* array=[[NSMutableArray alloc] initWithCapacity:2];
+            for(UserInfo* info in [fetchedResultsController fetchedObjects]){
+                NSString* group=NSLocalizedString(info.userGroup,nil);
+                if([group isEqualToString:key]){
+                    [array addObject:info];
+                }
             }
+            
+            NSArray* __array=[array sortedArrayUsingFunction:contactListViewSort context:nil];
+            [friendsListDict setObject:__array forKey:key];
+            
         }
         
-        NSArray* __array=[array sortedArrayUsingFunction:contactListViewSort context:nil];
-        [friendsListDict setObject:__array forKey:key];
     }
     [self showLoadData];
 }

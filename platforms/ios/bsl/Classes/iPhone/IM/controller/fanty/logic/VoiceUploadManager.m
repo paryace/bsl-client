@@ -331,7 +331,7 @@ static VoiceUploadManager* instance=nil;
         [fileManager createDirectoryAtPath:docDir withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
-    return [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"receiver_%@.aac", uqID]];
+    return [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"receiver_%@.caf", uqID]];
 }
 
 
