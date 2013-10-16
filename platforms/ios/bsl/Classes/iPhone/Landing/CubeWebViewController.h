@@ -15,7 +15,7 @@ typedef void (^DidErrorPreloadBlock)(void);
 
 @property(nonatomic,assign)BOOL preventOnce;
 @property(nonatomic,readonly) UIButton* closeButton;
-
+@property(nonatomic,assign) BOOL showCloseButton;
 @property(nonatomic,assign) BOOL alwaysShowNavigationBar;
 
 - (void)loadWebPageWithModule:(CubeModule *)module

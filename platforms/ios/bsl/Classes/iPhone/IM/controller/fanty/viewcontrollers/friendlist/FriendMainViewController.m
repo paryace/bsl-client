@@ -393,8 +393,9 @@
 }
 
 -(void)contactListSearchBarTextChanged:(ContactListView*)contactList searchBar:(UISearchBar*)searchBar{
+    NSString* searchText=[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    fliterBg.hidden=([searchBar.text length]>0);
+    fliterBg.hidden=([searchText length]>0);
 
 }
 

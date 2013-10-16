@@ -233,7 +233,7 @@
 }
 
 -(void)loadShowData{
-    NSString* searchText=searchBar.text;
+    NSString* searchText=[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if([searchText length]<1){
         sortedKeys = [dicts allKeys] ;
