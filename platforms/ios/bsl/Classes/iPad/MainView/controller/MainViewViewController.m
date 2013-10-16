@@ -485,7 +485,7 @@
 
 -(void)logout{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGOUTSENDEXITNOTIFICATION" object:nil];
-    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView:NO];
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
     [self.presentedViewController dismissViewControllerAnimated:NO completion:^{}];
 //    [self dismissViewControllerAnimated:NO completion:^{}];
 }

@@ -112,7 +112,7 @@
         [aCubeWebViewController viewDidAppear:NO];
         [self addBadge];
         self.selfObj=nil;
-
+        
     }didErrorBlock:^(){
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
@@ -559,7 +559,7 @@
 
 #pragma mark - 退出登陆
 -(void)logout{
-    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView:NO];
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
 }
 
 
