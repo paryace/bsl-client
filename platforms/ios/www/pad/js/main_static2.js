@@ -3,6 +3,8 @@ new FastClick(document.body);
 
 // $(".mainContent").height($(window).height() - 50);
 
+var myScroll;
+
 // 检测屏幕是否伸缩
 $(window).resize(function() {
 	$(".mainContent").height($(window).height() - 50);
@@ -129,7 +131,6 @@ var data = {
 		"name": "公告",
 		"msgCount": 10,
 		"progress": 0,
-		"sortingWeight": 2,
 		"updatable": true,
 		"build": 4
 	}],
@@ -144,7 +145,6 @@ var data = {
 		"msgCount": 0,
 		"progress": 0,
 		"updatable": false,
-		"sortingWeight": 1,
 		"build": 4
 	}],
 	"基本功能22333": [{
@@ -171,7 +171,6 @@ var data = {
 		"msgCount": 0,
 		"progress": 0,
 		"updatable": false,
-		"sortingWeight": 2,
 		"build": 4
 	}, {
 		"version": "3",
@@ -184,7 +183,6 @@ var data = {
 		"msgCount": 0,
 		"progress": 0,
 		"updatable": false,
-		"sortingWeight": 1,
 		"build": 4
 	}, {
 		"version": "3",
@@ -612,7 +610,7 @@ var data = {
 		"build": 60
 	}, {
 		"version": "1.0.0.60",
-		"category": "产品演示",
+		"category": "产品演示产品演示",
 		"downloadUrl": " ff8080813e1cd6f5013e30c3358701ec",
 		"releaseNote": "1.添加起降状态标志 2.界面调整",
 		"icon": "img/icon-notice.png",
@@ -634,19 +632,8 @@ var data = {
 		"progress": 100,
 		"updatable": false,
 		"build": 60
-	}, {
-		"version": "1.0.0.60",
-		"category": "产品演示",
-		"downloadUrl": " ff8080813e1cd6f5013e30c3358701ec",
-		"releaseNote": "1.添加起降状态标志 2.界面调整",
-		"icon": "img/icon-notice.png",
-		"identifier": "com.foss.plane.demo",
-		"name": "前序航班-Demo",
-		"msgCount": 0,
-		"progress": 100,
-		"updatable": false,
-		"build": 60
-	}]
+	}
+	]
 
 };
 
@@ -662,47 +649,16 @@ $("li[identifier]").live("click", function() {
 
 var loadModuleList = function() {
 
+	myScroll = null;
+
 	$(".mainContent").remove();
 	var mainContent = $('<div id="mainContent" class="mainContent"><div id="scroller"><ul class="scrollContent nav nav-list bs-docs-sidenav affix-top"></ul></div></div>');
 	$(".middleContent").append(mainContent);
 
 	var allModuleContentHtml = "";
-	var valueArray = new Array;
-	var keyArray = new Array;
-	var s =3;
-	_.each(data,function(value,key){
-		if(key ==="基本功能22"){
-			keyArray[0] = key;
-			valueArray[0] = value;
-		}else if(key ==="基本功能"){
-			keyArray[1] = key;
-			valueArray[1] = value;
-		}else if(key ==="基本功能22333"){
-			keyArray[2] = key;
-			valueArray[2] = value;
-		}else{
-			keyArray[s] = key;
-			valueArray[s] = value;
-			s++;
-		}
-	});
-	console.log("s = "+s);
-	console.log("keyArray "+keyArray);
-
-
-	var i = 0;
-	_.each(valueArray, function(value) {
-		console.log("key "+keyArray[i]);
+	_.each(data, function(value, key) {
 		var moduleItemHtmlContent = "";
 		var moduleItemTemplate = $("#moduleItemTemplate").html();
-		
-
-
-		value = _.sortBy(value, function(v) {
-			return v.sortingWeight;
-
-		});
-
 		_.each(value, function(value) {
 
 			var mark = value.icon;
@@ -710,31 +666,47 @@ var loadModuleList = function() {
 				mark = mark.substring(0, mark.indexOf("?"));
 			}
 			if (window.localStorage[mark] !== undefined) {
-				value.icon = window.localStorage[mark];
+				// value.icon = window.localStorage[mark];
+				//value.icon = store.get(mark);
+				value.icon = combineString(mark);
+
 			}
 
+			value.name = subStrByCnLen(value.name, 5);
+
 			value.moduleType = 'main';
-			value.classname = keyArray[i];
+
+			// downloadFile(value.icon, "packageName" + "/moduleIcon", function(entry) {
+			// 	// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
+			// 	value.icon = entry.fullPath;
+			// 	console.log("下载成功 " + value.icon);
+			// });
+
+			value.classname = key;
 			var moduleItemHtml = _.template(moduleItemTemplate, value);
 			moduleItemHtmlContent = moduleItemHtmlContent + moduleItemHtml;
 		});
 		//获取模块名
 		var moduleContentTemplate = $("#moduleContentTemplate").html();
+		if (moduleItemHtmlContent !== "" || moduleItemHtmlContent !== null) {
+
+		}
+
 		var moduleContentHtml = _.template(moduleContentTemplate, {
-			'moduleTitle': keyArray[i],
+			'moduleTitle': key,
 			'moduleItem': moduleItemHtmlContent,
 			'moduleType': 'main'
 		});
 		allModuleContentHtml = allModuleContentHtml + moduleContentHtml;
 		//使模块列表滚动
-		i++;
 	});
-	
 	$(".mainContent").find(".scrollContent").append(allModuleContentHtml);
 
 	$(".mainContent").height($(window).height() - 50);
 
-	var myScroll = new iScroll('mainContent');
+	myScroll = new iScroll('mainContent');
+
+	myScroll.scrollTo(0, 1, 200, true);
 
 	// $('.mainContent').iScroll('refresh');
 	// $('img.imageCache').imageCache();

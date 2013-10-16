@@ -4,247 +4,125 @@
 <head>
 <meta charset="utf-8">
 <title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,target-densitydpi=150">
-<meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="Gorphen Su">
 <!-- Le styles -->
-<link href="css/main.css" rel="stylesheet">
-<link rel="stylesheet" media="screen and (max-width:320px)" href="css/small.css">
+
 <script type="text/javascript" src="../cordova.js"></script>
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/gridview.css" rel="stylesheet">
+<link href="css/small.css" rel="stylesheet" media="screen and(max-device-width:320px)">
+
 
 </head>
 <body>
-<header>
-  <div class="logo_content">
-		<img id="logo" src="img/logo.png"/>
+	<div class="topContent">
+
+			<div id="top_left_btn" type="button"
+				class="left_btn btn btn-primary">
+				<img class="set_img" src="img/set.png">
+			</div>
+
+		<h3 id="title">变色龙</h3>
+			<div id="manager_btn" type="button"
+				class="right_btn btn btn-primary">管理</div>
 	</div>
-	<div id="setting_btn" class="setting_content">
-		<img src="img/set.png"/>
+	<div id="wrapper">
+		<div id="scroller">
+			<div class="searchContent">
+				<div class="inputContent">
+					<span class="icon-search"></span> 
+					<input id="searchInput"
+						type="text" class="search-query" placeholder="搜索">
+					<div class="del_content">
+			            <img id="search_del" src="img/app_search_close.png"></img>
+			        </div>
+				</div>
+				<div class="layout_bt_group btn-group" data-toggle="buttons-radio">
+					<div id="gridview_btn" class="active btn" data-toggle="button">
+						<i class="icon-th-large"></i>
+					</div>
+					<div id="listview_btn" class="btn" data-toggle="button">
+						<i class="icon-th-list"></i>
+					</div>
+				</div>
+				<!-- <div class="account_content"> -->
+					<!-- <h4>欢迎光临</h4> -->
+				<!-- </div> -->
+			</div>
+
+			<div class="mainContent">
+				<ul id="myul" class="scrollContent nav nav-list">
+					
+				</ul>
+			</div>
+		</div>
 	</div>
-</header>
 
-
-
-<div id="loader" style="display:none" class="loader">
-
-<div class="cube-loader-mask"></div>
-<div class="cube-flight-loader"><img class="cube-flight-loader-flight"><div class="cube-flight-loader-box"><a class="" href="javascript:void(0)"></a></div></div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="content">
-	<!-- 天气 -->
-  <div class="weather_content">
-  	<div class="degree">
-  		<span id="degree"></span>
-  	</div>
-  	<div class="circle">
-  		
-  	</div>
-  <!-- 	<div class="range">
-  		25°- 31°
-  	</div> -->
-  	<div class="more">
-  		<span id="base"></span>&nbsp;<span id="weather"></span>&nbsp;<span id="date"></span>
-  	</div>
-  </div>
-
-
-
-  <!--搜索-->
-  <div class="search_content">
-  	<div class="search_input_content">
-  		<input id="search_input" type="text" placeholder="输入机尾号、航班号"/>
-  		<button id="search_btn">搜索</button>
-  	</div>
-  </div>
-
-  <div id="slider" class="mainContent swipe">
-    <div id="swipe" class="swipe-wrap">
-       
-    </div>
-  </div>
-</div>
-<nav>
-    <ul id='position'>
-     <!--  <li class='on'></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li> -->
-    </ul>
-</nav>
+	<div class="buttomContent">
+		<div class="buttom_btn_group btn-group">
+			<div data="uninstall" class="btn active">未安装</div>
+			<div data="install" class="btn">已安装</div>
+			<div data="upgrade" class="btn">待更新</div>
+		</div>
+	</div>
 
 </body>
-<script id="module_div_ul" type="text/html">
 
-  <li class="module_li" identifier="<%=identifier%>"  moduleType="<%=moduleType%>">
-    
-    <div class="module_li_img">
-        <img src="<%=icon%>" alt="" onerror="this.src='img/default_icon2.png'">
-        <div class="module_Tips" moduletype="<%=moduleType%>" identifier="<%=identifier%>"  <%if(msgCount!==0  && moduleType ==="main"){%>style="display:inline"<%}else{%>style="display:none"<%}%>><%=msgCount%>
-      </div>
-    </div>
-        
-    </div>
-    <div class="module_li_titlename">
-      <%=name%>
-    </div>
-  </li>
+
+<script id="t2" type="text/html"> 
+	<li class="scrollContent_li" modules_title="<%=muduleTitle%>">
+		<h5><%=muduleTitle%></h5>
+		<div class="module_div">
+			<ul num="<%=tag%>" class="module_div_ul">
+				
+			</ul>
+		</div>
+	</li>
 </script>
+<!--		<img src="img/update_icon.png" 
+				<%if(updatable==true){%>style="display:block"<%}else{%>style="display:none"<%}%>-->
+<script id="module_div_ul" type="text/html">
+	<li class="module_li" moduleType="<%=moduleType%>"  identifier="<%=identifier%>" hidden="<%=hidden%>">
+		
+		<div class="module_li_img">
+				<img src="<%=icon%>" onerror="this.src='img/default_icon2.png'">
+				<div class="progress progress-striped active" identifier="<%=identifier%>">
+  					<div class="bar"></div>
+  				</div>
+		</div>
+		
+		<div class="module_push">
+			<div class="module_UpdateTips">
+					<img src="img/update_icon.png" 
+				<%if(updatable==true){%>style="display:block"<%}else{%>style="display:none"<%}%>
+				>
+			</div>
+			<div class="module_Tips" moduletype="<%=moduleType%>" identifier="<%=identifier%>"  <%if(msgCount!==0  && moduleType ==="main"){%>style="display:inline"<%}else{%>style="display:none"<%}%>><%=msgCount%>
+			</div>
+		</div>
+		<div class="detail">
+			<div class="module_li_titlename">
+				<%=name%></div>
+			<div class="module_li_version"><%=version%></div>
+			<div class="module_li_releasenote"><%=releasenote%></div>
+		</div>
+
+		<div class="icon-chevron-right"></div>
+		<button class="curd_btn btn-mini" type="button" local="<%=local%>" moduleType="<%=moduleType%>" identifier="<%=identifier%>"><%=btn_title%></button>
+
+	</li>
+</script>
+
 <script src="vendor/zepto/zepto.js"></script>
 <script src="vendor/zepto/touch.js"></script>
 <script src="vendor/underscore-min.js"></script>
-<script src="vendor/swipe.js"></script>
+<script src="vendor/iscroll-lite.js"></script>
 <script type="text/javascript" src="vendor/fastclick/fastclick.js"></script>
+<script src="js/setiscroll.js"></script>
 <script src="js/util.js"></script>
 <script src="js/main.js"></script>
-<!--<script type="text/javascript">
-alert(window.devicePixelRatio);
-alert("screen.width="+screen.width);
-</script>-->
-
- <!-- <ul id="myul" class="scrollContent"> -->
-          
-<!-- 
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-      -->
-
-      <!--   </ul> -->
-
-   <!--    <div class="page_div">
-        <ul id="myul1" class="scrollContent">
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  111111
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-          <li class="module_li">
-            <div class="module_li_img">
-              <img src="img/newsletter.png" />
-              <div class="module_Tips">
-                 0
-              </div>
-            </div>
-            <div class="module_li_titlename">
-                  性能手册资料
-            </div>
-          </li>
-
-        </ul>
-
-      </div> -->
-
-      
-
-
+<!-- <script src="http://10.108.1.54:8888/target/target-script-min.js#anonymous"></script> -->
 </html>

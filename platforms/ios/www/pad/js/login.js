@@ -1,5 +1,9 @@
 var window_height = $(window).height();
-
+window.addEventListener("keydown", function(evt) {
+	if (evt.keyCode === 13) {
+		$("#LoginBtn").trigger("click");
+	}
+});
 $("body").click(function() {
 	$(".del_content").hide();
 	console.log("body click");
@@ -42,8 +46,6 @@ $("#LoginBtn").click(function() {
 	var username = $("#username").val();
 	var password = $("#password").val();
 	var isRemember = $('#isRemember:checked').val();
-	window.localStorage["username"] =username;
-	window.localStorage["password"] =password;
 
 	/*if (username === "" || username === null) {
 		showAlert("账号不能为空", null, "提示", "确定");

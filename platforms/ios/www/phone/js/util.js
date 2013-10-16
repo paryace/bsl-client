@@ -39,29 +39,6 @@ var replacejscssfile = function(oldfilename, newfilename, filetype) {
 	}
 };
 
-
-//判断浏览器内核
-var browser = {
-	versions: function() {
-		var u = navigator.userAgent,
-			app = navigator.appVersion;
-		return {
-			trident: u.indexOf('Trident') > -1, //IE内核
-			presto: u.indexOf('Presto') > -1, //opera内核
-			webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-			gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-			mobile: !! u.match(/AppleWebKit.*Mobile.*/) || !! u.match(/AppleWebKit/), //是否为移动终端
-			ios: !! u.match(/(i[^;]+\;(U;)? CPU.+Mac OS X)/), //ios终端
-			android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-			iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
-			iPad: u.indexOf('iPad') > -1, //是否iPad
-			webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-			apad: (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) && (u.indexOf("Mobile") < 0)
-		};
-	}(),
-	language: (navigator.browserLanguage || navigator.language).toLowerCase()
-};
-
 //localStorage 操作
 var Store = {
 	saveObject: function(key, object) {
@@ -157,11 +134,12 @@ var downloadFile = function(sourceUrl, targetUrl, callback) {
 			});
 	}
 };
+
 //把图片转换成base64，存放到localStorage
 var getBase64Image = function(img) {
 	try {
 		if (!/^data:image/.test($(img).attr("src")) && window.localStorage[$(img).attr("src")] === undefined) {
-
+			console.log("开始缓存");
 			var pic_real_width, pic_real_height;
 			var realimg = $("<img/>").attr("src", img.src).on("load", function() {
 				pic_real_width = this.width;
@@ -183,6 +161,7 @@ var getBase64Image = function(img) {
 				// 	throw 'Invalid image type for canvas encoder: ' + img.src;
 				// }
 				window.localStorage[mark] = canvas.toDataURL();
+				console.log("缓存完成");
 			});
 		}
 	} catch (e) {
@@ -190,3 +169,33 @@ var getBase64Image = function(img) {
 		return 'error';
 	}
 }
+
+//获取字符串字节数
+String.prototype.getBytesLength = function() {
+	return this.replace(/[^\x00-\xff]/gi, "--").length;
+};
+
+function subStrByCnLen(str, len) {
+	var cnlen = len * 2;
+
+	var index = 0;
+	var tempStr = "";
+
+	for (i = 0; i < str.length; i++) {
+		var s = str.charAt(i);
+		if (index >= cnlen) {
+			// return tempStr;
+		} else {
+			if (s.getBytesLength() > 1) {
+				index += 2;
+			} else {
+				index += 1;
+			}
+			tempStr = tempStr + s;
+		}
+	}
+	if (str.getBytesLength() > cnlen) {
+		tempStr = tempStr + "..";
+	}
+	return tempStr;
+};

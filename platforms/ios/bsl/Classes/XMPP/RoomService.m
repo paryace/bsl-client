@@ -541,7 +541,6 @@
             
             if ([ subject isEqualToString:@"quitgroup"]){
                 rectChat.content=@"群组已经被解散";
-                rectChat.noReadMsgNumber=[NSNumber numberWithInt:0];
                 rectChat.isQuit=[NSNumber numberWithBool:YES];
             }
             else if ([ subject isEqualToString:@"quitperson"]) {
@@ -549,14 +548,13 @@
             }
             else if([subject isEqualToString:@"killperson"]){
                 rectChat.content=@"你已被请出群组";
-                rectChat.noReadMsgNumber=[NSNumber numberWithInt:0];
                 rectChat.isQuit=[NSNumber numberWithBool:YES];
             }
             else{
                 rectChat.content=msg;
-                int noReadMsgNumber=[rectChat.noReadMsgNumber intValue]+1;
-                rectChat.noReadMsgNumber=[NSNumber numberWithInt:noReadMsgNumber];
             }
+            int noReadMsgNumber=[rectChat.noReadMsgNumber intValue]+1;
+            rectChat.noReadMsgNumber=[NSNumber numberWithInt:noReadMsgNumber];
             rectChat.contentType=[NSNumber numberWithInt:rectangleChatContentType];
 
             [rectChat didSave];

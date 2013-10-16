@@ -85,6 +85,7 @@ $("#LoginBtn").click(function() {
 
 var app = {
 	initialize: function() {
+        alert('login init!!!');
 		this.bindEvents();
 	},
 	bindEvents: function() {

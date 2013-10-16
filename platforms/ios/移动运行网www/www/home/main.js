@@ -353,10 +353,7 @@ define(['text!home/main.html',
                 that.cordovaExec("CubeModuleOperator", "setting");
 
 
-            } 
-
-
-            else {
+            } else {
 
                 that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
             }
@@ -420,15 +417,13 @@ define(['text!home/main.html',
             } else if (identifier === "com.csair.setting") {
 
                 that.cordovaExec("CubeModuleOperator", "setting");
-            } else if(identifier === "com.foss.chat"){
-                 that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-            } else if(identifier === "com.foss.announcement"){
+            } else if (identifier === "com.foss.chat") {
                 that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-            }else if(identifier === "com.foss.message.record"){
-                 that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-            }
-
-            else {
+            } else if (identifier === "com.foss.announcement") {
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            } else if (identifier === "com.foss.message.record") {
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            } else {
 
                 that.container.navigateForResult('/' + identifier + '/index', {
                     trigger: true
@@ -445,7 +440,6 @@ define(['text!home/main.html',
             window.refreshMainPage = this.refreshMainPage;
             window.receiveMessage = this.receiveMessage;
             window.loadModuleList = this.loadModuleList;
-
 
 
 
@@ -539,7 +533,7 @@ define(['text!home/main.html',
 
             //模块点击
             $("li[identifier]").live("click", function() {
-                console.log("length "+$("li[identifier]").size());
+                console.log("length " + $("li[identifier]").size());
                 if (isLoadModuleByPiece) {
                     that.accessModuleByPiece(this, that);
                 } else {
@@ -593,73 +587,60 @@ define(['text!home/main.html',
 
 
             //冒泡提示信息: msg:提示内容, duration:停留时间
-
+            that.cordovaExec("CubeModuleList", "ShowMainView");
 
             var isLogin = true;
             console.log("4");
-            if(window.sessionStorage.isIn){
+            if (window.sessionStorage.isIn) {
                 isLogin = window.sessionStorage.isIn;
-            }else{
+            } else {
                 window.sessionStorage.isIn = isLogin;
             }
 
             if (isLogin == true) {
                 that.cordovaExec("CubeModuleOperator", "sync", [], function() {
-                   // alert("第一次登陆");
+                    // alert("第一次登陆");
                     isFirst = false;
                     isLogin = false;
                     window.sessionStorage["isIn"] = isLogin;
 
+                    loadModuleList("CubeModuleList", "mainList", "main", function() {
+                        window.mySwipe = Swipe(document.getElementById('slider'), {
+                            continuous: true,
+                            callback: function(index, elem) {
+                                console.log("index=" + index);
+                                var whichPage = index + 1;
+                                $("#position").children("li").removeClass("on");
+                                $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
 
-                  //  console.log("isFirst "+isLogin);
-                    cordova.exec(function(data) {
-                        packageName = $.parseJSON(data).packageName;
-                        //如果是android，先获取到包名
-                        loadModuleList("CubeModuleList", "mainList", "main", function() {
-                            window.mySwipe = Swipe(document.getElementById('slider'), {
-                                continuous: true,
-                                callback: function(index, elem) {
-                                    console.log("index=" + index);
-                                    var whichPage = index + 1;
-                                    $("#position").children("li").removeClass("on");
-                                    $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
-
-                                }
-                            });
-
-
+                            }
                         });
-                    }, function(err) {
-                        console.log("获取Packagename失败");
-                    }, "CubePackageName", "getPackageName", []);
+
+
+                    });
+
 
                 });
-            }else{
+            } else {
                 //alert("第二次登陆"+window.sessionStorage["isIn"]);
 
-                cordova.exec(function(data) {
-                        packageName = $.parseJSON(data).packageName;
-                        //如果是android，先获取到包名
-                        loadModuleList("CubeModuleList", "mainList", "main", function() {
-                            window.mySwipe = Swipe(document.getElementById('slider'), {
-                                continuous: true,
-                                callback: function(index, elem) {
-                                    console.log("index=" + index);
-                                    var whichPage = index + 1;
-                                    $("#position").children("li").removeClass("on");
-                                    $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
 
-                                }
-                            });
+                loadModuleList("CubeModuleList", "mainList", "main", function() {
+                    window.mySwipe = Swipe(document.getElementById('slider'), {
+                        continuous: true,
+                        callback: function(index, elem) {
+                            console.log("index=" + index);
+                            var whichPage = index + 1;
+                            $("#position").children("li").removeClass("on");
+                            $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+
+                        }
+                    });
 
 
-                        });
-                    }, function(err) {
-                        console.log("获取Packagename失败");
-                    }, "CubePackageName", "getPackageName", []);
+                });
+
             }
-
-
 
         },
 
