@@ -99,6 +99,7 @@
         skinView.delegate = self;
     }
     aCubeWebViewController  = [[CubeWebViewController alloc] init];
+    aCubeWebViewController.showCloseButton=YES;
     aCubeWebViewController.title=@"登录";
     aCubeWebViewController.wwwFolderName = @"www";
     aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"pad/main.html"] absoluteString];
@@ -687,6 +688,7 @@
     [bCubeWebViewController.view removeFromSuperview];
     bCubeWebViewController=nil;
     bCubeWebViewController  = [[CubeWebViewController alloc] init];
+    bCubeWebViewController.showCloseButton=YES;
     bCubeWebViewController.title = module.name;
     [bCubeWebViewController loadWebPageWithModule:module  frame:frame  didFinishBlock: ^(){
         //如果webView加载成功  这显示放大缩小按钮

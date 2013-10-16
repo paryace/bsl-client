@@ -84,7 +84,7 @@
     self.selfObj=self;
 
     aCubeWebViewController = [[CubeWebViewController alloc]init];
-    
+    aCubeWebViewController.showCloseButton=YES;
     aCubeWebViewController.title=@"登录";
     aCubeWebViewController.wwwFolderName = @"www";
     NSURL* fileUrl = [[NSURL alloc]init];
@@ -130,6 +130,8 @@
     bCubeWebViewController=nil;
     self.selectedModule=nil;
 }
+
+
 
 
 - (void)dealloc{
@@ -521,6 +523,7 @@
     [bCubeWebViewController.view removeFromSuperview];
     bCubeWebViewController=nil;
     bCubeWebViewController  = [[CubeWebViewController alloc] init];
+    bCubeWebViewController.showCloseButton=YES;
     //记录html5模块点击begin
     [OperateLog recordOperateLog:module];
     //end

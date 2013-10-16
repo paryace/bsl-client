@@ -1,17 +1,27 @@
-define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/zepto', 'home/vendor/zepto/touch', 'home/vendor/underscore-min', 'home/vendor/swipe', 'home/vendor/fastclick/fastclick', 'js/util.js'
+define(['text!home/main.html',
+    // 'com.csair.base/urlConfig', 
+    'home/vendor/zepto/zepto',
+    'home/vendor/zepto/touch',
+    'home/vendor/underscore-min',
+    'home/vendor/swipe',
+    'home/vendor/fastclick/fastclick'
+    /*'js/util.js'*/
     /* ,'../cordova'*/
 
 
-], function(demoIndexTemplate, UrlConfig) {
+], function(demoIndexTemplate
+    // , UrlConfig
+
+) {
 
     var View = Piece.View.extend({
 
         id: 'detailview',
         isOver: 0,
-
+        //isFirst: true,
         events: {
 
-
+            "click header": 'test'
 
         },
 
@@ -21,7 +31,12 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
             // "List:select flightstatus-list": "onItemSelect"
         },
 
-        packageName: null,
+
+        test: function() {
+
+            refreshMainPage();
+
+        },
         cordovaExec: function(plugin, action, parameters, callback) {
             cordova.exec(function(data) {
                 if (callback !== undefined) {
@@ -32,7 +47,8 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
             }, plugin, action, parameters === null || parameters === undefined ? [] : parameters);
         },
         refreshMainPage: function() {
-            this.loadModuleList("CubeModuleList", "mainList", "main", function() {
+
+            loadModuleList("CubeModuleList", "mainList", "main", function() {
                 window.mySwipe = Swipe(document.getElementById('slider'), {
                     continuous: true,
                     callback: function(index, elem) {
@@ -63,10 +79,9 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
 
         loadModuleList: function(plugin, action, type, callback) {
 
-            var that = this;
-            var me = this;
-            if (that.isOver === 0) {
-                that.isOver = that.isOver + 1;
+            if (isOver === 0) {
+
+                isOver = isOver + 1;
                 var i = 0;
                 $("#swipe").html("");
                 $("#position").html("");
@@ -116,10 +131,10 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
                             return v.sortingWeight;
 
                         });
-                        downloadFile(value.icon + "", that.packageName + "/moduleIcon", function(entry) {
-                            // document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
-                            value.icon = entry.fullPath;
-                        });
+                        // downloadFile(value.icon + "", packageName + "/moduleIcon", function(entry) {
+                        //     // document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
+                        //     value.icon = entry.fullPath;
+                        // });
 
                         console.log("value2 = " + value.sortingWeight);
 
@@ -149,12 +164,13 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
                     if (callback !== undefined) {
                         callback();
                     }
-                    that.isOver = that.isOver - 1;
+                    isOver = isOver - 1;
                 }, function(err) {
                     alert("获取页面出错");
                 }, plugin, action, []);
 
             }
+
         },
 
         getWeather: function() {
@@ -190,13 +206,13 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
                         console.log(data.weather.rmk);
 
                         if (data.weather.rmk) {
-                            alert(2)
+
                             $("#weather").html(data.weather.rmk);
 
                         }
 
                         if (data.weather.tempreture) {
-                            alert(1)
+
                             $("#degree").html(data.weather.tempreture + "°");
                         }
 
@@ -286,131 +302,143 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
 
         app: null,
 
-        accessModuleByApp:function(tirgger,that){
+        accessModuleByApp: function(tirgger, that) {
             console.log("模块点击");
-                var type = "main";
-                var identifier = $(tirgger).attr("identifier");
-                console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
+            var type = "main";
+            var identifier = $(tirgger).attr("identifier");
+            console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
 
-                var applicationCompetence = "111";
-                var aircrewCompetence = "111";
-                var crewmenCompetence = "111";
+            var applicationCompetence = "111";
+            var aircrewCompetence = "111";
+            var crewmenCompetence = "111";
 
-                //判断当前账号是否有权限进入此模块
-                if (identifier === "com.csair.application") {
+            //判断当前账号是否有权限进入此模块
+            if (identifier === "com.csair.application") {
 
-                    if (applicationCompetence) {
-                        that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+                if (applicationCompetence) {
+                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
 
-                    } else {
-
-                        that.Toast("对不起,您暂无权限进入此模块", null);
-
-                    }
-
-
-
-                } else if (identifier === "com.csair.aircrew") {
-
-
-                    if (aircrewCompetence) {
-                        that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-
-                    } else {
-
-                        that.Toast("对不起,您暂无权限进入此模块", null);
-
-                    }
-
-                } else if (identifier === "com.csair.crewmen") {
-
-
-                    if (crewmenCompetence) {
-
-                        that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-                    } else {
-
-                        that.Toast("对不起,您暂无权限进入此模块", null);
-
-                    }
-                } else if (identifier === "com.csair.setting") {
-
-                    that.cordovaExec("CubeModuleOperator", "setting");
                 } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+
+
+
+            } else if (identifier === "com.csair.aircrew") {
+
+
+                if (aircrewCompetence) {
+                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+
+            } else if (identifier === "com.csair.crewmen") {
+
+
+                if (crewmenCompetence) {
 
                     that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-                }
-        },
-
-        accessModuleByPiece:function(tirgger,that){
-            console.log("模块点击");
-                var type = "main";
-                var identifier = $(tirgger).attr("identifier");
-                console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
-
-                var applicationCompetence = "111";
-                var aircrewCompetence = "111";
-                var crewmenCompetence = "111";
-
-                //判断当前账号是否有权限进入此模块
-                if (identifier === "com.csair.application") {
-
-                    if (applicationCompetence) {
-                        
-                        that.container.navigateForResult('/'+identifier+'/index', {
-                                trigger: true
-                        }, '/com.csair.home/main', this.onGotResult);
-
-                    } else {
-
-                        that.Toast("对不起,您暂无权限进入此模块", null);
-
-                    }
-
-
-
-                } else if (identifier === "com.csair.aircrew") {
-
-
-                    if (aircrewCompetence) {
-                        that.container.navigateForResult('/'+identifier+'/index', {
-                                trigger: true
-                        }, '/com.csair.home/main', this.onGotResult);
-
-                    } else {
-
-                        that.Toast("对不起,您暂无权限进入此模块", null);
-
-                    }
-
-                } else if (identifier === "com.csair.crewmen") {
-
-
-                    if (crewmenCompetence) {
-
-                        that.container.navigateForResult('/'+identifier+'/index', {
-                                trigger: true
-                        }, '/com.csair.home/main', this.onGotResult);
-                    } else {
-
-                        that.Toast("对不起,您暂无权限进入此模块", null);
-
-                    }
-                } else if (identifier === "com.csair.setting") {
-
-                    that.cordovaExec("CubeModuleOperator", "setting");
                 } else {
 
-                    that.container.navigateForResult('/'+identifier+'/index', {
-                                trigger: true
-                        }, '/com.csair.home/main', this.onGotResult);
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
                 }
+            } else if (identifier === "com.csair.setting") {
+
+                that.cordovaExec("CubeModuleOperator", "setting");
+            } else {
+
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            }
+        },
+
+        accessModuleByPiece: function(tirgger, that) {
+            Piece.Session.deleteObject('moduleIndex');
+            console.log("模块点击");
+            var type = "main";
+            var identifier = $(tirgger).attr("identifier");
+            console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
+
+            var applicationCompetence = "111";
+            var aircrewCompetence = "111";
+            var crewmenCompetence = "111";
+
+            //判断当前账号是否有权限进入此模块
+            if (identifier === "com.csair.application") {
+
+                if (applicationCompetence) {
+
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+
+
+
+            } else if (identifier === "com.csair.aircrew") {
+
+
+                if (aircrewCompetence) {
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+
+            } else if (identifier === "com.csair.crewmen") {
+
+
+                if (crewmenCompetence) {
+
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+            } else if (identifier === "com.csair.setting") {
+
+                that.cordovaExec("CubeModuleOperator", "setting");
+            } else {
+
+                that.container.navigateForResult('/' + identifier + '/index', {
+                    trigger: true
+                }, '/com.csair.home/main', this.onGotResult);
+            }
         },
 
         onShow: function() {
+
             var that = this;
             var me = this;
+
+
+            window.refreshMainPage = this.refreshMainPage;
+            window.receiveMessage = this.receiveMessage;
+            window.loadModuleList = this.loadModuleList;
+
+
+
+
             new FastClick(document.body);
+
             //封装cordova的执行方法，加上回调函数
 
 
@@ -421,6 +449,7 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
             // });
             //搜索按键
             $("#search_btn").click(function() {
+
                 //搜索事件
                 var keyword = $("#search_input").val();
                 console.log("点击了搜索按键：keyword=" + keyword);
@@ -459,7 +488,13 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
                     window.localStorage['com.csair.dynamic-flightDynamic.html'] = JSON.stringify(queryAction);
 
                     console.log(window.location.href);
-                    that.cordovaExec("CubeModuleOperator", "showModule", ["com.csair.dynamic", "main"]);
+                    if (isLoadModuleByPiece) {
+                        that.container.navigateForResult('/' + identifier + '/index', {
+                            trigger: true
+                        }, '/com.csair.home/main', this.onGotResult);
+                    } else {
+                        that.cordovaExec("CubeModuleOperator", "showModule", ["com.csair.dynamic", "main"]);
+                    }
                     //window.location = "../com.csair.dynamic/index.html#com.csair.dynamic/flightDynamic";
 
                 } else {
@@ -480,17 +515,23 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
                 var type = "main";
                 var identifier = "com.csair.airport";
                 console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
+                if (isLoadModuleByPiece) {
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+                } else {
+                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+                }
 
-                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
             });
 
             //模块点击
-            var isLoadModuleByPiece = true;
             $("li[identifier]").live("click", function() {
-                if(isLoadModuleByPieceisLoadModuleByPiece){
-                    that.accessModuleByPiece(this,that);
-                }else{
-                    that.accessModuleByApp(this,that);
+                console.log("length "+$("li[identifier]").size());
+                if (isLoadModuleByPiece) {
+                    that.accessModuleByPiece(this, that);
+                } else {
+                    that.accessModuleByApp(this, that);
                 }
 
 
@@ -542,15 +583,27 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
             //冒泡提示信息: msg:提示内容, duration:停留时间
 
 
-
+            var isLogin = true;
             console.log("4");
-            that.cordovaExec("CubeModuleOperator", "sync", [], function() {
-                var osPlatform = device.platform;
-                if (osPlatform.toLowerCase() == "android") {
+            if(window.sessionStorage.isIn){
+                isLogin = window.sessionStorage.isIn;
+            }else{
+                window.sessionStorage.isIn = isLogin;
+            }
+
+            if (isLogin == true) {
+                that.cordovaExec("CubeModuleOperator", "sync", [], function() {
+                   // alert("第一次登陆");
+                    isFirst = false;
+                    isLogin = false;
+                    window.sessionStorage["isIn"] = isLogin;
+
+
+                  //  console.log("isFirst "+isLogin);
                     cordova.exec(function(data) {
-                        that.packageName = $.parseJSON(data).packageName;
+                        packageName = $.parseJSON(data).packageName;
                         //如果是android，先获取到包名
-                        that.loadModuleList("CubeModuleList", "mainList", "main", function() {
+                        loadModuleList("CubeModuleList", "mainList", "main", function() {
                             window.mySwipe = Swipe(document.getElementById('slider'), {
                                 continuous: true,
                                 callback: function(index, elem) {
@@ -567,26 +620,32 @@ define(['text!home/main.html', 'com.csair.base/urlConfig', 'home/vendor/zepto/ze
                     }, function(err) {
                         console.log("获取Packagename失败");
                     }, "CubePackageName", "getPackageName", []);
-                } else {
-                    that.loadModuleList("CubeModuleList", "mainList", "main", function() {
-                        window.mySwipe = Swipe(document.getElementById('slider'), {
-                            continuous: true,
-                            callback: function(index, elem) {
-                                console.log("index=" + index);
-                                var whichPage = index + 1;
-                                $("#position").children("li").removeClass("on");
-                                $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
 
-                            }
+                });
+            }else{
+                //alert("第二次登陆"+window.sessionStorage["isIn"]);
+
+                cordova.exec(function(data) {
+                        packageName = $.parseJSON(data).packageName;
+                        //如果是android，先获取到包名
+                        loadModuleList("CubeModuleList", "mainList", "main", function() {
+                            window.mySwipe = Swipe(document.getElementById('slider'), {
+                                continuous: true,
+                                callback: function(index, elem) {
+                                    console.log("index=" + index);
+                                    var whichPage = index + 1;
+                                    $("#position").children("li").removeClass("on");
+                                    $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+
+                                }
+                            });
+
+
                         });
-
-
-                    });
-                }
-
-
-
-            });
+                    }, function(err) {
+                        console.log("获取Packagename失败");
+                    }, "CubePackageName", "getPackageName", []);
+            }
 
 
 

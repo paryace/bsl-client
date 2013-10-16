@@ -10,6 +10,7 @@
   <!-- Le styles -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
+    <link href="css/socmain.css" rel="stylesheet">
   <link href="theme/default/default.css" rel="stylesheet">
   <!-- Le fav and touch icons -->
   <link rel="shortcut icon" href="vendor/bootstrap/ico/favicon.ico">
@@ -24,14 +25,14 @@
     <div class="topMenu">
       <div class="active">
         <img class="menuItem" data="home" src="img/home.png" alt=""></div>
-      <div>
-        <img class="menuItem"  data="module" src="img/module.png" alt=""></div>
+      <!-- <div>
+        <img class="menuItem"  data="module" src="img/module.png" alt=""></div> -->
       <div>
         <img class="menuItem" data="chat" src="img/say.png" alt=""></div>
     </div>
     <div class="bottomMenu">
-      <div>
-        <img class="menuItem" data="skin" src="img/skin.png" alt=""></div>
+     <!--  <div>
+        <img class="menuItem" data="skin" src="img/skin.png" alt=""></div> -->
       <div>
         <img class="menuItem" data="setting" src="img/set.png" alt=""></div>
     </div>
@@ -40,13 +41,15 @@
     <div class="searchContent">
       <div class="inputContent">
         <span class="icon-search"></span>
-        <input id="searchInput" type="text" class="span2 search-query" placeholder="搜索"></div>
+        <input id="searchInput" type="text" class="span2 search-query" placeholder="搜索">
+        <button id="searchBtn">搜索</button>
+      </div>
       <div class="layoutBtnContent"></div>
       <div class="account_content">
         <h4>欢迎光临</h4>
       </div>
     </div>
-    <div class="moduleManageBar" style="display:block">
+    <div class="moduleManageBar" style="display:none">
       <div class="manager-btn button" data="uninstall" >未安装</div>
       <div class="manager-btn button" data="install" >已安装</div>
       <div class="manager-btn button" data="upgrade" >待更新</div>
@@ -57,6 +60,21 @@
       </div>
     </div>
   </div>
+
+   <div class="weatherContent">
+      <div class="degree">
+        28°
+      </div>
+      <div class="more">
+        晴转多云
+      </div>
+      <div class="date">
+        8月29日 周四
+      </div>
+  </div>
+
+
+
   <!--  templete-->
   <script id="moduleContentTemplate" type="text/x-jquery-tmpl">
     <li class="moduleTitle" moduleName="<%=moduleTitle%>" moduleType="<%=moduleType%>"><h4><%=moduleTitle%></h4></li>
@@ -88,7 +106,6 @@
   <script src="vendor/underscore/underscore-min.js"></script>
   <script type="text/javascript" src="vendor/iscroll/iscroll-lite-4.1.6.js"></script>
   <script src="vendor/fastclick/fastclick.js"></script>
-<!--  <script type="text/javascript" src="vendor/store/store.min.js"></script> -->
   <script src="js/util.js"></script>
   <script src="js/main_static2.js"></script>
 </body>

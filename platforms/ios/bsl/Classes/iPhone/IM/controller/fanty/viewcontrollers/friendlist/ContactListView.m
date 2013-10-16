@@ -165,7 +165,7 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
 
 -(void)showLoadData{
     NSLog(@"showLoadData 1");
-    NSString* searchText=searchBar.text;
+    NSString* searchText=[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     headerArray=nil;
     friendList=nil;
     if([searchText length]<1){
@@ -464,8 +464,9 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSString* searchText=[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    if([searchBar.text length]<1){
+    if([searchText length]<1){
         NSString* key=[headerArray objectAtIndex:section];
         UIButton* button=[UIButton buttonWithType:UIButtonTypeCustom];
         button.frame=CGRectMake(0.0f, 0.0f, self.frame.size.width, 40.0f);
@@ -519,9 +520,12 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if([searchBar.text length]<1 && section==selectedIndex)
+    
+    NSString* searchText=[searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if([searchText length]<1 && section==selectedIndex)
         return [friendList count];
-    else if([searchBar.text length]>0)
+    else if([searchText length]>0)
         return [friendList count];
     return 0.0f;
 }
