@@ -60,5 +60,6 @@
 
 -(UIImage*)originImageByUrl:(NSString*)url;
 
+-(NSString*)originPathByUrl:(NSString*)url;
 
 @end

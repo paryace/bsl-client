@@ -511,7 +511,7 @@
             }
             else if ([ subject isEqualToString:@"quitperson"]) {
                 messageEntity.type = @"notification";
-                messageEntity.content=[NSString stringWithFormat:@"%@已经退出群组",[sender myNickname]];
+                messageEntity.content=[NSString stringWithFormat:@"%@已经退出群组",senderUser];
             }
             else if([subject isEqualToString:@"killperson"]){
                 messageEntity.type = @"notification";
@@ -545,7 +545,7 @@
                 rectChat.isQuit=[NSNumber numberWithBool:YES];
             }
             else if ([ subject isEqualToString:@"quitperson"]) {
-                rectChat.content=[NSString stringWithFormat:@"%@已经退出群组",[sender myNickname]];
+                rectChat.content=[NSString stringWithFormat:@"%@已经退出群组",senderUser];
             }
             else if([subject isEqualToString:@"killperson"]){
                 rectChat.content=@"你已被请出群组";

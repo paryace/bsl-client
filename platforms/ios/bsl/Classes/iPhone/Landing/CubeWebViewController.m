@@ -10,6 +10,12 @@
 #import "NSFileManager+Extra.h"
 #import "JSONKit.h"
 #import "OperateLog.h"
+#import "NSFileManager+Extra.h"
+#import "Main_IphoneViewController.h"
+
+
+#define returnHomeStr @"home/index.html#home/main"
+
 @interface CubeWebViewController ()
 
 @property (weak,nonatomic) UIAlertView *alertViewLink;
@@ -26,7 +32,7 @@
 - (id)init{
     self = [super init];
     if (self) {
-
+        
         // Uncomment to override the CDVCommandDelegateImpl used
         _commandDelegate = [[CubeCommandDelegate alloc] initWithViewController:self];
         // Uncomment to override the CDVCommandQueue used
@@ -58,15 +64,15 @@
         [self.view addSubview:self.closeButton];
         
     }else{
-//        UIImage *image = [UIImage imageNamed:@"home.png"];
-//        self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [self.closeButton setImage:image forState:UIControlStateNormal];
-//        self.closeButton.frame = CGRectMake(CGRectGetHeight([[UIScreen mainScreen] bounds])/2 -65,self.view.frame.size.width - 65 , 45, 45);
-//        [self.view addSubview:self.closeButton];
-//        [self.closeButton addTarget:self action:@selector(didClickFullScrean:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        self.closeButton.alpha = 0.6;
-//        self.closeButton.hidden = YES;
+        //        UIImage *image = [UIImage imageNamed:@"home.png"];
+        //        self.closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [self.closeButton setImage:image forState:UIControlStateNormal];
+        //        self.closeButton.frame = CGRectMake(CGRectGetHeight([[UIScreen mainScreen] bounds])/2 -65,self.view.frame.size.width - 65 , 45, 45);
+        //        [self.view addSubview:self.closeButton];
+        //        [self.closeButton addTarget:self action:@selector(didClickFullScrean:) forControlEvents:UIControlEventTouchUpInside];
+        //
+        //        self.closeButton.alpha = 0.6;
+        //        self.closeButton.hidden = YES;
     }
 }
 
@@ -84,6 +90,20 @@
 
 - (void)didClickClose:(id)target
 {
+    
+    
+#if MOBILE_BSL
+    //重新刷新主界面
+    AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSString* homePath = [[[NSFileManager wwwRuntimeDirectory] absoluteString] stringByAppendingString:returnHomeStr];
+    if ([[appDelegate.navControl.viewControllers objectAtIndex:1] isKindOfClass: [Main_IphoneViewController class]] ) {
+        Main_IphoneViewController* iphoneViewController =[appDelegate.navControl.viewControllers objectAtIndex:1];
+        NSURL *url =[NSURL URLWithString:homePath];
+        NSURLRequest *request =[NSURLRequest requestWithURL:url];
+        [iphoneViewController.aCubeWebViewController.webView loadRequest:request];
+    }
+#endif
+    
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
 }
 
@@ -107,7 +127,7 @@
         NSString * moduleIndex = [[[module runtimeURL] URLByAppendingPathComponent:@"index.html"] absoluteString];
 #ifdef MOBILE_BSL
         self.startPage = [NSString stringWithFormat:@"%@", moduleIndex];
-
+        
 #else
         self.startPage = [NSString stringWithFormat:@"%@#%@/", moduleIndex, module.identifier];
 #endif
@@ -126,7 +146,7 @@
                 didErrorBlock:(DidErrorPreloadBlock)didErrorBolock
 {
     
-
+    
     
     NSString* moduleIndex = [[[module runtimeURL] URLByAppendingPathComponent:@"index.html"] absoluteString];
 #ifdef MOBILE_BSL
@@ -224,14 +244,15 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    
+
     NSLog(@"请求页面: %@", [request URL]);
     if ([@"cube://exit" isEqualToString:[[request URL] absoluteString]]) {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
-        
-        
+
     }
     NSURL* url = [request URL];
-    
+
     if ([[url absoluteString] rangeOfString:@"cube-action"].location != NSNotFound) {
         
         NSRange range = [[url absoluteString] rangeOfString:@"cube-action"];
@@ -279,7 +300,7 @@
                 NSLog(@"加载完毕: %@", [[newRequest URL] absoluteString]);
                 if(!self.alwaysShowNavigationBar)
                     [self.navigationController.navigationBar setHidden:YES];
-            
+                
                 [self.navigationController pushViewController:cubeWebViewController animated:YES];
             }didErrorBlock:^(){
                 
@@ -287,6 +308,20 @@
         }
         return NO;
     }
+     #if MOBILE_BSL
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ){
+        NSString* requestUrlStr  = [[request URL]  absoluteString];
+        NSRange range = [requestUrlStr rangeOfString:returnHomeStr];
+        
+        if([requestUrlStr length] == range.location+range.length){
+            self.closeButton.hidden = YES;
+        }else{
+            self.closeButton.hidden = NO;
+        }
+    }
+    #endif
+    
+    
     return [super webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 - (void)loadWebPageWithUrl:(NSString *)fileUrl didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock;

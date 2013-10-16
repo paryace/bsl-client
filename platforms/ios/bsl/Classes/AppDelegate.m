@@ -489,7 +489,7 @@ void uncaughtExceptionHandler(NSException*exception){
         [self performSelector:@selector(postOpreateLog) withObject:nil afterDelay:60.0f];
     }];
     
-    [request startSynchronous];
+    [request startAsynchronous];
     //    [request release];
     
 }

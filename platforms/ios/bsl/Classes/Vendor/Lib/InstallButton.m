@@ -77,37 +77,44 @@
 
 -(void)drawUninstallSyn{
     [self setTitle:@"同步中" forState:UIControlStateNormal];
+    self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:YES];
 }
 
 -(void)drawUninstall{
     [self setTitle:@"安装" forState:UIControlStateNormal];
+    self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:YES];
 }
 
 
 -(void)drawInstalled{
     [self setTitle:@"删除" forState:UIControlStateNormal];
+    self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:YES];
 }
 
 -(void)drawInstalling{
     [self setTitle:@"正在安装" forState:UIControlStateNormal];
+    self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:NO];
 }
 
 -(void)drawUpdatatable{
     [self setTitle:@"更新" forState:UIControlStateNormal];
+    self.titleLabel.font = [UIFont systemFontOfSize:11];
     [self setEnabled:YES];
 }
 
 -(void)drawUpdating{
     [self setTitle:@"正在更新" forState:UIControlStateDisabled];
+    self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:NO];
 }
 
 -(void)drawDeleting{
     [self setTitle:@"正在删除" forState:UIControlStateDisabled];
+    self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:NO];
 }
 

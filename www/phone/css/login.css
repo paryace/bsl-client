@@ -27,18 +27,34 @@ html,body,img,div,ul,li,a{
 }
 .rememberMe{
 	position: relative;
-	top: 30px;
+	top: 40px;
 }
 .rememberMe input{
-	margin-top: 10px;
-	width:25px;
-	height:25px;
+	/*margin-top: 10px;*/
+	width:22px;
+	height:22px;
+	margin: 0px;
+	-webkit-appearance:none;
+	/*zoom:1.1;*/
+	background-image: url(../img/checkbox_empty.png);
+	background-size:100% 100%;
+	outline: none;
+	border: 0px solid transparent;
+}
+input[type=checkbox]:checked{
+	background-color: none;
+	background-image: url(../img/checkbox_full.png);
+	background-size:100% 100%;
+	text-align: center;
+	outline: none;
+	border: 0px solid transparent;
 }
 
 .rememberMe span{
 	color: #fff;
 	font-weight: bold;
-	height: 25px;
+	height: 20px;
+	font-size: 17px;
 
 }
 

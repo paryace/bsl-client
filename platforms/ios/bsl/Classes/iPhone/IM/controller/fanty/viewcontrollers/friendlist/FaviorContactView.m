@@ -27,7 +27,6 @@
 
 @implementation FaviorContactView
 @synthesize faviorDelegate;
-@synthesize isEdit;
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
     self = [super initWithFrame:frame style:style];
     if (self) {
@@ -85,17 +84,6 @@
     laterReloadTimer=nil;
     [self reloadData];
 }
-
--(void)layoutTableCell{
-    
-    for(int i=0;i<[list count];i++){
-        NSIndexPath* indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        ContactCell* cell = (ContactCell*)[self cellForRowAtIndexPath:indexPath];
-        [cell layoutUI:self.editing animated:YES];
-    }
-     
-}
-
 
 #pragma mark tableview delegate  datasource
 

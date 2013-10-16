@@ -9,8 +9,8 @@
 #import "LoginPlugin.h"
 #import "JSONKit.h"
 #import "UIDevice+IdentifierAddition.h"
-#import "HTTPRequest.h"
 #import "ServerAPI.h"
+#import "HTTPRequest.h"
 
 @implementation LoginPlugin
 /**
@@ -23,7 +23,7 @@
 {
     @autoreleasepool {
         NSUserDefaults* defaults  = [NSUserDefaults standardUserDefaults];
-   Boolean switchIsOn = [defaults boolForKey:@"switchIsOn"] ;
+        Boolean switchIsOn = [defaults boolForKey:@"switchIsOn"] ;
         
         NSMutableDictionary *json = [NSMutableDictionary dictionary];
         [json setValue:[defaults objectForKey:@"username"] forKey:@"username"];
@@ -62,7 +62,7 @@
     NSString* userSwithch =  [command.arguments objectAtIndex:2];
     
     if ([userName isEqualToString:@""] || [userPass isEqualToString:@""]) {
-        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"用户名或密码不能为空！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"用户名或密码不能为空！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
         
         CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -71,7 +71,13 @@
         if(![SVProgressHUD isVisible]){
             [SVProgressHUD showWithStatus:@"正在登录..."  maskType:SVProgressHUDMaskTypeGradient ];
         }
+        
+        [httRequest setCompletionBlock:nil];
+        [httRequest setFailedBlock:nil];
+        [httRequest cancel];
+
         FormDataRequest* request = [FormDataRequest requestWithURL:[NSURL URLWithString:[ServerAPI urlForLogin]]];
+        httRequest=request;
         __block FormDataRequest*  __request=request;
 
         request.timeOutSeconds=120.0f;
@@ -85,6 +91,7 @@
         
 
         [request setFailedBlock:^{
+            httRequest=nil;
             if([SVProgressHUD isVisible]){
                 [SVProgressHUD showErrorWithStatus:@"连接服务器失败！"];
             }
@@ -100,12 +107,17 @@
         }];
         
         [request setCompletionBlock:^{
+            httRequest=nil;
             if([__request responseStatusCode] == 404){
                 [SVProgressHUD showErrorWithStatus:@"连接服务器失败！" ];
 
                 [__request cancel];
                 return ;
             }
+            if([SVProgressHUD isVisible]){
+                [SVProgressHUD dismiss];
+            }
+
             NSData* data = [__request responseData];
             NSDictionary* messageDictionary = [data objectFromJSONData];
             NSString* message = [messageDictionary objectForKey:@"message"];
@@ -150,10 +162,6 @@
                 [appDelegate didLogin];
 
             }else{
-                if([SVProgressHUD isVisible]){
-                    [SVProgressHUD dismiss];
-                }
-
                 if ([messageAlert length] <= 0) {
                     messageAlert = @"服务器出错，请联系管理员！";
                 }

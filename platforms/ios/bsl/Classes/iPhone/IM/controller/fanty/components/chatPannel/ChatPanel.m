@@ -136,7 +136,7 @@
         
         recordButton.hidden=YES;
         
-        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+        //if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
             UITextView* __textView=[[UITextView alloc] initWithFrame:rect];
             __textView.delegate=self;
             __textView.clipsToBounds=YES;
@@ -145,7 +145,8 @@
             __textView.textColor=[UIColor blackColor];
             __textView.returnKeyType=UIReturnKeySend;
             textView=__textView;
-        }
+        //}
+        /*
         else{
             ScrollTextView* __textView = [[ScrollTextView alloc]initWithFrame:rect];
             __textView.delegate = self;
@@ -160,6 +161,7 @@
             textView=__textView;
             
         }
+         */
 
         UIImageView* lineView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"h_line.png"]];
         lineView.autoresizingMask=UIViewAutoresizingFlexibleTopMargin;
@@ -240,8 +242,10 @@
 }
 
 -(void)setText:(NSString *)value{
-    if([textView isKindOfClass:[ScrollTextView class]])
+    if([textView isKindOfClass:[ScrollTextView class]]){
         ((ScrollTextView*)textView).text=value;
+
+    }
     else{
         UITextView* __textView=(UITextView*)textView;
         __textView.text=value;
@@ -523,7 +527,7 @@
     [camerPanel removeFromSuperview];
     camerPanel=nil;
     
-    [growingTextView resignFirstResponder];
+    //[growingTextView resignFirstResponder];
     
     if([self.delegate respondsToSelector:@selector(chatPanelDidSend:)])
         [self.delegate chatPanelDidSend:self];
@@ -546,7 +550,7 @@
         [camerPanel removeFromSuperview];
         camerPanel=nil;
         
-        [__textView resignFirstResponder];
+        //[__textView resignFirstResponder];
         
         if([self.delegate respondsToSelector:@selector(chatPanelDidSend:)])
             [self.delegate chatPanelDidSend:self];

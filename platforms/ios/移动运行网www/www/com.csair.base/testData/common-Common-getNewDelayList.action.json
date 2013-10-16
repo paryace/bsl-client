@@ -1,0 +1,27 @@
+{
+    "result": [{
+        "alertDelayDes": null,
+        "alertFlag": "B",
+        "branchCd": "HAK",
+        "branchName": "CZ",
+        "delayDept": null,
+        "expDt": "2013-07-02 18:00:00",
+        "expTime": null,
+        "id": "869856",
+        "oper": null,
+        "pubDt": "2013-07-02 09:45:05",
+        "remarks": "123"
+    }, {
+        "alertDelayDes": null,
+        "alertFlag": "B",
+        "branchCd": "HAK",
+        "branchName": "CZ",
+        "delayDept": null,
+        "expDt": "2013-07-02 18:00:00",
+        "expTime": null,
+        "id": "869856",
+        "oper": null,
+        "pubDt": "2013-07-02 09:45:05",
+        "remarks": "123"
+    }]
+}

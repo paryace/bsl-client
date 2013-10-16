@@ -21,7 +21,6 @@
     
     NSTimer* laterReloadTimer;
 }
-@property(nonatomic,assign) BOOL isEdit;
 @property(nonatomic,weak) id<FaviorContactViewDelegate> faviorDelegate;
 -(void)loadData;
 

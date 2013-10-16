@@ -220,7 +220,7 @@
         [message appendString:@"以下模块可以更新:\n"];
         for(CubeModule *module in updateModules)
         {
-            [message appendFormat:@"%@\n", module.name];
+             [message appendFormat:@"%@ %@\n", module.name,module.version];
         }
         //        [defaults setBool:NO forKey:@"firstTime"];
         if(![defaults boolForKey:@"firstTime"])

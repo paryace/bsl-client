@@ -111,22 +111,15 @@ var loadModuleList = function(plugin, action, type, callback) {
 					// if (window.localStorage[mark] !== undefined) {
 					// 	value.icon = window.localStorage[mark];
 					console.log("图片地址：" + value.icon);
-<<<<<<< .mine
 					/*downloadFile(value.icon + "", packageName + "/moduleIcon", function(entry) {
-=======
 					// downloadFile(value.icon + "", packageName + "/moduleIcon", function(entry) {
 					// 	// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
->>>>>>> .r4129
-
-<<<<<<< .mine
 						value.icon = entry.fullPath;
 						console.log("缓存后的图片地址：" + value.icon);
 					});*/
-=======
 					// 	value.icon = entry.fullPath;
 					// 	console.log("缓存后的图片地址：" + value.icon);
 					// });
->>>>>>> .r4129
 
 					$("#myul" + i).append(
 						_.template($("#module_div_ul").html(), {

@@ -18,7 +18,7 @@
     if (self) {
         self.accessoryType=UITableViewCellAccessoryNone;
         self.selectionStyle=UITableViewCellSelectionStyleBlue;
-        UIImageView* bgView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"contact_bg.png"]];
+        bgView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"contact_bg.png"]];
         self.backgroundView=bgView;
         
 
@@ -60,8 +60,8 @@
 
         [self addSubview:contentLabel];
         
-        contentImageView=[[UIImageView alloc] init];
-        [self addSubview:contentImageView];
+        //contentImageView=[[UIImageView alloc] init];
+        //[self addSubview:contentImageView];
         
 
         [self addSubview:dateLabel];
@@ -81,20 +81,35 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    CGRect rect=lineView.frame;
-    rect.size.width=self.frame.size.width;
-    lineView.frame=rect;
+    bgView.frame=self.bounds;
+
+    float offset=0.0f;
+    if(self.editing)
+        offset=40.0f;
+    float rightOffset=0.0f;
+    if(self.showingDeleteConfirmation)
+        rightOffset=60.0f;
     
-    dateLabel.frame=CGRectMake(self.frame.size.width-9.0f-100.0f, CGRectGetMinY(imageView.frame), 100.0f, 20.0f);
-
+    CGRect rect=imageView.frame;
+    rect.origin.x=offset+9.0f;
+    rect.origin.y=10.0f;
+    imageView.frame=rect;
     
-    titleLabel.frame=CGRectMake(CGRectGetMaxX(imageView.frame)+12.0f, CGRectGetMinY(imageView.frame), CGRectGetMinX(dateLabel.frame)-CGRectGetMaxX(imageView.frame)-48.0f, 20.0f);
-
-    contentLabel.frame=CGRectMake(CGRectGetMaxX(imageView.frame)+12.0f, 35.0f, CGRectGetMinX(dateLabel.frame)-CGRectGetMaxX(imageView.frame)-48.0f, 18.0f);
-
+    
+    
     rect=lineView.frame;
     rect.size.width=self.frame.size.width;
     lineView.frame=rect;
+    
+    rect=CGRectMake(self.frame.size.width-9.0f-100.0f-rightOffset, CGRectGetMinY(imageView.frame), 100.0f, 20.0f);
+    dateLabel.frame=rect;
+
+    rect=CGRectMake(CGRectGetMaxX(imageView.frame)+12.0f, CGRectGetMinY(imageView.frame), CGRectGetMinX(dateLabel.frame)-CGRectGetMaxX(imageView.frame)-12.0f, 20.0f);
+    titleLabel.frame=rect;
+
+    rect=CGRectMake(CGRectGetMaxX(imageView.frame)+12.0f, 35.0f,self.frame.size.width-CGRectGetMaxX(imageView.frame)-24.0f-rightOffset, 18.0f);
+    
+    contentLabel.frame=rect;
 
 }
 

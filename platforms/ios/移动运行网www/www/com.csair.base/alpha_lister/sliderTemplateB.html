@@ -1,0 +1,198 @@
+<div id="cities" style="display:;">
+  <div class="lee-dialog-screen lee-dialog-screen-model" style="z-index: 1000; display: block; height: 100%; position:fixed;background-color:white;opacity:1;"></div>
+  <div class="lee-dialog-screen lee-dialog-screen-model" style="opacity:1;background-color:transparent;z-index: 1000; display: block; height: 100%; position:fixed;">
+    <div class="lee-dialog lee-ui-corner-all" style="
+    opacity:1;position:relative; 
+    margin:0px !important;
+    min-width: 260px; 
+    max-width: 100% !important;
+    width: 100% !important;
+    left:0px !important;
+    top:0px !important;
+    height: 100% !important; 
+    top: 0px; 
+    margin:auto;
+    background-color:white;border:0px solid white !important;">
+      <div style="background-color:white;width:100%;height:100%;border:0px;padding:0px;">
+        <link rel="stylesheet" type="text/css" href="../piece/css/cube-slider-list.css" media="screen, projection" />
+        <!- cityContent start ->
+        <table style="width:100%;height:100%;overflow:hidden" cellpading="0" cellspacing="0">
+          <style>
+                .cityBlock{
+                  display: none;
+                  width:100%;
+                  height: 100%;
+                }
+            </style>
+          <tr style="height:44px;">
+            <td colspan="3">
+              <div class="bar-title">
+                <a  cube-action="pop" id="cityBack" class="button">
+                  <img src="../com.csair.dynamic/images/icon_back.ing" style="width:20px;"></a>
+                <h1 class="title">选择城市</h1>
+              </div>
+            </td>
+          </tr>
+          <tr style="height:44px;margin:0px;background-color:rgb(144,179,228)">
+
+            <script type="text/javascript"></script>
+            <td colspan="3" valign="middle" align="center">
+              <input id="cityFilter" style="" placeholder="请输入城市名" class="empty"/>
+            </td>
+          </tr>
+          <tr id="QueryState" class="navlit" style="height:30px;">
+            <td class="navCityButton active" align="center" state="chinese" >国内城市</td>
+            <td class="split">
+              <img class="splitImg" src="../com.csair.dynamic/images/split_double.ing"></td>
+            <td class="navCityButton" align="center" state="international" >&nbsp;国际城市</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="scroll-slot" style="">
+              <div class="scroll-lite"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" style="padding-top:5px;">
+              <div id="chinese" class="cityBlock" style="display:block">
+                <div class="listSlider" target="aaa" style="width:100%;height:100%">
+                  <div class="tipContainer">
+                    <div class="tip"></div>
+                  </div>
+
+                  <div class="listSlider-content">
+                    <ul>
+                      <div class="item-content"></div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div id="international" class="cityBlock">
+                <div class="listSlider" target="aaa" style="width:100%;">
+                  <div class="tipContainer">
+                    <div class="tip"></div>
+                  </div>
+
+                  <div class="listSlider-content">
+                    <ul>
+                      <div class="item-content"></div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="3" valign="middle" align="center" style="height:75px;">
+              <button class="csair-btn" id="cityCancel" style="width:90%;text-align:center;padding:10px;margin:15px;">关&nbsp;闭</button>
+            </td>
+          </tr>
+        </table>
+
+        <!- cityContent end ->
+        <style type="text/css">
+              .lee-dialog-screen {
+                background-color: black;
+                -moz-opacity: .8;
+                opacity: .80;
+                filter: alpha(opacity=80);
+                z-index: 499;
+              }
+
+              .lee-dialog-screen-model {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              }
+
+              .lee-ui-corner-all {
+                -moz-border-radius: .6em;
+                -webkit-border-radius: .6em;
+                border-radius: .6em;
+              }
+
+              .lee-dialog {
+                background-color: white;
+                height: auto;
+                border: 5px solid #111 !important;
+                width: auto;
+                min-width: 280px;
+                max-width: 500px;
+                z-index: 2000 !important;
+                padding-top: 0 !important;
+              }
+              .safeTable{
+                margin-top: 3px;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+              }
+
+              .safeTableIcon img{
+                width: 60px;
+                margin-right: 10px;
+              }
+
+              .safeTableTitle{
+                font-size: 30px;
+                color:rgb(0,87,196);
+              }
+
+              .btnTable{
+                width:100%;
+                height:100%;
+                border: 0px;
+                margin: 0px;
+              }
+
+              .btnTable td{
+                background-color:rgb(52,132,211);
+                color:white;
+                font-size: 20px;
+                position: relative;
+                top:3px;
+              }
+
+              .btnTable td:first-child{
+                border-right:3px solid white; 
+              }
+
+          </style>
+        <style type="text/css">
+                    #cityFilter{
+                      width:80%;
+                      border:0px;
+                      padding:0px;
+                      border-radius:20px;
+                      -webkit-border-radius:20px;
+                      -o-border-radius:20px;
+                      padding-left:50px;
+                      height:75%;
+                      -webkit-tap-highlight-color: transparent;
+                      -webkit-appearance: none;
+                    }
+
+                      #cityFilter:focus {
+                          outline: 0;
+                          padding-left:50px;
+                      }
+
+
+                      #cityFilter.empty{
+                        padding-left:50px;
+                        background-position: 20px 4px;
+                        background-repeat: no-repeat;
+                        background-size: 30px 30px;
+                          background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4QzdEMEZFOTY4RUJFMjExQTM2REU3MTZBQUM3RkM2MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFRDJFM0NDNDFGMzQxMUUzODA5OUM4N0RBNUE0ODk0NSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFRDJFM0NDMzFGMzQxMUUzODA5OUM4N0RBNUE0ODk0NSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjI4QkIwOUZCQkUwRUUzMTE4NjU5QkUxMTQxNUE5RjNBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjhDN0QwRkU5NjhFQkUyMTFBMzZERTcxNkFBQzdGQzYzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+AYISCAAAA3FJREFUeNrsml2ITGEYx8/YEbKmcUGtTWJZxQWNVWSXC4P1kVpc+ChXUhRqtwgppcQFQpGPC6lF1NIqjd1JxsXW5PvKV62yyDfLsKiZ8X/NM6Vpnvd8PWd3Zs1Tv6Z53vc95/znfc/7nOc540un00Z/sQFGP7KSmEI1f64jGo3aPcZoEAYzQTUYCQaBHvAGPAEdoB28k7z4cDisF2NjRpeDTaAW+Jh+k8FcsBEk1W8FDoE2kC6EZTYb3AMXQZ1GSK6VgQUgAm6BKX0pRl3MPnBT4ELUbN4GW/tCzBDQArbZmAkzGwj2gxP0Q/WKGHWiC2CpR5vQenBU4keyIuaABSEPQBOYASppN6uk703UrrMNEkvOTMxisFnT3gmWgRA4COLgNfhNn3Hyh6hfp+ZYe8B0r8QMNpn+CF3kZQvbbJr6hWgcdw8ddxPIdQPXgbFMWytYArptnq+bxrUy7dNAg7QYn2Z5PQNrKAg6sSSNf8q0b5EWo27cCUybEplwea8mNBetYtAYSTGLGP9dzZq3axE6Xr5VsVBSTC3jbxaOMecY/yxJMdwS6xAWE2P81ZJiKhl/l7AYLu5USIkZpun/VljMZ8YfkBLzXdM/ICxmOOP/ISUmBb4w/auExYxj/B8l7xkuoNUJi5lj8/yOxMQZ/2phMasY/x1JMe2MvwbUCwmpp+PlszZJMdc1O81hUO5SyFA6Tj57zDwZOBaj8pGTmoDW7CLVLaPIzwXGY16kAKok9JVpU5nnJQczVE7juMz1FTjthRgVIHdr2hsoHbaaf1jpr5Zej1dp8xFwQ9NeRVWb+6CRkqsgtQXpeyO1t1iIUzs0m4KpmVU0VSK1kh4wx2v6TSXcWpB20nlOtmcr+fZ7MJ8yzN6wrKAaL8Qoe045RqyQBdmphKgZUkXw7QJp8ycjU/zT1RJsC7Jb1lEnVvXmSbQ5JByI2AsmglMUb9ZKCXJao+qigkQFPa+dAY8o2P5rP8FDI1NPVlvyKLATfMhJnUUE+V0uFzUz54lsdA9QgvfNyNTJUjZqAWeZJwtLu5z0a8AkPdO9oM+UjbGuZ6jQ3mm6ElSIL2itCLpmZN6dFrwYK4JG0LZeFGKszlDRiDETFCs2MVlBK4zMfwqU/QK78j3N+43isCvgqpF5O/AyT3D+a77Sv5pKYkpi/l8xfwQYAFAhvUdpjCmdAAAAAElFTkSuQmCC);
+                      }
+
+                    </style>
+
+      </div>
+    </div>
+  </div>
+</div>

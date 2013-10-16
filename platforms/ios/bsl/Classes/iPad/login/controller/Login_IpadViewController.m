@@ -32,8 +32,10 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    UIImageView* bgImageView =  [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,CGRectGetHeight([[UIScreen mainScreen] bounds]), CGRectGetWidth([[UIScreen mainScreen] bounds]))];
-    bgImageView.image = [UIImage imageNamed:@"Default-Landscape~ipad.png"];
+    
+    UIImage* img=[UIImage imageNamed:@"Default-Landscape~ipad.png"];
+    UIImageView* bgImageView =  [[UIImageView alloc]initWithImage:img];
+
     [self.view addSubview:bgImageView];
     
     aCubeWebViewController  = [[CubeWebViewController alloc] init];

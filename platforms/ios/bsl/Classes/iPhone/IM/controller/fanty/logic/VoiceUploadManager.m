@@ -159,7 +159,7 @@ static VoiceUploadManager* instance=nil;
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
 
     if(self.isGroup){
-        XMPPRoom *room=[[appDelegate xmpp].roomService findRoomByJid:self.messageId];
+        room=[[appDelegate xmpp].roomService findRoomByJid:self.messageId];
         if(room!=nil && !room.isJoined){
             [self failed];
             return;

@@ -1,0 +1,109 @@
+{
+    "ensure": [
+        {
+            "val": null,
+            "field": "crew_boarding_dt",
+            "name": "机组入场"
+        },
+        {
+            "val": null,
+            "field": "deicing_ok_dt",
+            "name": "除防冰结束"
+        },
+        {
+            "val": null,
+            "field": "fuel_vehicle_come_dt",
+            "name": "油车到位"
+        },
+        {
+            "val": null,
+            "field": "cabin_boarding_dt",
+            "name": "乘务组到场"
+        },
+        {
+            "val": null,
+            "field": "cabin_prepared_dt",
+            "name": "乘务组准备完成"
+        },
+        {
+            "val": null,
+            "field": "cleaning_beg_dt",
+            "name": "清洁开始"
+        },
+        {
+            "val": null,
+            "field": "cleaning_ok_dt",
+            "name": "清洁结束"
+        },
+        {
+            "val": null,
+            "field": "cargo_beg_dt",
+            "name": "货舱门开启"
+        },
+        {
+            "val": null,
+            "field": "cargo_ok_dt",
+            "name": "货舱门关闭"
+        },
+        {
+            "val": null,
+            "field": "psgr_start_dt",
+            "name": "通知上客"
+        },
+        {
+            "val": null,
+            "field": "acars_closed_dt",
+            "name": "ACARS舱门关闭"
+        },
+        {
+            "val": null,
+            "field": "psgr_deplane_ok_dt",
+            "name": "下客结束"
+        },
+        {
+            "val": null,
+            "field": "cabin_closed_dt",
+            "name": "客舱关闭"
+        },
+        {
+            "val": null,
+            "field": "psgr_deplane_beg_dt",
+            "name": "下客开始"
+        },
+        {
+            "val": null,
+            "field": "other_supply_ok_dt",
+            "name": "供应品结束"
+        },
+        {
+            "val": null,
+            "field": "arr_ladder_come_dt",
+            "name": "进港廊桥"
+        },
+        {
+            "val": null,
+            "field": "ferry_come_dt",
+            "name": "摆渡车"
+        },
+        {
+            "val": null,
+            "field": "psgr_end_dt",
+            "name": "上客结束"
+        },
+        {
+            "val": null,
+            "field": "soc_psgr_start_dt",
+            "name": "正式上客"
+        },
+        {
+            "val": null,
+            "field": "other_supply_beg_dt",
+            "name": "供应品开始"
+        },
+        {
+            "val": null,
+            "field": "dep_ladder_come_dt",
+            "name": "出港廊桥"
+        }
+    ]
+}

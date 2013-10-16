@@ -1,0 +1,188 @@
+.menuHolder *{margin:0px;padding:0px;}
+
+.menuHolder {width:63px; height:63px; margin:0px 0 250px 0px; z-index:100;}
+.menuHolder ul {padding:0; margin:0; list-style:none; position:absolute; left:0; top:0; width:0; height:0;}
+.menuHolder ul li {border-radius:0 0 300px 0; width:0; height:0;}
+.menuHolder ul li a {color:#000; text-decoration:none; font:bold 13px/30px arial, sans-serif; text-align:center; box-shadow:-5px 5px 5px rgba(0,0,0,0.4);
+-webkit-transform-origin:0 0;
+-moz-transform-origin:0 0;
+-ms-transform-origin:0 0;
+-o-transform-origin:0 0;
+transform-origin:0 0;
+}
+.menuHolder ul.p1 li {position:absolute; left:0; top:0;}
+.menuHolder ul.p2 {z-index:-1;}
+.menuHolder ul.p3 {z-index:-1;}
+.menuHolder li.s2 > a {position:absolute; display:block;  background:#ddd; }
+.menuHolder ul.p3 li a {position:absolute; display:block; width:100px; padding-left:200px; height:300px; background:#999; border-radius:0 0 300px 0;}
+.menuWindow ul ul {
+-webkit-transform-origin:0 0;
+-moz-transform-origin:0 0;
+-ms-transform-origin:0 0;
+-o-transform-origin:0 0;
+transform-origin:0 0;
+-webkit-transform:rotate(90deg);
+-moz-transform:rotateZ(90deg);
+-ms-transform:rotate(90deg);
+-o-transform:rotate(90deg);
+transform:rotate(90deg);
+-webkit-transition:0.5s;
+-moz-transition:0.5s;
+-ms-transition:0.5s;
+-o-transition:0.5s;
+transition:0.5s;
+}
+
+
+
+.menuWindow.fanFocus li.s1 ul.p2 {
+-webkit-transform:rotate(0deg);
+-moz-transform:rotateZ(0deg);
+-ms-transform:rotate(0deg);
+-o-transform:rotate(0deg);
+transform:rotate(0deg);
+}
+.menuHolder li.s2:hover ul.p3 {
+-webkit-transform:rotate(0deg);
+-moz-transform:rotateZ(0deg);
+-ms-transform:rotate(0deg);
+-o-transform:rotate(0deg);
+transform:rotate(0deg);
+}
+.menuHolder ul li:hover > a {
+	background-image: -webkit-linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%);
+	background-image: -moz-linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%);
+	background-image: -o-linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%);
+	background-image: linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%); 
+	font-size: 18px;
+	 color:#fff;}
+.menuHolder li.s2:hover > a.fan {
+	
+	background-image: -webkit-linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%);
+	background-image: -moz-linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%);
+	background-image: -o-linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%);
+	background-image: linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%); 
+	color:#fff;}
+.menuHolder .a6 li:hover > a {background:#b00; color:#fff;}
+.menuHolder .a5 li:hover > a {background:#b00; color:#fff;}
+.menuHolder .a3 li:hover > a {background:#b00; color:#fff;}
+
+
+
+.menuWindow {width:65px; height:65px; overflow:hidden; position:absolute; left:0; top:0; z-index:100;
+-webkit-transition:0s 1s;
+-moz-transition:0s 1s;
+-ms-transition:0s 1s;
+-o-transition:0s 1s;
+transition:0s 1s;
+border-radius:0 0 65px 0;
+}
+.menuWindow.fanFocus {
+-webkit-transition:0s 0s;
+-moz-transition:0s 0s;
+-ms-transition:0s 0s;
+-o-transition:0s 0s;
+transition:0s 0s;
+}
+.menuHolder span {display:block; 
+-webkit-transform:rotate(5deg);
+-moz-transform:rotateZ(5deg);
+-ms-transform:rotate(5deg);
+-o-transform:rotate(5deg);
+transform:rotate(5deg);
+}
+.menuHolder ~ img.close {width:0; height:0; position:fixed; z-index:-1; left:0; top:0;}
+.menuHolder:hover ~ img.close {width:100%; height:100%;}
+
+
+
+
+.left-top{
+	left:0px;
+	top:0px;
+	position: fixed;
+}
+.left-top #homeMenu{
+	-webkit-transform: rotate(0deg) ;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.left-bottom{
+	position: fixed;
+	-webkit-transform: rotate(-90deg) scaleX(1);
+	bottom: 0px;
+}
+.left-bottom #homeMenu{
+	-webkit-transform: rotate(90deg) ;
+	position: absolute;
+	top: 10px;
+	left: 5px;
+}
+
+.right-top{
+	position: fixed;
+	-webkit-transform: rotate(90deg) scaleX(1);
+	right: 0px;
+	top:0px;
+}
+
+.right-top #homeMenu{
+	-webkit-transform: rotate(-90deg) ;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.right-top .s2 span{
+	-webkit-transform: rotate(90deg);
+}
+
+.right-bottom{
+	position: fixed;
+	-webkit-transform: rotate(180deg) scaleX(1);
+	right: 0px;
+	bottom:0px;
+}
+
+.right-bottom #homeMenu{
+	-webkit-transform: rotate(180deg) ;
+	position: absolute;
+	top: 5px;
+	left: 10px;
+}
+
+.right-bottom .s2 span{
+	-webkit-transform: rotate(90deg);
+}
+
+.menuHolder li.s2 > a.fan span {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 18px;
+	font-weight:bolder;
+}
+
+
+
+.menuHolder li.s1 > a {
+	transition: all 0.3s ease-out 0s;
+	position:absolute; 
+	display:block; 
+	width:60px; 
+	height:60px; 
+	background:#c8c8c8; 
+	border-radius:0 0 60px 0;
+	
+	cursor: pointer;
+}
+.menuWindow.fanFocus li.s1 a.homeFocus{
+	background-image: -webkit-linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%);
+	background-image: linear-gradient(rgb(83, 136, 200) 0%, rgb(47, 90, 136) 100%); 
+	color:#fff;
+	-webkit-transform: scale(1.5);
+}
+
+
+

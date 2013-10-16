@@ -17,6 +17,7 @@ typedef enum{
 @class ImageDownloadedView;
 @class NumberView;
 @interface RectangleCell : UITableViewCell{
+    UIImageView* bgView;
     ImageDownloadedView* imageView;
     NumberView* numberView;
     UILabel* titleLabel;

@@ -10,6 +10,7 @@
 
 @class RecentTalkView;
 @class RectangleChat;
+@class HTTPRequest;
 @protocol RecentTalkViewDelegate <NSObject>
 -(void)rectentTalkViewDidSelected:(RecentTalkView*)recentTalkView rectangleChat:(RectangleChat*)rectangleChat;
 
@@ -19,7 +20,12 @@
     NSMutableArray* list;
     
     NSTimer* laterReloadTimer;
+    
+    int deleteIndex;
+    
+    UIAlertView* alertView;
+    
+    HTTPRequest* request;
 }
 @property(nonatomic,weak) id<RecentTalkViewDelegate> rectentDelegate;
--(void)loadData;
 @end

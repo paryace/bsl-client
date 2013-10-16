@@ -86,24 +86,4 @@
 
 }
 
--(void)layoutUI:(BOOL)isEdit  animated:(BOOL)animate{
-    self.editing=isEdit;
-    if(animate){
-        [UIView beginAnimations:nil context:nil];
-    }
-    
-    if(self.editing){
-        imageView.frame=CGRectMake(50.0f, 10.0f, 37.0f,37.0f);
-        nicknameLabel.frame=CGRectMake(CGRectGetMaxX(imageView.frame)+9.0f, 0.0f, 260.0f-CGRectGetMaxX(imageView.frame)-9.0f, CELL_HEIGHT);
-    }
-    else{
-        
-        imageView.frame=CGRectMake(10.0f, 10.0f, 37.0f,37.0f);
-        nicknameLabel.frame=CGRectMake(CGRectGetMaxX(imageView.frame)+9.0f, 0.0f, 300.0f-CGRectGetMaxX(imageView.frame)-9.0f, CELL_HEIGHT);
-    }
-    
-    if(animate)
-        [UIView commitAnimations];
-}
-
 @end

@@ -1,0 +1,34 @@
+{
+    "rows": [
+        {
+            "latestDepArpCd": "CAN",
+            "standNo": "218",
+            "sub": "Y",
+            "fltStateChn": "已落地",
+            "arcDepCityName": "北京",
+            "alnCd": "CZ",
+            "schDepDt": "2013-08-25 08:00",
+            "fltNr": "3101",
+            "depStsCd": "AIR",
+            "outLandTime": "2013-08-25 08:31",
+            "latestArvArpCd": "PEK",
+            "soflSeqNr": "62491334",
+            "fltState": "DWN",
+            "inLandTime": "2013-08-25 10:50",
+            "fltDt": "2013-08-25 08:00",
+            "arvStsCd": "ON",
+            "arcArvCityName": "广州",
+            "schArvDt": "2013-08-25 10:55",
+            "latestTailNr": "B2733",
+            "fltSuffix": "N",
+            "prevInfo": {
+                "soflSeqNr": "62478563",
+                "fltState": "DWN",
+                "fltStateChn": "已落地",
+                "alnCd": "CZ",
+                "fltNr": "3504"
+            },
+            "latestEqpCd": "787"
+        }
+    ]
+}

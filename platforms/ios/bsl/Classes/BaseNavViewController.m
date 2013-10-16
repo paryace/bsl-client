@@ -79,7 +79,14 @@
 }
 
 -(void)didClickBack{
-    [self popViewControllerAnimated:YES];
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+        if([self.viewControllers count]>1)
+            [self popViewControllerAnimated:YES];
+    }
+    else{
+        if([self.viewControllers count]>2)
+            [self popViewControllerAnimated:YES];
+    }
 }
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{

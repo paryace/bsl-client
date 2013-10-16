@@ -254,5 +254,14 @@ static GTGZImageDownloadedManager* instance=nil;
     }
 }
 
+-(NSString*)originPathByUrl:(NSString*)url{
+    if([[NSFileManager defaultManager] fileExistsAtPath:url]){
+        return url;
+    }
+    else{
+        return [GTGZImageDownloadModel pathByUrl:[NSURL URLWithString:url]];
+    }
+
+}
 
 @end

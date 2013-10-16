@@ -210,8 +210,12 @@ $(".menuItem").tap(function() {
 		//非管理页面，隐藏管理菜单
 		$(".moduleManageBar").css("display", "none");
 		//$('.account_content').show();
+		//隐藏右边fragment
+		cordovaExec("CubeModuleOperator", "fragmenthide",[]);
 		//点击首页，加载首页已安装模块列表
 		loadModuleList("CubeModuleList", "mainList", "main");
+
+
 	} else if (type === "module") {
 		$(".moduleManageBar").css("display", "block");
 		//$('.account_content').hide();
@@ -358,18 +362,15 @@ var loadModuleList = function(plugin, action, type, callback) {
 					value.releaseNote = subStrByCnLen(value.releaseNote, 25);
 					// packageName
 
-<<<<<<< .mine
 					/*downloadFile(value.icon, packageName + "/moduleIcon", function(entry) {
 						value.icon = entry.fullPath;
 						console.log("下载成功 " + value.icon);
 					});*/
-=======
 					// downloadFile(value.icon, packageName + "/moduleIcon", function(entry) {
 					// 	// document.body.innerHTML = "<img src  = " + entry.fullPath + ">";
 					// 	value.icon = entry.fullPath;
 					// 	console.log("下载成功 " + value.icon);
 					// });
->>>>>>> .r4129
 
 					value.classname = key;
 					var moduleItemHtml = _.template(moduleItemTemplate, value);

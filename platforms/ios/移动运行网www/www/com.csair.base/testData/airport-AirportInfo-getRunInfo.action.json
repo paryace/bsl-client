@@ -1,0 +1,274 @@
+{
+	"resultVo": {
+		"acarsCloseMap": {
+			"河南分公司": {
+				"allCount": 66,
+				"branch": "河南分公司",
+				"normalCount": 66,
+				"normalPercent": "100.00%"
+			},
+			"汕头分公司": {
+				"allCount": 22,
+				"branch": "汕头分公司",
+				"normalCount": 22,
+				"normalPercent": "100.00%"
+			},
+			"海南分公司": {
+				"allCount": 52,
+				"branch": "海南分公司",
+				"normalCount": 51,
+				"normalPercent": "98.08%"
+			},
+			"贵州分公司": {
+				"allCount": 34,
+				"branch": "贵州分公司",
+				"normalCount": 34,
+				"normalPercent": "100.00%"
+			},
+			"珠海分公司": {
+				"allCount": 18,
+				"branch": "珠海分公司",
+				"normalCount": 14,
+				"normalPercent": "77.78%"
+			},
+			"重庆分公司": {
+				"allCount": 67,
+				"branch": "重庆分公司",
+				"normalCount": 67,
+				"normalPercent": "100.00%"
+			},
+			"广西分公司": {
+				"allCount": 55,
+				"branch": "广西分公司",
+				"normalCount": 54,
+				"normalPercent": "98.18%"
+			},
+			"大连分公司": {
+				"allCount": 51,
+				"branch": "大连分公司",
+				"normalCount": 51,
+				"normalPercent": "100.00%"
+			},
+			"吉林分公司": {
+				"allCount": 37,
+				"branch": "吉林分公司",
+				"normalCount": 34,
+				"normalPercent": "91.89%"
+			},
+			"北京分公司": {
+				"allCount": 117,
+				"branch": "北京分公司",
+				"normalCount": 110,
+				"normalPercent": "94.02%"
+			},
+			"黑龙江分公司": {
+				"allCount": 35,
+				"branch": "黑龙江分公司",
+				"normalCount": 35,
+				"normalPercent": "100.00%"
+			},
+			"湖北分公司": {
+				"allCount": 53,
+				"branch": "湖北分公司",
+				"normalCount": 53,
+				"normalPercent": "100.00%"
+			},
+			"广州分公司": {
+				"allCount": 284,
+				"branch": "广州分公司",
+				"normalCount": 247,
+				"normalPercent": "86.97%"
+			},
+			"新疆分公司": {
+				"allCount": 107,
+				"branch": "新疆分公司",
+				"normalCount": 70,
+				"normalPercent": "65.42%"
+			},
+			"北方分公司": {
+				"allCount": 49,
+				"branch": "北方分公司",
+				"normalCount": 49,
+				"normalPercent": "100.00%"
+			},
+			"深圳分公司": {
+				"allCount": 87,
+				"branch": "深圳分公司",
+				"normalCount": 82,
+				"normalPercent": "94.25%"
+			},
+			"湖南分公司": {
+				"allCount": 55,
+				"branch": "湖南分公司",
+				"normalCount": 54,
+				"normalPercent": "98.18%"
+			}
+		},
+		"allPlaneCount": 564,
+		"dayActCount": 1986,
+		"dayNormal": 1048,
+		"dayNormalPercent": "52.77%",
+		"daySchCount": 2228,
+		"flightHours": 4619.199989,
+		"fourHourDelayCount": 28,
+		"leaderMap": {
+			"运行指挥中心": [{
+				"address": null,
+				"arpCd": "CAN",
+				"chnName": "张柏",
+				"deptId": "1050",
+				"deptInd": null,
+				"deptName": "运行指挥中心",
+				"dutyDt": "2013-08-25 00:00:00",
+				"dutyNotice": null,
+				"email": "zhangbai@csair.com",
+				"endTime": "0830",
+				"groupInd": null,
+				"headership": "副经理",
+				"homePhone": null,
+				"id": null,
+				"informPostId": null,
+				"leaderInd": "N",
+				"logRelateKey": null,
+				"mobilePhoneNum": null,
+				"onLine": null,
+				"phoneNum": null,
+				"pyCode": "YXZHZX",
+				"remark": null,
+				"sectionName": "全天",
+				"sectionNum": "10",
+				"signInDt": "2013-08-25 00:00:00",
+				"signOutDt": null,
+				"staffNum": "180862",
+				"startTime": "0830",
+				"version": 0
+			}, {
+				"address": null,
+				"arpCd": "CAN",
+				"chnName": "毕华飚",
+				"deptId": "1050",
+				"deptInd": null,
+				"deptName": "运行指挥中心",
+				"dutyDt": "2013-08-25 00:00:00",
+				"dutyNotice": null,
+				"email": "paubi@csair.com",
+				"endTime": "0830",
+				"groupInd": null,
+				"headership": "副总经理",
+				"homePhone": null,
+				"id": null,
+				"informPostId": null,
+				"leaderInd": "N",
+				"logRelateKey": null,
+				"mobilePhoneNum": null,
+				"onLine": null,
+				"phoneNum": null,
+				"pyCode": "YXZHZX",
+				"remark": null,
+				"sectionName": "全天",
+				"sectionNum": "10",
+				"signInDt": null,
+				"signOutDt": null,
+				"staffNum": "193287",
+				"startTime": "0830",
+				"version": 0
+			}],
+			"股份公司": [{
+				"address": null,
+				"arpCd": "CAN",
+				"chnName": "李家世",
+				"deptId": "12",
+				"deptInd": null,
+				"deptName": "股份公司",
+				"dutyDt": "2013-08-25 00:00:00",
+				"dutyNotice": null,
+				"email": null,
+				"endTime": "1630",
+				"groupInd": null,
+				"headership": "党委常委 纪委书记",
+				"homePhone": null,
+				"id": null,
+				"informPostId": null,
+				"leaderInd": "Y",
+				"logRelateKey": null,
+				"mobilePhoneNum": null,
+				"onLine": null,
+				"phoneNum": null,
+				"pyCode": "GFGS",
+				"remark": null,
+				"sectionName": "0830-1630",
+				"sectionNum": "764",
+				"signInDt": null,
+				"signOutDt": null,
+				"staffNum": "181125",
+				"startTime": "0830",
+				"version": 0
+			}],
+			"总值班经理室": [{
+				"address": null,
+				"arpCd": "CAN",
+				"chnName": "谢延军",
+				"deptId": "1041",
+				"deptInd": null,
+				"deptName": "总值班经理室",
+				"dutyDt": "2013-08-25 00:00:00",
+				"dutyNotice": null,
+				"email": "xieyanjun@csair.com",
+				"endTime": "0830",
+				"groupInd": null,
+				"headership": "总值班经理",
+				"homePhone": null,
+				"id": null,
+				"informPostId": null,
+				"leaderInd": "Y",
+				"logRelateKey": null,
+				"mobilePhoneNum": "13602851568",
+				"onLine": null,
+				"phoneNum": "86121225",
+				"pyCode": "ZZBJLS",
+				"remark": null,
+				"sectionName": "24小时值班",
+				"sectionNum": "13",
+				"signInDt": null,
+				"signOutDt": null,
+				"staffNum": "181494",
+				"startTime": "0830",
+				"version": 0
+			}]
+		},
+		"monActCount": 500,
+		"monNormal": 100,
+		"monNormalPercent": "20.00%",
+		"schDelayCount": 100,
+		"schDelayMap": {
+			"D": {
+				"delayCounts": 20,
+				"delayPercent": "15%",
+				"delayReason": "D",
+				"delayReasonChn": "运输服务"
+			},
+			"h":{
+				"delayCounts": 30,
+				"delayPercent": "30%",
+				"delayReason": "H",
+				"delayReasonChn": "运行保障支持"
+			},
+			"g":{
+				"delayCounts": 40,
+				"delayPercent": "20%",
+				"delayReason": "H",
+				"delayReasonChn": "公司计划"
+			},
+			"l":{
+				"delayCounts": 10,
+				"delayPercent": "40%",
+				"delayReason": "H",
+				"delayReasonChn": "运行保障支持"
+			}
+		},
+		"twoFourHourDelayCount": 147,
+		"usePlaneCount": 448,
+		"usefulPercent_all": 8.19,
+		"usefulPercent_use": 10.31
+	}
+}

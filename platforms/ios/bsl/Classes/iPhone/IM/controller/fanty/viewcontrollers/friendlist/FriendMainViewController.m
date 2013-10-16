@@ -159,6 +159,10 @@
         if(tabView.selectedIndex==2){
             [navRightButton setTitle:(faviorContactView.editing?@"取消":@"编辑") forState:UIControlStateNormal];
         }
+        else if(tabView.selectedIndex==0){
+            [navRightButton setTitle:(recentTalkView.editing?@"取消":@"编辑") forState:UIControlStateNormal];
+
+        }
         else{
             [navRightButton setTitle:@"群聊" forState:UIControlStateNormal];
             
@@ -221,9 +225,11 @@
         }
         faviorContactView.hidden=NO;
     }
-    if(tab!=2){
+    if(tab!=0){
+        [recentTalkView setEditing:NO animated:NO];
+    }
+    else if(tab!=2){
         [faviorContactView setEditing:NO animated:NO];
-        [faviorContactView layoutTableCell];
     }
     [self createRrightNavItem];
 
@@ -251,9 +257,14 @@
     if(tabView.selectedIndex==2){
         
         [faviorContactView setEditing:!faviorContactView.editing animated:YES];
-        [faviorContactView layoutTableCell];
         [self createRrightNavItem];
         return;
+    }
+    else if(tabView.selectedIndex==0){
+        [recentTalkView setEditing:!recentTalkView.editing animated:YES];
+        [self createRrightNavItem];
+        return;
+
     }
     
     AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];

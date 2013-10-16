@@ -521,7 +521,6 @@
 		39D9E83C17F27C03001ED6F5 /* VoiceSearchLoading004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626317EE898300C84A6A /* VoiceSearchLoading004@2x.png */; };
 		39D9E83E17F27C03001ED6F5 /* options_close@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9517F007FC00F9CA68 /* options_close@simple.png */; };
 		39D9E84017F27C03001ED6F5 /* feedback_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */; };
-		39D9E84117F27C03001ED6F5 /* menu_button3.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7B17F007FC00F9CA68 /* menu_button3.png */; };
 		39D9E84217F27C03001ED6F5 /* iphoneLandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EA17E8BFBA0067A023 /* iphoneLandingViewController.xib */; };
 		39D9E84317F27C03001ED6F5 /* SenderVoiceNodePlaying003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625F17EE898300C84A6A /* SenderVoiceNodePlaying003@2x.png */; };
 		39D9E84417F27C03001ED6F5 /* iphoneLandingViewController_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EB17E8BFBA0067A023 /* iphoneLandingViewController_retina4.xib */; };
@@ -530,14 +529,12 @@
 		39D9E84717F27C03001ED6F5 /* iphoneLadingViewNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80F917E8BFBA0067A023 /* iphoneLadingViewNew.xib */; };
 		39D9E84817F27C03001ED6F5 /* iphoneMsgListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80FC17E8BFBA0067A023 /* iphoneMsgListCell.xib */; };
 		39D9E84917F27C03001ED6F5 /* local_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7317F007FC00F9CA68 /* local_icon.png */; };
-		39D9E84A17F27C03001ED6F5 /* installbtn_installed.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6817F007FC00F9CA68 /* installbtn_installed.png */; };
 		39D9E84B17F27C03001ED6F5 /* pic_bg_02.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9A17F007FC00F9CA68 /* pic_bg_02.png */; };
 		39D9E84C17F27C03001ED6F5 /* MsgListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80FF17E8BFBA0067A023 /* MsgListCell.xib */; };
 		39D9E84D17F27C03001ED6F5 /* h.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5F17F007FC00F9CA68 /* h.png */; };
 		39D9E84E17F27C03001ED6F5 /* VVMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810617E8BFBA0067A023 /* VVMessageCell.xib */; };
 		39D9E84F17F27C03001ED6F5 /* middle_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8717F007FC00F9CA68 /* middle_button@2x.png */; };
 		39D9E85017F27C03001ED6F5 /* iphoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810A17E8BFBA0067A023 /* iphoneLoginViewController.xib */; };
-		39D9E85117F27C03001ED6F5 /* installbtn_updating.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6C17F007FC00F9CA68 /* installbtn_updating.png */; };
 		39D9E85217F27C03001ED6F5 /* fullBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5C17F007FC00F9CA68 /* fullBtn.png */; };
 		39D9E85317F27C03001ED6F5 /* iphoneLoginViewController_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810B17E8BFBA0067A023 /* iphoneLoginViewController_retina4.xib */; };
 		39D9E85417F27C03001ED6F5 /* iphoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810C17E8BFBA0067A023 /* iphoneLoginViewController.xib */; };
@@ -600,7 +597,6 @@
 		39D9E89317F27C03001ED6F5 /* CellBlueSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623417EE898300C84A6A /* CellBlueSelected@2x.png */; };
 		39D9E89417F27C03001ED6F5 /* f010.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EA17E8C77D0067A023 /* f010.png */; };
 		39D9E89517F27C03001ED6F5 /* f011.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EB17E8C77D0067A023 /* f011.png */; };
-		39D9E89617F27C03001ED6F5 /* installbtn_uninstall.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6A17F007FC00F9CA68 /* installbtn_uninstall.png */; };
 		39D9E89717F27C03001ED6F5 /* bottleReceiverVoiceNodePlaying001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625A17EE898300C84A6A /* bottleReceiverVoiceNodePlaying001@2x.png */; };
 		39D9E89817F27C03001ED6F5 /* f012.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EC17E8C77D0067A023 /* f012.png */; };
 		39D9E89917F27C03001ED6F5 /* VOIPReceiverVoiceNodeBkgHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626B17EE898300C84A6A /* VOIPReceiverVoiceNodeBkgHL@2x.png */; };
@@ -642,7 +638,6 @@
 		39D9E8BF17F27C03001ED6F5 /* addphotoHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625517EE898300C84A6A /* addphotoHL@2x.png */; };
 		39D9E8C017F27C03001ED6F5 /* f036.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840417E8C77D0067A023 /* f036.png */; };
 		39D9E8C117F27C03001ED6F5 /* RightBarButtonBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625717EE898300C84A6A /* RightBarButtonBkg@2x.png */; };
-		39D9E8C217F27C03001ED6F5 /* installbtn_deleting.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6717F007FC00F9CA68 /* installbtn_deleting.png */; };
 		39D9E8C317F27C03001ED6F5 /* f037.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840517E8C77D0067A023 /* f037.png */; };
 		39D9E8C417F27C03001ED6F5 /* f038.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840617E8C77D0067A023 /* f038.png */; };
 		39D9E8C517F27C03001ED6F5 /* homebackImg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6217F007FC00F9CA68 /* homebackImg.png */; };
@@ -656,7 +651,6 @@
 		39D9E8CD17F27C03001ED6F5 /* f045.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840D17E8C77D0067A023 /* f045.png */; };
 		39D9E8D017F27C03001ED6F5 /* f046.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840E17E8C77D0067A023 /* f046.png */; };
 		39D9E8D117F27C03001ED6F5 /* feedback_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5817F007FC00F9CA68 /* feedback_button@2x.png */; };
-		39D9E8D217F27C03001ED6F5 /* menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7817F007FC00F9CA68 /* menu_background.png */; };
 		39D9E8D317F27C03001ED6F5 /* message_number_single.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623717EE898300C84A6A /* message_number_single.png */; };
 		39D9E8D417F27C03001ED6F5 /* f047.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840F17E8C77E0067A023 /* f047.png */; };
 		39D9E8D517F27C03001ED6F5 /* f048.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D841017E8C77E0067A023 /* f048.png */; };
@@ -740,9 +734,6 @@
 		39D9E92417F27C03001ED6F5 /* f094.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843E17E8C77E0067A023 /* f094.png */; };
 		39D9E92517F27C03001ED6F5 /* f095.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843F17E8C77E0067A023 /* f095.png */; };
 		39D9E92717F27C03001ED6F5 /* btn_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D9E80017F26A87001ED6F5 /* btn_remove.png */; };
-		39D9E92817F27C03001ED6F5 /* Background_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4F17F007FC00F9CA68 /* Background_Portrait.png */; };
-		39D9E92917F27C03001ED6F5 /* installbtn_installing.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6917F007FC00F9CA68 /* installbtn_installing.png */; };
-		39D9E92A17F27C03001ED6F5 /* Background_Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */; };
 		39D9E92B17F27C03001ED6F5 /* f096.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844017E8C77E0067A023 /* f096.png */; };
 		39D9E92C17F27C03001ED6F5 /* f097.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844117E8C77E0067A023 /* f097.png */; };
 		39D9E92D17F27C03001ED6F5 /* f098.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844217E8C77E0067A023 /* f098.png */; };
@@ -788,7 +779,6 @@
 		39D9E95717F27C03001ED6F5 /* Login_man@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846517E8C77E0067A023 /* Login_man@2x.png */; };
 		39D9E95817F27C03001ED6F5 /* Login_navigationBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846617E8C77E0067A023 /* Login_navigationBar@2x.png */; };
 		39D9E95917F27C03001ED6F5 /* Login_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846717E8C77E0067A023 /* Login_off@2x.png */; };
-		39D9E95A17F27C03001ED6F5 /* menu_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7A17F007FC00F9CA68 /* menu_button2.png */; };
 		39D9E95B17F27C03001ED6F5 /* Login_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846817E8C77E0067A023 /* Login_on@2x.png */; };
 		39D9E95C17F27C03001ED6F5 /* login_select.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846917E8C77E0067A023 /* login_select.png */; };
 		39D9E95D17F27C03001ED6F5 /* announcement_local.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4C17F007FC00F9CA68 /* announcement_local.png */; };
@@ -813,10 +803,7 @@
 		39D9E97017F27C03001ED6F5 /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623C17EE898300C84A6A /* bubbleMine@2x.png */; };
 		39D9E97117F27C03001ED6F5 /* sperate_line.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847717E8C77E0067A023 /* sperate_line.png */; };
 		39D9E97217F27C03001ED6F5 /* un_collected_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847817E8C77E0067A023 /* un_collected_icon.png */; };
-		39D9E97317F27C03001ED6F5 /* feedback_re@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5A17F007FC00F9CA68 /* feedback_re@2x.png */; };
 		39D9E97417F27C03001ED6F5 /* VoiceSearchLoading005@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626417EE898300C84A6A /* VoiceSearchLoading005@2x.png */; };
-		39D9E97517F27C03001ED6F5 /* installbtn_updatable.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6B17F007FC00F9CA68 /* installbtn_updatable.png */; };
-		39D9E97617F27C03001ED6F5 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7917F007FC00F9CA68 /* menu_button.png */; };
 		39D9E97717F27C03001ED6F5 /* laba.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847A17E8C77E0067A023 /* laba.png */; };
 		39D9E97817F27C03001ED6F5 /* voice_local_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847B17E8C77E0067A023 /* voice_local_btn.png */; };
 		39D9E97917F27C03001ED6F5 /* avatar_msg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4D17F007FC00F9CA68 /* avatar_msg.png */; };
@@ -1100,7 +1087,6 @@
 		39E0511917F00AEA00BCF7F8 /* VoiceSearchLoading004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626317EE898300C84A6A /* VoiceSearchLoading004@2x.png */; };
 		39E0511B17F00AEA00BCF7F8 /* options_close@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9517F007FC00F9CA68 /* options_close@simple.png */; };
 		39E0511D17F00AEA00BCF7F8 /* feedback_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */; };
-		39E0511E17F00AEA00BCF7F8 /* menu_button3.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7B17F007FC00F9CA68 /* menu_button3.png */; };
 		39E0511F17F00AEA00BCF7F8 /* iphoneLandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EA17E8BFBA0067A023 /* iphoneLandingViewController.xib */; };
 		39E0512017F00AEA00BCF7F8 /* SenderVoiceNodePlaying003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625F17EE898300C84A6A /* SenderVoiceNodePlaying003@2x.png */; };
 		39E0512117F00AEA00BCF7F8 /* iphoneLandingViewController_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EB17E8BFBA0067A023 /* iphoneLandingViewController_retina4.xib */; };
@@ -1109,14 +1095,12 @@
 		39E0512417F00AEA00BCF7F8 /* iphoneLadingViewNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80F917E8BFBA0067A023 /* iphoneLadingViewNew.xib */; };
 		39E0512517F00AEA00BCF7F8 /* iphoneMsgListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80FC17E8BFBA0067A023 /* iphoneMsgListCell.xib */; };
 		39E0512617F00AEA00BCF7F8 /* local_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7317F007FC00F9CA68 /* local_icon.png */; };
-		39E0512717F00AEA00BCF7F8 /* installbtn_installed.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6817F007FC00F9CA68 /* installbtn_installed.png */; };
 		39E0512817F00AEA00BCF7F8 /* pic_bg_02.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9A17F007FC00F9CA68 /* pic_bg_02.png */; };
 		39E0512917F00AEA00BCF7F8 /* MsgListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80FF17E8BFBA0067A023 /* MsgListCell.xib */; };
 		39E0512A17F00AEA00BCF7F8 /* h.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5F17F007FC00F9CA68 /* h.png */; };
 		39E0512B17F00AEA00BCF7F8 /* VVMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810617E8BFBA0067A023 /* VVMessageCell.xib */; };
 		39E0512C17F00AEA00BCF7F8 /* middle_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8717F007FC00F9CA68 /* middle_button@2x.png */; };
 		39E0512D17F00AEA00BCF7F8 /* iphoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810A17E8BFBA0067A023 /* iphoneLoginViewController.xib */; };
-		39E0512E17F00AEA00BCF7F8 /* installbtn_updating.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6C17F007FC00F9CA68 /* installbtn_updating.png */; };
 		39E0512F17F00AEA00BCF7F8 /* fullBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5C17F007FC00F9CA68 /* fullBtn.png */; };
 		39E0513017F00AEA00BCF7F8 /* iphoneLoginViewController_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810B17E8BFBA0067A023 /* iphoneLoginViewController_retina4.xib */; };
 		39E0513117F00AEA00BCF7F8 /* iphoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810C17E8BFBA0067A023 /* iphoneLoginViewController.xib */; };
@@ -1179,7 +1163,6 @@
 		39E0517017F00AEA00BCF7F8 /* CellBlueSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623417EE898300C84A6A /* CellBlueSelected@2x.png */; };
 		39E0517117F00AEA00BCF7F8 /* f010.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EA17E8C77D0067A023 /* f010.png */; };
 		39E0517217F00AEA00BCF7F8 /* f011.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EB17E8C77D0067A023 /* f011.png */; };
-		39E0517317F00AEA00BCF7F8 /* installbtn_uninstall.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6A17F007FC00F9CA68 /* installbtn_uninstall.png */; };
 		39E0517417F00AEA00BCF7F8 /* bottleReceiverVoiceNodePlaying001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625A17EE898300C84A6A /* bottleReceiverVoiceNodePlaying001@2x.png */; };
 		39E0517517F00AEA00BCF7F8 /* f012.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EC17E8C77D0067A023 /* f012.png */; };
 		39E0517617F00AEA00BCF7F8 /* VOIPReceiverVoiceNodeBkgHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626B17EE898300C84A6A /* VOIPReceiverVoiceNodeBkgHL@2x.png */; };
@@ -1221,7 +1204,6 @@
 		39E0519C17F00AEA00BCF7F8 /* addphotoHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625517EE898300C84A6A /* addphotoHL@2x.png */; };
 		39E0519D17F00AEA00BCF7F8 /* f036.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840417E8C77D0067A023 /* f036.png */; };
 		39E0519E17F00AEA00BCF7F8 /* RightBarButtonBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625717EE898300C84A6A /* RightBarButtonBkg@2x.png */; };
-		39E0519F17F00AEA00BCF7F8 /* installbtn_deleting.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6717F007FC00F9CA68 /* installbtn_deleting.png */; };
 		39E051A017F00AEA00BCF7F8 /* f037.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840517E8C77D0067A023 /* f037.png */; };
 		39E051A117F00AEA00BCF7F8 /* f038.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840617E8C77D0067A023 /* f038.png */; };
 		39E051A217F00AEA00BCF7F8 /* homebackImg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6217F007FC00F9CA68 /* homebackImg.png */; };
@@ -1235,7 +1217,6 @@
 		39E051AA17F00AEA00BCF7F8 /* f045.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840D17E8C77D0067A023 /* f045.png */; };
 		39E051AD17F00AEA00BCF7F8 /* f046.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840E17E8C77D0067A023 /* f046.png */; };
 		39E051AE17F00AEA00BCF7F8 /* feedback_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5817F007FC00F9CA68 /* feedback_button@2x.png */; };
-		39E051AF17F00AEA00BCF7F8 /* menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7817F007FC00F9CA68 /* menu_background.png */; };
 		39E051B017F00AEA00BCF7F8 /* message_number_single.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623717EE898300C84A6A /* message_number_single.png */; };
 		39E051B117F00AEA00BCF7F8 /* f047.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840F17E8C77E0067A023 /* f047.png */; };
 		39E051B217F00AEA00BCF7F8 /* f048.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D841017E8C77E0067A023 /* f048.png */; };
@@ -1316,9 +1297,6 @@
 		39E051FE17F00AEA00BCF7F8 /* f093.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843D17E8C77E0067A023 /* f093.png */; };
 		39E051FF17F00AEA00BCF7F8 /* f094.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843E17E8C77E0067A023 /* f094.png */; };
 		39E0520017F00AEA00BCF7F8 /* f095.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843F17E8C77E0067A023 /* f095.png */; };
-		39E0520217F00AEA00BCF7F8 /* Background_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4F17F007FC00F9CA68 /* Background_Portrait.png */; };
-		39E0520317F00AEA00BCF7F8 /* installbtn_installing.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6917F007FC00F9CA68 /* installbtn_installing.png */; };
-		39E0520417F00AEA00BCF7F8 /* Background_Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */; };
 		39E0520517F00AEA00BCF7F8 /* f096.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844017E8C77E0067A023 /* f096.png */; };
 		39E0520617F00AEA00BCF7F8 /* f097.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844117E8C77E0067A023 /* f097.png */; };
 		39E0520717F00AEA00BCF7F8 /* f098.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844217E8C77E0067A023 /* f098.png */; };
@@ -1364,7 +1342,6 @@
 		39E0523117F00AEA00BCF7F8 /* Login_man@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846517E8C77E0067A023 /* Login_man@2x.png */; };
 		39E0523217F00AEA00BCF7F8 /* Login_navigationBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846617E8C77E0067A023 /* Login_navigationBar@2x.png */; };
 		39E0523317F00AEA00BCF7F8 /* Login_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846717E8C77E0067A023 /* Login_off@2x.png */; };
-		39E0523417F00AEA00BCF7F8 /* menu_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7A17F007FC00F9CA68 /* menu_button2.png */; };
 		39E0523517F00AEA00BCF7F8 /* Login_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846817E8C77E0067A023 /* Login_on@2x.png */; };
 		39E0523617F00AEA00BCF7F8 /* login_select.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846917E8C77E0067A023 /* login_select.png */; };
 		39E0523717F00AEA00BCF7F8 /* announcement_local.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4C17F007FC00F9CA68 /* announcement_local.png */; };
@@ -1389,10 +1366,7 @@
 		39E0524A17F00AEA00BCF7F8 /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623C17EE898300C84A6A /* bubbleMine@2x.png */; };
 		39E0524B17F00AEA00BCF7F8 /* sperate_line.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847717E8C77E0067A023 /* sperate_line.png */; };
 		39E0524C17F00AEA00BCF7F8 /* un_collected_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847817E8C77E0067A023 /* un_collected_icon.png */; };
-		39E0524D17F00AEA00BCF7F8 /* feedback_re@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5A17F007FC00F9CA68 /* feedback_re@2x.png */; };
 		39E0524E17F00AEA00BCF7F8 /* VoiceSearchLoading005@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626417EE898300C84A6A /* VoiceSearchLoading005@2x.png */; };
-		39E0524F17F00AEA00BCF7F8 /* installbtn_updatable.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6B17F007FC00F9CA68 /* installbtn_updatable.png */; };
-		39E0525017F00AEA00BCF7F8 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7917F007FC00F9CA68 /* menu_button.png */; };
 		39E0525117F00AEA00BCF7F8 /* laba.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847A17E8C77E0067A023 /* laba.png */; };
 		39E0525217F00AEA00BCF7F8 /* voice_local_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847B17E8C77E0067A023 /* voice_local_btn.png */; };
 		39E0525317F00AEA00BCF7F8 /* avatar_msg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4D17F007FC00F9CA68 /* avatar_msg.png */; };
@@ -1733,7 +1707,6 @@
 		39FF09D317F13CBB0086B76C /* VoiceSearchLoading004@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626317EE898300C84A6A /* VoiceSearchLoading004@2x.png */; };
 		39FF09D517F13CBB0086B76C /* options_close@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9517F007FC00F9CA68 /* options_close@simple.png */; };
 		39FF09D717F13CBB0086B76C /* feedback_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */; };
-		39FF09D817F13CBB0086B76C /* menu_button3.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7B17F007FC00F9CA68 /* menu_button3.png */; };
 		39FF09D917F13CBB0086B76C /* iphoneLandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EA17E8BFBA0067A023 /* iphoneLandingViewController.xib */; };
 		39FF09DA17F13CBB0086B76C /* SenderVoiceNodePlaying003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625F17EE898300C84A6A /* SenderVoiceNodePlaying003@2x.png */; };
 		39FF09DB17F13CBB0086B76C /* iphoneLandingViewController_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80EB17E8BFBA0067A023 /* iphoneLandingViewController_retina4.xib */; };
@@ -1742,14 +1715,12 @@
 		39FF09DE17F13CBB0086B76C /* iphoneLadingViewNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80F917E8BFBA0067A023 /* iphoneLadingViewNew.xib */; };
 		39FF09DF17F13CBB0086B76C /* iphoneMsgListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80FC17E8BFBA0067A023 /* iphoneMsgListCell.xib */; };
 		39FF09E017F13CBB0086B76C /* local_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7317F007FC00F9CA68 /* local_icon.png */; };
-		39FF09E117F13CBB0086B76C /* installbtn_installed.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6817F007FC00F9CA68 /* installbtn_installed.png */; };
 		39FF09E217F13CBB0086B76C /* pic_bg_02.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9A17F007FC00F9CA68 /* pic_bg_02.png */; };
 		39FF09E317F13CBB0086B76C /* MsgListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D80FF17E8BFBA0067A023 /* MsgListCell.xib */; };
 		39FF09E417F13CBB0086B76C /* h.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5F17F007FC00F9CA68 /* h.png */; };
 		39FF09E517F13CBB0086B76C /* VVMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810617E8BFBA0067A023 /* VVMessageCell.xib */; };
 		39FF09E617F13CBB0086B76C /* middle_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8717F007FC00F9CA68 /* middle_button@2x.png */; };
 		39FF09E717F13CBB0086B76C /* iphoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810A17E8BFBA0067A023 /* iphoneLoginViewController.xib */; };
-		39FF09E817F13CBB0086B76C /* installbtn_updating.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6C17F007FC00F9CA68 /* installbtn_updating.png */; };
 		39FF09E917F13CBB0086B76C /* fullBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5C17F007FC00F9CA68 /* fullBtn.png */; };
 		39FF09EA17F13CBB0086B76C /* iphoneLoginViewController_retina4.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810B17E8BFBA0067A023 /* iphoneLoginViewController_retina4.xib */; };
 		39FF09EB17F13CBB0086B76C /* iphoneLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D810C17E8BFBA0067A023 /* iphoneLoginViewController.xib */; };
@@ -1812,7 +1783,6 @@
 		39FF0A2A17F13CBB0086B76C /* CellBlueSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623417EE898300C84A6A /* CellBlueSelected@2x.png */; };
 		39FF0A2B17F13CBB0086B76C /* f010.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EA17E8C77D0067A023 /* f010.png */; };
 		39FF0A2C17F13CBB0086B76C /* f011.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EB17E8C77D0067A023 /* f011.png */; };
-		39FF0A2D17F13CBB0086B76C /* installbtn_uninstall.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6A17F007FC00F9CA68 /* installbtn_uninstall.png */; };
 		39FF0A2E17F13CBB0086B76C /* bottleReceiverVoiceNodePlaying001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625A17EE898300C84A6A /* bottleReceiverVoiceNodePlaying001@2x.png */; };
 		39FF0A2F17F13CBB0086B76C /* f012.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83EC17E8C77D0067A023 /* f012.png */; };
 		39FF0A3017F13CBB0086B76C /* VOIPReceiverVoiceNodeBkgHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626B17EE898300C84A6A /* VOIPReceiverVoiceNodeBkgHL@2x.png */; };
@@ -1854,7 +1824,6 @@
 		39FF0A5617F13CBB0086B76C /* addphotoHL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625517EE898300C84A6A /* addphotoHL@2x.png */; };
 		39FF0A5717F13CBB0086B76C /* f036.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840417E8C77D0067A023 /* f036.png */; };
 		39FF0A5817F13CBB0086B76C /* RightBarButtonBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625717EE898300C84A6A /* RightBarButtonBkg@2x.png */; };
-		39FF0A5917F13CBB0086B76C /* installbtn_deleting.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6717F007FC00F9CA68 /* installbtn_deleting.png */; };
 		39FF0A5A17F13CBB0086B76C /* f037.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840517E8C77D0067A023 /* f037.png */; };
 		39FF0A5B17F13CBB0086B76C /* f038.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840617E8C77D0067A023 /* f038.png */; };
 		39FF0A5C17F13CBB0086B76C /* homebackImg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6217F007FC00F9CA68 /* homebackImg.png */; };
@@ -1868,7 +1837,6 @@
 		39FF0A6417F13CBB0086B76C /* f045.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840D17E8C77D0067A023 /* f045.png */; };
 		39FF0A6717F13CBB0086B76C /* f046.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840E17E8C77D0067A023 /* f046.png */; };
 		39FF0A6817F13CBB0086B76C /* feedback_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5817F007FC00F9CA68 /* feedback_button@2x.png */; };
-		39FF0A6917F13CBB0086B76C /* menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7817F007FC00F9CA68 /* menu_background.png */; };
 		39FF0A6A17F13CBB0086B76C /* message_number_single.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623717EE898300C84A6A /* message_number_single.png */; };
 		39FF0A6B17F13CBB0086B76C /* f047.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D840F17E8C77E0067A023 /* f047.png */; };
 		39FF0A6C17F13CBB0086B76C /* f048.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D841017E8C77E0067A023 /* f048.png */; };
@@ -1949,9 +1917,6 @@
 		39FF0AB817F13CBB0086B76C /* f093.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843D17E8C77E0067A023 /* f093.png */; };
 		39FF0AB917F13CBB0086B76C /* f094.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843E17E8C77E0067A023 /* f094.png */; };
 		39FF0ABA17F13CBB0086B76C /* f095.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843F17E8C77E0067A023 /* f095.png */; };
-		39FF0ABC17F13CBB0086B76C /* Background_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4F17F007FC00F9CA68 /* Background_Portrait.png */; };
-		39FF0ABD17F13CBB0086B76C /* installbtn_installing.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6917F007FC00F9CA68 /* installbtn_installing.png */; };
-		39FF0ABE17F13CBB0086B76C /* Background_Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */; };
 		39FF0ABF17F13CBB0086B76C /* f096.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844017E8C77E0067A023 /* f096.png */; };
 		39FF0AC017F13CBB0086B76C /* f097.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844117E8C77E0067A023 /* f097.png */; };
 		39FF0AC117F13CBB0086B76C /* f098.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844217E8C77E0067A023 /* f098.png */; };
@@ -1997,7 +1962,6 @@
 		39FF0AEB17F13CBB0086B76C /* Login_man@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846517E8C77E0067A023 /* Login_man@2x.png */; };
 		39FF0AEC17F13CBB0086B76C /* Login_navigationBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846617E8C77E0067A023 /* Login_navigationBar@2x.png */; };
 		39FF0AED17F13CBB0086B76C /* Login_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846717E8C77E0067A023 /* Login_off@2x.png */; };
-		39FF0AEE17F13CBB0086B76C /* menu_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7A17F007FC00F9CA68 /* menu_button2.png */; };
 		39FF0AEF17F13CBB0086B76C /* Login_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846817E8C77E0067A023 /* Login_on@2x.png */; };
 		39FF0AF017F13CBB0086B76C /* login_select.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D846917E8C77E0067A023 /* login_select.png */; };
 		39FF0AF117F13CBB0086B76C /* announcement_local.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4C17F007FC00F9CA68 /* announcement_local.png */; };
@@ -2022,10 +1986,7 @@
 		39FF0B0417F13CBB0086B76C /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623C17EE898300C84A6A /* bubbleMine@2x.png */; };
 		39FF0B0517F13CBB0086B76C /* sperate_line.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847717E8C77E0067A023 /* sperate_line.png */; };
 		39FF0B0617F13CBB0086B76C /* un_collected_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847817E8C77E0067A023 /* un_collected_icon.png */; };
-		39FF0B0717F13CBB0086B76C /* feedback_re@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5A17F007FC00F9CA68 /* feedback_re@2x.png */; };
 		39FF0B0817F13CBB0086B76C /* VoiceSearchLoading005@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626417EE898300C84A6A /* VoiceSearchLoading005@2x.png */; };
-		39FF0B0917F13CBB0086B76C /* installbtn_updatable.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6B17F007FC00F9CA68 /* installbtn_updatable.png */; };
-		39FF0B0A17F13CBB0086B76C /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7917F007FC00F9CA68 /* menu_button.png */; };
 		39FF0B0B17F13CBB0086B76C /* laba.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847A17E8C77E0067A023 /* laba.png */; };
 		39FF0B0C17F13CBB0086B76C /* voice_local_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847B17E8C77E0067A023 /* voice_local_btn.png */; };
 		39FF0B0D17F13CBB0086B76C /* avatar_msg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4D17F007FC00F9CA68 /* avatar_msg.png */; };
@@ -2675,8 +2636,6 @@
 		F5A96C4A17F006B400F9CA68 /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = F5A96C4517F006B400F9CA68 /* CDVVibration.m */; };
 		F5A96CAD17F007FC00F9CA68 /* announcement_local.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4C17F007FC00F9CA68 /* announcement_local.png */; };
 		F5A96CAE17F007FC00F9CA68 /* avatar_msg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4D17F007FC00F9CA68 /* avatar_msg.png */; };
-		F5A96CAF17F007FC00F9CA68 /* Background_Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */; };
-		F5A96CB017F007FC00F9CA68 /* Background_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C4F17F007FC00F9CA68 /* Background_Portrait.png */; };
 		F5A96CB117F007FC00F9CA68 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5017F007FC00F9CA68 /* blueArrow.png */; };
 		F5A96CB217F007FC00F9CA68 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5117F007FC00F9CA68 /* blueArrow@2x.png */; };
 		F5A96CB317F007FC00F9CA68 /* buttongroup_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5217F007FC00F9CA68 /* buttongroup_bg@2x.png */; };
@@ -2687,7 +2646,6 @@
 		F5A96CB817F007FC00F9CA68 /* feedback_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */; };
 		F5A96CB917F007FC00F9CA68 /* feedback_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5817F007FC00F9CA68 /* feedback_button@2x.png */; };
 		F5A96CBA17F007FC00F9CA68 /* feedback_button_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5917F007FC00F9CA68 /* feedback_button_selected@2x.png */; };
-		F5A96CBB17F007FC00F9CA68 /* feedback_re@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5A17F007FC00F9CA68 /* feedback_re@2x.png */; };
 		F5A96CBC17F007FC00F9CA68 /* feedback_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5B17F007FC00F9CA68 /* feedback_time@2x.png */; };
 		F5A96CBD17F007FC00F9CA68 /* fullBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5C17F007FC00F9CA68 /* fullBtn.png */; };
 		F5A96CBE17F007FC00F9CA68 /* fullBtn1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5D17F007FC00F9CA68 /* fullBtn1.png */; };
@@ -2700,12 +2658,6 @@
 		F5A96CC517F007FC00F9CA68 /* IM_1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6417F007FC00F9CA68 /* IM_1.PNG */; };
 		F5A96CC617F007FC00F9CA68 /* IM_2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6517F007FC00F9CA68 /* IM_2.PNG */; };
 		F5A96CC717F007FC00F9CA68 /* IM_3.PNG in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6617F007FC00F9CA68 /* IM_3.PNG */; };
-		F5A96CC817F007FC00F9CA68 /* installbtn_deleting.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6717F007FC00F9CA68 /* installbtn_deleting.png */; };
-		F5A96CC917F007FC00F9CA68 /* installbtn_installed.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6817F007FC00F9CA68 /* installbtn_installed.png */; };
-		F5A96CCA17F007FC00F9CA68 /* installbtn_installing.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6917F007FC00F9CA68 /* installbtn_installing.png */; };
-		F5A96CCB17F007FC00F9CA68 /* installbtn_uninstall.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6A17F007FC00F9CA68 /* installbtn_uninstall.png */; };
-		F5A96CCC17F007FC00F9CA68 /* installbtn_updatable.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6B17F007FC00F9CA68 /* installbtn_updatable.png */; };
-		F5A96CCD17F007FC00F9CA68 /* installbtn_updating.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6C17F007FC00F9CA68 /* installbtn_updating.png */; };
 		F5A96CCE17F007FC00F9CA68 /* installbtnbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6D17F007FC00F9CA68 /* installbtnbg@2x.png */; };
 		F5A96CCF17F007FC00F9CA68 /* installbtnbg_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6E17F007FC00F9CA68 /* installbtnbg_active@2x.png */; };
 		F5A96CD017F007FC00F9CA68 /* introduce_detail_snapshotbg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C6F17F007FC00F9CA68 /* introduce_detail_snapshotbg.png */; };
@@ -2717,10 +2669,6 @@
 		F5A96CD617F007FC00F9CA68 /* local_pic_big.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7517F007FC00F9CA68 /* local_pic_big.png */; };
 		F5A96CD717F007FC00F9CA68 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7617F007FC00F9CA68 /* logo.jpg */; };
 		F5A96CD817F007FC00F9CA68 /* menu_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7717F007FC00F9CA68 /* menu_about.png */; };
-		F5A96CD917F007FC00F9CA68 /* menu_background.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7817F007FC00F9CA68 /* menu_background.png */; };
-		F5A96CDA17F007FC00F9CA68 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7917F007FC00F9CA68 /* menu_button.png */; };
-		F5A96CDB17F007FC00F9CA68 /* menu_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7A17F007FC00F9CA68 /* menu_button2.png */; };
-		F5A96CDC17F007FC00F9CA68 /* menu_button3.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7B17F007FC00F9CA68 /* menu_button3.png */; };
 		F5A96CDD17F007FC00F9CA68 /* menu_cellbg.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7C17F007FC00F9CA68 /* menu_cellbg.png */; };
 		F5A96CDE17F007FC00F9CA68 /* menu_feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7D17F007FC00F9CA68 /* menu_feedback.png */; };
 		F5A96CDF17F007FC00F9CA68 /* menu_help.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C7E17F007FC00F9CA68 /* menu_help.png */; };
@@ -2813,7 +2761,7 @@
 
 /* Begin PBXFileReference section */
 		1801377B17F3D1AA00261B66 /* local_module.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = local_module.plist; sourceTree = "<group>"; };
-		180F234F180CE0D80037751C /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
+		180F234F180CE0D80037751C /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
 		180F2376180D237D0037751C /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		180F2377180D237D0037751C /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		180F2378180D237D0037751C /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
@@ -4104,8 +4052,6 @@
 		F5A96C4517F006B400F9CA68 /* CDVVibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVVibration.m; sourceTree = "<group>"; };
 		F5A96C4C17F007FC00F9CA68 /* announcement_local.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = announcement_local.png; sourceTree = "<group>"; };
 		F5A96C4D17F007FC00F9CA68 /* avatar_msg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_msg.png; sourceTree = "<group>"; };
-		F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_Landscape.png; sourceTree = "<group>"; };
-		F5A96C4F17F007FC00F9CA68 /* Background_Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background_Portrait.png; sourceTree = "<group>"; };
 		F5A96C5017F007FC00F9CA68 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
 		F5A96C5117F007FC00F9CA68 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
 		F5A96C5217F007FC00F9CA68 /* buttongroup_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttongroup_bg@2x.png"; sourceTree = "<group>"; };
@@ -4116,7 +4062,6 @@
 		F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_arrow@2x.png"; sourceTree = "<group>"; };
 		F5A96C5817F007FC00F9CA68 /* feedback_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_button@2x.png"; sourceTree = "<group>"; };
 		F5A96C5917F007FC00F9CA68 /* feedback_button_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_button_selected@2x.png"; sourceTree = "<group>"; };
-		F5A96C5A17F007FC00F9CA68 /* feedback_re@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_re@2x.png"; sourceTree = "<group>"; };
 		F5A96C5B17F007FC00F9CA68 /* feedback_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback_time@2x.png"; sourceTree = "<group>"; };
 		F5A96C5C17F007FC00F9CA68 /* fullBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullBtn.png; sourceTree = "<group>"; };
 		F5A96C5D17F007FC00F9CA68 /* fullBtn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullBtn1.png; sourceTree = "<group>"; };
@@ -4129,12 +4074,6 @@
 		F5A96C6417F007FC00F9CA68 /* IM_1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IM_1.PNG; sourceTree = "<group>"; };
 		F5A96C6517F007FC00F9CA68 /* IM_2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IM_2.PNG; sourceTree = "<group>"; };
 		F5A96C6617F007FC00F9CA68 /* IM_3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IM_3.PNG; sourceTree = "<group>"; };
-		F5A96C6717F007FC00F9CA68 /* installbtn_deleting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = installbtn_deleting.png; sourceTree = "<group>"; };
-		F5A96C6817F007FC00F9CA68 /* installbtn_installed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = installbtn_installed.png; sourceTree = "<group>"; };
-		F5A96C6917F007FC00F9CA68 /* installbtn_installing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = installbtn_installing.png; sourceTree = "<group>"; };
-		F5A96C6A17F007FC00F9CA68 /* installbtn_uninstall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = installbtn_uninstall.png; sourceTree = "<group>"; };
-		F5A96C6B17F007FC00F9CA68 /* installbtn_updatable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = installbtn_updatable.png; sourceTree = "<group>"; };
-		F5A96C6C17F007FC00F9CA68 /* installbtn_updating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = installbtn_updating.png; sourceTree = "<group>"; };
 		F5A96C6D17F007FC00F9CA68 /* installbtnbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "installbtnbg@2x.png"; sourceTree = "<group>"; };
 		F5A96C6E17F007FC00F9CA68 /* installbtnbg_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "installbtnbg_active@2x.png"; sourceTree = "<group>"; };
 		F5A96C6F17F007FC00F9CA68 /* introduce_detail_snapshotbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introduce_detail_snapshotbg.png; sourceTree = "<group>"; };
@@ -4146,10 +4085,6 @@
 		F5A96C7517F007FC00F9CA68 /* local_pic_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = local_pic_big.png; sourceTree = "<group>"; };
 		F5A96C7617F007FC00F9CA68 /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
 		F5A96C7717F007FC00F9CA68 /* menu_about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_about.png; sourceTree = "<group>"; };
-		F5A96C7817F007FC00F9CA68 /* menu_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_background.png; sourceTree = "<group>"; };
-		F5A96C7917F007FC00F9CA68 /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
-		F5A96C7A17F007FC00F9CA68 /* menu_button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button2.png; sourceTree = "<group>"; };
-		F5A96C7B17F007FC00F9CA68 /* menu_button3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button3.png; sourceTree = "<group>"; };
 		F5A96C7C17F007FC00F9CA68 /* menu_cellbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_cellbg.png; sourceTree = "<group>"; };
 		F5A96C7D17F007FC00F9CA68 /* menu_feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_feedback.png; sourceTree = "<group>"; };
 		F5A96C7E17F007FC00F9CA68 /* menu_help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_help.png; sourceTree = "<group>"; };
@@ -7013,8 +6948,6 @@
 				39F029FF1807C24300051656 /* privacy_tick@2x.png */,
 				F5A96C4D17F007FC00F9CA68 /* avatar_msg.png */,
 				3926908B17F51F1C00F1500B /* line_shadow@2x.png */,
-				F5A96C4E17F007FC00F9CA68 /* Background_Landscape.png */,
-				F5A96C4F17F007FC00F9CA68 /* Background_Portrait.png */,
 				39F029FB18078D3300051656 /* soc_home.png */,
 				F5A96C5017F007FC00F9CA68 /* blueArrow.png */,
 				F5A96C5117F007FC00F9CA68 /* blueArrow@2x.png */,
@@ -7026,7 +6959,6 @@
 				F5A96C5717F007FC00F9CA68 /* feedback_arrow@2x.png */,
 				F5A96C5817F007FC00F9CA68 /* feedback_button@2x.png */,
 				F5A96C5917F007FC00F9CA68 /* feedback_button_selected@2x.png */,
-				F5A96C5A17F007FC00F9CA68 /* feedback_re@2x.png */,
 				F5A96C5B17F007FC00F9CA68 /* feedback_time@2x.png */,
 				F5A96C5C17F007FC00F9CA68 /* fullBtn.png */,
 				F5A96C5D17F007FC00F9CA68 /* fullBtn1.png */,
@@ -7039,12 +6971,6 @@
 				F5A96C6417F007FC00F9CA68 /* IM_1.PNG */,
 				F5A96C6517F007FC00F9CA68 /* IM_2.PNG */,
 				F5A96C6617F007FC00F9CA68 /* IM_3.PNG */,
-				F5A96C6717F007FC00F9CA68 /* installbtn_deleting.png */,
-				F5A96C6817F007FC00F9CA68 /* installbtn_installed.png */,
-				F5A96C6917F007FC00F9CA68 /* installbtn_installing.png */,
-				F5A96C6A17F007FC00F9CA68 /* installbtn_uninstall.png */,
-				F5A96C6B17F007FC00F9CA68 /* installbtn_updatable.png */,
-				F5A96C6C17F007FC00F9CA68 /* installbtn_updating.png */,
 				F5A96C6D17F007FC00F9CA68 /* installbtnbg@2x.png */,
 				F5A96C6E17F007FC00F9CA68 /* installbtnbg_active@2x.png */,
 				F5A96C6F17F007FC00F9CA68 /* introduce_detail_snapshotbg.png */,
@@ -7056,10 +6982,6 @@
 				F5A96C7517F007FC00F9CA68 /* local_pic_big.png */,
 				F5A96C7617F007FC00F9CA68 /* logo.jpg */,
 				F5A96C7717F007FC00F9CA68 /* menu_about.png */,
-				F5A96C7817F007FC00F9CA68 /* menu_background.png */,
-				F5A96C7917F007FC00F9CA68 /* menu_button.png */,
-				F5A96C7A17F007FC00F9CA68 /* menu_button2.png */,
-				F5A96C7B17F007FC00F9CA68 /* menu_button3.png */,
 				F5A96C7C17F007FC00F9CA68 /* menu_cellbg.png */,
 				F5A96C7D17F007FC00F9CA68 /* menu_feedback.png */,
 				F5A96C7E17F007FC00F9CA68 /* menu_help.png */,
@@ -7307,7 +7229,6 @@
 				3968629917EE898300C84A6A /* VoiceSearchLoading004@2x.png in Resources */,
 				F5A96CF617F007FC00F9CA68 /* options_close@simple.png in Resources */,
 				F5A96CB817F007FC00F9CA68 /* feedback_arrow@2x.png in Resources */,
-				F5A96CDC17F007FC00F9CA68 /* menu_button3.png in Resources */,
 				F54D835517E8BFBB0067A023 /* iphoneLandingViewController.xib in Resources */,
 				3968629517EE898300C84A6A /* SenderVoiceNodePlaying003@2x.png in Resources */,
 				F54D835617E8BFBB0067A023 /* iphoneLandingViewController_retina4.xib in Resources */,
@@ -7316,7 +7237,6 @@
 				F54D835E17E8BFBB0067A023 /* iphoneLadingViewNew.xib in Resources */,
 				F54D836017E8BFBB0067A023 /* iphoneMsgListCell.xib in Resources */,
 				F5A96CD417F007FC00F9CA68 /* local_icon.png in Resources */,
-				F5A96CC917F007FC00F9CA68 /* installbtn_installed.png in Resources */,
 				F5A96CFB17F007FC00F9CA68 /* pic_bg_02.png in Resources */,
 				F54D836217E8BFBB0067A023 /* MsgListCell.xib in Resources */,
 				F5A96CC017F007FC00F9CA68 /* h.png in Resources */,
@@ -7324,7 +7244,6 @@
 				F5A96CE817F007FC00F9CA68 /* middle_button@2x.png in Resources */,
 				39F23A751805B2520035FCF8 /* 120.png in Resources */,
 				F54D836717E8BFBB0067A023 /* iphoneLoginViewController.xib in Resources */,
-				F5A96CCD17F007FC00F9CA68 /* installbtn_updating.png in Resources */,
 				F5A96CBD17F007FC00F9CA68 /* fullBtn.png in Resources */,
 				F54D836817E8BFBB0067A023 /* iphoneLoginViewController_retina4.xib in Resources */,
 				F54D836917E8BFBB0067A023 /* iphoneLoginViewController.xib in Resources */,
@@ -7388,7 +7307,6 @@
 				3968626E17EE898300C84A6A /* CellBlueSelected@2x.png in Resources */,
 				F54D84BF17E8C77E0067A023 /* f010.png in Resources */,
 				F54D84C017E8C77E0067A023 /* f011.png in Resources */,
-				F5A96CCB17F007FC00F9CA68 /* installbtn_uninstall.png in Resources */,
 				3968629017EE898300C84A6A /* bottleReceiverVoiceNodePlaying001@2x.png in Resources */,
 				F54D84C117E8C77E0067A023 /* f012.png in Resources */,
 				396862A117EE898300C84A6A /* VOIPReceiverVoiceNodeBkgHL@2x.png in Resources */,
@@ -7434,7 +7352,6 @@
 				3968628C17EE898300C84A6A /* addphotoHL@2x.png in Resources */,
 				F54D84D917E8C77E0067A023 /* f036.png in Resources */,
 				3968628E17EE898300C84A6A /* RightBarButtonBkg@2x.png in Resources */,
-				F5A96CC817F007FC00F9CA68 /* installbtn_deleting.png in Resources */,
 				F54D84DA17E8C77E0067A023 /* f037.png in Resources */,
 				F54D84DB17E8C77E0067A023 /* f038.png in Resources */,
 				F5A96CC317F007FC00F9CA68 /* homebackImg.png in Resources */,
@@ -7449,7 +7366,6 @@
 				F54D84E217E8C77E0067A023 /* f045.png in Resources */,
 				F54D84E317E8C77E0067A023 /* f046.png in Resources */,
 				F5A96CB917F007FC00F9CA68 /* feedback_button@2x.png in Resources */,
-				F5A96CD917F007FC00F9CA68 /* menu_background.png in Resources */,
 				3968627117EE898300C84A6A /* message_number_single.png in Resources */,
 				F54D84E417E8C77E0067A023 /* f047.png in Resources */,
 				F54D84E517E8C77E0067A023 /* f048.png in Resources */,
@@ -7535,9 +7451,6 @@
 				F54D851317E8C77E0067A023 /* f094.png in Resources */,
 				F54D851417E8C77E0067A023 /* f095.png in Resources */,
 				39D9E80217F26A87001ED6F5 /* btn_remove.png in Resources */,
-				F5A96CB017F007FC00F9CA68 /* Background_Portrait.png in Resources */,
-				F5A96CCA17F007FC00F9CA68 /* installbtn_installing.png in Resources */,
-				F5A96CAF17F007FC00F9CA68 /* Background_Landscape.png in Resources */,
 				F54D851517E8C77E0067A023 /* f096.png in Resources */,
 				F54D851617E8C77E0067A023 /* f097.png in Resources */,
 				F54D851717E8C77E0067A023 /* f098.png in Resources */,
@@ -7584,7 +7497,6 @@
 				F54D853817E8C77E0067A023 /* Login_man@2x.png in Resources */,
 				F54D853917E8C77E0067A023 /* Login_navigationBar@2x.png in Resources */,
 				F54D853A17E8C77E0067A023 /* Login_off@2x.png in Resources */,
-				F5A96CDB17F007FC00F9CA68 /* menu_button2.png in Resources */,
 				F54D853B17E8C77E0067A023 /* Login_on@2x.png in Resources */,
 				1801377C17F3D1AA00261B66 /* local_module.plist in Resources */,
 				F54D853C17E8C77E0067A023 /* login_select.png in Resources */,
@@ -7610,10 +7522,7 @@
 				3968627517EE898300C84A6A /* bubbleMine@2x.png in Resources */,
 				F54D854917E8C77E0067A023 /* sperate_line.png in Resources */,
 				F54D854A17E8C77E0067A023 /* un_collected_icon.png in Resources */,
-				F5A96CBB17F007FC00F9CA68 /* feedback_re@2x.png in Resources */,
 				3968629A17EE898300C84A6A /* VoiceSearchLoading005@2x.png in Resources */,
-				F5A96CCC17F007FC00F9CA68 /* installbtn_updatable.png in Resources */,
-				F5A96CDA17F007FC00F9CA68 /* menu_button.png in Resources */,
 				F54D854B17E8C77E0067A023 /* laba.png in Resources */,
 				F552F75D1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */,
 				F54D854C17E8C77E0067A023 /* voice_local_btn.png in Resources */,
@@ -7748,7 +7657,6 @@
 				39D9E83E17F27C03001ED6F5 /* options_close@simple.png in Resources */,
 				39D9E84017F27C03001ED6F5 /* feedback_arrow@2x.png in Resources */,
 				18E9C4891803AB1200B874B8 /* FPFlightNoticeCell.xib in Resources */,
-				39D9E84117F27C03001ED6F5 /* menu_button3.png in Resources */,
 				39D9E84217F27C03001ED6F5 /* iphoneLandingViewController.xib in Resources */,
 				39D9E84317F27C03001ED6F5 /* SenderVoiceNodePlaying003@2x.png in Resources */,
 				39D9E84417F27C03001ED6F5 /* iphoneLandingViewController_retina4.xib in Resources */,
@@ -7760,7 +7668,6 @@
 				18E9C5781803AB1200B874B8 /* FilghtCaleMenu.png in Resources */,
 				18E9C5761803AB1200B874B8 /* cb_glossy_on@2x.png in Resources */,
 				18E9C4A51803AB1200B874B8 /* FPDocListViewController_Phone.xib in Resources */,
-				39D9E84A17F27C03001ED6F5 /* installbtn_installed.png in Resources */,
 				39D9E84B17F27C03001ED6F5 /* pic_bg_02.png in Resources */,
 				39D9E84C17F27C03001ED6F5 /* MsgListCell.xib in Resources */,
 				39D9E84D17F27C03001ED6F5 /* h.png in Resources */,
@@ -7769,7 +7676,6 @@
 				39D9E84E17F27C03001ED6F5 /* VVMessageCell.xib in Resources */,
 				39D9E84F17F27C03001ED6F5 /* middle_button@2x.png in Resources */,
 				39D9E85017F27C03001ED6F5 /* iphoneLoginViewController.xib in Resources */,
-				39D9E85117F27C03001ED6F5 /* installbtn_updating.png in Resources */,
 				39D9E85217F27C03001ED6F5 /* fullBtn.png in Resources */,
 				39D9E85317F27C03001ED6F5 /* iphoneLoginViewController_retina4.xib in Resources */,
 				39D9E85417F27C03001ED6F5 /* iphoneLoginViewController.xib in Resources */,
@@ -7856,7 +7762,6 @@
 				39D9E89317F27C03001ED6F5 /* CellBlueSelected@2x.png in Resources */,
 				39D9E89417F27C03001ED6F5 /* f010.png in Resources */,
 				39D9E89517F27C03001ED6F5 /* f011.png in Resources */,
-				39D9E89617F27C03001ED6F5 /* installbtn_uninstall.png in Resources */,
 				18E9C4821803AB1200B874B8 /* answer.plist in Resources */,
 				39D9E89717F27C03001ED6F5 /* bottleReceiverVoiceNodePlaying001@2x.png in Resources */,
 				39D9E89817F27C03001ED6F5 /* f012.png in Resources */,
@@ -7928,7 +7833,6 @@
 				18E9C4701803AB1200B874B8 /* CloudHeight.xib in Resources */,
 				39D9E8C117F27C03001ED6F5 /* RightBarButtonBkg@2x.png in Resources */,
 				18E9C4C81803AB1200B874B8 /* ManifestTableViewCell_Phone.xib in Resources */,
-				39D9E8C217F27C03001ED6F5 /* installbtn_deleting.png in Resources */,
 				39D9E8C317F27C03001ED6F5 /* f037.png in Resources */,
 				18E9C5861803AB1200B874B8 /* NewFunctionPush_iPhone.xml in Resources */,
 				39D9E8C417F27C03001ED6F5 /* f038.png in Resources */,
@@ -7946,7 +7850,6 @@
 				39D9E8D017F27C03001ED6F5 /* f046.png in Resources */,
 				18E9C5541803AB1200B874B8 /* button.png in Resources */,
 				39D9E8D117F27C03001ED6F5 /* feedback_button@2x.png in Resources */,
-				39D9E8D217F27C03001ED6F5 /* menu_background.png in Resources */,
 				39D9E8D317F27C03001ED6F5 /* message_number_single.png in Resources */,
 				18E9C5681803AB1200B874B8 /* BarButtonItem_Refresh.png in Resources */,
 				18E9C5651803AB1200B874B8 /* Button_UnCheckMark_Pad.png in Resources */,
@@ -8063,10 +7966,7 @@
 				18E9C5511803AB1200B874B8 /* btn_done_down@2x.png in Resources */,
 				18E9C4661803AB1200B874B8 /* Calc60.xib in Resources */,
 				39D9E92717F27C03001ED6F5 /* btn_remove.png in Resources */,
-				39D9E92817F27C03001ED6F5 /* Background_Portrait.png in Resources */,
-				39D9E92917F27C03001ED6F5 /* installbtn_installing.png in Resources */,
 				18E9C5721803AB1200B874B8 /* RightButtonItem.png in Resources */,
-				39D9E92A17F27C03001ED6F5 /* Background_Landscape.png in Resources */,
 				39D9E92B17F27C03001ED6F5 /* f096.png in Resources */,
 				180F2374180D1A170037751C /* Default-Landscape@2x~ipad.png in Resources */,
 				39D9E92C17F27C03001ED6F5 /* f097.png in Resources */,
@@ -8127,7 +8027,6 @@
 				39D9E95717F27C03001ED6F5 /* Login_man@2x.png in Resources */,
 				39D9E95817F27C03001ED6F5 /* Login_navigationBar@2x.png in Resources */,
 				39D9E95917F27C03001ED6F5 /* Login_off@2x.png in Resources */,
-				39D9E95A17F27C03001ED6F5 /* menu_button2.png in Resources */,
 				18E9C4B51803AB1200B874B8 /* FlightScheduleViewController_Pad.xib in Resources */,
 				18E9C4BF1803AB1200B874B8 /* LoginViewController_Pad.xib in Resources */,
 				39D9E95B17F27C03001ED6F5 /* Login_on@2x.png in Resources */,
@@ -8163,11 +8062,8 @@
 				39D9E97017F27C03001ED6F5 /* bubbleMine@2x.png in Resources */,
 				39D9E97117F27C03001ED6F5 /* sperate_line.png in Resources */,
 				39D9E97217F27C03001ED6F5 /* un_collected_icon.png in Resources */,
-				39D9E97317F27C03001ED6F5 /* feedback_re@2x.png in Resources */,
 				180F2388180D237D0037751C /* Default.png in Resources */,
 				39D9E97417F27C03001ED6F5 /* VoiceSearchLoading005@2x.png in Resources */,
-				39D9E97517F27C03001ED6F5 /* installbtn_updatable.png in Resources */,
-				39D9E97617F27C03001ED6F5 /* menu_button.png in Resources */,
 				39D9E97717F27C03001ED6F5 /* laba.png in Resources */,
 				F552F7601807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */,
 				39D9E97817F27C03001ED6F5 /* voice_local_btn.png in Resources */,
@@ -8305,7 +8201,6 @@
 				39E0511917F00AEA00BCF7F8 /* VoiceSearchLoading004@2x.png in Resources */,
 				39E0511B17F00AEA00BCF7F8 /* options_close@simple.png in Resources */,
 				39E0511D17F00AEA00BCF7F8 /* feedback_arrow@2x.png in Resources */,
-				39E0511E17F00AEA00BCF7F8 /* menu_button3.png in Resources */,
 				39E0511F17F00AEA00BCF7F8 /* iphoneLandingViewController.xib in Resources */,
 				39E0512017F00AEA00BCF7F8 /* SenderVoiceNodePlaying003@2x.png in Resources */,
 				39E0512117F00AEA00BCF7F8 /* iphoneLandingViewController_retina4.xib in Resources */,
@@ -8314,7 +8209,6 @@
 				39E0512417F00AEA00BCF7F8 /* iphoneLadingViewNew.xib in Resources */,
 				39E0512517F00AEA00BCF7F8 /* iphoneMsgListCell.xib in Resources */,
 				39E0512617F00AEA00BCF7F8 /* local_icon.png in Resources */,
-				39E0512717F00AEA00BCF7F8 /* installbtn_installed.png in Resources */,
 				39E0512817F00AEA00BCF7F8 /* pic_bg_02.png in Resources */,
 				39E0512917F00AEA00BCF7F8 /* MsgListCell.xib in Resources */,
 				39E0512A17F00AEA00BCF7F8 /* h.png in Resources */,
@@ -8322,7 +8216,6 @@
 				39E0512C17F00AEA00BCF7F8 /* middle_button@2x.png in Resources */,
 				39F23A761805B2520035FCF8 /* 120.png in Resources */,
 				39E0512D17F00AEA00BCF7F8 /* iphoneLoginViewController.xib in Resources */,
-				39E0512E17F00AEA00BCF7F8 /* installbtn_updating.png in Resources */,
 				39E0512F17F00AEA00BCF7F8 /* fullBtn.png in Resources */,
 				39E0513017F00AEA00BCF7F8 /* iphoneLoginViewController_retina4.xib in Resources */,
 				39E0513117F00AEA00BCF7F8 /* iphoneLoginViewController.xib in Resources */,
@@ -8386,7 +8279,6 @@
 				39E0517017F00AEA00BCF7F8 /* CellBlueSelected@2x.png in Resources */,
 				39E0517117F00AEA00BCF7F8 /* f010.png in Resources */,
 				39E0517217F00AEA00BCF7F8 /* f011.png in Resources */,
-				39E0517317F00AEA00BCF7F8 /* installbtn_uninstall.png in Resources */,
 				39E0517417F00AEA00BCF7F8 /* bottleReceiverVoiceNodePlaying001@2x.png in Resources */,
 				39E0517517F00AEA00BCF7F8 /* f012.png in Resources */,
 				39E0517617F00AEA00BCF7F8 /* VOIPReceiverVoiceNodeBkgHL@2x.png in Resources */,
@@ -8432,7 +8324,6 @@
 				39E0519C17F00AEA00BCF7F8 /* addphotoHL@2x.png in Resources */,
 				39E0519D17F00AEA00BCF7F8 /* f036.png in Resources */,
 				39E0519E17F00AEA00BCF7F8 /* RightBarButtonBkg@2x.png in Resources */,
-				39E0519F17F00AEA00BCF7F8 /* installbtn_deleting.png in Resources */,
 				39E051A017F00AEA00BCF7F8 /* f037.png in Resources */,
 				39E051A117F00AEA00BCF7F8 /* f038.png in Resources */,
 				39E051A217F00AEA00BCF7F8 /* homebackImg.png in Resources */,
@@ -8447,7 +8338,6 @@
 				39E051AA17F00AEA00BCF7F8 /* f045.png in Resources */,
 				39E051AD17F00AEA00BCF7F8 /* f046.png in Resources */,
 				39E051AE17F00AEA00BCF7F8 /* feedback_button@2x.png in Resources */,
-				39E051AF17F00AEA00BCF7F8 /* menu_background.png in Resources */,
 				39E051B017F00AEA00BCF7F8 /* message_number_single.png in Resources */,
 				39E051B117F00AEA00BCF7F8 /* f047.png in Resources */,
 				39E051B217F00AEA00BCF7F8 /* f048.png in Resources */,
@@ -8533,9 +8423,6 @@
 				39E051FF17F00AEA00BCF7F8 /* f094.png in Resources */,
 				39E0520017F00AEA00BCF7F8 /* f095.png in Resources */,
 				39D9E80317F26A87001ED6F5 /* btn_remove.png in Resources */,
-				39E0520217F00AEA00BCF7F8 /* Background_Portrait.png in Resources */,
-				39E0520317F00AEA00BCF7F8 /* installbtn_installing.png in Resources */,
-				39E0520417F00AEA00BCF7F8 /* Background_Landscape.png in Resources */,
 				39E0520517F00AEA00BCF7F8 /* f096.png in Resources */,
 				39E0520617F00AEA00BCF7F8 /* f097.png in Resources */,
 				39E0520717F00AEA00BCF7F8 /* f098.png in Resources */,
@@ -8582,7 +8469,6 @@
 				39E0523117F00AEA00BCF7F8 /* Login_man@2x.png in Resources */,
 				39E0523217F00AEA00BCF7F8 /* Login_navigationBar@2x.png in Resources */,
 				39E0523317F00AEA00BCF7F8 /* Login_off@2x.png in Resources */,
-				39E0523417F00AEA00BCF7F8 /* menu_button2.png in Resources */,
 				39E0523517F00AEA00BCF7F8 /* Login_on@2x.png in Resources */,
 				1801377D17F3D1AA00261B66 /* local_module.plist in Resources */,
 				39E0523617F00AEA00BCF7F8 /* login_select.png in Resources */,
@@ -8608,10 +8494,7 @@
 				39E0524A17F00AEA00BCF7F8 /* bubbleMine@2x.png in Resources */,
 				39E0524B17F00AEA00BCF7F8 /* sperate_line.png in Resources */,
 				39E0524C17F00AEA00BCF7F8 /* un_collected_icon.png in Resources */,
-				39E0524D17F00AEA00BCF7F8 /* feedback_re@2x.png in Resources */,
 				39E0524E17F00AEA00BCF7F8 /* VoiceSearchLoading005@2x.png in Resources */,
-				39E0524F17F00AEA00BCF7F8 /* installbtn_updatable.png in Resources */,
-				39E0525017F00AEA00BCF7F8 /* menu_button.png in Resources */,
 				39E0525117F00AEA00BCF7F8 /* laba.png in Resources */,
 				F552F75E1807DBDC009A5EFE /* nav_bg_pad@2x.png in Resources */,
 				39E0525217F00AEA00BCF7F8 /* voice_local_btn.png in Resources */,
@@ -8727,7 +8610,6 @@
 				39FF09D317F13CBB0086B76C /* VoiceSearchLoading004@2x.png in Resources */,
 				39FF09D517F13CBB0086B76C /* options_close@simple.png in Resources */,
 				39FF09D717F13CBB0086B76C /* feedback_arrow@2x.png in Resources */,
-				39FF09D817F13CBB0086B76C /* menu_button3.png in Resources */,
 				39FF09D917F13CBB0086B76C /* iphoneLandingViewController.xib in Resources */,
 				39FF09DA17F13CBB0086B76C /* SenderVoiceNodePlaying003@2x.png in Resources */,
 				39FF09DB17F13CBB0086B76C /* iphoneLandingViewController_retina4.xib in Resources */,
@@ -8737,14 +8619,12 @@
 				39FF09DE17F13CBB0086B76C /* iphoneLadingViewNew.xib in Resources */,
 				39FF09DF17F13CBB0086B76C /* iphoneMsgListCell.xib in Resources */,
 				39FF09E017F13CBB0086B76C /* local_icon.png in Resources */,
-				39FF09E117F13CBB0086B76C /* installbtn_installed.png in Resources */,
 				39FF09E217F13CBB0086B76C /* pic_bg_02.png in Resources */,
 				39FF09E317F13CBB0086B76C /* MsgListCell.xib in Resources */,
 				39FF09E417F13CBB0086B76C /* h.png in Resources */,
 				39FF09E517F13CBB0086B76C /* VVMessageCell.xib in Resources */,
 				39FF09E617F13CBB0086B76C /* middle_button@2x.png in Resources */,
 				39FF09E717F13CBB0086B76C /* iphoneLoginViewController.xib in Resources */,
-				39FF09E817F13CBB0086B76C /* installbtn_updating.png in Resources */,
 				39FF09E917F13CBB0086B76C /* fullBtn.png in Resources */,
 				39FF09EA17F13CBB0086B76C /* iphoneLoginViewController_retina4.xib in Resources */,
 				39FF09EB17F13CBB0086B76C /* iphoneLoginViewController.xib in Resources */,
@@ -8809,7 +8689,6 @@
 				39FF0A2A17F13CBB0086B76C /* CellBlueSelected@2x.png in Resources */,
 				39FF0A2B17F13CBB0086B76C /* f010.png in Resources */,
 				39FF0A2C17F13CBB0086B76C /* f011.png in Resources */,
-				39FF0A2D17F13CBB0086B76C /* installbtn_uninstall.png in Resources */,
 				39FF0A2E17F13CBB0086B76C /* bottleReceiverVoiceNodePlaying001@2x.png in Resources */,
 				39FF0A2F17F13CBB0086B76C /* f012.png in Resources */,
 				39FF0A3017F13CBB0086B76C /* VOIPReceiverVoiceNodeBkgHL@2x.png in Resources */,
@@ -8855,7 +8734,6 @@
 				39FF0A5617F13CBB0086B76C /* addphotoHL@2x.png in Resources */,
 				39FF0A5717F13CBB0086B76C /* f036.png in Resources */,
 				39FF0A5817F13CBB0086B76C /* RightBarButtonBkg@2x.png in Resources */,
-				39FF0A5917F13CBB0086B76C /* installbtn_deleting.png in Resources */,
 				39FF0A5A17F13CBB0086B76C /* f037.png in Resources */,
 				39FF0A5B17F13CBB0086B76C /* f038.png in Resources */,
 				39FF0A5C17F13CBB0086B76C /* homebackImg.png in Resources */,
@@ -8870,7 +8748,6 @@
 				39FF0A6417F13CBB0086B76C /* f045.png in Resources */,
 				39FF0A6717F13CBB0086B76C /* f046.png in Resources */,
 				39FF0A6817F13CBB0086B76C /* feedback_button@2x.png in Resources */,
-				39FF0A6917F13CBB0086B76C /* menu_background.png in Resources */,
 				39FF0A6A17F13CBB0086B76C /* message_number_single.png in Resources */,
 				39FF0A6B17F13CBB0086B76C /* f047.png in Resources */,
 				39F23AA31805B2600035FCF8 /* 57×57.png in Resources */,
@@ -8960,9 +8837,6 @@
 				39FF0AB917F13CBB0086B76C /* f094.png in Resources */,
 				39FF0ABA17F13CBB0086B76C /* f095.png in Resources */,
 				39D9E80417F26A87001ED6F5 /* btn_remove.png in Resources */,
-				39FF0ABC17F13CBB0086B76C /* Background_Portrait.png in Resources */,
-				39FF0ABD17F13CBB0086B76C /* installbtn_installing.png in Resources */,
-				39FF0ABE17F13CBB0086B76C /* Background_Landscape.png in Resources */,
 				39FF0ABF17F13CBB0086B76C /* f096.png in Resources */,
 				39FF0AC017F13CBB0086B76C /* f097.png in Resources */,
 				39FF0AC117F13CBB0086B76C /* f098.png in Resources */,
@@ -9008,7 +8882,6 @@
 				39FF0AEB17F13CBB0086B76C /* Login_man@2x.png in Resources */,
 				39FF0AEC17F13CBB0086B76C /* Login_navigationBar@2x.png in Resources */,
 				39FF0AED17F13CBB0086B76C /* Login_off@2x.png in Resources */,
-				39FF0AEE17F13CBB0086B76C /* menu_button2.png in Resources */,
 				39FF0AEF17F13CBB0086B76C /* Login_on@2x.png in Resources */,
 				39FF0AF017F13CBB0086B76C /* login_select.png in Resources */,
 				39FF0AF117F13CBB0086B76C /* announcement_local.png in Resources */,
@@ -9034,10 +8907,7 @@
 				39FF0B0417F13CBB0086B76C /* bubbleMine@2x.png in Resources */,
 				39FF0B0517F13CBB0086B76C /* sperate_line.png in Resources */,
 				39FF0B0617F13CBB0086B76C /* un_collected_icon.png in Resources */,
-				39FF0B0717F13CBB0086B76C /* feedback_re@2x.png in Resources */,
 				39FF0B0817F13CBB0086B76C /* VoiceSearchLoading005@2x.png in Resources */,
-				39FF0B0917F13CBB0086B76C /* installbtn_updatable.png in Resources */,
-				39FF0B0A17F13CBB0086B76C /* menu_button.png in Resources */,
 				39FF0B0B17F13CBB0086B76C /* laba.png in Resources */,
 				39FF0B0C17F13CBB0086B76C /* voice_local_btn.png in Resources */,
 				39FF0B0D17F13CBB0086B76C /* avatar_msg.png in Resources */,
@@ -10496,7 +10366,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "移动运行网2.0";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "B869874C-EE33-4FC2-8B98-3C1304017796";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -10533,7 +10403,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "移动运行网2.0";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "B869874C-EE33-4FC2-8B98-3C1304017796";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

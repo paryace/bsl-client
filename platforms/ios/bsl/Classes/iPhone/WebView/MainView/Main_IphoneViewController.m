@@ -20,7 +20,7 @@
 #import "AutoDownLoadRecord.h"
 #import "OperateLog.h"
 #import "AutoShowRecord.h"
-
+#import "SVProgressHUD.h"
 #import "DownLoadingDetialViewController.h"
 #import "SettingMainViewController.h"
 
@@ -42,7 +42,7 @@
 
 @implementation Main_IphoneViewController
 @synthesize navController;
-
+@synthesize aCubeWebViewController;
 -(id)init{
     self=[super init];
     if(self){
@@ -61,7 +61,10 @@
         //收到消息时候的广播
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadge) name:MESSAGE_RECORD_DID_SAVE_NOTIFICATION object:nil];
         //收到好友消息时候
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleInstallFail) name:CubeModuleDownloadDidFailNotification object:nil];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteModuleFromNotification:) name:KNOTIFICATION_DETIALPAGE_DELETESUCCESS object:nil];
+        
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissView) name:@"DISMISS_VIEW" object:nil];
 
@@ -81,10 +84,17 @@
     self.selfObj=self;
 
     aCubeWebViewController = [[CubeWebViewController alloc]init];
+    
     aCubeWebViewController.title=@"登录";
     aCubeWebViewController.wwwFolderName = @"www";
+    NSURL* fileUrl = [[NSURL alloc]init];
+#ifdef MOBILE_BSL
+    aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"home/index.html"] absoluteString];
+    fileUrl = [[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"home/index.html"];
+#else
     aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/index.html"] absoluteString];
-    
+    fileUrl =[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/index.html"];
+#endif
     CGRect rect=self.view.bounds;
     if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
         rect.origin.y=20.0f;
@@ -93,10 +103,10 @@
     aCubeWebViewController.view.frame = rect;
     [self.view addSubview:aCubeWebViewController.view];
     aCubeWebViewController.webView.scrollView.bounces=NO;
-    [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/index.html"] absoluteString] didFinishBlock: ^(){
+    [aCubeWebViewController loadWebPageWithUrl: [fileUrl absoluteString] didFinishBlock: ^(){
         [self.navController pushViewController:self animated:NO];
         self.navController=nil;
-        
+        [SVProgressHUD dismiss];
         aCubeWebViewController.closeButton.hidden = YES;
         [aCubeWebViewController viewWillAppear:NO];
         [aCubeWebViewController viewDidAppear:NO];
@@ -179,6 +189,7 @@
 -(void)moduleSysFinsh{
     [self checkModules];
     if (!isFirst) {
+        //检测是否需要自动安装
         [self autoShowModule];
         isFirst = true;
     }
@@ -186,7 +197,6 @@
 
 -(void)checkModules{
     //检测是否需要自动安装
-    
     
     @autoreleasepool {
 #ifndef MOBILE_BSL
@@ -222,7 +232,7 @@
             NSMutableString *message = [[NSMutableString alloc] init];
             [message appendString:@"以下模块可以更新:\n"];
             for(CubeModule *module in updateModules){
-                [message appendFormat:@"%@\n", module.name];
+                [message appendFormat:@"%@ %@\n", module.name,module.version];
             }
             //        [defaults setBool:NO forKey:@"firstTime"];
             if(![defaults boolForKey:@"firstTime"]){
@@ -253,7 +263,7 @@
                     [[FMDBManager getInstance]createTable:@"AutoShowRecord" withObject:record];
                 }
                 
-                if(![[FMDBManager getInstance]recordIsExist:@"identifier" withtableName:@"AutoShowRecord" withConditios:userName])
+                if(![[FMDBManager getInstance]recordIsExist:@"identifier"  withtableName:@"AutoShowRecord" withConditios:userName])
                 {
                     [self showWebViewModue:module];
                     AutoShowRecord *newRecord = [[AutoShowRecord alloc]init];
@@ -321,7 +331,9 @@
     }
 }
 
-
+-(void)moduleInstallFail{
+    [SVProgressHUD showErrorWithStatus:@"模块操作失败！"];
+}
 -(void)updateAuthoShowTime:(NSString*)identifier{
     long currentTime = [[NSDate date]timeIntervalSince1970];
     NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
@@ -333,12 +345,8 @@
             [database open];
         }
         [database executeUpdate:sql];
-        
     });
-    
 }
-
-
 
 #pragma mark - 皮肤功能
 
@@ -827,7 +835,9 @@
 -(void)startUILoading{
     int count =[self getDownMouleCount];
     statusToolbar.statusLabel.text = [NSString stringWithFormat:@"正在下载... %d/%d",(allDownCount - count) ,allDownCount];
-    statusToolbar.progressBar.progress = count/allDownCount;
+    
+    
+    statusToolbar.progressBar.progress = 1-(float)count/(float)allDownCount;
     [statusToolbar show:YES completion:^(BOOL finished) {
     }];
 }

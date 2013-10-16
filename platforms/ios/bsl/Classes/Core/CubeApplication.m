@@ -470,6 +470,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 
 
 
+
+
 -(BOOL)judgeArray:(NSMutableArray*)tempArr ContainsModule:(CubeModule*)aModule
 {
     for (CubeModule *tempModule in tempArr) {

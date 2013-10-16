@@ -1124,6 +1124,8 @@
                 
                 RectangleChat* chat=[self fetchRectangleChatFromJid:roomId isGroup:YES];
                 if(chat!=nil){
+                    int noReadMsgNumber=[chat.noReadMsgNumber intValue]+1;
+                    chat.noReadMsgNumber=[NSNumber numberWithInt:noReadMsgNumber];
                     chat.isQuit=[NSNumber numberWithBool:NO];
                     [chat didSave];
                 }
@@ -1141,6 +1143,11 @@
                 [self addGroupRoomMember:message.fromStr memberId:[[self xmppStream].myJID bare] sex:[[NSUserDefaults standardUserDefaults] valueForKey:@"sex"] status:@"在线" username:name];
                 
                 [self saveContext];
+                
+                
+                [MessageRecord createModuleBadge:@"com.foss.chat" num: [XMPPSqlManager getMessageCount]];
+
+                
                 [roomService performSelector:@selector(joinRoomServiceWithRoomID:) withObject:message.fromStr afterDelay:2.0f];
                 
                 

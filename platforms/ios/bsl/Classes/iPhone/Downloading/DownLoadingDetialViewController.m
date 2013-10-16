@@ -375,6 +375,7 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
 {
     _curTitle=EBTNINSTALL;
     self.configButton.btnStatus = InstallButtonStateUninstall;
+    self.iconImage.updateableImageView.hidden = YES;
 }
 
 -(void)failedDelete:(id)sender

@@ -7,7 +7,7 @@
 //
 
 NSString* const kServerURLString = @"http://192.168.11.18:18860";
-NSString* const kServerLoginURLString = @"http://192.168.11.18:18860/system/api/system/mobile/accounts/login";
+NSString* const kServerLoginURLString = @"http://192.168.11.18:18860/csair-extension/api/accounts/login";
 NSString* const  kXMPPHost=@"10.108.68.99";
 NSString* const  kAPIServerAPI=@"192.168.11.18:18860/csair-im/api";
 NSString* const  kXMPPDomin=@"mobile.app";

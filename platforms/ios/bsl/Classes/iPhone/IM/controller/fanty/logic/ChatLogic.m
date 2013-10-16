@@ -74,11 +74,8 @@
         if(!onlyUpdateChat){
             [appDelegate.xmpp newRectangleMessage:messageId name:name content:content contentType:RectangleChatContentTypeMessage isGroup:isGroup createrJid:nil];
             [appDelegate.xmpp saveContext];
-        }
-        
-        if(!onlyUpdateChat)
             [MessageRecord createModuleBadge:@"com.foss.chat" num: [XMPPSqlManager getMessageCount]];
-
+        }
     }
 
 }
@@ -269,6 +266,9 @@
         
         //发送消息
         [appDelegate.xmpp.xmppStream sendElement:message];
+        
+        
+        
     }
     
     @autoreleasepool {

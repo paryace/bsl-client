@@ -16,7 +16,6 @@
     UIImageView* lineView;
 }
 
--(void)layoutUI:(BOOL)isEdit  animated:(BOOL)animate;
 -(void)headerUrl:(NSString*)headerUrl nickname:(NSString*)nickname;
 
 +(float)height;

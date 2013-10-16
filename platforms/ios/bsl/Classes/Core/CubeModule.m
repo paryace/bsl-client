@@ -150,6 +150,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
          
             NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:downUrl]];
             AFHTTPRequestOperation * httpConnection = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+            
             [httpConnection setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [self downloadFinished:responseObject];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

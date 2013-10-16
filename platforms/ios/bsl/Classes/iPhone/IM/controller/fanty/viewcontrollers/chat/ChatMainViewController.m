@@ -36,6 +36,10 @@
 -(void)voiceButtonClick:(UIButton*)cell;
 -(void)rightActionClick;
 -(void)rightGroupClick;
+
+-(void) keyboardWillShow:(NSNotification *)note;
+-(void) keyboardWillHide:(NSNotification *)note;
+
 @end
 
 @implementation ChatMainViewController
@@ -55,6 +59,17 @@
         }
 
         playingIndex=-1;
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(keyboardWillShow:)
+                                                         name:UIKeyboardWillShowNotification
+                                                       object:nil];
+            
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(keyboardWillHide:)
+                                                         name:UIKeyboardWillHideNotification
+                                                       object:nil];
+
+
     }
     return self;
 }
@@ -163,6 +178,7 @@
 }
 
 -(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[GTGZImageDownloadedManager sharedInstance] removeAll];
     [VoiceUploadManager sharedInstance].delegate=nil;
 
@@ -185,7 +201,7 @@
 
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    [chatPanel resignFirstResponder];
+    //[chatPanel resignFirstResponder];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -666,7 +682,8 @@
         
         if([rectChat.isQuit boolValue]){
             [chatPanel hideAllControlPanel];
-            [self.navigationController popViewControllerAnimated:YES];
+            self.navigationItem.rightBarButtonItem=nil;
+            //[self.navigationController popViewControllerAnimated:YES];
         }
 
         
@@ -715,6 +732,52 @@
     [chatPanel hideAllControlPanel];
     [self createRightNavBarButton];
 }
+
+
+#pragma mark  notification
+-(void) keyboardWillShow:(NSNotification *)note{
+    // get keyboard size and loctaion
+
+	CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
+    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    keyboardBounds = [self.view convertRect:keyboardBounds toView:nil];
+
+    
+    
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:[duration doubleValue]];
+    [UIView setAnimationCurve:[curve intValue]];
+    
+    CGRect containerFrame = tableView.frame;
+    containerFrame.size.height-=keyboardBounds.size.height;
+    tableView.frame=containerFrame;
+	
+    [UIView commitAnimations];
+}
+
+-(void) keyboardWillHide:(NSNotification *)note{
+    CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
+    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    keyboardBounds = [self.view convertRect:keyboardBounds toView:nil];
+
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:[duration doubleValue]];
+    [UIView setAnimationCurve:[curve intValue]];
+	
+    CGRect containerFrame = tableView.frame;
+    containerFrame.size.height+=keyboardBounds.size.height;
+    tableView.frame=containerFrame;
+	
+    [UIView commitAnimations];
+}
+
+
 
 #pragma mark method
 
