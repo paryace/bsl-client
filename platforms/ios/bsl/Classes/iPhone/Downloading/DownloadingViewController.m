@@ -231,7 +231,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 100 && buttonIndex == 0) {
-         [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
+        [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView:NO];
     }
 }
 

@@ -12,4 +12,6 @@
     CubeWebViewController *aCubeWebViewController ;
 }
 
+-(void)updateLoginPage:(BOOL)remove;
+
 @end

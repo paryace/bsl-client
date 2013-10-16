@@ -167,7 +167,7 @@ void uncaughtExceptionHandler(NSException*exception){
         nav=nil;
 //    }
     
-    [self showLoginView];
+    [self showLoginView:YES];
     [self.window makeKeyAndVisible];
     
     //开启定时任务将记录发送给服务端begin
@@ -185,7 +185,7 @@ void uncaughtExceptionHandler(NSException*exception){
 
 }
 
--(void)showLoginView{
+-(void)showLoginView:(BOOL)newLogin{
 
     [self.navControl popToRootViewControllerAnimated:NO];
 
@@ -199,7 +199,7 @@ void uncaughtExceptionHandler(NSException*exception){
   
     [xmpp teardownStream];
 //    [xmpp disConnect];
-    
+//    if(!newLogin)return;
     if([navControl.viewControllers count]<1){
         if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone){
             Login_IphoneViewController* controller=[[Login_IphoneViewController alloc] init];
@@ -215,6 +215,7 @@ void uncaughtExceptionHandler(NSException*exception){
             controller=nil;
         }
     }
+    
 
 }
 
@@ -227,7 +228,8 @@ void uncaughtExceptionHandler(NSException*exception){
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 100 && buttonIndex == 0) {
-        [self showLoginView];
+
+        [self showLoginView:NO];
     }
 }
 

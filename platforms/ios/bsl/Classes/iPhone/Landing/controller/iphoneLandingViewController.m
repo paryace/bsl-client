@@ -446,7 +446,7 @@
 }
 
 -(void)logout{
-    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView:NO];
 }
 
 -(void)deleteModuleFail{
