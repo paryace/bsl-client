@@ -18,7 +18,7 @@ extern NSString* const kServerLoginURLString;
 
 
 //应用的app key
-extern const NSString* const kAPPKey;
+extern NSString* const kAPPKey;
 
 //xmpp host
 extern NSString* const kXMPPHost;
@@ -37,9 +37,6 @@ extern NSString* const kPushServerReceiptsUrl;
 
 //应用程序名字 可能没用了
 extern NSString* const kAPPName;
-
-//通告地址
-extern NSString* const kRequestAnnouncementUrl;
 
 //设备注册地址
 extern NSString* const kDeviceRegisterUrl;

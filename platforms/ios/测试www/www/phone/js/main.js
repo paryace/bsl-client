@@ -84,7 +84,7 @@ var updateProgress = function(identifier, count) {
 		var $crud_btn_2 = $(".module_li .curd_btn[identifier='" + identifier + "']");
 		console.log("adafasdfasfadsfasdfsfsdfsfasfasfsdfsdaf");
 		var btn_title_2 = $crud_btn_2.html();
-		console.log("adfasfasdfasdfdadsfs "+btn_title_2);
+		console.log("adfasfasdfasdfdadsfs " + btn_title_2);
 		if (btn_title_2 == "安装") {
 			$crud_btn_2.html("正在安装");
 		} else if (btn_title_2 == "删除") {
@@ -271,6 +271,9 @@ var activeModuleManageBarItem = function(type) {
 var module_all_click = function() {
 	/*$("li[identifier] .module_li_img , li[identifier] .module_push, li[identifier] .detail").bind('click', function() {*/
 	$("li[identifier]").bind('click', function() {
+
+
+
 		console.log("模块父类点击");
 		/*var type = $(this).parent(".module_li").attr("moduleType");*/
 		var type = $(this).attr("moduleType");
@@ -285,16 +288,66 @@ var module_all_click = function() {
 	});
 };
 
-
 //点击curd按钮事件
 var curd_btn_click = function() {
 	console.log("操作按钮点击");
+	
 	$(".module_li .curd_btn").bind('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
+		var that = this; 
 		$(this).attr("disabled", "disabled");
 		var btn_title = $(this).html();
-		if (btn_title == "安装") {
+		var showMessage = "确定"+btn_title +"该模块";
+		navigator.notification.confirm(
+			showMessage, // message
+
+			function(buttonIndex) {
+				
+				if (buttonIndex === 1) {
+					alert("buttonIndex " + buttonIndex);
+					//$(that).removeAttr("disabled");
+					return;
+				} else if (buttonIndex === 2) {
+				//	alert("buttonIndex " + buttonIndex);
+					if (btn_title == "安装") {
+						$(that).html("正在安装");
+					} else if (btn_title == "删除") {
+						$(that).html("正在删除");
+					} else if (btn_title == "更新") {
+						$(that).html("正在更新");
+					}
+
+					var type = $(that).attr("moduleType");
+					console.log("202 type=" + type);
+					var identifier = $(that).attr("identifier");
+
+					var action = "";
+					if (type == "install") {
+						action = "uninstall";
+					} else if (type == "uninstall") {
+						action = "install";
+					} else if (type == "upgradable") {
+						action = "upgrade";
+					}
+					//开始安装、删除
+					cordovaExec("CubeModuleOperator", action, [identifier], function() {
+						console.log("操作Callback");
+						checkModules();
+						$(that).removeAttr("disabled");
+						console.log("更新完成更改title");
+						$(that).html(btn_title);
+					});
+
+
+				}
+			}, // callback to invoke with index of button pressed
+			'提示信息', // title
+			'取消,确定' // buttonLabels
+		);
+
+
+		/*	if (btn_title == "安装") {
 			$(this).html("正在安装");
 		} else if (btn_title == "删除") {
 			$(this).html("正在删除");
@@ -323,7 +376,7 @@ var curd_btn_click = function() {
 			$(this).removeAttr("disabled");
 			console.log("更新完成更改title");
 			$(this).html(btn_title);
-		});
+		});*/
 
 
 
@@ -363,7 +416,7 @@ var initial = function(type, data) {
 			// 	value.icon = entry.fullPath;
 			// 	console.log("缓存后的图片地址：" + value.icon);
 			// });
-
+			value.name = subStrByCnLen(value.name + "", 9);
 			value.releaseNote = subStrByCnLen(value.releaseNote + "", 21);
 			//console.log("value.releasenote=" + value.releaseNote);
 			$('.module_div_ul[num="' + i + '"]').append(
@@ -581,7 +634,7 @@ $("#searchInput").live("input propertychange", function() {
 
 			var titlename = $(module_li).children('div:nth-child(3)').children('div:nth-child(1)').html();
 			if (keyword !== "") {
-				if (titlename.toLowerCase().indexOf(keyword) < 0) {
+				if (titlename.toLowerCase().indexOf(keyword.toLowerCase()) < 0) {
 					$(module_li).hide();
 				} else {
 					$(module_li).show();
@@ -731,7 +784,7 @@ var gridLayout = function() {
 	//隐藏curd_btn
 	$('.module_div ul li .curd_btn').css('display', 'none');
 	//设置titlename位置
-	$('.detail .module_li_titlename').css('font-size', '1em');
+	$('.detail .module_li_titlename').css('font-size', '1em').css("top","5px");
 	//切换active
 	$('#gridview_btn').addClass('active');
 	$('#listview_btn').removeClass('active');
@@ -859,7 +912,6 @@ var app = {
 	},
 	bindEvents: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
-
 	},
 	onDeviceReady: function() {
 		app.receivedEvent('deviceready');

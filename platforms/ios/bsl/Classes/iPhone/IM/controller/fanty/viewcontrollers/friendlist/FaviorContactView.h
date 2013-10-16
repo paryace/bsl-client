@@ -24,6 +24,4 @@
 @property(nonatomic,weak) id<FaviorContactViewDelegate> faviorDelegate;
 -(void)loadData;
 
--(void)layoutTableCell;
-
 @end

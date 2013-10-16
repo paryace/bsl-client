@@ -1142,6 +1142,22 @@
                 
                 [self addGroupRoomMember:message.fromStr memberId:[[self xmppStream].myJID bare] sex:[[NSUserDefaults standardUserDefaults] valueForKey:@"sex"] status:@"在线" username:name];
                 
+                
+                AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+                    
+                //新建消息的entity
+                NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"MessageEntity" inManagedObjectContext:appDelegate.xmpp.managedObjectContext];
+                [newManagedObject setValue:content forKey:@"content"];
+                [newManagedObject setValue:@"notification" forKey:@"type"];
+                [newManagedObject setValue:[NSNumber numberWithInt:1] forKey:@"statue"];
+                    
+                [newManagedObject setValue:[NSDate date] forKey:@"sendDate"];
+                [newManagedObject setValue:roomId forKey:@"messageId"];
+                [newManagedObject setValue:roomId forKey:@"receiveUser"];
+                [newManagedObject setValue:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare] forKey:@"sendUser"];
+                [newManagedObject setValue:[NSDate date] forKey:@"receiveDate"];
+                
+                
                 [self saveContext];
                 
                 

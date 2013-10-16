@@ -13,9 +13,8 @@ typedef void (^DidErrorPreloadBlock)(void);
 
 @interface CubeWebViewController : CDVViewController <UIAlertViewDelegate>
 
-@property(nonatomic,strong)UIButton *closeButton;
 @property(nonatomic,assign)BOOL preventOnce;
-
+@property(nonatomic,readonly) UIButton* closeButton;
 
 @property(nonatomic,assign) BOOL alwaysShowNavigationBar;
 

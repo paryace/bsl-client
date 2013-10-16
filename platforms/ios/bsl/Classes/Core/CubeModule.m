@@ -58,19 +58,16 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
 @synthesize sortingWeight;
 
 
-- (NSString*)description
-{
+- (NSString*)description{
     return [NSString stringWithFormat:@"Cube Module[%@|%@]: v%@ - build %d", name, identifier, version , build];
 }
 
-- (NSString*)identifierWithBuild
-{
+- (NSString*)identifierWithBuild{
     //    return [NSString stringWithFormat:@"%@-%d", self.identifier, self.build];
     return self.identifier;
 }
 
-- (NSDictionary*)missingDependencies
-{
+- (NSDictionary*)missingDependencies{
     NSMutableArray *missingModules = [NSMutableArray array];
     NSMutableArray *needUpgradeModules = [NSMutableArray array];
     
@@ -94,8 +91,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
              };
 }
 
-- (NSURL*)runtimeURL
-{
+- (NSURL*)runtimeURL{
     return [[NSFileManager wwwRuntimeDirectory]
             URLByAppendingPathComponent:[self identifierWithBuild]];
 }
@@ -128,14 +124,15 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
 }
 
 
--(void)install
-{
+-(void)install{
     if (bundle == nil) {
         self.installed = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleInstallDidFinishNotification object:self];
     } else {
         if ( self.isDownloading == 0 || self.isDownloading) {
             NSString* downUrl = [ServerAPI urlForAttachmentId:bundle];
+            
+
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             NSString *token =  [defaults objectForKey:@"token"];
             downUrl= [downUrl stringByAppendingString:@"?sessionKey="];
@@ -177,17 +174,14 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     return NO;
 }
 
--(BOOL)moduleIsInstalled
-{
-    if([[NSFileManager defaultManager] fileExistsAtPath:[[self runtimeURL] path]])
-    {
+-(BOOL)moduleIsInstalled{
+    if([[NSFileManager defaultManager] fileExistsAtPath:[[self runtimeURL] path]]){
         return YES;
     }
     return NO;
 }
 
--(BOOL)uninstall
-{
+-(BOOL)uninstall{
     if ([[NSFileManager defaultManager] fileExistsAtPath:[[self runtimeURL] path]]) {
          [[NSFileManager defaultManager] removeItemAtPath:[[self runtimeURL] path] error:nil];
         return YES;
@@ -203,19 +197,109 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     [[NSNotificationCenter defaultCenter] postNotificationName:@"module_download_progressupdate" object:self userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:newProgress] forKey:@"newProgress"]];
 }
 
--(void)downloadStarted
-{
+-(void)downloadStarted{
     [[CudeModuleDownDictionary shareModuleDownDictionary] setObject:[NSNumber numberWithBool:YES] forKey:self.identifier];
     NSLog(@"开始下载模块");
     self.isDownloading = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleDownloadDidStartNotification object:self];
 }
 
--(void)downloadFinished:(id)downData
-{
+-(void)downloadFinished:(id)downData{
     [[CudeModuleDownDictionary shareModuleDownDictionary] removeObjectForKey:self.identifier];
     NSLog(@"下载模块完成");
     self.isDownloading = NO;
+    
+    //save to local file
+    
+    NSURL *destURL = [[[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[self identifierWithBuild]] URLByAppendingPathExtension:@"zip"];
+    if (![downData writeToURL:destURL atomically:YES]){
+        NSLog(@"模块保存到本地失败");
+        [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleDownloadDidFailNotification object:self];
+            return;
+    }
+    
+    
+    NSString* runtimeUrlPath=[[self runtimeURL]path];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleDownloadDidFinishNotification object:self];
+    //fanty 删除的，  为什么未下载前就移除它， 如果下载失败，点算。
+    /*
+    if ([[NSFileManager defaultManager] fileExistsAtPath:runtimeUrlPath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:runtimeUrlPath error:nil];
+    }
+     */
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_async(queue, ^{
+    
+        //install
+        NSError *error = nil;
+        BOOL zipSuccess=NO;
+        @autoreleasepool {
+            zipSuccess=[SSZipArchive unzipFileAtPath:[destURL path]
+                                       toDestination:runtimeUrlPath
+                                           overwrite:YES password:nil error:&error];
+
+        }
+        dispatch_sync(dispatch_get_main_queue(), ^{
+
+            if(!zipSuccess){
+                NSLog(@"模块解压失败，%@", error);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queue_module_download_progressupdate" object:self userInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0.101],self.identifier,nil] forKeys:[NSArray arrayWithObjects:@"newProgress",@"key",nil]]];
+                    
+                    
+                [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleInstallDidFailNotification object:self];
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_DETIALPAGE_INSTALLFAILED object:nil];
+            }
+            else{
+                //delete module local zip after installed
+                if(![[NSFileManager defaultManager] removeItemAtURL:destURL error:nil]){
+                    NSLog(@"删除模块安装包失败，%@", error);
+                }
+                
+                self.installed = YES;
+                
+                //清楚浏览器缓存
+                [[NSURLCache sharedURLCache] removeAllCachedResponses];
+                
+                for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]){
+                    
+                    [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+                }
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"queue_module_download_progressupdate" object:self userInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0.101],self.identifier,nil] forKeys:[NSArray arrayWithObjects:@"newProgress",@"key",nil]]];
+                NSDictionary *missingModules = [self missingDependencies];
+                NSArray *needInstall = [missingModules objectForKey:kMissingDependencyNeedInstallKey];
+                NSArray *needUpgrade = [missingModules objectForKey:kMissingDependencyNeedUpgradeKey];
+                CubeApplication *cubeApp = [CubeApplication currentApplication];
+                
+                if ([needInstall count] > 0 || [needUpgrade count] > 0) {
+                    for (NSString* module in needInstall) {
+                        CubeModule* cubeModule = [cubeApp availableModuleForIdentifier:module];
+                        if (cubeModule) {
+                            [cubeModule install];
+                        }
+                    }
+                    for (NSString* module in needUpgrade) {
+                        CubeModule* cubeModule = [cubeApp moduleForIdentifier:module];
+                        [cubeModule install];
+                    }
+                }
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleInstallDidFinishNotification object:self];
+                
+            }
+        });
+    });
+
+        
+    
+    
+    //download dependency
+    
+    
+    
+    
+    /*
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
         //save to local file
@@ -223,8 +307,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
         
         NSURL *destURL = [[[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[self identifierWithBuild]] URLByAppendingPathExtension:@"zip"];
         
-        if (![data writeToURL:destURL atomically:YES])
-        {
+        if (![data writeToURL:destURL atomically:YES]){
             NSLog(@"模块保存到本地失败");
             
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -302,14 +385,15 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     });//async
     
     //download dependency
+     
+     */
 }
 
 
 
 #pragma mark - Serialization
 
-+(CubeModule*)moduleFromJSONObject:(id)jsonObject
-{
++(CubeModule*)moduleFromJSONObject:(id)jsonObject{
     CubeModule *module = [[CubeModule alloc] init];
     NSNumber* downNum =   [jsonObject objectForKey:@"autoDownload"];
     module.autoDownload =  [downNum boolValue];
@@ -346,26 +430,38 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     return module;
 }
 
--(NSMutableDictionary*)dictionary
-{
+-(NSMutableDictionary*)dictionary{
     NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
     [json setValue:[NSNumber numberWithBool:self.autoDownload] forKey:@"autoDownload"];
-    [json setValue:self.identifier forKey:@"identifier"];
-    [json setValue:self.name forKey:@"name"];
-    [json setValue:self.releaseNote forKey:@"releaseNote"];
-    [json setValue:self.icon forKey:@"icon"];
-    [json setValue:self.url forKey:@"url"];
-    [json setValue:self.bundle forKey:@"bundle"];
-    [json setValue:self.package forKey:@"package"];
-    [json setValue:self.version forKey:@"version"];
-    [json setValue:self.category forKey:@"category"];
-    [json setValue:self.localImageUrl forKey:@"localImageUrl"];
+    if([self.identifier length]>0)
+        [json setValue:self.identifier forKey:@"identifier"];
+    if([self.name length]>0)
+        [json setValue:self.name forKey:@"name"];
+    if([self.releaseNote length]>0)
+        [json setValue:self.releaseNote forKey:@"releaseNote"];
+    if([self.icon length]>0)
+        [json setValue:self.icon forKey:@"icon"];
+    if([self.url length]>0)
+        [json setValue:self.url forKey:@"url"];
+    if([self.bundle length]>0)
+        [json setValue:self.bundle forKey:@"bundle"];
+    if([self.bundle length]>0)
+        [json setValue:self.package forKey:@"package"];
+    if([self.version length]>0)
+        [json setValue:self.version forKey:@"version"];
+    if([self.category length]>0)
+        [json setValue:self.category forKey:@"category"];
+    if([self.localImageUrl length]>0)
+        [json setValue:self.localImageUrl forKey:@"localImageUrl"];
     [json setValue:[NSNumber numberWithInteger:self.sortingWeight] forKey:@"sortingWeight"];
     [json setValue:[NSNumber numberWithInteger:self.build] forKey:@"build"];
     [json setValue:[NSNumber numberWithBool:self.installed] forKey:@"installed"];
-    [json setValue:self.local forKey:@"local"];
-    [json setValue:self.privileges forKey:@"privileges"];
-    [json setValue:self.pushMsgLink forKey:@"pushMsgLink"];
+    if([self.local length]>0)
+        [json setValue:self.local forKey:@"local"];
+    if([self.privileges count]>0)
+        [json setValue:self.privileges forKey:@"privileges"];
+    if([self.pushMsgLink length]>0)
+        [json setValue:self.pushMsgLink forKey:@"pushMsgLink"];
     
     [json setValue:[NSNumber numberWithBool:self.isAutoShow ]forKey:@"isAutoShow"];
     [json setValue:[NSNumber numberWithBool:self.showPushMsgCount] forKey:@"showPushMsgCount"];
@@ -375,8 +471,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     return json;
 }
 
--(NSURL*)moduleDataDirectory
-{
+-(NSURL*)moduleDataDirectory{
     NSURL *mdd = [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:self.identifier isDirectory:YES];
     BOOL isDir = NO;
     BOOL exists = [FS fileExistsAtPath:[mdd path] isDirectory:&isDir];

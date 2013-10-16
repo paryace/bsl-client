@@ -332,8 +332,9 @@
 }
 
 -(void)moduleInstallFail{
-    [SVProgressHUD showErrorWithStatus:@"模块操作失败！"];
+    [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
 }
+
 -(void)updateAuthoShowTime:(NSString*)identifier{
     long currentTime = [[NSDate date]timeIntervalSince1970];
     NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
@@ -727,8 +728,7 @@
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
 }
 
--(void)moduleDidInstalled:(NSNotification*)note
-{
+-(void)moduleDidInstalled:(NSNotification*)note{
     if (statusToolbar) {
         int count = [self getDownMouleCount];
         NSLog(@"count =%d , allcount =%d   last = %d",count,allDownCount,allDownCount - count);

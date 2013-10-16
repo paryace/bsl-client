@@ -157,7 +157,7 @@
 }
 .module_div ul .module_li .detail .module_li_titlename{
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	/*white-space: nowrap;*/
 	position: relative;
 	top:5px;
 	font-size: 1em;
@@ -167,6 +167,7 @@
 	text-align: center;
 	display: block;
 	line-height: 20px;
+	/*height: 36px;*/
 	height: 36px;
 	overflow: hidden;
 }

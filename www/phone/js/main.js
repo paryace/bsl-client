@@ -305,8 +305,8 @@ var curd_btn_click = function() {
 			function(buttonIndex) {
 				
 				if (buttonIndex === 1) {
-					alert("buttonIndex " + buttonIndex);
-					//$(that).removeAttr("disabled");
+					//alert("buttonIndex " + buttonIndex);
+					$(that).removeAttr("disabled");
 					return;
 				} else if (buttonIndex === 2) {
 				//	alert("buttonIndex " + buttonIndex);
@@ -889,6 +889,7 @@ $(".buttomContent .buttom_btn_group .btn").click(function() {
 		loadModuleList("CubeModuleList", type + "List", t, function() {
 			if ($('#listview_btn').hasClass('active')) {
 				listLayout();
+
 			}
 
 			if (myScroll) {
