@@ -152,7 +152,6 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
         [self synAppInfo];
     }
     else if (button.btnStatus == InstallButtonStateInstalled) {
-        button.btnStatus = InstallButtonStateDeleting;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                         message:@"确认删除该模块?"
                                                        delegate:self
@@ -337,6 +336,7 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
     }
     if(alertView.tag == 5){
         if(buttonIndex == 0){
+            self.configButton.btnStatus = InstallButtonStateDeleting;
             if (self.delegate&&[self.delegate respondsToSelector:@selector(deleteAtModuleIdentifier:)])  {
                 [self.delegate deleteAtModuleIdentifier:_curCubeModlue.identifier];
                 self.configButton.btnStatus = InstallButtonStateUninstall;

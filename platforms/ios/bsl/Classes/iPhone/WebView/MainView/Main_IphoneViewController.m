@@ -34,6 +34,8 @@
     
     CubeWebViewController *bCubeWebViewController;
     int allDownCount;
+    
+    UIAlertView*  singleAlert;
 }
 
 @property(strong,nonatomic) id selfObj;
@@ -54,6 +56,8 @@
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showView:) name:@"SHOW_DETAILVIEW" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMainView) name:@"SHOW_MAINVIEW" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSetting) name:@"SHOW_SETTING_VIEW" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadge) name:@"module_badgeCount_change" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:CubeModuleInstallDidFinishNotification object:nil];
@@ -125,6 +129,10 @@
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
+    
+    [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
+    singleAlert=nil;
+    
     aCubeWebViewController=nil;
     
     bCubeWebViewController=nil;
@@ -135,6 +143,9 @@
 
 
 - (void)dealloc{
+    [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
+    singleAlert=nil;
+
     aCubeWebViewController=nil;
     bCubeWebViewController=nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -163,6 +174,12 @@
     [super viewWillAppear:animated];
     [self addBadge];
    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+
+//SHOW_MAINVIEW
+-(void)showMainView{
+    aCubeWebViewController.closeButton.hidden = YES;
 }
 
 -(void)addBadge{
@@ -212,9 +229,12 @@
             for(CubeModule *module in downloadArray){
                 [message appendFormat:@"%@\n", module.name];
             }
-            UIAlertView *alertView  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"立即下载" otherButtonTitles:@"取消",nil];
-            alertView.tag =830;
-            [alertView show];
+            
+            [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
+            
+            singleAlert  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"立即下载" otherButtonTitles:@"取消",nil];
+            singleAlert.tag =830;
+            [singleAlert show];
             
             return;
         }
@@ -239,9 +259,10 @@
             //        [defaults setBool:NO forKey:@"firstTime"];
             if(![defaults boolForKey:@"firstTime"]){
                 [defaults setBool:YES forKey:@"firstTime"];
-                UIAlertView *alertView  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
-                alertView.tag =829;
-                [alertView show];
+                [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
+                singleAlert  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
+                singleAlert.tag =829;
+                [singleAlert show];
             }
             message=nil;
         }
@@ -506,12 +527,13 @@
             }
             
             self.selectedModule = module.identifier;
-            UIAlertView *dependsAlert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 缺少依赖模块",module.name]
+            [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
+            singleAlert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 缺少依赖模块",module.name]
                                                                    message:message
                                                                   delegate:self
                                                          cancelButtonTitle:@"确定" otherButtonTitles:/*@"安装", */nil];
-            [dependsAlert show];
-            dependsAlert=nil;
+            [singleAlert show];
+            singleAlert=nil;
             return;
         }
     }
@@ -555,9 +577,10 @@
 
 #pragma mark - SettingView delegate
 -(void)ExitLogin{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"是否确认退出登录?" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"取消", nil];
-    alert.tag = 1;
-    [alert show];
+    [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
+    singleAlert = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"是否确认退出登录?" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"取消", nil];
+    singleAlert.tag = 1;
+    [singleAlert show];
 }
 
 #pragma mark - 退出登陆
@@ -568,6 +591,7 @@
 
 #pragma mark - alerview Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    singleAlert=nil;
     if(alertView.tag ==829){
         if(buttonIndex == 0){
             NSMutableArray *modules =[[CubeApplication currentApplication ]updatableModules];

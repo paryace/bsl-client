@@ -401,22 +401,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bsl/Classes/XMPP/RoomService.m"
-            timestampString = "403494656.024014"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
-            landmarkName = "-xmppRoom:didReceiveMessage:fromOccupant:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "bsl/Classes/iPhone/IM/controller/fanty/logic/ChatLogic.m"
             timestampString = "403528777.657028"
             startingColumnNumber = "9223372036854775807"
@@ -434,11 +418,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bsl/Classes/iPhone/WebView/MainView/Main_IphoneViewController.m"
-            timestampString = "403587553.399713"
+            timestampString = "403602600.522923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -450,12 +434,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bsl/Classes/iPhone/WebView/MainView/Main_IphoneViewController.m"
-            timestampString = "403600011.962631"
+            timestampString = "403602924.215545"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "717"
-            endingLineNumber = "717"
-            landmarkName = "-deleteAtModuleIdentifier:"
+            startingLineNumber = "733"
+            endingLineNumber = "733"
+            landmarkName = "-deleteModuleFromNotification:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

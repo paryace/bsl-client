@@ -283,7 +283,6 @@ define(['text!home/main.html',
                 weekday[0] = "星期日";
                 var myDate = new Date();
 
-
                 var month = myDate.getMonth();
 
                 var currentMonth = parseInt(month) + 1;
@@ -352,7 +351,12 @@ define(['text!home/main.html',
             } else if (identifier === "com.csair.setting") {
 
                 that.cordovaExec("CubeModuleOperator", "setting");
-            } else {
+
+
+            } 
+
+
+            else {
 
                 that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
             }
@@ -416,7 +420,15 @@ define(['text!home/main.html',
             } else if (identifier === "com.csair.setting") {
 
                 that.cordovaExec("CubeModuleOperator", "setting");
-            } else {
+            } else if(identifier === "com.foss.chat"){
+                 that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            } else if(identifier === "com.foss.announcement"){
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            }else if(identifier === "com.foss.message.record"){
+                 that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            }
+
+            else {
 
                 that.container.navigateForResult('/' + identifier + '/index', {
                     trigger: true
@@ -585,6 +597,7 @@ define(['text!home/main.html',
 
             var isLogin = true;
             console.log("4");
+                                 alert("onshow");
             if(window.sessionStorage.isIn){
                 isLogin = window.sessionStorage.isIn;
             }else{
@@ -593,15 +606,16 @@ define(['text!home/main.html',
 
             if (isLogin == true) {
                 that.cordovaExec("CubeModuleOperator", "sync", [], function() {
-                   // alert("第一次登陆");
+                   alert("第一次登陆");
                     isFirst = false;
                     isLogin = false;
                     window.sessionStorage["isIn"] = isLogin;
 
 
                   //  console.log("isFirst "+isLogin);
-                    cordova.exec(function(data) {
-                        packageName = $.parseJSON(data).packageName;
+//                    cordova.exec(function(data) {
+//                        packageName = $.parseJSON(data).packageName;
+//                                 alert("package:"+packageName);
                         //如果是android，先获取到包名
                         loadModuleList("CubeModuleList", "mainList", "main", function() {
                             window.mySwipe = Swipe(document.getElementById('slider'), {
@@ -616,19 +630,22 @@ define(['text!home/main.html',
                             });
 
 
-                        });
-                    }, function(err) {
-                        console.log("获取Packagename失败");
-                    }, "CubePackageName", "getPackageName", []);
+//                        });
+//                    }, function(err) {
+//                        console.log("获取Packagename失败");
+//                    }, "CubePackageName", "getPackageName", []);
 
                 });
             }else{
-                //alert("第二次登陆"+window.sessionStorage["isIn"]);
-
-                cordova.exec(function(data) {
-                        packageName = $.parseJSON(data).packageName;
+                alert("第二次登陆"+window.sessionStorage["isIn"]);
+//                                 alert(cordova);
+//                cordova.exec(function(data) {
+//                             alert("11");
+//                        packageName = $.parseJSON(data).packageName;
+//                             alert("22");
                         //如果是android，先获取到包名
                         loadModuleList("CubeModuleList", "mainList", "main", function() {
+                                       alert("33");
                             window.mySwipe = Swipe(document.getElementById('slider'), {
                                 continuous: true,
                                 callback: function(index, elem) {
@@ -642,9 +659,9 @@ define(['text!home/main.html',
 
 
                         });
-                    }, function(err) {
-                        console.log("获取Packagename失败");
-                    }, "CubePackageName", "getPackageName", []);
+//                    }, function(err) {
+//                        console.log("获取Packagename失败");
+//                    }, "CubePackageName", "getPackageName", []);
             }
 
 

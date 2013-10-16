@@ -6468,7 +6468,9 @@
 		F54D814F17E8BFBA0067A023 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+
 				188487F11807A3CE0039F67F /* CubeAccount */,
+				F5EB6895180E7172005C28CA /* mainView */,
 				F5A96C3717F006B400F9CA68 /* org.apache.cordova.core.device */,
 				F5A96C3A17F006B400F9CA68 /* org.apache.cordova.core.dialogs */,
 				F5A96C3D17F006B400F9CA68 /* org.apache.cordova.core.file */,
@@ -7033,6 +7035,13 @@
 				F5A96CAC17F007FC00F9CA68 /* voice_server_btn.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		F5EB6895180E7172005C28CA /* mainView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = mainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

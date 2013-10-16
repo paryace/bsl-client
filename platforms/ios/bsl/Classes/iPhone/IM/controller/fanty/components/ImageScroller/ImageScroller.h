@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @interface ImageScroller : UIView{
-    UIImageView* imageView;
+//    UIImageView* imageView;
+    UIWebView* webView;
 }
 
 -(void)showImage:(NSString*)url;

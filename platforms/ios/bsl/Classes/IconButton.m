@@ -337,7 +337,7 @@
 }
 
 -(void)FailDownload:(NSNotification *) notification{
-    
+    [self setStauts:IconButtonStautsUseable];
     [self removeDownloadObserver];
     self.downloadMaskView.hidden = YES;
     self.updateableImageView.hidden = NO;
@@ -385,6 +385,8 @@
         [self removeBadge];
     }
 }
+
+
 
 -(void)addBadge{
     if([@"com.foss.message.record" isEqualToString:self.identifier]){

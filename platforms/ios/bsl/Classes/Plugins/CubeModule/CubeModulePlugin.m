@@ -99,10 +99,12 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"获取信息失败！"];
     }
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    
-    
-    
-    
+
+}
+
+
+-(void)ShowMainView:(CDVInvokedUrlCommand*)command{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOW_MAINVIEW" object:nil];
 }
 
 -(NSString* )getJsonFromDictioary:(NSMutableDictionary*)moduleCategoryDictionary  showHide:(Boolean)hide{

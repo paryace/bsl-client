@@ -223,12 +223,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:CubeTokenTimeOutNotification object:nil];
      NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if (!(BOOL)[defaults objectForKey:@"offLineSwitch"]) {
-        /* fanty 20311016
-
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"账号已在别处登录" delegate:self cancelButtonTitle:@"重新登录" otherButtonTitles:nil, nil];
         alertView.tag = 100;
         [alertView show];
-         */
     }
 }
 
