@@ -1,0 +1,18 @@
+[{
+		"name": "default",
+		"img": "/theme/default/default.jpg",
+		"imgThum": "/theme/default/default.gif"
+	}, {
+		"name": "wood",
+		"img": "/theme/wood/wood.jpg",
+		"imgThum": "/theme/wood/wood.gif"
+	}, {
+		"name": "beach",
+		"img": "/theme/beach/beach.jpg",
+		"imgThum": "/theme/beach/beach.gif"
+	}, {
+		"name": "sunset",
+		"img": "/theme/sunset/sunset.jpg",
+		"imgThum": "/theme/sunset/sunset.gif"
+	}
+]

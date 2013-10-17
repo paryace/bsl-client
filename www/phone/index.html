@@ -20,13 +20,13 @@
 <body>
 	<div class="topContent">
 
-			<div id="top_left_btn" type="button"
-				class="left_btn btn btn-primary">
-				<!-- <img class="set_img" src="img/set.png"> -->
+			<div id="top_left_btn" 
+				class="left_btn">
+				<!-- <img class="set_img" src="img/set.png"> btn btn-primary -->
 			</div>
 
 		<h3 id="title">变色龙</h3>
-			<div id="manager_btn" type="button"
+			<div id="manager_btn" 
 				class="right_btn btn btn-primary">管理</div>
 	</div>
 	<div id="wrapper">
@@ -37,7 +37,7 @@
 					<input id="searchInput"
 						type="text" class="search-query" placeholder="搜索">
 					<div class="del_content">
-			            <img id="search_del" src="img/app_search_close.png"></img>
+			            <img id="search_del" src="img/app_search_close.ing"></img>
 			        </div>
 				</div>
 				<div class="layout_bt_group btn-group" data-toggle="buttons-radio">
@@ -88,7 +88,7 @@
 	<li class="module_li" moduleType="<%=moduleType%>"  identifier="<%=identifier%>" hidden="<%=hidden%>">
 		
 		<div class="module_li_img">
-				<img src="<%=icon%>" onerror="this.src='img/default_icon2.png'">
+				<img src="<%=icon%>" onerror="this.src='img/default_icon2.ing'">
 				<div class="progress progress-striped active" identifier="<%=identifier%>">
   					<div class="bar"></div>
   				</div>
@@ -96,7 +96,7 @@
 		
 		<div class="module_push">
 			<div class="module_UpdateTips">
-					<img src="img/update_icon.png" 
+					<img src="img/update_icon.ing" 
 				<%if(updatable==true){%>style="display:block"<%}else{%>style="display:none"<%}%>
 				>
 			</div>

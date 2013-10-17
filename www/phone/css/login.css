@@ -1,7 +1,7 @@
 
 html,body {
 	color: #BEBEBE;
-	background-image: url(../img/login_background_all.png);
+	background-image: url(../img/login_background_all.ing);
 	background-repeat: no-repeat;
 	background-size：100%;
 }
@@ -36,14 +36,14 @@ html,body,img,div,ul,li,a{
 	margin: 0px;
 	-webkit-appearance:none;
 	/*zoom:1.1;*/
-	background-image: url(../img/checkbox_empty.png);
+	background-image: url(../img/checkbox_empty.ing);
 	background-size:100% 100%;
 	outline: none;
 	border: 0px solid transparent;
 }
 input[type=checkbox]:checked{
 	background-color: none;
-	background-image: url(../img/checkbox_full.png);
+	background-image: url(../img/checkbox_full.ing);
 	background-size:100% 100%;
 	text-align: center;
 	outline: none;
