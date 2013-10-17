@@ -1,0 +1,25 @@
+{
+    "releaseDoc": {
+        "fileDt": "2013-08-24 00:00:00",
+        "filename": "B23225055T.txt",
+        "tailNr": "B2725",
+        "type": "放行单",
+        "uploadDt": "2013-08-23 22:50"
+    },
+
+    "flyDoc": {
+        "fileDt": "2013-08-24 00:00:00",
+        "filename": "B23225051T.txt",
+        "tailNr": "B2725",
+        "type": "飞行计划",
+        "uploadDt": "2013-08-23 22:50"
+    },
+
+    "weatherDoc": {
+        "fileDt": "2013-08-24 00:00:00",
+        "filename": "B23225051T.txt",
+        "tailNr": "B2725",
+        "type": "航线天气",
+        "uploadDt": "2013-08-23 22:50"
+    }
+}

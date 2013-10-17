@@ -433,13 +433,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bsl/Classes/Plugins/Login/LoginPlugin.m"
-            timestampString = "403688503.965641"
+            filePath = "bsl/Classes/Core/CubeModule.m"
+            timestampString = "403704801.394344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-login:"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "-callApi:downUrl:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

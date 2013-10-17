@@ -43,12 +43,13 @@ var refreshMainPage = function(identifier, type, moduleMessage) {
 	console.log("refreshMainPage page = " + page);
 	if (page === "home") {
 		//主页面
-		/*loadModuleList("CubeModuleList", "mainList", "main",function(){
+		loadModuleList("CubeModuleList", "mainList", "main",function(){
 			myScroll.refresh();
-		});*/
+		});
 		console.log("主页面。。。。");
 		//$(".home_btn").trigger("click");
-		addModule(identifier, "main", moduleMessage);
+		//addModule(identifier, "main", moduleMessage);
+		
 	} else if (page === "module") {
 		//管理页面
 		//loadModuleList("CubeModuleList", "uninstallList", "install");
@@ -298,7 +299,9 @@ $("#searchInput").live("input propertychange", function() {
 		var name = $(this).find(".moduleName").html();
 		//console.info($(this).find(".moduleName").toPinyin());
 		var classname = $(this).attr("classname");
-		if (name.indexOf(me.val()) < 0) {
+		var keyword = trim(me.val());
+
+		if (name.toLowerCase().indexOf(keyword.toLowerCase()) < 0) {
 			$(this).hide();
 		} else {
 			$(this).show();

@@ -1,0 +1,15 @@
+{
+    "delay": {
+        "alertDelayDes": null,
+        "alertFlag": "D",
+        "branchCd": "CAN",
+        "branchName": "CZ",
+        "delayDept": null,
+        "expDt": "2013-08-29 18:00:00",
+        "expTime": null,
+        "id": "869850",
+        "oper": null,
+        "pubDt": "2013-08-29 09:01:27",
+        "remarks": "航班大面积延误蓝色预警-因海口、三亚、湛江受台风影响，广州总部启动“蓝色预警”响应，预计18:00解除。&&&&&不限"
+    }
+}

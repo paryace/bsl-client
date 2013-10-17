@@ -18,7 +18,7 @@
     UIView* lineView;
 }
 
-+(float)cellHeight:(NSString*)content width:(float)w editing:(BOOL)editing ;
++(float)cellHeight:(NSString*)title content:(NSString*)content width:(float)w ;
 
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead;
 

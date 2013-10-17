@@ -4729,6 +4729,7 @@
 		F5A96CAA17F007FC00F9CA68 /* top_bar_bg@simple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_bar_bg@simple.png"; sourceTree = "<group>"; };
 		F5A96CAB17F007FC00F9CA68 /* top_bar_bg@simple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_bar_bg@simple@2x.png"; sourceTree = "<group>"; };
 		F5A96CAC17F007FC00F9CA68 /* voice_server_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice_server_btn.png; sourceTree = "<group>"; };
+		F5F9260418100A20004B3015 /* cube1017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1017.xcdatamodel; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = bsl/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -11725,7 +11726,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "移动运行网2.0";
-				PROVISIONING_PROFILE = "B869874C-EE33-4FC2-8B98-3C1304017796";
+				PROVISIONING_PROFILE = "114E349F-5E87-4AED-913E-2A70E4CA88C8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -11762,7 +11763,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "移动运行网2.0";
-				PROVISIONING_PROFILE = "B869874C-EE33-4FC2-8B98-3C1304017796";
+				PROVISIONING_PROFILE = "114E349F-5E87-4AED-913E-2A70E4CA88C8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -11946,6 +11947,7 @@
 				F54D7FB917E8BFBA0067A023 /* cube0827.xcdatamodel */,
 				F54D7FBA17E8BFBA0067A023 /* cube0911.xcdatamodel */,
 				180F234F180CE0D80037751C /* cube1015.xcdatamodel */,
+				F5F9260418100A20004B3015 /* cube1017.xcdatamodel */,
 			);
 			currentVersion = 180F234F180CE0D80037751C /* cube1015.xcdatamodel */;
 			path = cube.xcdatamodeld;

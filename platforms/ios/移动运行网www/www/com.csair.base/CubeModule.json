@@ -1,0 +1,9 @@
+{ 
+	"identifier" : "com.csair.base",
+	"name" : "移动网类库",
+	"version" : "0.1.10",
+	"build" : 10,
+	"releaseNote": "移动运行网-移动网类库",
+	"hidden" : true
+}
+

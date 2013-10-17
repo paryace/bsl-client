@@ -14,7 +14,7 @@
  *      </div>
  * </div>
  */
-define(['zepto'], function($){
+define(['zepto','components/fixed'], function($,Fixed){
 
     var me;
     var canceled;
@@ -109,18 +109,60 @@ define(['zepto'], function($){
     //
     Loader.prototype.hide = function() {
         enableScrolling();
-        var cube_loader = this.find();
-        if(cube_loader) $(cube_loader).remove();
+        
+
+        var cube_loader = (this.find)?this.find():null;
+        if(cube_loader){
+
+            // var cube_mask = null;
+            // $(cube_loader).find(".cube-loader-mask").animate({
+            //   opacity: 0
+            //   }, 600, 'ease-out',function(){
+            //     $(me.config.target).find(".cube-loader-mask").remove();
+            //   });
+
+            var children = $(cube_loader).parent().children();
+            $(children).each(function(){
+                if($(this).hasClass("cube-loader-mask")) {
+                    console.log(this)
+                    var cube_mask = this;
+                    $(cube_mask).animate({
+                          opacity: 0
+                          }, 600, 'ease-out',function(){
+                            $(cube_mask).remove();
+                            $(".cube-loader").remove();
+                          });
+                }
+            });
+
+            $(cube_loader).animate({
+              opacity: 0
+              }, 500, 'ease-out',function(){
+                $(cube_loader).remove();
+                $(".cube-loader").remove();
+              });
+
+            
+        }
+        
+        $(".cube-loader").remove();
+        Fixed.FixLoaderOff();/* add by fengqiuming 20130604  */
     };
 
     Loader.prototype.hideAll = function() {
         enableScrolling();
-        var cube_loader = $(".cube-loader");
+        var cube_loader = $(".cube-flight-loader");
         if(cube_loader && cube_loader.length>0) {
             $(cube_loader).each(function(){
                 $(this).remove();
             });
+            $(".cube-loader-mask").remove();
+            $(".cube-loader").remove();
+
         }
+
+        $(".cube-loader").remove();
+        Fixed.FixLoaderOff();/* add by fengqiuming 20130604  */
     };
 
     Loader.prototype.find = function() {

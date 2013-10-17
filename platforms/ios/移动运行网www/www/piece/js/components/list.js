@@ -659,26 +659,26 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                     Cache.put(config.id + 'Onload', 0);
 
 
-                    var timer = setInterval(function() {
-                        if ($('body').find(listContainer).length > 0) {
-                            //do something
-                            listSizeFix();
-                        }
-                        var onloadCounter = parseInt(Cache.get(config.id + 'Onload')) + 1;
-                        if (onloadCounter == 1) {
-                            $(window).on('resize', listSizeFix);
-                            $(listContainer).unload(function() {
-                                $(window).off('resize', listSizeFix);
-                            });
+                    // var timer = setInterval(function() {
+                    //     if ($('body').find(listContainer).length > 0) {
+                    //         //do something
+                    //         listSizeFix();
+                    //     }
+                    //     var onloadCounter = parseInt(Cache.get(config.id + 'Onload')) + 1;
+                    //     if (onloadCounter == 1) {
+                    //         $(window).on('resize', listSizeFix);
+                    //         $(listContainer).unload(function() {
+                    //             $(window).off('resize', listSizeFix);
+                    //         });
 
-                        }
-                        if (onloadCounter > 1 && $('body').find(listContainer).length == 0) {
-                            clearInterval(timer);
-                            console.log('cube---list---end');
-                        } else {
-                            Cache.put(config.id + 'Onload', onloadCounter);
-                        }
-                    }, 500);
+                    //     }
+                    //     if (onloadCounter > 1 && $('body').find(listContainer).length == 0) {
+                    //         clearInterval(timer);
+                    //         console.log('cube---list---end');
+                    //     } else {
+                    //         Cache.put(config.id + 'Onload', onloadCounter);
+                    //     }
+                    // }, 500);
 
 
                     return list;

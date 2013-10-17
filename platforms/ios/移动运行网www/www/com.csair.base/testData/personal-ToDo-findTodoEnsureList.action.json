@@ -1,0 +1,21 @@
+{
+    "total": 2,
+    "rows": [
+        {
+            "cabin_boarding_dt": "0908", 
+            "psgr_start_dt":"0909",
+            "cabin_prepared_dt": null, 
+            "cleaning_beg_dt": null, 
+            "cleaning_ok_dt": null, 
+            "fltDate": "2013-08-02",
+            "fltNr": "0385",
+            "id": null,
+            "latestArvArpCd": "NRT",
+            "latestDepArpCd": "CAN",
+            "logRelateKey": null,
+            "schDepDt": "2013-08-02 09:30",
+            "soflSeqNr": "62397673",
+            "version": 0
+        }
+    ]
+}

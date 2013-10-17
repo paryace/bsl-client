@@ -244,9 +244,8 @@
             if([key length]>0){
                 NSArray* _array=obj;
                 for(UserInfo* model in _array){
-                    if([[[model name] lowercaseString] rangeOfString:searchText].length>0){
+                    if([[[model name] lowercaseString] rangeOfString:searchText].length>0 || [[model.userJid lowercaseString] rangeOfString:searchText].length>0)
                         [array addObject:model];
-                    }
                 }
             }
         }];

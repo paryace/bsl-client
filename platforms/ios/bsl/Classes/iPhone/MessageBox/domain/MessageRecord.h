@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSNumber *isMessageBadge;
 @property (nonatomic, strong) NSNumber *isRead;
 @property (nonatomic, strong) NSString * faceBackId;
+@property (nonatomic, strong) NSString * allContent;
 
 +(BOOL)createByApnsInfo:(NSDictionary *)info outputArrayIds:(NSMutableArray*)outputArrayIds;
 

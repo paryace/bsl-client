@@ -1,0 +1,193 @@
+{
+    "ensureCustomize": [
+        {
+            "checked": true,
+            "id": "1",
+            "mappingField": "psgr_deplane_beg_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "下客开始",
+            "roleFlag": true
+        },
+        {
+            "checked": true,
+            "id": "2",
+            "mappingField": "psgr_deplane_ok_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "下客结束",
+            "roleFlag": false
+        },
+        {
+            "checked": true,
+            "id": "3",
+            "mappingField": "psgr_start_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "通知上客",
+            "roleFlag": true
+        },
+        {
+            "checked": false,
+            "id": "4",
+            "mappingField": "soc_psgr_start_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "正式上客",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "5",
+            "mappingField": "psgr_end_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "上客结束",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "6",
+            "mappingField": "ferry_come_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "摆渡车",
+            "roleFlag": false
+        },
+        {
+            "checked": true,
+            "id": "7",
+            "mappingField": "arr_ladder_come_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "进港廊桥",
+            "roleFlag": false
+        },
+        {
+            "checked": true,
+            "id": "8",
+            "mappingField": "dep_ladder_come_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "出港廊桥",
+            "roleFlag": false
+        },
+        {
+            "checked": true,
+            "id": "9",
+            "mappingField": "other_supply_beg_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "供应品开始",
+            "roleFlag": false
+        },
+        {
+            "checked": true,
+            "id": "10",
+            "mappingField": "other_supply_ok_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "供应品结束",
+            "roleFlag": false
+        },
+        {
+            "checked": true,
+            "id": "11",
+            "mappingField": "cargo_beg_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "货舱门开启",
+            "roleFlag": false
+        },
+        {
+            "checked": true,
+            "id": "12",
+            "mappingField": "cargo_ok_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "货舱门关闭",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "13",
+            "mappingField": "cleaning_beg_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "清洁开始",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "14",
+            "mappingField": "cleaning_ok_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "清洁结束",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "15",
+            "mappingField": "cabin_boarding_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "乘务组到场",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "16",
+            "mappingField": "cabin_prepared_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "乘务组准备完成",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "17",
+            "mappingField": "deicing_ok_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "除防冰结束",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "18",
+            "mappingField": "fuel_vehicle_come_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "油车到位",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "19",
+            "mappingField": "crew_boarding_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "机组入场",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "20",
+            "mappingField": "cabin_closed_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "客舱关闭",
+            "roleFlag": false
+        },
+        {
+            "checked": false,
+            "id": "21",
+            "mappingField": "acars_closed_dt",
+            "maxTime": 0,
+            "minTime": 0,
+            "name": "ACARS舱门关闭",
+            "roleFlag": false
+        }
+    ]
+}

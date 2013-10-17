@@ -194,7 +194,7 @@
 - (CGFloat)tableView:(UITableView *)__tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Announcement* announcent = [list objectAtIndex:[indexPath section]];
 
-    return [AnnouncementTableViewCell cellHeight:announcent.content width:__tableView.frame.size.width editing:__tableView.editing];
+    return [AnnouncementTableViewCell cellHeight:announcent.title content:announcent.content width:__tableView.frame.size.width];
 }
 
 

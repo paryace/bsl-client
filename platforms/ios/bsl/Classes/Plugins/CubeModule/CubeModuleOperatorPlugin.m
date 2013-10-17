@@ -188,8 +188,9 @@
 }
 
 -(void)patchTokemTimeOurInfoForFilter{
-    
-    [SVProgressHUD showErrorWithStatus:@"同步数据失败,请检查网络!" ];
+    [SVProgressHUD dismiss];
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"同步数据失败,请检查网络!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] ;
+    [alert show];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     

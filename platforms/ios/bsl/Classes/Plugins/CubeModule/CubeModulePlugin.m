@@ -184,11 +184,14 @@
         [jsonCube  setObject:each.identifier forKey:@"identifier"];
         [jsonCube  setObject:!each.local?@"":each.local forKey:@"local"];
         [jsonCube  setObject:each.name forKey:@"name"];
+        
         int count = 0 ;
-        if ([each.identifier  isEqualToString:@"com.foss.message.record"]) {
-            count  =[MessageRecord countAllAtBadge];
-        }else{
-            count = [MessageRecord countForModuleIdentifierAtBadge:each.identifier];
+        if (![each.moduleBadge isEqualToString:@"1"]) {
+            if ([each.identifier  isEqualToString:@"com.foss.message.record"]) {
+                count  =[MessageRecord countAllAtBadge];
+            }else{
+                count = [MessageRecord countForModuleIdentifierAtBadge:each.identifier];
+            }
         }
         [jsonCube  setObject: [NSNumber numberWithInt:count] forKey:@"msgCount"];
         [jsonCube  setObject: [NSNumber numberWithInt:0] forKey:@"progress"];

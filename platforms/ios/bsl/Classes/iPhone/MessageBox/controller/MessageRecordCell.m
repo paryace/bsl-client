@@ -15,7 +15,7 @@
         [self addSubview:bgView];
         
         titleLabel=[[UILabel alloc] init];
-        titleLabel.numberOfLines=1;
+        titleLabel.numberOfLines=0;
         titleLabel.font=[UIFont boldSystemFontOfSize:19.0f];
         titleLabel.backgroundColor=[UIColor clearColor];
         titleLabel.textColor=[UIColor blackColor];
@@ -49,12 +49,23 @@
     return self;
 }
 
-+(float)cellHeight:(NSString*)content width:(float)w{
-    float height=40.0f;
++(float)cellHeight:(NSString*)title content:(NSString*)content width:(float)w{
+    float height=0.0f;
     float offset=OFFSET;
+    
+    
+    CGRect isReadLabelFrame=CGRectMake(w-35.0f-OFFSET, 10.0f, 35.0f, 25.0f);
 
     
-    UILabel* contentLabel=[[UILabel alloc] initWithFrame:CGRectMake(offset, 0.0f, w-offset*2.0f, 0.0f)];
+    UILabel* label=[[UILabel alloc] initWithFrame:CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabelFrame)-offset, 0.0f)];
+    label.text=title;
+    label.numberOfLines=0;
+    label.font=[UIFont boldSystemFontOfSize:19.0f];
+    [label sizeToFit];
+
+
+    
+    UILabel* contentLabel=[[UILabel alloc] initWithFrame:CGRectMake(offset, CGRectGetMaxY(label.frame)+5.0f, w-offset*2.0f, 0.0f)];
     contentLabel.numberOfLines=0;
     contentLabel.font=[UIFont systemFontOfSize:16.0f];
     contentLabel.backgroundColor=[UIColor clearColor];
@@ -62,7 +73,8 @@
     
     contentLabel.text=content;
     [contentLabel sizeToFit];
-    height+=contentLabel.frame.size.height+3.0f+25.0f+5.0f;
+    height+=CGRectGetMaxY(contentLabel.frame)+3.0f+25.0f+5.0f;
+    label=nil;
     contentLabel=nil;
     return height;
 }
@@ -126,8 +138,9 @@
     }
 
     
-    isReadLabel.frame=CGRectMake(w-50.0f-OFFSET, 10.0f, 50.0f, 25.0f);
-    titleLabel.frame=CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabel.frame)-offset, 25.0f);
+    isReadLabel.frame=CGRectMake(w-35.0f-OFFSET, 10.0f, 35.0f, 25.0f);
+    titleLabel.frame=CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabel.frame)-offset, 0.0f);
+    [titleLabel sizeToFit];
     
     contentLabel.frame=CGRectMake(offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f, 0.0f);
     [contentLabel sizeToFit];

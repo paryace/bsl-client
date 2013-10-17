@@ -594,7 +594,6 @@ void uncaughtExceptionHandler(NSException*exception){
     }else{
         
         [self.navControl popToRootViewControllerAnimated:NO];
-
         MainViewViewController* main=[[MainViewViewController alloc] init];
         main.navController=self.navControl;
         //this isvery import

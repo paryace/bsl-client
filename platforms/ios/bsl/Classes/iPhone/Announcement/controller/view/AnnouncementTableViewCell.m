@@ -6,7 +6,7 @@
 //
 //
 
-#define OFFSET 40.0f
+#define OFFSET 30.0f
 
 #import "AnnouncementTableViewCell.h"
 #import "UIColor+expanded.h"
@@ -23,7 +23,7 @@
         [self addSubview:bgView];
         
         titleLabel=[[UILabel alloc] init];
-        titleLabel.numberOfLines=1;
+        titleLabel.numberOfLines=0;
         titleLabel.font=[UIFont boldSystemFontOfSize:19.0f];
         titleLabel.backgroundColor=[UIColor clearColor];
         titleLabel.textColor=[UIColor blackColor];
@@ -63,24 +63,31 @@
     return self;
 }
 
-+(float)cellHeight:(NSString*)content width:(float)w editing:(BOOL)editing{
-    float height=40.0f;
++(float)cellHeight:(NSString*)title content:(NSString*)content width:(float)w{
+    
     float offset=OFFSET;
-    if(editing){
-        offset+=40.0f;
-    }
+    CGRect isReadLabelFrame=CGRectMake(w-35.0f-OFFSET, 10.0f, 35.0f, 25.0f);
 
-    UILabel* contentLabel=[[UILabel alloc] initWithFrame:CGRectMake(offset, 0.0f, w-offset*2.0f, 0.0f)];
+    UILabel* titleLabel=[[UILabel alloc] init];
+    titleLabel.numberOfLines=0;
+    titleLabel.font=[UIFont boldSystemFontOfSize:19.0f];
+    
+    titleLabel.frame=CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabelFrame)-offset, 25.0f);
+    titleLabel.text=title;
+    [titleLabel sizeToFit];
+    
+    UILabel* contentLabel=[[UILabel alloc] initWithFrame:CGRectMake(offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f, 0.0f)];
     contentLabel.numberOfLines=0;
     contentLabel.font=[UIFont systemFontOfSize:16.0f];
-    contentLabel.backgroundColor=[UIColor clearColor];
-    contentLabel.textColor=[UIColor blackColor];
-
     contentLabel.text=content;
     [contentLabel sizeToFit];
-    height+=contentLabel.frame.size.height+3.0f+20.0f;
+
+    
+    float height=CGRectGetMaxY(contentLabel.frame)+3.0f+35.0f;
+    titleLabel=nil;
     contentLabel=nil;
-    return height+15.0f;
+    return height;
+    
 }
 
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead {
@@ -130,7 +137,7 @@
     float w=self.frame.size.width;
     
     if(self.showingDeleteConfirmation){
-        w-=60.0f;
+        w-=50.0f;
     }
     
     float offset=OFFSET;
@@ -139,8 +146,9 @@
     }
     
     
-    isReadLabel.frame=CGRectMake(w-50.0f-OFFSET, 10.0f, 50.0f, 25.0f);
-    titleLabel.frame=CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabel.frame)-offset, 25.0f);
+    isReadLabel.frame=CGRectMake(w-35.0f-OFFSET, 10.0f, 35.0f, 25.0f);
+    titleLabel.frame=CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabel.frame)-offset, 0.0f);
+    [titleLabel sizeToFit];
     
     if(!self.editing)
         lineView.frame=CGRectMake(offset,CGRectGetMaxY(titleLabel.frame)+2.0f,w-offset*2.0f,1);

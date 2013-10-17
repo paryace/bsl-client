@@ -1,0 +1,60 @@
+<div id="airports-window">
+    <script id="airportsTemplate" type="text/x-jquery-tmpl">
+        <div style = "font-size: 16px;line-height: 20px;padding: 10px;font-weight: bold;font-family: Helvetica, Arial, sans-serif;border-bottom-left-radius: 5em;border-bottom-right-radius: 5em;border-bottom-width: 1px;border-right-width: 1px;border-left-width: 1px">
+        <span style="color:black"><%=lang.locale%></span>
+        </div>
+    </script>
+
+<style type="text/css">
+.contentScroller{
+    padding-bottom:20px;
+}
+body{
+    position:static;
+}
+nav {
+    padding: 12px 10px 5px 10px !important;
+    background: #f6f6f6;
+}
+</style>
+<header class="bar-title">
+  <a id="back2" hrefDisable="cube://exit" cube-action="pop" class="button back">
+    <img src="../com.csair.dynamic/images/icon_back.ing" style="width:20px;">
+  </a>
+  <h1 class="title"><%=lang.mbp_al_airportlist%></h1>
+  <module id="menu1" />
+</header>
+
+<nav id="cityNav" class="bar-standard bar-header-secondary" style="order:none;padding-bottom:0px">
+    <ul id="city" class="segmented-controller">
+        <li class="active" data-value="domestic">
+            <a value="../com.csair.base/airports/airport-china.json" href="javascript:void(0)" id="airports-radio-china">
+                <%=lang.mbp_al_domestic%>
+            </a>
+        </li>
+        <li data-value="international">
+            <a value="../com.csair.base/airports/airport-internation.json" href="javascript:void(0)" id="airports-radio-internation">
+                <%=lang.mbp_al_international%>
+                </a>
+        </li>
+    </ul>
+</nav>
+
+<div id="list-page" class="content" style="position:static;padding-top:105px;">
+    <list id="airports-list" 
+    hideTarget=".content"
+    jsonRoot="airports" 
+    url="../com.csair.base/airport/airports-china.json"
+    _itemTemplate="airportsTemplate" 
+    paging="false" 
+    isShowLoader = "false"
+    searching="true" 
+    iScroll="false"
+    searchkeys="filterkeyword" 
+    loaderText="<%=lang.mbp_al_loadText%>"
+    searchText="<%=lang.mbp_al_searchText%>"
+    class="cube-layout-flex1">
+    </list>
+
+</div>
+</div>

@@ -1,0 +1,17 @@
+{
+    "total": 1,
+    "rows": [{
+        "actualFlyTime": "102:23",
+        "chName": "庞丽梅",
+        "id": null,
+        "logRelateKey": null,
+        "rankCd": "HA",
+        "staffNum": "203192",
+        "sumDomLo": "0",
+        "sumFltTm": null,
+        "sumIntLo": "0",
+        "sumSimTm": "0",
+        "timeStamp": null,
+        "version": 0
+    }]
+}

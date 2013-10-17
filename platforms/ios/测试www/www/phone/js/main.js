@@ -74,6 +74,7 @@ var updateProgress = function(identifier, count) {
 	if (count == -1) {
 		$(".module_div ul li .module_li_img .progress[identifier='" + identifier + "']").css('display', 'block');
 	} else if (count >= 0 && count <= 100) {
+
 		console.log("count>=0 && count <=100");
 		if ($(".module_div ul li .module_li_img .progress[identifier='" + identifier + "']").css('display') == "none") {
 			console.log("updateProgress隐藏，显示");
@@ -82,6 +83,7 @@ var updateProgress = function(identifier, count) {
 		$(".module_div ul li .module_li_img .progress[identifier='" + identifier + "'] .bar").css('width', count + "%");
 
 		var $crud_btn_2 = $(".module_li .curd_btn[identifier='" + identifier + "']");
+		$crud_btn_2.attr("disabled", "disabled");
 		console.log("adafasdfasfadsfasdfsfsdfsfasfasfsdfsdaf");
 		var btn_title_2 = $crud_btn_2.html();
 		console.log("adfasfasdfasdfdadsfs " + btn_title_2);
@@ -92,7 +94,6 @@ var updateProgress = function(identifier, count) {
 		} else if (btn_title_2 == "更新") {
 			$crud_btn_2.html("正在更新");
 		}
-		$crud_btn_2.attr("disabled");
 
 
 
@@ -291,27 +292,27 @@ var module_all_click = function() {
 //点击curd按钮事件
 var curd_btn_click = function() {
 	console.log("操作按钮点击");
-	
+
 	$(".module_li .curd_btn").bind('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		var that = this; 
+		var that = this;
 		$(this).attr("disabled", "disabled");
 		var btn_title = $(this).html();
 
 
-		var showMessage = "确定"+btn_title +"该模块";
+		var showMessage = "确定" + btn_title + "该模块";
 		navigator.notification.confirm(
 			showMessage, // message
 
 			function(buttonIndex) {
-				
+
 				if (buttonIndex === 1) {
 					//alert("buttonIndex " + buttonIndex);
 					$(that).removeAttr("disabled");
 					return;
 				} else if (buttonIndex === 2) {
-				//	alert("buttonIndex " + buttonIndex);
+					//	alert("buttonIndex " + buttonIndex);
 					if (btn_title == "安装") {
 						$(that).html("正在安装");
 					} else if (btn_title == "删除") {
@@ -338,7 +339,7 @@ var curd_btn_click = function() {
 						console.log("操作Callback");
 						checkModules();
 						$(that).removeAttr("disabled");
-						console.log("更新完成更改title "+action);
+						console.log("更新完成更改title " + action);
 						$(that).html(btn_title);
 					});
 
@@ -348,8 +349,6 @@ var curd_btn_click = function() {
 			'提示信息', // title
 			'取消,确定' // buttonLabels
 		);
-
-
 
 
 
@@ -506,35 +505,37 @@ var loadModuleList = function(plugin, action, type, callback) {
 };
 // 左边按键--设置、返回
 $('#top_left_btn')
-	.click(
+	.bind("click",
 		function() {
 			$('#top_left_btn').addClass("disabled");
 			isOver = 0;
 			if ($(this).hasClass('back_bt_class')) {
 				// 返回按键
+
 				$('#top_left_btn').removeClass('back_bt_class');
 				//alert("shanchu le back_bt_class");
-				$('.buttomContent').css('display',
-					'none');
+				$('.buttomContent').css('display', 'none');
 
 
 				$('#title').html("变色龙");
 				$('#manager_btn').show();
-				$('#top_left_btn .set_img').show();
-				// 删除左边按键class标志
-				$('#top_left_btn').removeClass(
-					'back_bt_class').addClass('btn-primary').addClass('btn').css('text-indent', '0px').css('background', '-webkit-gradient(linear, 10% 100%, 10% 100%, from(#5390d5), to(#60a5e1))').css('border', '2px solid #2a66a7');
-				$('#top_left_btn').css('width', '24px').css('height', '18px').html('<img class="set_img" src="img/set.png" style="top:-2px;">');
+				//$('#top_left_btn').addClass("btn").css("background","url('img/settingbutton.ing') no-repeat").css("width","24px").css("height","24px");
+
+				//$('#top_left_btn').addClass("left_btn").addClass("btn");
+				$('#top_left_btn').addClass("left_btn");
+				$('#top_left_btn').removeClass("back_btn");
+
 				//开启欢迎光临
 				//$('.account_content').show();
 				//$('.searchContent').css("height", "60px");
 
 				//返回刷新列表
-				$('#top_left_btn').removeClass("disabled");
+				//$('#top_left_btn').removeClass("disabled");
 				loadModuleList("CubeModuleList", "mainList", "main", function() {
 					gridLayout();
 					if (myScroll) {
 						myScroll.refresh();
+						$('#top_left_btn').removeClass("disabled");
 					}
 				});
 
@@ -542,9 +543,10 @@ $('#top_left_btn')
 			} else {
 
 				// 设置按键
-
-				cordovaExec("CubeModuleOperator", "setting");
 				$('#top_left_btn').removeClass("disabled");
+				
+				cordovaExec("CubeModuleOperator", "setting");
+
 
 
 			}
@@ -640,9 +642,9 @@ $("#searchInput").live("input propertychange", function() {
 
 			var titlename = $(module_li).children('div:nth-child(3)').children('div:nth-child(1)').html();
 			if (keyword !== "") {
-				console.log(keyword.length + "keyword 之前" +keyword);
+				console.log(keyword.length + "keyword 之前" + keyword);
 				keyword = trim(keyword);
-				console.log(keyword.length +"keyword 之后" +keyword);
+				console.log(keyword.length + "keyword 之后" + keyword);
 				if (titlename.toLowerCase().indexOf(keyword.toLowerCase()) < 0) {
 					$(module_li).hide();
 				} else {
@@ -793,7 +795,7 @@ var gridLayout = function() {
 	//隐藏curd_btn
 	$('.module_div ul li .curd_btn').css('display', 'none');
 	//设置titlename位置
-	$('.detail .module_li_titlename').css('font-size', '1em').css("top","5px");
+	$('.detail .module_li_titlename').css('font-size', '1em').css("top", "5px");
 	//切换active
 	$('#gridview_btn').addClass('active');
 	$('#listview_btn').removeClass('active');
@@ -837,7 +839,6 @@ $('#manager_btn')
 		$('#manager_btn').addClass("disabled");
 		console.log("点击");
 
-		//清除搜索框内容
 		cordovaExec("CubeModuleOperator", "sync", [], function() {
 			$('#manager_btn').removeClass("disabled");
 			loadModuleList("CubeModuleList", "uninstallList", "uninstall", function() {
@@ -852,16 +853,16 @@ $('#manager_btn')
 				//关闭欢迎光临
 				//$('.account_content').hide();
 				//$('.searchContent').css("height", "37px");
-				$('#top_left_btn .set_img').hide();
-				$('#top_left_btn')
-					.removeClass('btn').removeClass('btn-primary')
-					.css('height', '26px')
-					.css('width', '50px')
-				//.html(' <i class="icon-arrow-left icon-white"></i>');
-				.css('background', "url('img/back.png') no-repeat")
-					.css('background-size', '50px 32px').html("返回").css('padding-top', '6px')
-					.css('border', '0px').css('text-align', 'center').css('text-indent', '5px');
+				//$('#top_left_btn').removeClass('left_btn');
+				//$('#top_left_btn').addClass('back_btn');
 				//设置左边按键class做标志
+
+				//$('#top_left_btn').removeClass("btn").css("background","url('img/nav_back@2x.ing') no-repeat").css("height","32px").css("width","48px");
+
+				$('#top_left_btn').addClass("back_btn");
+				//$('#top_left_btn').removeClass("left_btn").removeClass("btn");
+				$('#top_left_btn').removeClass("left_btn");
+
 				$('#top_left_btn').addClass('back_bt_class');
 				// 处理模块管理问题
 				var type = "uninstall";
