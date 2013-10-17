@@ -424,7 +424,7 @@ nav,.cube-split-right>* {
 	height:1100%;
 	left:-400%;
 	top:-400%;
-	background-color:#444;
+	background-color:transparent;
 	opacity:0.5;
 	position:fixed;
 	z-index:9999999999999;
@@ -432,11 +432,11 @@ nav,.cube-split-right>* {
 	text-align:center
 }
 .cube-loader-block {
-	min-height:90px;
-	width:85px;
-	border-radius:15px;
+	min-height:57px;
+	width:80px;
+	border-radius:10px;
 	background:#000;
-	margin-left:-42.5px;
+	margin-left:-47.5px;
 	margin-top:-35px;
 	padding:20px 5px 5px 5px;
 	text-align:center;

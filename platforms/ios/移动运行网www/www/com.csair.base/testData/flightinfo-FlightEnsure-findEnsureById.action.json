@@ -1,0 +1,53 @@
+{
+    "ensure": [
+        {
+            "val": "2013-12-12 23:45",
+            "field": "psgr_deplane_beg_dt",
+            "schTime": "2013-12-12 23:45",
+            "name": "下客开始",
+            "timout": "-6"
+        },
+        {
+            "val": "2013-09-12 03:45",
+            "field": "other_supply_ok_dt",
+            "schTime": "2013-09-12 04:45",
+            "name": "供应品结束",
+            "timout": "+1"
+        },
+        {
+            "val": null,
+            "field": "cargo_beg_dt",
+            "schTime": "",
+            "name": "货舱门开启",
+            "timout": "10"
+        },
+        {
+            "val": null,
+            "field": "cargo_ok_dt",
+            "schTime": "",
+            "name": "货舱门关闭",
+            "timout": ""
+        },
+        {
+            "val": null,
+            "field": "cleaning_beg_dt",
+            "schTime": "",
+            "name": "清洁开始",
+            "timout": ""
+        },
+        {
+            "val": null,
+            "field": "cleaning_ok_dt",
+            "schTime": "",
+            "name": "清洁结束",
+            "timout": ""
+        },
+        {
+            "val": null,
+            "field": "cabin_boarding_dt",
+            "schTime": "",
+            "name": "乘务组到场",
+            "timout": ""
+        }
+    ]
+}

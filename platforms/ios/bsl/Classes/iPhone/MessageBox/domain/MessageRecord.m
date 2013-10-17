@@ -29,10 +29,13 @@
 @dynamic isMessageBadge;
 @dynamic faceBackId;
 @dynamic isRead;
+@dynamic allContent;
+
 +(BOOL)createByApnsInfo:(NSDictionary *)info outputArrayIds:(NSMutableArray*)outputArrayIds{
     NSString * mFaceBackId = [info objectForKey:@"sendId"];
     BOOL ret=NO;
-    if ([mFaceBackId length]>0) {
+   
+    if (![mFaceBackId isEqual:[NSNull null]] && [mFaceBackId length]>0) {
         
         [outputArrayIds addObject:mFaceBackId];
 
@@ -68,7 +71,23 @@
                 
             }else if ([messageType isEqualToString:@"MODULE"] ) {
                 NSDictionary *module = [info objectForKey:@"extras"];
+                
                 if (module) {
+                   
+                    message.allContent =[NSString stringWithFormat:@"%d", [[module objectForKey:@"busiDetail"]  intValue]] ;
+                    NSNumber* num = [module objectForKey:@"moduleBadge"];
+                    NSString* identifier =   [module objectForKey:@"moduleIdentifer"];
+                    CubeApplication* cubeApp = [CubeApplication currentApplication];
+                    CubeModule* module1 = [cubeApp moduleForIdentifier:identifier];
+                    if ([num boolValue]) {
+                        if (module1) {
+                            module1.moduleBadge = @"";
+                        }
+                    }else{
+                        if (module1) {
+                            module1.moduleBadge = @"1";
+                        }
+                    }
                     [message setModule:[module objectForKey:@"moduleIdentifer"]];
                     [message setRecordId:[module objectForKey:@"announceId"]];
                 }
@@ -328,6 +347,7 @@
         
         [request setPostValue:self.faceBackId  forKey:@"sendId"];
     }
+    
     
     NSString * uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     [request setPostValue:uuid forKey:@"deviceId"];

@@ -1,0 +1,13 @@
+{
+    "total": 3,
+    "rows": [{
+        "base": "CAN",
+        "effDt": "2009-08-29",
+        "expDt": null,
+        "id": null,
+        "logRelateKey": null,
+        "primaryBase": "CAN",
+        "staffNum": "203192",
+        "version": 0
+    }]
+}

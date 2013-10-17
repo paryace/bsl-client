@@ -1,0 +1,19 @@
+{
+    "weather": {
+        "windSpeed": "04",
+        "visibility": "7000",
+        "tempreture": "31",
+        "weather1": "lei",
+        "rmk":"雷雨",
+        "picture":"baoxue"
+    },
+    "list": [{
+        "optTxt": "METAR ZGGG 210200Z 32004MPS 7000 SCT043 31/26 Q1000 NOSIG="
+    }, {
+        "optTxt": "TAF ZGGG 210100Z 210312 07004MPS 8000 SCT040 TEMPO 0408 TSRA SCT011 SCT030CB BKN033 TEMPO 0812 TSRA SCT011 SCT030CB BKN033="
+    }, {
+        "optTxt": "TAF ZGGG 202101Z 210024 06003MPS 3000 BR SCT040 BECMG 0102 8000 TEMPO 0410 TSRA SCT015 SCT030CB BKN033="
+    }, {
+        "optTxt": "SPECI ZGGG 200703Z VRB03MPS 0800 R20L/1200N R20R/P2000 +TSRA SCT026CB SCT026 28/26 Q0999 BECMG AT0750 NSW="
+    }]
+}

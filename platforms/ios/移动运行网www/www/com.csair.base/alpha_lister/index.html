@@ -1,0 +1,331 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Apple-Style listSlider</title>
+<link rel="stylesheet" type="text/css" href="slidernav1.css" media="screen, projection" />
+<script type="text/javascript" src="zepto.js"></script>
+<script type="text/javascript" src="slidernav1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#listSlider').listSliderNav();
+		$('#transformers').listSliderNav({items:['autobots','decepticons'], debug: true, height: '300', arrows: false});
+	});
+</script>
+<style>
+	/* The following styles are used only for this page - the actual plugin styles are in listSlidernav.css */
+	* { margin: 0; padding: 0; }
+	body { padding: 40px; background: #eee; font-family: Verdana, Arial; font-size: 12px; line-height: 18px; }
+	a { text-decoration: none; }
+	h2, h3 { margin: 0 0 20px; text-shadow: 2px 2px #fff; }
+	h2 { font-size: 28px; }
+	h3 { font-size: 22px; }
+	pre { background: #fff; width: 460px; padding: 10px 20px; border-left: 5px solid #ccc; margin: 0 0 20px; }
+	p { width: 500px; font-size: 18px; line-height: 24px; margin: 0 0 30px; }
+</style>
+</head>
+<body>
+<h3>城市列表</h3>
+<div id="listSlider">
+	<div class="listSlider-content">
+		<ul>
+			<li id="a"><a name="a" class="title">A</a>
+				<ul>
+					<li><a >Adam</a></li>
+					<li><a >Alex</a></li>
+					<li><a >Ali</a></li>
+					<li><a >Apple</a></li>
+					<li><a >Arthur</a></li>
+					<li><a >Ashley</a></li>
+				</ul>
+			</li>
+			<li id="b"><a name="b" class="title">B</a>
+				<ul>
+					<li><a >Barry</a></li>
+					<li><a >Becky</a></li>
+					<li><a >Biff</a></li>
+					<li><a >Billy</a></li>
+					<li><a >Bozarking</a></li>
+					<li><a >Bryan</a></li>
+				</ul>
+			</li>
+			<li id="c"><a name="c" class="title">c</a>
+				<ul>
+					<li><a >Calista</a></li>
+					<li><a >Cathy</a></li>
+					<li><a >Chris</a></li>
+					<li><a >Cinderella</a></li>
+					<li><a >Corky</a></li>
+					<li><a >Cypher</a></li>
+				</ul>
+			</li>
+			<li id="d"><a name="d" class="title">d</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="e"><a name="e" class="title">E</a>
+				<ul>
+					<li><a >Barry</a></li>
+					<li><a >Becky</a></li>
+					<li><a >Biff</a></li>
+					<li><a >Billy</a></li>
+					<li><a >Bozarking</a></li>
+					<li><a >Bryan</a></li>
+				</ul>
+			</li>
+			<li id="f"><a name="f" class="title">f</a>
+				<ul>
+					<li><a >Calista</a></li>
+					<li><a >Cathy</a></li>
+					<li><a >Chris</a></li>
+					<li><a >Cinderella</a></li>
+					<li><a >Corky</a></li>
+					<li><a >Cypher</a></li>
+				</ul>
+			</li>
+			<li id="g"><a name="g" class="title">g</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="h"><a name="h" class="title">h</a>
+				<ul>
+					<li><a >Barry</a></li>
+					<li><a >Becky</a></li>
+					<li><a >Biff</a></li>
+					<li><a >Billy</a></li>
+					<li><a >Bozarking</a></li>
+					<li><a >Bryan</a></li>
+				</ul>
+			</li>
+			<li id="i"><a name="i" class="title">i</a>
+				<ul>
+					<li><a >Calista</a></li>
+					<li><a >Cathy</a></li>
+					<li><a >Chris</a></li>
+					<li><a >Cinderella</a></li>
+					<li><a >Corky</a></li>
+					<li><a >Cypher</a></li>
+				</ul>
+			</li>
+			<li id="j"><a name="j" class="title">j</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="k"><a name="k" class="title">k</a>
+				<ul>
+					<li><a >Barry</a></li>
+					<li><a >Becky</a></li>
+					<li><a >Biff</a></li>
+					<li><a >Billy</a></li>
+					<li><a >Bozarking</a></li>
+					<li><a >Bryan</a></li>
+				</ul>
+			</li>
+			<li id="l"><a name="l" class="title">l</a>
+				<ul>
+					<li><a >Calista</a></li>
+					<li><a >Cathy</a></li>
+					<li><a >Chris</a></li>
+					<li><a >Cinderella</a></li>
+					<li><a >Corky</a></li>
+					<li><a >Cypher</a></li>
+				</ul>
+			</li>
+			<li id="m"><a name="m" class="title">m</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="n"><a name="n" class="title">n</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="o"><a name="o" class="title">o</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="p"><a name="p" class="title">p</a>
+				<ul>
+					<li><a >Barry</a></li>
+					<li><a >Becky</a></li>
+					<li><a >Biff</a></li>
+					<li><a >Billy</a></li>
+					<li><a >Bozarking</a></li>
+					<li><a >Bryan</a></li>
+				</ul>
+			</li>
+			<li id="q"><a name="q" class="title">q</a>
+				<ul>
+					<li><a >Calista</a></li>
+					<li><a >Cathy</a></li>
+					<li><a >Chris</a></li>
+					<li><a >Cinderella</a></li>
+					<li><a >Corky</a></li>
+					<li><a >Cypher</a></li>
+				</ul>
+			</li>
+			<li id="r"><a name="r" class="title">r</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="s"><a name="s" class="title">s</a>
+				<ul>
+					<li><a >Barry</a></li>
+					<li><a >Becky</a></li>
+					<li><a >Biff</a></li>
+					<li><a >Billy</a></li>
+					<li><a >Bozarking</a></li>
+					<li><a >Bryan</a></li>
+				</ul>
+			</li>
+			<li id="t"><a name="t" class="title">t</a>
+				<ul>
+					<li><a >Calista</a></li>
+					<li><a >Cathy</a></li>
+					<li><a >Chris</a></li>
+					<li><a >Cinderella</a></li>
+					<li><a >Corky</a></li>
+					<li><a >Cypher</a></li>
+				</ul>
+			</li>
+			<li id="u"><a name="u" class="title">u</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="v"><a name="v" class="title">v</a>
+				<ul>
+					<li><a >Barry</a></li>
+					<li><a >Becky</a></li>
+					<li><a >Biff</a></li>
+					<li><a >Billy</a></li>
+					<li><a >Bozarking</a></li>
+					<li><a >Bryan</a></li>
+				</ul>
+			</li>
+			<li id="w"><a name="w" class="title">w</a>
+				<ul>
+					<li><a >Calista</a></li>
+					<li><a >Cathy</a></li>
+					<li><a >Chris</a></li>
+					<li><a >Cinderella</a></li>
+					<li><a >Corky</a></li>
+					<li><a >Cypher</a></li>
+				</ul>
+			</li>
+			<li id="x"><a name="x" class="title">x</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="y"><a name="y" class="title">y</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+			<li id="z"><a name="z" class="title">z</a>
+				<ul>
+					<li><a >damien</a></li>
+					<li><a >danny</a></li>
+					<li><a >denver</a></li>
+					<li><a >devon</a></li>
+					<li><a >doug</a></li>
+					<li><a >dustin</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<br /><br />
+<h3>Example 2</h3>
+<a name="example-2"></a>
+<div id="transformers">
+	<div class="listSlider-content">
+		<ul>
+			<li id="autobots"><a name="autobots" class="title">Autobots</a>
+				<ul>
+					<li><a >Bumblebee</a></li>
+					<li><a >Ironhide</a></li>
+					<li><a >Jazz</a></li>
+					<li><a >Optimus Prime</a></li>
+					<li><a >Ratchet</a></li>
+					<li><a >Ashley</a></li>
+				</ul>
+			</li>
+			<li id="decepticons"><a name="decepticons" class="title">Decepticons</a>
+				<ul>
+					<li><a >Barricade</a></li>
+					<li><a >Blackout</a></li>
+					<li><a >Bonecrusher</a></li>
+					<li><a >Brawl</a></li>
+					<li><a >Frenzy</a></li>
+					<li><a >Megatron</a></li>
+					<li><a >Scorponok</a></li>
+					<li><a >Starscream</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<br /><br />
+<h3>Credit and License</h3>
+<p>This plugin was created by <a href="http://mdolon.com/">Monjurul Dolon</a>, author of <a href="http://devgrow.com/">DevGrow</a>, a blog for web developers and designers.  Inspiration for this effect came from a new technology blog called <a href="http://www.codefans.net/">Techi</a> - be sure to support them as well!</p>
+<p>More script and css style
+: <a href="http://www.aspxcs.net/" title="HTML DRIVE - Free DHMTL Scripts,Jquery plugins,Javascript,CSS,CSS3,Html5 Library">www.aspxcs.net </a></p>
+</body>
+</html>

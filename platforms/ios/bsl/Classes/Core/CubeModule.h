@@ -24,6 +24,8 @@
 @property(nonatomic,strong)NSString * discription;
 @property(nonatomic,assign)int sortingWeight;//模块排序
 
+@property(nonatomic,assign)BOOL busiDetail;
+@property(nonatomic,strong)NSString *moduleBadge;
 
 
 @property(nonatomic,strong)NSString *pushMsgLink;

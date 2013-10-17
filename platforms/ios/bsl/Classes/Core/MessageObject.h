@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSNumber *isMessageBadge;
 @property (nonatomic, strong) NSNumber *isRead;
 @property (nonatomic, strong) NSString * faceBackId;
-
+@property (nonatomic, strong) NSString* allContent;
 - (void)sendFeedBack;
 -(void)showAlert;
 @end

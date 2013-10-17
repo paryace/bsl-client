@@ -61,7 +61,7 @@
             self.extendedLayoutIncludesOpaqueBars = NO;
             self.modalPresentationCapturesStatusBarAppearance = NO;
         }
-
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cubeSyncClick:) name:CubeSyncClickNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMainView) name:@"SHOW_MAINVIEW" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showView:) name:SHOW_DETAILVIEW object:nil];
@@ -70,7 +70,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:CubeModuleInstallDidFinishNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSkinView) name:@"SHOW_SETTHEME_VIEW" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissView:) name:@"DISMISS_VIEW" object:nil];
-         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(POPdismissView) name:@"POP_DISMISS_VIEW" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(POPdismissView) name:@"POP_DISMISS_VIEW" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadge) name:@"MESSAGE_RECORD_DID_Change_NOTIFICATION" object:nil];
         //收到消息时候的广播
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadge) name:MESSAGE_RECORD_DID_SAVE_NOTIFICATION object:nil];
@@ -79,7 +79,7 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFinishedNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFailedNotification object:nil];
-
+        
     }
     
     return self;
@@ -87,9 +87,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-
+    
     self.selfObj=self;
-
+    
     //读取文件信息
     @autoreleasepool {
         NSURL* documentUrl =  [NSFileManager applicationDocumentsDirectory];
@@ -111,17 +111,17 @@
         rect.origin.y=20.0f;
         rect.size.height-=20.0f;
     }
-
+    
     aCubeWebViewController.view.frame = rect;
     aCubeWebViewController.webView.scrollView.bounces=NO;
-
+    
     [self.view addSubview:aCubeWebViewController.view];
-
+    
     [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"pad/main.html"] absoluteString] didFinishBlock: ^(){
         if([SVProgressHUD isVisible]){
             [SVProgressHUD dismiss];
         }
-
+        
         [self.navController pushViewController:self animated:NO];
         self.navController=nil;
         [aCubeWebViewController viewWillAppear:NO];
@@ -133,7 +133,7 @@
         if([SVProgressHUD isVisible]){
             [SVProgressHUD dismiss];
         }
-
+        
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         self.navController=nil;
@@ -162,7 +162,7 @@
     singleAlert=nil;
     [skinView removeFromSuperview];
     skinView=nil;
-
+    
     aCubeWebViewController=nil;
     bCubeWebViewController=nil;
     self.detailController=nil;
@@ -175,7 +175,7 @@
 - (void)dealloc{
     [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
     singleAlert=nil;
-
+    
     aCubeWebViewController=nil;
     bCubeWebViewController=nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -225,7 +225,7 @@
         [message appendString:@"以下模块可以更新:\n"];
         for(CubeModule *module in updateModules)
         {
-             [message appendFormat:@"%@ %@\n", module.name,module.version];
+            [message appendFormat:@"%@ %@\n", module.name,module.version];
         }
         //        [defaults setBool:NO forKey:@"firstTime"];
         if(![defaults boolForKey:@"firstTime"])
@@ -236,7 +236,7 @@
             singleAlert.tag =829;
             [singleAlert show];
         }
-    
+        
     }
 }
 
@@ -333,16 +333,16 @@
     long currentTime = [[NSDate date]timeIntervalSince1970];
     NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
     NSString *sql = [NSString stringWithFormat:@"update AutoShowRecord set showTime='%ld' where identifier='%@' and userName='%@'",currentTime,identifier,userName];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        FMDatabase *database = [[FMDBManager getInstance]database ];
-        if (![database open])
-        {
-            [database open];
-        }
-        [database executeUpdate:sql];
- 
-//    });
-
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    FMDatabase *database = [[FMDBManager getInstance]database ];
+    if (![database open])
+    {
+        [database open];
+    }
+    [database executeUpdate:sql];
+    
+    //    });
+    
 }
 
 -(void)cubeSyncClick:(NSNotification*)notification{
@@ -374,16 +374,19 @@
         if (!module.hidden ) {
             NSString* moduleIdentifier = module.identifier;
             int count = 0 ;
-            if ([moduleIdentifier  isEqualToString:@"com.foss.message.record"]) {
-                count  =[MessageRecord countAllAtBadge];
-            }else{
-                count = [MessageRecord countForModuleIdentifierAtBadge:moduleIdentifier];
+            if(![module.moduleBadge isEqualToString:@"1"])
+            {
+                if ([moduleIdentifier  isEqualToString:@"com.foss.message.record"]) {
+                    count  =[MessageRecord countAllAtBadge];
+                }else{
+                    count = [MessageRecord countForModuleIdentifierAtBadge:moduleIdentifier];
+                }
             }
             [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"receiveMessage('%@',%d,true);",moduleIdentifier,count]];
         }
     }
     NSLog(@"addBadge end");
-
+    
 }
 
 -(void)showSetting{
@@ -424,10 +427,10 @@
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] availableModules];
 #endif
         
-//        [self.navigationController setNavigationBarHidden:NO animated:YES];
-//        self.navigationItem.hidesBackButton =YES;
-//        self.navigationItem.leftBarButtonItem =nil;
-//        
+        //        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        //        self.navigationItem.hidesBackButton =YES;
+        //        self.navigationItem.leftBarButtonItem =nil;
+        //
         //        NSMutableArray *copyArray = [NSMutableArray arrayWithArray:downloadArray];
         //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if(![[FMDBManager getInstance].database tableExists:@"AutoDownLoadRecord"])
@@ -466,22 +469,20 @@
         }
         else
         {
-            
             CubeApplication *cubeApp = [CubeApplication currentApplication];
             for(CubeModule *module in downloadArray)
             {
                 [[cubeApp availableModules] removeObject:module];
                 module.isDownloading = NO;
-                [cubeApp uninstallModule:module];
+                //                [cubeApp uninstallModule:module];
                 
             }
             [[[CubeApplication currentApplication] downloadingModules] removeAllObjects];
-
             return;
         }
         
     }
- 
+    
     
     if (alertView.tag == 1 && buttonIndex== 0 ) {
         NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
@@ -496,7 +497,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGOUTSENDEXITNOTIFICATION" object:nil];
     [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
     [self.presentedViewController dismissViewControllerAnimated:NO completion:^{}];
-//    [self dismissViewControllerAnimated:NO completion:^{}];
+    //    [self dismissViewControllerAnimated:NO completion:^{}];
 }
 
 
@@ -545,7 +546,7 @@
             }else if([module.local isEqualToString:@"Announcement"]){
                 iphoneLocal = @"AnnouncementTableViewController";
             }else{
-                 iphoneLocal = module.local;
+                iphoneLocal = module.local;
             }
             UIViewController* controller=self.detailController;
             if([controller isKindOfClass:[UINavigationController class]]){
@@ -579,14 +580,14 @@
             if([__controller.identifier isEqual:identifier])
                 return;
         }
-
+        
         
         CubeApplication *cubeApp = [CubeApplication currentApplication];
         
         
         DownLoadingDetialViewController *funDetialVC=[[DownLoadingDetialViewController alloc]init];
         @autoreleasepool {
-        //循环已安装列表
+            //循环已安装列表
             for(CubeModule *each in [cubeApp modules]){
                 if([each.identifier isEqualToString:identifier]){
                     funDetialVC.curCubeModlue=each;
@@ -634,7 +635,7 @@
         UINavigationController* __navController=(UINavigationController*)self.detailController;
         controller=[__navController topViewController];
     }
-
+    
     if([controller isKindOfClass:[CubeWebViewController class]]){
         if([controller.title isEqual:module.name]){
             return;
@@ -678,15 +679,15 @@
             self.selectedModule = module.identifier;
             [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
             singleAlert = [[UIAlertView alloc] initWithTitle:@"缺少依赖模块"
-                                                                   message:message
-                                                                  delegate:self
-                                                         cancelButtonTitle:@"确定" otherButtonTitles:/*@"安装", */nil];
+                                                     message:message
+                                                    delegate:self
+                                           cancelButtonTitle:@"确定" otherButtonTitles:/*@"安装", */nil];
             [singleAlert show];
             
             message=nil;
             return;
         }
-
+        
     }
     
     
@@ -710,7 +711,7 @@
             fullScreanBtn.frame = CGRectMake(CGRectGetHeight(self.view.frame) -65,CGRectGetWidth(self.view.frame) - 65 , 45, 45);
             [self.view addSubview:fullScreanBtn];
             fullScreanBtn.backgroundColor = [UIColor grayColor];
-//            fullScreanBtn.layer.cornerRadius = 8;
+            //            fullScreanBtn.layer.cornerRadius = 8;
             [fullScreanBtn addTarget:self action:@selector(didClickFullScrean:) forControlEvents:UIControlEventTouchUpInside];
             fullScreanBtn.alpha = 0.6;
             [self showDetailViewController:bCubeWebViewController];
@@ -768,7 +769,7 @@
     if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
         top=20.0f;
     }
-
+    
     CGRect frame = vc.view.frame;
     frame.origin.y=top;
     frame.size.width =CGRectGetWidth(self.view.frame)/2+2.0f;
@@ -788,7 +789,7 @@
     
     BaseNavViewController *nav = [[BaseNavViewController alloc]initWithRootViewController:vc];
     self.detailController = nav;
-
+    
     nav.view.frame = frame;
     
     self.detailView= nav.view;
@@ -806,12 +807,12 @@
     [self.detailView addSubview:imageView];
     imageView=nil;
     
-   // self.detailView.layer.cornerRadius = 10;
+    // self.detailView.layer.cornerRadius = 10;
     
-  //  [self.detailView.layer setShadowColor: [UIColor blackColor].CGColor];
-  //  self.detailView.layer.shadowOpacity = 0.5;
-  //  self.detailView.layer.shadowRadius = 20.0;
-  //  self.detailView.layer.shadowOffset = CGSizeMake(0,0);
+    //  [self.detailView.layer setShadowColor: [UIColor blackColor].CGColor];
+    //  self.detailView.layer.shadowOpacity = 0.5;
+    //  self.detailView.layer.shadowRadius = 20.0;
+    //  self.detailView.layer.shadowOffset = CGSizeMake(0,0);
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPanOnDetailView:)];
     pan.minimumNumberOfTouches = 1;
@@ -826,8 +827,8 @@
         rect.origin.x=CGRectGetWidth(self.view.bounds) - CGRectGetWidth(vc.view.frame);
         self.detailView.frame =rect;
         //CGRectMake(CGRectGetWidth(self.view.bounds) - CGRectGetWidth(vc.view.frame), top,
-          //                            CGRectGetWidth(vc.view.frame), CGRectGetHeight(vc.view.frame));
-    
+        //                            CGRectGetWidth(vc.view.frame), CGRectGetHeight(vc.view.frame));
+        
     } completion:^(BOOL finished){
         self.view.userInteractionEnabled=YES;
     }];
@@ -880,8 +881,8 @@
         CGRect rect=self.detailView.frame;
         rect.origin.x=CGRectGetWidth(self.view.bounds);
         self.detailView.frame=rect;
-//        self.detailView.frame = CGRectMake(CGRectGetWidth(self.view.bounds), 0,
-//                                      detailViewWidth, CGRectGetHeight(self.detailView.frame));
+        //        self.detailView.frame = CGRectMake(CGRectGetWidth(self.view.bounds), 0,
+        //                                      detailViewWidth, CGRectGetHeight(self.detailView.frame));
     } completion:^(BOOL finished){
         if (fullScreanBtn) {
             [fullScreanBtn removeFromSuperview];
@@ -936,17 +937,17 @@
 
 -(void)moduleDidInstalled:(NSNotification*)note{
     /*
-    if (statusToolbar) {
-        
-        int count = [self getDownMouleCount];
-        NSLog(@"count =%d , allcount =%d   last = %d",count,allDownCount,allDownCount - count);
-        if ( count <= 0 ) {
-            [self stopUILoading];
-        }else{
-            [self startUILoading];
-        }
-
-    }
+     if (statusToolbar) {
+     
+     int count = [self getDownMouleCount];
+     NSLog(@"count =%d , allcount =%d   last = %d",count,allDownCount,allDownCount - count);
+     if ( count <= 0 ) {
+     [self stopUILoading];
+     }else{
+     [self startUILoading];
+     }
+     
+     }
      */
     
     CubeModule *newModule = [note object];
@@ -989,11 +990,16 @@
     [jsonCube  setObject:each.name forKey:@"name"];
     //=========================================
     int count = 0 ;
-    if ([each.identifier  isEqualToString:@"com.foss.message.record"]) {
-        count  =[MessageRecord countAllAtBadge];
-    }else{
-        count = [MessageRecord countForModuleIdentifierAtBadge:each.identifier];
+    
+    if ([each.moduleBadge isEqualToString:@"1"]) {
+        if ([each.identifier  isEqualToString:@"com.foss.message.record"]) {
+            count  =[MessageRecord countAllAtBadge];
+        }else{
+            count = [MessageRecord countForModuleIdentifierAtBadge:each.identifier];
+        }
+        
     }
+    
     [jsonCube setObject:[NSNumber numberWithInt:each.sortingWeight] forKey:@"sortingWeight"];
     [jsonCube  setObject: [NSNumber numberWithInt:count] forKey:@"msgCount"];
     [jsonCube  setObject: [NSNumber numberWithInt:0] forKey:@"progress"];

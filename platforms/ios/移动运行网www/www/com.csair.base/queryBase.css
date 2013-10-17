@@ -1,0 +1,121 @@
+
+ .content1{
+  width: 100%;
+  background-color:rgb(35,85,153);
+  color: white;
+ }
+
+ table.mainBox{
+    width: 100%;
+    margin-top: 0px;
+ }
+
+ .mainBox tr.topInfo td{
+  font-size: 16px;
+
+ }
+
+ table.mainBox td{
+  text-align: left;
+ }
+
+ table.infoBox{
+  width:98%;
+  color:black;
+  margin:auto;
+ }
+
+  .infoBox tr.titleField td{
+    color:rgb(100,100,100);
+    font-size: 14px;
+    text-align: left;
+    text-indent: 10px;
+  }
+
+  .infoBox tr.infoField-digital td{
+    color:rgb(176,176,176);
+    font-size: 24px;
+    text-align: left;
+    text-indent: 10px;
+  }
+
+  .infoBox tr.infoField-word td{
+    color:rgb(100,100,100);
+    font-size: 16px;
+    text-align: left;
+    text-indent: 10px;
+  }
+
+
+  table.infoBox div.gridLine{
+  	width: 98%;
+	background-color: #ccc;
+	font-size: 1px;
+	line-height: 1px;
+	border: 5px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+  }
+  
+  .commentTextField{
+    font-size: 14px;
+  }
+  table.innerBox{
+    width: 100%;
+  }
+
+  table.innerBox li{
+    padding: 5px;
+  }
+
+  .innerBox .airportField{
+    width: 100%;
+    padding: 2px;
+    margin: auto;
+    background-color: rgb(0,149,226);
+    font-size: 18px;
+    font-family: arial;
+  }
+
+   .innerBox .airportTimeField{
+    width: 100%;
+    font-size: 32px;
+    font-family: arial;
+  }
+
+
+  .clickBoard{
+    position: absolute;
+    width: 95%;
+    height: 170px;
+    cursor: pointer;
+    display: block;
+  }
+
+  .clickBoardLeft{
+  }
+
+  .clickBoardRight{
+  }
+
+  .csair-btn{
+    background-color: rgb(0,127,209);
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.3em 0.3em;
+    border: 1px solid #d4d4d4;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 0 #black;
+    font: 22px/normal sans-serif;
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    border-radius: 0.2em;
+    zoom: 1;
+  }

@@ -16,6 +16,7 @@
 
 #import "CubeWebViewController.h"
 #import "MessageRecordCell.h"
+#import "JSONKit.h"
 
 
 @interface MessageRecordTableViewController ()<UITableViewDataSource,UITableViewDelegate,MessageRecordHeaderViewDelegate>{
@@ -267,7 +268,7 @@
     
     MessageRecord *messageRecord = [[presentModulesDic objectForKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
 
-    return [MessageRecordCell cellHeight:messageRecord.content width:__tableView.frame.size.width];
+    return [MessageRecordCell cellHeight:messageRecord.alert content:messageRecord.content width:__tableView.frame.size.width];
     
 }
 
@@ -538,7 +539,7 @@
     
     
     //判断不是本地模块
-    if ( [module.pushMsgLink isEqualToString:@"1"]) {
+    if ([messageRecord.allContent  boolValue] ) {
         @autoreleasepool {
             NSDictionary *missingModules = [module missingDependencies];
             NSArray *needInstall = [missingModules objectForKey:kMissingDependencyNeedInstallKey];
@@ -594,12 +595,12 @@
         
         NSString * moduleIndex = [[[module runtimeURL] URLByAppendingPathComponent:@"index.html"] absoluteString];
         
-        if(!messageRecord.recordId || messageRecord.recordId.length == 0 ){
-            UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"旧数据不支持跳转" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alertView show];
-            return;
-        }
-        
+//        if(!messageRecord.recordId || messageRecord.recordId.length == 0 ){
+//            UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"旧数据不支持跳转" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alertView show];
+//            return;
+//        }
+//        
         cubeWebViewController.startPage = [NSString stringWithFormat:@"%@?recordId=%@", moduleIndex, messageRecord.recordId];
         
         [cubeWebViewController loadWebPageWithModuleIdentifier:module.identifier didFinishBlock: ^(){

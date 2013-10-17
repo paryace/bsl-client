@@ -186,9 +186,8 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
         NSMutableArray* list=[[NSMutableArray alloc] initWithCapacity:2];
         for(NSArray* array in [friendsListDict allValues]){
             for(UserInfo* userInfo in array){
-                if([[[userInfo name] lowercaseString] rangeOfString:searchText].length>0){
+                if([[[userInfo name] lowercaseString] rangeOfString:searchText].length>0 || [[userInfo.userJid lowercaseString] rangeOfString:searchText].length>0)
                     [list addObject:userInfo];
-                }
             }
         }
         NSLog(@"showLoadData 5");

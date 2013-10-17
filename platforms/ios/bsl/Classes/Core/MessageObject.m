@@ -22,7 +22,7 @@
 @dynamic isMessageBadge;
 @dynamic isRead;
 @dynamic faceBackId;
-
+@dynamic allContent;
 
 - (void)sendFeedBack{
     

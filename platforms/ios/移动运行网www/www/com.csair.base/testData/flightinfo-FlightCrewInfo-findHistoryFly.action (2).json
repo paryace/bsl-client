@@ -1,0 +1,34 @@
+{
+    "total": 12,
+    "rows": [
+        {
+            "list": [
+                {
+                    "actEndDt": "2013/08/03 10:55",
+                    "actPortA": "CAN",
+                    "actPortB": "PEK",
+                    "actStrDt": "2013/08/03 08:00",
+                    "actingRank": "DA",
+                    "actingRole": null,
+                    "chnName": "曾念秋",
+                    "chnPortA": "广州",
+                    "chnPortB": "北京",
+                    "coverRank": null,
+                    "dutyCd": "FLY",
+                    "fleetCd": "787",
+                    "fltDt": "2013-08-03",
+                    "fltHour": null,
+                    "fltNum": "3101",
+                    "id": null,
+                    "logRelateKey": null,
+                    "segType": "D",
+                    "seriesNum": "16065994",
+                    "staffNum": "182313",
+                    "tailNum": null,
+                    "version": 0
+                }
+            ],
+            "date": "2013/08/03"
+        }
+    ]
+}
