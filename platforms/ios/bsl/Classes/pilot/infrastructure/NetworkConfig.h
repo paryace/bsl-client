@@ -11,29 +11,29 @@
 
 /////////////////////////********  生产  ********//////////////////////////////
 
-#define BASEURL @"http://icrew.csair.com/pilot"
+//#define BASEURL @"http://icrew.csair.com/pilot"
 
 //#define BASEURL @"http://172.16.49.10/pilot"
 //#define BASEURL @"http://172.16.49.9/pilot"
 
 //运行信息
-#define FLIGHT_SCHEDULE @"http://icrew.csair.com/mobile/flightScheduled_fast.action"
+//#define FLIGHT_SCHEDULE @"http://icrew.csair.com/mobile/flightScheduled_fast.action"
 
 //软件更新地址
-#define UPDATESOFTWARE @"itms-services://?action=download-manifest&url=http://icrew.csair.com/jboss-root/resource/client/pilot.plist"
+//#define UPDATESOFTWARE @"itms-services://?action=download-manifest&url=http://icrew.csair.com/jboss-root/resource/client/pilot.plist"
 
 
 ////////////////////////********  测试  ********////////////////////////////////
 
-//#define BASEURL @"http://10.108.68.134:8180/pilot"
+#define BASEURL @"http://10.108.68.134:8180/pilot"
 
 //#define BASEURL @"http://192.168.1.116:8280/pilot"
 
 //运行信息
-//#define FLIGHT_SCHEDULE @"http://10.108.68.134:8180/mobile/flightScheduled_fast.action"
+#define FLIGHT_SCHEDULE @"http://10.108.68.134:8180/mobile/flightScheduled_fast.action"
 
 //软件更新地址
-//#define UPDATESOFTWARE @"itms-services://?action=download-manifest&url=http://10.108.68.134:8180/jboss-root/resource/client/pilot.plist"
+#define UPDATESOFTWARE @"itms-services://?action=download-manifest&url=http://10.108.68.134:8180/jboss-root/resource/client/pilot.plist"
 
 //////////////////////////////////////////////////////////////
 

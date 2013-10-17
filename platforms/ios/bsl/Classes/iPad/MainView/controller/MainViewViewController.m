@@ -185,10 +185,6 @@
 
 -(void)moduleSysFinsh{
     [self checkModules];
-    if (!isFirst) {
-        [self autoShowModule];
-        isFirst = true;
-    }
 }
 
 

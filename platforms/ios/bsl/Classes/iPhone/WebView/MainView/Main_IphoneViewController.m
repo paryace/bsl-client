@@ -204,12 +204,12 @@
 
 
 -(void)moduleSysFinsh{
-    [self checkModules];
     if (!isFirst) {
         //检测是否需要自动安装
         [self autoShowModule];
         isFirst = true;
     }
+    [self checkModules];
 }
 
 -(void)checkModules{

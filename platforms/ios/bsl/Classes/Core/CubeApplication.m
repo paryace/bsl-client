@@ -646,13 +646,17 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                     //remote_module.autoDownload = YES;
                     if (remote_module.autoDownload) {
                         //优化自动下载 zhoujn begin-----
-                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                        NSString *userName = [defaults valueForKey:@"username"];
-                        if(![[FMDBManager getInstance] recordIsExist:remote_module.identifier withtableName:@"AutoDownLoadRecord" withConditios:userName])
+                        if(remote_module.privileges && remote_module.privileges.count==0)
                         {
-                            remote_module.isDownloading =YES;
-                            [downloadingModules addObject:remote_module];
+                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                            NSString *userName = [defaults valueForKey:@"username"];
+                            if(![[FMDBManager getInstance] recordIsExist:remote_module.identifier withtableName:@"AutoDownLoadRecord" withConditios:userName])
+                            {
+                                remote_module.isDownloading =YES;
+                                [downloadingModules addObject:remote_module];
+                            }
                         }
+                        
                     }
                 }
                 

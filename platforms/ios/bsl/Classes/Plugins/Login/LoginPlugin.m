@@ -132,6 +132,13 @@
             NSString* messageAlert =   [messageDictionary objectForKey:@"message"];
             NSNumber* number =  [messageDictionary objectForKey:@"result"];
             if ([number boolValue]) {
+                if(![messageDictionary valueForKey:@"hasOperation"])
+                {
+                    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户没有操作权限请联系管理员" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alert show];
+                    alert=nil;
+                    return;
+                }
                 NSString* token = [messageDictionary objectForKey:@"sessionKey"];
                                                 
                 NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -151,10 +158,10 @@
                 
                 [defaults setObject:token forKey:@"token"];
                 [defaults setObject:userName forKey:@"LoginUser"];
-                //[defaults setObject:[messageDictionary objectForKey:@"phone"] forKey:@"phone"];
-                //[defaults setObject:[messageDictionary objectForKey:@"sex"] forKey:@"sex"];
-                //[defaults setObject:[messageDictionary objectForKey:@"zhName"] forKey:@"zhName"];
-                //[defaults setObject:[messageDictionary objectForKey:@"privileges"] forKey:@"privileges"];
+                [defaults setObject:[messageDictionary objectForKey:@"phone"] forKey:@"phone"];
+                [defaults setObject:[messageDictionary objectForKey:@"sex"] forKey:@"sex"];
+                [defaults setObject:[messageDictionary objectForKey:@"zhName"] forKey:@"zhName"];
+                [defaults setObject:[messageDictionary objectForKey:@"privileges"] forKey:@"privileges"];
                 //end ================
                 
                 [defaults synchronize];
