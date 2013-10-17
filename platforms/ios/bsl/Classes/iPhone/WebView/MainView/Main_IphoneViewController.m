@@ -286,7 +286,7 @@
                     [[FMDBManager getInstance]createTable:@"AutoShowRecord" withObject:record];
                 }
                 
-                if(![[FMDBManager getInstance]recordIsExist:@"identifier"  withtableName:@"AutoShowRecord" withConditios:userName])
+                if(![[FMDBManager getInstance]recordIsExist:module.identifier  withtableName:@"AutoShowRecord" withConditios:userName])
                 {
                     [self showWebViewModue:module];
                     AutoShowRecord *newRecord = [[AutoShowRecord alloc]init];

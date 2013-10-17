@@ -6468,7 +6468,6 @@
 		F54D814F17E8BFBA0067A023 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-
 				188487F11807A3CE0039F67F /* CubeAccount */,
 				F5EB6895180E7172005C28CA /* mainView */,
 				F5A96C3717F006B400F9CA68 /* org.apache.cordova.core.device */,
@@ -10249,8 +10248,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: China Southern Airlines Company Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Southern Airlines Company Limited";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
@@ -10459,6 +10458,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -10506,6 +10506,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";

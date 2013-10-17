@@ -142,7 +142,7 @@
     {
         [database open];
     }
-    NSString *sql = [NSString stringWithFormat:@"select count(*) from %@ where userName='%@' group by %@",tableName,condition,identifier];
+    NSString *sql = [NSString stringWithFormat:@"select count(*) from %@ where userName='%@' and identifier='%@'",tableName,condition,identifier];
     FMResultSet *set = [database executeQuery:sql];
     while([set next])
     {

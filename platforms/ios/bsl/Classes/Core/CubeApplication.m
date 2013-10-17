@@ -648,7 +648,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                         //优化自动下载 zhoujn begin-----
                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                         NSString *userName = [defaults valueForKey:@"username"];
-                        if(![[FMDBManager getInstance] recordIsExist:@"identifier" withtableName:@"AutoDownLoadRecord" withConditios:userName])
+                        if(![[FMDBManager getInstance] recordIsExist:remote_module.identifier withtableName:@"AutoDownLoadRecord" withConditios:userName])
                         {
                             remote_module.isDownloading =YES;
                             [downloadingModules addObject:remote_module];

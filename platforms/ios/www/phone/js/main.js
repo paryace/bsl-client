@@ -304,11 +304,11 @@ var curd_btn_click = function() {
 
 			function(buttonIndex) {
 				
-				if (buttonIndex === 1) {
-					alert("buttonIndex " + buttonIndex);
-					//$(that).removeAttr("disabled");
+				if (buttonIndex === 2) {
+					//alert("buttonIndex " + buttonIndex);
+					$(that).removeAttr("disabled");
 					return;
-				} else if (buttonIndex === 2) {
+				} else if (buttonIndex === 1) {
 				//	alert("buttonIndex " + buttonIndex);
 					if (btn_title == "安装") {
 						$(that).html("正在安装");
@@ -343,7 +343,7 @@ var curd_btn_click = function() {
 				}
 			}, // callback to invoke with index of button pressed
 			'提示信息', // title
-			'取消,确定' // buttonLabels
+			'确定,取消' // buttonLabels
 		);
 
 
@@ -512,7 +512,7 @@ $('#top_left_btn')
 					'none');
 
 
-				$('#title').html("变色龙");
+				$('#title').html("南航移动应用");
 				$('#manager_btn').show();
 				$('#top_left_btn .set_img').show();
 				// 删除左边按键class标志
