@@ -134,10 +134,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-        [self setNeedsStatusBarAppearanceUpdate];
-    }
-    
 }
 
 

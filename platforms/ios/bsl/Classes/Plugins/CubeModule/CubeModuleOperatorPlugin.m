@@ -150,19 +150,20 @@
     if(![SVProgressHUD isVisible]){
         [SVProgressHUD showWithStatus:@"正在同步数据..." maskType:SVProgressHUDMaskTypeGradient ] ;
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncClickNotification object:[NSNumber numberWithInt:0]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchTokemTimeOurInfoForFilter) name:CubeTokenTimeOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeAppUpdateFinishNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchTokemTimeOurInfoForFilter) name:CubeSyncFailedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeSyncFinishedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayStart) name:CubeSyncStartedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchTokemTimeOurInfoForFilter) name:KNOTIFICATION_DETIALPAGE_SYNFAILED object:nil];
 
     self.cdvCommand = command;
     CubeApplication *cubeApp = [CubeApplication currentApplication];
     [cubeApp sync];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncClickNotification object:[NSNumber numberWithInt:0]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchTokemTimeOurInfoForFilter) name:CubeTokenTimeOutNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeAppUpdateFinishNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeSyncFailedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayInfoForFilter) name:CubeSyncFinishedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patchArrayStart) name:CubeSyncStartedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failedSyn:) name:KNOTIFICATION_DETIALPAGE_SYNFAILED object:nil];
 }
 
 -(void)patchArrayStart{
@@ -192,7 +193,7 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.cdvCommand.callbackId];
 }

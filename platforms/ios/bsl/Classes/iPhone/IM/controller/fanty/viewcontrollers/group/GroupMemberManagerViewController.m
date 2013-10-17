@@ -84,9 +84,6 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-        [self setNeedsStatusBarAppearanceUpdate];
-    }
     
 }
 
@@ -324,7 +321,7 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
     
     if([self.delegate respondsToSelector:@selector(deleteMember:)])
         [self.delegate deleteMember:self];
-//    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -351,9 +348,7 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
 
             
             request=[IMServerAPI grouptDeleteMember:groupPanel.selectedJid roomId:self.messageId block:^(BOOL status){
-                if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-                    [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate) withObject:nil afterDelay:0.6f];
-                }
+                
                 request=nil;
                 if(!status){
                     [SVProgressHUD showErrorWithStatus:@"操作失败，请检查网络！"];
@@ -378,9 +373,6 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
                 [request cancel];
                 [SVProgressHUD showWithStatus:@"操作执行中..." maskType:SVProgressHUDMaskTypeBlack];
                 request=[IMServerAPI grouptChangeRoomName:self.chatName roomId:self.messageId block:^(BOOL status){
-                    if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-                        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate) withObject:nil afterDelay:0.6f];
-                    }
 
                     request=nil;
                     if(!status){
