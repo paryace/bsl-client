@@ -13,10 +13,18 @@ $('#username, #password').click(function(e) {
 	e.stopPropagation();
 });
 
-/*$('#username, #password').blur(function() {
-	console.log("input blur");
-	$(this).next(".del_content").hide();
-});*/
+var clearPsw = function(){
+
+    var isRemember = $('#isRemember:checked').val();
+	if (isRemember === undefined) {
+		//alert("")
+		isRemember = "false";
+	}
+    alert(isRemember);
+    if(isRemember==="false"){
+        $("#password").val("");
+    }
+};
 
 $("#username_del").click(function() {
 	$(this).hide();

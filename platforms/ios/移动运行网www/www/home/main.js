@@ -34,7 +34,7 @@ define(['text!home/main.html',
 
         test: function() {
 
-            refreshMainPage();
+            // refreshMainPage();
 
         },
         cordovaExec: function(plugin, action, parameters, callback) {
@@ -54,8 +54,8 @@ define(['text!home/main.html',
                     callback: function(index, elem) {
                         console.log("index=" + index);
                         var whichPage = index + 1;
-                        $("#position").children("li").removeClass("on");
-                        $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                        // $("#position").children("li").removeClass("on");
+                        // $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
 
                     }
                 });
@@ -77,8 +77,9 @@ define(['text!home/main.html',
             }
         },
 
-        loadModuleList: function(plugin, action, type, callback) {
 
+        loadModuleList: function(plugin, action, type, callback) {
+            var that = this;
             if (isOver === 0) {
 
                 isOver = isOver + 1;
@@ -142,7 +143,7 @@ define(['text!home/main.html',
                             if (j % 12 === 0) {
                                 i++;
                                 $("#swipe").append("<div class='page_div'><ul id='myul" + i + "' clsss='scrollContent'></ul></div>");
-                                $("#position").append("<li></li>");
+                                // $("#position").append("<li></li>");
                             }
 
                             console.log("aaaa --" + value.sortingWeight + "");
@@ -159,12 +160,25 @@ define(['text!home/main.html',
                         });
 
                     });
-                    $("#position").children("li:nth-child(1)").addClass("on");
+                    //$("#position").children("li:nth-child(1)").addClass("on");
+
                     console.log("i=" + i);
                     if (callback !== undefined) {
                         callback();
                     }
                     isOver = isOver - 1;
+                    //bind click
+                    /*$("li[identifier]").bind("click", function() {
+
+                        console.log("length " + $("li[identifier]").size());
+                        if (isLoadModuleByPiece) {
+                            that.accessModuleByPiece(this, that);
+                        } else {
+                            that.accessModuleByApp(this, that);
+                        }
+
+
+                    });*/
                 }, function(err) {
                     alert("获取页面出错");
                 }, plugin, action, []);
@@ -532,6 +546,8 @@ define(['text!home/main.html',
             });
 
             //模块点击
+                                 $("li[identifier]").die("click");
+
             $("li[identifier]").live("click", function() {
                 console.log("length " + $("li[identifier]").size());
                 if (isLoadModuleByPiece) {
@@ -542,6 +558,8 @@ define(['text!home/main.html',
 
 
             });
+
+
             //没有权限的模块灰色显示
 
 
@@ -610,8 +628,9 @@ define(['text!home/main.html',
                             callback: function(index, elem) {
                                 console.log("index=" + index);
                                 var whichPage = index + 1;
-                                $("#position").children("li").removeClass("on");
-                                $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                                // $("#position").children("li").removeClass("on");
+                                // $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                                //li_click();
 
                             }
                         });
@@ -631,9 +650,9 @@ define(['text!home/main.html',
                         callback: function(index, elem) {
                             console.log("index=" + index);
                             var whichPage = index + 1;
-                            $("#position").children("li").removeClass("on");
-                            $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
-
+                            //$("#position").children("li").removeClass("on");
+                            // $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                            //li_click();
                         }
                     });
 

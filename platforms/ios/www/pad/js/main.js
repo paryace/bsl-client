@@ -24,10 +24,6 @@ $("#search_del").click(function() {
 	});
 });
 
-// 检测屏幕是否伸缩
-$(window).resize(function() {
-	$(".mainContent").height($(window).height() - 50);
-});
 
 //封装cordova的执行方法，加上回调函数
 var cordovaExec = function(plugin, action, parameters, callback) {
@@ -39,13 +35,6 @@ var cordovaExec = function(plugin, action, parameters, callback) {
 		//alert(err);
 	}, plugin, action, parameters === null || parameters === undefined ? [] : parameters);
 };
-var isKeyboardShow = function(isShow) {
-	if (isShow) {
-		$(".bottomMenu").hide();
-	} else {
-		$(".bottomMenu").show();
-	}
-}
 
 
 //自动更新查新界面
@@ -259,12 +248,38 @@ $(".moduleManageBar .manager-btn").click(function() {
 	}
 });
 
+
+
+// 检测屏幕是否伸缩
+var LastHeight = window.screen.availHeight;
+$(window).resize(function() {
+	//$(".mainContent").height($(window).height() - 50);
+	var availHeight = $(window).height();
+	console.log("LastHeight " + LastHeight);
+	console.log("availHeight " + availHeight);
+	if (Math.abs(LastHeight - availHeight) > 100) {
+		if ((LastHeight - availHeight) > 0) {
+			//键盘弹出
+			console.log("键盘弹出了");
+			$(".bottomMenu").hide();
+		} else {
+			console.log("键盘隐藏了。。。");
+			//键盘隐藏
+				$(".bottomMenu").show();
+		}
+	}
+	LastHeight = availHeight;
+	if (myScroll) {
+		myScroll.refresh();
+	}
+});
+
 //搜索框事件
-$("#searchInput").focusin(function() {
+/*$("#searchInput").focusin(function() {
 	$(".bottomMenu").hide();
 }).focusout(function() {
 	$(".bottomMenu").show();
-});
+});*/
 
 $("#searchInput").live("input propertychange", function() {
 	var me = $(this);
@@ -491,12 +506,14 @@ var app = {
 					loadModuleList("CubeModuleList", "mainList", "main", function() {
 						myScroll.refresh();
 						checkTheme();
+                                   $(".bottomMenu").show();
 					});
 				}, function(err) {}, "CubePackageName", "getPackageName", []);
 			} else {
 				loadModuleList("CubeModuleList", "mainList", "main", function() {
 					myScroll.refresh();
 					checkTheme();
+                               $(".bottomMenu").show();
 				});
 			}
 		});

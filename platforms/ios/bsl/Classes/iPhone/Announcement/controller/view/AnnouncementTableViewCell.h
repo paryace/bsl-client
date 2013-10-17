@@ -10,6 +10,7 @@
 #import "Announcement.h"
 
 @interface AnnouncementTableViewCell : UITableViewCell{
+    UIView* bgView;
     UILabel* titleLabel;
     UILabel* contentLabel;
     UILabel* isReadLabel;
@@ -17,7 +18,7 @@
     UIView* lineView;
 }
 
-+(float)cellHeight:(NSString*)content width:(float)w editing:(BOOL)editing;
++(float)cellHeight:(NSString*)content width:(float)w editing:(BOOL)editing ;
 
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead;
 

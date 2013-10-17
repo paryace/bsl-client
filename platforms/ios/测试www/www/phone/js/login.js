@@ -18,6 +18,19 @@ $('#username,#password').click(function(e) {
 	e.stopPropagation();
 });
 
+var clearPsw = function(){
+    
+    var isRemember = $('#isRemember:checked').val();
+	if (isRemember === undefined) {
+		//alert("")
+		isRemember = "false";
+	}
+    alert(isRemember);
+    if(isRemember==="false"){
+        $("#password").val("");
+    }
+};
+
 $("#username_del").click(function() {
 	$(this).parent().hide();
 	$("#username").val("");
@@ -38,6 +51,8 @@ $("#username,#password").live("input propertychange", function() {
 $("body").click(function() {
 	$(".del_content").hide();
 });
+
+
 
 $("#LoginBtn").click(function() {
 	$(this).disabled = "disabled";

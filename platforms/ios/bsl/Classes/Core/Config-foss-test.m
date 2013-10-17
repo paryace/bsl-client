@@ -11,7 +11,6 @@ NSString* const kAPPKey = @"583683eaeb874b4ce7b81f1d8e5ed687";
 NSString* const  kPushServerReceiptsUrl=@"http://183.233.189.114:18860/push/api/receipts";
 NSString* const  kPushGetMessageUrl =@"http://183.233.189.114:18860/push/api/receipts/none-receipts";
 NSString* const  kAPPName=@"com.foreveross.bslios";
-NSString* const  kDeviceRegisterUrl=@"http://58.215.176.89:9000/devices/register";
 int kXMPPPort= 5222;
 
 NSString* const kFileUploadUrl = @"http://183.233.189.114:8088/bsl-web/mam/attachment/clientUpload";

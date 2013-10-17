@@ -59,9 +59,11 @@
     else
         img = [UIImage imageNamed:@"Default.png"];
     UIImageView* bgImageView =  [[UIImageView alloc]initWithImage:img];
-    CGRect rect=bgImageView.bounds;
-    rect.origin.y-=20.0f;
-    bgImageView.frame=rect;
+    if([[[UIDevice currentDevice] systemVersion] floatValue]<7.0f){
+        CGRect rect=bgImageView.frame;
+        rect.origin.y-=20.0f;
+        bgImageView.frame=rect;
+    }
 
     [self.view addSubview:bgImageView];
 
@@ -102,11 +104,14 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     if (isDisappear) {
+//        [aCubeWebViewController.webView reload];
         //NSURL *url =[NSURL URLWithString: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/login.html"]absoluteString]];
         //NSURLRequest *request =[NSURLRequest requestWithURL:url];
         //[aCubeWebViewController.webView loadRequest:request];
         isDisappear = false;
     }
+    
+    [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"clearPsw()"];
     
 }
 

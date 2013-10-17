@@ -75,7 +75,7 @@
         //收到消息时候的广播
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadge) name:MESSAGE_RECORD_DID_SAVE_NOTIFICATION object:nil];
         //收到好友消息时候
-         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleInstallFail) name:CubeModuleDownloadDidFailNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleInstallFail:) name:CubeModuleDownloadDidFailNotification object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFinishedNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFailedNotification object:nil];
@@ -173,6 +173,9 @@
 }
 
 - (void)dealloc{
+    [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
+    singleAlert=nil;
+
     aCubeWebViewController=nil;
     bCubeWebViewController=nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -258,7 +261,7 @@
                     [[FMDBManager getInstance]createTable:@"AutoShowRecord" withObject:record];
                 }
                 
-                if(![[FMDBManager getInstance]recordIsExist:@"identifier" withtableName:@"AutoShowRecord" withConditios:userName])
+                if(![[FMDBManager getInstance]recordIsExist:module.identifier withtableName:@"AutoShowRecord" withConditios:userName])
                 {
                     [self showWebViewModue:module];
                     AutoShowRecord *newRecord = [[AutoShowRecord alloc]init];
@@ -334,7 +337,7 @@
     long currentTime = [[NSDate date]timeIntervalSince1970];
     NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
     NSString *sql = [NSString stringWithFormat:@"update AutoShowRecord set showTime='%ld' where identifier='%@' and userName='%@'",currentTime,identifier,userName];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         FMDatabase *database = [[FMDBManager getInstance]database ];
         if (![database open])
         {
@@ -342,7 +345,7 @@
         }
         [database executeUpdate:sql];
  
-    });
+//    });
 
 }
 
@@ -410,9 +413,7 @@
             NSMutableArray *modules =[[CubeApplication currentApplication ]updatableModules];
             for (CubeModule *m in modules) {
                 m.isDownloading = YES;
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [[CubeApplication currentApplication] installModule:m];
-                });
+                [[CubeApplication currentApplication] installModule:m];
             }
         }
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstTime"];
@@ -928,14 +929,30 @@
     }
 }
 
--(void)moduleInstallFail{
+-(void)moduleInstallFail:(NSNotification*)tion{
+    CubeModule* cube = [tion object];
+    NSString * javaScript = [NSString stringWithFormat:@"updateProgress('%@',%d);",cube.identifier,101];
+    [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
     [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
 }
 
 
 
--(void)moduleDidInstalled:(NSNotification*)note
-{
+-(void)moduleDidInstalled:(NSNotification*)note{
+    /*
+    if (statusToolbar) {
+        
+        int count = [self getDownMouleCount];
+        NSLog(@"count =%d , allcount =%d   last = %d",count,allDownCount,allDownCount - count);
+        if ( count <= 0 ) {
+            [self stopUILoading];
+        }else{
+            [self startUILoading];
+        }
+
+    }
+     */
+    
     CubeModule *newModule = [note object];
     if (newModule) {
         @autoreleasepool {
@@ -947,10 +964,15 @@
             }else{
                 javaScript = [NSString stringWithFormat:@"refreshModule('%@','install','%@');",newModule.identifier,JSO];
             }
-            JSO=nil;
             newModule.installType = nil;
             [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
             
+            if (!newModule.hidden) {
+                NSString * mainScript = [NSString stringWithFormat:@"refreshMainPage('%@','main','%@');",newModule.identifier,JSO];
+                [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:mainScript];
+            }
+            
+            JSO=nil;
         }
     }
 }

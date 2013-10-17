@@ -9,13 +9,17 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        bgView=[[UIView alloc] init];
+        bgView.backgroundColor=[UIColor clearColor];
+        bgView.clipsToBounds=YES;
+        [self addSubview:bgView];
         
         titleLabel=[[UILabel alloc] init];
         titleLabel.numberOfLines=1;
         titleLabel.font=[UIFont boldSystemFontOfSize:19.0f];
         titleLabel.backgroundColor=[UIColor clearColor];
         titleLabel.textColor=[UIColor blackColor];
-        [self addSubview:titleLabel];
+        [bgView addSubview:titleLabel];
         
         
         contentLabel=[[UILabel alloc] init];
@@ -23,7 +27,7 @@
         contentLabel.font=[UIFont systemFontOfSize:16.0f];
         contentLabel.backgroundColor=[UIColor clearColor];
         contentLabel.textColor=[UIColor blackColor];
-        [self addSubview:contentLabel];
+        [bgView addSubview:contentLabel];
         
         isReadLabel=[[UILabel alloc] init];
         isReadLabel.numberOfLines=1;
@@ -31,7 +35,7 @@
         isReadLabel.font=[UIFont boldSystemFontOfSize:15.0f];
         isReadLabel.backgroundColor=[UIColor clearColor];
         isReadLabel.textColor=[UIColor blackColor];
-        [self addSubview:isReadLabel];
+        [bgView addSubview:isReadLabel];
         
         timeLabel=[[UILabel alloc] init];
         timeLabel.numberOfLines=1;
@@ -39,7 +43,7 @@
         timeLabel.font=[UIFont systemFontOfSize:15.0f];
         timeLabel.backgroundColor=[UIColor clearColor];
         timeLabel.textColor=[UIColor blackColor];
-        [self addSubview:timeLabel];
+        [bgView addSubview:timeLabel];
         
     }
     return self;
@@ -58,7 +62,7 @@
     
     contentLabel.text=content;
     [contentLabel sizeToFit];
-    height+=contentLabel.frame.size.height+3.0f+25.0f;
+    height+=contentLabel.frame.size.height+3.0f+25.0f+5.0f;
     contentLabel=nil;
     return height;
 }
@@ -105,6 +109,11 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
+    
+    CGRect rect=self.bounds;
+    rect.size.height-=5.0f;
+    bgView.frame=rect;
+
     
     float w=self.frame.size.width;
     

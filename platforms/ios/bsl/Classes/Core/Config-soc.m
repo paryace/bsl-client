@@ -12,8 +12,7 @@ NSString* const  kPushServerReceiptsUrl=@"http://183.233.189.114:18860/push/api/
 NSString* const  kPushGetMessageUrl =@"http://183.233.189.114:18860/push/api/receipts/none-receipts";
 NSString* const  kAPPName=@"com.csair.soc";
 NSString* const  kRequestAnnouncementUrl=@"http://183.233.189.114:18860/comments/api/notices/";
-NSString* const  kDeviceRegisterUrl=@"http://58.215.176.89:9000/devices/register";
 int kXMPPPort= 5222;
 
-NSString* const kFileUploadUrl = @"http://imap.csair.com/storage/attachments/upload";
+NSString* const kFileUploadUrl = @"http://183.233.189.114:8088/bsl-web/mam/attachment/clientUpload";
 NSString *const kMUCSevericeDomin=@"conference.snda-192-168-2-32";

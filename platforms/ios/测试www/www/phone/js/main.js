@@ -120,7 +120,7 @@ var updateProgress = function(identifier, count) {
 var refreshModule = function(identifier, type, moduleMessage) {
 
 	if ($('#top_left_btn').hasClass('back_bt_class')) {
-		console.log("进入refreshModule" + type + "..." + identifier);
+		console.log("进入refreshModule " + type + "..." + identifier);
 
 		if (type === "uninstall") {
 			console.log("进入uninstall");
@@ -144,7 +144,7 @@ var refreshModule = function(identifier, type, moduleMessage) {
 			//已安装替换
 			//addModule(identifier, "install", moduleMessage);
 			//更新减一个
-			$(".module_li[moduletype='upgradable'][identifier='" + identifier + "']").remove();
+			$(".module_li[moduletype='upgrade'][identifier='" + identifier + "']").remove();
 			//未安装不变
 		} else if (type === "main") {
 			//addModule(identifier, "main", moduleMessage);
@@ -298,6 +298,8 @@ var curd_btn_click = function() {
 		var that = this; 
 		$(this).attr("disabled", "disabled");
 		var btn_title = $(this).html();
+
+
 		var showMessage = "确定"+btn_title +"该模块";
 		navigator.notification.confirm(
 			showMessage, // message
@@ -305,8 +307,8 @@ var curd_btn_click = function() {
 			function(buttonIndex) {
 				
 				if (buttonIndex === 1) {
-					alert("buttonIndex " + buttonIndex);
-					//$(that).removeAttr("disabled");
+					//alert("buttonIndex " + buttonIndex);
+					$(that).removeAttr("disabled");
 					return;
 				} else if (buttonIndex === 2) {
 				//	alert("buttonIndex " + buttonIndex);
@@ -323,11 +325,12 @@ var curd_btn_click = function() {
 					var identifier = $(that).attr("identifier");
 
 					var action = "";
+					//alert("action "+action);
 					if (type == "install") {
 						action = "uninstall";
 					} else if (type == "uninstall") {
 						action = "install";
-					} else if (type == "upgradable") {
+					} else if (type == "upgrade") {
 						action = "upgrade";
 					}
 					//开始安装、删除
@@ -335,7 +338,7 @@ var curd_btn_click = function() {
 						console.log("操作Callback");
 						checkModules();
 						$(that).removeAttr("disabled");
-						console.log("更新完成更改title");
+						console.log("更新完成更改title "+action);
 						$(that).html(btn_title);
 					});
 
@@ -345,6 +348,9 @@ var curd_btn_click = function() {
 			'提示信息', // title
 			'取消,确定' // buttonLabels
 		);
+
+
+
 
 
 		/*	if (btn_title == "安装") {
@@ -634,6 +640,9 @@ $("#searchInput").live("input propertychange", function() {
 
 			var titlename = $(module_li).children('div:nth-child(3)').children('div:nth-child(1)').html();
 			if (keyword !== "") {
+				console.log(keyword.length + "keyword 之前" +keyword);
+				keyword = trim(keyword);
+				console.log(keyword.length +"keyword 之后" +keyword);
 				if (titlename.toLowerCase().indexOf(keyword.toLowerCase()) < 0) {
 					$(module_li).hide();
 				} else {
@@ -889,6 +898,7 @@ $(".buttomContent .buttom_btn_group .btn").click(function() {
 		loadModuleList("CubeModuleList", type + "List", t, function() {
 			if ($('#listview_btn').hasClass('active')) {
 				listLayout();
+
 			}
 
 			if (myScroll) {

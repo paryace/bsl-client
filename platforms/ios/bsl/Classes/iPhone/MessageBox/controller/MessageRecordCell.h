@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageRecordCell :UITableViewCell{
+    UIView* bgView;
     UILabel* titleLabel;
     UILabel* contentLabel;
     UILabel* isReadLabel;

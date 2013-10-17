@@ -18,7 +18,6 @@ NSString* const kAPPKey = @"c7342d0390ac6be8da4bdae0fcde5edf";
 NSString* const  kPushServerReceiptsUrl=@"http://192.168.11.18:18860/push/api/receipts";
 NSString* const  kPushGetMessageUrl =@"http://192.168.11.18:18860/push/api/receipts/none-receipts";
 NSString* const  kAPPName=@"com.csair.impc";
-NSString* const  kDeviceRegisterUrl=@"http://192.168.11.18:18860/devices/register";
 int kXMPPPort= 5222;
 
 NSString* const kFileUploadUrl = @"http://192.168.11.18:18860/bsl-web/mam/attachment/clientUpload";

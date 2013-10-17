@@ -38,9 +38,6 @@ extern NSString* const kPushServerReceiptsUrl;
 //应用程序名字 可能没用了
 extern NSString* const kAPPName;
 
-//设备注册地址
-extern NSString* const kDeviceRegisterUrl;
-
 //xmpp port
 extern int kXMPPPort;
 

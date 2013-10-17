@@ -416,9 +416,9 @@
     for(DDXMLNode *node in [errorNode children]){
         //若错误节点有【冲突】
         if([[node name] isEqualToString:@"conflict"]){
-            dispatch_async(dispatch_get_main_queue(), ^{
+//            dispatch_async(dispatch_get_main_queue(), ^{
                 [ShareAppDelegate showExit];
-            });
+//            });
             return;
         }
     }

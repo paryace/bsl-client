@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
+		<key>移动运行网测试.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -38,6 +43,11 @@
 			<true/>
 		</dict>
 		<key>39E050E317F00AEA00BCF7F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39E9C3FA180EBAAA004CEF1D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

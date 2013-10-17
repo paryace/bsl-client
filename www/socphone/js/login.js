@@ -24,6 +24,19 @@ $("#login_btn").click(function() {
 
 });
 
+var clearPsw = function(){
+
+    var isRemember = $('#isRemember:checked').val();
+	if (isRemember === undefined) {
+		//alert("")
+		isRemember = "false";
+	}
+    alert(isRemember);
+    if(isRemember==="false"){
+        $("#password").val("");
+    }
+};
+
 var bodyHeight = $(window).height();
 $("body").css({
 	'height':bodyHeight+'px',
