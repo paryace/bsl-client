@@ -454,13 +454,13 @@ var loadModuleList = function(plugin, action, type, callback) {
 	//	isOver = isOver + 1;
 	var accountName = "";
 	//获取用户名
-	/*cordova.exec(function(account) {
+	cordova.exec(function(account) {
 		console.log("进入exec获取accountName");
 		var a = $.parseJSON(account);
 		accountName = a.accountname;
 		$('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
-		$(".mainContent").html("");
-		$(".mainContent").remove();
+		//$(".mainContent").html("");
+		//$(".mainContent").remove();
 
 
 	}, function(err) {
@@ -468,7 +468,7 @@ var loadModuleList = function(plugin, action, type, callback) {
 	}, "CubeAccount", "getAccount", []);
 	if (accountName !== "") {
 		accountName = " " + accountName + " ";
-	}*/
+	}
 
 	$(".mainContent").html("");
 	$(".mainContent").remove();
@@ -526,8 +526,8 @@ $('#top_left_btn')
 					'back_bt_class').addClass('btn-primary').addClass('btn').css('text-indent', '0px').css('background', '-webkit-gradient(linear, 10% 100%, 10% 100%, from(#5390d5), to(#60a5e1))').css('border', '2px solid #2a66a7');
 				$('#top_left_btn').css('width', '24px').css('height', '18px').html('<img class="set_img" src="img/set.png" style="top:-2px;">');
 				//开启欢迎光临
-				//$('.account_content').show();
-				//$('.searchContent').css("height", "60px");
+				$('.account_content').show();
+				$('.searchContent').css("height", "60px");
 
 				//返回刷新列表
 				$('#top_left_btn').removeClass("disabled");
@@ -850,8 +850,8 @@ $('#manager_btn')
 
 
 				//关闭欢迎光临
-				//$('.account_content').hide();
-				//$('.searchContent').css("height", "37px");
+				$('.account_content').hide();
+				$('.searchContent').css("height", "37px");
 				$('#top_left_btn .set_img').hide();
 				$('#top_left_btn')
 					.removeClass('btn').removeClass('btn-primary')
