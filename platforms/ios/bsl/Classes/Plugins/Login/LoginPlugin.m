@@ -151,10 +151,10 @@
                 
                 [defaults setObject:token forKey:@"token"];
                 [defaults setObject:userName forKey:@"LoginUser"];
-                [defaults setObject:[messageDictionary objectForKey:@"phone"] forKey:@"phone"];
-                [defaults setObject:[messageDictionary objectForKey:@"sex"] forKey:@"sex"];
-                [defaults setObject:[messageDictionary objectForKey:@"zhName"] forKey:@"zhName"];
-                [defaults setObject:[messageDictionary objectForKey:@"privileges"] forKey:@"privileges"];
+                //[defaults setObject:[messageDictionary objectForKey:@"phone"] forKey:@"phone"];
+                //[defaults setObject:[messageDictionary objectForKey:@"sex"] forKey:@"sex"];
+                //[defaults setObject:[messageDictionary objectForKey:@"zhName"] forKey:@"zhName"];
+                //[defaults setObject:[messageDictionary objectForKey:@"privileges"] forKey:@"privileges"];
                 //end ================
                 
                 [defaults synchronize];

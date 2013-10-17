@@ -144,9 +144,38 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
             if(exitDownMoule ){
                 return;
             }
-         
+            
+            
+            
+            NSURL *destURL = [[[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[self identifierWithBuild]] URLByAppendingPathExtension:@"zip"];
+
+            NSString* path=[destURL path];
+            HTTPRequest* request=[HTTPRequest requestWithURL:[NSURL URLWithString:downUrl]];
+            __block HTTPRequest*  __request=request;
+            request.timeOutSeconds=10.0f;
+            request.persistentConnectionTimeoutSeconds=10.0f;
+            [request setDownloadDestinationPath:path];
+            [request setCompletionBlock:^{
+                [self downloadFinished:destURL];
+                [__request cancel];
+            }];
+            
+            [request setFailedBlock:^{
+                [[CudeModuleDownDictionary shareModuleDownDictionary] removeObjectForKey:self.identifier];
+                self.isDownloading = NO;
+                [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_DETIALPAGE_INSTALLFAILED object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleDownloadDidFailNotification object:self];
+                [__request cancel];
+
+            }];
+            
+            [request startAsynchronous];
+            
+            /*
             NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:downUrl]];
             AFHTTPRequestOperation * httpConnection = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+            
+            
             
             [httpConnection setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 [self downloadFinished:responseObject];
@@ -160,6 +189,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
                [self setProgress:totalBytesExpectedToRead/totalBytesRead];
            }];
             [httpConnection start]; 
+             */
             [self downloadStarted];
         }
     }
@@ -204,20 +234,21 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleDownloadDidStartNotification object:self];
 }
 
--(void)downloadFinished:(id)downData{
+-(void)downloadFinished:(NSURL*)destURL{
     [[CudeModuleDownDictionary shareModuleDownDictionary] removeObjectForKey:self.identifier];
     NSLog(@"下载模块完成");
     self.isDownloading = NO;
     
     //save to local file
     
-    NSURL *destURL = [[[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[self identifierWithBuild]] URLByAppendingPathExtension:@"zip"];
+//    NSURL *destURL = [[[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[self identifierWithBuild]] URLByAppendingPathExtension:@"zip"];
+    /*
     if (![downData writeToURL:destURL atomically:YES]){
         NSLog(@"模块保存到本地失败");
         [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleDownloadDidFailNotification object:self];
             return;
     }
-    
+    */
     
     NSString* runtimeUrlPath=[[self runtimeURL]path];
     
@@ -242,20 +273,23 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
 
         }
         dispatch_sync(dispatch_get_main_queue(), ^{
+            //delete module local zip after installed
+            if(![[NSFileManager defaultManager] removeItemAtURL:destURL error:nil]){
+                NSLog(@"删除模块安装包失败，%@", error);
+            }
 
             if(!zipSuccess){
                 NSLog(@"模块解压失败，%@", error);
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"queue_module_download_progressupdate" object:self userInfo:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0.101],self.identifier,nil] forKeys:[NSArray arrayWithObjects:@"newProgress",@"key",nil]]];
                     
-                    
+                
+                
+                
+                self.isDownloading = NO;
                 [[NSNotificationCenter defaultCenter] postNotificationName:CubeModuleInstallDidFailNotification object:self];
                 [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_DETIALPAGE_INSTALLFAILED object:nil];
             }
             else{
-                //delete module local zip after installed
-                if(![[NSFileManager defaultManager] removeItemAtURL:destURL error:nil]){
-                    NSLog(@"删除模块安装包失败，%@", error);
-                }
                 
                 self.installed = YES;
                 

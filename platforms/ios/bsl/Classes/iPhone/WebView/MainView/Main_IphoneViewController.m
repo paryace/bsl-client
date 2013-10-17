@@ -353,10 +353,20 @@
 }
 
 -(void)moduleInstallFail:(NSNotification*)tion{
+    if (statusToolbar) {
+        int count = [self getDownMouleCount];
+        NSLog(@"count =%d , allcount =%d   last = %d",count,allDownCount,allDownCount - count);
+        if ( count <= 0 ) {
+            [self stopUILoading];
+        }else{
+            [self startUILoading];
+        }
+    }
     CubeModule* cube = [tion object];
     NSString * javaScript = [NSString stringWithFormat:@"updateProgress('%@',%d);",cube.identifier,101];
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
-    [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
+    if(![SVProgressHUD isVisible])
+        [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
 }
 
 -(void)updateAuthoShowTime:(NSString*)identifier{

@@ -408,6 +408,11 @@
 		394B98A518056BBA00F657D2 /* BaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394B98A318056BBA00F657D2 /* BaseNavViewController.m */; };
 		394B98A618056BBA00F657D2 /* BaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394B98A318056BBA00F657D2 /* BaseNavViewController.m */; };
 		394B98A718056BBA00F657D2 /* BaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394B98A318056BBA00F657D2 /* BaseNavViewController.m */; };
+		395E4A5D180FE66B0069B21C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 395E4A5C180FE66B0069B21C /* www */; };
+		395E4A5E180FE66B0069B21C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 395E4A5C180FE66B0069B21C /* www */; };
+		395E4A5F180FE66B0069B21C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 395E4A5C180FE66B0069B21C /* www */; };
+		395E4A60180FE66B0069B21C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 395E4A5C180FE66B0069B21C /* www */; };
+		395E4A61180FE66B0069B21C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 395E4A5C180FE66B0069B21C /* www */; };
 		3968621A17EE7C8800C84A6A /* RoomService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968621917EE7C8800C84A6A /* RoomService.m */; };
 		3968622017EE7CFB00C84A6A /* ContactSelectedForGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968621D17EE7CFB00C84A6A /* ContactSelectedForGroupViewController.m */; };
 		3968622117EE7CFB00C84A6A /* GroupMemberManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3968621F17EE7CFB00C84A6A /* GroupMemberManagerViewController.m */; };
@@ -490,7 +495,6 @@
 		39D9E81517F27C03001ED6F5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		39D9E81617F27C03001ED6F5 /* AlbumListLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623B17EE898300C84A6A /* AlbumListLine@2x.png */; };
 		39D9E81917F27C03001ED6F5 /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
-		39D9E81A17F27C03001ED6F5 /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		39D9E81B17F27C03001ED6F5 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FF817E8BFBA0067A023 /* DetailView.xib */; };
 		39D9E81C17F27C03001ED6F5 /* viewDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FFB17E8BFBA0067A023 /* viewDetail.xib */; };
 		39D9E81D17F27C03001ED6F5 /* ToolViewBkg_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968624817EE898300C84A6A /* ToolViewBkg_Black@2x.png */; };
@@ -688,7 +692,6 @@
 		39D9E8F517F27C03001ED6F5 /* ChatBackground_00@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3968623E17EE898300C84A6A /* ChatBackground_00@2x.jpg */; };
 		39D9E8F617F27C03001ED6F5 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5317F007FC00F9CA68 /* close.png */; };
 		39D9E8F717F27C03001ED6F5 /* f066.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D842217E8C77E0067A023 /* f066.png */; };
-		39D9E8F817F27C03001ED6F5 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 39FF0C2C17F189150086B76C /* www */; };
 		39D9E8F917F27C03001ED6F5 /* f067.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D842317E8C77E0067A023 /* f067.png */; };
 		39D9E8FA17F27C03001ED6F5 /* f068.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D842417E8C77E0067A023 /* f068.png */; };
 		39D9E8FB17F27C03001ED6F5 /* f069.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D842517E8C77E0067A023 /* f069.png */; };
@@ -1056,7 +1059,6 @@
 		39E050F017F00AEA00BCF7F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		39E050F117F00AEA00BCF7F8 /* AlbumListLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623B17EE898300C84A6A /* AlbumListLine@2x.png */; };
 		39E050F417F00AEA00BCF7F8 /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
-		39E050F517F00AEA00BCF7F8 /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		39E050F617F00AEA00BCF7F8 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FF817E8BFBA0067A023 /* DetailView.xib */; };
 		39E050F717F00AEA00BCF7F8 /* viewDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FFB17E8BFBA0067A023 /* viewDetail.xib */; };
 		39E050F817F00AEA00BCF7F8 /* ToolViewBkg_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968624817EE898300C84A6A /* ToolViewBkg_Black@2x.png */; };
@@ -1619,7 +1621,6 @@
 		39E9C407180EBAAA004CEF1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		39E9C408180EBAAA004CEF1D /* AlbumListLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623B17EE898300C84A6A /* AlbumListLine@2x.png */; };
 		39E9C409180EBAAA004CEF1D /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
-		39E9C40A180EBAAA004CEF1D /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		39E9C40B180EBAAA004CEF1D /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FF817E8BFBA0067A023 /* DetailView.xib */; };
 		39E9C40C180EBAAA004CEF1D /* viewDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FFB17E8BFBA0067A023 /* viewDetail.xib */; };
 		39E9C40D180EBAAA004CEF1D /* ToolViewBkg_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968624817EE898300C84A6A /* ToolViewBkg_Black@2x.png */; };
@@ -2265,7 +2266,6 @@
 		39FF09AC17F13CBB0086B76C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		39FF09AD17F13CBB0086B76C /* AlbumListLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623B17EE898300C84A6A /* AlbumListLine@2x.png */; };
 		39FF09B017F13CBB0086B76C /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
-		39FF09B117F13CBB0086B76C /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		39FF09B217F13CBB0086B76C /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FF817E8BFBA0067A023 /* DetailView.xib */; };
 		39FF09B317F13CBB0086B76C /* viewDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FFB17E8BFBA0067A023 /* viewDetail.xib */; };
 		39FF09B417F13CBB0086B76C /* ToolViewBkg_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968624817EE898300C84A6A /* ToolViewBkg_Black@2x.png */; };
@@ -2816,8 +2816,6 @@
 		39FF0C1417F13CBB0086B76C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		39FF0C1617F13CBB0086B76C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C023708B9AC24DB48757A8FC /* libPods.a */; };
 		39FF0C1D17F14FB10086B76C /* Config-soc.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FB117E8BFB90067A023 /* Config-soc.m */; };
-		39FF0C2D17F189150086B76C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 39FF0C2C17F189150086B76C /* www */; };
-		39FF0C2E17F189150086B76C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 39FF0C2C17F189150086B76C /* www */; };
 		5AA0E66D1729F45B000DC89A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0E66C1729F45B000DC89A /* OpenAL.framework */; };
 		5AA0E66F1729F460000DC89A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA0E66E1729F460000DC89A /* ImageIO.framework */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
@@ -2845,7 +2843,6 @@
 		F54D82BD17E8BFBB0067A023 /* Login_IpadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FDF17E8BFBA0067A023 /* Login_IpadViewController.m */; };
 		F54D82BE17E8BFBB0067A023 /* Login_IpadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */; };
 		F54D82BF17E8BFBB0067A023 /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FE417E8BFBA0067A023 /* MainViewViewController.m */; };
-		F54D82C017E8BFBB0067A023 /* MainViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */; };
 		F54D82C217E8BFBB0067A023 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FEA17E8BFBA0067A023 /* DataViewController.m */; };
 		F54D82C317E8BFBB0067A023 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FEC17E8BFBA0067A023 /* MenuViewController.m */; };
 		F54D82C417E8BFBB0067A023 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FEE17E8BFBA0067A023 /* RootViewController.m */; };
@@ -3961,6 +3958,7 @@
 		3926908B17F51F1C00F1500B /* line_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line_shadow@2x.png"; sourceTree = "<group>"; };
 		394B98A218056BBA00F657D2 /* BaseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavViewController.h; sourceTree = "<group>"; };
 		394B98A318056BBA00F657D2 /* BaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavViewController.m; sourceTree = "<group>"; };
+		395E4A5C180FE66B0069B21C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		3968621817EE7C8800C84A6A /* RoomService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomService.h; sourceTree = "<group>"; };
 		3968621917EE7C8800C84A6A /* RoomService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomService.m; sourceTree = "<group>"; };
 		3968621C17EE7CFB00C84A6A /* ContactSelectedForGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSelectedForGroupViewController.h; sourceTree = "<group>"; };
@@ -4076,7 +4074,6 @@
 		39F23A9C1805B2600035FCF8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		39FF0C1B17F13CBB0086B76C /* 移动运行网2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "移动运行网2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39FF0C1C17F13CBB0086B76C /* bsl copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl copy2-Info.plist"; path = "/Users/fanty/Documents/project/bsl-client/platforms/ios/bsl copy2-Info.plist"; sourceTree = "<absolute>"; };
-		39FF0C2C17F189150086B76C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		5AA0E66C1729F45B000DC89A /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		5AA0E66E1729F460000DC89A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		5AEE5B34173C68D80009041E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -4141,7 +4138,6 @@
 		F54D7FE017E8BFBA0067A023 /* Login_IpadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login_IpadViewController.xib; sourceTree = "<group>"; };
 		F54D7FE317E8BFBA0067A023 /* MainViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewViewController.h; sourceTree = "<group>"; };
 		F54D7FE417E8BFBA0067A023 /* MainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewViewController.m; sourceTree = "<group>"; };
-		F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewViewController.xib; sourceTree = "<group>"; };
 		F54D7FE917E8BFBA0067A023 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
 		F54D7FEA17E8BFBA0067A023 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 		F54D7FEB17E8BFBA0067A023 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -6069,7 +6065,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				39FF0C2C17F189150086B76C /* www */,
+				395E4A5C180FE66B0069B21C /* www */,
 				F840E1F0165FE0F500CFE078 /* config.xml */,
 				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -6512,7 +6508,6 @@
 			children = (
 				F54D7FE317E8BFBA0067A023 /* MainViewViewController.h */,
 				F54D7FE417E8BFBA0067A023 /* MainViewViewController.m */,
-				F54D7FE517E8BFBA0067A023 /* MainViewViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -7855,7 +7850,6 @@
 				30A0434914DC770100060A13 /* Localizable.strings in Resources */,
 				3968627417EE898300C84A6A /* AlbumListLine@2x.png in Resources */,
 				F54D82BE17E8BFBB0067A023 /* Login_IpadViewController.xib in Resources */,
-				F54D82C017E8BFBB0067A023 /* MainViewViewController.xib in Resources */,
 				F54D82C917E8BFBB0067A023 /* DetailView.xib in Resources */,
 				F54D82CB17E8BFBB0067A023 /* viewDetail.xib in Resources */,
 				3968628017EE898300C84A6A /* ToolViewBkg_Black@2x.png in Resources */,
@@ -8063,7 +8057,6 @@
 				3968627717EE898300C84A6A /* ChatBackground_00@2x.jpg in Resources */,
 				F5A96CB417F007FC00F9CA68 /* close.png in Resources */,
 				F54D84F717E8C77E0067A023 /* f066.png in Resources */,
-				39FF0C2D17F189150086B76C /* www in Resources */,
 				F54D84F817E8C77E0067A023 /* f067.png in Resources */,
 				F54D84F917E8C77E0067A023 /* f068.png in Resources */,
 				F54D84FA17E8C77E0067A023 /* f069.png in Resources */,
@@ -8245,6 +8238,7 @@
 				F54D856F17E8C77E0067A023 /* voiceSend.png in Resources */,
 				F54D857017E8C77E0067A023 /* voiceSend_select.png in Resources */,
 				F54D857117E8C77E0067A023 /* xmpp_01.png in Resources */,
+				395E4A5D180FE66B0069B21C /* www in Resources */,
 				39F02A001807C24300051656 /* privacy_tick@2x.png in Resources */,
 				F54D857217E8C77E0067A023 /* xmpp_02.png in Resources */,
 				F54D857317E8C77E0067A023 /* xmpp_arrow.png in Resources */,
@@ -8271,7 +8265,6 @@
 				18E9C5891803AB1200B874B8 /* 离线浏览_phone.png in Resources */,
 				18E9C5731803AB1200B874B8 /* cb_glossy_off.png in Resources */,
 				39D9E81917F27C03001ED6F5 /* Login_IpadViewController.xib in Resources */,
-				39D9E81A17F27C03001ED6F5 /* MainViewViewController.xib in Resources */,
 				39D9E81B17F27C03001ED6F5 /* DetailView.xib in Resources */,
 				39D9E81C17F27C03001ED6F5 /* viewDetail.xib in Resources */,
 				180F2383180D237D0037751C /* 152.png in Resources */,
@@ -8558,7 +8551,6 @@
 				39D9E8F517F27C03001ED6F5 /* ChatBackground_00@2x.jpg in Resources */,
 				39D9E8F617F27C03001ED6F5 /* close.png in Resources */,
 				39D9E8F717F27C03001ED6F5 /* f066.png in Resources */,
-				39D9E8F817F27C03001ED6F5 /* www in Resources */,
 				39D9E8F917F27C03001ED6F5 /* f067.png in Resources */,
 				39D9E8FA17F27C03001ED6F5 /* f068.png in Resources */,
 				39D9E8FB17F27C03001ED6F5 /* f069.png in Resources */,
@@ -8806,6 +8798,7 @@
 				39D9E9B417F27C03001ED6F5 /* voiceSend_select.png in Resources */,
 				18E9C4721803AB1200B874B8 /* FCTextFieldTableViewCell.xib in Resources */,
 				39D9E9B517F27C03001ED6F5 /* xmpp_01.png in Resources */,
+				395E4A60180FE66B0069B21C /* www in Resources */,
 				39F02A031807C24300051656 /* privacy_tick@2x.png in Resources */,
 				39D9E9B617F27C03001ED6F5 /* xmpp_02.png in Resources */,
 				39D9E9B717F27C03001ED6F5 /* xmpp_arrow.png in Resources */,
@@ -8827,7 +8820,6 @@
 				39E050F017F00AEA00BCF7F8 /* Localizable.strings in Resources */,
 				39E050F117F00AEA00BCF7F8 /* AlbumListLine@2x.png in Resources */,
 				39E050F417F00AEA00BCF7F8 /* Login_IpadViewController.xib in Resources */,
-				39E050F517F00AEA00BCF7F8 /* MainViewViewController.xib in Resources */,
 				39E050F617F00AEA00BCF7F8 /* DetailView.xib in Resources */,
 				39E050F717F00AEA00BCF7F8 /* viewDetail.xib in Resources */,
 				39E050F817F00AEA00BCF7F8 /* ToolViewBkg_Black@2x.png in Resources */,
@@ -9035,7 +9027,6 @@
 				39E051D117F00AEA00BCF7F8 /* ChatBackground_00@2x.jpg in Resources */,
 				39E051D217F00AEA00BCF7F8 /* close.png in Resources */,
 				39E051D317F00AEA00BCF7F8 /* f066.png in Resources */,
-				39FF0C2E17F189150086B76C /* www in Resources */,
 				39E051D417F00AEA00BCF7F8 /* f067.png in Resources */,
 				39E051D517F00AEA00BCF7F8 /* f068.png in Resources */,
 				39E051D617F00AEA00BCF7F8 /* f069.png in Resources */,
@@ -9217,6 +9208,7 @@
 				39E0528D17F00AEA00BCF7F8 /* voiceSend.png in Resources */,
 				39E0528E17F00AEA00BCF7F8 /* voiceSend_select.png in Resources */,
 				39E0528F17F00AEA00BCF7F8 /* xmpp_01.png in Resources */,
+				395E4A5E180FE66B0069B21C /* www in Resources */,
 				39F02A011807C24300051656 /* privacy_tick@2x.png in Resources */,
 				39E0529017F00AEA00BCF7F8 /* xmpp_02.png in Resources */,
 				39E0529117F00AEA00BCF7F8 /* xmpp_arrow.png in Resources */,
@@ -9238,7 +9230,6 @@
 				39E9C407180EBAAA004CEF1D /* Localizable.strings in Resources */,
 				39E9C408180EBAAA004CEF1D /* AlbumListLine@2x.png in Resources */,
 				39E9C409180EBAAA004CEF1D /* Login_IpadViewController.xib in Resources */,
-				39E9C40A180EBAAA004CEF1D /* MainViewViewController.xib in Resources */,
 				39E9C40B180EBAAA004CEF1D /* DetailView.xib in Resources */,
 				39E9C40C180EBAAA004CEF1D /* viewDetail.xib in Resources */,
 				39E9C40D180EBAAA004CEF1D /* ToolViewBkg_Black@2x.png in Resources */,
@@ -9627,6 +9618,7 @@
 				39E9C58C180EBAAA004CEF1D /* voicebtn.png in Resources */,
 				39E9C58D180EBAAA004CEF1D /* voiceSend.png in Resources */,
 				39E9C58E180EBAAA004CEF1D /* voiceSend_select.png in Resources */,
+				395E4A61180FE66B0069B21C /* www in Resources */,
 				39E9C58F180EBAAA004CEF1D /* xmpp_01.png in Resources */,
 				39E9C590180EBAAA004CEF1D /* xmpp_02.png in Resources */,
 				39E9C591180EBAAA004CEF1D /* xmpp_arrow.png in Resources */,
@@ -9648,7 +9640,6 @@
 				39FF09AC17F13CBB0086B76C /* Localizable.strings in Resources */,
 				39FF09AD17F13CBB0086B76C /* AlbumListLine@2x.png in Resources */,
 				39FF09B017F13CBB0086B76C /* Login_IpadViewController.xib in Resources */,
-				39FF09B117F13CBB0086B76C /* MainViewViewController.xib in Resources */,
 				39FF09B217F13CBB0086B76C /* DetailView.xib in Resources */,
 				39FF09B317F13CBB0086B76C /* viewDetail.xib in Resources */,
 				39FF09B417F13CBB0086B76C /* ToolViewBkg_Black@2x.png in Resources */,
@@ -10037,6 +10028,7 @@
 				39FF0B4617F13CBB0086B76C /* voicebtn.png in Resources */,
 				39FF0B4717F13CBB0086B76C /* voiceSend.png in Resources */,
 				39FF0B4817F13CBB0086B76C /* voiceSend_select.png in Resources */,
+				395E4A5F180FE66B0069B21C /* www in Resources */,
 				39FF0B4917F13CBB0086B76C /* xmpp_01.png in Resources */,
 				39FF0B4A17F13CBB0086B76C /* xmpp_02.png in Resources */,
 				39FF0B4B17F13CBB0086B76C /* xmpp_arrow.png in Resources */,
@@ -11657,7 +11649,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "移动运行网";
-				PROVISIONING_PROFILE = "B869874C-EE33-4FC2-8B98-3C1304017796";
+				PROVISIONING_PROFILE = "8311D818-DB95-4DD9-9E2C-A69F46ADE7F1";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -11694,7 +11686,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "移动运行网";
-				PROVISIONING_PROFILE = "B869874C-EE33-4FC2-8B98-3C1304017796";
+				PROVISIONING_PROFILE = "8311D818-DB95-4DD9-9E2C-A69F46ADE7F1";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
