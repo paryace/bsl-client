@@ -889,6 +889,7 @@ $('#manager_btn')
 				//关闭欢迎光临
 				$('.account_content').hide();
 				$('.searchContent').css("height", "37px");
+                /*
 				$('#top_left_btn .set_img').hide();
 				$('#top_left_btn')
 					.removeClass('btn').removeClass('btn-primary')
@@ -898,6 +899,7 @@ $('#manager_btn')
 				.css('background', "url('img/back.png') no-repeat")
 					.css('background-size', '50px 32px').html("返回").css('padding-top', '6px')
 					.css('border', '0px').css('text-align', 'center').css('text-indent', '5px');
+                 */
 				//设置左边按键class做标志
 
 				//$('#top_left_btn').removeClass("btn").css("background","url('img/nav_back@2x.ing') no-repeat").css("height","32px").css("width","48px");
