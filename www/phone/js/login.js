@@ -60,7 +60,7 @@ $("#LoginBtn").click(function() {
 	if($("#password").val()=="" || $("#password").val()==null ||$("#password").val()==undefined){
 		myPsw = null;
 	}
-	if(myPsw!=null && myPsw!=""){
+	if(myPsw !=undefined && myPsw!=null && myPsw!=""){
 		var password = myPsw;
 	}else{
 		var password = $("#password").val();
@@ -109,7 +109,7 @@ var app = {
 				//myPsw = data.password;
 			}
 			myPsw = data.password;
-			if(myPsw!==null && myPsw!==""){
+			if(myPsw !=undefined &&myPsw!==null && myPsw!==""){
 				$("#password").val("12345678");
 			}
 
