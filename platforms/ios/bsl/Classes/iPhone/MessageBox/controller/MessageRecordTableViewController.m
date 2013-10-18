@@ -606,9 +606,14 @@
         [cubeWebViewController loadWebPageWithModuleIdentifier:module.identifier didFinishBlock: ^(){
             NSLog(@"finish loading");
             [self.navigationController.navigationBar setHidden:NO];
-            
             [self.navigationController pushViewController:cubeWebViewController animated:YES];
-            
+            if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+                cubeWebViewController.closeButton.hidden = YES;
+                
+            }else{
+                cubeWebViewController.closeButton.hidden = NO;
+                
+            }
             
             cubeWebViewController = nil;
         }   didErrorBlock:^(){
