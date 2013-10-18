@@ -95,7 +95,7 @@ html,body,img,div,ul,li,a,h3{
 	/*height: 20px;
 	width: 24px;*/
 }
-.left_btn:hover,
+/*.left_btn:hover,
 .left_btn:focus,
 .left_btn:active,
 .left_btn.active,
@@ -104,9 +104,27 @@ html,body,img,div,ul,li,a,h3{
 	background: url('../img/settingbutton_click.ing') no-repeat;
 	background-size: 100% 100%;
 	border: none;
+}*/
+.left_btn:active{
+	background: url('../img/settingbutton_click.ing') no-repeat;
+	background-size: 100% 100%;
+	border: none;
 }
-
 .back_btn{
+	position: absolute;
+	background: url('../img/nav_back@2x.ing');
+	background-size: 100% 100%;
+	left: 10px;
+	height: 32px;
+	width: 50px;
+	top: 6px;
+	z-index: 2;
+}
+.back_btn:active{
+	background: url('../img/nav_back_active@2x.ing');
+	background-size: 100% 100%;
+}
+/*.back_btn:visited{
 	position: absolute;
 	background: url('../img/nav_back@2x.ing');
 	background-size: 100% 100%;
@@ -116,7 +134,16 @@ html,body,img,div,ul,li,a,h3{
 	top: 6px;
 	z-index: 2;
 }
-.back_btn:hover,
+.back_btn:active{
+	background: url('../img/nav_back_active@2x.ing');
+	background-size: 100% 100%;
+	left: 10px;
+	height: 32px;
+	width: 48px;
+	top: 6px;
+	z-index: 2;
+}*/
+/*.back_btn:hover,
 .back_btn:focus,
 .back_btn:active,
 .back_btn.active,
@@ -129,7 +156,7 @@ html,body,img,div,ul,li,a,h3{
 	width: 48px;
 	top: 6px;
 	z-index: 2;
-}
+}*/
 
 .right_btn:active , .right_btn:disabled, .right_btn:hover ,.right_btn.disabled{
 	background: url('../img/addmorebuttonclick.ing');
