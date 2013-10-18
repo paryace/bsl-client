@@ -132,7 +132,7 @@
             NSString* messageAlert =   [messageDictionary objectForKey:@"message"];
             NSNumber* number =  [messageDictionary objectForKey:@"result"];
             if ([number boolValue]) {
-                if(![messageDictionary valueForKey:@"hasOperation"])
+                if([[messageDictionary valueForKey:@"hasOperation"] isEqualToString:@"false"])
                 {
                     UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户没有操作权限请联系管理员" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [alert show];

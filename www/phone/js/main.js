@@ -488,13 +488,13 @@ var loadModuleList = function(plugin, action, type, callback) {
 	//	isOver = isOver + 1;
 	var accountName = "";
 	//获取用户名
-	/*cordova.exec(function(account) {
+	cordova.exec(function(account) {
 		console.log("进入exec获取accountName");
 		var a = $.parseJSON(account);
 		accountName = a.accountname;
 		$('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
-		$(".mainContent").html("");
-		$(".mainContent").remove();
+		//$(".mainContent").html("");
+		//$(".mainContent").remove();
 
 
 	}, function(err) {
@@ -502,7 +502,7 @@ var loadModuleList = function(plugin, action, type, callback) {
 	}, "CubeAccount", "getAccount", []);
 	if (accountName !== "") {
 		accountName = " " + accountName + " ";
-	}*/
+	}
 
 	$(".mainContent").html("");
 	$(".mainContent").remove();
@@ -558,7 +558,7 @@ $('#top_left_btn')
 				$('.buttomContent').css('display', 'none');
 
 
-				$('#title').html("变色龙");
+				$('#title').html("南航移动应用");
 				$('#manager_btn').show();
 				//$('#top_left_btn').addClass("btn").css("background","url('img/settingbutton.ing') no-repeat").css("width","24px").css("height","24px");
 
@@ -567,8 +567,8 @@ $('#top_left_btn')
 				
 
 				//开启欢迎光临
-				//$('.account_content').show();
-				//$('.searchContent').css("height", "60px");
+				$('.account_content').show();
+				$('.searchContent').css("height", "60px");
 
 				//返回刷新列表
 				//$('#top_left_btn').removeClass("disabled");
@@ -895,10 +895,10 @@ $('#manager_btn')
 
 
 				//关闭欢迎光临
-				//$('.account_content').hide();
-				//$('.searchContent').css("height", "37px");
-				//$('#top_left_btn').removeClass('left_btn');
-				//$('#top_left_btn').addClass('back_btn');
+				$('.account_content').hide();
+				$('.searchContent').css("height", "37px");
+				$('#top_left_btn').removeClass('left_btn');
+				$('#top_left_btn').addClass('back_btn');
 				//设置左边按键class做标志
 
 				//$('#top_left_btn').removeClass("btn").css("background","url('img/nav_back@2x.ing') no-repeat").css("height","32px").css("width","48px");

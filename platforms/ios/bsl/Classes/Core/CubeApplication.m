@@ -646,7 +646,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                     //remote_module.autoDownload = YES;
                     if (remote_module.autoDownload) {
                         //优化自动下载 zhoujn begin-----
-                        if(remote_module.privileges && remote_module.privileges.count==0)
+                        if([remote_module.privileges count]>0)
                         {
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                             NSString *userName = [defaults valueForKey:@"username"];
