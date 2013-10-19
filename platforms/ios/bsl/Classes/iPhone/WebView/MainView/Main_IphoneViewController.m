@@ -218,13 +218,20 @@
 -(void)checkModules{
     //检测是否需要自动安装
     
+    if([[NSUserDefaults standardUserDefaults] valueForKey:@"notFirstLogin"]!=nil){
+        [self checkAutoUpdate];
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"notFirstLogin"];
+
     @autoreleasepool {
 #ifndef MOBILE_BSL
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
 #else
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] availableModules];
 #endif
-        if(downloadArray && downloadArray.count>0){
+        if([downloadArray count]>0){
             NSMutableString *message = [[NSMutableString alloc] init];
             [message appendString:@"检测到有以下模块需要下载:\n"];
             for(CubeModule *module in downloadArray){

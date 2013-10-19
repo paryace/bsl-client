@@ -3,7 +3,10 @@ var myPsw = null;
 window.addEventListener("keydown", function(evt) {
 	if (evt.keyCode === 13) {
 		$("#LoginBtn").trigger("click");
+	}else if(evt.keyCode ===8){
+		myPsw = null;
 	}
+
 });
 $('input').focus(function() {
 	var keyword = $(this).val();
@@ -38,6 +41,7 @@ $("#username_del").click(function() {
 $("#password_del").click(function() {
 	$(this).parent().hide();
 	$("#password").val("");
+	myPsw = null;
 });
 $("#username,#password").live("input propertychange", function() {
 	var keyword = $(this).val();
@@ -60,7 +64,7 @@ $("#LoginBtn").click(function() {
 	if($("#password").val()=="" || $("#password").val()==null ||$("#password").val()==undefined){
 		myPsw = null;
 	}
-	if(myPsw!=undefined && myPsw!=null && myPsw!=""){
+	if(myPsw !=undefined && myPsw!=null && myPsw!=""){
 		var password = myPsw;
 	}else{
 		var password = $("#password").val();
@@ -109,8 +113,7 @@ var app = {
 				//myPsw = data.password;
 			}
 			myPsw = data.password;
-    
-			if(myPsw!== undefined &&myPsw!==null && myPsw!==""){
+			if(myPsw !=undefined &&myPsw!==null && myPsw!==""){
 				$("#password").val("12345678");
 			}
 

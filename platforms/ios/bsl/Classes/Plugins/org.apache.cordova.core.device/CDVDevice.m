@@ -22,6 +22,7 @@
 
 #import <Cordova/CDV.h>
 #import "CDVDevice.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @implementation UIDevice (ModelVersion)
 
@@ -77,6 +78,12 @@
     [devProps setObject:[device systemVersion] forKey:@"version"];
     [devProps setObject:[device uniqueAppInstanceIdentifier] forKey:@"uuid"];
     [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
+    
+    [devProps setObject:kAPPKey forKey:@"appKey"];
+    [devProps setObject:[[UIDevice currentDevice] uniqueDeviceIdentifier]  forKey:@"deviceId"];
+    [devProps setObject:[[NSBundle mainBundle]bundleIdentifier] forKey:@"appId"];
+
+    
 
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;

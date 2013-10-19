@@ -602,7 +602,7 @@
 //        }
 //        
         cubeWebViewController.startPage = [NSString stringWithFormat:@"%@?recordId=%@", moduleIndex, messageRecord.recordId];
-        
+        cubeWebViewController.showCloseButton = YES;
         [cubeWebViewController loadWebPageWithModuleIdentifier:module.identifier didFinishBlock: ^(){
             NSLog(@"finish loading");
             [self.navigationController.navigationBar setHidden:NO];

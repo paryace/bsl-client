@@ -521,28 +521,14 @@ void uncaughtExceptionHandler(NSException*exception){
             }
         }
         if ([updateTags length]> 0) {
-            
-            //暂时屏蔽username，phone连个标签
-            //        NSString* userName =[defaults valueForKey:@"username"] ;
             NSString* sex = [defaults valueForKey:@"sex"];
-            //        NSString* phone = [defaults valueForKey:@"phone"];
-            
-            
-            //        if (userName) {
-            //            updateTags= [updateTags stringByAppendingFormat:@"userName=%@",userName];
-            //            updateTags = [updateTags stringByAppendingString:@","];
-            //        }
             if (sex) {
                 updateTags= [updateTags stringByAppendingFormat:@"sex=%@",sex];
                 updateTags = [updateTags stringByAppendingString:@","];
             }
-            //        if (phone) {
-            //            updateTags= [updateTags stringByAppendingFormat:@"phone=%@",phone];
-            //            updateTags = [updateTags stringByAppendingString:@","];
-            //        }
             
         }
-        if ([updateTags length] > 0 ) {
+        if ([updateTags length] > 1 ) {
             updateTags =  [updateTags substringToIndex:[updateTags length] -1 ];
             updateTags = [updateTags stringByAppendingString:@"}"];
             NSString* urlStr = kUpdatePushTagsUrl;
@@ -550,7 +536,6 @@ void uncaughtExceptionHandler(NSException*exception){
             ASIFormDataRequest * tagRequest = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
             [tagRequest setPostValue:deviceID forKey:@"deviceId"];
             [tagRequest setPostValue:kAPPKey forKey:@"appId"];
-            //NSLog(@"=====%@",updateTags);
             [tagRequest setPostValue:updateTags forKey:@"tags"];
             [tagRequest setRequestMethod:@"PUT"];
             [tagRequest startAsynchronous];
@@ -569,17 +554,9 @@ void uncaughtExceptionHandler(NSException*exception){
 }
 
 -(void)didLogin{
-    //NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    
-    //异步加载xmpp actor
-//    if (!(BOOL)[defaults objectForKey:@"IMXMPP"]) {
+ 
         [self setupXmppStream];
-//    }
-    
-    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self updateCheckInTags];
-    //});
-    
+    [self updateCheckInTags];
     [self updateCollectionFriends];
     
     //开启访问 获取到未收到的推送信息

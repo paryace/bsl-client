@@ -30,7 +30,7 @@
         [json setValue:[defaults objectForKey:@"password"]  forKey:@"password"];
    
         [json setValue: [NSNumber numberWithBool:switchIsOn] forKey:@"isRemember"];
-        
+
         CDVPluginResult* pluginResult = nil;
         if (json) {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:json.JSONString];
@@ -142,6 +142,7 @@
                 NSString* token = [messageDictionary objectForKey:@"sessionKey"];
                                                 
                 NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+                
                 if ([userSwithch boolValue]) {
                     [defaults setBool:YES forKey:@"switchIsOn"];
                     [defaults setObject:userName forKey:@"username"];
