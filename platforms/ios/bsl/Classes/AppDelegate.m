@@ -503,6 +503,10 @@ void uncaughtExceptionHandler(NSException*exception){
         if ([privileges count]>0) {
             NSString* privilegeStr = @"";
             for (NSDictionary* privilege in privileges) {
+                if([[privilege objectForKey:@"name"] isEqual:[NSNull null]])
+                {
+                    continue;
+                }
                 NSString* name = [privilege objectForKey:@"name"];
                 if ([name length] > 0) {
                     privilegeStr = [privilegeStr stringByAppendingFormat:@"%@,",[privilege objectForKey:@"name"]];
@@ -546,7 +550,7 @@ void uncaughtExceptionHandler(NSException*exception){
             ASIFormDataRequest * tagRequest = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
             [tagRequest setPostValue:deviceID forKey:@"deviceId"];
             [tagRequest setPostValue:kAPPKey forKey:@"appId"];
-            //        NSLog(@"=====%@",updateTags);
+            //NSLog(@"=====%@",updateTags);
             [tagRequest setPostValue:updateTags forKey:@"tags"];
             [tagRequest setRequestMethod:@"PUT"];
             [tagRequest startAsynchronous];
