@@ -315,6 +315,7 @@
             cubeWebViewController=nil;
             cubeWebViewController  = [[CubeWebViewController alloc] init];
             cubeWebViewController.alwaysShowNavigationBar=self.alwaysShowNavigationBar;
+            cubeWebViewController.showCloseButton=self.showCloseButton;
             NSLog(@"CubeWebViewController: %@", cubeWebViewController);
             
             cubeWebViewController.webView.scrollView.bounces=NO;

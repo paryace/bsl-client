@@ -511,6 +511,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 
 -(void)syncWithString:(NSString*)aURL token:(NSString *)token{
    //判断网络是否可以使用
+    
     if (([Reachability reachabilityForInternetConnection].currentReachabilityStatus != NotReachable) &&
         ([Reachability reachabilityForLocalWiFi].currentReachabilityStatus != NotReachable)) {
             if(!syncing){
