@@ -38,6 +38,8 @@
 @synthesize emoctionList;
 @synthesize superViewHeight;
 @synthesize cancelRecond;
+@synthesize onlineStatus;
+@synthesize quitStatus;
 - (id)initWithFrame:(CGRect)frame{
     
     frame.size.height=PANNEL_HEIGHT+EC_PANEL_height;
@@ -258,22 +260,29 @@
     }
 }
 
--(void)hideAllControlPanel{
-    chatButton.hidden=YES;
-    textBgView.hidden=YES;
-    recordButton.hidden=YES;
-    textView.hidden=YES;
-    emoctionButton.hidden=YES;
-    addButton.hidden=YES;
-    
+-(void)checkAllControlPanel{
+    BOOL hidenAllControl=(self.quitStatus || !self.onlineStatus);
+    chatButton.hidden=hidenAllControl;
+    textBgView.hidden=hidenAllControl;
+    recordButton.hidden=hidenAllControl;
+    textView.hidden=hidenAllControl;
+    emoctionButton.hidden=hidenAllControl;
+    addButton.hidden=hidenAllControl;
+    [msgLabel removeFromSuperview];
+    msgLabel=nil;
 
-    UILabel* label=[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, PANNEL_HEIGHT)];
-    label.text=@"你已退出该群组";
-    label.backgroundColor=[UIColor clearColor];
-    label.textColor=[UIColor blackColor];
-    label.font=[UIFont systemFontOfSize:18.0f];
-    label.textAlignment=NSTextAlignmentCenter;
-    [chatPanelBgView addSubview:label];
+    if(hidenAllControl){
+        msgLabel=[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, PANNEL_HEIGHT)];
+        if(self.quitStatus)
+            msgLabel.text=@"你已退出该群组";
+        else
+            msgLabel.text=@"网络连接异常";
+        msgLabel.backgroundColor=[UIColor clearColor];
+        msgLabel.textColor=[UIColor blackColor];
+        msgLabel.font=[UIFont systemFontOfSize:18.0f];
+        msgLabel.textAlignment=NSTextAlignmentCenter;
+        [chatPanelBgView addSubview:msgLabel];
+    }
 }
 
 -(void)showChatOrKeyboard{

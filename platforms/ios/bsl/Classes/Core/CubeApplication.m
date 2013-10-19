@@ -623,7 +623,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                 
                 
             }else if(remote_module.build == local_module.build){
-                
+                remote_module.version=local_module.version;
+
                 [modules removeObject:local_module];
                 
                 [modules addObject:remote_module];

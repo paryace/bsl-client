@@ -29,6 +29,8 @@
     UIButton* emoctionButton;
     UIButton* addButton;
     
+    UILabel* msgLabel;
+    
     EmoctionPanel* emoctionPanel;
     CameraPanel* camerPanel;
     
@@ -42,10 +44,13 @@
 @property(nonatomic,assign) float superViewHeight;
 @property(nonatomic,assign) BOOL cancelRecond;
 
+@property(nonatomic,assign) BOOL onlineStatus;
+@property(nonatomic,assign) BOOL quitStatus;
+
 -(float)panelHeight;
 
 -(void)disableChatButton;
 
--(void)hideAllControlPanel;
+-(void)checkAllControlPanel;
 
 @end

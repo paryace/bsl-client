@@ -36,6 +36,8 @@
     int allDownCount;
     
     UIAlertView*  singleAlert;
+    
+    UIAlertView* failedAlert;
 }
 
 @property(strong,nonatomic) id selfObj;
@@ -119,8 +121,9 @@
         self.selfObj=nil;
         
     }didErrorBlock:^(){
-        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
+        [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+        failedAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [failedAlert show];
         self.navController=nil;
         self.selfObj=nil;
     }];
@@ -131,8 +134,10 @@
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
     [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
     singleAlert=nil;
+    failedAlert=nil;
     
     aCubeWebViewController=nil;
     
@@ -144,6 +149,9 @@
 
 
 - (void)dealloc{
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+    failedAlert=nil;
+    
     [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
     singleAlert=nil;
 
@@ -238,6 +246,9 @@
                 [message appendFormat:@"%@\n", module.name];
             }
             
+            [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+            failedAlert=nil;
+            
             [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
             
             singleAlert  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"立即下载" otherButtonTitles:@"取消",nil];
@@ -267,6 +278,8 @@
             //        [defaults setBool:NO forKey:@"firstTime"];
             if(![defaults boolForKey:@"firstTime"]){
                 [defaults setBool:YES forKey:@"firstTime"];
+                [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+                failedAlert=nil;
                 [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
                 singleAlert  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
                 singleAlert.tag =829;
@@ -375,8 +388,14 @@
     CubeModule* cube = [tion object];
     NSString * javaScript = [NSString stringWithFormat:@"updateProgress('%@',%d);",cube.identifier,101];
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
-    if(![SVProgressHUD isVisible])
-        [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
+    
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+    failedAlert=nil;
+    failedAlert=[[UIAlertView alloc] initWithTitle:@"网络连接失败，请稍后重试！" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [failedAlert show];
+    failedAlert=nil;
+    //if(![SVProgressHUD isVisible])
+    //    [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
 }
 
 -(void)updateAuthoShowTime:(NSString*)identifier{
@@ -444,9 +463,11 @@
             }
             UIViewController *localController = (UIViewController *)[[NSClassFromString(iphoneLocal) alloc] init];
             if(localController==nil){
-                UIAlertView* alertView=[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@模块不存在",module.name] message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alertView show];
-                alertView=nil;
+                [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+                failedAlert=nil;
+                failedAlert=[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@模块不存在",module.name] message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [failedAlert show];
+                failedAlert=nil;
                 return;
             }
             //[self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -548,6 +569,8 @@
             }
             
             self.selectedModule = module.identifier;
+            [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+            failedAlert=nil;
             [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
             singleAlert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 缺少依赖模块",module.name]
                                                                    message:message
@@ -579,8 +602,9 @@
         bCubeWebViewController=nil;
     }didErrorBlock:^(){
         NSLog(@"error loading %@", bCubeWebViewController.webView.request.URL);
-        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@模块加载失败。",bCubeWebViewController.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
+        [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+        failedAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@模块加载失败。",bCubeWebViewController.title] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [failedAlert show];
         bCubeWebViewController=nil;
     }];
 }
@@ -598,6 +622,8 @@
 
 #pragma mark - SettingView delegate
 -(void)ExitLogin{
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+    failedAlert=nil;
     [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
     singleAlert = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"是否确认退出登录?" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"取消", nil];
     singleAlert.tag = 1;
@@ -612,6 +638,10 @@
 
 #pragma mark - alerview Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if([alertView isEqual:failedAlert]){
+        failedAlert=nil;
+        return;
+    }
     singleAlert=nil;
     if(alertView.tag ==829){
         if(buttonIndex == 0){

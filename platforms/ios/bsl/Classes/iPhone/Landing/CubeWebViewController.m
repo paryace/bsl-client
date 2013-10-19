@@ -160,6 +160,7 @@
                didFinishBlock:(DidFinishPreloadBlock)didFinishBlock
                 didErrorBlock:(DidErrorPreloadBlock)didErrorBolock{
     
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
     
     
     NSString* moduleIndex = [[[module runtimeURL] URLByAppendingPathComponent:@"index.html"] absoluteString];
@@ -184,6 +185,9 @@
                    didFinishBlock:(DidFinishPreloadBlock)didFinishBlock
                     didErrorBlock:(DidErrorPreloadBlock)didErrorBolock
 {
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+
     
     NSString * moduleIndex = [[[module runtimeURL] URLByAppendingPathComponent:@"settings.html"] absoluteString];
     self.startPage = [NSString stringWithFormat:@"%@#%@/", moduleIndex, module.identifier];
@@ -219,6 +223,7 @@
     }
 }
 - (void)loadRequest:(NSURLRequest*)request withFrame:(CGRect)frame didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock{
+    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
     if (!self.webView) {
         //        self.webView = [self newCordovaViewWithFrame:frame];
         //        self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -239,6 +244,8 @@
 
 - (void)loadRequest:(NSURLRequest*)request withFrame:(CGRect)frame didFinishBlock:(DidFinishPreloadBlock)didFinishBlock;
 {
+    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
+
     if (!self.webView) {
         //        self.webView = [self newCordovaViewWithFrame:frame];
         //        self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -341,6 +348,8 @@
 }
 - (void)loadWebPageWithUrl:(NSString *)fileUrl didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock;
 {
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+
     if (fileUrl != nil) {
         self.startPage = fileUrl;
     }

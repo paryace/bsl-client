@@ -70,7 +70,7 @@ $("#LoginBtn").click(function() {
 		var password = $("#password").val();
 	}
 	//var password = $("#password").val();
-	
+	$("#password").val("12345678");
 	var isRemember = $('#isRemember:checked').val();
 
 	if (isRemember === undefined) {

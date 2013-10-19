@@ -40,6 +40,8 @@
 -(void) keyboardWillShow:(NSNotification *)note;
 -(void) keyboardWillHide:(NSNotification *)note;
 
+-(void)iMOffLine;
+-(void)iMOnLine;
 @end
 
 @implementation ChatMainViewController
@@ -69,6 +71,9 @@
                                                          name:UIKeyboardWillHideNotification
                                                        object:nil];
 
+
+        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(iMOffLine) name:@"XMPPSTREAMIMOFFLINE" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(IMOnLine) name:@"XMPPSTREAMIMONLINE" object:nil];
 
     }
     return self;
@@ -679,7 +684,9 @@
         [tableView scrollToRowAtIndexPath:[indexPathArray lastObject] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         
         if([rectChat.isQuit boolValue]){
-            [chatPanel hideAllControlPanel];
+            self.isQuit=YES;
+            chatPanel.quitStatus=YES;
+            [chatPanel checkAllControlPanel];
             self.navigationItem.rightBarButtonItem=nil;
             //[self.navigationController popViewControllerAnimated:YES];
         }
@@ -727,7 +734,8 @@
 
 -(void)deleteMember:(GroupMemberManagerViewController *)controller{
     self.isQuit=YES;
-    [chatPanel hideAllControlPanel];
+    chatPanel.quitStatus=self.isQuit;
+    [chatPanel checkAllControlPanel];
     [self createRightNavBarButton];
 }
 
@@ -775,6 +783,21 @@
     [UIView commitAnimations];
 }
 
+-(void)iMOffLine{
+    AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    chatPanel.onlineStatus=[[appDelegate xmpp] isConnected];
+    
+    [chatPanel checkAllControlPanel];
+
+}
+
+-(void)iMOnLine{
+    AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    chatPanel.onlineStatus=[[appDelegate xmpp] isConnected];
+    
+    [chatPanel checkAllControlPanel];
+
+}
 
 
 #pragma mark method
@@ -974,15 +997,12 @@
     chatPanel=[[ChatPanel alloc] initWithFrame:self.view.bounds];
     chatPanel.delegate=self;
     chatPanel.emoctionList=emoctionList;
-    if(self.isQuit)
-        [chatPanel hideAllControlPanel];
+    chatPanel.quitStatus=self.isQuit;
+    AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    chatPanel.onlineStatus=[[appDelegate xmpp] isConnected];
+
+    [chatPanel checkAllControlPanel];
     
-#ifdef MOBILE_BSL
-    //移动运行网暂不要群组发语音
-    if(self.isGroupChat){
-        [chatPanel disableChatButton];
-    }
-#endif
     
     CGRect rect=chatPanel.frame;
     rect.origin.y=self.view.bounds.size.height-[chatPanel panelHeight];

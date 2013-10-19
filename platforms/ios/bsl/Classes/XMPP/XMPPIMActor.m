@@ -143,6 +143,7 @@
     
     if (!xmppReconnect) {
         xmppReconnect = [[XMPPReconnect alloc] init];
+        [xmppReconnect setReconnectTimerInterval:10];
         [xmppReconnect activate:xmppStream];
     }
 
@@ -189,8 +190,9 @@
         [self goOffLine];
         [xmppStream disconnect];
         [roomService tearDown];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"XMPPSTREAMIMOFFLINE" object:nil];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"XMPPSTREAMIMOFFLINE" object:nil];
+
 }
 
 -(void)connectDriver{
@@ -242,7 +244,7 @@
     userId = [userId stringByAppendingFormat:@"@%@",kXMPPDomin];
     
     [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"Cube_Client"]];
-    
+    [xmppStream setKeepAliveInterval:10.0f];
     [xmppStream setHostName:kXMPPHost];
 	[xmppStream setHostPort:kXMPPPort];
     
