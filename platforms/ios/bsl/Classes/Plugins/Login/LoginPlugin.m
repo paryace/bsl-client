@@ -139,6 +139,12 @@
                     alert=nil;
                     return;
                 }
+//                NSMutableDictionary *json = [NSMutableDictionary dictionary];
+//                [json setValue:@"true" forKey:@"isSuccess"];
+//                
+//                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsString:json.JSONString];
+//                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//                return;
                 NSString* token = [messageDictionary objectForKey:@"sessionKey"];
                                                 
                 NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -166,6 +172,9 @@
                 //end ================
                 
                 [defaults synchronize];
+                
+                
+                
                 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [appDelegate didLogin];
 
