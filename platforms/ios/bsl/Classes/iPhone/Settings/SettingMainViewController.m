@@ -297,9 +297,10 @@
         }
         
         //植入界面
-        if (!cubeWebViewController) {
-            cubeWebViewController  = [[CubeWebViewController alloc] init];
-        }
+
+        cubeWebViewController=nil;
+        cubeWebViewController  = [[CubeWebViewController alloc] init];
+        cubeWebViewController.showCloseButton=YES;
         cubeWebViewController.title=module.name;
         
         

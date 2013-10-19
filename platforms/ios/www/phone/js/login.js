@@ -93,6 +93,12 @@ $("#LoginBtn").click(function() {
 	}, "CubeLogin", "login", [username, password, isRemember]);
 
 });
+
+/*var bodyHeight = $(window).height();
+$("body").css({
+	'height':bodyHeight+'px',
+	'min-height':bodyHeight+'px'
+});*/
 var app = {
 	initialize: function() {
 		this.bindEvents();
@@ -105,7 +111,11 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-	
+		var bodyHeight = $(window).height();
+		$("body").css({
+			'height': bodyHeight + 'px',
+			'min-height': bodyHeight + 'px'
+		});
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
 			$("#username").val(data.username);
@@ -116,9 +126,9 @@ var app = {
 				//myPsw = data.password;
 			}
 			myPsw = data.password;
-                     alert("1 ="+myPsw);
+                   //  alert("1 ="+myPsw);
 			if(myPsw !=undefined &&myPsw!==null && myPsw!==""){
-                     alert("2");
+                   //  alert("2");
 				$("#password").val("12345678");
 			}
 

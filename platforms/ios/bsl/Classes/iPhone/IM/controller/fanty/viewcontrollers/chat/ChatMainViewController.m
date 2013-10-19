@@ -119,6 +119,7 @@
     rect.size.height-=[chatPanel panelHeight];
     
     tableView=[[TouchTableView alloc] initWithFrame:rect style:UITableViewStylePlain];
+    tableViewHeight=tableView.frame.size.height;
     tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     tableView.dataSource=self;
     tableView.delegate=self;
@@ -749,7 +750,7 @@
     [UIView setAnimationCurve:[curve intValue]];
     
     CGRect containerFrame = tableView.frame;
-    containerFrame.size.height-=keyboardBounds.size.height;
+    containerFrame.size.height=tableViewHeight-keyboardBounds.size.height;
     tableView.frame=containerFrame;
 	
     [UIView commitAnimations];
@@ -768,7 +769,7 @@
     [UIView setAnimationCurve:[curve intValue]];
 	
     CGRect containerFrame = tableView.frame;
-    containerFrame.size.height+=keyboardBounds.size.height;
+    containerFrame.size.height=tableViewHeight;
     tableView.frame=containerFrame;
 	
     [UIView commitAnimations];
