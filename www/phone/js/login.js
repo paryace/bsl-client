@@ -91,11 +91,11 @@ $("#LoginBtn").click(function() {
 
 });
 
-var bodyHeight = $(window).height();
+/*var bodyHeight = $(window).height();
 $("body").css({
 	'height':bodyHeight+'px',
 	'min-height':bodyHeight+'px'
-});
+});*/
 var app = {
 	initialize: function() {
 		this.bindEvents();
@@ -108,7 +108,11 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-	
+		var bodyHeight = $(window).height();
+		$("body").css({
+			'height': bodyHeight + 'px',
+			'min-height': bodyHeight + 'px'
+		});
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
 			$("#username").val(data.username);
