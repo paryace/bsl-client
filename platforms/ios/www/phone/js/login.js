@@ -99,22 +99,26 @@ $("body").css({
 	'min-height':bodyHeight+'px'
 });*/
 
-setTimeout(function() {
-	var bodyHeight = $(window).height();
+var loadLogin = function(){
+    var bodyHeight = $(window).height();
+    
+    $("body").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+    
+    $("html").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+}
 
-	$("body").css({
-		'height': bodyHeight + 'px'
-		// ,
-		// 'min-height': bodyHeight + 'px'
-	});
-
-	$("html").css({
-		'height': bodyHeight + 'px'
-	});
-}, 300);
 var app = {
 	initialize: function() {
 		this.bindEvents();
+        loadLogin();
 	},
 	bindEvents: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
