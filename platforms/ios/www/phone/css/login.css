@@ -1,25 +1,18 @@
 
 /*background:url(img/bottom.png);background-size:cover;
 background-repeat:no-repeat;background-position:bottom center;*/
-html{
-background:-webkit-gradient(linear, 10% 100%, 10% 100%, from(#4da9e7), to(#51aae6));
-}
 body {
 	color: #BEBEBE;
 	height: 100%;
 	position: relative;
-	/*background-image: url(../img/login_background_all.ing);
+	background-image: url(../img/login_background_all2.ing);
 	background-repeat: no-repeat;
 	background-position:bottom center;
 	bottom: 0px;
-	background-size:cover;*/
-	/*background-color: #55bdf4;*/
-	background:-webkit-gradient(linear, 10% 100%, 10% 100%, from(#4da9e7), to(#51aae6));
-	background-size: 100%;
+	background-size:cover;
 	/*overflow: hidden;*/
 	margin: 0px;
 }
-
 /*body{
 	position: relative;
 	height: 100%;
