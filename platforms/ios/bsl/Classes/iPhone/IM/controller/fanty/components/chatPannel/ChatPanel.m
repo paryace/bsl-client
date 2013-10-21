@@ -656,8 +656,9 @@
 
 -(void)sendEmoction:(EmoctionPanel *)emoction{
     
-    [textView resignFirstResponder];
+    //[textView resignFirstResponder];
     
+    /*
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
         
         CGRect containerFrame = self.frame;
@@ -672,7 +673,7 @@
         camerPanel=nil;
 
     }];
-    
+    */
     if([self.delegate respondsToSelector:@selector(chatPanelDidSend:)])
         [self.delegate chatPanelDidSend:self];
 
@@ -741,5 +742,16 @@
 	[UIView commitAnimations];
 }
 
+-(void)setFrame:(CGRect)value{
+    [super setFrame:value];
+    if(value.origin.y==superViewHeight-chatPanelBgView.frame.size.height){
+        [self.delegate chatPanelKeyworkShow:0.0f];
+    }
+    else{
+        [self.delegate chatPanelKeyworkShow:value.origin.y];
+
+    }
+
+}
 
 @end

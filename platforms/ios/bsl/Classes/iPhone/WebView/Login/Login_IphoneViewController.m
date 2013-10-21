@@ -19,24 +19,6 @@
 @end
 
 @implementation Login_IphoneViewController
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-            self.edgesForExtendedLayout = UIRectEdgeNone;
-            self.extendedLayoutIncludesOpaqueBars = NO;
-            self.modalPresentationCapturesStatusBarAppearance = NO;
-        }  
-#endif  
-    }
-    return self;
-}
-
-
 -(id)init{
     self=[super init];
     if(self){
@@ -50,7 +32,6 @@
     return self;
 }
 - (void)viewDidLoad{
-
     [super viewDidLoad];
 
     UIImage* img=nil;
@@ -67,7 +48,9 @@
 
     [self.view addSubview:bgImageView];
 
-
+    
+    [aCubeWebViewController.view removeFromSuperview];
+    aCubeWebViewController=nil;
     aCubeWebViewController  = [[CubeWebViewController alloc] init];
     //aCubeWebViewController.title=module.name;
     //加载本地的登录界面页
@@ -75,18 +58,14 @@
     aCubeWebViewController.title=@"登录";
     aCubeWebViewController.wwwFolderName = @"www";
     aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/login.html"] absoluteString];
-    
+    [self.view addSubview:aCubeWebViewController.view];
     aCubeWebViewController.view.frame = self.view.bounds;
     aCubeWebViewController.view.hidden=YES;
+    aCubeWebViewController.webView.scrollView.bounces=NO;
     NSLog(@"start load WebView date = %@",[NSDate date]);
     [aCubeWebViewController loadWebPageWithUrl: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/login.html"] absoluteString] didFinishBlock: ^(){
-        aCubeWebViewController.view.hidden=NO;
-        aCubeWebViewController.closeButton.hidden = YES;
-        [aCubeWebViewController viewWillAppear:NO];
-        [self.view addSubview:aCubeWebViewController.view];
-        [aCubeWebViewController viewDidAppear:NO];
-        aCubeWebViewController.webView.scrollView.bounces=NO;
-        NSLog(@"finish load WebView date = %@",[NSDate date]);
+        [self performSelector:@selector(showWebViewController) withObject:nil afterDelay:0.7f];
+
     }didErrorBlock:^(){
         aCubeWebViewController.closeButton.hidden = YES;
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -94,10 +73,19 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning
-{
+-(void)showWebViewController{
+    aCubeWebViewController.view.hidden=NO;
+    aCubeWebViewController.closeButton.hidden = YES;
+    [aCubeWebViewController viewWillAppear:NO];
+    [aCubeWebViewController viewDidAppear:NO];
+    NSLog(@"finish load WebView date = %@",[NSDate date]);
+
+}
+
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    
+    [aCubeWebViewController.view removeFromSuperview];
+    aCubeWebViewController=nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated{

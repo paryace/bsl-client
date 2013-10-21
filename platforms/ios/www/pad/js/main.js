@@ -9,6 +9,17 @@ var myScroll = new iScroll('mainContent', {
 	checkDOMChanges: true
 });
 
+
+$(".middleContent").bind("touchstart",function(){
+	console.log("点击了middleContent");
+	$(".menuItem").removeClass("active");
+	if($(".moduleManageBar").css("display") =="none"){
+		//var type = $(this).attr("data");
+		$(".menuItem[data='home']").addClass("active");
+	}else{
+		$(".menuItem[data='module']").addClass("active");
+	}
+});
 $("#search_del").click(function() {
 	console.log("点击了图标");
 	$("#searchInput").val("");

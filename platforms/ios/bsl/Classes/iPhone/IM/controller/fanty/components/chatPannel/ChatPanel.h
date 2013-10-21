@@ -17,6 +17,9 @@
 -(void)chatPanelRecordTouch:(ChatPanel*)chatPanel isTouch:(BOOL)touch;
 -(void)chatPanelRecordCancel:(ChatPanel*)chatPanel;
 -(void)chatPanelDidSelectedAdd:(ChatPanel*)chatPanel;
+
+-(void)chatPanelKeyworkShow:(int)height;
+
 @end
 
 @interface ChatPanel : UIView{

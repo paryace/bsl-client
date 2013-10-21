@@ -37,9 +37,6 @@
 -(void)rightActionClick;
 -(void)rightGroupClick;
 
--(void) keyboardWillShow:(NSNotification *)note;
--(void) keyboardWillHide:(NSNotification *)note;
-
 -(void)iMOffLine;
 -(void)IMOnLine;
 @end
@@ -59,22 +56,12 @@
             self.extendedLayoutIncludesOpaqueBars = NO;
             self.modalPresentationCapturesStatusBarAppearance = YES;
         }
-        
+
         playingIndex=-1;
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardWillShow:)
-                                                     name:UIKeyboardWillShowNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardWillHide:)
-                                                     name:UIKeyboardWillHideNotification
-                                                   object:nil];
-        
-        
+
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(iMOffLine) name:@"XMPPSTREAMIMOFFLINE" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(IMOnLine) name:@"XMPPSTREAMIMONLINE" object:nil];
-        
+
     }
     return self;
 }
@@ -90,7 +77,7 @@
     recorder.delegate=self;
     
     chatLogic=[[ChatLogic alloc] init];
-    
+
     if(self.isGroupChat)
         chatLogic.roomJID=self.messageId;
     
@@ -101,12 +88,12 @@
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"emotionResource" ofType:@"plist"];
     emoctionList = [[NSDictionary alloc]initWithContentsOfFile:path];
-    
+
     CGRect rect=self.view.frame;
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
         rect.size.width =CGRectGetHeight(self.view.frame)/2+2;
         rect.size.height= CGRectGetWidth(self.view.frame)-self.navigationController.navigationBar.bounds.size.height;
-        
+
         //rect.size.height=768.0f-self.navigationController.navigationBar.bounds.size.height-20.0f;
     }
     else{
@@ -115,7 +102,7 @@
     if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
         rect.size.height-=20.0f;
     }
-    
+
     self.view.frame=rect;
     
     self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"ChatBackground_00.jpg"]];
@@ -133,7 +120,7 @@
     tableView.showsVerticalScrollIndicator=NO;
     tableView.backgroundColor=[UIColor clearColor];
     [self.view addSubview:tableView];
-    
+     
     [self.view addSubview:chatPanel];
     
     [self loadLocalData];
@@ -166,11 +153,11 @@
     
     tableView=nil;
     chatPanel=nil;
-    
+
     [chatLogic cancel];
     chatLogic=nil;
     messageArray=nil;
-    
+        
     fetchController.delegate=nil;
     fetchController=nil;
     
@@ -184,11 +171,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[GTGZImageDownloadedManager sharedInstance] removeAll];
     [VoiceUploadManager sharedInstance].delegate=nil;
-    
+
     self.messageId=nil;
     self.chatName=nil;
     chatLogic=nil;
-    
+
     fetchController.delegate=nil;
     [recorder stop];
     recorder=nil;
@@ -221,17 +208,17 @@
 - (CGFloat)tableView:(UITableView *)_tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     //id obj=[messageArray objectAtIndex:[indexPath row]];
     //if([[obj class] isSubclassOfClass:[MessageEntity class]]){
-    MessageEntity *messageEntity = (MessageEntity*)[messageArray objectAtIndex:[indexPath row]];
-    
-    if([messageEntity.type isEqualToString:@"voice"]){
-        return [VoiceCell cellHeight:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
-    }
-    else if([messageEntity.type isEqualToString:@"image"]){
-        return [ChatImageCell cellHeight:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
-    }
-    else{
-        return [ChatCell cellHeight:messageEntity.content bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse) emoctionList:emoctionList]+10.0f;
-    }
+        MessageEntity *messageEntity = (MessageEntity*)[messageArray objectAtIndex:[indexPath row]];
+        
+        if([messageEntity.type isEqualToString:@"voice"]){
+            return [VoiceCell cellHeight:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
+        }
+        else if([messageEntity.type isEqualToString:@"image"]){
+            return [ChatImageCell cellHeight:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
+        }
+        else{
+            return [ChatCell cellHeight:messageEntity.content bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse) emoctionList:emoctionList]+10.0f;
+        }
     //}
     //else{
     //    return 30.0f;
@@ -243,86 +230,86 @@
     //id obj=[messageArray objectAtIndex:[indexPath row]];
     
     //if([[obj class] isSubclassOfClass:[MessageEntity class]]){
-    MessageEntity *messageEntity = (MessageEntity*)[messageArray objectAtIndex:[indexPath row]];
-    
-    if([messageEntity.type isEqualToString:@"voice"]){
-        VoiceCell *cell = (VoiceCell*)[_tableView dequeueReusableCellWithIdentifier:@"voice_cell"];
-        if(cell == nil){
-            cell = [[VoiceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"voice_cell"] ;
-            [cell addVoiceButton:self action:@selector(voiceButtonClick:)];
-            
-            CGRect rect=cell.frame;
-            rect.size.width=tableView.frame.size.width;
-            cell.frame=rect;
+        MessageEntity *messageEntity = (MessageEntity*)[messageArray objectAtIndex:[indexPath row]];
+
+        if([messageEntity.type isEqualToString:@"voice"]){
+            VoiceCell *cell = (VoiceCell*)[_tableView dequeueReusableCellWithIdentifier:@"voice_cell"];
+            if(cell == nil){
+                cell = [[VoiceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"voice_cell"] ;
+                [cell addVoiceButton:self action:@selector(voiceButtonClick:)];
+                
+                CGRect rect=cell.frame;
+                rect.size.width=tableView.frame.size.width;
+                cell.frame=rect;
+            }
+            cell.type=([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse);
+            [cell headerUrl:@""];
+            [cell name:[messageEntity name]];
+            [cell sendDate:messageEntity.sendDate];
+            [cell playAnimated:([messageEntity.statue intValue]==1 && (playingIndex==[indexPath row]))];
+            [cell voiceLength:1 animate:NO];
+            cell.status=[messageEntity.statue intValue];
+            cell.tag=[indexPath row];
+            return cell;
         }
-        cell.type=([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse);
-        [cell headerUrl:@""];
-        [cell name:[messageEntity name]];
-        [cell sendDate:messageEntity.sendDate];
-        [cell playAnimated:([messageEntity.statue intValue]==1 && (playingIndex==[indexPath row]))];
-        [cell voiceLength:1 animate:NO];
-        cell.status=[messageEntity.statue intValue];
-        cell.tag=[indexPath row];
-        return cell;
-    }
-    else if([messageEntity.type isEqualToString:@"notification"]){
-        UITableViewCell *cell = (UITableViewCell*)[_tableView dequeueReusableCellWithIdentifier:@"notification_cell"];
+        else if([messageEntity.type isEqualToString:@"notification"]){
+            UITableViewCell *cell = (UITableViewCell*)[_tableView dequeueReusableCellWithIdentifier:@"notification_cell"];
+            if(cell == nil){
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"notification_cell"] ;
+                cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            }
+            cell.textLabel.textColor=[UIColor grayColor];
+            cell.textLabel.font=[UIFont systemFontOfSize:16.0f];
+            cell.textLabel.textAlignment=NSTextAlignmentCenter;
+            cell.textLabel.text=messageEntity.content;
+            return cell;
+
+        }
+        else if([messageEntity.type isEqualToString:@"image"]){
+            ChatImageCell *cell = (ChatImageCell*)[_tableView dequeueReusableCellWithIdentifier:@"image_cell"];
+            if(cell == nil){
+                cell = [[ChatImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_cell"] ;
+                cell.delegate=self;
+                CGRect rect=cell.frame;
+                rect.size.width=tableView.frame.size.width;
+                cell.frame=rect;
+            }
+            [cell headerUrl:@"" name:[messageEntity name] imageFile:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
+            cell.tag=[indexPath row];
+            
+            return cell;
+
+        }
+        else{
+            ChatCell *cell = (ChatCell*)[_tableView dequeueReusableCellWithIdentifier:@"chat_cell"];
+            if(cell == nil){
+                cell = [[ChatCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chat_cell"] ;
+                CGRect rect=cell.frame;
+                rect.size.width=tableView.frame.size.width;
+                cell.frame=rect;
+            }
+            cell.emoctionList=emoctionList;
+            [cell headerUrl:@"" name:[messageEntity name] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
+            cell.tag=[indexPath row];
+
+            return cell;
+
+        }
+    //}
+    /*
+    else if([[obj class] isSubclassOfClass:[NSString class]]){
+        UITableViewCell *cell = (UITableViewCell*)[_tableView dequeueReusableCellWithIdentifier:@"date_cell"];
         if(cell == nil){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"notification_cell"] ;
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"date_cell"] ;
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
         }
         cell.textLabel.textColor=[UIColor grayColor];
         cell.textLabel.font=[UIFont systemFontOfSize:16.0f];
         cell.textLabel.textAlignment=NSTextAlignmentCenter;
-        cell.textLabel.text=messageEntity.content;
+        cell.textLabel.text=obj;
         return cell;
-        
     }
-    else if([messageEntity.type isEqualToString:@"image"]){
-        ChatImageCell *cell = (ChatImageCell*)[_tableView dequeueReusableCellWithIdentifier:@"image_cell"];
-        if(cell == nil){
-            cell = [[ChatImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"image_cell"] ;
-            cell.delegate=self;
-            CGRect rect=cell.frame;
-            rect.size.width=tableView.frame.size.width;
-            cell.frame=rect;
-        }
-        [cell headerUrl:@"" name:[messageEntity name] imageFile:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
-        cell.tag=[indexPath row];
-        
-        return cell;
-        
-    }
-    else{
-        ChatCell *cell = (ChatCell*)[_tableView dequeueReusableCellWithIdentifier:@"chat_cell"];
-        if(cell == nil){
-            cell = [[ChatCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chat_cell"] ;
-            CGRect rect=cell.frame;
-            rect.size.width=tableView.frame.size.width;
-            cell.frame=rect;
-        }
-        cell.emoctionList=emoctionList;
-        [cell headerUrl:@"" name:[messageEntity name] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
-        cell.tag=[indexPath row];
-        
-        return cell;
-        
-    }
-    //}
-    /*
-     else if([[obj class] isSubclassOfClass:[NSString class]]){
-     UITableViewCell *cell = (UITableViewCell*)[_tableView dequeueReusableCellWithIdentifier:@"date_cell"];
-     if(cell == nil){
-     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"date_cell"] ;
-     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-     }
-     cell.textLabel.textColor=[UIColor grayColor];
-     cell.textLabel.font=[UIFont systemFontOfSize:16.0f];
-     cell.textLabel.textAlignment=NSTextAlignmentCenter;
-     cell.textLabel.text=obj;
-     return cell;
-     }
-     return nil;
+    return nil;
      */
 }
 
@@ -346,20 +333,20 @@
         [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
         return;
     }
-    
-    
+
+
     
     NSString *content = [__chatPanel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if([content length]>0){
         if(![chatLogic sendMessage:content messageId:self.messageId isGroup:self.isGroupChat name:self.chatName]){
             [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
-            
+
             return;
         }
     }
     //把输入框清空
     __chatPanel.text = @"";
-    
+
 }
 
 -(void)chatPanelRecordTouch:(ChatPanel *)chatPanel isTouch:(BOOL)touch{
@@ -374,14 +361,14 @@
             [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
             return;
         }
-        
+
         for(UITableViewCell* cell in [tableView visibleCells]){
             if([cell isKindOfClass:[VoiceCell class]]){
                 [((VoiceCell*)cell) playAnimated:NO];
             }
         }
         playingIndex=-1;
-        
+
         
         if(recordingView==nil){
             recordingView=[[RecordingView alloc] initWithFrame:self.view.bounds];
@@ -391,14 +378,14 @@
         
         
         [recorder record];
-        
+
     }
     else{
         [recordingView stopAnimation];
         recordingView=nil;
         float addInterval=recorder.addInterval;
         [recorder stop];
-        
+    
         AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
         if (![[appDelegate xmpp] isConnected]) {
             [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
@@ -408,8 +395,8 @@
             [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
             return;
         }
-        
-        
+
+
         if(addInterval>1.5f){
             if(![[VoiceUploadManager sharedInstance] sendVoice:recorder.recordFile messageId:self.messageId isGroup:self.isGroupChat name:self.chatName uqId:nil])
                 [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
@@ -417,7 +404,7 @@
         else{
             [SVProgressHUD showErrorWithStatus:@"你讲话的时间太短了！"];
         }
-        
+
     }
 }
 
@@ -426,9 +413,9 @@
         [recorder removeRecord];
         [recordingView stopAnimation];
         recordingView=nil;
-        
+
     }
-    
+
 }
 
 -(void)chatPanelDidSelectedAdd:(ChatPanel*)chatPanel{
@@ -442,14 +429,14 @@
         [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
         return;
     }
-    
-    
+
+
     //fanty 暂屏蔽功能
     if([[[[UIDevice currentDevice] model] lowercaseString] rangeOfString:@"ipod"].length>0){
         UIActionSheet* sheet=[[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"从手机相片图库中选取" otherButtonTitles:nil, nil];
         sheet.actionSheetStyle=UIActionSheetStyleBlackTranslucent;
         [sheet showInView:self.view];
-        
+
     }
     else{
         UIActionSheet* sheet=[[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"从手机相片图库中选取", nil];
@@ -457,6 +444,15 @@
         [sheet showInView:self.view];
         
     }
+}
+
+-(void)chatPanelKeyworkShow:(int)height{
+    CGRect containerFrame = tableView.frame;
+    if(height>0)
+        containerFrame.size.height=height-containerFrame.origin.y;
+    else
+        containerFrame.size.height=tableViewHeight;
+    tableView.frame=containerFrame;
 }
 
 #pragma mark  chatimagecell delegate
@@ -485,7 +481,7 @@
     [self recordDidPlayFinish:__recorder];
     [SVProgressHUD showErrorWithStatus:@"文件不存在"];
     playingIndex=-1;
-    
+
 }
 
 -(void)recordTimeout:(Recorder *)__record{
@@ -538,7 +534,7 @@
         }
         popover.delegate=self;
         [popover presentPopoverFromRect:CGRectMake(0.0f, 0.0f, 320.0f, 600.0f) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        
+
     }
     else{
         [self presentViewController:picker animated:YES completion:^{}];
@@ -559,7 +555,7 @@
     popover.delegate=nil;
     [popover dismissPopoverAnimated:NO];
     popover=nil;
-    
+
 }
 
 
@@ -572,7 +568,7 @@
         
         AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
         if ([[appDelegate xmpp] isConnected]) {
-            
+
             @autoreleasepool {
                 NSString *imageKey = @"UIImagePickerControllerOriginalImage";
                 UIImage* image=nil;
@@ -581,7 +577,7 @@
                     UIImageWriteToSavedPhotosAlbum(image, nil,nil, nil);
                 }
                 
-                [SVProgressHUD showWithStatus:@"上传中..."];
+                [SVProgressHUD showWithStatus:@"上传中..." maskType:SVProgressHUDMaskTypeBlack];
                 [chatLogic uploadImageToServer:image finish:^(NSString* fileId,NSString* path){
                     if([fileId length]>0){
                         [SVProgressHUD dismiss];
@@ -596,12 +592,12 @@
                 }];
             }
             
-            
+
         }
         else{
             [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
         }
-        
+
         
     }
     if(popover!=nil){
@@ -636,41 +632,41 @@
     if ([anObject isKindOfClass:[MessageEntity class]]&&type==NSFetchedResultsChangeInsert) {
         
         MessageEntity *messageEntity = (MessageEntity*)anObject;
-        
-        
+
+       
         NSMutableArray* indexPathArray=[NSMutableArray arrayWithCapacity:1];
         
         /*
-         // 暂作保留
-         if(messageEntity.receiveDate!=nil){
-         BOOL addDate=YES;
-         
-         NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
-         [formatter setDateFormat:@"yyyy-MM-dd"];
-         NSString* nDate=[formatter stringFromDate:messageEntity.receiveDate];
-         
-         for(int i=[messageArray count]-1;i>=0;i--){
-         id obj=[messageArray objectAtIndex:i];
-         if([[obj class] isSubclassOfClass:[NSString class]]){
-         NSString* lastestDate=obj;
-         
-         if([lastestDate isEqualToString:nDate]){
-         addDate=NO;
-         }
-         break;
-         }
-         }
-         
-         if(addDate){
-         [messageArray addObject:nDate];
-         [indexPathArray addObject:[NSIndexPath indexPathForRow:[messageArray count]-1 inSection:0]];
-         
-         }
-         }
+        // 暂作保留
+        if(messageEntity.receiveDate!=nil){
+            BOOL addDate=YES;
+            
+            NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSString* nDate=[formatter stringFromDate:messageEntity.receiveDate];
+
+            for(int i=[messageArray count]-1;i>=0;i--){
+                id obj=[messageArray objectAtIndex:i];
+                if([[obj class] isSubclassOfClass:[NSString class]]){
+                    NSString* lastestDate=obj;
+                    
+                    if([lastestDate isEqualToString:nDate]){
+                        addDate=NO;
+                    }
+                    break;
+                }
+            }
+            
+            if(addDate){
+                [messageArray addObject:nDate];
+                [indexPathArray addObject:[NSIndexPath indexPathForRow:[messageArray count]-1 inSection:0]];
+
+            }
+        }
          */
         
         [messageArray addObject:messageEntity];
-        
+
         [indexPathArray addObject:[NSIndexPath indexPathForRow:[messageArray count]-1 inSection:0]];
         AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
         
@@ -680,9 +676,9 @@
         
         
         [MessageRecord createModuleBadge:@"com.foss.chat" num: [XMPPSqlManager getMessageCount]];
+
         
-        
-        
+
         [tableView insertRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationBottom];
         [tableView scrollToRowAtIndexPath:[indexPathArray lastObject] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         
@@ -693,7 +689,7 @@
             self.navigationItem.rightBarButtonItem=nil;
             //[self.navigationController popViewControllerAnimated:YES];
         }
-        
+
         
     }else if (type==NSFetchedResultsChangeUpdate) {
         [tableView reloadData];
@@ -742,56 +738,12 @@
     [self createRightNavBarButton];
 }
 
-
-#pragma mark  notification
--(void) keyboardWillShow:(NSNotification *)note{
-    // get keyboard size and loctaion
-    
-	CGRect keyboardBounds;
-    [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
-    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-    keyboardBounds = [self.view convertRect:keyboardBounds toView:nil];
-    
-    
-    
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:[duration doubleValue]];
-    [UIView setAnimationCurve:[curve intValue]];
-    
-    CGRect containerFrame = tableView.frame;
-    containerFrame.size.height=tableViewHeight-keyboardBounds.size.height;
-    tableView.frame=containerFrame;
-	
-    [UIView commitAnimations];
-}
-
--(void) keyboardWillHide:(NSNotification *)note{
-    CGRect keyboardBounds;
-    [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
-    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
-    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-    keyboardBounds = [self.view convertRect:keyboardBounds toView:nil];
-    
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:[duration doubleValue]];
-    [UIView setAnimationCurve:[curve intValue]];
-	
-    CGRect containerFrame = tableView.frame;
-    containerFrame.size.height=tableViewHeight;
-    tableView.frame=containerFrame;
-	
-    [UIView commitAnimations];
-}
-
 -(void)iMOffLine{
     AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     chatPanel.onlineStatus=[[appDelegate xmpp] isConnected];
     
     [chatPanel checkAllControlPanel];
-    
+
 }
 
 -(void)IMOnLine{
@@ -799,7 +751,7 @@
     chatPanel.onlineStatus=[[appDelegate xmpp] isConnected];
     
     [chatPanel checkAllControlPanel];
-    
+
 }
 
 
@@ -813,7 +765,7 @@
         cell=(VoiceCell*)cell.superview;
     }
     
-    
+
     for(UITableViewCell* __cell in [tableView visibleCells]){
         if([__cell isKindOfClass:[VoiceCell class]]){
             [((VoiceCell*)__cell) playAnimated:NO];
@@ -852,7 +804,7 @@
     if([chatLogic isInFaviorContacts:self.messageId]){
         
         [IMServerAPI deleteCollectIMFriend:self.messageId block:^(BOOL status){
-            
+        
             if(!status){
                 [SVProgressHUD showErrorWithStatus:@"操作失败，请稍后再试！"];
             }
@@ -861,7 +813,7 @@
                 [SVProgressHUD showSuccessWithStatus:@"你已取消关注该好友"];
             }
             [self createRightNavBarButton];
-            
+
         }];
     }
     else{
@@ -874,9 +826,9 @@
                 [SVProgressHUD showSuccessWithStatus:@"你已成功关注该好友"];
             }
             [self createRightNavBarButton];
-            
+
         }];
-        
+
     }
     
 }
@@ -929,7 +881,7 @@
 
 
 -(void)loadLocalData{
-    
+
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"messageId = %@",self.messageId];
     NSFetchRequest *fetechRequest = [NSFetchRequest fetchRequestWithEntityName:@"MessageEntity"];
@@ -949,34 +901,34 @@
     messageArray = [[NSMutableArray alloc] initWithArray:contentArray];
     
     /*
-     for(MessageEntity* messageEntity in contentArray){
-     // 暂作保留
-     
-     if(messageEntity.receiveDate!=nil){
-     BOOL addDate=YES;
-     
-     NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
-     [formatter setDateFormat:@"yyyy-MM-dd"];
-     NSString* nDate=[formatter stringFromDate:messageEntity.receiveDate];
-     
-     for(int i=[messageArray count]-1;i>=0;i--){
-     id obj=[messageArray objectAtIndex:i];
-     if([[obj class] isSubclassOfClass:[NSString class]]){
-     NSString* lastestDate=obj;
-     
-     if([lastestDate isEqualToString:nDate]){
-     addDate=NO;
-     }
-     break;
-     }
-     }
-     if(addDate){
-     [messageArray addObject:nDate];
-     }
-     }
-     [messageArray addObject:messageEntity];
-     
-     }
+    for(MessageEntity* messageEntity in contentArray){
+        // 暂作保留
+        
+        if(messageEntity.receiveDate!=nil){
+            BOOL addDate=YES;
+            
+            NSDateFormatter* formatter=[[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSString* nDate=[formatter stringFromDate:messageEntity.receiveDate];
+            
+            for(int i=[messageArray count]-1;i>=0;i--){
+                id obj=[messageArray objectAtIndex:i];
+                if([[obj class] isSubclassOfClass:[NSString class]]){
+                    NSString* lastestDate=obj;
+                    
+                    if([lastestDate isEqualToString:nDate]){
+                        addDate=NO;
+                    }
+                    break;
+                }
+            }
+            if(addDate){
+                [messageArray addObject:nDate];
+            }
+        }
+        [messageArray addObject:messageEntity];
+
+    }
      */
     
     
@@ -985,8 +937,8 @@
     [appDelegate.xmpp saveContext];
     
     [MessageRecord createModuleBadge:@"com.foss.chat" num: [XMPPSqlManager getMessageCount]];
-    
-    
+
+
     //设置contentOffset才能完整显示最后一条消息,scrollToRect,scrollToIndexPath都不行
     if([messageArray count]>0)
         [self performSelector:@selector(scrollToBottom) withObject:nil afterDelay:0.05];
@@ -1007,7 +959,7 @@
     chatPanel.quitStatus=self.isQuit;
     AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     chatPanel.onlineStatus=[[appDelegate xmpp] isConnected];
-    
+
     [chatPanel checkAllControlPanel];
     
     
