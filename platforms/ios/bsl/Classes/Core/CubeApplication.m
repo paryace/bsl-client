@@ -657,6 +657,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                                 remote_module.isDownloading =YES;
                                 [downloadingModules addObject:remote_module];
                             }
+                            remote_module.isDownloading =YES;
+                            [downloadingModules addObject:remote_module];
                         }
                         
                     }

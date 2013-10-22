@@ -9,7 +9,9 @@ var myScroll = new iScroll('mainContent', {
 	checkDOMChanges: true
 });
 
+var isKeyboardShow = function(isShow){
 
+};
 $(".middleContent").bind("touchstart",function(){
 	console.log("点击了middleContent");
 	$(".menuItem").removeClass("active");
@@ -307,15 +309,22 @@ $("#searchInput").live("input propertychange", function() {
 	moduleTitleLists.hide();
 
 	$.each(moduleList, function(index, data) {
+
 		var name = $(this).find(".moduleName").html();
 		//console.info($(this).find(".moduleName").toPinyin());
 		var classname = $(this).attr("classname");
 		var keyword = trim(me.val());
 
+		console.log("keyword-----"+keyword);
+
+		console.log("-----"+name.toLowerCase().indexOf( keyword.toLowerCase() )  );
 		if (name.toLowerCase().indexOf(keyword.toLowerCase()) < 0) {
 			$(this).hide();
+			/*alert("隐藏");*/
 		} else {
 			$(this).show();
+			/*alert("显示");*/
+
 			//有显示列表内容的，显示标题
 			$.each(moduleTitleLists, function(i, moduleTitleList) {
 				var title = $(moduleTitleList).attr("modulename");

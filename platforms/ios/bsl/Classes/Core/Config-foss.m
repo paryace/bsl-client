@@ -13,7 +13,7 @@ NSString* const  kPushGetMessageUrl =@"http://115.28.1.119:18860/push/api/receip
 NSString* const  kAPPName=@"com.foreveross.bsl2";
 int kXMPPPort= 5222;
 
-NSString* const kFileUploadUrl = @"http://115.28.1.119:8088/bsl-web/mam/attachment/clientUpload";
+NSString* const kFileUploadUrl = @"http://115.28.1.109:8080/bsl-web/mam/attachment/clientUpload";
 
 NSString *const kMUCSevericeDomin=@"conference.snda-192-168-2-32";
 

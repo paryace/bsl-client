@@ -803,12 +803,13 @@ var gridLayout = function() {
 	$("li[identifier]").die("touchstart");
 	$("li[identifier]").die("touchend");
 	$("li[identifier]").live("touchstart", function() {
-		$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+		//$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+		$(this).css("background", "#d7d7d7");
 		//$("li[identifier]").die("touchstart");
 
 	});
 	$("li[identifier]").live("touchend", function() {
-		$(this).css("background", "#f5f5f5)");
+		$(this).css("background", "#f5f5f5)");x
 		//$("li[identifier]").live("touchstart", function());
 	});
 	$(".module_li .curd_btn").die("touchstart");

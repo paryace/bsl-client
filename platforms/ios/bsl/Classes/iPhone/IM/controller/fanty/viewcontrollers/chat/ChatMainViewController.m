@@ -191,7 +191,7 @@
 
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    //[chatPanel resignFirstResponder];
+    [chatPanel resignFirstResponder];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
