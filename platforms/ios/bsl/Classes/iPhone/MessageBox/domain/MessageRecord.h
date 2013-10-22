@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSNumber *isRead;
 @property (nonatomic, strong) NSString * faceBackId;
 @property (nonatomic, strong) NSString * allContent;
+@property (nonatomic, strong) NSString * username;
 
 +(BOOL)createByApnsInfo:(NSDictionary *)info outputArrayIds:(NSMutableArray*)outputArrayIds;
 

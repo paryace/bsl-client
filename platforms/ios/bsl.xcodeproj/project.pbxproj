@@ -3356,6 +3356,7 @@
 
 /* Begin PBXFileReference section */
 		1801377B17F3D1AA00261B66 /* local_module.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = local_module.plist; sourceTree = "<group>"; };
+		180B7B161816232E0091E3AE /* cube1022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = cube1022.xcdatamodel; sourceTree = "<group>"; };
 		180F234F180CE0D80037751C /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
 		180F2376180D237D0037751C /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		180F2377180D237D0037751C /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
@@ -11955,8 +11956,9 @@
 				F54D7FBA17E8BFBA0067A023 /* cube0911.xcdatamodel */,
 				180F234F180CE0D80037751C /* cube1015.xcdatamodel */,
 				F5F9260418100A20004B3015 /* cube1017.xcdatamodel */,
+				180B7B161816232E0091E3AE /* cube1022.xcdatamodel */,
 			);
-			currentVersion = F5F9260418100A20004B3015 /* cube1017.xcdatamodel */;
+			currentVersion = 180B7B161816232E0091E3AE /* cube1022.xcdatamodel */;
 			path = cube.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

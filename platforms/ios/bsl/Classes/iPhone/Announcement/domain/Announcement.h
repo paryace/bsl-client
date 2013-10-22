@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSNumber * isRead;
 @property (nonatomic, strong) NSDate * reviceTime;
 @property (nonatomic,strong) NSString* recordId;
-
+@property (nonatomic,strong) NSString *username;
 
 +(void)requestAnnouncement:(NSDictionary*)data;
 +(NSArray *)findAllOrderByReviceTime;

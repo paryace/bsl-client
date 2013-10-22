@@ -32,7 +32,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 @implementation CubeApplication
 
 
-#define ManagerUsers NO
+#define ManagerUsers YES
 
 //运行时配置文件路径
 #define RUNTIME_CFG_URL [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:@"Cube.json"]

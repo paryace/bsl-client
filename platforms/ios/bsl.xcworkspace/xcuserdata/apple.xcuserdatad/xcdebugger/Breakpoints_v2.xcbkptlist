@@ -73,7 +73,7 @@
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
                   moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
                   urlString = "file://localhost/Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "404053629.770701"
+                  timestampString = "404105739.301915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "503"
@@ -87,7 +87,7 @@
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
                   moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
                   urlString = "file://localhost/Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "404053629.771266"
+                  timestampString = "404105739.30411"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "503"
@@ -126,22 +126,6 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "-verifyPassword:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "bsl/Classes/AppDelegate.m"
-            timestampString = "403863357.550731"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-showLoginView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
