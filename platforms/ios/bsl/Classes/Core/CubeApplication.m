@@ -138,12 +138,12 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
             if (self.installed)
                 [self mergeNewLocalModules];
         }else{
-            if (self.installed) {
-                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
-                [self loadApplicatioFromURL:cubeURL];
-            }
+//            if (self.installed) {
+//                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+//                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+//                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+//                [self loadApplicatioFromURL:cubeURL];
+//            }
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:CubeModuleInstallDidFinishNotification object:nil];
     }
@@ -485,6 +485,14 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 #pragma mark - Sync
 -(void)sync
 {
+    
+    if (self.installed) {
+        NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+        NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+        [self loadApplicatioFromURL:cubeURL];
+    }
+    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *token =  [defaults objectForKey:@"token"];
     
@@ -656,8 +664,10 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                             {
                                 if(![self judgeArray:downloadingModules ContainsModule:remote_module])
                                 {
-                                    remote_module.isDownloading =YES;
-                                    [downloadingModules addObject:remote_module];
+                                    if (![remote_module moduleIsInstalled]) {
+                                        remote_module.isDownloading =YES;
+                                        [downloadingModules addObject:remote_module];
+                                    }
                                 }
                             }
 //                            remote_module.isDownloading =YES;

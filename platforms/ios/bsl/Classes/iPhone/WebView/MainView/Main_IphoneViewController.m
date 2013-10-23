@@ -224,13 +224,13 @@
 
 -(void)checkModules{
     //检测是否需要自动安装
-    
-    if([[NSUserDefaults standardUserDefaults] valueForKey:@"notFirstLogin"]!=nil){
+    NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+    if([[[NSUserDefaults standardUserDefaults] valueForKey:@"notFirstLogin"] isEqualToString:userName]){
         [self checkAutoUpdate];
         return;
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"notFirstLogin"];
+    [[NSUserDefaults standardUserDefaults] setValue:userName forKey:@"notFirstLogin"];
 
     @autoreleasepool {
 #ifndef MOBILE_BSL
@@ -642,6 +642,12 @@
 
 #pragma mark - 退出登陆
 -(void)logout{
+    //退出登录清空CubeApplication中的数组
+    CubeApplication *application = [CubeApplication currentApplication];
+    [[application modules] removeLastObject];
+    [[application availableModules] removeAllObjects];
+    [[application updatableModules] removeAllObjects];
+    [[application downloadingModules] removeAllObjects];
     [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
 }
 
