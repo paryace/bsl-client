@@ -654,11 +654,14 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                             NSString *userName = [defaults valueForKey:@"username"];
                             if(![[FMDBManager getInstance] recordIsExist:remote_module.identifier withtableName:@"AutoDownLoadRecord" withConditios:userName])
                             {
-                                remote_module.isDownloading =YES;
-                                [downloadingModules addObject:remote_module];
+                                if(![self judgeArray:downloadingModules ContainsModule:remote_module])
+                                {
+                                    remote_module.isDownloading =YES;
+                                    [downloadingModules addObject:remote_module];
+                                }
                             }
-                            remote_module.isDownloading =YES;
-                            [downloadingModules addObject:remote_module];
+//                            remote_module.isDownloading =YES;
+//                            [downloadingModules addObject:remote_module];
                         }
                         
                     }
