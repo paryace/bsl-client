@@ -52,7 +52,7 @@
         
         chatPanelBgView=[[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, PANNEL_HEIGHT)];
         chatPanelBgView.image=[UIImage imageNamed:@"ToolViewBkg_Black.png"];
-
+        chatPanelBgView.clipsToBounds=YES;
         chatPanelBgView.userInteractionEnabled=YES;
         chatPanelBgView.backgroundColor=[UIColor clearColor];
         [self addSubview:chatPanelBgView];
@@ -215,6 +215,10 @@
         containerFrame.origin.y = superViewHeight-chatPanelBgView.frame.size.height;
         self.frame=containerFrame;
         
+        if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+            [self.delegate chatPanelKeyworkShow:0.0f];
+
+        
         // commit animations
         [UIView commitAnimations];
         
@@ -315,6 +319,11 @@
         rect=self.frame;
         rect.size.height=chatPanelBgView.frame.size.height+EC_PANEL_height;
         self.frame=rect;
+        
+        
+        if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+            [self.delegate chatPanelKeyworkShow:self.frame.origin.y];
+
     
     } completion:^(BOOL finish){
 
@@ -343,6 +352,10 @@
             CGRect containerFrame = self.frame;
             containerFrame.origin.y = superViewHeight-chatPanelBgView.frame.size.height;
             self.frame=containerFrame;
+            
+            if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+                [self.delegate chatPanelKeyworkShow:0.0f];
+
             
             // commit animations
             [UIView commitAnimations];
@@ -386,6 +399,10 @@
             rect=self.frame;
             rect.origin.y=superViewHeight-self.frame.size.height;
             self.frame=rect;
+            
+            if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+                [self.delegate chatPanelKeyworkShow:self.frame.origin.y];
+
             
         } completion:^(BOOL finish){
         
@@ -577,6 +594,10 @@
 
 - (void)textViewDidChange:(UITextView *)__textView{
     float height=__textView.contentSize.height;
+    if([__textView.text length]<1){
+        height=TEXT_VIEW_HEIGHT;
+    }
+    
     if(height>112.0f)
         height=112.0f;
     if(currentHeight==0)
@@ -717,7 +738,13 @@
     [UIView setAnimationCurve:[curve intValue]];
 	
 	self.frame=containerFrame;
+    
+    if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+        [self.delegate chatPanelKeyworkShow:self.frame.origin.y];
+
 	[UIView commitAnimations];
+    
+
 }
 
 -(void) keyboardWillHide:(NSNotification *)note{
@@ -737,21 +764,15 @@
     [UIView setAnimationCurve:[curve intValue]];
     
 	self.frame=containerFrame;
-	
+    if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+        [self.delegate chatPanelKeyworkShow:0.0f];
+
 	// commit animations
 	[UIView commitAnimations];
+    
 }
 
--(void)setFrame:(CGRect)value{
-    [super setFrame:value];
-    if(value.origin.y==superViewHeight-chatPanelBgView.frame.size.height){
-        [self.delegate chatPanelKeyworkShow:0.0f];
-    }
-    else{
-        [self.delegate chatPanelKeyworkShow:value.origin.y];
 
-    }
 
-}
 
 @end

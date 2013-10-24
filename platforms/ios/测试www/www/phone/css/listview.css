@@ -173,10 +173,11 @@
 	right:-50px;
 	top:-5px;
 	height:15px;
-	min-width:15px;
+	min-width:17px;
 	color:#FFFFFF;
 	font-size: 0.9em;
 	text-align: center;
+	padding-bottom: 4px;
 
 
 }
@@ -239,7 +240,8 @@ detail
 
 
 .module_div ul li .curd_btn{
-	background:-webkit-gradient(linear, 0% 80%, 0% 0%, from(#efefef), to(#dddddd)) !important;
+//	background:-webkit-gradient(linear, 0% 80%, 0% 0%, from(#efefef), to(#dddddd)) !important;
+    background:#efefef;
 	position: relative;
 	display: none;
 	float: right;

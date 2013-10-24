@@ -1,5 +1,5 @@
-define(['zepto', 'underscore','text!com.csair.base/airport/airport-list-template.html', 'backbone',"i18n!com.csair.base/airport/nls/mbp"], 
-    function($, _, alTemplate,Backbone,Locale){
+define(['text!com.csair.base/airport/airport-list-template.html',"i18n!com.csair.base/airport/nls/mbp"], 
+    function( alTemplate,Locale){
 
     var list;
     var segment;
@@ -85,9 +85,7 @@ define(['zepto', 'underscore','text!com.csair.base/airport/airport-list-template
                 $("#backBtnClick").click(function(){
 
                     
-                        Backbone.history.navigate("/", {
-                            trigger: true
-                        });
+                        window.history.back();
                 });
 
                 list.unbind('List:select');

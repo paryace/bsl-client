@@ -21,7 +21,6 @@
 #import "OperateLog.h"
 #import "AutoShowRecord.h"
 #import "SVProgressHUD.h"
-#import "DownLoadingDetialViewController.h"
 #import "SettingMainViewController.h"
 
 #import "KKProgressToolbar.h"
@@ -226,12 +225,17 @@
 -(void)checkModules{
     //检测是否需要自动安装
     
-    if([[NSUserDefaults standardUserDefaults] valueForKey:@"notFirstLogin"]!=nil){
+    NSUserDefaults* defaults=[NSUserDefaults standardUserDefaults];
+    NSString* username=[defaults valueForKey:@"username"];
+    
+    NSString* tip=[username stringByAppendingString:@"_notFirstLogin"];
+    
+    if([[NSUserDefaults standardUserDefaults] valueForKey:tip]!=nil){
         [self checkAutoUpdate];
         return;
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"notFirstLogin"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:tip];
 
     @autoreleasepool {
 #ifndef MOBILE_BSL
@@ -386,6 +390,7 @@
         }
     }
     CubeModule* cube = [tion object];
+    cube.isDownloading = false;
     NSString * javaScript = [NSString stringWithFormat:@"updateProgress('%@',%d);",cube.identifier,101];
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
     
@@ -488,33 +493,43 @@
 
         DownLoadingDetialViewController *funDetialVC=[[DownLoadingDetialViewController alloc]init];
         //循环已安装列表
+        BOOL isExit = false;
         for(CubeModule *each in [cubeApp modules]){
             if([each.identifier isEqualToString:identifier]){
                 funDetialVC.curCubeModlue=each;
+                isExit = true;
                 funDetialVC.buttonStatus = InstallButtonStateInstalled;
                 break;
             }
         }
         
         //循环更新列表
-        for(CubeModule *each in [cubeApp updatableModules]){
-            if([each.identifier isEqualToString:identifier]){
-                funDetialVC.curCubeModlue=each;
-                funDetialVC.buttonStatus = InstallButtonStateUpdatable;
-                break;
+        if (!isExit) {
+            for(CubeModule *each in [cubeApp updatableModules]){
+                if([each.identifier isEqualToString:identifier]){
+                    funDetialVC.curCubeModlue=each;
+                    isExit = true;
+                    funDetialVC.buttonStatus = InstallButtonStateUpdatable;
+                    break;
+                }
             }
         }
         
+        
         //循环未安装列表
+        if (!isExit) {
         for(CubeModule *each in [cubeApp availableModules]){
             if([each.identifier isEqualToString:identifier]){
                 funDetialVC.curCubeModlue=each;
+                isExit = true;
                 funDetialVC.buttonStatus = InstallButtonStateUninstall;
                 break;
             }
         }
+        }
         
         funDetialVC.delegate = self;
+        
         if(funDetialVC.curCubeModlue.isDownloading){
             funDetialVC.iconImage=[[IconButton alloc] initWithModule:funDetialVC.curCubeModlue stauts:IconButtonStautsDownloading delegate:nil];
             funDetialVC.iconImage.badgeView.hidden = YES;
@@ -791,6 +806,7 @@
 - (void)deleteAtModuleIdentifier:(NSString *)identifier{
     CubeApplication *cubeApp = [CubeApplication currentApplication];
     CubeModule *m = [cubeApp moduleForIdentifier:identifier];
+    m.isDownloading = false;
     NSMutableDictionary* moduleDictionary = [self modueToJson:m];
     NSString* JSO=   [[NSString alloc] initWithData:moduleDictionary.JSONData encoding:NSUTF8StringEncoding];
     NSString * javaScript = [NSString stringWithFormat:@"refreshModule('%@','uninstall','%@');",identifier,JSO ];
@@ -820,6 +836,7 @@
     }
     
     CubeModule *newModule = [note object];
+    newModule.isDownloading = false;
     if (newModule) {
         @autoreleasepool {
             NSMutableDictionary* moduleDictionary = [self modueToJson:newModule];
@@ -922,11 +939,25 @@
     
     statusToolbar.progressBar.progress = 1-(float)count/(float)allDownCount;
     [statusToolbar show:YES completion:^(BOOL finished) {
+        CGRect frame = self.view.frame ;
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+            frame.origin.y=20.0f;
+            frame.size.height-=20.0f;
+        }
+        
+        frame.size.height -= 44;
+        aCubeWebViewController.view.frame = frame;
     }];
 }
     
 -(void)stopUILoading{
     [statusToolbar hide:YES completion:^(BOOL finished) {
+        CGRect frame = self.view.frame ;
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+            frame.origin.y=20.0f;
+            frame.size.height-=20.0f;
+        }
+        aCubeWebViewController.view.frame = frame;
         [statusToolbar removeFromSuperview];
         statusToolbar = nil;
     }];

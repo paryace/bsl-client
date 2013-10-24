@@ -1,10 +1,7 @@
 new FastClick(document.body);
-//var myPsw = null;
 window.addEventListener("keydown", function(evt) {
 	if (evt.keyCode === 13) {
 		$("#LoginBtn").trigger("click");
-	}else if(evt.keyCode ===8){
-		myPsw = null;
 	}
 
 });
@@ -41,7 +38,6 @@ $("#username_del").click(function() {
 $("#password_del").click(function() {
 	$(this).parent().hide();
 	$("#password").val("");
-	//myPsw = null;
 });
 $("#username,#password").live("input propertychange", function() {
 	var keyword = $(this).val();
@@ -70,6 +66,7 @@ $("#LoginBtn").click(function() {
 		var password = $("#password").val();
 	}*/
 	var password = $("#password").val();
+	
 	var isRemember = $('#isRemember:checked').val();
 
 	if (isRemember === undefined) {
@@ -83,35 +80,31 @@ $("#LoginBtn").click(function() {
 			$("#LoginBtn").removeAttr("disabled");
 		}
 	}, function(err) {
-
 		err = $.parseJSON(err);
 		$("#LoginBtn").removeAttr("disabled");
 	}, "CubeLogin", "login", [username, password, isRemember]);
 
 });
 
-/*var bodyHeight = $(window).height();
-$("body").css({
-	'height':bodyHeight+'px',
-	'min-height':bodyHeight+'px'
-});*/
-
-setTimeout(function() {
-	var bodyHeight = $(window).height();
-
-	$("body").css({
-		'height': bodyHeight + 'px'
-		// ,
-		// 'min-height': bodyHeight + 'px'
-	});
-
-	$("html").css({
-		'height': bodyHeight + 'px'
-	});
-}, 300);
+var loadLogin = function(){
+    var bodyHeight = $(window).height();
+    
+    $("body").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+    
+    $("html").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+};
 var app = {
 	initialize: function() {
 		this.bindEvents();
+		//loadLogin();
 	},
 	bindEvents: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -121,11 +114,6 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-		/*var bodyHeight = $(window).height();
-		$("body").css({
-			'height': bodyHeight + 'px',
-			'min-height': bodyHeight + 'px'
-		});*/
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
 			$("#username").val(data.username);
@@ -138,9 +126,9 @@ var app = {
 			/*myPsw = data.password;
 			if(myPsw !=undefined &&myPsw!==null && myPsw!==""){
 				$("#password").val("12345678");
-			}*/
+			}
 
-
+*/
 
 		}, function(err) {
 			alert(err);

@@ -59,7 +59,7 @@
 }
 
 +(HTTPRequest*)getCollectIMFriends:(void (^)(BOOL statue,NSArray* friends))_block{
-    NSString* urlStr =[NSString stringWithFormat:@"http://%@/chat/show/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,[[ShareAppDelegate xmpp].xmppStream.myJID bare ],[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey];
+    NSString* urlStr =[[NSString stringWithFormat:@"http://%@/chat/show/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,[[ShareAppDelegate xmpp].xmppStream.myJID bare ],[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
     HTTPRequest* request=[HTTPRequest requestWithURL:[NSURL URLWithString:urlStr]];
@@ -91,7 +91,7 @@
 
 
 +(HTTPRequest*)deleteCollectIMFriend:(NSString*)friendId block:(void (^)(BOOL statue))_block{
-    NSString* urlStr =[NSString stringWithFormat:@"http://%@/chat/delete/%@/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,[[ShareAppDelegate xmpp].xmppStream.myJID bare ],friendId,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey];
+    NSString* urlStr =[[NSString stringWithFormat:@"http://%@/chat/delete/%@/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,[[ShareAppDelegate xmpp].xmppStream.myJID bare ],friendId,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     HTTPRequest* request=[HTTPRequest requestWithURL:[NSURL URLWithString:urlStr]];
     __block HTTPRequest* __request=request;
@@ -235,7 +235,7 @@
 
 
 +(HTTPRequest*)grouptGetRooms:(NSString *)userJid block:(void (^)(BOOL, NSArray *))_block{
-    NSString* urlStr =[NSString stringWithFormat:@"http://%@/chat/queryAllRoom/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,userJid,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey];
+    NSString* urlStr =[[NSString stringWithFormat:@"http://%@/chat/queryAllRoom/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,userJid,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
     HTTPRequest* request=[HTTPRequest requestWithURL:[NSURL URLWithString:urlStr]];
     __block HTTPRequest* __request=request;
@@ -264,7 +264,7 @@
 
 
 +(HTTPRequest*)grouptDeleteMember:(NSString *)userJid roomId:(NSString *)_roomId block:(void (^)(BOOL))_block{
-    NSString* urlStr =[NSString stringWithFormat:@"http://%@/chat/deleteMember/%@/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,_roomId,userJid,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey];
+    NSString* urlStr =[[NSString stringWithFormat:@"http://%@/chat/deleteMember/%@/%@?sessionKey=%@&appKey=%@",kAPIServerAPI,_roomId,userJid,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
 
     

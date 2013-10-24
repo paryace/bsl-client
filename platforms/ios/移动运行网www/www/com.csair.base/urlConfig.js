@@ -5,7 +5,9 @@ define(['zepto'], function($) {
 		loginUrl: 'http://58.248.56.101/opws-mobile-web/',
 		hostUrl: "http://58.248.56.101/opws-mobile-web/mobile/",
 		urlEnding: ""
-		//test ip http://10.103.124.104:8080/opws-mobile-web   out:58.248.56.101
+		//test ip http://10.103.124.104:8080/opws-mobile-web   
+		//out:58.248.56.101  in:172.16.116.6  
+		//dashen:10.108.19.180:8080  wangruiqing:10.108.19.38:8080
 	};
 
 	window.sessionStorage['naviAnimate'] = JSON.stringify(false);
@@ -26,14 +28,14 @@ define(['zepto'], function($) {
 		ajax: function() {
 			//Todo
 			console.log(arguments);
-			
 
+			// arguments[0].timeout = 20 * 1000;
 			var error = arguments[0].error;
 			var argumentsRelogin = arguments[0];
 			arguments[0].error = function(we, wxhr, wtype) {
 				console.log('--------error--------')
 				console.log(arguments);
-				if($(we.response).find('div.errorPanel').length>0){
+				if ($(we.response).find('div.errorPanel').length > 0) {
 					error.call(we, wxhr, wtype);
 					return;
 				}
@@ -141,7 +143,8 @@ define(['zepto'], function($) {
 			"getAirportFlightInfo": host.hostUrl + "airport-AirportInfo-getAirportFlightInfo.action" + host.urlEnding
 		},
 		"performance": {
-			"getTowOrLdwResult": host.hostUrl + "flightinfo-FlightPerformance-getTowOrLdwResult.action" + host.urlEnding
+			"getTowOrLdwResult": host.hostUrl + "flightinfo-FlightPerformance-getTowOrLdwResult.action" + host.urlEnding,
+			"downloadFile": host.hostUrl + "flightinfo-FlightPerformance-downloadFile.action" + host.urlEnding
 		},
 		"crewmen": {
 			"findGrdTaskList": host.hostUrl + "flightinfo-FlightCrewInfo-findGrdTaskList.action" + host.urlEnding,

@@ -1,8 +1,11 @@
-define([  'text!com.csair.base/cityBlock.html','com.csair.base/airports-list'
-    ], function(demoIndexTemplate,AirportList){
+define([  'text!com.csair.base/cityBlock.html','text!com.csair.base/IncityBlock.html','text!com.csair.base/chcityBlock.html'
+    ], function(cityTemplate,IncityTemplate,ChcityTemplate){
+    var isCity;
+    var segment;
     var View = Piece.View.extend({
 
         id: 'detailview',
+
 
         events: {
             
@@ -12,35 +15,66 @@ define([  'text!com.csair.base/cityBlock.html','com.csair.base/airports-list'
 
         bindings: {
 
-            // "Segment:change io": "onIOChange",
-            // "List:select flightstatus-list": "onItemSelect"
         },
         
         render: function(){
-            $(this.el).html(demoIndexTemplate);
-            AirportList.compile(this.el);
-            // $(this).append(template);
+            $(this.el).html(cityTemplate);
             Piece.View.prototype.render.call(this);
+            var segments =Piece.Segment.compile(this.el);
+            for(var i = 0; i < segments.length; i++){
+                if(segments[i].el.id == "city"){
+                    segment = segments[i];
+                }
+            }
+            var me  = this;
+            segment.unbind('Segment:change');
+            segment.bind('Segment:change',function(comp){
+                var value = comp.getValue();
+                me.initList();
+            });
             return this;
         },
 
         onShow:function(){
-            // this.cityDialog  = $(this.el)
-            //                     .listSliderNavDoubleWindow(SliderTemplateB,
-            //                                             CityData,
-            //                                             CityDataI);
-            // console.log(this.cityDialog);
-
+            var me = this;
+            isCity = false;
+            this.initList();
+            var searchInput = $('#searchInput');
+            searchInput.css('margin-bottom', '0px');
+            searchInput.css('padding-left', '8px');
+            searchInput.attr('type', 'text');
+            searchInput.bind('touchend input', function(e) {
+                window.scrollTo(0, 0);
+                var inputVal = searchInput.val();
+                me.filterChildren(inputVal);
+            });
         },
-        cityDialog: null,
 
-        showAirport: function(e) {
-           //  var targetId = $(e.currentTarget).attr('target');
-           //  if (!targetId) {
-             //      targetId = $(e.currentTarget).attr('id');
-           //  }
-           // this.cityDialog.setTarget(targetId);
+        initList:function(){
+            var me = this;
+            isCity == true ? $(me.el).find('#airports-list').html(IncityTemplate) : $(me.el).find('#airports-list').html(ChcityTemplate);
+            isCity == true ? isCity = false : isCity = true;
+            me.bindItems();
         },
+
+        filterChildren: function(keyWord) {
+            var contentScroller = this.$(".contentScroller");
+            if (keyWord) {
+                contentScroller.find("li[filter-keyword]").hide();
+                this.$('#' + 'airports-list' + ' li[filter-keyword*="' + keyWord.toLowerCase() + '"]').show();
+            } else {
+                contentScroller.find("li[filter-keyword]").show();
+            }
+        },
+
+        bindItems:function(){
+            $('.cube-list-item').unbind('click');
+            $('.cube-list-item').bind('click',function(cell){
+                var target = Piece.Session.loadObject("cityStoreTarget");
+                Piece.Session.saveObject('cityStore' + target,$(cell.target).find('.city_name').html());
+                window.history.back();
+            });
+        }
         
     });
 

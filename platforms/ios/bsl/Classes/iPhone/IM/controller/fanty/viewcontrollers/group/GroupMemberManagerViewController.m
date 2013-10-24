@@ -132,7 +132,9 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
             
         }
         else{
-            [SVProgressHUD showErrorWithStatus:@"获取成员失败，请检查网络！"];
+            UIAlertView* alertView=[[UIAlertView alloc] initWithTitle:@"获取成员失败，请检查网络！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
+            alertView=nil;
         }
         
         
@@ -294,7 +296,10 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
     request=nil;
 
     if(!status){
-        [SVProgressHUD showErrorWithStatus:@"操作失败，请检查网络！"];
+        UIAlertView* alertView=[[UIAlertView alloc] initWithTitle:@"操作失败，请检查网络！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        alertView=nil;
+
         return ;
     }
     [SVProgressHUD dismiss];
@@ -351,7 +356,10 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
                 
                 request=nil;
                 if(!status){
-                    [SVProgressHUD showErrorWithStatus:@"操作失败，请检查网络！"];
+                    UIAlertView* alertView=[[UIAlertView alloc] initWithTitle:@"操作失败，请检查网络！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alertView show];
+                    alertView=nil;
+                    
                     return ;
                 }
                 [SVProgressHUD dismiss];
@@ -376,7 +384,9 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
 
                     request=nil;
                     if(!status){
-                        [SVProgressHUD showErrorWithStatus:@"操作失败，请检查网络！"];
+                        UIAlertView* alertView=[[UIAlertView alloc] initWithTitle:@"操作失败，请检查网络！" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        [alertView show];
+                        alertView=nil;
                         return ;
                     }
 

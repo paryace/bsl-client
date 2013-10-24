@@ -141,13 +141,20 @@
     }
     
     float offset=OFFSET;
+    
+    float __offset=0.0f;
+    
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+        __offset=15.0f;
+    }
+    
     if(self.editing){
         offset+=40.0f;
     }
     
     
-    isReadLabel.frame=CGRectMake(w-35.0f-OFFSET, 10.0f, 35.0f, 25.0f);
-    titleLabel.frame=CGRectMake(offset, 10.0f, CGRectGetMinX(isReadLabel.frame)-offset, 0.0f);
+    isReadLabel.frame=CGRectMake(w-35.0f-OFFSET-__offset, 10.0f, 35.0f, 25.0f);
+    titleLabel.frame=CGRectMake(__offset+offset, 10.0f, CGRectGetMinX(isReadLabel.frame)-offset*2.0f-__offset, 0.0f);
     [titleLabel sizeToFit];
     
     if(!self.editing)
@@ -155,10 +162,10 @@
     else
         lineView.frame=CGRectMake(offset,CGRectGetMaxY(titleLabel.frame)+2.0f,w-OFFSET*2.0f-40.0f,1);
 
-    contentLabel.frame=CGRectMake(offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f, 0.0f);
+    contentLabel.frame=CGRectMake(__offset+offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f-__offset, 0.0f);
     [contentLabel sizeToFit];
     
-    timeLabel.frame=CGRectMake(w-150.0f-OFFSET, CGRectGetMaxY(contentLabel.frame)+3.0f, 150.0f, 20.0f);
+    timeLabel.frame=CGRectMake(w-150.0f-OFFSET-__offset, CGRectGetMaxY(contentLabel.frame)+3.0f, 150.0f, 20.0f);
 
 }
 

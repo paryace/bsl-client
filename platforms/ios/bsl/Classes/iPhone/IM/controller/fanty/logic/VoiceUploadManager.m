@@ -307,12 +307,23 @@ static VoiceUploadManager* instance=nil;
 -(void)receiveVoice:(NSString*)content uqId:(NSString*)uqId messageId:(NSString*)messageId isGroup:(BOOL)isGroup{
     if([uqId length]<1)
         uqId=content;
+    
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    MessageEntity* entity=[appDelegate.xmpp fetchMessageFromUqID:uqId messageId:messageId];
+    if(entity!=nil){
+        entity.statue=[NSNumber numberWithInt:0];
+        [appDelegate.xmpp saveContext];
+    }
+    
     VoiceObj * obj=[[VoiceObj alloc] init];
     obj.delegate=self;
     obj.uqID=uqId;
     obj.messageId=messageId;
     obj.isGroup=isGroup;
     obj.urlVoiceFile=[self downloadVoiceFile:content];
+
+    
     [obj downloadVoiceFile:content];
     
     [array addObject:obj];

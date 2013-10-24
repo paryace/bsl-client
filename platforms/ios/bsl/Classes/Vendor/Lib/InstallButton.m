@@ -96,6 +96,7 @@
 
 -(void)drawInstalling{
     [self setTitle:@"正在安装" forState:UIControlStateNormal];
+    [self setTitle:@"正在安装" forState:UIControlStateDisabled];
     self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:NO];
 }
@@ -107,6 +108,7 @@
 }
 
 -(void)drawUpdating{
+    [self setTitle:@"正在更新" forState:UIControlStateDisabled];
     [self setTitle:@"正在更新" forState:UIControlStateDisabled];
     self.titleLabel.font = [UIFont systemFontOfSize:10];
     [self setEnabled:NO];

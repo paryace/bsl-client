@@ -1,12 +1,145 @@
-<style type="text/css">
+<html style="background-color: white;"><head>
+  <title>变色龙</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+  <meta http-equiv="X-Frame-Options" content="ALLOW-FROM">
+  <meta http-equiv="pragma" content="no-cache">
+
+
+  <link href="../piece/css/piece.css" rel="stylesheet">
+  <link href="../com.csair.base/css/csairHeader.css" rel="stylesheet">
+  <link href="../com.csair.base/css/fontsize.css" rel="stylesheet">
+  <link href="../com.csair.base/queryForm.css" rel="stylesheet">
+
+<!-- <script type="text/javascript" src="http://192.168.0.103:8081/target/target-script-min.js#cube"></script> -->
+
+  <script type="text/javascript">
+  
+      var require = {
+          // urlArgs: "bust=" +  (new Date()).getTime()
+      };
+
+      var pieceConfig ={
+          defaultModule:"com.csair.dynamic",
+          defaultView:"flightDynamic",
+          loadMode: "module"
+      };
+
+    //   window.history.tempBack =window.history.back;
+
+    //   window.history.back = function(){
+    //     removeMask();
+    //     window.history.tempBack(arguments);
+    //   }
+
+    //   function removeMask(){
+    //     if (window.removeEventListener) {
+    //         window.removeEventListener('DOMMouseScroll', scrolling, false);
+    //         window.removeEventListener('touchmove',scrolling,false);
+    //     }
+    //     window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+
+    //     var cube_loader = $(".cube-flight-loader");
+    //     if(cube_loader && cube_loader.length>0) {
+    //         $(cube_loader).each(function(){
+    //             $(this).remove();
+    //         });
+    //         $(".cube-loader-mask").remove();
+
+    //     }
+    //   }
+
+    // function scrolling(e) {
+    //   e = e || window.event;
+    //   if (e.preventDefault)
+    //       e.preventDefault();
+    //   e.returnValue = false;  
+    // }
+      
+  </script>
+
+  <script type="text/javascript" src="../piece/js/piece-debug.js"></script>
+
+
+
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="text" src="../piece/js/vendor/requirejs-text/js/text.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="i18n" src="../piece/js/vendor/requirejs-i18n/js/i18n.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="core/app" src="../piece/js/core/app.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/components" src="../piece/js/components/components.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="zepto" src="../piece/js/vendor/zepto/js/zepto.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="underscore" src="../piece/js/vendor/underscore/js/underscore.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="fastclick" src="../piece/js/vendor/fastclick/js/fastclick.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/base64Img" src="../piece/js/components/base64Img.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/cache" src="../piece/js/components/cache.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/carousel" src="../piece/js/components/carousel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/dialog" src="../piece/js/components/dialog.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/form" src="../piece/js/components/form.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/loader" src="../piece/js/components/loader.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/oldloader" src="../piece/js/components/oldloader.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/date" src="../piece/js/components/date.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/extendable-list" src="../piece/js/components/extendable-list.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/i18n" src="../piece/js/components/i18n.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/list" src="../piece/js/components/list.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/module-panel" src="../piece/js/components/module-panel.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/popover" src="../piece/js/components/popover.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/segment" src="../piece/js/components/segment.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/session" src="../piece/js/components/session.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/store" src="../piece/js/components/store.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/util" src="../piece/js/components/util.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/validator" src="../piece/js/components/validator.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/view" src="../piece/js/components/view.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/datepicker" src="../piece/js/components/datepicker.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/toast" src="../piece/js/components/toast.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="core/mainview" src="../piece/js/core/mainview.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="core/cocrouter" src="../piece/js/core/cocrouter.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="backbone" src="../piece/js/vendor/backbone/js/backbone.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="canvasloader" src="../piece/js/components/canvasloader.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/fixed" src="../piece/js/components/fixed.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/reloginAjax" src="../piece/js/components/reloginAjax.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/calendar" src="../piece/js/components/calendar.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/fan-menu" src="../piece/js/components/fan-menu.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/carousel-content" src="../piece/js/components/carousel-content.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/rangeMenu" src="../piece/js/components/rangeMenu.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/flightProgress" src="../piece/js/components/flightProgress.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="gmu" src="../piece/js/components/gmu.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/cal_main" src="../piece/js/components/cal_main.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="swipe" src="../piece/js/vendor/swipe/js/swipe.js"></script><style>.gmu-media-detect{-webkit-transition: width 0.001ms; width: 0; position: absolute; top: -10000px;}
+@media screen and (width: 501px) { #gmu-media-detect0 { width: 1px; } }
+</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/nls/cube-calendar-local" src="../piece/js/components/nls/cube-calendar-local.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="components/nls/zh-cn/cube-calendar-local" src="../piece/js/components/nls/zh-cn/cube-calendar-local.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/module" src="../com.csair.base/module.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/airports-list" src="../com.csair.base/airports-list.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/cityBlock" src="../com.csair.base/cityBlock.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/competence" src="../com.csair.base/competence.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/demoIndex" src="../com.csair.base/demoIndex.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/urlConfig" src="../com.csair.base/urlConfig.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/airport/nls/mbp" src="../com.csair.base/airport/nls/mbp.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="com.csair.base/airport/nls/zh-cn/mbp" src="../com.csair.base/airport/nls/zh-cn/mbp.js"></script></head>
+<body style="background-color: white;"><div id="detailview" class="page"><style type="text/css">
 .content{
     overflow:visible;
 }
 body{
-	background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 .detailview{
-	background-color: #f2f2f2;
+  background-color: #f2f2f2;
+}
+.city_cell{
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;b
+    order-bottom-left-radius: 5em;
+    border-bottom-right-radius: 5em;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+}
+.city_name{
+    color:black;
 }
 </style>
-<AirportList id="airport-list-depport" inputName='depport'showElemType="div" showElemClass="port" locale="<%=lang.language%>" hideTarget="bookingQuery"></AirportList>
+<div id="airport-list-depport" class="cube-form-textfield"><div class="airport-showdiv port" id="airport-list-depport-showInput"></div><input type="hidden" id="airport-list-depport-submitInput" name="depport"></div>
+<div id="airport-list-arrport" class="cube-form-textfield"><div class="airport-showdiv port" id="airport-list-arrport-showInput"></div><input type="hidden" id="airport-list-arrport-submitInput" name="arrport"></div><div id="airports-window">
+    <script id="airportsTemplate" type="text/x-jquery-tmpl">
+        <div style = class="city_cell">
+        <span class="city_name"><%=zh_cn%></span>
+        </div>
+    </script>
+
+<style type="text/css">
+.contentScroller{
+    padding-bottom:20px;
+}
+body{
+    position:static;
+}
+nav {
+    padding: 12px 10px 5px 10px !important;
+    background: #f6f6f6;
+}
+</style>
+<header class="bar-title">
+  <a id="back2" hrefdisable="cube://exit" cube-action="pop" class="button back">
+    <img src="../com.csair.dynamic/images/icon_back.ing" style="width:20px;">
+  </a>
+  <h1 class="title">城市机场列表</h1>
+  <module id="menu1"></module>
+</header>
+
+
+
+<nav id="cityNav" class="bar-standard bar-header-secondary" style="order:none;padding-bottom:0px">
+    <ul id="city" class="segmented-controller">
+        <li class="active" data-value="domestic">
+            <a value="" href="javascript:void(0)" id="airports-radio-china">
+                国内城市
+            </a>
+        </li>
+        <li data-value="international">
+            <a value="" href="javascript:void(0)" id="airports-radio-internation">
+                国际城市
+                </a>
+        </li>
+    </ul>
+<li id="airports-list-search" style="margin-top: 14px; padding-top: 5px; background-color: rgb(246, 246, 246); background-position: initial initial; background-repeat: initial initial;"><input id="searchInput" placeholder="中文/拼音/英文" type="text" style="margin-bottom: 0px; padding-left: 8px;"></li></nav><div id="list-page" class="content" style="position:static;padding-top:150px;background-color: #f2f2f2;">
+    <div style="height:100%;">
+    <div id="airports-list" data-component="list" class="cube-list-nostyle" style="height: 100%;"></div></div>
+</div>
+</div></div></body></html>

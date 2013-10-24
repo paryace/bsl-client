@@ -191,7 +191,7 @@
 
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    //[chatPanel resignFirstResponder];
+    [chatPanel resignFirstResponder];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -458,6 +458,8 @@
 #pragma mark  chatimagecell delegate
 
 -(void)chatImageCellDidSelect:(ChatImageCell *)cell url:(NSString *)url{
+    
+    
     AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     ImageScroller* view=[[ImageScroller alloc] initWithFrame:appDelegate.window.rootViewController.view.bounds];
     [view showImage:url];
