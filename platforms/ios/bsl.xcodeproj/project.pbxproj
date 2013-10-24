@@ -1499,8 +1499,6 @@
 		39D9E86317F27C03001ED6F5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D813A17E8BFBA0067A023 /* SettingsViewController.xib */; };
 		39D9E86417F27C03001ED6F5 /* SetttingIMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D813D17E8BFBA0067A023 /* SetttingIMViewController.xib */; };
 		39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D81BD17E8BFBB0067A023 /* MoreIconButton.xib */; };
-		39D9E86E17F27C03001ED6F5 /* TypeSelectorBtnHL_Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625217EE898300C84A6A /* TypeSelectorBtnHL_Black@2x.png */; };
-		39D9E87017F27C03001ED6F5 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5117F007FC00F9CA68 /* blueArrow@2x.png */; };
 		39D9E87217F27C03001ED6F5 /* bg_search_lightgray.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83D417E8C77D0067A023 /* bg_search_lightgray.png */; };
 		39D9E87417F27C03001ED6F5 /* clicked_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83D617E8C77D0067A023 /* clicked_bg.png */; };
 		39D9E87517F27C03001ED6F5 /* top_bar_bg@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96CAA17F007FC00F9CA68 /* top_bar_bg@simple.png */; };
@@ -1640,7 +1638,6 @@
 		39D9E90F17F27C03001ED6F5 /* f083.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843317E8C77E0067A023 /* f083.png */; };
 		39D9E91017F27C03001ED6F5 /* f084.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843417E8C77E0067A023 /* f084.png */; };
 		39D9E91217F27C03001ED6F5 /* f085.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843517E8C77E0067A023 /* f085.png */; };
-		39D9E91317F27C03001ED6F5 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
 		39D9E91417F27C03001ED6F5 /* f086.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843617E8C77E0067A023 /* f086.png */; };
 		39D9E91617F27C03001ED6F5 /* f087.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843717E8C77E0067A023 /* f087.png */; };
 		39D9E91717F27C03001ED6F5 /* VOIPReceiverVoiceNodeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626A17EE898300C84A6A /* VOIPReceiverVoiceNodeBkg@2x.png */; };
@@ -1677,11 +1674,7 @@
 		39D9E94317F27C03001ED6F5 /* VOIPSenderVoiceNodeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626C17EE898300C84A6A /* VOIPSenderVoiceNodeBkg@2x.png */; };
 		39D9E94617F27C03001ED6F5 /* field@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623F17EE898300C84A6A /* field@2x.png */; };
 		39D9E94717F27C03001ED6F5 /* top_bar_bg@simple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96CAB17F007FC00F9CA68 /* top_bar_bg@simple@2x.png */; };
-		39D9E94B17F27C03001ED6F5 /* fullBtn1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C5D17F007FC00F9CA68 /* fullBtn1.png */; };
-		39D9E95317F27C03001ED6F5 /* middle_button_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8817F007FC00F9CA68 /* middle_button_active@2x.png */; };
 		39D9E95F17F27C03001ED6F5 /* messageDeleteSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8617F007FC00F9CA68 /* messageDeleteSelect.png */; };
-		39D9E96217F27C03001ED6F5 /* VoiceSearchLoading010@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626917EE898300C84A6A /* VoiceSearchLoading010@2x.png */; };
-		39D9E96617F27C03001ED6F5 /* shake_-transportphoto_Avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968624217EE898300C84A6A /* shake_-transportphoto_Avatar@2x.png */; };
 		39D9E96717F27C03001ED6F5 /* nav_add_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8C17F007FC00F9CA68 /* nav_add_btn_active@2x.png */; };
 		39D9E96B17F27C03001ED6F5 /* setting_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847317E8C77E0067A023 /* setting_about.png */; };
 		39D9E96C17F27C03001ED6F5 /* setting_about_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847417E8C77E0067A023 /* setting_about_logo.png */; };
@@ -9182,16 +9175,9 @@
 				18E9C4A01803AB1200B874B8 /* FPAnnexListViewController.xib in Resources */,
 				39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */,
 				18E9C57A1803AB1200B874B8 /* FlightSchedule.png in Resources */,
-				39D9E86E17F27C03001ED6F5 /* TypeSelectorBtnHL_Black@2x.png in Resources */,
 				18E9C5631803AB1200B874B8 /* Button_Phone_Consult.png in Resources */,
-				39D9E87017F27C03001ED6F5 /* blueArrow@2x.png in Resources */,
 				18E9C5821803AB1200B874B8 /* 电子书目录_pad.png in Resources */,
 				39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */,
-				39D9E86E17F27C03001ED6F5 /* TypeSelectorBtnHL_Black@2x.png in Resources */,
-				39D9E87017F27C03001ED6F5 /* blueArrow@2x.png in Resources */,
-				39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */,
-				39D9E86E17F27C03001ED6F5 /* TypeSelectorBtnHL_Black@2x.png in Resources */,
-				39D9E87017F27C03001ED6F5 /* blueArrow@2x.png in Resources */,
 				39D9E87217F27C03001ED6F5 /* bg_search_lightgray.png in Resources */,
 				39D9E87417F27C03001ED6F5 /* clicked_bg.png in Resources */,
 				18E9C5661803AB1200B874B8 /* start_zh.png in Resources */,
@@ -9401,9 +9387,7 @@
 				39D9E90F17F27C03001ED6F5 /* f083.png in Resources */,
 				39D9E91017F27C03001ED6F5 /* f084.png in Resources */,
 				39D9E91217F27C03001ED6F5 /* f085.png in Resources */,
-				39D9E91317F27C03001ED6F5 /* nav_bg@2x.png in Resources */,
 				18E9C4BE1803AB1200B874B8 /* LoginViewCell_Phone.xib in Resources */,
-				39D9E91317F27C03001ED6F5 /* nav_bg@2x.png in Resources */,
 				39D9E91417F27C03001ED6F5 /* f086.png in Resources */,
 				39D9E91617F27C03001ED6F5 /* f087.png in Resources */,
 				39D9E91717F27C03001ED6F5 /* VOIPReceiverVoiceNodeBkg@2x.png in Resources */,
@@ -9462,30 +9446,22 @@
 				18E9C4901803AB1200B874B8 /* FPButtonTableViewCell.xib in Resources */,
 				18E9C4D41803AB1200B874B8 /* QueryTableCell_Phone.xib in Resources */,
 				18E9C4B31803AB1200B874B8 /* weather_area.plist in Resources */,
-				39D9E94B17F27C03001ED6F5 /* fullBtn1.png in Resources */,
 				18E9C5771803AB1200B874B8 /* EbookList.png in Resources */,
 				18E9C57D1803AB1200B874B8 /* NavigationBar_BackG.png in Resources */,
 				18E9C47A1803AB1200B874B8 /* SDA.xib in Resources */,
-				39D9E95317F27C03001ED6F5 /* middle_button_active@2x.png in Resources */,
 				18E9C4C01803AB1200B874B8 /* LoginViewController_Phone.xib in Resources */,
 				18E9C4B51803AB1200B874B8 /* FlightScheduleViewController_Pad.xib in Resources */,
 				18E9C4BF1803AB1200B874B8 /* LoginViewController_Pad.xib in Resources */,
-				39D9E94B17F27C03001ED6F5 /* fullBtn1.png in Resources */,
-				39D9E95317F27C03001ED6F5 /* middle_button_active@2x.png in Resources */,
 				1801377E17F3D1AA00261B66 /* local_module.plist in Resources */,
 				39D9E95F17F27C03001ED6F5 /* messageDeleteSelect.png in Resources */,
 				18E9C5591803AB1200B874B8 /* Button_CheckedMark.png in Resources */,
 				180F2387180D237D0037751C /* Default-568h@2x.png in Resources */,
 				18E9C4B81803AB1200B874B8 /* LandingViewController_Pad.xib in Resources */,
-				39D9E96217F27C03001ED6F5 /* VoiceSearchLoading010@2x.png in Resources */,
 				18E9C56F1803AB1200B874B8 /* button-pause.png in Resources */,
 				18E9C58E1803AB1200B874B8 /* Cell_Middel.png in Resources */,
-				39D9E96617F27C03001ED6F5 /* shake_-transportphoto_Avatar@2x.png in Resources */,
 				39D9E96717F27C03001ED6F5 /* nav_add_btn_active@2x.png in Resources */,
 				18E9C4D61803AB1200B874B8 /* TowFilesViewController.xib in Resources */,
 				18E9C4D11803AB1200B874B8 /* PlaneTypeViewController.xib in Resources */,
-				39D9E96217F27C03001ED6F5 /* VoiceSearchLoading010@2x.png in Resources */,
-				39D9E96617F27C03001ED6F5 /* shake_-transportphoto_Avatar@2x.png in Resources */,
 				39D9E96717F27C03001ED6F5 /* nav_add_btn_active@2x.png in Resources */,
 				39D9E96B17F27C03001ED6F5 /* setting_about.png in Resources */,
 				39D9E96C17F27C03001ED6F5 /* setting_about_logo.png in Resources */,

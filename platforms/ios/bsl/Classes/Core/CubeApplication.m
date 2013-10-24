@@ -32,7 +32,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 @implementation CubeApplication
 
 
-#define ManagerUsers YES
+#define ManagerUsers NO
 
 //运行时配置文件路径
 #define RUNTIME_CFG_URL [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:@"Cube.json"]
@@ -138,12 +138,12 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
             if (self.installed)
                 [self mergeNewLocalModules];
         }else{
-//            if (self.installed) {
-//                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-//                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-//                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
-//                [self loadApplicatioFromURL:cubeURL];
-//            }
+            if (self.installed) {
+                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+                [self loadApplicatioFromURL:cubeURL];
+            }
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:CubeModuleInstallDidFinishNotification object:nil];
     }
@@ -489,13 +489,13 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 -(void)sync
 {
     
-    if (self.installed) {
-            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
-            [self loadApplicatioFromURL:cubeURL];
-        
-    }
+//    if (self.installed) {
+//            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+//            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+//            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+//            [self loadApplicatioFromURL:cubeURL];
+//        
+//    }
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *token =  [defaults objectForKey:@"token"];
