@@ -26,6 +26,8 @@
 #import "VoiceUploadManager.h"
 
 
+#import "Reachability.h"
+
 @interface XMPPIMActor ()
 
 @end
@@ -80,6 +82,11 @@
 - (id)initWithDelegate:(id<XMPPIMActorDelegate>)ad{
     self = [super init];
     if (self){
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChangedNotification) name:kReachabilityChangedNotification object:nil];
+
+        [[Reachability reachabilityForInternetConnection] startNotifier];
+
         _delegate = ad;
         islogin = false;
         // [self localTest];
@@ -91,6 +98,7 @@
 
 
 -(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self teardownStream];
 }
 
@@ -143,6 +151,8 @@
     
     if (!xmppReconnect) {
         xmppReconnect = [[XMPPReconnect alloc] init];
+        [xmppReconnect setReconnectTimerInterval:10.0f];
+        
         [xmppReconnect activate:xmppStream];
     }
 
@@ -189,8 +199,22 @@
         [self goOffLine];
         [xmppStream disconnect];
         [roomService tearDown];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"XMPPSTREAMIMOFFLINE" object:nil];
+
     }
+
+}
+
+-(void)reachabilityChangedNotification{
+
+    if (([Reachability reachabilityForInternetConnection].currentReachabilityStatus != NotReachable) &&
+        ([Reachability reachabilityForLocalWiFi].currentReachabilityStatus != NotReachable)) {
+    }
+    else{
+        [self disConnect];
+    }
+
 }
 
 -(void)connectDriver{
@@ -240,9 +264,13 @@
         userId=loginUserStr;
     }
     userId = [userId stringByAppendingFormat:@"@%@",kXMPPDomin];
+#ifdef MOBILE_BSL
+    [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"SOC_Client"]];
+#else
+   [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"Cube_Client"]];
+#endif
     
-    [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"Cube_Client"]];
-    
+    [xmppStream setKeepAliveInterval:30.0f];
     [xmppStream setHostName:kXMPPHost];
 	[xmppStream setHostPort:kXMPPPort];
     
@@ -276,6 +304,25 @@
 
 - (void)xmppStream:(XMPPStream *)sender socketDidConnect:(GCDAsyncSocket *)socket{
 	
+}
+
+- (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
+    if ([xmppStream isConnected]) {
+        [xmppStream disconnect];
+        [roomService tearDown];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"XMPPSTREAMIMOFFLINE" object:nil];
+    }
+
+}
+
+- (void)xmppStreamWasToldToDisconnect:(XMPPStream *)sender{
+    if ([xmppStream isConnected]) {
+        [xmppStream disconnect];
+        [roomService tearDown];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"XMPPSTREAMIMOFFLINE" object:nil];
+
+    }
+
 }
 
 - (void)xmppStream:(XMPPStream *)sender willSecureWithSettings:(NSMutableDictionary *)settings{

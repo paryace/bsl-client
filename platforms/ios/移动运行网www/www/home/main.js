@@ -1,15 +1,16 @@
-define(['text!home/main.html',
+define(['text!home/main.html', 'home/vendor/competence',
     // 'com.csair.base/urlConfig', 
-    'home/vendor/zepto/zepto',
-    'home/vendor/zepto/touch',
-    'home/vendor/underscore-min',
-    'home/vendor/swipe',
-    'home/vendor/fastclick/fastclick'
+    // 'home/vendor/zepto/zepto',
+    // 'home/vendor/zepto/touch',
+    // 'home/vendor/underscore-min',
+    'home/vendor/swipe'
+    // ,
+    // 'home/vendor/fastclick/fastclick'
     /*'js/util.js'*/
     /* ,'../cordova'*/
 
 
-], function(demoIndexTemplate
+], function(demoIndexTemplate, Competence
     // , UrlConfig
 
 ) {
@@ -21,7 +22,7 @@ define(['text!home/main.html',
         //isFirst: true,
         events: {
 
-            "click header": 'test'
+            // "click header": 'refresh'
 
         },
 
@@ -32,8 +33,8 @@ define(['text!home/main.html',
         },
 
 
-        test: function() {
-
+        refresh: function() {
+            window.location.href=window.location.href;
             // refreshMainPage();
 
         },
@@ -54,8 +55,10 @@ define(['text!home/main.html',
                     callback: function(index, elem) {
                         console.log("index=" + index);
                         var whichPage = index + 1;
-                        // $("#position").children("li").removeClass("on");
-                        // $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                        if(isShowBullet){
+                            $("#position").children("li").removeClass("on");
+                            $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                        }
 
                     }
                 });
@@ -80,6 +83,8 @@ define(['text!home/main.html',
 
         loadModuleList: function(plugin, action, type, callback) {
             var that = this;
+
+            var me = this;
             if (isOver === 0) {
 
                 isOver = isOver + 1;
@@ -143,10 +148,15 @@ define(['text!home/main.html',
                             if (j % 12 === 0) {
                                 i++;
                                 $("#swipe").append("<div class='page_div'><ul id='myul" + i + "' clsss='scrollContent'></ul></div>");
-                                // $("#position").append("<li></li>");
+                                if(isShowBullet){
+                                    $("#position").append("<li></li>");
+                                }
                             }
 
                             console.log("aaaa --" + value.sortingWeight + "");
+
+
+
                             $("#myul" + i).append(
                                 _.template($("#module_div_ul").html(), {
                                     'icon': value.icon,
@@ -155,12 +165,66 @@ define(['text!home/main.html',
                                     'moduleType': value.moduleType,
                                     'msgCount': value.msgCount
                                 }));
+
+
+
                             j++;
 
                         });
 
                     });
-                    //$("#position").children("li:nth-child(1)").addClass("on");
+
+
+                    // console.log("渲染动画了没有11111111111====");
+
+                    var list = Competence;
+
+
+                    if (list.application.competence === "Y") {
+
+                        console.log("有权限进入乘务申请模块");
+
+                    } else {
+                        console.log("没有权限进入乘务申请模块");
+                        $("#application").attr({
+                            'style': 'opacity:0.4;filter:alpha(opacity=40);'
+                        });
+                    }
+
+                    if (list.crewmen.competence === "Y") {
+
+                        console.log("有权限进入空勤任务模块");
+
+                    } else {
+
+
+                        console.log("没有权限进入空勤任务模块");
+
+                        $("#crewmen").attr({
+                            'style': 'opacity:0.4;filter:alpha(opacity=40);'
+                        });
+
+                    }
+
+
+
+                    if (list.aircrew.competence === "Y") {
+
+                        console.log("有权限进入机组任务模块");
+
+                    } else {
+
+                        console.log("没有权限进入机组任务模块");
+                        $("#aircrew").attr({
+                            'style': 'opacity:0.4;filter:alpha(opacity=40);'
+                        });
+                    }
+
+
+
+                    if(isShowBullet){
+                        $("#position").children("li:nth-child(1)").addClass("on");
+                    }
 
                     console.log("i=" + i);
                     if (callback !== undefined) {
@@ -185,13 +249,15 @@ define(['text!home/main.html',
 
             }
 
+
+
         },
 
         getWeather: function() {
-            if (window.localStorage["socUserInfo"]) {
+                if (window.localStorage["socUserInfo"]) {
                 var that = this;
                 var me = this;
-                //admin登陆后台接口传过来的基地为null，默认为广州
+                //admin登陆后台接口传过来的基地为null，
                 var loginMessage = JSON.parse(window.localStorage["socUserInfo"]);
 
                 var base = loginMessage.chnBase;
@@ -218,17 +284,9 @@ define(['text!home/main.html',
 
                         console.log(data.weather.tempreture);
                         console.log(data.weather.rmk);
+                        window.localStorage["homeWeather"] = JSON.stringify(data);
 
-                        if (data.weather.rmk) {
-
-                            $("#weather").html(data.weather.rmk);
-
-                        }
-
-                        if (data.weather.tempreture) {
-
-                            $("#degree").html(data.weather.tempreture + "°");
-                        }
+                        me.weatherRender(data);
 
                     },
                     error: function(e, xhr, type) {
@@ -236,7 +294,9 @@ define(['text!home/main.html',
 
                         console.error('列表数据加载失败：' + e + "/" + type + "/" + xhr);
 
-                        that.Toast("加载天气信息失败!", null);
+                        //that.Toast("加载天气信息失败!", null);
+                        //如果失败再次获取天气信息
+                        me.getWeatherFail();
 
                     },
 
@@ -251,317 +311,7 @@ define(['text!home/main.html',
             }
         },
 
-        closeLoader: function() {
-
-
-
-            $("#loader").attr({
-                'style': 'display:none'
-            });
-        },
-
-        Toast: function(msg, duration) {
-            duration = isNaN(duration) ? 3000 : duration;
-            var m = document.createElement('div');
-            m.innerHTML = msg;
-            m.style.cssText = "width:60%; min-width:150px; background:#000; opacity:0.5; height:40px; color:#fff; line-height:40px; text-align:center; border-radius:5px; position:fixed; top:80%; left:20%; z-index:999999; font-weight:bold;";
-            document.body.appendChild(m);
-            setTimeout(function() {
-                var d = 0.5;
-                m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
-                m.style.opacity = '0';
-                setTimeout(function() {
-                    document.body.removeChild(m);
-                }, d * 1000);
-            }, duration);
-        },
-
-
-        getDate: function() {
-            if (window.localStorage["socUserInfo"]) {
-
-
-                //admin登陆后台接口传过来的基地为null，默认为广州
-                var loginMessage = JSON.parse(window.localStorage["socUserInfo"]);
-
-                var base = loginMessage.chnBase;
-                console.log(base);
-                $("#base").html(base);
-                var weekday = new Array(7);
-                weekday[1] = "星期一";
-                weekday[2] = "星期二";
-                weekday[3] = "星期三";
-                weekday[4] = "星期四";
-                weekday[5] = "星期五";
-                weekday[6] = "星期六";
-                weekday[0] = "星期日";
-                var myDate = new Date();
-
-                var month = myDate.getMonth();
-
-                var currentMonth = parseInt(month) + 1;
-                var currentDay = myDate.getDate();
-                var day = weekday[myDate.getDay()];
-
-
-                var date = currentMonth + "月" + currentDay + "日" + " " + day;
-                $("#date").html(date);
-            }
-        },
-
-        timeWeather: null,
-
-        hasWeather: false,
-
-        app: null,
-
-        accessModuleByApp: function(tirgger, that) {
-            console.log("模块点击");
-            var type = "main";
-            var identifier = $(tirgger).attr("identifier");
-            console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
-
-            var applicationCompetence = "111";
-            var aircrewCompetence = "111";
-            var crewmenCompetence = "111";
-
-            //判断当前账号是否有权限进入此模块
-            if (identifier === "com.csair.application") {
-
-                if (applicationCompetence) {
-                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-
-                } else {
-
-                    that.Toast("对不起,您暂无权限进入此模块", null);
-
-                }
-
-
-
-            } else if (identifier === "com.csair.aircrew") {
-
-
-                if (aircrewCompetence) {
-                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-
-                } else {
-
-                    that.Toast("对不起,您暂无权限进入此模块", null);
-
-                }
-
-            } else if (identifier === "com.csair.crewmen") {
-
-
-                if (crewmenCompetence) {
-
-                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-                } else {
-
-                    that.Toast("对不起,您暂无权限进入此模块", null);
-
-                }
-            } else if (identifier === "com.csair.setting") {
-
-                that.cordovaExec("CubeModuleOperator", "setting");
-
-
-            } else {
-
-                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-            }
-        },
-
-        accessModuleByPiece: function(tirgger, that) {
-            Piece.Session.deleteObject('moduleIndex');
-            console.log("模块点击");
-            var type = "main";
-            var identifier = $(tirgger).attr("identifier");
-            console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
-
-            var applicationCompetence = "111";
-            var aircrewCompetence = "111";
-            var crewmenCompetence = "111";
-
-            //判断当前账号是否有权限进入此模块
-            if (identifier === "com.csair.application") {
-
-                if (applicationCompetence) {
-
-                    that.container.navigateForResult('/' + identifier + '/index', {
-                        trigger: true
-                    }, '/com.csair.home/main', this.onGotResult);
-
-                } else {
-
-                    that.Toast("对不起,您暂无权限进入此模块", null);
-
-                }
-
-
-
-            } else if (identifier === "com.csair.aircrew") {
-
-
-                if (aircrewCompetence) {
-                    that.container.navigateForResult('/' + identifier + '/index', {
-                        trigger: true
-                    }, '/com.csair.home/main', this.onGotResult);
-
-                } else {
-
-                    that.Toast("对不起,您暂无权限进入此模块", null);
-
-                }
-
-            } else if (identifier === "com.csair.crewmen") {
-
-
-                if (crewmenCompetence) {
-
-                    that.container.navigateForResult('/' + identifier + '/index', {
-                        trigger: true
-                    }, '/com.csair.home/main', this.onGotResult);
-                } else {
-
-                    that.Toast("对不起,您暂无权限进入此模块", null);
-
-                }
-            } else if (identifier === "com.csair.setting") {
-
-                that.cordovaExec("CubeModuleOperator", "setting");
-            } else if (identifier === "com.foss.chat") {
-                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-            } else if (identifier === "com.foss.announcement") {
-                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-            } else if (identifier === "com.foss.message.record") {
-                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-            } else {
-
-                that.container.navigateForResult('/' + identifier + '/index', {
-                    trigger: true
-                }, '/com.csair.home/main', this.onGotResult);
-            }
-        },
-
-        onShow: function() {
-
-            var that = this;
-            var me = this;
-
-
-            window.refreshMainPage = this.refreshMainPage;
-            window.receiveMessage = this.receiveMessage;
-            window.loadModuleList = this.loadModuleList;
-
-
-
-            new FastClick(document.body);
-
-            //封装cordova的执行方法，加上回调函数
-
-
-
-            //设置按键
-            // $("#setting_btn").click(function() {
-            //  cordovaExec("CubeModuleOperator", "setting");
-            // });
-            //搜索按键
-            $("#search_btn").click(function() {
-
-                //搜索事件
-                var keyword = $("#search_input").val();
-                console.log("点击了搜索按键：keyword=" + keyword);
-
-
-                if (keyword) {
-                    that.Toast("航班号或机未号!" + keyword, null);
-
-
-                    var myDate = new Date();
-
-
-                    var month = myDate.getMonth();
-
-                    var currentMonth = parseInt(month) + 1;
-                    var currentDay = myDate.getDate();
-
-                    var confirmTime = myDate.getFullYear() + "-" + (currentMonth < 10 ? "0" + currentMonth : currentMonth) + "-" + (currentDay < 10 ? "0" + currentDay : currentDay);
-
-                    console.log("confirmTime::++==" + confirmTime);
-
-
-                    var queryAction = {
-                        QueryType: '航班机尾号',
-                        querySite: 'flight',
-                        queryUrl: "",
-                        requestParams: {
-                            'fltDt': confirmTime,
-                            'fltNr': keyword
-                        },
-                        fromPage: "home"
-                    };
-                    console.log("点击了搜索按键：queryActiond=");
-
-
-                    window.localStorage['com.csair.dynamic-flightDynamic.html'] = JSON.stringify(queryAction);
-
-                    console.log(window.location.href);
-                    if (isLoadModuleByPiece) {
-                        that.container.navigateForResult('/' + identifier + '/index', {
-                            trigger: true
-                        }, '/com.csair.home/main', this.onGotResult);
-                    } else {
-                        that.cordovaExec("CubeModuleOperator", "showModule", ["com.csair.dynamic", "main"]);
-                    }
-                    //window.location = "../com.csair.dynamic/index.html#com.csair.dynamic/flightDynamic";
-
-                } else {
-
-
-                    that.Toast("请输入航班号或机未号!", null);
-
-                }
-
-            });
-
-
-            //机场天气模块点击
-
-            $("#weatherContent").click(function() {
-
-                console.log("模块点击");
-                var type = "main";
-                var identifier = "com.csair.airport";
-                console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
-                if (isLoadModuleByPiece) {
-                    that.container.navigateForResult('/' + identifier + '/index', {
-                        trigger: true
-                    }, '/com.csair.home/main', this.onGotResult);
-                } else {
-                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
-                }
-
-            });
-
-            //模块点击
-                                 $("li[identifier]").die("click");
-
-            $("li[identifier]").live("click", function() {
-                console.log("length " + $("li[identifier]").size());
-                if (isLoadModuleByPiece) {
-                    that.accessModuleByPiece(this, that);
-                } else {
-                    that.accessModuleByApp(this, that);
-                }
-
-
-            });
-
-
-            //没有权限的模块灰色显示
-
+        getWeatherFail: function() {
 
             //获取天气信息
 
@@ -602,7 +352,472 @@ define(['text!home/main.html',
                 }
             }, 10 * 1000);
 
+        },
 
+        weatherRender: function(data) {
+
+            if (data.weather.rmk) {
+
+                $("#weather").html(data.weather.rmk);
+
+            }
+
+            if (data.weather.tempreture) {
+
+                $("#degree").html(data.weather.tempreture + "°");
+            }
+        },
+
+        Toast: function(msg, duration) {
+            duration = isNaN(duration) ? 3000 : duration;
+            var m = document.createElement('div');
+            m.innerHTML = msg;
+            m.style.cssText = "width:60%; min-width:150px; background:#000; opacity:0.5; height:40px; color:#fff; line-height:40px; text-align:center; border-radius:5px; position:fixed; top:80%; left:20%; z-index:999999; font-weight:bold;";
+            document.body.appendChild(m);
+            setTimeout(function() {
+                var d = 0.5;
+                m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+                m.style.opacity = '0';
+                setTimeout(function() {
+                    document.body.removeChild(m);
+                }, d * 1000);
+            }, duration);
+        },
+
+
+        getDates: function() {
+            if (window.localStorage["socUserInfo"]) {
+
+
+                //admin登陆后台接口传过来的基地为null，默认为广州
+                var loginMessage = JSON.parse(window.localStorage["socUserInfo"]);
+
+                var base = loginMessage.chnBase;
+                console.log(base);
+                $("#base").html(base);
+            }
+            var weekday = new Array(7);
+            weekday[1] = "星期一";
+            weekday[2] = "星期二";
+            weekday[3] = "星期三";
+            weekday[4] = "星期四";
+            weekday[5] = "星期五";
+            weekday[6] = "星期六";
+            weekday[0] = "星期日";
+            var myDate = new Date();
+
+            var month = myDate.getMonth();
+
+            var currentMonth = parseInt(month) + 1;
+            var currentDay = myDate.getDate();
+            var day = weekday[myDate.getDay()];
+
+
+            var date = currentMonth + "月" + currentDay + "日" + " " + day;
+            $("#date").html(date);
+
+        },
+
+        timeWeather: null,
+
+        hasWeather: false,
+
+        app: null,
+
+        applicationCompetence: null,
+        aircrewCompetence: null,
+        crewmenCompetence: null,
+
+        accessModuleByApp: function(tirgger, that) {
+
+            var me = this;
+            console.log("模块点击111");
+            var type = "main";
+            var identifier = $(tirgger).attr("identifier");
+            console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
+
+
+
+            //判断当前账号是否有权限进入此模块
+            if (identifier === "com.csair.application") {
+
+                if (me.applicationCompetence) {
+                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", 4000);
+
+                }
+
+
+
+            } else if (identifier === "com.csair.aircrew") {
+
+
+                if (me.aircrewCompetence) {
+                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", 4000);
+
+                }
+
+            } else if (identifier === "com.csair.crewmen") {
+
+
+                if (me.crewmenCompetence) {
+
+                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", 4000);
+
+                }
+            } else if (identifier === "com.csair.setting") {
+
+                that.cordovaExec("CubeModuleOperator", "setting");
+
+
+            } else {
+
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            }
+        },
+
+        accessModuleByPiece: function(tirgger, that) {
+
+            var me = this;
+            Piece.Session.deleteObject('moduleIndex');
+            console.log("模块点击2222");
+            var type = "main";
+            var identifier = $(tirgger).attr("identifier");
+
+
+
+            console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
+
+
+            //判断当前账号是否有权限进入此模块
+            if (identifier === "com.csair.application") {
+
+                if (me.applicationCompetence) {
+
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+
+
+
+            } else if (identifier === "com.csair.aircrew") {
+
+
+                if (me.aircrewCompetence) {
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+
+            } else if (identifier === "com.csair.crewmen") {
+
+
+                if (me.crewmenCompetence) {
+
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+                } else {
+
+                    that.Toast("对不起,您暂无权限进入此模块", null);
+
+                }
+            } else if (identifier === "com.csair.setting") {
+
+                that.cordovaExec("CubeModuleOperator", "setting");
+            } else if (identifier === "com.foss.chat") {
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            } else if (identifier === "com.foss.announcement") {
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            } else if (identifier === "com.foss.message.record") {
+                that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+            } else {
+
+                that.container.navigateForResult('/' + identifier + '/index', {
+                    trigger: true
+                }, '/com.csair.home/main', this.onGotResult);
+            }
+        },
+        //清楚之前缓存数据
+
+
+        deleteDatas: function() {
+
+
+
+            console.log("值班领导缓存");
+            //值班领导缓存
+
+            window.sessionStorage["com.csair.leading-leadingList.html"] = null;
+
+            console.log("值班领导缓存结束");
+            //我的空勤任务
+            var mytask = [{
+                querySite: 'flightTask',
+
+            }, {
+                querySite: 'sbyTask',
+
+            }, {
+                querySite: 'grdTask',
+
+            }, {
+                querySite: 'otherTask',
+
+            }, {
+                querySite: 'simTask',
+
+            }, {
+                querySite: 'findHistoryFly',
+
+            }];
+
+            for (var i = 0; i < mytask.length; i++) {
+
+                window.sessionStorage['com.csair.crewmen-myselfTask.html-' + mytask[i].querySite] = null;
+
+            }
+
+
+
+            //信息公告
+
+            window.sessionStorage["com.csair.notification-notification.html-findNoticeList"] = null;
+            window.sessionStorage["com.csair.notification-notification.html-warningNoticeList"] = null;
+            window.sessionStorage["com.csair.notification-notification.html-findEBNoticeList"] = null;
+            window.sessionStorage["com.csair.notification-notification.html-noticeCabinlist"] = null;
+
+
+            //运行橄榄
+
+
+            window.sessionStorage["com.csair.overview-overview.html-today"] = null;
+            window.sessionStorage["com.csair.overview-overview.html-yestoday"] = null;
+
+        },
+        onShow: function() {
+
+            var that = this;
+            var me = this;
+            me.getDates();
+            var isLoadModuleByPiece = true;
+
+            me.deleteDatas();
+
+            var list = Competence;
+
+
+
+            var homeWeather = window.localStorage["homeWeather"];
+
+            if (homeWeather === "null" || homeWeather === null || homeWeather === undefined || homeWeather === "undefined") {
+
+                console.log("天气无数据");
+                me.getWeather();
+
+
+            } else {
+                console.log("有数据");
+
+
+                console.log(homeWeather);
+
+                var datas= JSON.parse(homeWeather);
+
+                console.log(datas);
+                me.weatherRender(datas);
+            }
+
+
+            console.log("打印权限列表");
+            console.log(list);
+
+
+            if (list.application.competence === "Y") {
+                me.applicationCompetence = "Y";
+            }
+            if (list.crewmen.competence === "Y") {
+                me.crewmenCompetence = "Y";
+            }
+            if (list.aircrew.competence === "Y") {
+                me.aircrewCompetence = "Y";
+            }
+
+
+
+            window.refreshMainPage = this.refreshMainPage;
+            window.receiveMessage = this.receiveMessage;
+            window.loadModuleList = this.loadModuleList;
+
+
+
+            console.log("初始化借宿了啊");
+
+            new FastClick(document.body);
+
+            //封装cordova的执行方法，加上回调函数
+
+
+
+            //设置按键
+            // $("#setting_btn").click(function() {
+            //  cordovaExec("CubeModuleOperator", "setting");
+            // });
+            //搜索按键
+            $("#search_btn").click(function() {
+                    
+
+                //搜索事件
+                var keyword = $("#search_input").val();
+                console.log("点击了搜索按键：keyword=" + keyword);
+
+
+                if (keyword) {
+                    that.Toast("航班号或机未号!" + keyword, null);
+
+
+                    var myDate = new Date();
+
+
+                    var month = myDate.getMonth();
+
+                    var currentMonth = parseInt(month) + 1;
+                    var currentDay = myDate.getDate();
+
+                    var confirmTime = myDate.getFullYear() + "-" + (currentMonth < 10 ? "0" + currentMonth : currentMonth) + "-" + (currentDay < 10 ? "0" + currentDay : currentDay);
+
+                    console.log("confirmTime::++==" + confirmTime);
+
+
+                    var queryAction = {
+                        QueryType: '航班机尾号',
+                        querySite: 'flight',
+                        queryUrl: "",
+                        requestParams: {
+                            'fltDt': confirmTime,
+                            'fltNr': keyword
+                        },
+                        fromPage: "home"
+                    };
+                    console.log("点击了搜索按键：queryActiond=");
+
+
+                    window.localStorage['com.csair.dynamic-flightDynamic.html'] = JSON.stringify(queryAction);
+                    var identifier = 'com.csair.dynamic';
+                    console.log(window.location.href);
+                    if (isLoadModuleByPiece) {
+                        
+                        that.container.navigateForResult('/' + identifier + '/index', {
+                            trigger: true
+                        }, '/com.csair.home/main', this.onGotResult);
+                    } else {
+                        that.cordovaExec("CubeModuleOperator", "showModule", ["com.csair.dynamic", "main"]);
+                    }
+                    //window.location = "../com.csair.dynamic/index.html#com.csair.dynamic/flightDynamic";
+
+                } else {
+
+
+                    that.Toast("请输入航班号或机未号!", null);
+
+                }
+
+            });
+
+
+            //机场天气模块点击
+
+            $("#weatherContent").click(function() {
+
+                console.log("模块点击");
+                var type = "main";
+                var identifier = "com.csair.airport";
+                console.log("module_click----" + identifier); /*var type = $(this).attr("moduleType");*/
+                if (isLoadModuleByPiece) {
+                    that.container.navigateForResult('/' + identifier + '/index', {
+                        trigger: true
+                    }, '/com.csair.home/main', this.onGotResult);
+                } else {
+                    that.cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+                }
+
+            });
+
+            //模块点击
+            $("li[identifier]").die("click");
+            $("li[identifier]").live("click", function() {
+                console.log("length " + $("li[identifier]").size());
+                if (isLoadModuleByPiece) {
+                    that.accessModuleByPiece(this, that);
+                } else {
+                    that.accessModuleByApp(this, that);
+                }
+
+
+            });
+
+
+            //没有权限的模块灰色显示
+
+            //获取天气信息
+
+
+
+            // this.timeWeather = setInterval(function() {
+
+            //     console.log("获取天气信息开始");
+
+
+
+            //     if (that.hasWeather) {
+
+            //         console.log("获取天气信息成功");
+
+            //         clearInterval(that.timeWeather);
+
+
+
+            //     } else {
+
+            //         // console.log("获取天气信息失败");
+
+            //         // var loginMessage = JSON.parse(window.localStorage["socUserInfo"]);
+
+            //         // if (loginMessage) {
+
+            //         //  console.log("基地信息存在====================");
+
+
+            //         that.getWeather();
+
+            //         // } else {
+            //         //  console.log("基地信息不存在====================");
+
+            //         //  socLogin();
+            //         // }
+            //     }
+            // }, 10 * 1000);
 
             //冒泡提示信息: msg:提示内容, duration:停留时间
             that.cordovaExec("CubeModuleList", "ShowMainView");
@@ -628,9 +843,11 @@ define(['text!home/main.html',
                             callback: function(index, elem) {
                                 console.log("index=" + index);
                                 var whichPage = index + 1;
-                                // $("#position").children("li").removeClass("on");
-                                // $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                                if(isShowBullet){
+                                    $("#position").children("li").removeClass("on");
+                                    $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
                                 //li_click();
+                                }
 
                             }
                         });
@@ -650,9 +867,11 @@ define(['text!home/main.html',
                         callback: function(index, elem) {
                             console.log("index=" + index);
                             var whichPage = index + 1;
-                            //$("#position").children("li").removeClass("on");
-                            // $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
-                            //li_click();
+                            if(isShowBullet){
+                                $("#position").children("li").removeClass("on");
+                                $("#position").children("li:nth-child(" + whichPage + ")").addClass("on");
+                                //li_click();
+                            }
                         }
                     });
 
@@ -661,13 +880,16 @@ define(['text!home/main.html',
 
             }
 
+           
+
         },
 
 
 
         render: function() {
             $(this.el).html(demoIndexTemplate);
-
+            Piece.Session.deleteObject('moduleIndex');
+            window.isShowBullet = true;
 
             Piece.View.prototype.render.call(this);
             return this;

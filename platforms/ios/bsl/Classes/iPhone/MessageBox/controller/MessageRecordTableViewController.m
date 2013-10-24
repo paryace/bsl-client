@@ -436,19 +436,17 @@
         NSMutableArray *moduleRecords = [presentModulesDic objectForKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
         NSArray *newModuleRecords = [MessageRecord findForModuleIdentifier:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
         //删除的是本地模块
+        
+        NSString* identify=[[presentModulesDic allKeys] objectAtIndex:indexPath.section];
+        
         MessageRecord *record = [moduleRecords objectAtIndex:indexPath.row];
         [record remove];
         [MessageRecord save];
         
-        if(newModuleRecords.count <1 ){
-           [presentModulesDic setObject:[MessageRecord findSystemRecord] forKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
+        if(moduleRecords.count <2 ){
             
-            if([moduleRecords count]<2){
-                [expandDic setObject:[NSNumber numberWithBool:NO] forKey:[NSNumber numberWithInteger:[indexPath section]]];
-            }
+            [self deleteModuleData:identify];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"module_badgeCount_change" object:nil];
-
             
         }else{
             [presentModulesDic setObject:newModuleRecords forKey:[[presentModulesDic allKeys] objectAtIndex:indexPath.section]];
@@ -456,6 +454,10 @@
             MessageRecordHeaderView *headerView  = (MessageRecordHeaderView *)[__tableView viewWithTag:indexPath.section + 100];
             
             headerView.messageCountLabel.text = [NSString stringWithFormat:@"%d",[newModuleRecords count]];
+            
+            UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"删除成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
+
         }
         
         [self delayLoadTimerEvent];
@@ -539,7 +541,7 @@
     
     
     //判断不是本地模块
-    if ([messageRecord.allContent  boolValue] ) {
+    if ( [messageRecord.allContent length]>0 && [messageRecord.allContent  boolValue] ) {
         @autoreleasepool {
             NSDictionary *missingModules = [module missingDependencies];
             NSArray *needInstall = [missingModules objectForKey:kMissingDependencyNeedInstallKey];
@@ -602,13 +604,18 @@
 //        }
 //        
         cubeWebViewController.startPage = [NSString stringWithFormat:@"%@?recordId=%@", moduleIndex, messageRecord.recordId];
-        
+        cubeWebViewController.showCloseButton = YES;
         [cubeWebViewController loadWebPageWithModuleIdentifier:module.identifier didFinishBlock: ^(){
             NSLog(@"finish loading");
             [self.navigationController.navigationBar setHidden:NO];
-            
             [self.navigationController pushViewController:cubeWebViewController animated:YES];
-            
+            if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+                cubeWebViewController.closeButton.hidden = YES;
+                
+            }else{
+                cubeWebViewController.closeButton.hidden = NO;
+                
+            }
             
             cubeWebViewController = nil;
         }   didErrorBlock:^(){

@@ -1,9 +1,0 @@
-{ 
-	"identifier" : "home",
-	"name" : "移动网主页",
-	"version" : "0.1.1",
-	"build" : 1,
-	"releaseNote": "移动运行网-主页模块",
-	"hidden" : true
-}
-

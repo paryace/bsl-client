@@ -63,8 +63,86 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "501"
             endingLineNumber = "501"
-            landmarkName = "@implementation MainViewViewController"
-            landmarkType = "3">
+            landmarkName = "-logout"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
+                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
+                  urlString = "file://localhost/Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
+                  timestampString = "404053629.770701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "503"
+                  endingLineNumber = "503"
+                  offsetFromSymbolStart = "4101">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
+                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
+                  urlString = "file://localhost/Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
+                  timestampString = "404053629.771266"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "503"
+                  endingLineNumber = "503"
+                  offsetFromSymbolStart = "4229">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bsl/Classes/pilot/infrastructure/query/UserQuery.m"
+            timestampString = "403769665.73775"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-loginWithWorkNo:password:completionBlock:failedBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bsl/Classes/pilot/domain/User.m"
+            timestampString = "403769740.16406"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-verifyPassword:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bsl/Classes/AppDelegate.m"
+            timestampString = "403863357.550731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-showLoginView"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

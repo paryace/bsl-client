@@ -46,7 +46,62 @@ define(['zepto', 'underscore', 'backbone', 'components/list', 'components/calend
                     return false;
                 });
 
+
+                
+                //this.fieldInFocus();
+                
+
                 this.checkDependences();
+            },
+
+            fieldInFocus:function(){
+                //customize input field focus style
+                this.$el.find('.inputContainer input').bind('focus',function(){
+                    var inputContainer;
+                    var selectEl = $(this).parent();;
+
+                    for(var i=0;i<10;i++){
+                        if(selectEl.hasClass('inputContainer')){
+                            inputContainer = selectEl;
+                            break;
+                        }
+                        selectEl = selectEl.parent();
+                    }
+
+
+
+                    var originalBorderColor = inputContainer.css('border-color');
+
+                    if(inputContainer){
+                        inputContainer.css({
+                            'background-color':'rgb(214,237,241)'
+                        });
+
+                        $(this).css({
+                            'background-color':'rgb(214,237,241)'
+                        });
+                    }
+
+                    if(!inputContainer.attr("blurRegit")||inputContainer.attr("blurRegit").length==0){
+                        $(this).bind('blur',function(){
+                            // inputContainer.css({
+                            //     'background-color': originalBorderColor
+                            // });
+
+                            inputContainer.css({
+                            'background-color':'white'
+                            });
+
+                            $(this).css({
+                                'background-color':'white'
+                            });
+                        }); 
+                        inputContainer.attr("blurRegit","true");                       
+                    }
+
+
+                    
+                });
             },
 
             //binding events for cube components

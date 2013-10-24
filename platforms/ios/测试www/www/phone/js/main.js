@@ -10,6 +10,9 @@ var cordovaExec = function(plugin, action, parameters, callback) {
 		//alert(err);
 	}, plugin, action, parameters === null || parameters === undefined ? [] : parameters);
 };
+var backToMain = function(){
+	$(".back_btn").trigger("click");
+};
 //首页接受到信息，刷新页面
 var receiveMessage = function(identifier, count, display) {
 	console.log("AAA进入index revceiveMessage count = " + count + identifier + display);
@@ -48,6 +51,8 @@ var refreshMainPage = function(identifier, type, moduleMessage) {
 
 		/*addModule(identifier, "main", moduleMessage);
 		$("li[identifier='" + identifier + "']").css('opacity', '0.5');*/
+
+
 		if (isOver === 0) {
 			isOver = isOver + 1;
 			console.log("刷新。。。。");
@@ -59,9 +64,6 @@ var refreshMainPage = function(identifier, type, moduleMessage) {
 				isOver = isOver - 1;
 			});
 		}
-
-
-
 	}
 
 };
@@ -155,7 +157,7 @@ var refreshModule = function(identifier, type, moduleMessage) {
 	} else {
 		//主页面
 		console.log("主界面、、");
-		$("li[identifier='" + identifier + "']").css('opacity', '1');
+		//$("li[identifier='" + identifier + "']").css('opacity', '1');
 		//判断模块 hidden
 		var isHidden = $("li[identifier='" + identifier + "']").attr("hidden");
 		console.log("是否显示？？？？" + isHidden);
@@ -270,9 +272,10 @@ var activeModuleManageBarItem = function(type) {
 
 //点击模块的时候触发事件
 var module_all_click = function() {
+
 	/*$("li[identifier] .module_li_img , li[identifier] .module_push, li[identifier] .detail").bind('click', function() {*/
 	$("li[identifier]").bind('click', function() {
-
+		
 
 
 		console.log("模块父类点击");
@@ -285,6 +288,7 @@ var module_all_click = function() {
 		//var $moduleTips = $(".module_Tips[moduletype='main'][identifier='" + identifier + "']");
 		//$moduleTips.hide();
 		cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+		
 
 	});
 };
@@ -399,13 +403,50 @@ var changeLayout = function(oldfilename, newfilename, type) {
 var initial = function(type, data) {
 	console.log("AAAAAAAA initial=" + type);
 	var i = 0;
-	_.each(data, function(value, key) {
 
+
+
+	
+
+			/*<!--     
+    //把data转换成array
+	var array = [];
+	for(var category in data){
+		array.push({"key":category,"value":data[category]});
+	}
+	array.sort(function(c1,c2){
+        //        排序最前面           最后面
+        if(c1.key == "公共功能" || c2.key == "基本功能"){
+            return -1;
+        }
+        if(c1.key == "基本功能" || c2.key == "公共功能"){
+            return 1;
+        }
+        return 0;
+     })
+    
+	_.each(array, function(obj) {
+
+        var key = obj.key;
+        var data = obj.value;
 		$("#myul").append(_.template($("#t2").html(), {
 			'muduleTitle': key,
 			'tag': i
 		}));
-		_.each((value), function(value, key) {
+		_.each((data), function(value, key) {
+     -->*/
+    //<!--
+     _.each(data, function(value, key) {
+           
+        $("#myul").append(_.template($("#t2").html(), {
+                                        'muduleTitle': key,
+                                        'tag': i
+                                        }));
+        _.each((value), function(value, key) {
+
+    //-->
+
+
 			console.log('AAAAAAAA identifier icon = ' + value.identifier + " -- " + value.icon);
 
 			//处理，只有在首页的时候才显示有统计数据
@@ -684,7 +725,8 @@ var listLayout = function() {
 	$("li[identifier]").die("touchend");
 
 	$("li[identifier]").live("touchstart", function() {
-		$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+		//$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+                             $(this).css("background","#d7d7d7");
 	});
 
 
@@ -703,7 +745,8 @@ var listLayout = function() {
 	});
 	$(".module_li .curd_btn").live("touchstart", function() {
 		if ($('#listview_btn').hasClass("active")) {
-			$(this).css("background", "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#767878), to(#A8A5A3)) !important");
+//			$(this).css("background", "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#767878), to(#A8A5A3)) !important");
+                                   $(this).css("background","#767878");
 			$("li[identifier]:nth-of-type(odd)").css("background", "#ffffff");
 			$("li[identifier]:nth-of-type(even)").css("background", "#f5f5f5");
 		}
@@ -711,7 +754,8 @@ var listLayout = function() {
 
 	$(".module_li .curd_btn").live("touchend", function() {
 		if ($('#listview_btn').hasClass("active")) {
-			$(this).css("background", "-webkit-gradient(linear, 0% 80%, 0% 0%, from(#efefef), to(#dddddd)) !important");
+//			$(this).css("background", "-webkit-gradient(linear, 0% 80%, 0% 0%, from(#efefef), to(#dddddd)) !important");
+                                   $(this).css("background","#efefef");
 			$("li[identifier]:nth-of-type(odd)").css("background", "#ffffff");
 			$("li[identifier]:nth-of-type(even)").css("background", "#f5f5f5");
 		}
@@ -728,7 +772,7 @@ var listLayout = function() {
 		$('.module_div ul li .icon-chevron-right').css('display', 'none');
 		//显示 curd_btn
 		$('.module_div ul li .curd_btn').css('display', 'inline');
-
+		$('.detail .module_li_titlename').css('top', '0px').css('font-size', '1.2em');
 
 		//禁止本地模块curd_btn显示
 		$.each($('.module_div ul .module_li .curd_btn'), function(index, item) {
@@ -771,12 +815,13 @@ var gridLayout = function() {
 	$("li[identifier]").die("touchstart");
 	$("li[identifier]").die("touchend");
 	$("li[identifier]").live("touchstart", function() {
-		$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+		//$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+		$(this).css("background", "#d7d7d7");
 		//$("li[identifier]").die("touchstart");
 
 	});
 	$("li[identifier]").live("touchend", function() {
-		$(this).css("background", "#f5f5f5)");
+		$(this).css("background", "#f5f5f5)");x
 		//$("li[identifier]").live("touchstart", function());
 	});
 	$(".module_li .curd_btn").die("touchstart");
@@ -868,6 +913,7 @@ $('#manager_btn')
 				var type = "uninstall";
 				activeModuleManageBarItem(type);
 				listLayout();
+				cordovaExec("CubeModuleOperator", "manager");
 				if (myScroll) {
 					myScroll.refresh();
 				}
@@ -930,7 +976,7 @@ var app = {
 	receivedEvent: function(id) {
 
 
-		//loadModuleList("CubeModuleList", "mainList", "main");
+		loadModuleList("CubeModuleList", "mainList", "main");
 		cordovaExec("CubeModuleOperator", "sync", [], function() {
 			//alert(result);
 			var osPlatform = device.platform;

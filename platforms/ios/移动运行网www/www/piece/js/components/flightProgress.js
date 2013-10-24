@@ -11,6 +11,7 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
         initialize: function(args) {
             var me = this;
             me.canvas = args.canvas;
+            me.canvasScale = args.canvasScale;
 
         
         },
@@ -32,6 +33,7 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
         el:null,
         canvas:null,
         canvasText:'',
+        canvasScale:1,
         setDegree: function(process){
             var canvas = this.canvas;//DOM
             if (canvas == null) return false;
@@ -39,8 +41,8 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
             var canvasWidth = $(canvas).parent().width();
             var canvasHeight = $(canvas).parent().height();
             $(canvas).attr({
-              width:canvasWidth,
-              height:canvasHeight
+              width:canvasWidth*this.canvasScale,
+              height:canvasHeight*this.canvasScale
             });
 
             
@@ -55,28 +57,37 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
 
         DrawToAngle:function(context,canvasWidth,canvasHeight,percent,time){
             var img = $("<img/>").attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAlCAYAAADBa/A+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzA0QUZDOTMxOUJEMTFFMzg4QjNEMzVFM0YxQjVCNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzA0QUZDOTQxOUJEMTFFMzg4QjNEMzVFM0YxQjVCNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCRkFCODVGNjE5QkQxMUUzODhCM0QzNUUzRjFCNUI0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCRkFCODVGNzE5QkQxMUUzODhCM0QzNUUzRjFCNUI0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pq3x2LwAAANmSURBVHjaYvz//z/DYAUspCjmKrkwDUhlQrkXgHj6tx6DWUToI9lhQHMZmEhwWGiQvkAmSBMInyhSN2BlZpwJFBejVcgxkaB2287rnxi+/voH5uhJcTKUOYuDmNUD7jhgaH0FOmw1yIEwAHIc0JF5wNBLG+iQA4HV6y59gHOA0cowK0KOgVbRS6rjUKKW1tHLRGIOwohaWkYvExl6UKKWltFLjuMwopZW0csE9GkyEJ8B4v9QPI2cqKVF9IJCLvNogZoxrHBNMBfOBBo+gdSoxRK94tRw3Ox5J9/CBSYEyTCYy3PnAw2vwaNv645rmFGLFr1V1HDc0pXn3jN8+QmxiA3o+2XxCgySfKzNQAfG4Ijab99+Y49aakYvI6hVAjRkxuRg2fRkS2G4xIkHXxk8pt9h+PX3fwUuzcC6tmNJrAJWuUvPvjPYTrzF8BuPfjTwFYi3APEDWMUPc5yxoQzXGWDaQ1G9+cpHhlMPv+I0jZONiaHKVQKn/Krz7xkuAx1JlMuASWQ7MCYevvvVD+QWgRzHAHIcCHMWnz999tHX/wMJvgODOWju3f9At+SA3IRczs2Zf+rtgDYuOViYGFq8pRhgbUZkx23ccuXTgLd+NcU5QJQWuuN8vbT4Btxx11/+AFHX0B2XlmwhPKAO+/HnH0PN1mcg5nR4HwKaW02MZLlQFO++8Ynh0vMfuJvurIwMmTaiOOVBuf3W659EOezZx98M2659hOXWKcgdnNQkc9RQOwksQkLn3weVc524DAzUEyjH5ThQORe7+AFe/WjgKcg/sHIO7DhgqPHwsDOlhxsJwlW9+PSbIWoh2OA4YHmzGEeHZ1WwvgBWW4AlAkPaikcg/emg3hk5vS9YmosGOQzoQLAA0ECGqEUPGJ5/+l2Hx2FcXKxMoe6a2DNQ976XoJCbREy3kZDjUhLNEFFauO4JqOqaCDS4GY8+L5DDuNmYsEZn156XIGY7NTrV020m3gIVeiZQMVBHuYCAvjBsUYoWnS8odhzQkHlAeh4JnWucUUqt6KSkme7toYUZpaDo7KRSdFLiuNAgPQGs0fmbStFJluNwRSm1o5PckMOIUlpEJ7mOQ4lSWkUnyY7DFqW0ik5yQg4lSmkZnSSPbAJDZzUw9KZzXbyAPrL5glaOYxzMY8IAAQYAAghPXCzdPFkAAAAASUVORK5CYII=');
-            
+            var planeWidth = 80;
+            var planeHeigth = 76;
+            var canvasScale = this.canvasScale;
+            var valueScale = 1000;
+            var resizeScale = Math.floor(valueScale*1/canvasScale)/valueScale;
+
+
+            canvasWidth = canvasWidth*canvasScale;
+            canvasHeight = canvasHeight*canvasScale;
+
 
             var degreeValue = percent*360/100;
             var frameTime = 20;
             var addingDegree = degreeValue/(time/frameTime);
             var addingRadius = Math.PI*2*addingDegree/360;
             var finalRadius = Math.PI*2*degreeValue/360;
-            var centerPointX  = canvasWidth/2;
-            var centerPointY  = canvasHeight/2;
+            var centerPointX  = (canvasWidth/2);//*((3-canvasScale)/2);
+            var centerPointY  = (canvasHeight/2);//*((3-canvasScale)/2);
 
             var zeroRadius = Math.PI/-2;
             var fullRadius = Math.PI*2;
 
             var fullShadow = 5*centerPointX/100;
-            var zeroShadow = 0;
+            var zeroShadow = 0*canvasScale;
             var firstRadius = centerPointX-fullShadow*2;
             var secondBorder = fullShadow*2;
             var secondRadius = firstRadius-secondBorder;
             var thirdBorder = fullShadow*3;
             var thirdRadius = secondRadius-thirdBorder;
 
-            var centerFontSize = Math.floor(thirdRadius)/2;
+            var centerFontSize = (Math.floor(thirdRadius)/2);
 
 
 
@@ -122,19 +133,25 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
 
 
 
+                var returnPosition = (3-canvasScale)/2;
                 if(that.currentDegree>finalRadius){
                     clearInterval(innerInterval);
+                    // alert((10-centerPointY))
+                    // alert(returnPosition)
+                    // alert((10-centerPointY)*(returnPosition))
 
                     context.save();
                     context.translate(centerPointX-5,centerPointY);
                     context.rotate(that.currentDegree);
-                    context.drawImage(img[0],0,10-centerPointY,15,15);
+                    context.scale(canvasScale, canvasScale);
+                    context.drawImage(img[0],-10,(10-centerPointY/canvasScale),15,15);
                     context.restore();
                 }else{
                     context.save();
                     context.translate(centerPointX-5,centerPointY);
+                    context.scale(canvasScale, canvasScale);
                     context.rotate(that.currentDegree-addingRadius);
-                    context.drawImage(img[0],0,10-centerPointY,15,15);
+                    context.drawImage(img[0],-10,(10-centerPointY/canvasScale),15,15);
                     context.restore();
                 }
                 that.currentDegree+=addingRadius;
@@ -172,6 +189,12 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
                 var roundBoxWidth = ($(tag).attr('width')&&$(tag).attr('width').length>0)? $(tag).attr('width') : 150;
                 var roundBoxHeight = ($(tag).attr('height')&&$(tag).attr('height').length>0)? $(tag).attr('height') : roundBoxWidth;
 
+                var canvasScale = ($(tag).attr('canvasScale')&&$(tag).attr('canvasScale').length>0&&parseInt($(tag).attr('canvasScale'))>0)? parseInt($(tag).attr('canvasScale')) : 2;
+
+                var valueScale = 1000;
+                var resizeScale = Math.floor(valueScale*1/canvasScale)/valueScale;
+
+
                 roundBoxWidth=roundBoxWidth/1;
                 roundBoxHeight=roundBoxHeight/1;
 
@@ -182,11 +205,15 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
                   position:'relative'
                 });
                 var canvas = $("<canvas/>").css({
-                  width:roundBoxWidth,
-                  height:roundBoxHeight,
+                  width:roundBoxWidth*canvasScale,
+                  height:roundBoxHeight*canvasScale,
+                  left:(roundBoxWidth*(1-canvasScale)/2),
+                  top:(roundBoxHeight*(1-canvasScale)/2),
                   position:'absolute',
-                  'z-index':3
+                  'z-index':3,
+                  '-webkit-transform':'scale('+resizeScale+','+resizeScale+')'
                 });
+
 
                 canContainer.append(canvas);
 
@@ -194,7 +221,8 @@ define(['backbone', 'underscore', 'zepto', 'gmu'], function(Backbone, _, $, gmu)
 
                 var flightProgress = new FlightProgress({
                     el: canContainer,
-                    canvas:canvas[0]
+                    canvas:canvas[0],
+                    canvasScale:canvasScale
                 });
 
 

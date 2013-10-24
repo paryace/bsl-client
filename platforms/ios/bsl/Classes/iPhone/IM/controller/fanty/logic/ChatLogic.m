@@ -421,7 +421,7 @@
             image=[AsyncImageView imageWithThumbnail:image size:size];
         }
         
-        NSData *imageData = UIImagePNGRepresentation(image);
+        NSData *imageData = UIImageJPEGRepresentation(image,0.5f);
 
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithCapacity:0];

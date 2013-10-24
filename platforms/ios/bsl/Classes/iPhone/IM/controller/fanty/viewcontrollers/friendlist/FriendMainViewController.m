@@ -398,12 +398,6 @@
 
 
 -(void)contactListDidSelected:(ContactListView*)contactList userInfo:(UserInfo*)userInfo{
-    AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if (![[appDelegate xmpp] isConnected]) {
-        [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
-        return;
-    }
-
     ChatMainViewController* controller=[[ChatMainViewController alloc] init];
     controller.messageId=userInfo.userJid;
     controller.chatName=[userInfo name];
@@ -413,11 +407,6 @@
 #pragma mark rectangle talk delegate
 
 -(void)rectentTalkViewDidSelected:(RecentTalkView *)recentTalkView rectangleChat:(RectangleChat *)rectangleChat{
-    AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if (![[appDelegate xmpp] isConnected]) {
-        [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
-        return;
-    }
     ChatMainViewController* controller=[[ChatMainViewController alloc] init];
     controller.messageId=rectangleChat.receiverJid;
     controller.chatName=rectangleChat.name;
@@ -430,13 +419,6 @@
 #pragma mark favior view delegate
 
 -(void)faviorContactViewDidSelected:(FaviorContactView *)recentTalkView userInfo:(UserInfo *)userInfo{
-    AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if (![[appDelegate xmpp] isConnected]) {
-        [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
-        return;
-    }
-    
-    
     
     ChatMainViewController* controller=[[ChatMainViewController alloc] init];
     controller.messageId=userInfo.userJid;

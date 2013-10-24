@@ -30,7 +30,7 @@
         [json setValue:[defaults objectForKey:@"password"]  forKey:@"password"];
    
         [json setValue: [NSNumber numberWithBool:switchIsOn] forKey:@"isRemember"];
-        
+
         CDVPluginResult* pluginResult = nil;
         if (json) {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:json.JSONString];
@@ -132,16 +132,23 @@
             NSString* messageAlert =   [messageDictionary objectForKey:@"message"];
             NSNumber* number =  [messageDictionary objectForKey:@"result"];
             if ([number boolValue]) {
-                if(![messageDictionary valueForKey:@"hasOperation"])
+                if([[messageDictionary valueForKey:@"hasOperation"] isEqualToString:@"false"])
                 {
                     UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户没有操作权限请联系管理员" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [alert show];
                     alert=nil;
                     return;
                 }
+//                NSMutableDictionary *json = [NSMutableDictionary dictionary];
+//                [json setValue:@"true" forKey:@"isSuccess"];
+//                
+//                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsString:json.JSONString];
+//                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//                return;
                 NSString* token = [messageDictionary objectForKey:@"sessionKey"];
                                                 
                 NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+                
                 if ([userSwithch boolValue]) {
                     [defaults setBool:YES forKey:@"switchIsOn"];
                     [defaults setObject:userName forKey:@"username"];
@@ -165,6 +172,9 @@
                 //end ================
                 
                 [defaults synchronize];
+                
+                
+                
                 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [appDelegate didLogin];
 
