@@ -488,10 +488,19 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 {
     
     if (self.installed) {
-        NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-        NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
-        [self loadApplicatioFromURL:cubeURL];
+        NSUserDefaults* defaults=[NSUserDefaults standardUserDefaults];
+        NSString* username=[defaults valueForKey:@"username"];
+        
+        NSString* tip=[username stringByAppendingString:@"_notFirstLogin"];
+        
+        if([[NSUserDefaults standardUserDefaults] valueForKey:tip]==nil){
+            
+            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+            [self loadApplicatioFromURL:cubeURL];
+        }
+        
     }
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
