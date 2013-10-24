@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "180B7F451818A9B90091E3AE"
-               BuildableName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;.app"
+               BuildableName = "bsl_impc copy.app"
                BlueprintName = "bsl_impc_product"
                ReferencedContainer = "container:bsl.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "180B7F451818A9B90091E3AE"
-            BuildableName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;.app"
+            BuildableName = "bsl_impc copy.app"
             BlueprintName = "bsl_impc_product"
             ReferencedContainer = "container:bsl.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "180B7F451818A9B90091E3AE"
-            BuildableName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;.app"
+            BuildableName = "bsl_impc copy.app"
             BlueprintName = "bsl_impc_product"
             ReferencedContainer = "container:bsl.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "180B7F451818A9B90091E3AE"
-            BuildableName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;.app"
+            BuildableName = "bsl_impc copy.app"
             BlueprintName = "bsl_impc_product"
             ReferencedContainer = "container:bsl.xcodeproj">
          </BuildableReference>
