@@ -44,7 +44,10 @@
     }
 
     [self.view addSubview:bgImageView];
-    
+
+    [aCubeWebViewController.view removeFromSuperview];
+    aCubeWebViewController=nil;
+
     aCubeWebViewController  = [[CubeWebViewController alloc] init];
     //aCubeWebViewController.title=module.name;
     //加载本地的登录界面页
@@ -72,6 +75,7 @@
 }
 
 - (void)didReceiveMemoryWarning{
+    [aCubeWebViewController.view removeFromSuperview];
     aCubeWebViewController=nil;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -79,25 +83,24 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     if (isDisappear) {
-
-        NSURL *url =[NSURL URLWithString: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"phone/login.html"]absoluteString]];
-        NSURLRequest *request =[NSURLRequest requestWithURL:url];
-        [aCubeWebViewController.webView loadRequest:request];
         
        // NSURL *url =[NSURL URLWithString: [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"pad/login.html"]absoluteString]];
        // NSURLRequest *request =[NSURLRequest requestWithURL:url];
        // [aCubeWebViewController.webView loadRequest:request];
-
         isDisappear = false;
+     
     }
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"clearPsw()"];
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    isDisappear = true;
+    
+    isDisappear = YES;
 }
 
 

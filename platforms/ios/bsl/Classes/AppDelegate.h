@@ -56,7 +56,7 @@
 
 
 -(void)didLogin;
--(void)showLoginView;
+-(void)showLoginView:(BOOL)NewLogin;
 -(void)showExit;
 -(void)ativatePushSound;
 @end

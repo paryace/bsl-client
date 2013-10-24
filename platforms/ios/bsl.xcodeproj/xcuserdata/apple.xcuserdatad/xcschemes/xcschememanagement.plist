@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>bsl_impc copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
 		<key>bsl_impc.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,6 +37,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>180B7F451818A9B90091E3AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1D6058900D05DD3D006BFB54</key>
 		<dict>
 			<key>primary</key>
