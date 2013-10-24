@@ -264,8 +264,12 @@
         userId=loginUserStr;
     }
     userId = [userId stringByAppendingFormat:@"@%@",kXMPPDomin];
+#ifdef MOBILE_BSL
+    [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"SOC_Client"]];
+#else
+   [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"Cube_Client"]];
+#endif
     
-    [xmppStream setMyJID:[XMPPJID jidWithString:userId resource:@"Cube_Client"]];
     [xmppStream setKeepAliveInterval:30.0f];
     [xmppStream setHostName:kXMPPHost];
 	[xmppStream setHostPort:kXMPPPort];

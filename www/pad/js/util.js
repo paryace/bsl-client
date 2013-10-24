@@ -97,8 +97,8 @@ var downloadFile = function(sourceUrl, targetUrl, callback) {
 
 	fileName = fileName.substring(fileName.lastIndexOf("/") + 1, fileName.lenght);
 	//如果文件名包括.png,替代为.img
-	if(fileName.indexOf(".png") > -1){
-		fileName.replace(/.png/,".img");
+	if (fileName.indexOf(".png") > -1) {
+		fileName.replace(/.png/, ".img");
 	}
 
 
@@ -187,13 +187,19 @@ function subStrByCnLen(str, len) {
 	return tempStr;
 };
 
-function trim(str){   
-    str = str.replace(/^(\s|\u00A0)+/,'');   
-    for(var i=str.length-1; i>=0; i--){   
-        if(/\S/.test(str.charAt(i))){   
-            str = str.substring(0, i+1);   
-            break;   
-        }   
-    }   
-    return str;   
+function trim(str) {
+	str = str.replace(/^(\s|\u00A0)+/, '');
+	for (var i = str.length - 1; i >= 0; i--) {
+		if (/\S/.test(str.charAt(i))) {
+			str = str.substring(0, i + 1);
+			break;
+		}
+	}
+	return str;
 }
+String.prototype.indexOfIgnoreUp = function(f, m) {
+	var mm = (m == false) ? "i" : "";
+	var re = eval("/" + f + "/" + mm);
+	var rt = this.match(re);
+	return (rt == null) ? -1 : rt.index;
+};

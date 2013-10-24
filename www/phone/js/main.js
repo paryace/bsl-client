@@ -10,6 +10,9 @@ var cordovaExec = function(plugin, action, parameters, callback) {
 		//alert(err);
 	}, plugin, action, parameters === null || parameters === undefined ? [] : parameters);
 };
+var backToMain = function(){
+	$(".back_btn").trigger("click");
+};
 //首页接受到信息，刷新页面
 var receiveMessage = function(identifier, count, display) {
 	console.log("AAA进入index revceiveMessage count = " + count + identifier + display);
@@ -269,9 +272,10 @@ var activeModuleManageBarItem = function(type) {
 
 //点击模块的时候触发事件
 var module_all_click = function() {
+
 	/*$("li[identifier] .module_li_img , li[identifier] .module_push, li[identifier] .detail").bind('click', function() {*/
 	$("li[identifier]").bind('click', function() {
-
+		
 
 
 		console.log("模块父类点击");
@@ -284,6 +288,7 @@ var module_all_click = function() {
 		//var $moduleTips = $(".module_Tips[moduletype='main'][identifier='" + identifier + "']");
 		//$moduleTips.hide();
 		cordovaExec("CubeModuleOperator", "showModule", [identifier, type]);
+		
 
 	});
 };
@@ -720,7 +725,8 @@ var listLayout = function() {
 	$("li[identifier]").die("touchend");
 
 	$("li[identifier]").live("touchstart", function() {
-		$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+		//$(this).css("background", "-webkit-gradient(linear, 10% 100%, 10% 100%, from(#d7d7d7), to(#c8c8c8))");
+		$(this).css("background", "#d7d7d7");
 	});
 
 
@@ -739,7 +745,8 @@ var listLayout = function() {
 	});
 	$(".module_li .curd_btn").live("touchstart", function() {
 		if ($('#listview_btn').hasClass("active")) {
-			$(this).css("background", "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#767878), to(#A8A5A3)) !important");
+			//$(this).css("background", "-webkit-gradient(linear, 0% 0%, 0% 100%, from(#767878), to(#A8A5A3)) !important");
+			$(this).css("background","#767878");
 			$("li[identifier]:nth-of-type(odd)").css("background", "#ffffff");
 			$("li[identifier]:nth-of-type(even)").css("background", "#f5f5f5");
 		}
@@ -747,7 +754,8 @@ var listLayout = function() {
 
 	$(".module_li .curd_btn").live("touchend", function() {
 		if ($('#listview_btn').hasClass("active")) {
-			$(this).css("background", "-webkit-gradient(linear, 0% 80%, 0% 0%, from(#efefef), to(#dddddd)) !important");
+			//$(this).css("background", "-webkit-gradient(linear, 0% 80%, 0% 0%, from(#efefef), to(#dddddd)) !important");
+			$(this).css("background", "#efefef");
 			$("li[identifier]:nth-of-type(odd)").css("background", "#ffffff");
 			$("li[identifier]:nth-of-type(even)").css("background", "#f5f5f5");
 		}
@@ -813,7 +821,7 @@ var gridLayout = function() {
 
 	});
 	$("li[identifier]").live("touchend", function() {
-		$(this).css("background", "#f5f5f5)");x
+		$(this).css("background", "#f5f5f5)");
 		//$("li[identifier]").live("touchstart", function());
 	});
 	$(".module_li .curd_btn").die("touchstart");
@@ -968,7 +976,7 @@ var app = {
 	receivedEvent: function(id) {
 
 
-		//loadModuleList("CubeModuleList", "mainList", "main");
+		loadModuleList("CubeModuleList", "mainList", "main");
 		cordovaExec("CubeModuleOperator", "sync", [], function() {
 			//alert(result);
 			var osPlatform = device.platform;

@@ -9,16 +9,16 @@ var myScroll = new iScroll('mainContent', {
 	checkDOMChanges: true
 });
 
-var isKeyboardShow = function(isShow){
+var isKeyboardShow = function(isShow) {
 
 };
-$(".middleContent").bind("touchstart",function(){
+$(".middleContent").bind("touchstart", function() {
 	console.log("点击了middleContent");
 	$(".menuItem").removeClass("active");
-	if($(".moduleManageBar").css("display") =="none"){
+	if ($(".moduleManageBar").css("display") == "none") {
 		//var type = $(this).attr("data");
 		$(".menuItem[data='home']").addClass("active");
-	}else{
+	} else {
 		$(".menuItem[data='module']").addClass("active");
 	}
 });
@@ -56,13 +56,13 @@ var refreshMainPage = function(identifier, type, moduleMessage) {
 	console.log("refreshMainPage page = " + page);
 	if (page === "home") {
 		//主页面
-		loadModuleList("CubeModuleList", "mainList", "main",function(){
+		loadModuleList("CubeModuleList", "mainList", "main", function() {
 			myScroll.refresh();
 		});
 		console.log("主页面。。。。");
 		//$(".home_btn").trigger("click");
 		//addModule(identifier, "main", moduleMessage);
-		
+
 	} else if (page === "module") {
 		//管理页面
 		//loadModuleList("CubeModuleList", "uninstallList", "install");
@@ -214,7 +214,7 @@ $(".menuItem").tap(function() {
 		$(".moduleManageBar").css("display", "none");
 		//$('.account_content').show();
 		//隐藏右边fragment
-		cordovaExec("CubeModuleOperator", "fragmenthide",[]);
+		cordovaExec("CubeModuleOperator", "fragmenthide", []);
 		//点击首页，加载首页已安装模块列表
 		loadModuleList("CubeModuleList", "mainList", "main");
 
@@ -279,7 +279,7 @@ $(window).resize(function() {
 		} else {
 			console.log("键盘隐藏了。。。");
 			//键盘隐藏
-				$(".bottomMenu").show();
+			$(".bottomMenu").show();
 		}
 	}
 	LastHeight = availHeight;
@@ -296,6 +296,7 @@ $(window).resize(function() {
 });*/
 
 $("#searchInput").live("input propertychange", function() {
+	$("li[identifier]").hide();
 	var me = $(this);
 	console.log(me.val());
 	if (me.val() === null || me.val() === undefined || me.val() === "") {
@@ -310,15 +311,13 @@ $("#searchInput").live("input propertychange", function() {
 
 	$.each(moduleList, function(index, data) {
 
-		var name = $(this).find(".moduleName").html();
+		var name = $(this).find(".moduleName").attr("moduleName");
 		//console.info($(this).find(".moduleName").toPinyin());
 		var classname = $(this).attr("classname");
 		var keyword = trim(me.val());
-
-		console.log("keyword-----"+keyword);
-
-		console.log("-----"+name.toLowerCase().indexOf( keyword.toLowerCase() )  );
+		console.log("keyword-----"+keyword +"---"+name+"--" + name.indexOf(keyword));
 		if (name.toLowerCase().indexOf(keyword.toLowerCase()) < 0) {
+			console.log("隐藏了");
 			$(this).hide();
 			/*alert("隐藏");*/
 		} else {
@@ -337,6 +336,12 @@ $("#searchInput").live("input propertychange", function() {
 
 		}
 	});
+	if (myScroll !== null) {
+		myScroll.refresh();
+		//myScroll.scrollTo(0, 1, 200, true);
+	}
+
+
 });
 
 //点击模块的时候触发事件
@@ -369,7 +374,7 @@ var getAccountName = function() {
 //加载列表，渲染成html
 var isOver = 0;
 var loadModuleList = function(plugin, action, type, callback) {
-	if (isOver ===0) {
+	if (isOver === 0) {
 		isOver = isOver + 1;
 
 
@@ -440,7 +445,9 @@ var loadModuleList = function(plugin, action, type, callback) {
 			//切换模块管理按钮状态
 			activeModuleManageBarItem(type);
 			triggerBodyClick();
-
+			if (myScroll) {
+				myScroll.refresh();
+			}
 			//如果回调方法不为空，则执行该回调方法
 			if (callback !== undefined) {
 				callback();
@@ -529,14 +536,14 @@ var app = {
 					loadModuleList("CubeModuleList", "mainList", "main", function() {
 						myScroll.refresh();
 						checkTheme();
-                                   $(".bottomMenu").show();
+						$(".bottomMenu").show();
 					});
 				}, function(err) {}, "CubePackageName", "getPackageName", []);
 			} else {
 				loadModuleList("CubeModuleList", "mainList", "main", function() {
 					myScroll.refresh();
 					checkTheme();
-                               $(".bottomMenu").show();
+					$(".bottomMenu").show();
 				});
 			}
 		});

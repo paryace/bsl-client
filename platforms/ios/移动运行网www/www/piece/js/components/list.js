@@ -88,7 +88,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                                 pullUpOffset = pullUpEl.offsetHeight;
                                 if (pullUpEl.className.match('loading')) {
                                     pullUpEl.className = '';
-                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多数据...';
                                 }
                             }
                         },
@@ -102,11 +102,11 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                                 var pullUpReloadHeight = 5;
                                 if (this.y < (this.maxScrollY - pullUpReloadHeight) && !pullUpEl.className.match('flip')) {
                                     pullUpEl.className = 'flip';
-                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = '释放以加载...';
                                     //this.maxScrollY = this.maxScrollY;
                                 } else if (this.y > (this.maxScrollY + pullUpReloadHeight) && pullUpEl.className.match('flip')) {
                                     pullUpEl.className = '';
-                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多数据...';
                                     //this.maxScrollY = pullUpOffset;
                                 }
 
@@ -121,7 +121,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                                     $(pullDownRefreshEl).find('#pullDownRefreshIcon').attr({
                                         'class': 'pullDownIn'
                                     });
-                                    $(pullDownRefreshEl).find('#pullDownRefreshLable').text('Release to reload...');
+                                    $(pullDownRefreshEl).find('#pullDownRefreshLable').text('释放以刷新...');
                                     $(me.$('#pullDownRefreshIconWarp')[0]).addClass('pullDownFlip180');
 
 
@@ -129,7 +129,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                                 } else if ((this.y < pullDownRefreshHeight) && (this.options.topOffset == 0)) {
                                     this.options.topOffset = parseInt($(pullDownRefreshEl).css('height'));
                                     $(pullDownRefreshEl).find('#pullDownRefreshIcon').removeClass('pullDownOut').addClass('pullDownIn');
-                                    $(pullDownRefreshEl).find('#pullDownRefreshLable').text('Pull down to reload...');
+                                    $(pullDownRefreshEl).find('#pullDownRefreshLable').text('下拉刷新...');
                                     Cache.put("onScrollMove", "false");
                                     $(me.$('#pullDownRefreshIconWarp')[0]).removeClass('pullDownFlip180');
 
@@ -148,7 +148,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                                 $(pullDownRefreshEl).find('#pullDownRefreshIcon')
                                     .removeClass('pullDownIn')
                                     .addClass('pullDownOut');
-                                $(pullDownRefreshEl).find('#pullDownRefreshLable').text('Reloading...');
+                                $(pullDownRefreshEl).find('#pullDownRefreshLable').text('数据刷新中...');
                                 this.refresh();
 
                             }
@@ -162,7 +162,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
 
                                 if (pullUpEl.className.match('flip')) {
                                     pullUpEl.className = 'loading';
-                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';
+                                    pullUpEl.querySelector('.pullUpLabel').innerHTML = '数据加载中...';
                                     me.config.page = me.config.page + 1;
                                     me.loadNextPage();
 
@@ -180,7 +180,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
 
                                 me.reload(function() {
                                     Cache.put("onScrollMove", "false");
-                                    $(pullDownRefreshEl).find('#pullDownRefreshLable').text('Pull down to refresh...');
+                                    $(pullDownRefreshEl).find('#pullDownRefreshLable').text('下拉刷新...');
                                     that.options.topOffset = parseInt($(pullDownRefreshEl).css('height'));
                                     $(pullDownRefreshEl).find('#pullDownRefreshIcon').attr({
                                         'class': 'pullDownIn'
@@ -281,6 +281,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
             loadListByJSONArray: function(jsonArray, isLoadFromStore) {
                 var me = this;
                 //加载搜索栏
+                me.renderSearchBar();
                 if (me.config.page == 1) {
                     me.clearList();
                 }
@@ -374,7 +375,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                     //TODO: 需要重构
                     moreLi.appendTo(me.el.querySelector('.contentScroller'));
 
-                    var pullUpText = "<div class='' id='pullUp'><span class='pullUpIcon'></span><span class='pullUpLabel'>Pull up to load more...</span></div>";
+                    var pullUpText = "<div class='' id='pullUp'><span class='pullUpIcon'></span><span class='pullUpLabel'>上拉加载更多数据...</span></div>";
                     var defalutMoreItemDiv = $(pullUpText);
                     moreLi.append(defalutMoreItemDiv);
                 } else if (paging !== undefined) {
@@ -392,7 +393,66 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                     me.iScroll.refresh();
                 }
             },
+            getfilterValue: function() {
+                var searchBar = document.getElementById(this.config['id'] + '-search');
+                if (searchBar) {
+                    return $(searchBar).find('input').val();
+                }
+            },
+            renderSearchBar: function() {
+                var me = this;
+                //加载搜索按钮
+                if (me.config['searching'] && me.config['searching'] == 'true') {
+                    if (!document.getElementById(me.config['id'] + '-search')) {
+                        //加上一个加载更多的cell
+                        var searchLi = $("<li/>");
 
+                        searchLi.attr('id', (me.config['id'] + '-search'));
+
+                        var searchInput = $('<input/>');
+
+                        if (me.config.searchText) {
+                            searchInput.attr('placeholder', me.config.searchText);
+                        } else {
+                            searchInput.attr('placeholder', ' 搜索');
+                        }
+
+                        //css begin
+                        searchInput.css('margin-bottom', '0px');
+                        searchInput.css('padding-left', '8px');
+                        //css end
+
+                        searchInput.attr('type', 'text');
+                        //响应键盘弹出来事件touchstart
+
+                        searchInput.bind('touchend input', function(e) {
+                            window.scrollTo(0, 0);
+                            var inputVal = searchInput.val();
+                            me.filterChildren(inputVal);
+                        });
+
+                        searchLi.append(searchInput);
+
+                        var navs = document.getElementsByTagName("Nav");
+                        var searchNav = navs[navs.length - 1];
+
+                        if (searchNav) {
+                            searchNav = $(searchNav);
+                            searchLi.css('margin-top', '14px');
+                            searchLi.css('padding-top', '5px');
+                            searchLi.css('background', '#f6f6f6');
+                        } else {
+
+                            searchNav = $("<Nav/>");
+                        }
+                        searchLi.appendTo(searchNav);
+
+                        searchNav.addClass("bar-standard bar-header-secondary");
+
+                        searchNav.insertBefore($(".content").last());
+                    }
+                }
+            },
             StoreListData: function(item) {
                 var CACHE_ID = 'cube-list-' + this.config['id'];
                 var tempConfig = this.config;
@@ -579,7 +639,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                         $(listContainer).attr('style', 'height:' + config.height + 'px;');
                     } else {
 
-                        $(listContainer).attr('style', 'height:600px;');
+                        $(listContainer).attr('style', 'height:100%;');
                     }
                     // listContainer.setAttribute('id', 'aaaaaaa');
 
@@ -589,7 +649,7 @@ define(['zepto', 'underscore', 'components/loader', 'components/cache', 'compone
                         pullDownRefreshDiv = document.createElement('div');
                         $(pullDownRefreshDiv).attr('id', 'PullDownRefresh');
                         $(pullDownRefreshDiv).attr('style', 'height: 40px;');
-                        $(pullDownRefreshDiv).append('<span id="pullDownRefreshIconWarp"><span id="pullDownRefreshIcon"></span></span><span id="pullDownRefreshLable">Pull down to refresh...</span>');
+                        $(pullDownRefreshDiv).append('<span id="pullDownRefreshIconWarp"><span id="pullDownRefreshIcon"></span></span><span id="pullDownRefreshLable">下拉刷新...</span>');
 
 
 

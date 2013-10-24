@@ -225,6 +225,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     for (NSDictionary *jo_module in jo_a_modules) {
         
         CubeModule *module = [CubeModule moduleFromJSONObject:jo_module];
+        module.isDownloading = NO;
         [availableModules addObject:module];
     }
 }

@@ -136,7 +136,7 @@ header{
 	/*font-size: 3.6em;*/
 	font-size: 4.4em;
 
-	font-weight: bold;
+	/*font-weight: bold;*/
 	line-height: 40px;
 }
 .circle{
@@ -487,3 +487,10 @@ text-align: center;
 text-shadow: 0 -1px rgba(0,0,0,0.5);
 white-space: nowrap;
 }
+
+.fliter{
+opacity:0.4;
+filter:alpha(opacity=40);
+}
+
+
