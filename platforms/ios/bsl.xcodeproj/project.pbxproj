@@ -969,6 +969,12 @@
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
 		188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
+		18BE6C4418198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
+		18BE6C4518198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
+		18BE6C4618198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
+		18BE6C4718198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
+		18BE6C4818198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
+		18BE6C4918198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18E9C4611803AB1200B874B8 /* AbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4621803AB1200B874B8 /* EbookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1ED1803AB0E00B874B8 /* EbookListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4631803AB1200B874B8 /* About.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1F11803AB0E00B874B8 /* About.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -3881,6 +3887,8 @@
 		18240E111804EBFC00846FF9 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		188487F21807A41E0039F67F /* CubeAccountPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAccountPlugin.h; path = CubeAccount/CubeAccountPlugin.h; sourceTree = "<group>"; };
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
+		18BE6C4218198F1500D96581 /* XMPPIMActorFriendQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActorFriendQueue.h; sourceTree = "<group>"; };
+		18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActorFriendQueue.m; sourceTree = "<group>"; };
 		18E9C1E81803AB0E00B874B8 /* AbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTableViewController.h; sourceTree = "<group>"; };
 		18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractTableViewController.m; sourceTree = "<group>"; };
 		18E9C1EC1803AB0E00B874B8 /* EbookListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EbookListViewController.h; sourceTree = "<group>"; };
@@ -7684,6 +7692,8 @@
 				F54D829A17E8BFBB0067A023 /* XMPPIMActor.m */,
 				F54D829D17E8BFBB0067A023 /* XMPPSqlManager.h */,
 				F54D829E17E8BFBB0067A023 /* XMPPSqlManager.m */,
+				18BE6C4218198F1500D96581 /* XMPPIMActorFriendQueue.h */,
+				18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */,
 			);
 			path = XMPP;
 			sourceTree = "<group>";
@@ -10949,6 +10959,7 @@
 				180B82011818A9B90091E3AE /* FontDescriptor.m in Sources */,
 				180B82021818A9B90091E3AE /* EmoctionPanel.m in Sources */,
 				180B82031818A9B90091E3AE /* CDataScanner.m in Sources */,
+				18BE6C4918198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				180B82041818A9B90091E3AE /* RecordingView.m in Sources */,
 				180B82051818A9B90091E3AE /* PilotRepositoryManager.m in Sources */,
 				180B82061818A9B90091E3AE /* FPAnnexContentViewController.m in Sources */,
@@ -11250,6 +11261,7 @@
 				F54D82F617E8BFBB0067A023 /* ImageUploaded.m in Sources */,
 				F54D82F717E8BFBB0067A023 /* NumberView.m in Sources */,
 				F54D82F817E8BFBB0067A023 /* TouchScroller.m in Sources */,
+				18BE6C4418198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				3968622117EE7CFB00C84A6A /* GroupMemberManagerViewController.m in Sources */,
 				F54D82F917E8BFBB0067A023 /* ChatLogic.m in Sources */,
 				F54D82FA17E8BFBB0067A023 /* Recorder.m in Sources */,
@@ -11409,6 +11421,7 @@
 				18E9C4DF1803AB1200B874B8 /* Chapter.m in Sources */,
 				18E9C4B11803AB1200B874B8 /* FPWeatherMapViewController.m in Sources */,
 				18E9C4E91803AB1200B874B8 /* HealthyDeclareLocalInfo.m in Sources */,
+				18BE6C4718198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				18E9C4671803AB1200B874B8 /* CAS-TAS.m in Sources */,
 				18E9C4A91803AB1200B874B8 /* FPPicDownloader.m in Sources */,
 				18E9C4D91803AB1200B874B8 /* AirPath.m in Sources */,
@@ -11731,6 +11744,7 @@
 				39E0529717F00AEA00BCF7F8 /* AutoDownLoadRecord.m in Sources */,
 				39E0529817F00AEA00BCF7F8 /* FMDBManager.m in Sources */,
 				39E0529917F00AEA00BCF7F8 /* AutoShowRecord.m in Sources */,
+				18BE6C4518198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39E0529A17F00AEA00BCF7F8 /* CubeCommandDispatcher.m in Sources */,
 				39E0529B17F00AEA00BCF7F8 /* CubeDownloadCommandHandler.m in Sources */,
 				394B98A518056BBA00F657D2 /* BaseNavViewController.m in Sources */,
@@ -11898,6 +11912,7 @@
 				39E9C597180EBAAA004CEF1D /* AutoDownLoadRecord.m in Sources */,
 				39E9C598180EBAAA004CEF1D /* FMDBManager.m in Sources */,
 				39E9C599180EBAAA004CEF1D /* AutoShowRecord.m in Sources */,
+				18BE6C4818198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39E9C59A180EBAAA004CEF1D /* CubeCommandDispatcher.m in Sources */,
 				39E9C59B180EBAAA004CEF1D /* CubeDownloadCommandHandler.m in Sources */,
 				39E9C59C180EBAAA004CEF1D /* BaseNavViewController.m in Sources */,
@@ -12065,6 +12080,7 @@
 				39FF0B5117F13CBB0086B76C /* AutoDownLoadRecord.m in Sources */,
 				39FF0B5217F13CBB0086B76C /* FMDBManager.m in Sources */,
 				39FF0B5317F13CBB0086B76C /* AutoShowRecord.m in Sources */,
+				18BE6C4618198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39FF0B5417F13CBB0086B76C /* CubeCommandDispatcher.m in Sources */,
 				39FF0B5517F13CBB0086B76C /* CubeDownloadCommandHandler.m in Sources */,
 				394B98A618056BBA00F657D2 /* BaseNavViewController.m in Sources */,
@@ -12350,7 +12366,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: China Southern Airlines Company Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Southern Airlines Company Limited";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -12455,6 +12471,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					IMPC,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
@@ -12487,6 +12508,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					IMPC,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
@@ -12768,7 +12794,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -12816,7 +12842,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";

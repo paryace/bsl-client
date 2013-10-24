@@ -329,7 +329,7 @@
         return;
     }
     
-    if(![chatLogic checkTheGroupIsConnect]){
+    if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
         [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
         return;
     }
@@ -357,7 +357,7 @@
             return;
         }
         
-        if(![chatLogic checkTheGroupIsConnect]){
+        if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
             [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
             return;
         }
@@ -391,7 +391,7 @@
             [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
             return;
         }
-        if(![chatLogic checkTheGroupIsConnect]){
+        if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
             [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
             return;
         }
@@ -418,17 +418,19 @@
 
 }
 
--(void)chatPanelDidSelectedAdd:(ChatPanel*)chatPanel{
+-(void)chatPanelDidSelectedAdd:(ChatPanel*)__chatPanel{
     AppDelegate* appDelegate=(AppDelegate*)[[UIApplication sharedApplication] delegate];
     if (![[appDelegate xmpp] isConnected]) {
         [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
         return;
     }
     
-    if(![chatLogic checkTheGroupIsConnect]){
+    if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
         [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
         return;
     }
+
+    [chatPanel resignFirstResponder];
 
 
     //fanty 暂屏蔽功能
@@ -504,7 +506,7 @@
     if([[[[UIDevice currentDevice] model] lowercaseString] rangeOfString:@"ipod"].length>0 && buttonIndex==1)return;
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.videoQuality=UIImagePickerControllerQualityTypeMedium;
+    picker.videoQuality=UIImagePickerControllerQualityTypeLow;
     picker.delegate = self;
     
     if(buttonIndex==1 || [[[[UIDevice currentDevice] model] lowercaseString] rangeOfString:@"ipod"].length>0){

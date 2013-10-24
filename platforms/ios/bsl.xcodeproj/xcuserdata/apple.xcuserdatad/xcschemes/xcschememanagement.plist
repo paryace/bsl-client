@@ -14,15 +14,15 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>bsl_impc copy.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
-		</dict>
 		<key>bsl_impc.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>bsl_impc_product.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
 		</dict>
 		<key>移动运行网.xcscheme</key>
 		<dict>

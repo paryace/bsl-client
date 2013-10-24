@@ -14,16 +14,7 @@
 #import "ContactCell.h"
 
 
-NSInteger contactListViewSort(id obj1, id obj2,void* context){
-    UserInfo* info=(UserInfo*)obj1;
-    if([info.userStatue length]>0)
-        return (NSComparisonResult)NSOrderedAscending;
-    else
-    return (NSComparisonResult)NSOrderedDescending;
-};
-
-
-@interface ContactListView()<UITableViewDataSource,UITableViewDelegate,ChatDelegate,NSFetchedResultsControllerDelegate,UISearchBarDelegate,TouchScrollerDelegate>{
+@interface ContactListView()<UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UISearchBarDelegate,TouchScrollerDelegate>{
 
     BOOL isLoadingUserInfo;
     BOOL isFirstLoadData;
@@ -65,7 +56,7 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
         // Edit the entity name as appropriate.
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"UserInfo" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
-        [fetchRequest setFetchBatchSize:20];
+        //[fetchRequest setFetchBatchSize:20];
         //排序
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"userGroup" ascending:YES] ;
         NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"userStatue" ascending:NO];
@@ -77,11 +68,8 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
         fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:@"userGroup" cacheName:nil];
         fetchedResultsController.delegate = self;
         
-        NSError *error = nil;
-        if (![fetchedResultsController performFetch:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+        [fetchedResultsController performFetch:nil];
+        
 
         searchBar=[[UISearchBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, 44.0f)];
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
@@ -101,9 +89,7 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
         tableView.touchDelegate=self;
         [self addSubview:tableView];
 
-        AppDelegate *del = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        del.xmpp.chatDelegate = self;
-        
+
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(starRefresh) name:@"STARTRREFRESHTABLEVIEW" object:nil];
 
         [self delayReloadTimeEvent];
@@ -113,12 +99,12 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    AppDelegate *del = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    del.xmpp.chatDelegate = nil;
 
     [friendListTimeOut invalidate];
     managedObjectContext=nil;
     fetchedResultsController.delegate=nil;
+    
+    
     fetchedResultsController=nil;
     [laterReloadTimer invalidate];
     
@@ -127,8 +113,6 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
 
 -(void)clear{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    AppDelegate *del = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    del.xmpp.chatDelegate = nil;
     
     [friendListTimeOut invalidate];
     friendListTimeOut=nil;
@@ -146,7 +130,8 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
             [[ShareAppDelegate xmpp] findFriendsList];
             [SVProgressHUD showWithStatus:@"正在获取好友列表..."];
             
-            friendListTimeOut=[NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(friendListTimeOutEvent) userInfo:nil repeats:NO];
+            [friendListTimeOut invalidate];
+            friendListTimeOut=[NSTimer scheduledTimerWithTimeInterval:15.0f target:self selector:@selector(friendListTimeOutEvent) userInfo:nil repeats:NO];
             
         }else{
             [SVProgressHUD showErrorWithStatus:@"即时通讯没有连接！"];
@@ -192,7 +177,7 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
         }
         NSLog(@"showLoadData 5");
 
-        friendList=[list sortedArrayUsingFunction:contactListViewSort context:nil];
+        friendList=list;
         NSLog(@"showLoadData 6");
 
     }
@@ -278,7 +263,8 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
                 
                 if([managedObjectContext hasChanges])
                     [managedObjectContext save:nil];
-                [self delayReloadTimeEvent];
+                [laterReloadTimer invalidate];
+                laterReloadTimer=[NSTimer scheduledTimerWithTimeInterval:0.7f target:self selector:@selector(delayReloadTimeEvent) userInfo:nil repeats:NO];
                 isLoadingUserInfo=NO;
             });
         });
@@ -376,51 +362,12 @@ NSInteger contactListViewSort(id obj1, id obj2,void* context){
                 }
             }
             
-            NSArray* __array=[array sortedArrayUsingFunction:contactListViewSort context:nil];
-            [friendsListDict setObject:__array forKey:key];
+            [friendsListDict setObject:array forKey:key];
             
         }
         
     }
     [self showLoadData];
-}
-
-#pragma mark  catdelegate
-
--(void)showFriends:(NSXMLElement*)element{
-    if(self.superview==nil)return;
-    NSArray *items = [element elementsForName:@"item"];
-    for (int textIndex=0 ; textIndex < [items count] ; textIndex ++){
-        NSXMLElement *item=(NSXMLElement *)[items objectAtIndex:textIndex];
-        NSString *group=[[item elementForName:@"group"] stringValue];
-        if (group == nil || [group isEqualToString:@""]) {
-            group = @"好友列表";
-        }
-        //先判断jid是否存在
-        NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-        NSEntityDescription *entity = [[fetchedResultsController fetchRequest] entity];
-        
-        NSEntityDescription *entityDescription = [[fetchedResultsController fetchRequest] entity];
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:entityDescription];
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"(userJid = %@ )",[[item attributeForName:@"jid"] stringValue],[[item attributeForName:@"group"] stringValue]];
-        [request setPredicate:pred];
-        NSError *error = nil;
-        NSArray *objects = [context executeFetchRequest:request error:&error];
-        
-        if ([objects count] >0) {
-        
-        }else{
-            NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-            [newManagedObject setValue:group forKey:@"userGroup"];
-            [newManagedObject setValue:[[item attributeForName:@"name"] stringValue] forKey:@"userName"];
-            [newManagedObject setValue:[[item attributeForName:@"jid"] stringValue] forKey:@"userJid"];
-            [newManagedObject setValue:[[item attributeForName:@"subscription"] stringValue] forKey:@"userSubscription"];
-            // Save the context.
-            [context save:&error];
-        }
-        
-    }
 }
 
 #pragma mark  fetchedresultscontroller  delegate

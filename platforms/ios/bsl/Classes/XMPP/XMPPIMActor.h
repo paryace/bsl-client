@@ -15,7 +15,6 @@
 #import "XMPPRoster.h"
 #import "XMPPReconnect.h"
 #import "XMPPRosterCoreDataStorage.h"
-#import "ChatDelegate.h"
 
 #import "XMPPvCardAvatarModule.h"
 #import "XMPPvCardTempModule.h"
@@ -40,7 +39,6 @@
 
 
 @interface XMPPIMActor : NSObject<XMPPStreamDelegate,UIAlertViewDelegate>{
-    id<ChatDelegate> charDelegate;
     
     XMPPStream *xmppStream;
     XMPPReconnect *xmppReconnect;
@@ -75,7 +73,6 @@
 
 @property(nonatomic,assign) BOOL friendListIsFinded;
 
-@property (nonatomic,assign ) id<ChatDelegate> chatDelegate;
 
 @property (nonatomic,assign ) BOOL islogin;
 @property (nonatomic,retain ) NSString* loginUserStr;

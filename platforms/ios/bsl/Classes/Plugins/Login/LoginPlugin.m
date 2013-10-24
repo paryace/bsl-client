@@ -179,6 +179,12 @@
                 [appDelegate didLogin];
 
             }else{
+                if([[messageDictionary valueForKey:@"result"] isEqualToString:@"false"])
+                {
+                    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"用户名或密码不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alert show];
+                    alert=nil;
+                }
                 if ([messageAlert length] <= 0) {
                     messageAlert = @"服务器出错，请联系管理员！";
                 }

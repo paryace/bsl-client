@@ -28,13 +28,14 @@
 
 #import "Reachability.h"
 
+#import "XMPPIMActorFriendQueue.h"
+
 @interface XMPPIMActor ()
 
 @end
 
 @implementation XMPPIMActor
 
-@synthesize chatDelegate;
 @synthesize xmppStream;
 @synthesize xmppReconnect;
 @synthesize xmppRoster;
@@ -51,6 +52,10 @@
 - (void)teardownStream
 {
     self.friendListIsFinded=NO;
+    
+    [[XMPPIMActorFriendQueue sharedInstance] clear];
+
+    
     [roomService tearDown];
 	[xmppStream removeDelegate:self];
     [xmppRoster removeDelegate:self];
@@ -119,6 +124,8 @@
 
 - (void)setupXmppStream{
     self.friendListIsFinded=NO;
+    [[XMPPIMActorFriendQueue sharedInstance] clear];
+
     [[VoiceUploadManager sharedInstance] cance];
     [self fetchAllLoadingMessageToFailed];
 
@@ -818,42 +825,18 @@
             self.friendListIsFinded=YES;
 
             [[NSNotificationCenter defaultCenter] postNotificationName:@"STOPRREFRESHTABLEVIEW" object:nil];
-            
-            
-            for (int textIndex=0 ; textIndex < [items count] ; textIndex ++){
-                @autoreleasepool {
-                    NSXMLElement *item=(NSXMLElement *)[items objectAtIndex:textIndex];
-                    NSString *group=[[item elementForName:@"group"] stringValue];
-                    if (group == nil || [group isEqualToString:@""]) {
-                        group = @"好友列表";
-                    }
-                    NSString * jidStr = [[item attributeForName:@"jid"] stringValue];
-                    UserInfo *entity = [self fetchUserFromJid:jidStr];
-                    if (entity != nil) {
-                        entity.userGroup = group;
-                        entity.userSubscription = [[item attributeForName:@"subscription"] stringValue];
-                        entity.userName = [[item attributeForName:@"name"] stringValue];
-                        //                    [self.managedObjectContext save:nil];
-                    }else{
-                        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"UserInfo"inManagedObjectContext:self.managedObjectContext];
-                        [newManagedObject setValue:group forKey:@"userGroup"];
-                        [newManagedObject setValue:[[item attributeForName:@"name"] stringValue] forKey:@"userName"];
-                        [newManagedObject setValue:[[item attributeForName:@"jid"] stringValue] forKey:@"userJid"];
-                        [newManagedObject setValue:[[item attributeForName:@"subscription"] stringValue] forKey:@"userSubscription"];
-                        //                    [self.managedObjectContext save:nil];
-                    }
-                }
-            }
-            [self saveContext];
+        
+            [[XMPPIMActorFriendQueue sharedInstance] setList:items];
+
         }else{
 
             self.friendListIsFinded=NO;
             //remove by fanty 
             //[SVProgressHUD showErrorWithStatus:@"没有好友" ];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"STARTRREFRESHTABLEVIEW" object:nil];
             
         }
         //发送通知列表可以刷新了
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"STARTRREFRESHTABLEVIEW" object:nil];
 
     }else  if( [[[iq attributeForName:@"type"] stringValue] isEqualToString:@"set"]){
         //删除了好友 或者 增加好友

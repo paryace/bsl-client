@@ -131,7 +131,7 @@ static GTGZImageDownloadedManager* instance=nil;
             NSURL* nsUrl=[NSURL URLWithString:self.url];
             NSString* path=[GTGZImageDownloadModel pathByUrl:nsUrl];
             
-            NSData* data=[[NSData alloc] initWithContentsOfFile:path];
+            NSData* data=[[NSData alloc] initWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:nil];
             UIImage* img=[[UIImage alloc] initWithData:data];
             data=nil;
             self.image=img;

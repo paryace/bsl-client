@@ -231,8 +231,8 @@
 }
 
 +(NSArray *)findAllAtBadge{
-    
-    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@" isMessageBadge=%@",[NSNumber numberWithInt:1]]];
+    NSString *username  = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
+    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@" isMessageBadge=%@ and username=%@",[NSNumber numberWithInt:1],username]];
 }
 
 -(void)showAlert{

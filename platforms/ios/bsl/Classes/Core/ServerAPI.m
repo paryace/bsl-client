@@ -13,15 +13,15 @@
 @implementation ServerAPI
 
 +(NSString*)urlForAttachmentId:(NSString*)aid {
-    return [kServerURLString stringByAppendingFormat:@"/mam/api/mam/clients/files/%@", aid];
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/files/%@", aid];
 }
 
 +(NSString*)urlForAppUpdate {
-    return [kServerURLString stringByAppendingFormat:@"/mam/api/mam/clients/update/ios/%@/?ts=%f", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [NSDate timeIntervalSinceReferenceDate]];
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/update/ios/%@/?ts=%f", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [NSDate timeIntervalSinceReferenceDate]];
 }
 //下载后更新计数
 +(NSString*)urlForAppUpdateRecord {
-    return [kServerURLString stringByAppendingFormat:@"/mam/api/mam/clients/update/appcount/ios/"];
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/update/appcount/ios/"];
 }
 
 +(NSString*)urlForLogin {
@@ -29,11 +29,11 @@
 }
 
 +(NSString*)urlforUserSync{
-    return [kServerURLString stringByAppendingFormat:@"/mam/api/mam/clients/modules/%@/?ts=%f",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [NSDate timeIntervalSinceReferenceDate]];
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/modules/%@/?ts=%f",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [NSDate timeIntervalSinceReferenceDate]];
 }
 
 +(NSString*)urlForSync {
-    return [kServerURLString stringByAppendingFormat:@"/mam/api/mam/clients/ios/%@/%@/", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/ios/%@/%@/", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     
 }
 +(NSString*)urlForSyncImpc {
@@ -42,7 +42,7 @@
 }
 
 +(NSString*)urlForlogout:(NSString* )sessionKey{
-     return [kServerURLString stringByAppendingFormat:@"/system/api/system/mobile/accounts/logout/%@", sessionKey];
+     return [kServerURLString stringByAppendingFormat:@"/csair-system/api/system/mobile/accounts/logout/%@", sessionKey];
 }
 
 +(NSString*)urlForAppApnsCheckin{

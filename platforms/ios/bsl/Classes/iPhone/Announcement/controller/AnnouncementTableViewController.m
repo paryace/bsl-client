@@ -31,7 +31,7 @@
         }
 
         // Custom initialization
-        [self.navigationItem setTitle:@"公告"];
+        [self setTitle:@"公告"];
         //覆盖屏蔽右边控制
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:ANNOUNCEMENT_DID_SAVE_NOTIFICATION object:nil];

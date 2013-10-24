@@ -41,7 +41,8 @@
     
 }
 
--(BOOL)checkTheGroupIsConnect{
+-(BOOL)checkTheGroupIsConnect:(BOOL)isGroup{
+    if(!isGroup)return YES;
     XMPPRoom *room=nil;
     if(self.roomJID!=nil)
         room=[[ShareAppDelegate xmpp].roomService findRoomByJid:self.roomJID];
