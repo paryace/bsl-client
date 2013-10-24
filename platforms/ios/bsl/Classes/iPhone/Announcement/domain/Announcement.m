@@ -54,7 +54,7 @@
 
 @dynamic reviceTime;
 @dynamic recordId;
-
+@dynamic username;
 +(void)requestAnnouncement:(NSDictionary*)data{
     NSDictionary *module = [data objectForKey:@"extras"];
     NSString* recordId=nil;
@@ -73,11 +73,14 @@
             }
         }
     }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults valueForKey:@"username"];
     
     [announcement setRecordId:recordId];
     //id 要另外设定
     [announcement setAnnouncementId:[data objectForKey:@"id"]];
     [announcement setIsRead:0];
+    [announcement setUsername:username];
     [announcement setReviceTime:[NSDate date]];
 }
 
@@ -85,11 +88,12 @@
 
 +(NSArray *)findAllOrderByReviceTime{
     
-    NSArray *array = [Announcement findAll];
+    //NSArray *array = [Announcement findAll];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults valueForKey:@"username"];
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"reviceTime" ascending:NO];
-    
-    return [array sortedArrayUsingDescriptors:@[sort]];
+    return  [Announcement findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",username] sortDescriptors:[NSArray arrayWithObject:sort]];
     
 }
 

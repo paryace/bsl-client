@@ -22,7 +22,7 @@ define(['text!com.csair.base/demoIndex.html', 'com.csair.base/urlConfig'], funct
             // "click #notification": "gotoNotification",
             // "click #overview": "gotoOverview",
             // "click #announcement": "gotoAnnouncement"
-            "click #login": 'goLogin2',
+            "click #login": 'goLogin',
             "click #logout": 'goLogout'
 
 

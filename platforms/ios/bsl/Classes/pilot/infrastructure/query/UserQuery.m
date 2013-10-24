@@ -138,24 +138,28 @@
     } failed:^(NSObject* responseData) {
         //网络连接失败,尝试本地登陆
         
-        if([user verifyPassword:password]){
-            
-            [User setCurrentUser:user];
-            
-            completionBlock(LOGIN_SUCESS);
-            
-        }else{
-            
-            if([user password]){
+        if([user respondsToSelector:@selector(verifyPassword:)])
+        {
+            if([user verifyPassword:password]){
                 
-                failedBlock(LOGIN_FAILED);
+                [User setCurrentUser:user];
+                
+                completionBlock(LOGIN_SUCESS);
                 
             }else{
                 
-                failedBlock(NETWORK_EXCEPTION);
-                
+                if([user password]){
+                    
+                    failedBlock(LOGIN_FAILED);
+                    
+                }else{
+                    
+                    failedBlock(NETWORK_EXCEPTION);
+                    
+                }
             }
         }
+        
         
     }];
 }

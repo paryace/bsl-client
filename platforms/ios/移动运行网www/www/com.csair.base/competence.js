@@ -4,6 +4,7 @@ define([], function() {
 
 	var data = {};
 
+	var device = {};
 	var aircrew = {};
 	var crewmen = {};
 	var application = {};
@@ -16,6 +17,7 @@ define([], function() {
 
 
 
+	device.deviceId = 'a779cabef809b22a88e4dd683fa758ac';
 
 	//判断是否存在
 
@@ -183,6 +185,7 @@ define([], function() {
 		dynamic.safe = no;
 	}
 
+	data.device = device;
 	data.aircrew = aircrew;
 	data.crewmen = crewmen;
 	data.application = application;

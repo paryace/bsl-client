@@ -1,11 +1,28 @@
 
-html,body {
+/*background:url(img/bottom.png);background-size:cover;
+background-repeat:no-repeat;background-position:bottom center;*/
+body {
 	color: #BEBEBE;
-	background-image: url(../img/login_background_all.ing);
+	height: 100%;
+	position: relative;
+	/*background-image: url(../img/login_background_all.ing);
 	background-repeat: no-repeat;
-	background-size：100%;
+	background-position:bottom center;
+	bottom: 0px;
+	background-size:cover;*/
+	/*background-color: #55bdf4;*/
+	background:-webkit-gradient(linear, 10% 100%, 10% 100%, from(#4da9e7), to(#51aae6));
+	background-size: 100%;
+	/*overflow: hidden;*/
+	margin: 0px;
 }
-
+/*body{
+	position: relative;
+	height: 100%;
+	background-image: url(../img/login_background_all2.ing);
+	background-repeat: no-repeat;
+	background-size:100% 100%;
+}*/
 html,body,img,div,ul,li,a{
 	-webkit-touch-callout: none;
 

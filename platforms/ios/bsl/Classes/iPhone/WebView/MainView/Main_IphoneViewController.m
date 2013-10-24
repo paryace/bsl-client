@@ -21,7 +21,6 @@
 #import "OperateLog.h"
 #import "AutoShowRecord.h"
 #import "SVProgressHUD.h"
-#import "DownLoadingDetialViewController.h"
 #import "SettingMainViewController.h"
 
 #import "KKProgressToolbar.h"
@@ -36,6 +35,8 @@
     int allDownCount;
     
     UIAlertView*  singleAlert;
+    
+    UIAlertView* failedAlert;
 }
 
 @property(strong,nonatomic) id selfObj;
@@ -119,8 +120,9 @@
         self.selfObj=nil;
         
     }didErrorBlock:^(){
-        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
+        [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+        failedAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"首页模块加载失败。" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [failedAlert show];
         self.navController=nil;
         self.selfObj=nil;
     }];
@@ -131,8 +133,10 @@
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
     [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
     singleAlert=nil;
+    failedAlert=nil;
     
     aCubeWebViewController=nil;
     
@@ -144,6 +148,9 @@
 
 
 - (void)dealloc{
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+    failedAlert=nil;
+    
     [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
     singleAlert=nil;
 
@@ -218,18 +225,33 @@
 -(void)checkModules{
     //检测是否需要自动安装
     
+    NSUserDefaults* defaults=[NSUserDefaults standardUserDefaults];
+    NSString* username=[defaults valueForKey:@"username"];
+    
+    NSString* tip=[username stringByAppendingString:@"_notFirstLogin"];
+    
+    if([[NSUserDefaults standardUserDefaults] valueForKey:tip]!=nil){
+
+        [self checkAutoUpdate];
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:tip];
+
     @autoreleasepool {
 #ifndef MOBILE_BSL
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] downloadingModules];
 #else
         NSMutableArray *downloadArray = [[CubeApplication currentApplication] availableModules];
 #endif
-        if(downloadArray && downloadArray.count>0){
+        if([downloadArray count]>0){
             NSMutableString *message = [[NSMutableString alloc] init];
             [message appendString:@"检测到有以下模块需要下载:\n"];
             for(CubeModule *module in downloadArray){
                 [message appendFormat:@"%@\n", module.name];
             }
+            
+            [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+            failedAlert=nil;
             
             [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
             
@@ -260,6 +282,8 @@
             //        [defaults setBool:NO forKey:@"firstTime"];
             if(![defaults boolForKey:@"firstTime"]){
                 [defaults setBool:YES forKey:@"firstTime"];
+                [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+                failedAlert=nil;
                 [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
                 singleAlert  =[[UIAlertView alloc]initWithTitle:@"提示" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消",nil];
                 singleAlert.tag =829;
@@ -306,7 +330,7 @@
                     while([result next])
                     {
                         NSString * showTimeTmp = [result objectForColumnName:@"showTime"];
-                        long showTime = [showTimeTmp longLongValue];
+                        long long showTime = [showTimeTmp longLongValue];
                         
                         if([module.timeUnit isEqualToString:@"H"])
                         {
@@ -366,10 +390,17 @@
         }
     }
     CubeModule* cube = [tion object];
+    cube.isDownloading = false;
     NSString * javaScript = [NSString stringWithFormat:@"updateProgress('%@',%d);",cube.identifier,101];
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:javaScript];
-    if(![SVProgressHUD isVisible])
-        [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
+    
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+    failedAlert=nil;
+    failedAlert=[[UIAlertView alloc] initWithTitle:@"网络连接失败，请稍后重试！" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [failedAlert show];
+    failedAlert=nil;
+    //if(![SVProgressHUD isVisible])
+    //    [SVProgressHUD showErrorWithStatus:@"网络连接失败，请稍后重试！"];
 }
 
 -(void)updateAuthoShowTime:(NSString*)identifier{
@@ -437,12 +468,14 @@
             }
             UIViewController *localController = (UIViewController *)[[NSClassFromString(iphoneLocal) alloc] init];
             if(localController==nil){
-                UIAlertView* alertView=[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@模块不存在",module.name] message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alertView show];
-                alertView=nil;
+                [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+                failedAlert=nil;
+                failedAlert=[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@模块不存在",module.name] message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [failedAlert show];
+                failedAlert=nil;
                 return;
             }
-            [self.navigationController setNavigationBarHidden:NO animated:YES];
+            //[self.navigationController setNavigationBarHidden:NO animated:YES];
             [self.navigationController pushViewController:localController animated:YES];
             localController=nil;
             return;
@@ -460,33 +493,43 @@
 
         DownLoadingDetialViewController *funDetialVC=[[DownLoadingDetialViewController alloc]init];
         //循环已安装列表
+        BOOL isExit = false;
         for(CubeModule *each in [cubeApp modules]){
             if([each.identifier isEqualToString:identifier]){
                 funDetialVC.curCubeModlue=each;
+                isExit = true;
                 funDetialVC.buttonStatus = InstallButtonStateInstalled;
                 break;
             }
         }
         
         //循环更新列表
-        for(CubeModule *each in [cubeApp updatableModules]){
-            if([each.identifier isEqualToString:identifier]){
-                funDetialVC.curCubeModlue=each;
-                funDetialVC.buttonStatus = InstallButtonStateUpdatable;
-                break;
+        if (!isExit) {
+            for(CubeModule *each in [cubeApp updatableModules]){
+                if([each.identifier isEqualToString:identifier]){
+                    funDetialVC.curCubeModlue=each;
+                    isExit = true;
+                    funDetialVC.buttonStatus = InstallButtonStateUpdatable;
+                    break;
+                }
             }
         }
         
+        
         //循环未安装列表
+        if (!isExit) {
         for(CubeModule *each in [cubeApp availableModules]){
             if([each.identifier isEqualToString:identifier]){
                 funDetialVC.curCubeModlue=each;
+                isExit = true;
                 funDetialVC.buttonStatus = InstallButtonStateUninstall;
                 break;
             }
         }
+        }
         
         funDetialVC.delegate = self;
+        
         if(funDetialVC.curCubeModlue.isDownloading){
             funDetialVC.iconImage=[[IconButton alloc] initWithModule:funDetialVC.curCubeModlue stauts:IconButtonStautsDownloading delegate:nil];
             funDetialVC.iconImage.badgeView.hidden = YES;
@@ -541,6 +584,8 @@
             }
             
             self.selectedModule = module.identifier;
+            [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+            failedAlert=nil;
             [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
             singleAlert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 缺少依赖模块",module.name]
                                                                    message:message
@@ -572,8 +617,9 @@
         bCubeWebViewController=nil;
     }didErrorBlock:^(){
         NSLog(@"error loading %@", bCubeWebViewController.webView.request.URL);
-        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@模块加载失败。",bCubeWebViewController.title] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
+        [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+        failedAlert = [[UIAlertView alloc]initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@模块加载失败。",bCubeWebViewController.title] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [failedAlert show];
         bCubeWebViewController=nil;
     }];
 }
@@ -591,6 +637,8 @@
 
 #pragma mark - SettingView delegate
 -(void)ExitLogin{
+    [failedAlert dismissWithClickedButtonIndex:0 animated:NO];
+    failedAlert=nil;
     [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
     singleAlert = [[UIAlertView alloc] initWithTitle:@"退出登录" message:@"是否确认退出登录?" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"取消", nil];
     singleAlert.tag = 1;
@@ -599,12 +647,23 @@
 
 #pragma mark - 退出登陆
 -(void)logout{
-    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
+    //退出登录清空CubeApplication中的数组
+    CubeApplication *application = [CubeApplication currentApplication];
+    [[application modules] removeLastObject];
+    [[application availableModules] removeAllObjects];
+    [[application updatableModules] removeAllObjects];
+    [[application downloadingModules] removeAllObjects];
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView:NO];
+
 }
 
 
 #pragma mark - alerview Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if([alertView isEqual:failedAlert]){
+        failedAlert=nil;
+        return;
+    }
     singleAlert=nil;
     if(alertView.tag ==829){
         if(buttonIndex == 0){
@@ -754,6 +813,7 @@
 - (void)deleteAtModuleIdentifier:(NSString *)identifier{
     CubeApplication *cubeApp = [CubeApplication currentApplication];
     CubeModule *m = [cubeApp moduleForIdentifier:identifier];
+    m.isDownloading = false;
     NSMutableDictionary* moduleDictionary = [self modueToJson:m];
     NSString* JSO=   [[NSString alloc] initWithData:moduleDictionary.JSONData encoding:NSUTF8StringEncoding];
     NSString * javaScript = [NSString stringWithFormat:@"refreshModule('%@','uninstall','%@');",identifier,JSO ];
@@ -783,6 +843,7 @@
     }
     
     CubeModule *newModule = [note object];
+    newModule.isDownloading = false;
     if (newModule) {
         @autoreleasepool {
             NSMutableDictionary* moduleDictionary = [self modueToJson:newModule];
@@ -885,11 +946,25 @@
     
     statusToolbar.progressBar.progress = 1-(float)count/(float)allDownCount;
     [statusToolbar show:YES completion:^(BOOL finished) {
+        CGRect frame = self.view.frame ;
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+            frame.origin.y=20.0f;
+            frame.size.height-=20.0f;
+        }
+        
+        frame.size.height -= 44;
+        aCubeWebViewController.view.frame = frame;
     }];
 }
     
 -(void)stopUILoading{
     [statusToolbar hide:YES completion:^(BOOL finished) {
+        CGRect frame = self.view.frame ;
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+            frame.origin.y=20.0f;
+            frame.size.height-=20.0f;
+        }
+        aCubeWebViewController.view.frame = frame;
         [statusToolbar removeFromSuperview];
         statusToolbar = nil;
     }];

@@ -92,7 +92,7 @@ typedef enum{
         
         [recordSettings setObject:formatObject forKey: AVFormatIDKey];//ID
         [recordSettings setObject:[NSNumber numberWithInt:44100] forKey: AVSampleRateKey];//采样率
-        [recordSettings setObject:[NSNumber numberWithInt:1] forKey:AVNumberOfChannelsKey];//通道的数目,1单声道,2立体声
+        [recordSettings setObject:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];//通道的数目,1单声道,2立体声
         [recordSettings setObject:[NSNumber numberWithInt:12800] forKey:AVEncoderBitRateKey];//解码率
         [recordSettings setObject:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];//采样位
         [recordSettings setObject:[NSNumber numberWithInt: AVAudioQualityHigh] forKey: AVEncoderAudioQualityKey];
@@ -108,7 +108,7 @@ typedef enum{
     }
     
     
-    recordFile= [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.caf", [NSDate timeIntervalSinceReferenceDate] * 1000.0]];
+    recordFile= [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.aac", [NSDate timeIntervalSinceReferenceDate] * 1000.0]];
     
         
     NSError *error = nil;

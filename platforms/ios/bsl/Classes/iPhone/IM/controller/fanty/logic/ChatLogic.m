@@ -47,7 +47,7 @@
         room=[[ShareAppDelegate xmpp].roomService findRoomByJid:self.roomJID];
     
     if(room!=nil && !room.isJoined)return NO;
-
+    
     return YES;
 }
 
@@ -63,7 +63,7 @@
         [newManagedObject setValue:content forKey:@"content"];
         [newManagedObject setValue:@"notification" forKey:@"type"];
         [newManagedObject setValue:[NSNumber numberWithInt:1] forKey:@"statue"];
-
+        
         [newManagedObject setValue:[NSDate date] forKey:@"sendDate"];
         [newManagedObject setValue:messageId forKey:@"messageId"];
         [newManagedObject setValue:messageId forKey:@"receiveUser"];
@@ -77,7 +77,7 @@
             [MessageRecord createModuleBadge:@"com.foss.chat" num: [XMPPSqlManager getMessageCount]];
         }
     }
-
+    
 }
 
 -(BOOL)sendMessage:(NSString* )content messageId:(NSString*)messageId isGroup:(BOOL)isGroup name:(NSString*)name{
@@ -85,12 +85,12 @@
     XMPPRoom *room=nil;
     if(self.roomJID!=nil)
         room=[[ShareAppDelegate xmpp].roomService findRoomByJid:self.roomJID];
-
+    
     if(room!=nil && !room.isJoined)return NO;
-
+    
     NSString* uqID=[self juingNewId];
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-
+    
     @autoreleasepool {
         //拼写xml格式的xmpp消息
         NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
@@ -122,9 +122,9 @@
         //发送消息
         [appDelegate.xmpp.xmppStream sendElement:message];
     }
-
-
-
+    
+    
+    
     @autoreleasepool {
         //新建消息的entity
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"MessageEntity" inManagedObjectContext:appDelegate.xmpp.managedObjectContext];
@@ -132,7 +132,7 @@
         [newManagedObject setValue:content forKey:@"content"];
         [newManagedObject setValue:@"text" forKey:@"type"];
         [newManagedObject setValue:[NSNumber numberWithInt:1] forKey:@"statue"];
-
+        
         [newManagedObject setValue:[NSDate date] forKey:@"sendDate"];
         [newManagedObject setValue:messageId forKey:@"messageId"];
         [newManagedObject setValue:messageId forKey:@"receiveUser"];
@@ -144,8 +144,8 @@
         
         [appDelegate.xmpp saveContext];
     }
-
-
+    
+    
     return YES;
 }
 
@@ -167,10 +167,10 @@
         NSXMLElement *message = [NSXMLElement elementWithName:@"message" ];
         
         [message addAttributeWithName:@"uqID" stringValue:uqID];
-
+        
         [message addAttributeWithName:@"type" stringValue:@"groupchat"];
         [message addAttributeWithName:@"from" stringValue:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]];
-            //消息接受者
+        //消息接受者
         [message addAttributeWithName:@"to" stringValue:[[room roomJID] full]];
         [message addChild:body];
         
@@ -178,13 +178,13 @@
         NSXMLNode* subject = [NSXMLNode elementWithName:@"subject" stringValue:(isMyGroup?@"quitgroup":@"quitperson")];
         
         [message addChild:subject];
-
+        
         //发送消息
         [appDelegate.xmpp.xmppStream sendElement:message];
     }
     
     return YES;
-
+    
 }
 
 -(BOOL)sendRoomQuitMemberAction:(NSString*)messageId userJid:(NSString*)userJid{
@@ -231,10 +231,10 @@
         room=[[ShareAppDelegate xmpp].roomService findRoomByJid:self.roomJID];
     
     if(room!=nil && !room.isJoined)return NO;
-
+    
     NSString* uqID=[self juingNewId];
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-
+    
     //拼写xml格式的xmpp消息
     @autoreleasepool {
         NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
@@ -286,7 +286,7 @@
         
         [appDelegate.xmpp saveContext];
     }
-
+    
     
     return YES;
 }
@@ -294,7 +294,7 @@
 -(BOOL)isInFaviorContacts:(NSString*)chatWithUser{
     
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"userJid == \"%@\"",chatWithUser]];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"FaviorUserInfo"];
     [fetchRequest setPredicate:predicate];
@@ -307,7 +307,7 @@
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"FaviorUserInfo"];
     fetchRequest.predicate = [NSPredicate predicateWithValue:YES];
-
+    
     
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext* context=[appDelegate xmpp].managedObjectContext;
@@ -316,7 +316,7 @@
         [context deleteObject:obj];
     }
     [appDelegate.xmpp saveContext];
-
+    
     for(NSDictionary* dict in users){
         if(![dict isKindOfClass:[NSDictionary class]])continue;
         
@@ -325,26 +325,26 @@
         
         if([[jid class] isSubclassOfClass:[NSNull class]]  || [jid length]<1)
             continue;
-
+        
         if([[username class] isSubclassOfClass:[NSNull class]]  || [username length]<1)continue;
-
+        
         
         NSManagedObject *newManagedObject=[NSEntityDescription insertNewObjectForEntityForName:@"FaviorUserInfo" inManagedObjectContext:appDelegate.xmpp.managedObjectContext];
         
         /*
-        NSString* group=[dict objectForKey:@"userGroup"];
-        if(![[group class] isSubclassOfClass:[NSNull class]] &&[group length]>0)
-            [newManagedObject setValue:group forKey:@"userGroup"];
-        */
+         NSString* group=[dict objectForKey:@"userGroup"];
+         if(![[group class] isSubclassOfClass:[NSNull class]] &&[group length]>0)
+         [newManagedObject setValue:group forKey:@"userGroup"];
+         */
         
         [newManagedObject setValue:username forKey:@"userName"];
         [newManagedObject setValue:jid forKey:@"userJid"];
         
         /*
-        NSString* subscription=[dict objectForKey:@"userSubscription"];
-        if(![[subscription class] isSubclassOfClass:[NSNull class]] &&[subscription length]>0)
-            [newManagedObject setValue:subscription forKey:@"userSubscription"];
-        */
+         NSString* subscription=[dict objectForKey:@"userSubscription"];
+         if(![[subscription class] isSubclassOfClass:[NSNull class]] &&[subscription length]>0)
+         [newManagedObject setValue:subscription forKey:@"userSubscription"];
+         */
         NSString* sex=[dict objectForKey:@"sex"];
         if(![[sex class] isSubclassOfClass:[NSNull class]] &&[sex length]>0)
             [newManagedObject setValue:sex forKey:@"userSex"];
@@ -357,14 +357,14 @@
     }
     
     [appDelegate.xmpp saveContext];
-
-
+    
+    
 }
 
 -(void)addFaviorInContacts:(NSString*)chatWithUser{
-
+    
     AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-
+    
     UserInfo* userInfo=[appDelegate.xmpp fetchUserFromJid:chatWithUser];
     if(userInfo!=nil){
         NSManagedObject *newManagedObject=[NSEntityDescription insertNewObjectForEntityForName:@"FaviorUserInfo" inManagedObjectContext:appDelegate.xmpp.managedObjectContext];
@@ -394,16 +394,16 @@
         }
     }
     [appDelegate.xmpp saveContext];
-
+    
 }
 
 
 -(BOOL)uploadImageToServer:(UIImage*)image finish:(void (^)(NSString* id,NSString* path))finish{
     //[request cancel];
     
-     NSString* token=[[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+    NSString* token=[[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     NSURL *requestURL = [NSURL URLWithString:[kFileUploadUrl stringByAppendingFormat:@"?sessionKey=%@&&appKey=%@",token,kAPPKey]];
-  
+    
     [self.request cancel];
     self.request = [FormDataRequest requestWithURL:requestURL];
     self.request.timeOutSeconds=10.0f;
@@ -415,15 +415,13 @@
         if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
             size=CGSizeMake(1024.0f, 748.0f);
         }
-
+        
         if((image.size.width>size.width || image.size.height>size.height)){
             size.height=size.width/(image.size.width/image.size.height);
             image=[AsyncImageView imageWithThumbnail:image size:size];
         }
         
-        NSData *imageData = UIImagePNGRepresentation(image);
-
-        
+        NSData *imageData = UIImageJPEGRepresentation(image,0.5f);
         NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithCapacity:0];
         [dict setObject:imageData forKey:@"file"];
         [__request setUserInfo:dict];
@@ -433,7 +431,7 @@
         imageData=nil;
         
     }
-
+    
     [self.request setCompletionBlock:^{
         
         NSDictionary *dict = [[__request responseString] objectFromJSONString];
@@ -447,7 +445,7 @@
         }
         
         NSData *imageData = [[__request userInfo] valueForKey:@"file"];
-
+        
         
         NSString* path=[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         path=[path stringByAppendingPathComponent:@"images"];
@@ -462,19 +460,19 @@
         
         if(finish!=nil)
             finish(fileId,path);
-
+        
         [objSelf.request cancel];
     }];
     
     [self.request setFailedBlock:^{
         if(finish!=nil)
             finish(nil,nil);
-
+        
         [objSelf.request cancel];
     }];
     
     [self.request startAsynchronous];
-        
+    
     return YES;
 }
 

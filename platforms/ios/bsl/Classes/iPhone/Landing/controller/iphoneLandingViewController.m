@@ -356,9 +356,9 @@
 //    [self initPageControl];
     
     //添加双击事件
-    UITapGestureRecognizer* doubelTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTap)];
-    doubelTap.numberOfTapsRequired = 2;
-    doubelTap.numberOfTouchesRequired = 1;
+    //UITapGestureRecognizer* doubelTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTap)];
+    //doubelTap.numberOfTapsRequired = 2;
+    //doubelTap.numberOfTouchesRequired = 1;
     
     //屏蔽双击
 //    [self.itemsContainer addGestureRecognizer:doubelTap];
@@ -446,7 +446,7 @@
 }
 
 -(void)logout{
-    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView];
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView:NO];
 }
 
 -(void)deleteModuleFail{

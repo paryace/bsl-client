@@ -32,7 +32,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 @implementation CubeApplication
 
 
-#define ManagerUsers NO
+#define ManagerUsers YES
 
 //运行时配置文件路径
 #define RUNTIME_CFG_URL [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:@"Cube.json"]
@@ -138,12 +138,12 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
             if (self.installed)
                 [self mergeNewLocalModules];
         }else{
-            if (self.installed) {
-                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
-                [self loadApplicatioFromURL:cubeURL];
-            }
+//            if (self.installed) {
+//                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+//                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+//                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+//                [self loadApplicatioFromURL:cubeURL];
+//            }
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:CubeModuleInstallDidFinishNotification object:nil];
     }
@@ -205,7 +205,9 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     self.version = [jo_app objectForKey:@"version"];
     self.build = [[jo_app objectForKey:@"build"] integerValue];
     self.releaseNote = [jo_app objectForKey:@"releaseNote"];
-    
+    [modules removeAllObjects];
+    [availableModules removeAllObjects];
+    [updatableModules removeAllObjects];
     
     NSArray *jo_modules = [jo_app objectForKey:@"modules"];
     for (NSDictionary *jo_module in jo_modules) {
@@ -225,6 +227,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     for (NSDictionary *jo_module in jo_a_modules) {
         
         CubeModule *module = [CubeModule moduleFromJSONObject:jo_module];
+        module.isDownloading = NO;
         [availableModules addObject:module];
     }
 }
@@ -485,6 +488,15 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 #pragma mark - Sync
 -(void)sync
 {
+    
+    if (self.installed) {
+            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+            [self loadApplicatioFromURL:cubeURL];
+        
+    }
+    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *token =  [defaults objectForKey:@"token"];
     
@@ -511,6 +523,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 
 -(void)syncWithString:(NSString*)aURL token:(NSString *)token{
    //判断网络是否可以使用
+    
     if (([Reachability reachabilityForInternetConnection].currentReachabilityStatus != NotReachable) &&
         ([Reachability reachabilityForLocalWiFi].currentReachabilityStatus != NotReachable)) {
             if(!syncing){
@@ -586,7 +599,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
         //获取网络版本CubeModule
         CubeModule *remote_module = [CubeModule moduleFromJSONObject:remote_module_json];
         //判断本地模块是否存在如果不存在就直接忽略
-        if(remote_module.local && ![remote_module.local isEqualToString:@""])
+        if([remote_module.local length]>0)
         {
             if(![[moduleDict allKeys] containsObject:remote_module.identifier])
             {
@@ -623,7 +636,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                 
                 
             }else if(remote_module.build == local_module.build){
-                
+                remote_module.version=local_module.version;
+
                 [modules removeObject:local_module];
                 
                 [modules addObject:remote_module];
@@ -646,15 +660,22 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                     //remote_module.autoDownload = YES;
                     if (remote_module.autoDownload) {
                         //优化自动下载 zhoujn begin-----
-                        if(remote_module.privileges && remote_module.privileges.count==0)
+                        if([remote_module.privileges count]>0)
                         {
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                             NSString *userName = [defaults valueForKey:@"username"];
                             if(![[FMDBManager getInstance] recordIsExist:remote_module.identifier withtableName:@"AutoDownLoadRecord" withConditios:userName])
                             {
-                                remote_module.isDownloading =YES;
-                                [downloadingModules addObject:remote_module];
+                                if(![self judgeArray:downloadingModules ContainsModule:remote_module])
+                                {
+                                    if (![remote_module moduleIsInstalled]) {
+                                        remote_module.isDownloading =YES;
+                                        [downloadingModules addObject:remote_module];
+                                    }
+                                }
                             }
+//                            remote_module.isDownloading =YES;
+//                            [downloadingModules addObject:remote_module];
                         }
                         
                     }
@@ -663,6 +684,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
             }
         }
     }
+    moduleDict=nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncFinishedNotification object:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_DETIALPAGE_SYNSUCCESS object:nil];
     

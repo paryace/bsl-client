@@ -365,6 +365,11 @@ void byte2key(unsigned char *b,unsigned char*hs) {
 }
 */
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 #pragma mark -
 #pragma mark Table Data Source Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

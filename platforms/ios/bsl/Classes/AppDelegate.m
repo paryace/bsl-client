@@ -167,7 +167,7 @@ void uncaughtExceptionHandler(NSException*exception){
         nav=nil;
 //    }
     
-    [self showLoginView];
+    [self showLoginView:YES];
     [self.window makeKeyAndVisible];
     
     //开启定时任务将记录发送给服务端begin
@@ -185,7 +185,7 @@ void uncaughtExceptionHandler(NSException*exception){
 
 }
 
--(void)showLoginView{
+-(void)showLoginView:(BOOL)newLogin{
 
     [self.navControl popToRootViewControllerAnimated:NO];
 
@@ -199,7 +199,7 @@ void uncaughtExceptionHandler(NSException*exception){
   
     [xmpp teardownStream];
 //    [xmpp disConnect];
-    
+//    if(!newLogin)return;
     if([navControl.viewControllers count]<1){
         if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone){
             Login_IphoneViewController* controller=[[Login_IphoneViewController alloc] init];
@@ -215,6 +215,7 @@ void uncaughtExceptionHandler(NSException*exception){
             controller=nil;
         }
     }
+    
 
 }
 
@@ -227,7 +228,8 @@ void uncaughtExceptionHandler(NSException*exception){
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 100 && buttonIndex == 0) {
-        [self showLoginView];
+
+        [self showLoginView:NO];
     }
 }
 
@@ -456,7 +458,7 @@ void uncaughtExceptionHandler(NSException*exception){
         [dictArray addObject:dictionary];
     }
     NSString *json = [dictArray JSONString];
-//    NSLog(@"%@",json);
+   // NSLog(@"%@",json);
     dictArray=nil;
     
     FormDataRequest *request =[FormDataRequest requestWithURL:[NSURL URLWithString:[kServerURLString stringByAppendingFormat:@"%s","/csair-monitor/api/monitor/saveAll"]]];
@@ -503,6 +505,10 @@ void uncaughtExceptionHandler(NSException*exception){
         if ([privileges count]>0) {
             NSString* privilegeStr = @"";
             for (NSDictionary* privilege in privileges) {
+                if([[privilege objectForKey:@"name"] isEqual:[NSNull null]])
+                {
+                    continue;
+                }
                 NSString* name = [privilege objectForKey:@"name"];
                 if ([name length] > 0) {
                     privilegeStr = [privilegeStr stringByAppendingFormat:@"%@,",[privilege objectForKey:@"name"]];
@@ -517,28 +523,14 @@ void uncaughtExceptionHandler(NSException*exception){
             }
         }
         if ([updateTags length]> 0) {
-            
-            //暂时屏蔽username，phone连个标签
-            //        NSString* userName =[defaults valueForKey:@"username"] ;
             NSString* sex = [defaults valueForKey:@"sex"];
-            //        NSString* phone = [defaults valueForKey:@"phone"];
-            
-            
-            //        if (userName) {
-            //            updateTags= [updateTags stringByAppendingFormat:@"userName=%@",userName];
-            //            updateTags = [updateTags stringByAppendingString:@","];
-            //        }
             if (sex) {
                 updateTags= [updateTags stringByAppendingFormat:@"sex=%@",sex];
                 updateTags = [updateTags stringByAppendingString:@","];
             }
-            //        if (phone) {
-            //            updateTags= [updateTags stringByAppendingFormat:@"phone=%@",phone];
-            //            updateTags = [updateTags stringByAppendingString:@","];
-            //        }
             
         }
-        if ([updateTags length] > 0 ) {
+        if ([updateTags length] > 1 ) {
             updateTags =  [updateTags substringToIndex:[updateTags length] -1 ];
             updateTags = [updateTags stringByAppendingString:@"}"];
             NSString* urlStr = kUpdatePushTagsUrl;
@@ -546,7 +538,6 @@ void uncaughtExceptionHandler(NSException*exception){
             ASIFormDataRequest * tagRequest = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
             [tagRequest setPostValue:deviceID forKey:@"deviceId"];
             [tagRequest setPostValue:kAPPKey forKey:@"appId"];
-            //        NSLog(@"=====%@",updateTags);
             [tagRequest setPostValue:updateTags forKey:@"tags"];
             [tagRequest setRequestMethod:@"PUT"];
             [tagRequest startAsynchronous];
@@ -565,17 +556,9 @@ void uncaughtExceptionHandler(NSException*exception){
 }
 
 -(void)didLogin{
-    //NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    
-    //异步加载xmpp actor
-//    if (!(BOOL)[defaults objectForKey:@"IMXMPP"]) {
+ 
         [self setupXmppStream];
-//    }
-    
-    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self updateCheckInTags];
-    //});
-    
+    [self updateCheckInTags];
     [self updateCollectionFriends];
     
     //开启访问 获取到未收到的推送信息

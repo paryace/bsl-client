@@ -297,9 +297,10 @@
         }
         
         //植入界面
-        if (!cubeWebViewController) {
-            cubeWebViewController  = [[CubeWebViewController alloc] init];
-        }
+
+        cubeWebViewController=nil;
+        cubeWebViewController  = [[CubeWebViewController alloc] init];
+        cubeWebViewController.showCloseButton=YES;
         cubeWebViewController.title=module.name;
         
         
@@ -336,10 +337,17 @@
 
 -(void)updateError:(NSError*)aError
 {
-    NSString *message = [NSString stringWithFormat:@"更新出错，请检查网络"];
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"版本更新" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [av show];
-    av=nil;
+    if(aError==nil){
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"版本更新" message:@"暂未发现有版本更新" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [av show];
+        av=nil;
+    }
+    else{
+        NSString *message = [NSString stringWithFormat:@"更新出错，请检查网络"];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"版本更新" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [av show];
+        av=nil;
+    }
 }
 
 

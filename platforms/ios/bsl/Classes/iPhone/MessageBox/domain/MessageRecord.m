@@ -30,6 +30,7 @@
 @dynamic faceBackId;
 @dynamic isRead;
 @dynamic allContent;
+@dynamic username;
 
 +(BOOL)createByApnsInfo:(NSDictionary *)info outputArrayIds:(NSMutableArray*)outputArrayIds{
     NSString * mFaceBackId = [info objectForKey:@"sendId"];
@@ -38,7 +39,8 @@
     if (![mFaceBackId isEqual:[NSNull null]] && [mFaceBackId length]>0) {
         
         [outputArrayIds addObject:mFaceBackId];
-
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *username = [defaults valueForKey:@"username"];
         
         //通过sendID在数据库中判断是否存在记录
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"faceBackId==%@",mFaceBackId];
@@ -46,13 +48,13 @@
         [fetchRequest setPredicate:predicate];
         NSArray *fetchedPersonArray = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
         
-        MessageObject *message = nil;
+        MessageRecord *message = nil;
         //如果数据库中存在记录
         if (fetchedPersonArray.count>0) {
 //            [[fetchedPersonArray objectAtIndex:0] sendFeedBack];
         }else{
             ret=YES;
-            message  = (MessageObject *)[NSEntityDescription insertNewObjectForEntityForName:@"MessageRecord" inManagedObjectContext:self.managedObjectContext];
+            message  = (MessageRecord *)[NSEntityDescription insertNewObjectForEntityForName:@"MessageRecord" inManagedObjectContext:self.managedObjectContext];
 
             NSDictionary *aps = [info objectForKey:@"aps"];
             NSString* alert = [aps objectForKey:@"alert"];
@@ -62,6 +64,7 @@
             [message setAlert:alert];
             [message setSound:[aps objectForKey:@"sound"]];
             [message setBadge:[aps objectForKey:@"badge"]];
+            [message setUsername:username];
             [message setFaceBackId:mFaceBackId];
             //设置消息未读 add by zhoujun begin
             [message setIsRead:[NSNumber numberWithBool:NO]];
@@ -255,9 +258,11 @@
 }
 
 +(NSArray *)findForModuleIdentifier:(NSString *)identifier{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults valueForKey:@"username"];
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"reviceTime" ascending:NO];
-    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@",identifier] sortDescriptors:[NSArray arrayWithObject:sort]];
+    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and username=%@",identifier,username] sortDescriptors:[NSArray arrayWithObject:sort]];
 }
 
 +(int)countForModuleIdentifierAtBadge:(NSString *)identifier{
@@ -327,15 +332,19 @@
 
 
 +(NSArray *)findForModuleIdentifierAtBadge:(NSString *)identifier{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults valueForKey:@"username"];
     
-    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and isIconBadge=%@",identifier,[NSNumber numberWithInt:1]]];
+    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and isIconBadge=%@ and username=%@",identifier,[NSNumber numberWithInt:1],username]];
 }
 
 +(NSArray *)findSystemRecord{
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"reviceTime" ascending:NO];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults valueForKey:@"username"];
     
-    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=nil"] sortDescriptors:[NSArray arrayWithObject:sort]];
+    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=nil and username=%@",username] sortDescriptors:[NSArray arrayWithObject:sort]];
     
 }
 

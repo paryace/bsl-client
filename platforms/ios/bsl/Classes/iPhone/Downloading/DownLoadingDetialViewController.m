@@ -141,13 +141,15 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
 - (IBAction)clickConfigButton:(id)sender {
     firstEnter=FALSE;
     InstallButton * button = sender;
-    [button setEnabled:NO];
+//
     if (_curTitle==EBTNSYN) {
+        [button setEnabled:NO];
         button.btnStatus=InstallButtonStateUninstall;
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"请先同步已获取改应用的最新资源" delegate:self cancelButtonTitle:@"同步" otherButtonTitles:@"取消", nil];
         alert.tag=1234;
         [alert show];
     }else if (button.btnStatus == InstallButtonStateSynFailed) {
+        [button setEnabled:NO];
         //重新同步回去应用信息
         [self synAppInfo];
     }
@@ -161,6 +163,7 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
         [alert show];
     }else
     {
+        [button setEnabled:NO];
         //icon状态改变为downloading
         self.iconImage.stauts = IconButtonStautsDownloading;
         
@@ -180,6 +183,7 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
             return;
         
         if (self.delegate&&[self.delegate respondsToSelector:@selector(downloadAtModuleIdentifier:andCategory:)])  {
+            
             [self.delegate downloadAtModuleIdentifier:_curCubeModlue.identifier andCategory:_curCubeModlue.category];
         }
     }
@@ -190,12 +194,7 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
 //请求快照图片地址数据
 -(void)loadImageData{
     
-   
-    
-    
-    
-    
-    HTTPRequest* request = [HTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mam/api/mam/clients/widget/%@/%@/snapshot?appKey=%@",kServerURLString,self.curCubeModlue.identifier,self.curCubeModlue.version,kAPPKey]]];
+   HTTPRequest* request = [HTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mam/api/mam/clients/widget/%@/%@/snapshot?appKey=%@",kServerURLString,self.curCubeModlue.identifier,self.curCubeModlue.version,kAPPKey]]];
     __block HTTPRequest*  __request=request;
     
     
@@ -355,8 +354,6 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
     //     kAlert(@"安装成功");
     _curTitle=EBTNDELETE;
     self.configButton.btnStatus = InstallButtonStateInstalled;
-    
-    
     if (self.delegate&&[self.delegate respondsToSelector:@selector(inStalledModuleIdentifierr:)] ) {
         [self.delegate inStalledModuleIdentifierr:self.curCubeModlue.identifier];
     }

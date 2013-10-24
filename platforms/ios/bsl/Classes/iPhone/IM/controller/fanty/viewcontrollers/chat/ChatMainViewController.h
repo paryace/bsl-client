@@ -32,6 +32,8 @@
     UIPopoverController *popover;
     
     NSDictionary* emoctionList;
+    
+    float  tableViewHeight;
 
 }
 

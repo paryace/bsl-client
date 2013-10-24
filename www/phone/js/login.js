@@ -1,9 +1,9 @@
 new FastClick(document.body);
-var myPsw = null;
 window.addEventListener("keydown", function(evt) {
 	if (evt.keyCode === 13) {
 		$("#LoginBtn").trigger("click");
 	}
+
 });
 $('input').focus(function() {
 	var keyword = $(this).val();
@@ -57,15 +57,15 @@ $("body").click(function() {
 $("#LoginBtn").click(function() {
 	$(this).disabled = "disabled";
 	var username = $("#username").val();
-	if($("#password").val()=="" || $("#password").val()==null ||$("#password").val()==undefined){
+	/*if($("#password").val()=="" || $("#password").val()==null ||$("#password").val()==undefined){
 		myPsw = null;
 	}
-	if(myPsw!=null && myPsw!=""){
+	if(myPsw !=undefined && myPsw!=null && myPsw!=""){
 		var password = myPsw;
 	}else{
 		var password = $("#password").val();
-	}
-	//var password = $("#password").val();
+	}*/
+	var password = $("#password").val();
 	
 	var isRemember = $('#isRemember:checked').val();
 
@@ -80,15 +80,31 @@ $("#LoginBtn").click(function() {
 			$("#LoginBtn").removeAttr("disabled");
 		}
 	}, function(err) {
-
 		err = $.parseJSON(err);
 		$("#LoginBtn").removeAttr("disabled");
 	}, "CubeLogin", "login", [username, password, isRemember]);
 
 });
+
+var loadLogin = function(){
+    var bodyHeight = $(window).height();
+    
+    $("body").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+    
+    $("html").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+};
 var app = {
 	initialize: function() {
 		this.bindEvents();
+		//loadLogin();
 	},
 	bindEvents: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -98,7 +114,6 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-	
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
 			$("#username").val(data.username);
@@ -108,12 +123,12 @@ var app = {
 				$("#isRemember").attr("checked", 'checked');
 				//myPsw = data.password;
 			}
-			myPsw = data.password;
-			if(myPsw!==null && myPsw!==""){
+			/*myPsw = data.password;
+			if(myPsw !=undefined &&myPsw!==null && myPsw!==""){
 				$("#password").val("12345678");
 			}
 
-
+*/
 
 		}, function(err) {
 			alert(err);

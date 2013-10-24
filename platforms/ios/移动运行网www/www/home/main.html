@@ -6,8 +6,8 @@
 
 
 <header class="bar-title">
-  <img src="img/logo.ing" style="height:40px;margin:left:5px;">
-  <h1 class="title">移动运行网</h1>
+  <!-- <img src="img/logo.ing" style="height:40px;margin:left:5px;"> -->
+  <h1 id="refTit" class="title">移动运行网</h1>
   
 </header>
 
@@ -66,21 +66,29 @@
     </div>
   </div>
 </div>
-<nav style="display:none;">
-    <ul id='position' style="display:none;">
-     <!--  <li class='on'></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li> -->
-    </ul>
-</nav>
+
 
 <script id="module_div_ul" type="text/html">
 
+  <%
+var ids=function(identifier){
+
+var idslength=identifier.length;//com.csair.
+var identifiers=identifier.substr(10,idslength);
+console.log("打印ID值");
+console.log(identifiers);
+
+  return identifiers;
+
+}
+%>
+
+
+
+
   <li class="module_li" identifier="<%=identifier%>"  moduleType="<%=moduleType%>">
     
-    <div class="module_li_img">
+    <div class="module_li_img"  id="<%=ids(identifier)%>" identifier="<%=identifier%>"  style="">
         <img src="<%=icon%>" alt="" onerror="this.src='img/default_icon2.png'">
         <div class="module_Tips" moduletype="<%=moduleType%>" identifier="<%=identifier%>"  <%if(msgCount!==0  && moduleType ==="main"){%>style="display:inline"<%}else{%>style="display:none"<%}%>><%=msgCount%>
       </div>
@@ -92,5 +100,17 @@
     </div>
   </li>
 </script>
+
+<div style="width:100%;height:30px;position:fixed;bottom:10px;">
+  <nav style="display:block;background-color:transparent;">
+      <ul id='position' style="display:block;">
+       <!--  <li class='on'></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li> -->
+      </ul>
+  </nav>
+</div>
 
       

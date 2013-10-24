@@ -38,6 +38,8 @@
 @synthesize emoctionList;
 @synthesize superViewHeight;
 @synthesize cancelRecond;
+@synthesize onlineStatus;
+@synthesize quitStatus;
 - (id)initWithFrame:(CGRect)frame{
     
     frame.size.height=PANNEL_HEIGHT+EC_PANEL_height;
@@ -50,7 +52,7 @@
         
         chatPanelBgView=[[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, PANNEL_HEIGHT)];
         chatPanelBgView.image=[UIImage imageNamed:@"ToolViewBkg_Black.png"];
-
+        chatPanelBgView.clipsToBounds=YES;
         chatPanelBgView.userInteractionEnabled=YES;
         chatPanelBgView.backgroundColor=[UIColor clearColor];
         [self addSubview:chatPanelBgView];
@@ -213,6 +215,10 @@
         containerFrame.origin.y = superViewHeight-chatPanelBgView.frame.size.height;
         self.frame=containerFrame;
         
+        if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+            [self.delegate chatPanelKeyworkShow:0.0f];
+
+        
         // commit animations
         [UIView commitAnimations];
         
@@ -258,22 +264,29 @@
     }
 }
 
--(void)hideAllControlPanel{
-    chatButton.hidden=YES;
-    textBgView.hidden=YES;
-    recordButton.hidden=YES;
-    textView.hidden=YES;
-    emoctionButton.hidden=YES;
-    addButton.hidden=YES;
-    
+-(void)checkAllControlPanel{
+    BOOL hidenAllControl=(self.quitStatus || !self.onlineStatus);
+    chatButton.hidden=hidenAllControl;
+    textBgView.hidden=hidenAllControl;
+    recordButton.hidden=hidenAllControl;
+    textView.hidden=hidenAllControl;
+    emoctionButton.hidden=hidenAllControl;
+    addButton.hidden=hidenAllControl;
+    [msgLabel removeFromSuperview];
+    msgLabel=nil;
 
-    UILabel* label=[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, PANNEL_HEIGHT)];
-    label.text=@"你已退出该群组";
-    label.backgroundColor=[UIColor clearColor];
-    label.textColor=[UIColor blackColor];
-    label.font=[UIFont systemFontOfSize:18.0f];
-    label.textAlignment=NSTextAlignmentCenter;
-    [chatPanelBgView addSubview:label];
+    if(hidenAllControl){
+        msgLabel=[[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, PANNEL_HEIGHT)];
+        if(self.quitStatus)
+            msgLabel.text=@"你已退出该群组";
+        else
+            msgLabel.text=@"网络连接异常";
+        msgLabel.backgroundColor=[UIColor clearColor];
+        msgLabel.textColor=[UIColor blackColor];
+        msgLabel.font=[UIFont systemFontOfSize:18.0f];
+        msgLabel.textAlignment=NSTextAlignmentCenter;
+        [chatPanelBgView addSubview:msgLabel];
+    }
 }
 
 -(void)showChatOrKeyboard{
@@ -306,6 +319,11 @@
         rect=self.frame;
         rect.size.height=chatPanelBgView.frame.size.height+EC_PANEL_height;
         self.frame=rect;
+        
+        
+        if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+            [self.delegate chatPanelKeyworkShow:self.frame.origin.y];
+
     
     } completion:^(BOOL finish){
 
@@ -334,6 +352,10 @@
             CGRect containerFrame = self.frame;
             containerFrame.origin.y = superViewHeight-chatPanelBgView.frame.size.height;
             self.frame=containerFrame;
+            
+            if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+                [self.delegate chatPanelKeyworkShow:0.0f];
+
             
             // commit animations
             [UIView commitAnimations];
@@ -377,6 +399,10 @@
             rect=self.frame;
             rect.origin.y=superViewHeight-self.frame.size.height;
             self.frame=rect;
+            
+            if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+                [self.delegate chatPanelKeyworkShow:self.frame.origin.y];
+
             
         } completion:^(BOOL finish){
         
@@ -568,6 +594,10 @@
 
 - (void)textViewDidChange:(UITextView *)__textView{
     float height=__textView.contentSize.height;
+    if([__textView.text length]<1){
+        height=TEXT_VIEW_HEIGHT;
+    }
+    
     if(height>112.0f)
         height=112.0f;
     if(currentHeight==0)
@@ -647,8 +677,9 @@
 
 -(void)sendEmoction:(EmoctionPanel *)emoction{
     
-    [textView resignFirstResponder];
+    //[textView resignFirstResponder];
     
+    /*
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
         
         CGRect containerFrame = self.frame;
@@ -663,7 +694,7 @@
         camerPanel=nil;
 
     }];
-    
+    */
     if([self.delegate respondsToSelector:@selector(chatPanelDidSend:)])
         [self.delegate chatPanelDidSend:self];
 
@@ -707,7 +738,13 @@
     [UIView setAnimationCurve:[curve intValue]];
 	
 	self.frame=containerFrame;
+    
+    if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+        [self.delegate chatPanelKeyworkShow:self.frame.origin.y];
+
 	[UIView commitAnimations];
+    
+
 }
 
 -(void) keyboardWillHide:(NSNotification *)note{
@@ -727,10 +764,15 @@
     [UIView setAnimationCurve:[curve intValue]];
     
 	self.frame=containerFrame;
-	
+    if([self.delegate respondsToSelector:@selector(chatPanelKeyworkShow:)])
+        [self.delegate chatPanelKeyworkShow:0.0f];
+
 	// commit animations
 	[UIView commitAnimations];
+    
 }
+
+
 
 
 @end
