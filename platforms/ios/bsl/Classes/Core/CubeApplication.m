@@ -205,7 +205,9 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     self.version = [jo_app objectForKey:@"version"];
     self.build = [[jo_app objectForKey:@"build"] integerValue];
     self.releaseNote = [jo_app objectForKey:@"releaseNote"];
-    
+    [modules removeAllObjects];
+    [availableModules removeAllObjects];
+    [updatableModules removeAllObjects];
     
     NSArray *jo_modules = [jo_app objectForKey:@"modules"];
     for (NSDictionary *jo_module in jo_modules) {
@@ -488,18 +490,10 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 {
     
     if (self.installed) {
-        NSUserDefaults* defaults=[NSUserDefaults standardUserDefaults];
-        NSString* username=[defaults valueForKey:@"username"];
-        
-        NSString* tip=[username stringByAppendingString:@"_notFirstLogin"];
-        
-        if([[NSUserDefaults standardUserDefaults] valueForKey:tip]==nil){
-            
             NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
             NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
             NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
             [self loadApplicatioFromURL:cubeURL];
-        }
         
     }
     
