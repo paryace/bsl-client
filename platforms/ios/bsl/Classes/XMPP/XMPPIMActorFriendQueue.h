@@ -12,6 +12,8 @@
     NSMutableArray*  items;
     
     NSTimer* timer;
+    
+    BOOL isStop;
 }
 
 +(XMPPIMActorFriendQueue*)sharedInstance;

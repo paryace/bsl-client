@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class VoiceObj;
 
 @protocol VoiceUploadManagerDelegate <NSObject>
 
@@ -15,11 +15,18 @@
 -(void)voiceDownloadFinish:(NSString*)uqId finish:(BOOL)finish;
 @end
 
+@protocol VoiceObjDelegate <NSObject>
+
+-(void)removeVoiceObj:(VoiceObj*)obj finish:(NSNumber*)finish;
+-(void)removeDownloadVoiceObj:(VoiceObj*)obj finish:(NSNumber*)finish;
+
+@end
+
 @class HTTPRequest;
 @interface VoiceObj : NSObject{
     HTTPRequest* request;
 }
-@property(nonatomic,weak) id delegate;
+@property(nonatomic,weak) id<VoiceObjDelegate> delegate;
 @property(nonatomic,strong) NSString* uqID;
 @property(nonatomic,strong) NSString* urlVoiceFile;
 @property(nonatomic,strong) NSString* messageId;
@@ -39,7 +46,5 @@
 -(BOOL)sendVoice:(NSString*)urlVoiceFile messageId:(NSString*)messageId isGroup:(BOOL)isGroup name:(NSString*)name uqId:(NSString*)uqId;
 
 -(void)receiveVoice:(NSString*)content uqId:(NSString*)uqId messageId:(NSString*)messageId isGroup:(BOOL)isGroup;
-
--(NSString*)downloadVoiceFile:(NSString*)uqID;
 
 @end

@@ -264,4 +264,10 @@ static GTGZImageDownloadedManager* instance=nil;
 
 }
 
+-(NSString*)filePathByContentId:(NSString*)contentId{
+    //获取document 目录
+    return [self.saveImagePath stringByAppendingPathComponent: [NSString stringWithFormat:@"file_%@.png",contentId]];
+
+}
+
 @end

@@ -37,10 +37,12 @@
     FormDataRequest* request;
     
     float maxHeight;
+    
+    NSMutableDictionary* dicts;
 }
 @property(nonatomic,weak) id<ContactSelectedForGroupViewControllerDelegate> delegate;
+@property(nonatomic,strong) NSArray* selectedFriends;
 @property(nonatomic,strong) NSString* tempNewjid;
-@property(nonatomic,strong) NSDictionary* dicts;
 @property(nonatomic,strong) NSString* groupName;
 @property(nonatomic,strong) NSString*  existsGroupJid;
 

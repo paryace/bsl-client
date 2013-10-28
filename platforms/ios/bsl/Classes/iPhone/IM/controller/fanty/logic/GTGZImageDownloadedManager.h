@@ -62,4 +62,6 @@
 
 -(NSString*)originPathByUrl:(NSString*)url;
 
+-(NSString*)filePathByContentId:(NSString*)contentId;
+
 @end

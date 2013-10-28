@@ -298,7 +298,7 @@
                     while([result next])
                     {
                         NSString * showTimeTmp = [result objectForColumnName:@"showTime"];
-                        long showTime = [showTimeTmp longLongValue];
+                        long long showTime = [showTimeTmp longLongValue];
                         
                         if([module.timeUnit isEqualToString:@"H"])
                         {

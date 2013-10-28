@@ -14,6 +14,7 @@
 #import "MessageRecord.h"
 #import "AsyncImageView.h"
 #import "XMPPSqlManager.h"
+#import "GTGZImageDownloadedManager.h"
 
 @interface ChatLogic()
 -(NSString*)juingNewId;
@@ -226,7 +227,7 @@
 }
 
 
--(BOOL)sendfile:(NSString* )content path:(NSString*)path messageId:(NSString*)messageId isGroup:(BOOL)isGroup name:(NSString*)name{
+-(BOOL)sendfile:(NSString* )content messageId:(NSString*)messageId isGroup:(BOOL)isGroup name:(NSString*)name{
     XMPPRoom *room=nil;
     if(self.roomJID!=nil)
         room=[[ShareAppDelegate xmpp].roomService findRoomByJid:self.roomJID];
@@ -275,7 +276,7 @@
     @autoreleasepool {
         NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"MessageEntity" inManagedObjectContext:appDelegate.xmpp.managedObjectContext];
         [newManagedObject setValue:uqID forKey:@"uqID"];
-        [newManagedObject setValue:path forKey:@"content"];
+        [newManagedObject setValue:content forKey:@"content"];
         [newManagedObject setValue:[NSNumber numberWithInt:1] forKey:@"statue"];
         [newManagedObject setValue:@"image" forKey:@"type"];
         [newManagedObject setValue:[NSDate date] forKey:@"sendDate"];
@@ -399,7 +400,7 @@
 }
 
 
--(BOOL)uploadImageToServer:(UIImage*)image finish:(void (^)(NSString* id,NSString* path))finish{
+-(BOOL)uploadImageToServer:(UIImage*)image finish:(void (^)(NSString* fileId))finish{
     //[request cancel];
     
     NSString* token=[[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
@@ -440,35 +441,24 @@
         
         if(![fileId isKindOfClass:[NSString class]] || [fileId length]<1){
             if(finish!=nil)
-                finish(nil,nil);
+                finish(nil);
             [objSelf.request cancel];
             return ;
         }
         
         NSData *imageData = [[__request userInfo] valueForKey:@"file"];
-        
-        
-        NSString* path=[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        path=[path stringByAppendingPathComponent:@"images"];
-        NSFileManager* fileManager=[NSFileManager defaultManager];
-        if(![fileManager fileExistsAtPath:path]){
-            [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-        path = [[path stringByAppendingPathComponent:fileId] stringByAppendingString:@".png"];
         if(imageData!=nil){
-            [imageData writeToFile:path atomically:YES];
+            NSString* file=[[GTGZImageDownloadedManager sharedInstance] filePathByContentId:fileId];
+            [imageData writeToFile:file atomically:YES];
         }
-        
         if(finish!=nil)
-            finish(fileId,path);
-        
+            finish(fileId);
         [objSelf.request cancel];
     }];
     
     [self.request setFailedBlock:^{
         if(finish!=nil)
-            finish(nil,nil);
-        
+            finish(nil);
         [objSelf.request cancel];
     }];
     

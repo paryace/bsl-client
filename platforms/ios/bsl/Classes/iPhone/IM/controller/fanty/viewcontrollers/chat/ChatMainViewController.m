@@ -274,7 +274,7 @@
                 rect.size.width=tableView.frame.size.width;
                 cell.frame=rect;
             }
-            [cell headerUrl:@"" name:[messageEntity name] imageFile:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
+            [cell headerUrl:@"" name:[messageEntity name] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
             cell.tag=[indexPath row];
             
             return cell;
@@ -398,7 +398,7 @@
 
 
         if(addInterval>1.5f){
-            if(![[VoiceUploadManager sharedInstance] sendVoice:recorder.recordFile messageId:self.messageId isGroup:self.isGroupChat name:self.chatName uqId:nil])
+            if(![[VoiceUploadManager sharedInstance] sendVoice:recorder.recordId messageId:self.messageId isGroup:self.isGroupChat name:self.chatName uqId:nil])
                 [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
         }
         else{
@@ -582,15 +582,14 @@
                 }
                 
                 [SVProgressHUD showWithStatus:@"上传中..." maskType:SVProgressHUDMaskTypeBlack];
-                [chatLogic uploadImageToServer:image finish:^(NSString* fileId,NSString* path){
+                [chatLogic uploadImageToServer:image finish:^(NSString* fileId){
                     if([fileId length]>0){
                         [SVProgressHUD dismiss];
-                        if(![chatLogic sendfile:fileId path:path messageId:self.messageId isGroup:self.isGroupChat name:self.chatName]){
+                        if(![chatLogic sendfile:fileId messageId:self.messageId isGroup:self.isGroupChat name:self.chatName]){
                             [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
                         }
                     }
                     else{
-                        [SVProgressHUD dismiss];
                         [SVProgressHUD showErrorWithStatus:@"图片上传失败"];
                     }
                 }];
@@ -721,7 +720,8 @@
                 if(__cell.tag==playingIndex){
                     MessageEntity* entity=[messageArray objectAtIndex:playingIndex];
                     [((VoiceCell*)__cell) playAnimated:YES];
-                    [recorder play:[NSURL fileURLWithPath:entity.content]];
+                    
+                    [recorder play:entity.content];
                 }
             }
         }
@@ -798,7 +798,7 @@
         }
         else{
             [cell playAnimated:YES];
-            [recorder play:[NSURL fileURLWithPath:entity.content]];
+            [recorder play:entity.content];
         }
     }
 }

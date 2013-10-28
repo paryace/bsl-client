@@ -16,15 +16,6 @@
 #import "IMServerAPI.h"
 #import "HTTPRequest.h"
 
-NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
-    UserInfo* info=(UserInfo*)obj1;
-    if([info.userStatue length]>0)
-        return (NSComparisonResult)NSOrderedAscending;
-    else
-        return (NSComparisonResult)NSOrderedDescending;
-};
-
-
 @interface GroupMemberManagerViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,GroupPanelDelegate,UIPopoverControllerDelegate,ContactSelectedForGroupViewControllerDelegate>
 -(void)loadData;
 -(void)initGroupPanel;
@@ -419,55 +410,7 @@ NSInteger groupMemberContactListViewSort(id obj1, id obj2,void* context){
     ContactSelectedForGroupViewController* controller=[[ContactSelectedForGroupViewController alloc] init];
     controller.existsGroupJid=self.messageId;
     controller.groupName=self.chatName;
-    
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    NSFetchRequest *fetechRequest = [NSFetchRequest fetchRequestWithEntityName:@"UserInfo"];
-        
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"userGroup" ascending:YES];
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"userStatue" ascending:NO];
-    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"userName" ascending:NO];
-    
-    NSArray *sortDescriptors = @[sortDescriptor,sortDescriptor1,sortDescriptor2];
-    [fetechRequest setSortDescriptors:sortDescriptors];
-
-    NSFetchedResultsController* fetchController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetechRequest managedObjectContext:appDelegate.xmpp.managedObjectContext sectionNameKeyPath:@"userGroup" cacheName:nil];
-    [fetchController performFetch:NULL];
-    
-
-    NSMutableDictionary* friendsListDict=[[NSMutableDictionary alloc] initWithCapacity:1];
-    
-    for(id<NSFetchedResultsSectionInfo> sectionInfo in [fetchController sections]){
-        NSString* key=NSLocalizedString([sectionInfo name],nil);
-        NSMutableArray* array=[[NSMutableArray alloc] initWithCapacity:2];
-        for(UserInfo* info in [fetchController fetchedObjects]){
-            if([info.userGroup isEqualToString:key]){
-                BOOL isAdding=NO;
-                for(NSDictionary* dict in list){
-                    NSString* jid=[dict objectForKey:@"jid"];
-                    if([info.userJid isEqualToString:jid]){
-                        isAdding=YES;
-                        break;
-                    }
-
-                }
-                if(!isAdding)
-                    [array addObject:info];
-            }
-        }
-        if([array count]>0){
-            NSArray* __array=[array sortedArrayUsingFunction:groupMemberContactListViewSort context:nil];
-            [friendsListDict setObject:__array forKey:key];
-        }
-
-    }
-    
-    
-    
-    
-    
-    controller.dicts=friendsListDict;
-    
-
+    controller.selectedFriends=list;
     controller.delegate=self;
 
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {

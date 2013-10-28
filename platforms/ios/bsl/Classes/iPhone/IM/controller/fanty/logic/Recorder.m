@@ -26,7 +26,7 @@ typedef enum{
 
 @implementation Recorder
 @synthesize delegate;
-@synthesize recordFile;
+@synthesize recordId;
 @synthesize addInterval;
 
 -(id)init{
@@ -51,9 +51,39 @@ typedef enum{
 
 }
 
++(NSString*)recordFile:(NSString*)recordId{
+    //获取document 目录
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex: 0];
+    docDir=[docDir stringByAppendingPathComponent:[[[ShareAppDelegate xmpp].xmppStream myJID]bare]];
+    NSFileManager* fileManager=[NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:docDir]){
+        [fileManager createDirectoryAtPath:docDir withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    
+    return [docDir stringByAppendingPathComponent: [NSString stringWithFormat:@"record_%@.aac",recordId]];
+
+}
+
++(NSString*)downloadVoiceFile:(NSString*)recordId{
+    //获取document 目录
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex: 0];
+    docDir=[docDir stringByAppendingPathComponent:[[[ShareAppDelegate xmpp].xmppStream myJID]bare]];
+    NSFileManager* fileManager=[NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:docDir]){
+        [fileManager createDirectoryAtPath:docDir withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    return [docDir stringByAppendingPathComponent: [NSString stringWithFormat:@"record_%@.caf",recordId]];
+}
+
+
+
+
+
 -(void)record{
     [self stop];
-    recordFile=nil;
+    self.recordId=nil;
     
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
@@ -97,19 +127,9 @@ typedef enum{
         [recordSettings setObject:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];//采样位
         [recordSettings setObject:[NSNumber numberWithInt: AVAudioQualityHigh] forKey: AVEncoderAudioQualityKey];
     }
-    //获取document 目录
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex: 0];
-    
-    
-    docDir=[docDir stringByAppendingPathComponent:[[[ShareAppDelegate xmpp].xmppStream myJID]bare]];
-    NSFileManager* fileManager=[NSFileManager defaultManager];
-    if(![fileManager fileExistsAtPath:docDir]){
-        [fileManager createDirectoryAtPath:docDir withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    
-    
-    recordFile= [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.aac", [NSDate timeIntervalSinceReferenceDate] * 1000.0]];
-    
+    self.recordId=[NSString stringWithFormat: @"%.0f", [NSDate timeIntervalSinceReferenceDate] * 1000.0];
+
+    NSString* recordFile=[Recorder recordFile:self.recordId];
         
     NSError *error = nil;
     audioRecorder = [[ AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:recordFile] settings:recordSettings error:&error];
@@ -178,19 +198,28 @@ typedef enum{
     [self stop];
     
     NSFileManager* fileManeger = [NSFileManager defaultManager];
+    
+    NSString* recordFile=[Recorder recordFile:self.recordId];
+    
     [fileManeger removeItemAtPath:recordFile error:nil];
 
-    recordFile=nil;
+    self.recordId=nil;
 }
 
--(void)play:(NSURL*)url{
+-(void)play:(NSString*)contentId{
     [self stop];
 
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
     NSError *error;
     
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    NSString* file=[Recorder recordFile:contentId];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:file]){
+        file=[Recorder downloadVoiceFile:contentId];
+    }
+    
+    
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:file] error:&error];
     
     if(error!=nil){
         [self stop];

@@ -20,18 +20,9 @@
 -(void)contactListDidSelected:(ContactListView*)contactList userInfo:(UserInfo*)userInfo;
 @end
 
-@interface ContactListView : UIView{
-    UISearchBar* searchBar;
-    TouchTableView* tableView;
-    
-    NSTimer* laterReloadTimer;
-    
-    NSTimer* friendListTimeOut;
-
-}
+@interface ContactListView : UIView
 
 @property(nonatomic,weak) id<ContactListViewDelegate> delegate;
--(void)loadData;
+-(void)syncFriends;
 -(void)clear;
--(NSDictionary*)friendsList;
 @end

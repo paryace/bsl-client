@@ -8,6 +8,7 @@
 
 #import "ChatImageCell.h"
 #import "ImageDownloadedView.h"
+#import "GTGZImageDownloadedManager.h"
 #import "ServerAPI.h"
 #define CELL_SIZE 100.0f
 
@@ -76,10 +77,12 @@
     return CELL_SIZE+70.0f;
 }
 
--(void)headerUrl:(NSString*)headerUrl name:(NSString*)name imageFile:(NSString*)imageFile sendDate:(NSDate*)date bubbleType:(NSBubbleType)bubbleType{
+-(void)headerUrl:(NSString*)headerUrl name:(NSString*)name content:(NSString*)content sendDate:(NSDate*)date bubbleType:(NSBubbleType)bubbleType{
     
     [imageView setUrl:headerUrl];
     //imageFile=@"T1saYTByxT1RCvBVdK";
+    
+    NSString* imageFile=[[GTGZImageDownloadedManager sharedInstance] filePathByContentId:content];
     
     if([[NSFileManager defaultManager] fileExistsAtPath:imageFile]){
         [contentImageView setUrl:imageFile];

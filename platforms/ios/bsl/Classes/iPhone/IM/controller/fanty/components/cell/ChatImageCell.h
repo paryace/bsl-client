@@ -33,6 +33,6 @@
 }
 @property(nonatomic,weak) id<ChatImageCellDelegate> delegate;
 +(float)cellHeight:(NSBubbleType)bubbleType;
--(void)headerUrl:(NSString*)headerUrl name:(NSString*)name imageFile:(NSString*)imageFile sendDate:(NSDate*)date bubbleType:(NSBubbleType)bubbleType;
+-(void)headerUrl:(NSString*)headerUrl name:(NSString*)name content:(NSString*)content sendDate:(NSDate*)date bubbleType:(NSBubbleType)bubbleType;
 
 @end

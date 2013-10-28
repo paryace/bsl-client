@@ -412,6 +412,8 @@ void uncaughtExceptionHandler(NSException*exception){
 
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication*)application{
+    
+    NSLog(@"applicationDidReceiveMemoryWarning");
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 

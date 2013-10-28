@@ -13,6 +13,7 @@
 #import "XMPPRoom.h"
 #import "JSONKit.h"
 #import "ServerAPI.h"
+#import "Recorder.h"
 
 
 static VoiceUploadManager* instance=nil;
@@ -29,7 +30,7 @@ static VoiceUploadManager* instance=nil;
 -(void)failedDownloaded;
 @end
 
-@interface VoiceUploadManager()
+@interface VoiceUploadManager()<VoiceObjDelegate>
 -(NSString*)juingNewId;
 @end
 
@@ -91,7 +92,7 @@ static VoiceUploadManager* instance=nil;
     __block VoiceObj* objSelf=self;
     @autoreleasepool {
         
-        NSData* fileData = [[NSData alloc] initWithContentsOfFile:self.urlVoiceFile];
+        NSData* fileData = [[NSData alloc] initWithContentsOfFile:[Recorder recordFile:self.urlVoiceFile] options:NSDataReadingMappedIfSafe error:nil];
         [requestT setData:fileData forKey:@"file"];
         fileData=nil;
     }
@@ -122,12 +123,12 @@ static VoiceUploadManager* instance=nil;
     request = [HTTPRequest requestWithURL:[NSURL URLWithString:url]];
     request.timeOutSeconds=10.0f;
     request.persistentConnectionTimeoutSeconds=10.0f;
-    [request setDownloadDestinationPath:self.urlVoiceFile];
+    [request setDownloadDestinationPath:[Recorder downloadVoiceFile:self.urlVoiceFile]];
     __block VoiceObj* objSelf=self;
     
     [request setCompletionBlock:^{
         
-        FILE* fp=fopen([objSelf.urlVoiceFile UTF8String], "rb");
+        FILE* fp=fopen([[Recorder downloadVoiceFile:objSelf.urlVoiceFile] UTF8String], "rb");
         if(fp==nil){
             [objSelf failedDownloaded];
             return ;
@@ -321,7 +322,7 @@ static VoiceUploadManager* instance=nil;
     obj.uqID=uqId;
     obj.messageId=messageId;
     obj.isGroup=isGroup;
-    obj.urlVoiceFile=[self downloadVoiceFile:content];
+    obj.urlVoiceFile=content;
 
     
     [obj downloadVoiceFile:content];
@@ -330,21 +331,6 @@ static VoiceUploadManager* instance=nil;
     obj=nil;
     
 }
-
-
--(NSString*)downloadVoiceFile:(NSString*)uqID{
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex: 0];
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-
-    docDir=[docDir stringByAppendingPathComponent:[[[appDelegate xmpp].xmppStream myJID]bare]];
-    NSFileManager* fileManager=[NSFileManager defaultManager];
-    if(![fileManager fileExistsAtPath:docDir]){
-        [fileManager createDirectoryAtPath:docDir withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    
-    return [docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"receiver_%@.caf", uqID]];
-}
-
 
 #pragma mark delegate
 -(void)removeVoiceObj:(VoiceObj*)obj finish:(NSNumber*)finish{

@@ -51,7 +51,7 @@
 @synthesize roomService;
 - (void)teardownStream
 {
-    self.friendListIsFinded=NO;
+    self.friendListIsFinded=XMPPFriendsStatusNone;
     
     [[XMPPIMActorFriendQueue sharedInstance] clear];
 
@@ -123,7 +123,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)setupXmppStream{
-    self.friendListIsFinded=NO;
+    self.friendListIsFinded=XMPPFriendsStatusNone;
     [[XMPPIMActorFriendQueue sharedInstance] clear];
 
     [[VoiceUploadManager sharedInstance] cance];
@@ -434,36 +434,6 @@
     NSLog(@"创建账号失败");
 }
 
-
-
--(void)showLocalNotification:(NSString*)Msg{
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.alertAction = @"知道了";
-    //		localNotification.alertBody = aMsg;
-    localNotification.alertBody = Msg;
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-    localNotification=nil;
-}
-
--(void)showTheMsg:(NSString*)aMsg
-{
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive){
-        
-	}
-	else
-	{
-		// We are not active, so use a local notification instead
-		UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-		localNotification.alertAction = @"知道了";
-        //		localNotification.alertBody = aMsg;
-        localNotification.alertBody = @"您有新的消息，请注意查收！";
-		localNotification.soundName = UILocalNotificationDefaultSoundName;
-		[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-        localNotification=nil;
-	}
-}
-
 - (void)xmppStream:(XMPPStream *)sender didReceiveError:(id)error{
     DDXMLNode *errorNode = (DDXMLNode *)error;
     //遍历错误节点
@@ -479,11 +449,7 @@
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message{
-	
-    /*
-     <message xmlns="jabber:client" uqID="1379911680.768292" type="error" from="5fe7fc67-b892-4fec-8ec5-c1c2c0c99698@conference.snda-192-168-2-32" to="guodong@snda-192-168-2-32/Cube_Client11"><body>Abc</body><subject>text</subject><error code="404" type="wait"><recipient-unavailable xmlns="urn:ietf:params:xml:ns:xmpp-stanzas"></recipient-unavailable></error></message>
-     */
-    
+	   
     if ([message isChatMessageWithBody]){
         
         @autoreleasepool {
@@ -497,55 +463,28 @@
             NSRange range = [from rangeOfString:@"/"];
             NSString * result = [from substringToIndex:range.location];
             
+            BOOL updateFriend=NO;
             UserInfo * userInfo =[self fetchUserFromJid:result];
-            RectangleChatContentType rectangleChatContentType=RectangleChatContentTypeMessage;
-            if (userInfo != nil) {
-                if (userInfo.userMessageCount != nil ) {
-                    userInfo.userMessageCount =[NSString stringWithFormat:@"%d",[userInfo.userMessageCount  intValue]+1];//[NSNumber numberWithInt:[userInfo.userMessageCount  intValue]+1];
-                }else{
-                    userInfo.userMessageCount = @"1" ;
-                    
-                }
-                if ([[[message elementForName:@"subject"] stringValue] isEqualToString:@"voice"]) {
-                    userInfo.userLastMessage = @"发送了一段语音给您";
-                    rectangleChatContentType=RectangleChatContentTypeVoice;
-                    
-                }
-                else if ([[[message elementForName:@"subject"] stringValue] isEqualToString:@"image"]) {
-                    rectangleChatContentType=RectangleChatContentTypeImage;
-                }
-                else{
-                    userInfo.userLastMessage = msg;
-                }
-                userInfo.userLastDate = [NSDate date];
-                
-                [self saveContext];
-                
-            }else{
+            if (userInfo == nil) {
                 //如果非好友 但是发送了信息 则添加进入到陌生人列表中
-                
                 userInfo = [NSEntityDescription insertNewObjectForEntityForName:@"UserInfo" inManagedObjectContext: self.managedObjectContext];
-                userInfo.userMessageCount =  @"1";
-                if ([[[message elementForName:@"subject"] stringValue] isEqualToString:@"voice"]) {
-                    userInfo.userLastMessage = @"发送了一段语音给您";
-                    rectangleChatContentType=RectangleChatContentTypeVoice;
-
-                }
-                else if ([[[message elementForName:@"subject"] stringValue] isEqualToString:@"image"]) {
-                    rectangleChatContentType=RectangleChatContentTypeImage;
-                }
-                else{
-                    userInfo.userLastMessage = msg;
-                }
-                
                 userInfo.userLastDate = [NSDate date];
                 userInfo.userJid = result;
-                
                 NSRange range = [result rangeOfString:@"@"];
                 NSString * result1 = [result substringToIndex:range.location];
                 userInfo.userName = result1;
                 userInfo.userGroup = @"陌生人";
-                
+                updateFriend=YES;
+            }
+            
+            NSString* subject=[[message elementForName:@"subject"] stringValue];
+            
+            RectangleChatContentType rectangleChatContentType=RectangleChatContentTypeMessage;
+            if ([subject isEqualToString:@"voice"]) {
+                rectangleChatContentType=RectangleChatContentTypeVoice;
+            }
+            else if ([subject isEqualToString:@"image"]) {
+                rectangleChatContentType=RectangleChatContentTypeImage;
             }
             
             RectangleChat* rectChat=[self fetchRectangleChatFromJid:result isGroup:NO];
@@ -553,7 +492,7 @@
                 [self newRectangleMessage:result name:[userInfo name] content:msg contentType:rectangleChatContentType isGroup:NO createrJid:nil];
                 rectChat=[self fetchRectangleChatFromJid:result isGroup:NO];
             }
-            
+
             rectChat.updateDate=[NSDate date];
             rectChat.content=msg;
             int noReadMsgNumber=[rectChat.noReadMsgNumber intValue]+1;
@@ -577,28 +516,13 @@
                 messageEntity.receiveUser=[[self.xmppStream myJID]bare];
                 messageEntity.statue=[NSNumber numberWithInt:1];
 
-                if ([ [[message elementForName:@"subject"] stringValue] isEqualToString:@"voice"]) {
+                if ([subject isEqualToString:@"voice"]) {
                     //将字符串转换成nsdata
-                    /*
-                    NSData* fileData =  [Base64 decodeString:msg];
-                    NSString *docDir = [NSSearchPathForDirectoriesInDomains(
-                                                                            NSDocumentDirectory,
-                                                                            NSUserDomainMask, YES) objectAtIndex: 0];
-
-                    docDir=[docDir stringByAppendingPathComponent:[[self.xmppStream myJID]bare]];
-                    NSFileManager* fileManager=[NSFileManager defaultManager];
-                    if(![fileManager fileExistsAtPath:docDir]){
-                        [fileManager createDirectoryAtPath:docDir withIntermediateDirectories:YES attributes:nil error:nil];
-                    }
-                    
-                    NSURL* urlVoiceFile= [NSURL fileURLWithPath:[docDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.%@", [NSDate timeIntervalSinceReferenceDate] * 1000.0, @"caf"]]];
-                    [fileData writeToURL:urlVoiceFile atomically:YES];
-                    */
                     messageEntity.statue=[NSNumber numberWithInt:-2];
                     messageEntity.content = msg;
                     messageEntity.type = @"voice";
                 }
-                else if ([ [[message elementForName:@"subject"] stringValue] isEqualToString:@"image"]) {
+                else if ([subject isEqualToString:@"image"]) {
                     messageEntity.content = msg;
                     messageEntity.type = @"image";
                 }else{
@@ -611,6 +535,10 @@
                 
                 [messageEntity didSave];
             }
+            
+            if(updateFriend){
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_UPDATE_FRIENDS object:nil];
+            }
         }
         
         
@@ -621,8 +549,6 @@
 -(int)getMessageCount{
     return 0;
 }
-
-
 
 //收到好友状态
 - (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence{
@@ -637,15 +563,17 @@
         UserInfo * userStatue =[self fetchUserFromJid:presenceFromUser];
         if (userStatue != nil) {
             userStatue.userStatue = @"";
+            [userStatue save];
         }
     }else if (![presenceFromUser isEqualToString:userId]) {
         //在线状态
         UserInfo * userStatue =[self fetchUserFromJid:presenceFromUser];
         if (userStatue != nil) {
             userStatue.userStatue = [presence status];
-            if (!userStatue.userStatue.length >0) {
+            if ([userStatue.userStatue length] <1) {
                 userStatue.userStatue = @"在线";
             }
+            [userStatue save];
         }
     }
 }
@@ -768,8 +696,6 @@
     NSArray *fetchResult=[context executeFetchRequest:fetchRequest error:&error];
     if([fetchResult count]>0)return;
 
-    
-    
     GroupRoomUserEntity *users  = (GroupRoomUserEntity *)[NSEntityDescription insertNewObjectForEntityForName:@"GroupRoomUserEntity" inManagedObjectContext:context];
     [users setValue:roomId forKey:@"roomId"];
     [users setValue:memberId forKey:@"jid"];
@@ -798,8 +724,8 @@
 
 //查询好友的列表
 -(void)findFriendsList{
-    if(self.friendListIsFinded)return;
-    
+    if(self.friendListIsFinded!=XMPPFriendsStatusNone)return;
+    self.friendListIsFinded=XMPPFriendsStatusLoading;
     NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
     [iq addAttributeWithName:@"xmlns" stringValue:@"jabber:client"];
     //消息类型
@@ -822,18 +748,14 @@
         NSXMLElement *query = [iq elementForName:@"query"];
         NSArray *items = [query elementsForName:@"item"];
         if ([items count]>0) {
-            self.friendListIsFinded=YES;
-
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"STOPRREFRESHTABLEVIEW" object:nil];
-        
+            self.friendListIsFinded=XMPPFriendsStatusFinish;
             [[XMPPIMActorFriendQueue sharedInstance] setList:items];
 
         }else{
-
-            self.friendListIsFinded=NO;
+            self.friendListIsFinded=XMPPFriendsStatusNone;
             //remove by fanty 
             //[SVProgressHUD showErrorWithStatus:@"没有好友" ];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"STARTRREFRESHTABLEVIEW" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_UPDATE_FRIENDSFINISH object:nil];
             
         }
         //发送通知列表可以刷新了
@@ -845,14 +767,10 @@
             @autoreleasepool {
                 NSXMLElement *item=(NSXMLElement *)[items objectAtIndex:textIndex];
                 if ([[[item attributeForName:@"subscription"] stringValue] isEqualToString: @"remove"]) {
-                    
                     //先判断jid是否存在
                     NSManagedObjectContext *context =self.managedObjectContext;
                     NSString * jidStr = [[item attributeForName:@"jid"] stringValue];
-                    
-                    
                     UserInfo *entity = [self fetchUserFromJid:jidStr];
-                    
                     [context deleteObject:entity];
                 }else if ([[[item attributeForName:@"subscription"] stringValue] isEqualToString: @"to"]) {
                     
@@ -876,56 +794,36 @@
                         [newManagedObject setValue:[[item attributeForName:@"name"] stringValue] forKey:@"userName"];
                         [newManagedObject setValue:[[item attributeForName:@"jid"] stringValue] forKey:@"userJid"];
                         [newManagedObject setValue:[[item attributeForName:@"subscription"] stringValue] forKey:@"userSubscription"];
-                        
                         // Save the context.
-                        NSError * error;
-                        if (![self.managedObjectContext save:&error]) {
-                            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                            abort();
+                        if (![self.managedObjectContext save:nil]) {
                         }
                     }
                 }
             }
-            
         }
-        
-        
-    }else{
-    
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_UPDATE_FRIENDS object:nil];
+
     }
     return YES;
-    
 }
 
-- (NSManagedObjectContext *)managedObjectContext_roster
-{
+- (NSManagedObjectContext *)managedObjectContext_roster{
 	return [xmppRosterStorage mainThreadManagedObjectContext];
 }
 
 
-- (void)saveContext
-{
-    NSError *error = nil;
+- (void)saveContext{
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:nil]) {
         
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
         }
     }
     
 }
 
-//发送添加好友请求
--(void)addFrindFromUsers:(NSString *)jid{
-    [xmppRoster addUser:[XMPPJID jidWithString:jid] withNickname:nil];
-}
-
-
 //处理添加好友的请求
-- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence
-{
+- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence{
     
     NSLog(@"didReceiveBuddyRequest presence=[%@]",presence);
 	XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[presence from]
@@ -938,18 +836,15 @@
 	NSString *body = nil;
     [[NSUserDefaults standardUserDefaults]setObject:jidStrBare forKey:@"rosterJID"];
 	
-	if ([nick isEqualToString:@""])
-    {
+	if ([nick isEqualToString:@""]){
         nick=@"不详";
     }
-    if ([displayName isEqualToString:@""])
-    {
+    if ([displayName isEqualToString:@""]){
         displayName=@"不详";
     }
     body = [NSString stringWithFormat:@"姓名:%@\n昵称:%@\nID:%@",nick,displayName,jidStrBare];
     
-	if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
-	{
+	if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive){
         //[self playNewMsgAudio];
 	    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请求添加为好友"
                                                         message:body
@@ -984,10 +879,8 @@
 	}
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (alertView.tag==10009)
-    {
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (alertView.tag==10009){
         NSString *rosterJID =[[NSUserDefaults standardUserDefaults]objectForKey:@"rosterJID"];
         XMPPJID* jid=[XMPPJID jidWithString:rosterJID];
         if (buttonIndex==0)
@@ -1063,22 +956,21 @@
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent: [NSString stringWithFormat:@"XMPPIM_%@.sqlite",loginUser]];
-    NSError *error = nil;
     
     oldLoginUser = loginUser ;
     
     
     //先判断数据库是否需要做删除
     if (([version intValue] != kXMPPDataVersion   && kXMPPDataVersion > [version floatValue])) {
-        NSString* host = [userDefaluts objectForKey:@"XMPPHost"];
+//        NSString* host = [userDefaluts objectForKey:@"XMPPHost"];
         //删除数据库文件
         NSFileManager * fileManager = [NSFileManager defaultManager];
-        if ([fileManager removeItemAtURL:storeURL  error:&error] != YES){
-            NSLog(@"Unable to delete file: %@", [error localizedDescription]);
+        if ([fileManager removeItemAtURL:storeURL  error:nil] != YES){
+
         }else{
-            NSLog(@"删除数据库成功");
+        
         }
-        host = [xmppStream hostName];
+        NSString* host = [xmppStream hostName];
         version = [NSString stringWithFormat:@"%d",kXMPPDataVersion];
         [userDefaluts setValue:version forKey:@"XMPPDataVersion"];
         [userDefaluts setValue:host forKey:@"XMPPHost"];
@@ -1086,31 +978,7 @@
     }
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:nil]) {
     }
     
     return _persistentStoreCoordinator;

@@ -32,8 +32,12 @@
 
 @property(nonatomic,assign) float addInterval;
 @property(nonatomic,assign) id<RecorderDelegate> delegate;
-@property(nonatomic,readonly) NSString*  recordFile;
+@property(nonatomic,strong) NSString*  recordId;
 
+
++(NSString*)recordFile:(NSString*)recordId;
+
++(NSString*)downloadVoiceFile:(NSString*)uqID;
 
 -(void)record;
 
@@ -41,7 +45,7 @@
 
 -(void)stop;
 
--(void)play:(NSURL*)url;
+-(void)play:(NSString*)content;
 
 -(void)removeRecord;
 

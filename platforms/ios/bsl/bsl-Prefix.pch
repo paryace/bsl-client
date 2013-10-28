@@ -27,7 +27,9 @@
 
 #import"ConfigManager.h"
 #import"AppDelegate.h"
+#ifdef IMPC
 #import"PilotConfigManager.h"
+#endif
 #import "Config.h"
 #define ShareAppDelegate (AppDelegate*)[[UIApplication sharedApplication] delegate]
 
@@ -43,6 +45,9 @@
 #define KNOTIFICATION_DETIALPAGE_INSTALLFAILED @"DETIALPAGE_INSTALLFAILED"
 #define KNOTIFICATION_DETIALPAGE_SYNSUCCESS @"DETIALPAGE_SYNSUCCESS"
 #define KNOTIFICATION_DETIALPAGE_SYNFAILED @"DETIALPAGE_SYNFAILED"
+#define kNOTIFICATION_UPDATE_FRIENDSFINISH @"UPDATEFRIEND_FINISH"
+#define kNOTIFICATION_UPDATE_FRIENDS @"UPDATEFRIEND_ALONE"
+#define kNOTIFICATION_UPDATE_FRIENDSPROCESS @"UPDATEFRIEND_PROCESS"
 
 #define kAlert(_S_)     [[[UIAlertView alloc] initWithTitle:@"提示" message:_S_ delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show]
 

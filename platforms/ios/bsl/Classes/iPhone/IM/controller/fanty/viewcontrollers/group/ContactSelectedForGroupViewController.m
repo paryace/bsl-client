@@ -21,6 +21,7 @@
 
 @interface ContactSelectedForGroupViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,ImageUploadedDelegate,UIAlertViewDelegate>
 
+-(void)loadFriendList;
 -(void)filterClick;
 -(void)backClick;
 -(void)loadShowData;
@@ -33,11 +34,11 @@
 @end
 
 @implementation ContactSelectedForGroupViewController
-@synthesize dicts;
 @synthesize groupName;
 @synthesize delegate;
 @synthesize existsGroupJid;
 @synthesize tempNewjid;
+@synthesize selectedFriends;
 - (id)init{
     self = [super init];
     if (self) {
@@ -52,6 +53,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    [self loadFriendList];
     
     CGRect rect=self.view.frame;
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
@@ -148,7 +151,7 @@
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    
+    dicts=nil;
     [request cancel];
     request=nil;
     searchBar=nil;
@@ -163,15 +166,54 @@
 -(void)dealloc{
     [timeOutTimer invalidate];
     [request cancel];
+    self.selectedFriends=nil;
     request=nil;
     self.tempNewjid=nil;
     self.existsGroupJid=nil;
-    self.dicts=nil;
     self.groupName=nil;
 }
 
 #pragma mark method
 
+-(void)loadFriendList{
+    
+    dicts=[[NSMutableDictionary alloc] initWithCapacity:1];
+
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    NSFetchRequest *fetechRequest = [NSFetchRequest fetchRequestWithEntityName:@"UserInfo"];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"userGroup" ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"userName" ascending:NO];
+    
+    NSArray *sortDescriptors = @[sortDescriptor,sortDescriptor2];
+    [fetechRequest setSortDescriptors:sortDescriptors];
+    
+    NSFetchedResultsController* fetchController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetechRequest managedObjectContext:appDelegate.xmpp.managedObjectContext sectionNameKeyPath:@"userGroup" cacheName:nil];
+    [fetchController performFetch:NULL];
+    
+    for(id<NSFetchedResultsSectionInfo> sectionInfo in [fetchController sections]){
+        NSString* key=[sectionInfo name];
+        NSMutableArray* array=[[NSMutableArray alloc] initWithCapacity:2];
+        for(UserInfo* info in [fetchController fetchedObjects]){
+            if([info.userGroup isEqualToString:key]){
+                BOOL isAdding=NO;
+                for(NSDictionary* __dict in self.selectedFriends){
+                    NSString* jid=[__dict objectForKey:@"jid"];
+                    if([info.userJid isEqualToString:jid]){
+                        isAdding=YES;
+                        break;
+                    }
+                }
+                if(!isAdding)
+                    [array addObject:info];
+            }
+        }
+        [dicts setObject:array forKey:key];
+    }
+    
+    fetchController=nil;
+
+}
 
 -(UIButton*) backButtonWith:(UIImage*)buttonImage highlight:(UIImage*)backButtonHighlightImage {
     
@@ -393,7 +435,7 @@
     titleLabel.shadowOffset=CGSizeMake(0.0f, 0.5f);
     titleLabel.font=[UIFont boldSystemFontOfSize:15.0f];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.text=key;
+    titleLabel.text=NSLocalizedString(key,nil);
     [view addSubview:titleLabel];
     
     return view;

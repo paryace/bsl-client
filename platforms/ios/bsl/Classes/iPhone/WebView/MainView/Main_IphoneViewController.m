@@ -93,7 +93,7 @@
     aCubeWebViewController.showCloseButton=YES;
     aCubeWebViewController.title=@"登录";
     aCubeWebViewController.wwwFolderName = @"www";
-    NSURL* fileUrl = [[NSURL alloc]init];
+    NSURL* fileUrl = nil;
 #ifdef MOBILE_BSL
     aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"home/index.html"] absoluteString];
     fileUrl = [[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"home/index.html"];

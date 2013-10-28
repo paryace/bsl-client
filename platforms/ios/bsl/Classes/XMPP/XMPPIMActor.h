@@ -27,6 +27,12 @@
 #import "XMPPMUC.h"
 #import "RoomService.h"
 
+typedef enum{
+    XMPPFriendsStatusNone=0,
+    XMPPFriendsStatusLoading,
+    XMPPFriendsStatusFinish
+}XMPPFriendsStatus;
+
 @class GroupRoomUserEntity;
 
 @protocol XMPPIMActorDelegate <NSObject>
@@ -71,7 +77,7 @@
     
 }
 
-@property(nonatomic,assign) BOOL friendListIsFinded;
+@property(nonatomic,assign) XMPPFriendsStatus friendListIsFinded;
 
 
 @property (nonatomic,assign ) BOOL islogin;
@@ -111,9 +117,6 @@
 -(void)goOnline;
 
 -(void)goOffLine;
-
--(void)addFrindFromUsers:(NSString*)jid;
-
 
 -(void)findFriendsList;
 
