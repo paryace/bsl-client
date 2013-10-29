@@ -330,7 +330,7 @@
     }
     
     if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
-        [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+        [SVProgressHUD showErrorWithStatus:@"连接被断开，正在尝试重连！"];
         return;
     }
 
@@ -339,7 +339,7 @@
     NSString *content = [__chatPanel.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if([content length]>0){
         if(![chatLogic sendMessage:content messageId:self.messageId isGroup:self.isGroupChat name:self.chatName]){
-            [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+            [SVProgressHUD showErrorWithStatus:@"连接被断开，正在尝试重连！"];
 
             return;
         }
@@ -358,7 +358,7 @@
         }
         
         if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
-            [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+            [SVProgressHUD showErrorWithStatus:@"连接被断开，正在尝试重连！"];
             return;
         }
 
@@ -392,14 +392,14 @@
             return;
         }
         if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
-            [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+            [SVProgressHUD showErrorWithStatus:@"连接被断开，正在尝试重连！"];
             return;
         }
 
 
         if(addInterval>1.5f){
             if(![[VoiceUploadManager sharedInstance] sendVoice:recorder.recordId messageId:self.messageId isGroup:self.isGroupChat name:self.chatName uqId:nil])
-                [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+                [SVProgressHUD showErrorWithStatus:@"连接被断开，正在尝试重连！"];
         }
         else{
             [SVProgressHUD showErrorWithStatus:@"你讲话的时间太短了！"];
@@ -426,7 +426,7 @@
     }
     
     if(![chatLogic checkTheGroupIsConnect:self.isGroupChat]){
-        [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+        [SVProgressHUD showErrorWithStatus:@"连接被断开，正在尝试重连！"];
         return;
     }
 
@@ -790,7 +790,7 @@
             if([entity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]){
                 playingIndex=-1;
                 if(![[VoiceUploadManager sharedInstance] sendVoice:entity.content messageId:self.messageId isGroup:self.isGroupChat name:self.chatName uqId:entity.uqID])
-                    [SVProgressHUD showErrorWithStatus:@"该群组被断开连接，正在尝试重连！"];
+                    [SVProgressHUD showErrorWithStatus:@"连接被断开，正在尝试重连！"];
             }
             else{
                 [[VoiceUploadManager sharedInstance] receiveVoice:entity.content uqId:entity.uqID messageId:entity.messageId isGroup:self.isGroupChat];
