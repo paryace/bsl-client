@@ -2883,16 +2883,11 @@
 		39E9C64D180EBAAA004CEF1D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEE5B34173C68D80009041E /* CoreLocation.framework */; };
 		39E9C64E180EBAAA004CEF1D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C023708B9AC24DB48757A8FC /* libPods.a */; };
 		39E9C655180EBC55004CEF1D /* Config-soc_alone.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E9C3F9180EB6B7004CEF1D /* Config-soc_alone.m */; };
-		39EF1D61181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D60181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m */; };
-		39EF1D62181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D60181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m */; };
-		39EF1D63181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D60181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m */; };
-		39EF1D64181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D60181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m */; };
-		39EF1D65181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D60181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m */; };
-		39EF1D7F181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D74181BB9F300AB7F0C /* cube.xcdatamodeld */; };
-		39EF1D80181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D74181BB9F300AB7F0C /* cube.xcdatamodeld */; };
-		39EF1D81181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D74181BB9F300AB7F0C /* cube.xcdatamodeld */; };
-		39EF1D82181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D74181BB9F300AB7F0C /* cube.xcdatamodeld */; };
-		39EF1D83181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EF1D74181BB9F300AB7F0C /* cube.xcdatamodeld */; };
+		39EF1D7F181BB9F300AB7F0C /* (null) in Sources */ = {isa = PBXBuildFile; };
+		39EF1D80181BB9F300AB7F0C /* (null) in Sources */ = {isa = PBXBuildFile; };
+		39EF1D81181BB9F300AB7F0C /* (null) in Sources */ = {isa = PBXBuildFile; };
+		39EF1D82181BB9F300AB7F0C /* (null) in Sources */ = {isa = PBXBuildFile; };
+		39EF1D83181BB9F300AB7F0C /* (null) in Sources */ = {isa = PBXBuildFile; };
 		39F029FC18078D3300051656 /* soc_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FB18078D3300051656 /* soc_home.png */; };
 		39F02A001807C24300051656 /* privacy_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FF1807C24300051656 /* privacy_tick@2x.png */; };
 		39F02A011807C24300051656 /* privacy_tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F029FF1807C24300051656 /* privacy_tick@2x.png */; };
@@ -2938,8 +2933,6 @@
 		39F23A8B1805B2520035FCF8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A701805B2520035FCF8 /* Default.png */; };
 		39F23A8D1805B2520035FCF8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A711805B2520035FCF8 /* Default@2x.png */; };
 		39F23A8E1805B2520035FCF8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A711805B2520035FCF8 /* Default@2x.png */; };
-		39F23A9D1805B2600035FCF8 /* 1027×768.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A911805B25F0035FCF8 /* 1027×768.png */; };
-		39F23A8F1805B2520035FCF8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A711805B2520035FCF8 /* Default@2x.png */; };
 		39F23A9E1805B2600035FCF8 /* 114×114.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A921805B2600035FCF8 /* 114×114.png */; };
 		39F23A9F1805B2600035FCF8 /* 120×120.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A931805B2600035FCF8 /* 120×120.png */; };
 		39F23AA01805B2600035FCF8 /* 144×144.png in Resources */ = {isa = PBXBuildFile; fileRef = 39F23A941805B2600035FCF8 /* 144×144.png */; };
@@ -4569,18 +4562,6 @@
 		39E9C3F9180EB6B7004CEF1D /* Config-soc_alone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Config-soc_alone.m"; sourceTree = "<group>"; };
 		39E9C653180EBAAA004CEF1D /* 移动运行网.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "移动运行网.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E9C654180EBAAB004CEF1D /* 移动运行网 copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "移动运行网 copy-Info.plist"; path = "/Users/fanty/Documents/project/bsl-client/platforms/ios/移动运行网 copy-Info.plist"; sourceTree = "<absolute>"; };
-		39EF1D5F181BB7F100AB7F0C /* XMPPIMActorFriendQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActorFriendQueue.h; sourceTree = "<group>"; };
-		39EF1D60181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActorFriendQueue.m; sourceTree = "<group>"; };
-		39EF1D75181BB9F300AB7F0C /* cube.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D76181BB9F300AB7F0C /* cube0409.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0409.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D77181BB9F300AB7F0C /* cube0505.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0505.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D78181BB9F300AB7F0C /* cube0707.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0707.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D79181BB9F300AB7F0C /* cube0808.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0808.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D7A181BB9F300AB7F0C /* cube0827.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0827.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D7B181BB9F300AB7F0C /* cube0911.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0911.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D7C181BB9F300AB7F0C /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D7D181BB9F300AB7F0C /* cube1017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1017.xcdatamodel; sourceTree = "<group>"; };
-		39EF1D7E181BB9F300AB7F0C /* cube1022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1022.xcdatamodel; sourceTree = "<group>"; };
 		39F029FB18078D3300051656 /* soc_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soc_home.png; sourceTree = "<group>"; };
 		39F029FF1807C24300051656 /* privacy_tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "privacy_tick@2x.png"; sourceTree = "<group>"; };
 		39F02A041807C24F00051656 /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
@@ -6833,7 +6814,6 @@
 				180B7F421818A6FF0091E3AE /* Config-impc-pro.m */,
 				F54D7FB117E8BFB90067A023 /* Config-soc.m */,
 				39E9C3F9180EB6B7004CEF1D /* Config-soc_alone.m */,
-				39EF1D74181BB9F300AB7F0C /* cube.xcdatamodeld */,
 				F54D7FB217E8BFB90067A023 /* Config.h */,
 				F54D7FBB17E8BFBA0067A023 /* CubeApplication.h */,
 				F54D7FBC17E8BFBA0067A023 /* CubeApplication.m */,
@@ -7702,8 +7682,6 @@
 				F54D828717E8BFBB0067A023 /* CollectedFriend.m */,
 				F54D828817E8BFBB0067A023 /* GroupRoomUserEntity.h */,
 				F54D828917E8BFBB0067A023 /* GroupRoomUserEntity.m */,
-				39EF1D5F181BB7F100AB7F0C /* XMPPIMActorFriendQueue.h */,
-				39EF1D60181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m */,
 				3968621817EE7C8800C84A6A /* RoomService.h */,
 				3968621917EE7C8800C84A6A /* RoomService.m */,
 				F54D828A17E8BFBB0067A023 /* MessageEntity.h */,
@@ -11226,7 +11204,6 @@
 				F54D82A117E8BFBB0067A023 /* AutoDownLoadRecord.m in Sources */,
 				F54D82A217E8BFBB0067A023 /* FMDBManager.m in Sources */,
 				F54D82A317E8BFBB0067A023 /* AutoShowRecord.m in Sources */,
-				39EF1D61181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m in Sources */,
 				F54D82A417E8BFBB0067A023 /* CubeCommandDispatcher.m in Sources */,
 				F54D82A517E8BFBB0067A023 /* CubeDownloadCommandHandler.m in Sources */,
 				394B98A418056BBA00F657D2 /* BaseNavViewController.m in Sources */,
@@ -11300,7 +11277,7 @@
 				F54D835117E8BFBB0067A023 /* SwipeView.m in Sources */,
 				F54D835417E8BFBB0067A023 /* iphoneLandingViewController.m in Sources */,
 				F54D835717E8BFBB0067A023 /* iphoneVoiceDetailViewController.m in Sources */,
-				39EF1D7F181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */,
+				39EF1D7F181BB9F300AB7F0C /* (null) in Sources */,
 				F54D835917E8BFBB0067A023 /* CubeWebViewController.m in Sources */,
 				F54D835A17E8BFBB0067A023 /* DetailViewController.m in Sources */,
 				F54D835C17E8BFBB0067A023 /* MessagesViewController.m in Sources */,
@@ -11400,7 +11377,6 @@
 				18E9C51E1803AB1200B874B8 /* Selection.m in Sources */,
 				18E9C4EA1803AB1200B874B8 /* HealthyInfo.m in Sources */,
 				18E9C50D1803AB1200B874B8 /* ReaderThumbView.m in Sources */,
-				39EF1D64181BB7F100AB7F0C /* XMPPIMActorFriendQueue.m in Sources */,
 				39D9E9C017F27C03001ED6F5 /* CubeCommandDispatcher.m in Sources */,
 				39D9E9C117F27C03001ED6F5 /* CubeDownloadCommandHandler.m in Sources */,
 				18E9C5B41803AB1200B874B8 /* WaitDialog.m in Sources */,
@@ -11408,7 +11384,6 @@
 				394B98A718056BBA00F657D2 /* BaseNavViewController.m in Sources */,
 				39D9E9C217F27C03001ED6F5 /* CubeMessageCommandHandler.m in Sources */,
 				39D9E9C317F27C03001ED6F5 /* CubeResetHandler.m in Sources */,
-				39D9E9C417F27C03001ED6F5 /* cube.xcdatamodeld in Sources */,
 				18E9C4761803AB1200B874B8 /* LevelViewController.m in Sources */,
 				39D9E9C517F27C03001ED6F5 /* CubeApplication.m in Sources */,
 				18E9C46F1803AB1200B874B8 /* CloudHeight.m in Sources */,
@@ -11590,7 +11565,7 @@
 				39D9EA1117F27C03001ED6F5 /* iphoneLandingViewController.m in Sources */,
 				39D9EA1217F27C03001ED6F5 /* iphoneVoiceDetailViewController.m in Sources */,
 				39D9EA1317F27C03001ED6F5 /* CubeWebViewController.m in Sources */,
-				39EF1D82181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */,
+				39EF1D82181BB9F300AB7F0C /* (null) in Sources */,
 				39D9EA1417F27C03001ED6F5 /* DetailViewController.m in Sources */,
 				18E9C5351803AB1200B874B8 /* BaseQuery.m in Sources */,
 				18E9C5BF1803AB1200B874B8 /* PilotAppDelegate.m in Sources */,
@@ -11844,7 +11819,7 @@
 				39E052EF17F00AEA00BCF7F8 /* iphoneLandingViewController.m in Sources */,
 				39E052F017F00AEA00BCF7F8 /* iphoneVoiceDetailViewController.m in Sources */,
 				39E052F117F00AEA00BCF7F8 /* CubeWebViewController.m in Sources */,
-				39EF1D80181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */,
+				39EF1D80181BB9F300AB7F0C /* (null) in Sources */,
 				39E052F217F00AEA00BCF7F8 /* DetailViewController.m in Sources */,
 				39E052F317F00AEA00BCF7F8 /* MessagesViewController.m in Sources */,
 				39E052F417F00AEA00BCF7F8 /* UIViewController+SEViewController.m in Sources */,
@@ -12012,7 +11987,7 @@
 				39E9C5E4180EBAAA004CEF1D /* iphoneLandingViewController.m in Sources */,
 				39E9C5E5180EBAAA004CEF1D /* iphoneVoiceDetailViewController.m in Sources */,
 				39E9C5E6180EBAAA004CEF1D /* CubeWebViewController.m in Sources */,
-				39EF1D83181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */,
+				39EF1D83181BB9F300AB7F0C /* (null) in Sources */,
 				39E9C5E7180EBAAA004CEF1D /* DetailViewController.m in Sources */,
 				39E9C5E8180EBAAA004CEF1D /* MessagesViewController.m in Sources */,
 				39E9C5E9180EBAAA004CEF1D /* UIViewController+SEViewController.m in Sources */,
@@ -12180,7 +12155,7 @@
 				39FF0BA717F13CBB0086B76C /* iphoneLandingViewController.m in Sources */,
 				39FF0BA817F13CBB0086B76C /* iphoneVoiceDetailViewController.m in Sources */,
 				39FF0BA917F13CBB0086B76C /* CubeWebViewController.m in Sources */,
-				39EF1D81181BB9F300AB7F0C /* cube.xcdatamodeld in Sources */,
+				39EF1D81181BB9F300AB7F0C /* (null) in Sources */,
 				39FF0BAA17F13CBB0086B76C /* DetailViewController.m in Sources */,
 				39FF0BAB17F13CBB0086B76C /* MessagesViewController.m in Sources */,
 				39FF0BAC17F13CBB0086B76C /* UIViewController+SEViewController.m in Sources */,
@@ -12960,15 +12935,7 @@
 		F54D7FB317E8BFB90067A023 /* cube.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F54D7FB417E8BFBA0067A023 /* cube.xcdatamodel */,
-				F54D7FB517E8BFBA0067A023 /* cube0409.xcdatamodel */,
-				F54D7FB617E8BFBA0067A023 /* cube0505.xcdatamodel */,
-				F54D7FB717E8BFBA0067A023 /* cube0707.xcdatamodel */,
-				F54D7FB817E8BFBA0067A023 /* cube0808.xcdatamodel */,
-				F54D7FB917E8BFBA0067A023 /* cube0827.xcdatamodel */,
-				F54D7FBA17E8BFBA0067A023 /* cube0911.xcdatamodel */,
 				180F234F180CE0D80037751C /* cube1015.xcdatamodel */,
-				F5F9260418100A20004B3015 /* cube1017.xcdatamodel */,
 				180B7B161816232E0091E3AE /* cube1022.xcdatamodel */,
 			);
 			currentVersion = 180B7B161816232E0091E3AE /* cube1022.xcdatamodel */;
