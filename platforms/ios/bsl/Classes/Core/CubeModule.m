@@ -29,7 +29,13 @@ NSString *const CubeModuleUpdateDidFailNotification = @"CubeModuleUpdateDidFailN
 NSString *const CubeModuleDeleteDidFinishNotification = @"CubeModuleDeleteDidFinishNotification";
 NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailNotification";
 
-@implementation CubeModule
+@interface CubeModule()
+-(void)processTimeEvent;
+@end
+
+@implementation CubeModule{
+    NSTimer* processTimer;
+}
 
 @synthesize pushMsgLink;
 @synthesize identifier;
@@ -67,6 +73,10 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
 
 - (NSString*)description{
     return [NSString stringWithFormat:@"Cube Module[%@|%@]: v%@ - build %d", name, identifier, version , build];
+}
+
+-(void)dealloc{
+    [processTimer invalidate];
 }
 
 - (NSString*)identifierWithBuild{
@@ -132,6 +142,9 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
 
 
 -(void)callApi:(int)index downUrl:(NSString*)downUrl{
+    [processTimer invalidate];
+    processTimer=nil;
+
     NSURL *destURL = [[[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[self identifierWithBuild]] URLByAppendingPathExtension:@"zip"];
     
     __block float downloadSize=0;
@@ -142,7 +155,9 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     request.persistentConnectionTimeoutSeconds=20.0f;
     [request setDownloadDestinationPath:path];
     [request setCompletionBlock:^{
-        
+        [processTimer invalidate];
+        processTimer=nil;
+
         BOOL success=NO;
         const char* __path =[path UTF8String];
         
@@ -173,6 +188,9 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     }];
     
     [request setFailedBlock:^{
+        [processTimer invalidate];
+        processTimer=nil;
+
         if(index<3){
             [self callApi:(index+1) downUrl:downUrl];
         }
@@ -189,6 +207,10 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     [request setBytesReceivedBlock:^(unsigned long long size, unsigned long long total) {
 
         downloadSize+=(float)size;
+        if(processTimer!=nil){
+            return ;
+        }
+        processTimer=[NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(processTimeEvent) userInfo:nil repeats:NO];
         [self setProgress:downloadSize/(float)total];
     }];
 
@@ -216,6 +238,10 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
      */
 }
 
+-(void)processTimeEvent{
+    [processTimer invalidate];
+    processTimer=nil;
+}
 
 -(void)install{
     if (bundle == nil) {

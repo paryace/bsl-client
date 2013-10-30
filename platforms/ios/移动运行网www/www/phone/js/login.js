@@ -1,13 +1,21 @@
 new FastClick(document.body);
 
 $("#login_btn").click(function() {
+	console.log("点击了登录按键");	
 
 
 
-	console.log("点击了登录按键");
+	cordova.exec(function(data) {
+		window.localStorage['socDevice'] = JSON.stringify(data);
+	}, function(err) {
+		
+	}, "Device", "getDeviceInfo");
 
 
 	window.localStorage["homeWeather"] = null;
+
+	window.localStorage["homeWaring"] = null;
+	
 	var username = $("#username").val();
 	var password = $("#password").val();
 
@@ -131,11 +139,11 @@ var socLogin = function(username, password, isRemember) {
 					$(".login_text").removeClass("wait");
 					$(".logo").removeClass("wait");
 				}, 1000);
+
 				Toast("登陆失败,请检查用户名和密码!", 4000);
 			}
 
 
-			
 
 		},
 		error: function(e, xhr, type) {
@@ -145,7 +153,7 @@ var socLogin = function(username, password, isRemember) {
 			$(".loginBlock").removeClass("wait");
 			$(".login_text").removeClass("wait");
 			$(".logo").removeClass("wait");
-			Toast("登陆失败!", 4000);
+			Toast("登陆失败,请检查网络连接!", 4000);
 			console.error('列表数据加载失败：' + e + "/" + type + "/" + xhr);
 
 		}
@@ -153,18 +161,6 @@ var socLogin = function(username, password, isRemember) {
 
 
 };
-
-
-
-// var webChange = function() {
-// 	if ($("#username").val()) {
-
-// 		console.log($("#username").val());
-// 		window.localStorage["username"] = $("#username").val();
-
-// 	}
-// };
-
 
 
 var clearPsw = function() {
@@ -180,19 +176,6 @@ var clearPsw = function() {
 	}
 };
 setTimeout(function() {
-
-	if (window.localStorage["username"]) {
-		console.log(window.localStorage["username"]);
-		$("#username").val(window.localStorage["username"]);
-
-	} else {
-
-
-		console.log("wushuju");
-	}
-
-
-
 	var bodyHeight = $(window).height();
 
 	$("body").css({
@@ -210,13 +193,6 @@ setTimeout(function() {
 
 var app = {
 	initialize: function() {
-
-
-		// $("#username").onpropertychange = webChange();
-
-		// $("#username").addEventListener("input", webChange(), false);
-
-
 		this.bindEvents();
 	},
 	bindEvents: function() {
@@ -226,28 +202,13 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-
-
-
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
-
 			$("#username").val(data.username);
 			$("#password").val(data.password);
-
-
 			if (data.isRemember === true) {
 				$("#isRemember").attr("checked", 'checked');
-			} 
-			// else {
-
-			// 	if (window.localStorage["username"]) {
-			// 		console.log(window.localStorage["username"]);
-			// 		$("#username").val(window.localStorage["username"]);
-
-			// 	}
-
-			// }
+			}
 		}, function(err) {
 			alert(err);
 		}, "CubeLogin", "getAccountMessage", []);

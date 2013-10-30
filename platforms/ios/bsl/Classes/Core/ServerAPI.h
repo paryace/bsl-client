@@ -15,13 +15,9 @@
 //下载后更新计数
 +(NSString*)urlForAppUpdateRecord;
 +(NSString*)urlForLogin;
-+(NSString*)urlforUserSync;
 +(NSString*)urlForSync;
 +(NSString*)urlForlogout:(NSString* )sessionKey;
-+(NSString*)urlForAppApnsCheckin;
 //南航定制的业务同步模块
 +(NSString*)urlForSyncImpc;
 
 @end
-
-NSURL* ServerAPI2(NSString *path, ...);

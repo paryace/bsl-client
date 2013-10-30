@@ -71,7 +71,12 @@ define([  'text!com.csair.base/cityBlock.html','text!com.csair.base/IncityBlock.
             $('.cube-list-item').unbind('click');
             $('.cube-list-item').bind('click',function(cell){
                 var target = Piece.Session.loadObject("cityStoreTarget");
-                Piece.Session.saveObject('cityStore' + target,$(cell.target).find('.city_name').html());
+                if("city_name" == cell.target.className){
+                    Piece.Session.saveObject('cityStore' + target,$(cell.target).html());
+                }else{
+                    Piece.Session.saveObject('cityStore' + target,$(cell.target).find('.city_name').html());
+                }
+               
                 window.history.back();
             });
         }

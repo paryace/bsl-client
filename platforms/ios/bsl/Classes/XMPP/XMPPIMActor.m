@@ -77,7 +77,7 @@
     xmppStream = nil;
 	xmppReconnect = nil;
     xmppRoster = nil;
-	xmppRosterStorage = nil;
+	//xmppRosterStorage = nil;
     xmppvCardTempModule = nil;
     xmppvCardStorage = nil;
     xmppMUC=nil;
@@ -752,10 +752,12 @@
             [[XMPPIMActorFriendQueue sharedInstance] setList:items];
 
         }else{
-            self.friendListIsFinded=XMPPFriendsStatusNone;
-            //remove by fanty 
-            //[SVProgressHUD showErrorWithStatus:@"没有好友" ];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_UPDATE_FRIENDSFINISH object:nil];
+            if(self.friendListIsFinded!=XMPPFriendsStatusFinish){
+                self.friendListIsFinded=XMPPFriendsStatusNone;
+                //remove by fanty
+                //[SVProgressHUD showErrorWithStatus:@"没有好友" ];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNOTIFICATION_UPDATE_FRIENDSFINISH object:nil];
+            }
             
         }
         //发送通知列表可以刷新了

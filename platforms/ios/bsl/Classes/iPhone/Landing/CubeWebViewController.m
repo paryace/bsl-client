@@ -111,9 +111,9 @@
     NSString* homePath = [[[NSFileManager wwwRuntimeDirectory] absoluteString] stringByAppendingString:returnHomeStr];
     if ([[appDelegate.navControl.viewControllers objectAtIndex:1] isKindOfClass: [Main_IphoneViewController class]] ) {
         Main_IphoneViewController* iphoneViewController =[appDelegate.navControl.viewControllers objectAtIndex:1];
-        NSURL *url =[NSURL URLWithString:homePath];
-        NSURLRequest *request =[NSURLRequest requestWithURL:url];
-        [iphoneViewController.aCubeWebViewController.webView loadRequest:request];
+        //NSURL *url =[NSURL URLWithString:homePath];
+        //NSURLRequest *request =[NSURLRequest requestWithURL:url];
+        [iphoneViewController.aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"location.replace(\"%@\")",homePath]];
     }
 #endif
     if([self.navigationController.viewControllers count]>2){

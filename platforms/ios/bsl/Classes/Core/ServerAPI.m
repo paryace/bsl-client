@@ -12,6 +12,40 @@
 
 @implementation ServerAPI
 
+#ifdef MOBILE_BSL
+
++(NSString*)urlForAttachmentId:(NSString*)aid {
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/files/%@/", aid];
+}
+
++(NSString*)urlForAppUpdate {
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/update/ios/%@/?ts=%f", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [NSDate timeIntervalSinceReferenceDate]];
+}
+//下载后更新计数
++(NSString*)urlForAppUpdateRecord {
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/update/appcount/ios/"];
+}
+
++(NSString*)urlForLogin {
+    return kServerLoginURLString;
+}
+
++(NSString*)urlForSync {
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/ios/%@/%@/", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    
+}
++(NSString*)urlForSyncImpc {
+    return [kServerURLString stringByAppendingFormat:@"/csair-extension/api/extendClients/ios/%@/%@/", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    
+}
+
++(NSString*)urlForlogout:(NSString* )sessionKey{
+    return [kServerURLString stringByAppendingFormat:@"/csair-system/api/system/mobile/accounts/logout/%@", sessionKey];
+}
+
+#else
+
+
 +(NSString*)urlForAttachmentId:(NSString*)aid {
     return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/files/%@", aid];
 }
@@ -45,14 +79,8 @@
      return [kServerURLString stringByAppendingFormat:@"/csair-system/api/system/mobile/accounts/logout/%@", sessionKey];
 }
 
-+(NSString*)urlForAppApnsCheckin{
-//    return [kServerLoginURLString stringByAppendingString:@"/push-ws/service/checkinservice/checkins"];
-    return @"http://10.108.1.49:9090/push-ws/service/checkinservice/checkins";
-}
+
+#endif
 
 @end
 
-NSURL* ServerAPI2(NSString *path, ...) {
-    NSURL *serverURL = [NSURL URLWithString:kServerURLString];
-    return [NSURL URLWithString:path relativeToURL:serverURL];
-}

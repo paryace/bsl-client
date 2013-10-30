@@ -88,7 +88,7 @@
         [contentImageView setUrl:imageFile];
     }
     else{
-        NSString *url = [ServerAPI urlForAttachmentId:imageFile];
+        NSString *url = [ServerAPI urlForAttachmentId:content];
         url=[url stringByAppendingFormat:@"?sessionKey=%@&appKey=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"],kAPPKey];
         [contentImageView setUrl:url];
     }

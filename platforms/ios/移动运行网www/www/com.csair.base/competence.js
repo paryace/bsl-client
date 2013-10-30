@@ -19,6 +19,11 @@ define([], function() {
 
 	device.deviceId = 'a779cabef809b22a88e4dd683fa758ac';
 
+	var socDevice =  window.localStorage['socDevice'];
+	if(socDevice){
+		device = JSON.parse(socDevice);
+	}
+
 	//判断是否存在
 
 	var isEmpty = function(src) {

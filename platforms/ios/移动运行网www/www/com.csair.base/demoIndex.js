@@ -56,7 +56,6 @@ define(['text!com.csair.base/demoIndex.html', 'com.csair.base/urlConfig'], funct
 
 
 
-
             //我的空勤任务
             var mytask = [{
                 querySite: 'flightTask',
@@ -95,8 +94,6 @@ define(['text!com.csair.base/demoIndex.html', 'com.csair.base/urlConfig'], funct
             //运行橄榄
             Piece.Session.deleteObject('com.csair.overview-overview.html-today');
             Piece.Session.deleteObject('com.csair.overview-overview.html-yestoday');
-
-
 
 
 
@@ -141,6 +138,10 @@ define(['text!com.csair.base/demoIndex.html', 'com.csair.base/urlConfig'], funct
 
         },
         goLogin: function() {
+
+  
+   
+
             var username = $("#username").val();
             var password = $("#password").val();
             $.ajax({
