@@ -37,6 +37,9 @@
     <feature name="LocalDB">
         <param name="ios-package" value="LocalDBPlugin" />
     </feature>
+    <feature name="DeviceRegister">
+        <param name="ios-package" value="DeviceRegisterPlugin" />
+    </feature>
     <access origin="*" />
     <preference name="KeyboardDisplayRequiresUserAction" value="true" />
     <preference name="SuppressesIncrementalRendering" value="false" />
