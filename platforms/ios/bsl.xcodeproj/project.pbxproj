@@ -975,6 +975,22 @@
 		18BE6C4718198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4818198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4918198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
+		18E023791820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
+		18E0237A1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
+		18E0237B1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
+		18E0237C1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
+		18E0237D1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
+		18E0237E1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
+		18E0237F1820E17C00AB6215 /* VoiceSearchLoading010@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626917EE898300C84A6A /* VoiceSearchLoading010@2x.png */; };
+		18E023821821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
+		18E023831821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
+		18E023841821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
+		18E023851821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
+		18E023861821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
+		18E023871821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
+		18E023881821FB7700AB6215 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
+		18E0238A1821FF5B00AB6215 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E023891821FF5B00AB6215 /* MapKit.framework */; };
+		18E0238B1821FF6A00AB6215 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E023891821FF5B00AB6215 /* MapKit.framework */; };
 		18E9C4611803AB1200B874B8 /* AbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4621803AB1200B874B8 /* EbookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1ED1803AB0E00B874B8 /* EbookListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4631803AB1200B874B8 /* About.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1F11803AB0E00B874B8 /* About.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -3889,6 +3905,19 @@
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
 		18BE6C4218198F1500D96581 /* XMPPIMActorFriendQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActorFriendQueue.h; sourceTree = "<group>"; };
 		18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActorFriendQueue.m; sourceTree = "<group>"; };
+		18E0236F1820DDF700AB6215 /* cube.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube.xcdatamodel; sourceTree = "<group>"; };
+		18E023701820DDF700AB6215 /* cube0409.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0409.xcdatamodel; sourceTree = "<group>"; };
+		18E023711820DDF700AB6215 /* cube0505.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0505.xcdatamodel; sourceTree = "<group>"; };
+		18E023721820DDF700AB6215 /* cube0707.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0707.xcdatamodel; sourceTree = "<group>"; };
+		18E023731820DDF700AB6215 /* cube0808.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0808.xcdatamodel; sourceTree = "<group>"; };
+		18E023741820DDF700AB6215 /* cube0827.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0827.xcdatamodel; sourceTree = "<group>"; };
+		18E023751820DDF700AB6215 /* cube0911.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0911.xcdatamodel; sourceTree = "<group>"; };
+		18E023761820DDF700AB6215 /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
+		18E023771820DDF700AB6215 /* cube1017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1017.xcdatamodel; sourceTree = "<group>"; };
+		18E023781820DDF700AB6215 /* cube1022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1022.xcdatamodel; sourceTree = "<group>"; };
+		18E023801821FA7300AB6215 /* GeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLocation.h; sourceTree = "<group>"; };
+		18E023811821FA7300AB6215 /* GeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLocation.m; sourceTree = "<group>"; };
+		18E023891821FF5B00AB6215 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		18E9C1E81803AB0E00B874B8 /* AbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTableViewController.h; sourceTree = "<group>"; };
 		18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractTableViewController.m; sourceTree = "<group>"; };
 		18E9C1EC1803AB0E00B874B8 /* EbookListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EbookListViewController.h; sourceTree = "<group>"; };
@@ -5156,6 +5185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E0238B1821FF6A00AB6215 /* MapKit.framework in Frameworks */,
 				180B82EA1818A9B90091E3AE /* CoreTelephony.framework in Frameworks */,
 				180B82EB1818A9B90091E3AE /* CoreLocation.framework in Frameworks */,
 				180B82EC1818A9B90091E3AE /* ImageIO.framework in Frameworks */,
@@ -5209,6 +5239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E0238A1821FF5B00AB6215 /* MapKit.framework in Frameworks */,
 				18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */,
 				39D9EA6D17F27C03001ED6F5 /* CoreLocation.framework in Frameworks */,
 				39D9EA6E17F27C03001ED6F5 /* ImageIO.framework in Frameworks */,
@@ -6575,6 +6606,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18E023891821FF5B00AB6215 /* MapKit.framework */,
 				18240E0E1803D04400846FF9 /* CoreTelephony.framework */,
 				5AEE5B34173C68D80009041E /* CoreLocation.framework */,
 				5AA0E66E1729F460000DC89A /* ImageIO.framework */,
@@ -6805,6 +6837,7 @@
 		F54D7F9A17E8BFB90067A023 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */,
 				F54D7F9B17E8BFB90067A023 /* audoDownload */,
 				F54D7FA017E8BFB90067A023 /* autoShow */,
 				F54D7FA317E8BFB90067A023 /* Command */,
@@ -6835,6 +6868,8 @@
 				F54D7FD217E8BFBA0067A023 /* ServerAPI.m */,
 				F54D7FD317E8BFBA0067A023 /* UpdateChecker.h */,
 				F54D7FD417E8BFBA0067A023 /* UpdateChecker.m */,
+				18E023801821FA7300AB6215 /* GeoLocation.h */,
+				18E023811821FA7300AB6215 /* GeoLocation.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -9132,6 +9167,7 @@
 				39D9E83017F27C03001ED6F5 /* plus_icon.png in Resources */,
 				18E9C4C51803AB1200B874B8 /* Manifest.plist in Resources */,
 				18E9C5751803AB1200B874B8 /* cb_glossy_on.png in Resources */,
+				18E023881821FB7700AB6215 /* nav_bg@2x.png in Resources */,
 				39D9E83317F27C03001ED6F5 /* contact_bg@2x.png in Resources */,
 				18E9C5501803AB1200B874B8 /* alert-view-cancel-button@2x.png in Resources */,
 				39D9E83417F27C03001ED6F5 /* DownloadingTableViewCell.xib in Resources */,
@@ -9498,6 +9534,7 @@
 				18E9C4AC1803AB1200B874B8 /* FPTaskTableViewCell.xib in Resources */,
 				18E9C5641803AB1200B874B8 /* Button_UnCheckMark.png in Resources */,
 				39D9E98217F27C03001ED6F5 /* introduce_detail_snapshotbg.png in Resources */,
+				18E0237F1820E17C00AB6215 /* VoiceSearchLoading010@2x.png in Resources */,
 				18E9C4C31803AB1200B874B8 /* FlightTaskViewController_Pad.xib in Resources */,
 				39D9E98417F27C03001ED6F5 /* VoiceSearchLoading003@2x.png in Resources */,
 				39D9E98517F27C03001ED6F5 /* nav_add_btn_setting@2x.png in Resources */,
@@ -11060,6 +11097,7 @@
 				180B82621818A9B90091E3AE /* GEAlertViewDelegate.m in Sources */,
 				180B82631818A9B90091E3AE /* CJSONDeserializer.m in Sources */,
 				180B82641818A9B90091E3AE /* TrueTypeFont.m in Sources */,
+				18E0237E1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				180B82651818A9B90091E3AE /* PilotSplitViewController.m in Sources */,
 				180B82661818A9B90091E3AE /* PDFDocumentsViewController.m in Sources */,
 				180B82671818A9B90091E3AE /* MessageRecordManager.m in Sources */,
@@ -11111,6 +11149,7 @@
 				180B82951818A9B90091E3AE /* RepositoryManager.m in Sources */,
 				180B82961818A9B90091E3AE /* FPOptionTableViewCell.m in Sources */,
 				180B82971818A9B90091E3AE /* FPHealthDeclarationViewController.m in Sources */,
+				18E023871821FA7300AB6215 /* GeoLocation.m in Sources */,
 				180B82981818A9B90091E3AE /* SearchDataSource.m in Sources */,
 				180B82991818A9B90091E3AE /* SwitchButton.m in Sources */,
 				180B829A1818A9B90091E3AE /* UIColor+expanded.m in Sources */,
@@ -11234,6 +11273,7 @@
 				F54D82D317E8BFBB0067A023 /* BaseViewController.m in Sources */,
 				F54D82D417E8BFBB0067A023 /* DownLoadingDetialViewController.m in Sources */,
 				F54D82D617E8BFBB0067A023 /* DownloadingViewController.m in Sources */,
+				18E023821821FA7300AB6215 /* GeoLocation.m in Sources */,
 				F54D82D817E8BFBB0067A023 /* FunctionDetialInfoViewController.m in Sources */,
 				F54D82DC17E8BFBB0067A023 /* NativePageControl.m in Sources */,
 				F54D82DD17E8BFBB0067A023 /* NSMutableDictionary+SortedAllkeys.m in Sources */,
@@ -11243,6 +11283,7 @@
 				F54D82E117E8BFBB0067A023 /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39F02A1A18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				F54D82E217E8BFBB0067A023 /* IphoneDownloadingTableViewCell.m in Sources */,
+				18E023791820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				F54D82E517E8BFBB0067A023 /* MenuView.m in Sources */,
 				F54D82E917E8BFBB0067A023 /* ChatCell.m in Sources */,
 				F5A96C4A17F006B400F9CA68 /* CDVVibration.m in Sources */,
@@ -11526,6 +11567,7 @@
 				18E9C50B1803AB1200B874B8 /* ReaderThumbRequest.m in Sources */,
 				18E9C4EF1803AB1200B874B8 /* Task.m in Sources */,
 				39D9E9FE17F27C03001ED6F5 /* TouchScroller.m in Sources */,
+				18E023851821FA7300AB6215 /* GeoLocation.m in Sources */,
 				39D9E9FF17F27C03001ED6F5 /* GroupMemberManagerViewController.m in Sources */,
 				39D9EA0017F27C03001ED6F5 /* ChatLogic.m in Sources */,
 				18E9C53E1803AB1200B874B8 /* HealthyDeclareInfoQuery.m in Sources */,
@@ -11583,6 +11625,7 @@
 				39D9EA1B17F27C03001ED6F5 /* VoiceModule.m in Sources */,
 				18E9C4F31803AB1200B874B8 /* WeatherInfo.m in Sources */,
 				18E9C5AE1803AB1200B874B8 /* NSString+Verification.m in Sources */,
+				18E0237C1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				39D9EA1C17F27C03001ED6F5 /* VVMessageCell.m in Sources */,
 				39D9EA1D17F27C03001ED6F5 /* CDVDevice.m in Sources */,
 				18E9C4831803AB1200B874B8 /* FPAnswerOnlineViewController.m in Sources */,
@@ -11747,6 +11790,7 @@
 				39E0529717F00AEA00BCF7F8 /* AutoDownLoadRecord.m in Sources */,
 				39E0529817F00AEA00BCF7F8 /* FMDBManager.m in Sources */,
 				39E0529917F00AEA00BCF7F8 /* AutoShowRecord.m in Sources */,
+				18E0237A1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				18BE6C4518198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39E0529A17F00AEA00BCF7F8 /* CubeCommandDispatcher.m in Sources */,
 				39E0529B17F00AEA00BCF7F8 /* CubeDownloadCommandHandler.m in Sources */,
@@ -11845,6 +11889,7 @@
 				39E0530717F00AEA00BCF7F8 /* SettingMainViewController.m in Sources */,
 				39E0530817F00AEA00BCF7F8 /* CDVFileTransfer.m in Sources */,
 				39E0530917F00AEA00BCF7F8 /* SettingsViewController.m in Sources */,
+				18E023831821FA7300AB6215 /* GeoLocation.m in Sources */,
 				39E0530A17F00AEA00BCF7F8 /* SetttingIMViewController.m in Sources */,
 				39E0530B17F00AEA00BCF7F8 /* FriendMainViewController.m in Sources */,
 				39E0530C17F00AEA00BCF7F8 /* Login_IphoneViewController.m in Sources */,
@@ -11915,6 +11960,7 @@
 				39E9C597180EBAAA004CEF1D /* AutoDownLoadRecord.m in Sources */,
 				39E9C598180EBAAA004CEF1D /* FMDBManager.m in Sources */,
 				39E9C599180EBAAA004CEF1D /* AutoShowRecord.m in Sources */,
+				18E0237D1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				18BE6C4818198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39E9C59A180EBAAA004CEF1D /* CubeCommandDispatcher.m in Sources */,
 				39E9C59B180EBAAA004CEF1D /* CubeDownloadCommandHandler.m in Sources */,
@@ -12013,6 +12059,7 @@
 				39E9C5FD180EBAAA004CEF1D /* SettingMainViewController.m in Sources */,
 				39E9C5FE180EBAAA004CEF1D /* CDVFileTransfer.m in Sources */,
 				39E9C5FF180EBAAA004CEF1D /* SettingsViewController.m in Sources */,
+				18E023861821FA7300AB6215 /* GeoLocation.m in Sources */,
 				39E9C600180EBAAA004CEF1D /* SetttingIMViewController.m in Sources */,
 				39E9C601180EBAAA004CEF1D /* FriendMainViewController.m in Sources */,
 				39E9C602180EBAAA004CEF1D /* Login_IphoneViewController.m in Sources */,
@@ -12083,6 +12130,7 @@
 				39FF0B5117F13CBB0086B76C /* AutoDownLoadRecord.m in Sources */,
 				39FF0B5217F13CBB0086B76C /* FMDBManager.m in Sources */,
 				39FF0B5317F13CBB0086B76C /* AutoShowRecord.m in Sources */,
+				18E0237B1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				18BE6C4618198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39FF0B5417F13CBB0086B76C /* CubeCommandDispatcher.m in Sources */,
 				39FF0B5517F13CBB0086B76C /* CubeDownloadCommandHandler.m in Sources */,
@@ -12181,6 +12229,7 @@
 				39FF0BBF17F13CBB0086B76C /* SettingMainViewController.m in Sources */,
 				39FF0BC017F13CBB0086B76C /* CDVFileTransfer.m in Sources */,
 				39FF0BC117F13CBB0086B76C /* SettingsViewController.m in Sources */,
+				18E023841821FA7300AB6215 /* GeoLocation.m in Sources */,
 				39FF0BC217F13CBB0086B76C /* SetttingIMViewController.m in Sources */,
 				39FF0BC317F13CBB0086B76C /* FriendMainViewController.m in Sources */,
 				39FF0BC417F13CBB0086B76C /* Login_IphoneViewController.m in Sources */,
@@ -12797,7 +12846,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -12845,7 +12894,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -12921,6 +12970,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				18E0236F1820DDF700AB6215 /* cube.xcdatamodel */,
+				18E023701820DDF700AB6215 /* cube0409.xcdatamodel */,
+				18E023711820DDF700AB6215 /* cube0505.xcdatamodel */,
+				18E023721820DDF700AB6215 /* cube0707.xcdatamodel */,
+				18E023731820DDF700AB6215 /* cube0808.xcdatamodel */,
+				18E023741820DDF700AB6215 /* cube0827.xcdatamodel */,
+				18E023751820DDF700AB6215 /* cube0911.xcdatamodel */,
+				18E023761820DDF700AB6215 /* cube1015.xcdatamodel */,
+				18E023771820DDF700AB6215 /* cube1017.xcdatamodel */,
+				18E023781820DDF700AB6215 /* cube1022.xcdatamodel */,
+			);
+			currentVersion = 18E023781820DDF700AB6215 /* cube1022.xcdatamodel */;
+			path = cube.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		18E9C3921803AB1100B874B8 /* pilot.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
