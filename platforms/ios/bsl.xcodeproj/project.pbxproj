@@ -1348,6 +1348,8 @@
 		30A0434814DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434314DC770100060A13 /* Localizable.strings */; };
 		30A0434914DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		32D7C5BE18222E5400C0766D /* DeviceRegisterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C5BD18222E5400C0766D /* DeviceRegisterPlugin.m */; };
+		32D7C5BF18222E5400C0766D /* DeviceRegisterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D7C5BD18222E5400C0766D /* DeviceRegisterPlugin.m */; };
 		390E10AB1809339800B2BC81 /* MainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FE417E8BFBA0067A023 /* MainViewViewController.m */; };
 		390E10AC1809339B00B2BC81 /* Main_IphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D814517E8BFBA0067A023 /* Main_IphoneViewController.m */; };
 		3926908C17F51F1C00F1500B /* line_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3926908B17F51F1C00F1500B /* line_shadow@2x.png */; };
@@ -4473,6 +4475,8 @@
 		30A0434714DC770100060A13 /* se */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = se; path = Localizable.strings; sourceTree = "<group>"; };
 		30E5649113A7FCAF007403D8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* bsl-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bsl-Prefix.pch"; sourceTree = "<group>"; };
+		32D7C5BC18222E5400C0766D /* DeviceRegisterPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceRegisterPlugin.h; sourceTree = "<group>"; };
+		32D7C5BD18222E5400C0766D /* DeviceRegisterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceRegisterPlugin.m; sourceTree = "<group>"; };
 		3926908B17F51F1C00F1500B /* line_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line_shadow@2x.png"; sourceTree = "<group>"; };
 		394B98A218056BBA00F657D2 /* BaseNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavViewController.h; sourceTree = "<group>"; };
 		394B98A318056BBA00F657D2 /* BaseNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavViewController.m; sourceTree = "<group>"; };
@@ -7527,6 +7531,8 @@
 				F54D815917E8BFBA0067A023 /* LocalDBPlugin.h */,
 				F54D815A17E8BFBA0067A023 /* LocalDBPlugin.m */,
 				F54D815B17E8BFBA0067A023 /* Login */,
+				32D7C5BC18222E5400C0766D /* DeviceRegisterPlugin.h */,
+				32D7C5BD18222E5400C0766D /* DeviceRegisterPlugin.m */,
 			);
 			path = Plugins;
 			sourceTree = "<group>";
@@ -10853,6 +10859,7 @@
 				180B81941818A9B90091E3AE /* MessageDelayHandler.m in Sources */,
 				180B81951818A9B90091E3AE /* MessageObject.m in Sources */,
 				180B81961818A9B90091E3AE /* FPHealthDeclarationTableViewCell.m in Sources */,
+				32D7C5BF18222E5400C0766D /* DeviceRegisterPlugin.m in Sources */,
 				180B81971818A9B90091E3AE /* Fuel.m in Sources */,
 				180B81981818A9B90091E3AE /* CJSONSerializedData.m in Sources */,
 				180B81991818A9B90091E3AE /* ExamInfo.m in Sources */,
@@ -11580,6 +11587,7 @@
 				39D9EA1A17F27C03001ED6F5 /* RatingView.m in Sources */,
 				18E9C5BC1803AB1200B874B8 /* PrettyTableViewCell.m in Sources */,
 				18E9C51D1803AB1200B874B8 /* Scanner.m in Sources */,
+				32D7C5BE18222E5400C0766D /* DeviceRegisterPlugin.m in Sources */,
 				39D9EA1B17F27C03001ED6F5 /* VoiceModule.m in Sources */,
 				18E9C4F31803AB1200B874B8 /* WeatherInfo.m in Sources */,
 				18E9C5AE1803AB1200B874B8 /* NSString+Verification.m in Sources */,
