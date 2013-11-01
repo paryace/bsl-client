@@ -1,0 +1,116 @@
+<style type="text/css" media="all">
+body {
+
+  font-family:helvetica;
+  overflow: hidden;
+}
+
+body,ul,li,header,nav,aside,section,article,p {
+	padding:0;
+	margin:0;
+	border:0;
+}
+
+li {
+	list-style: none;
+}
+
+nav,aside,section,article {
+	display:block;
+}
+
+
+input{
+  text-align: right;
+}
+
+
+.cube-form-field .cube-form-textfield {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  -ms-box-flex: 2;
+  box-flex: 2;
+}
+
+.cube-form-field .cube-form-textfield * {
+  padding-top:0px;
+  padding-bottom: 0px;
+}
+
+.cube-form-field-left{
+  margin-left:5%;
+  display:inline-block;
+}
+
+.cube-form-field-right{
+  margin-right:5%;
+  display:inline-block;
+  float:right;
+}
+
+.label{
+  text-align:center;
+  color:#0F88CD;
+}
+
+.content{
+  background-color: #3476CD;
+  padding-top: 50px;
+  padding-bottom:10px;
+  text-align:center
+}
+#regist{
+  text-align: left;
+}
+</style>
+
+
+<!-- 
+<header class="bar-title">
+  <a id="back" class="button" href="cube://exit" cube-action="pop">返回</a>
+  <h1 class="title">设备注册</h1>
+</header> -->
+
+
+<div class="content">
+    <img src="images/logo.png" style="width:200px;margin-bottom:10px">
+    <div id="regist" style="height:100%;">
+       <div style="padding-bottom:10px;font-size:13pt;">
+        <form id="weather-form" style="margin-bottom:10px">
+           <input name="index" style="display:none;" />
+          <div id="weather-wrapper">
+             
+            <div >
+              <input type="hidden" name="id">
+              <div class="cube-form-field">
+                <div class="cube-form-label" >员工号:</div>
+                <div class="cube-form-textfield"><input type="text" name="staffCode"/></div>
+              </div>
+              <div class="cube-form-field">
+                <div class="cube-form-label" >姓名:</div>
+                <div class="cube-form-textfield"><input type="text" name="name"/></div>
+              </div>
+              <div class="cube-form-field">
+                <div class="cube-form-label" >部门:</div>
+                <div class="cube-form-textfield"><input type="text" name="dept"/></div>
+              </div>
+              <div class="cube-form-field">
+                <div class="cube-form-label" >邮箱:</div>
+                <div class="cube-form-textfield"><input type="text" name="email"/></div>
+              </div>
+              <div class="cube-form-field">
+                <div class="cube-form-label" >联系电话:</div>
+                <div class="cube-form-textfield"><input type="text" name="telPhone"/></div>
+              </div>
+              <div class="cube-form-field">
+                <div class="cube-form-label" >设备来源:</div>
+                <div class="cube-form-textfield"><input type="text" name="deviceSrc"/></div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <button id="submitBtn" class="btn btn-large" style="width:100%">提交</button>
+        <button id="cancel" class="btn btn-large" style="width:100%;margin-top:8px;display:none">取消</button>
+      </div>
+  </div>
+</div>

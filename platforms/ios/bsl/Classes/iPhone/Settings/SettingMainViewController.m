@@ -67,6 +67,7 @@
         NSArray* array2 = [[NSArray alloc]initWithObjects:@"关于我们",@"setting_about.png", nil];
         NSArray* array3 = [[NSArray alloc]initWithObjects:@"即时通讯",@"setting_about.png", nil];
         
+        
         [firstArray addObject:array1];
         [firstArray addObject:array2];
         [firstArray addObject:array3];

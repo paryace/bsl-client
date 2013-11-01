@@ -32,7 +32,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 @implementation CubeApplication
 
 
-#define ManagerUsers NO
+#define ManagerUsers YES
 
 //运行时配置文件路径
 #define RUNTIME_CFG_URL [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:@"Cube.json"]
@@ -138,12 +138,12 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
             if (self.installed)
                 [self mergeNewLocalModules];
         }else{
-            if (self.installed) {
-                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
-                [self loadApplicatioFromURL:cubeURL];
-            }
+//            if (self.installed) {
+//                NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+//                NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+//                NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+//                [self loadApplicatioFromURL:cubeURL];
+//            }
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleDidInstalled:) name:CubeModuleInstallDidFinishNotification object:nil];
     }
@@ -229,6 +229,16 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
         CubeModule *module = [CubeModule moduleFromJSONObject:jo_module];
         module.isDownloading = NO;
         [availableModules addObject:module];
+    }
+    
+    //到全局Cube.json读取预安装模块, 预安装模块不做权限限制
+    NSLog(@"全局配置Cube.json: %@",RUNTIME_CFG_URL);
+    NSString *globalCube = [NSString stringWithContentsOfURL:RUNTIME_CFG_URL encoding:NSUTF8StringEncoding error:nil];
+    NSDictionary *globalCubeDic = [globalCube objectFromJSONString];
+    NSArray *preInstallModule = [globalCubeDic objectForKey:@"preInstallationModules"];
+    for(NSDictionary *pre_module in preInstallModule){
+        CubeModule *module = [CubeModule moduleFromJSONObject:pre_module];
+        [modules addObject:module];
     }
 }
 
@@ -489,13 +499,13 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 -(void)sync
 {
     
-//    if (self.installed) {
-//            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-//            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-//            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
-//            [self loadApplicatioFromURL:cubeURL];
-//        
-//    }
+    if (self.installed) {
+            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+            [self loadApplicatioFromURL:cubeURL];
+        
+    }
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *token =  [defaults objectForKey:@"token"];

@@ -13,5 +13,26 @@
 	],
 	"availableModules":[
     
-	]
+	],
+    "preInstallationModules":[
+                     {
+                     "privileges": [],
+                     "bundle": "",
+                     "showPushMsgCount": false,
+                     "isAutoShow": false,
+                     "category": "站长A",
+                     "icon": "T13tJTByJT1RCvBVdK",
+                     "version": "1.0.0.153",
+                     "sortingWeight": 1,
+                     "installed": true,
+                     "busiDetail": false,
+                     "releaseNote": "1.界面调整",
+                     "identifier": "com.csair.deviceregist",
+                     "build": 1,
+                     "name": "设备注册",
+                     "hidden": true,
+                     "autoDownload": false
+                     }
+
+    ]
 }
