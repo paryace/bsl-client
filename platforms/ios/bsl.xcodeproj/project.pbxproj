@@ -975,6 +975,8 @@
 		18BE6C4718198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4818198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4918198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
+		18E0239F1822884700AB6215 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
+		18E023A01822886000AB6215 /* VoiceSearchLoading010@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626917EE898300C84A6A /* VoiceSearchLoading010@2x.png */; };
 		18E9C4611803AB1200B874B8 /* AbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4621803AB1200B874B8 /* EbookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1ED1803AB0E00B874B8 /* EbookListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4631803AB1200B874B8 /* About.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1F11803AB0E00B874B8 /* About.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -9190,6 +9192,7 @@
 				39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */,
 				39D9E87217F27C03001ED6F5 /* bg_search_lightgray.png in Resources */,
 				39D9E87417F27C03001ED6F5 /* clicked_bg.png in Resources */,
+				18E023A01822886000AB6215 /* VoiceSearchLoading010@2x.png in Resources */,
 				18E9C5661803AB1200B874B8 /* start_zh.png in Resources */,
 				39D9E87517F27C03001ED6F5 /* top_bar_bg@simple.png in Resources */,
 				18E9C5521803AB1200B874B8 /* btn_done_up@2x.png in Resources */,
@@ -9436,6 +9439,7 @@
 				39D9E93117F27C03001ED6F5 /* f102.png in Resources */,
 				18E9C5561803AB1200B874B8 /* Button_Arrow2X.png in Resources */,
 				39D9E93217F27C03001ED6F5 /* f103.png in Resources */,
+				18E0239F1822884700AB6215 /* nav_bg@2x.png in Resources */,
 				39D9E93317F27C03001ED6F5 /* f104.png in Resources */,
 				39D9E93417F27C03001ED6F5 /* f105.png in Resources */,
 				39D9E93517F27C03001ED6F5 /* f106.png in Resources */,
@@ -12339,6 +12343,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					IMPC,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
@@ -12371,6 +12380,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					IMPC,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (

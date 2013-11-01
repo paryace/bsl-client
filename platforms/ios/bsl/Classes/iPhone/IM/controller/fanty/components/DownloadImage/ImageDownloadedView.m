@@ -147,6 +147,7 @@
         if([self.url isEqualToString:__url]){
             UIImage* img=[[GTGZImageDownloadedManager sharedInstance] get:self.url];
             if(img!=nil){
+                self.loadingImageName=nil;
                 status=ImageViewDownloadedStatusFinish;
                 self.image=img;
                 [[NSNotificationCenter defaultCenter] removeObserver:self];
