@@ -55,6 +55,13 @@
 #import "IMServerAPI.h"
 #import "ChatLogic.h"
 #import "JSONKit.h"
+
+
+/**
+ *      南航业务
+ **/
+#import "DeviceRegister_IphoneControllerViewController.h"
+
 //#ifndef _DEBUG
 
 //#define _DEBUG
@@ -170,6 +177,9 @@ void uncaughtExceptionHandler(NSException*exception){
     [self showLoginView:YES];
     [self.window makeKeyAndVisible];
     
+    
+//    [self.window makeKeyAndVisible];
+    
     //开启定时任务将记录发送给服务端begin
     
     //[NSTimer timerWithTimeInterval:10.0f target:self selector:@selector(postOpreateLog) userInfo:nil repeats:NO];
@@ -184,6 +194,40 @@ void uncaughtExceptionHandler(NSException*exception){
     NSLog(@"applicationDidBecomeActive");
 
 }
+
+//-(void)deviceRegist{
+//    NSString *deviceID = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+//    NSString *checkDRUrl = [NSString stringWithFormat:@"%@/%@%@?%@",kServerURLString,@"csair-extension/api/deviceRegInfo/check/",deviceID,kAPPKey];
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:checkDRUrl]];
+////    NSLog([NSString stringWithFormat:@"%@%@",@"[AppDelegate]-deviceRegist  url-> ",checkDRUrl]);
+//    [request setCompletionBlock:^(void){
+//        if([@"false" isEqual:[request responseString]]){
+//            NSLog(@"设备未注册");
+//            [self.navControl popToRootViewControllerAnimated:NO];
+//            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
+//            DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
+//            [self.navControl pushViewController:drController animated:NO];
+//            [self.window makeKeyAndVisible];
+//        }else{
+//            [self showLoginView:YES];
+//            [self.window makeKeyAndVisible];
+//        }
+//    }];
+//    [request setFailedBlock:^(void){
+//        NSLog(@"设备注册失败");
+//        [self showLoginView:YES];
+//        [self.window makeKeyAndVisible];
+//    }];
+//    
+//    [request setRequestMethod:@"GET"];
+//    [request startAsynchronous];
+//    
+//}
+//
+//-(void)checkDRFinish{
+//    [self showLoginView:YES];
+//    [self.window makeKeyAndVisible];
+//}
 
 -(void)showLoginView:(BOOL)newLogin{
 

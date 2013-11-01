@@ -1,0 +1,11 @@
+{
+	"identifier": "com.csair.deviceregist",
+	"name": "设备注册",
+	"build": 1,
+	"version": "1.0.0.1",
+	"releaseNote": "1.添加设备注册功能",
+	"dependencies" : {
+		"vendor" : 112,
+		"com.csair.istation":112,
+	}
+}

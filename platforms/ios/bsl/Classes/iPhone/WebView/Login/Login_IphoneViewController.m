@@ -10,6 +10,9 @@
 
 #import "CubeWebViewController.h"
 #import "NSFileManager+Extra.h"
+#import "UIDevice+IdentifierAddition.h"
+#import "ASIHttpRequest.h"
+#import "DeviceRegister_IphoneControllerViewController.h"
 
 
 
@@ -47,7 +50,7 @@
     }
 
     [self.view addSubview:bgImageView];
-
+    
     
     [aCubeWebViewController.view removeFromSuperview];
     aCubeWebViewController=nil;
@@ -71,6 +74,8 @@
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
     }];
+    
+    [self deviceRegist];
 }
 
 -(void)showWebViewController{
@@ -109,5 +114,33 @@
     isDisappear = true;
 }
 
+
+-(void)deviceRegist{
+    NSString *deviceID = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    NSString *checkDRUrl = [NSString stringWithFormat:@"%@/%@%@?%@",kServerURLString,@"csair-extension/api/deviceRegInfo/check/",deviceID,kAPPKey];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:checkDRUrl]];
+    //    NSLog([NSString stringWithFormat:@"%@%@",@"[AppDelegate]-deviceRegist  url-> ",checkDRUrl]);
+    [request setCompletionBlock:^(void){
+        if([@"false" isEqual:[request responseString]]){
+            NSLog(@"设备未注册");
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
+            DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
+//            drController.navigationController = self.navigationController;
+            [self.navigationController pushViewController:drController animated:YES];
+        }
+    }];
+    [request setFailedBlock:^(void){
+        NSLog(@"设备注册失败");
+    }];
+    
+    [request setRequestMethod:@"GET"];
+    [request startAsynchronous];
+    
+}
+
+-(void)checkDRFinish{
+    [self.navigationController popToViewController:self animated:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
+}
 
 @end

@@ -11,12 +11,14 @@
 
 @interface DeviceRegisterPlugin : CDVPlugin
 
+@property (strong,nonatomic) NSString *data;
+
 //更新成功后跳转
 -(void)redrectMain;
 //新增信息
--(void)submitInfo:(NSString *)jsonStr;
+-(void)submitInfo:(CDVInvokedUrlCommand*)command;
 //更新信息
--(void)updateDevice:(NSString *)jsonStr;
+-(void)updateDevice:(CDVInvokedUrlCommand*)command;
 //查询信息
 -(NSString *)queryDevcieInfo;
 
