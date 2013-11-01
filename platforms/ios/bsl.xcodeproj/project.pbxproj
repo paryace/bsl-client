@@ -975,12 +975,6 @@
 		18BE6C4718198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4818198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4918198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
-		18E023791820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
-		18E0237A1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
-		18E0237B1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
-		18E0237C1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
-		18E0237D1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
-		18E0237E1820DDF700AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */; };
 		18E0237F1820E17C00AB6215 /* VoiceSearchLoading010@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968626917EE898300C84A6A /* VoiceSearchLoading010@2x.png */; };
 		18E023821821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
 		18E023831821FA7300AB6215 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E023811821FA7300AB6215 /* GeoLocation.m */; };
@@ -991,6 +985,12 @@
 		18E023881821FB7700AB6215 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
 		18E0238A1821FF5B00AB6215 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E023891821FF5B00AB6215 /* MapKit.framework */; };
 		18E0238B1821FF6A00AB6215 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E023891821FF5B00AB6215 /* MapKit.framework */; };
+		18E02397182285CA00AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0238C182285CA00AB6215 /* cube.xcdatamodeld */; };
+		18E02398182285CA00AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0238C182285CA00AB6215 /* cube.xcdatamodeld */; };
+		18E02399182285CA00AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0238C182285CA00AB6215 /* cube.xcdatamodeld */; };
+		18E0239A182285CA00AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0238C182285CA00AB6215 /* cube.xcdatamodeld */; };
+		18E0239B182285CA00AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0238C182285CA00AB6215 /* cube.xcdatamodeld */; };
+		18E0239C182285CA00AB6215 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18E0238C182285CA00AB6215 /* cube.xcdatamodeld */; };
 		18E9C4611803AB1200B874B8 /* AbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4621803AB1200B874B8 /* EbookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1ED1803AB0E00B874B8 /* EbookListViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18E9C4631803AB1200B874B8 /* About.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C1F11803AB0E00B874B8 /* About.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -3909,19 +3909,19 @@
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
 		18BE6C4218198F1500D96581 /* XMPPIMActorFriendQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActorFriendQueue.h; sourceTree = "<group>"; };
 		18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActorFriendQueue.m; sourceTree = "<group>"; };
-		18E0236F1820DDF700AB6215 /* cube.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube.xcdatamodel; sourceTree = "<group>"; };
-		18E023701820DDF700AB6215 /* cube0409.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0409.xcdatamodel; sourceTree = "<group>"; };
-		18E023711820DDF700AB6215 /* cube0505.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0505.xcdatamodel; sourceTree = "<group>"; };
-		18E023721820DDF700AB6215 /* cube0707.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0707.xcdatamodel; sourceTree = "<group>"; };
-		18E023731820DDF700AB6215 /* cube0808.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0808.xcdatamodel; sourceTree = "<group>"; };
-		18E023741820DDF700AB6215 /* cube0827.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0827.xcdatamodel; sourceTree = "<group>"; };
-		18E023751820DDF700AB6215 /* cube0911.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0911.xcdatamodel; sourceTree = "<group>"; };
-		18E023761820DDF700AB6215 /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
-		18E023771820DDF700AB6215 /* cube1017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1017.xcdatamodel; sourceTree = "<group>"; };
-		18E023781820DDF700AB6215 /* cube1022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1022.xcdatamodel; sourceTree = "<group>"; };
 		18E023801821FA7300AB6215 /* GeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLocation.h; sourceTree = "<group>"; };
 		18E023811821FA7300AB6215 /* GeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLocation.m; sourceTree = "<group>"; };
 		18E023891821FF5B00AB6215 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		18E0238D182285CA00AB6215 /* cube.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube.xcdatamodel; sourceTree = "<group>"; };
+		18E0238E182285CA00AB6215 /* cube0409.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0409.xcdatamodel; sourceTree = "<group>"; };
+		18E0238F182285CA00AB6215 /* cube0505.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0505.xcdatamodel; sourceTree = "<group>"; };
+		18E02390182285CA00AB6215 /* cube0707.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0707.xcdatamodel; sourceTree = "<group>"; };
+		18E02391182285CA00AB6215 /* cube0808.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0808.xcdatamodel; sourceTree = "<group>"; };
+		18E02392182285CA00AB6215 /* cube0827.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0827.xcdatamodel; sourceTree = "<group>"; };
+		18E02393182285CA00AB6215 /* cube0911.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube0911.xcdatamodel; sourceTree = "<group>"; };
+		18E02394182285CA00AB6215 /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
+		18E02395182285CA00AB6215 /* cube1017.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1017.xcdatamodel; sourceTree = "<group>"; };
+		18E02396182285CA00AB6215 /* cube1022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1022.xcdatamodel; sourceTree = "<group>"; };
 		18E9C1E81803AB0E00B874B8 /* AbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTableViewController.h; sourceTree = "<group>"; };
 		18E9C1E91803AB0E00B874B8 /* AbstractTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractTableViewController.m; sourceTree = "<group>"; };
 		18E9C1EC1803AB0E00B874B8 /* EbookListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EbookListViewController.h; sourceTree = "<group>"; };
@@ -6854,7 +6854,7 @@
 		F54D7F9A17E8BFB90067A023 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */,
+				18E0238C182285CA00AB6215 /* cube.xcdatamodeld */,
 				F54D7F9B17E8BFB90067A023 /* audoDownload */,
 				F54D7FA017E8BFB90067A023 /* autoShow */,
 				F54D7FA317E8BFB90067A023 /* Command */,
@@ -10952,6 +10952,7 @@
 				180B81BC1818A9B90091E3AE /* AAPanelView.m in Sources */,
 				180B81BD1818A9B90091E3AE /* CloverTabBar.m in Sources */,
 				180B81BE1818A9B90091E3AE /* SkinView.m in Sources */,
+				18E0239C182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				180B81BF1818A9B90091E3AE /* iphoneAboutViewController.m in Sources */,
 				180B81C01818A9B90091E3AE /* AnnouncementTableViewController.m in Sources */,
 				180B81C11818A9B90091E3AE /* AnnouncementTableViewCell.m in Sources */,
@@ -11119,7 +11120,6 @@
 				180B82621818A9B90091E3AE /* GEAlertViewDelegate.m in Sources */,
 				180B82631818A9B90091E3AE /* CJSONDeserializer.m in Sources */,
 				180B82641818A9B90091E3AE /* TrueTypeFont.m in Sources */,
-				18E0237E1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				180B82651818A9B90091E3AE /* PilotSplitViewController.m in Sources */,
 				180B82661818A9B90091E3AE /* PDFDocumentsViewController.m in Sources */,
 				180B82671818A9B90091E3AE /* MessageRecordManager.m in Sources */,
@@ -11305,7 +11305,6 @@
 				F54D82E117E8BFBB0067A023 /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39F02A1A18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				F54D82E217E8BFBB0067A023 /* IphoneDownloadingTableViewCell.m in Sources */,
-				18E023791820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				F54D82E517E8BFBB0067A023 /* MenuView.m in Sources */,
 				F54D82E917E8BFBB0067A023 /* ChatCell.m in Sources */,
 				F5A96C4A17F006B400F9CA68 /* CDVVibration.m in Sources */,
@@ -11336,6 +11335,7 @@
 				F54D834217E8BFBB0067A023 /* XMPPShowImageViewController.m in Sources */,
 				F54D834717E8BFBB0067A023 /* IMServerAPI.m in Sources */,
 				F54D834D17E8BFBB0067A023 /* MRZoomScrollView.m in Sources */,
+				18E02397182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				F54D835017E8BFBB0067A023 /* MySelfView.m in Sources */,
 				F54D835117E8BFBB0067A023 /* SwipeView.m in Sources */,
 				F54D835417E8BFBB0067A023 /* iphoneLandingViewController.m in Sources */,
@@ -11649,7 +11649,6 @@
 				39D9EA1B17F27C03001ED6F5 /* VoiceModule.m in Sources */,
 				18E9C4F31803AB1200B874B8 /* WeatherInfo.m in Sources */,
 				18E9C5AE1803AB1200B874B8 /* NSString+Verification.m in Sources */,
-				18E0237C1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				39D9EA1C17F27C03001ED6F5 /* VVMessageCell.m in Sources */,
 				39D9EA1D17F27C03001ED6F5 /* CDVDevice.m in Sources */,
 				18E9C4831803AB1200B874B8 /* FPAnswerOnlineViewController.m in Sources */,
@@ -11673,6 +11672,7 @@
 				18E9C5AF1803AB1200B874B8 /* PilotSplitViewController.m in Sources */,
 				18E9C5271803AB1200B874B8 /* PDFDocumentsViewController.m in Sources */,
 				39D9EA2317F27C03001ED6F5 /* MessageRecordManager.m in Sources */,
+				18E0239A182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39D9EA2417F27C03001ED6F5 /* RemoteDebuggerViewController.m in Sources */,
 				18E9C4A11803AB1200B874B8 /* FPDocContentViewController.m in Sources */,
 				39D9EA2517F27C03001ED6F5 /* ContactListView.m in Sources */,
@@ -11814,7 +11814,6 @@
 				39E0529717F00AEA00BCF7F8 /* AutoDownLoadRecord.m in Sources */,
 				39E0529817F00AEA00BCF7F8 /* FMDBManager.m in Sources */,
 				39E0529917F00AEA00BCF7F8 /* AutoShowRecord.m in Sources */,
-				18E0237A1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				18BE6C4518198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39E0529A17F00AEA00BCF7F8 /* CubeCommandDispatcher.m in Sources */,
 				39E0529B17F00AEA00BCF7F8 /* CubeDownloadCommandHandler.m in Sources */,
@@ -11854,6 +11853,7 @@
 				39E052C417F00AEA00BCF7F8 /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39F02A1B18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				39E052C517F00AEA00BCF7F8 /* IphoneDownloadingTableViewCell.m in Sources */,
+				18E02398182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39E052C617F00AEA00BCF7F8 /* MenuView.m in Sources */,
 				39E052C917F00AEA00BCF7F8 /* ChatCell.m in Sources */,
 				39E052CA17F00AEA00BCF7F8 /* CDVVibration.m in Sources */,
@@ -11984,7 +11984,6 @@
 				39E9C597180EBAAA004CEF1D /* AutoDownLoadRecord.m in Sources */,
 				39E9C598180EBAAA004CEF1D /* FMDBManager.m in Sources */,
 				39E9C599180EBAAA004CEF1D /* AutoShowRecord.m in Sources */,
-				18E0237D1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				18BE6C4818198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39E9C59A180EBAAA004CEF1D /* CubeCommandDispatcher.m in Sources */,
 				39E9C59B180EBAAA004CEF1D /* CubeDownloadCommandHandler.m in Sources */,
@@ -12024,6 +12023,7 @@
 				39E9C5C3180EBAAA004CEF1D /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39E9C5C4180EBAAA004CEF1D /* IphoneDownloadingTableViewCell.m in Sources */,
 				39E9C5C5180EBAAA004CEF1D /* GTGZImageDownloadedManager.m in Sources */,
+				18E0239B182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39E9C5C6180EBAAA004CEF1D /* MenuView.m in Sources */,
 				39E9C5C7180EBAAA004CEF1D /* ChatCell.m in Sources */,
 				39E9C5C8180EBAAA004CEF1D /* CDVVibration.m in Sources */,
@@ -12154,7 +12154,6 @@
 				39FF0B5117F13CBB0086B76C /* AutoDownLoadRecord.m in Sources */,
 				39FF0B5217F13CBB0086B76C /* FMDBManager.m in Sources */,
 				39FF0B5317F13CBB0086B76C /* AutoShowRecord.m in Sources */,
-				18E0237B1820DDF700AB6215 /* cube.xcdatamodeld in Sources */,
 				18BE6C4618198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
 				39FF0B5417F13CBB0086B76C /* CubeCommandDispatcher.m in Sources */,
 				39FF0B5517F13CBB0086B76C /* CubeDownloadCommandHandler.m in Sources */,
@@ -12194,6 +12193,7 @@
 				39FF0B7E17F13CBB0086B76C /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39FF0B7F17F13CBB0086B76C /* IphoneDownloadingTableViewCell.m in Sources */,
 				39F02A1C18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
+				18E02399182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39FF0B8017F13CBB0086B76C /* MenuView.m in Sources */,
 				39FF0B8317F13CBB0086B76C /* ChatCell.m in Sources */,
 				39FF0B8417F13CBB0086B76C /* CDVVibration.m in Sources */,
@@ -12415,6 +12415,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					IMPC,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
@@ -12447,6 +12452,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					IMPC,
+				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
@@ -12994,21 +13004,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		18E0236E1820DDF700AB6215 /* cube.xcdatamodeld */ = {
+		18E0238C182285CA00AB6215 /* cube.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				18E0236F1820DDF700AB6215 /* cube.xcdatamodel */,
-				18E023701820DDF700AB6215 /* cube0409.xcdatamodel */,
-				18E023711820DDF700AB6215 /* cube0505.xcdatamodel */,
-				18E023721820DDF700AB6215 /* cube0707.xcdatamodel */,
-				18E023731820DDF700AB6215 /* cube0808.xcdatamodel */,
-				18E023741820DDF700AB6215 /* cube0827.xcdatamodel */,
-				18E023751820DDF700AB6215 /* cube0911.xcdatamodel */,
-				18E023761820DDF700AB6215 /* cube1015.xcdatamodel */,
-				18E023771820DDF700AB6215 /* cube1017.xcdatamodel */,
-				18E023781820DDF700AB6215 /* cube1022.xcdatamodel */,
+				18E0238D182285CA00AB6215 /* cube.xcdatamodel */,
+				18E0238E182285CA00AB6215 /* cube0409.xcdatamodel */,
+				18E0238F182285CA00AB6215 /* cube0505.xcdatamodel */,
+				18E02390182285CA00AB6215 /* cube0707.xcdatamodel */,
+				18E02391182285CA00AB6215 /* cube0808.xcdatamodel */,
+				18E02392182285CA00AB6215 /* cube0827.xcdatamodel */,
+				18E02393182285CA00AB6215 /* cube0911.xcdatamodel */,
+				18E02394182285CA00AB6215 /* cube1015.xcdatamodel */,
+				18E02395182285CA00AB6215 /* cube1017.xcdatamodel */,
+				18E02396182285CA00AB6215 /* cube1022.xcdatamodel */,
 			);
-			currentVersion = 18E023781820DDF700AB6215 /* cube1022.xcdatamodel */;
+			currentVersion = 18E02396182285CA00AB6215 /* cube1022.xcdatamodel */;
 			path = cube.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
@@ -13021,17 +13031,6 @@
 			);
 			currentVersion = 18E9C3931803AB1100B874B8 /* pilot.xcdatamodel */;
 			path = pilot.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		F54D7FB317E8BFB90067A023 /* cube.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				180F234F180CE0D80037751C /* cube1015.xcdatamodel */,
-				180B7B161816232E0091E3AE /* cube1022.xcdatamodel */,
-			);
-			currentVersion = 180B7B161816232E0091E3AE /* cube1022.xcdatamodel */;
-			path = cube.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

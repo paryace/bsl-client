@@ -85,6 +85,7 @@
     NSString* imageFile=[[GTGZImageDownloadedManager sharedInstance] filePathByContentId:content];
     
     if([[NSFileManager defaultManager] fileExistsAtPath:imageFile]){
+        contentImageView.loadingImageName=@"";
         [contentImageView setUrl:imageFile];
     }
     else{
