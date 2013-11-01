@@ -6,6 +6,9 @@ document.addEventListener("deviceready", function(){
 	});
 }, false);
 
+function fillId(id){
+	$("#identifier").val(id);
+}
 
 function queryAndFillDeviceInfo(){
 	if(cordova && cordova.exec){

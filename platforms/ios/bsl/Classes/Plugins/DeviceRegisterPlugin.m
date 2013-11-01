@@ -42,14 +42,16 @@ typedef void (^RegistFinsh)(NSString *responseStr);
     NSString *jsonStr = [command argumentAtIndex:0];
     NSMutableDictionary *json  =  [jsonStr objectFromJSONString];
     
-    [json objectForKey:@"id"];
+//    [json objectForKey:@"id"];
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@",kServerURLString,kDeviceBaseUrl,kDeviceRegUpdate];
     
     [self submit2Server:urlStr withData:json andFinishBlock:^(NSString *responseStr){
-        
+        NSDictionary *responseJson = [responseStr objectFromJSONString];
+        if([@"success" isEqualToString:[responseJson objectForKey:@"result"]]){
+            NSLog(@"[DeviceRegisterPlugin]: 更新成功!");
+        }
     }];
-    
 }
 
 -(NSString *)queryDevcieInfo{
