@@ -13018,17 +13018,6 @@
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-		F54D7FB317E8BFB90067A023 /* cube.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				180F234F180CE0D80037751C /* cube1015.xcdatamodel */,
-				180B7B161816232E0091E3AE /* cube1022.xcdatamodel */,
-			);
-			currentVersion = 180B7B161816232E0091E3AE /* cube1022.xcdatamodel */;
-			path = cube.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		F54D829017E8BFBB0067A023 /* XMPP_Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
