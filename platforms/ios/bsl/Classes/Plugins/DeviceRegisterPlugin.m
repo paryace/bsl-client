@@ -49,22 +49,6 @@ typedef void (^RegistFinsh)(NSString *responseStr);
     }];
 }
 
--(void)updateDevice:(CDVInvokedUrlCommand*)command{
-    NSString *jsonStr = [command argumentAtIndex:0];
-    NSMutableDictionary *json  =  [jsonStr objectFromJSONString];
-    NSLog(@"%@",[command argumentAtIndex:1]);
-//    [json objectForKey:@"id"];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@",kServerURLString,kDeviceBaseUrl,kDeviceRegUpdate];
-     urlStr = [self appendAppKeyForFinalUrl:urlStr];
-    [self submit2Server:urlStr withData:json andFinishBlock:^(NSString *responseStr){
-        NSDictionary *responseJson = [responseStr objectFromJSONString];
-        if([@"success" isEqualToString:[responseJson objectForKey:@"result"]]){
-            NSLog(@"[DeviceRegisterPlugin]: 更新成功!");
-        }
-    }];
-}
-
 -(void)queryDevcieInfo:(CDVInvokedUrlCommand*)command{
     NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@%@",kServerURLString,kDeviceBaseUrl,kDeviceRegCheck,deviceId];

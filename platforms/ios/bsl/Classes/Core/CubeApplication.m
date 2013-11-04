@@ -230,14 +230,29 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
         module.isDownloading = NO;
         [availableModules addObject:module];
     }
-    
+}
+
+//加载全局预安装模块,所有用户可用
+-(void)loadGlobalApplication{
     //到全局Cube.json读取预安装模块, 预安装模块不做权限限制   开启用户信息隔离后,不会再把Cube.json复制过去,所以要读BUNDLE的路径才能取到
     NSString *globalCube = [NSString stringWithContentsOfURL:BUNDLE_CFG_URL encoding:NSUTF8StringEncoding error:nil];
     NSDictionary *globalCubeDic = [globalCube objectFromJSONString];
     NSArray *preInstallModule = [globalCubeDic objectForKey:@"preInstallationModules"];
     for(NSDictionary *pre_module in preInstallModule){
         CubeModule *module = [CubeModule moduleFromJSONObject:pre_module];
-        [modules addObject:module];
+        if(![modules containsObject:module]){
+            [modules addObject:module];
+        }
+    }
+}
+
+-(void)removeGlobalApplication{
+    NSString *globalCube = [NSString stringWithContentsOfURL:BUNDLE_CFG_URL encoding:NSUTF8StringEncoding error:nil];
+    NSDictionary *globalCubeDic = [globalCube objectFromJSONString];
+    NSArray *preInstallModule = [globalCubeDic objectForKey:@"preInstallationModules"];
+    for(NSDictionary *pre_module in preInstallModule){
+        CubeModule *module = [CubeModule moduleFromJSONObject:pre_module];
+        [modules removeObject:module];
     }
 }
 
@@ -503,7 +518,6 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
             NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
             NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
             [self loadApplicatioFromURL:cubeURL];
-        
     }
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];

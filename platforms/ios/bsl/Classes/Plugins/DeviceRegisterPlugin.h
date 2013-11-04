@@ -15,10 +15,8 @@
 
 //更新成功后跳转
 -(void)redirectMain:(CDVInvokedUrlCommand*)command;
-//新增信息
+//新增or更新信息
 -(void)submitInfo:(CDVInvokedUrlCommand*)command;
-//更新信息
--(void)updateDevice:(CDVInvokedUrlCommand*)command;
 //查询信息
 -(void)queryDevcieInfo:(CDVInvokedUrlCommand*)command;
 

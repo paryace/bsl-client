@@ -14,6 +14,9 @@
 #import "AsyncImageView.h"
 #import "IconButton.h"
 #import "NSFileManager+Extra.h"
+#import "JSONKit.h"
+
+#define BUNDLE_CFG_URL [[NSBundle mainBundle] URLForResource:@"Cube" withExtension:@"json"]
 
 @interface SettingMainViewController ()<UITableViewDataSource,UITableViewDelegate,CheckUpdateDelegate,UIAlertViewDelegate>
 
@@ -81,6 +84,9 @@
 
         NSFileManager * fileManager = [NSFileManager defaultManager];
         
+        //添加设备管理
+        [self addDeviceRegist];
+        
         CubeApplication *cubeApp = [CubeApplication currentApplication];
         for (CubeModule* module in  cubeApp.modules) {
             NSURL* moduleUrl =[module runtimeURL];
@@ -147,6 +153,8 @@
 }
 
 - (void)dealloc {
+    //从modules列表中移除设备管理
+    [self removeDeviceRegist];
     self.settingTableView=nil;
     self.settingSource=nil;
     uc=nil;
@@ -416,5 +424,14 @@
     {
         [[self parentViewController] dismissModalViewControllerAnimated:NO];
     }
+}
+
+#pragma mark - 设备注册
+-(void)addDeviceRegist{
+    [[CubeApplication currentApplication] loadGlobalApplication];
+}
+
+-(void)removeDeviceRegist{
+    [[CubeApplication currentApplication] removeGlobalApplication];
 }
 @end

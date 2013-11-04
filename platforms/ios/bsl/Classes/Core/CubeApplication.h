@@ -60,6 +60,9 @@
 -(void)startUpdateChecker;
 
 -(NSMutableDictionary*)dictionary;
+//全局预安装模块
+-(void)loadGlobalApplication;
+-(void)removeGlobalApplication;
 
 @end
 

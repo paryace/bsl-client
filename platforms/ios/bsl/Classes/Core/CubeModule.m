@@ -597,7 +597,15 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     }
     return mdd;
 }
-
-
+//判断一个模块是否相同,取其identifier和build对比,两者都相同则为同一个模块
+-(BOOL)isEqual:(id)object{
+    if([object isMemberOfClass:[CubeModule class]]){
+        CubeModule *module = (CubeModule *)object;
+        if([self.identifier isEqualToString:module.identifier]&& self.build == module.build){
+            return YES;
+        }
+    }
+    return NO;
+}
 
 @end
