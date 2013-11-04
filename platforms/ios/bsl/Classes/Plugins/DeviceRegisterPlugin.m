@@ -13,7 +13,8 @@
 #define kDeviceBaseUrl @"csair-extension/api/deviceRegInfo"
 #define kDeviceRegSubmit @"reg"
 #define kDeviceRegUpdate @"update"
-#define kDeviceRegQuerty @"check/"
+#define kDeviceRegCheck @"check/"
+#define kDeviceRegQuery @"get/"
 
 typedef void (^RegistFinsh)(NSString *responseStr);
 
@@ -27,12 +28,19 @@ typedef void (^RegistFinsh)(NSString *responseStr);
 
 -(void)submitInfo:(CDVInvokedUrlCommand*)command{
     NSString *jsonStr = [command argumentAtIndex:0];
-    NSMutableDictionary *json  =  [jsonStr objectFromJSONString];
+    NSDictionary *json  =  [jsonStr objectFromJSONString];
+    
+    NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    NSMutableDictionary *mutableJson = [NSMutableDictionary dictionaryWithDictionary:json];
+    [mutableJson setValue:deviceId forKey:@"deviceId"];
+//    [json setValue:deviceId forKey:@"deviceId"];
+    
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@",kServerURLString,kDeviceBaseUrl,kDeviceRegSubmit];
+    urlStr = [self appendAppKeyForFinalUrl:urlStr];
 //    NSLog(@"[DeviceRegisterPlugin]: submit url ->%@",urlStr);
     
-    [self submit2Server:urlStr withData:json andFinishBlock:^(NSString *responseStr){
+    [self submit2Server:urlStr withData:mutableJson andFinishBlock:^(NSString *responseStr){
         NSDictionary *responseJson = [responseStr objectFromJSONString];
         if([@"success" isEqualToString:[responseJson objectForKey:@"result"]]){
             NSLog(@"[DeviceRegisterPlugin]: 注册成功!");
@@ -44,11 +52,11 @@ typedef void (^RegistFinsh)(NSString *responseStr);
 -(void)updateDevice:(CDVInvokedUrlCommand*)command{
     NSString *jsonStr = [command argumentAtIndex:0];
     NSMutableDictionary *json  =  [jsonStr objectFromJSONString];
-    
+    NSLog(@"%@",[command argumentAtIndex:1]);
 //    [json objectForKey:@"id"];
     
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@",kServerURLString,kDeviceBaseUrl,kDeviceRegUpdate];
-    
+     urlStr = [self appendAppKeyForFinalUrl:urlStr];
     [self submit2Server:urlStr withData:json andFinishBlock:^(NSString *responseStr){
         NSDictionary *responseJson = [responseStr objectFromJSONString];
         if([@"success" isEqualToString:[responseJson objectForKey:@"result"]]){
@@ -57,16 +65,30 @@ typedef void (^RegistFinsh)(NSString *responseStr);
     }];
 }
 
--(void)queryDevcieInfo{
+-(void)queryDevcieInfo:(CDVInvokedUrlCommand*)command{
     NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@%@",kServerURLString,kDeviceBaseUrl,kDeviceRegQuerty,deviceId];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@%@",kServerURLString,kDeviceBaseUrl,kDeviceRegCheck,deviceId];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[self appendAppKeyForFinalUrl:urlStr]]];
     [request setRequestMethod:@"GET"];
     [request setCompletionBlock:^(void){
         NSString *responseStr = [request responseString];
-        NSLog(@"[DeviceRegisterPlugin]-queryDeviceInfo  finish: data -> %@",responseStr);
-        NSString *jscode =  [NSString stringWithFormat:@"%@%@%@",@"fillData('",responseStr,@"')"];
-        [self.webView stringByEvaluatingJavaScriptFromString:jscode];
+        NSLog(@"[DeviceRegisterPlugin]-queryDeviceInfo  检查更新返回: -> %@",responseStr);
+        
+        //二次请求查询数据
+        NSString *queryUrl = [NSString stringWithFormat:@"%@/%@/%@%@",kServerURLString,kDeviceBaseUrl,kDeviceRegQuery,deviceId];
+        queryUrl = [self appendAppKeyForFinalUrl:queryUrl];
+        ASIHTTPRequest *secondRes = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[self appendAppKeyForFinalUrl:queryUrl]]];
+        [secondRes setResponseEncoding:NSUTF8StringEncoding];
+        [secondRes setRequestMethod:@"GET"];
+        [secondRes setCompletionBlock:^(void){
+            NSString *secondResStr = [secondRes responseString];
+            NSLog(@"[DeviceRegisterPlugin]-queryDeviceInfo  查询注册信息返回 -> %@",secondResStr);
+            NSString *jscode =  [NSString stringWithFormat:@"%@%@%@",@"fillData('",secondResStr,@"')"];
+            [self.webView stringByEvaluatingJavaScriptFromString:jscode];
+        }];
+        [secondRes startAsynchronous];
+        
+        
     }];
     [request startAsynchronous];
 }
@@ -83,8 +105,17 @@ typedef void (^RegistFinsh)(NSString *responseStr);
         NSLog(@"[DeviceRegisterPlugin]: 请求成功,返回结果->  %@",responseStr);
         finishBlock(responseStr);
     }];
-    
     [request startAsynchronous];
+}
+
+-(NSString *)appendAppKeyForFinalUrl:(NSString *)url{
+    if([url rangeOfString:@"appKey"].length == 0){
+        NSString *appKeySubfix = [NSString stringWithFormat:@"?appKey=%@",kAPPKey];
+        NSString *newUrl = [url stringByAppendingString:appKeySubfix];
+        NSLog(@"[DeviceRegisterPlugin]-appendAppKeyForFinalUrl  newUrl : %@",newUrl);
+        return newUrl;
+    }
+    return url;
 }
 
 

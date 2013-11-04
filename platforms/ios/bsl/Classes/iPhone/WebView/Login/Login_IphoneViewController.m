@@ -117,10 +117,11 @@
 
 -(void)deviceRegist{
     NSString *deviceID = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-    NSString *checkDRUrl = [NSString stringWithFormat:@"%@/%@%@?%@",kServerURLString,@"csair-extension/api/deviceRegInfo/check/",deviceID,kAPPKey];
+    NSString *checkDRUrl = [NSString stringWithFormat:@"%@/%@%@?appKey=%@",kServerURLString,@"csair-extension/api/deviceRegInfo/check/",deviceID,kAPPKey];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:checkDRUrl]];
     //    NSLog([NSString stringWithFormat:@"%@%@",@"[AppDelegate]-deviceRegist  url-> ",checkDRUrl]);
     [request setCompletionBlock:^(void){
+        NSLog(@"[Login_IphoneViewController] -deviceRegist  设备注册返回值 : %@",[request responseString]);
         if([@"false" isEqual:[request responseString]]){
             NSLog(@"设备未注册");
             [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];

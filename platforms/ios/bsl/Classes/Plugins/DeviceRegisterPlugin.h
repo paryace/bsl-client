@@ -20,7 +20,7 @@
 //更新信息
 -(void)updateDevice:(CDVInvokedUrlCommand*)command;
 //查询信息
--(void)queryDevcieInfo;
+-(void)queryDevcieInfo:(CDVInvokedUrlCommand*)command;
 
 
 @end
