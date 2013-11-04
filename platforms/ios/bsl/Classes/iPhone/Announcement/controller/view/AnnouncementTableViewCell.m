@@ -57,6 +57,9 @@
         timeLabel.font=[UIFont systemFontOfSize:15.0f];
         timeLabel.backgroundColor=[UIColor clearColor];
         timeLabel.textColor=[UIColor blackColor];
+        attachView = [[UIView alloc]init];
+        attachView.backgroundColor =[UIColor clearColor];
+        [bgView addSubview:attachView];
         [bgView addSubview:timeLabel];
         
     }
@@ -89,8 +92,8 @@
     return height;
     
 }
-
--(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead {
+-(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead withAttachment:(NSString*)files
+{
     titleLabel.text=title;
     contentLabel.text=content;
     
@@ -123,8 +126,25 @@
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"yyyy-MM-dd HH:mm"];
         timeLabel.text=[df stringFromDate:time];
-
+        
     }
+    if(!files || files.length==0)
+    {
+        attachView.hidden =YES;
+    }
+    else{
+        NSMutableArray *filesArray = [files objectFromJSONString];
+        
+        for (int i=0; i<filesArray.count; i++) {
+            
+            [filesArray objectAtIndex:i];
+        }
+    }
+}
+
+
+-(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead {
+    [self title:title content:content time:time isRead:isRead withAttachment:nil];
 }
 
 -(void)layoutSubviews{
@@ -166,6 +186,7 @@
     [contentLabel sizeToFit];
     
     timeLabel.frame=CGRectMake(w-150.0f-OFFSET-__offset, CGRectGetMaxY(contentLabel.frame)+3.0f, 150.0f, 20.0f);
+    attachView.frame =CGRectMake(10, CGRectGetMaxY(contentLabel.frame)+3.0f, 200, 30);
 
 }
 
