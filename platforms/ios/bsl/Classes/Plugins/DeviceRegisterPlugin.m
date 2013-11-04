@@ -50,6 +50,7 @@ typedef void (^RegistFinsh)(NSString *responseStr);
 }
 
 -(void)queryDevcieInfo:(CDVInvokedUrlCommand*)command{
+    //查询该设备是否已经注册
     NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@%@",kServerURLString,kDeviceBaseUrl,kDeviceRegCheck,deviceId];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[self appendAppKeyForFinalUrl:urlStr]]];
@@ -58,7 +59,7 @@ typedef void (^RegistFinsh)(NSString *responseStr);
         NSString *responseStr = [request responseString];
         NSLog(@"[DeviceRegisterPlugin]-queryDeviceInfo  检查更新返回: -> %@",responseStr);
         
-        //二次请求查询数据
+        //二次请求查询设备注册信息
         NSString *queryUrl = [NSString stringWithFormat:@"%@/%@/%@%@",kServerURLString,kDeviceBaseUrl,kDeviceRegQuery,deviceId];
         queryUrl = [self appendAppKeyForFinalUrl:queryUrl];
         ASIHTTPRequest *secondRes = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[self appendAppKeyForFinalUrl:queryUrl]]];

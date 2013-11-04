@@ -1,5 +1,3 @@
-// var isUpdate = false;
-// var isFromLogin = false;
 document.addEventListener("deviceready", function(){
 	queryAndFillDeviceInfo();
 	$("#submitBtn").click(function(){
@@ -76,7 +74,7 @@ function submit(){
 			function(err) {
 				alert("提交失败,请检查网络连接！");
         	}
-        , "DeviceRegister", submitType, [JSON.stringify(json),json["staffCode"],json["name"],json["dept"],json["email"],json["telPhone"],json["deviceSrc"],json["id"]]);
+        , "DeviceRegister", submitType, [JSON.stringify(json)]);
 	}
 }
 
@@ -94,12 +92,11 @@ function cancel(){
 
 function fillData(data){
 	data = JSON.parse(data);
-	console.info(data);
-	// var inputs = $("input");
-	// for(var i = 0; i < inputs.length; i++){
-	// 	var input = inputs[i];
-	// 	if(data[input.name] && data[input.name] != null){
-	// 		$(input).val(data[input.name]);
-	// 	}
-	// }
+	var inputs = $("input");
+	for(var i = 0; i < inputs.length; i++){
+		var input = inputs[i];
+		if(data[input.name] && data[input.name] != null){
+			$(input).val(data[input.name]);
+		}
+	}
 }
