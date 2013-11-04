@@ -35,7 +35,6 @@ typedef void (^RegistFinsh)(NSString *responseStr);
     [mutableJson setValue:deviceId forKey:@"deviceId"];
 //    [json setValue:deviceId forKey:@"deviceId"];
     
-    
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@",kServerURLString,kDeviceBaseUrl,kDeviceRegSubmit];
     urlStr = [self appendAppKeyForFinalUrl:urlStr];
 //    NSLog(@"[DeviceRegisterPlugin]: submit url ->%@",urlStr);
@@ -44,8 +43,11 @@ typedef void (^RegistFinsh)(NSString *responseStr);
         NSDictionary *responseJson = [responseStr objectFromJSONString];
         if([@"success" isEqualToString:[responseJson objectForKey:@"result"]]){
             NSLog(@"[DeviceRegisterPlugin]: 注册成功!");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"注册成功!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert setTag:0];
+            [alert show];
         }
-        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"DeviceRegistFinished" object:nil]];
+        
     }];
 }
 
@@ -103,5 +105,10 @@ typedef void (^RegistFinsh)(NSString *responseStr);
     return url;
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(alertView.tag == 0){
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"DeviceRegistFinished" object:nil]];
+    }
+}
 
 @end

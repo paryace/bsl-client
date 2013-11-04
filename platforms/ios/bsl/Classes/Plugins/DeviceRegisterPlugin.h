@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDVPlugin.h>
 
-@interface DeviceRegisterPlugin : CDVPlugin
+@interface DeviceRegisterPlugin : CDVPlugin<UIAlertViewDelegate>
 
 @property (strong,nonatomic) NSString *data;
 
