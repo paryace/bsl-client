@@ -231,9 +231,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
         [availableModules addObject:module];
     }
     
-    //到全局Cube.json读取预安装模块, 预安装模块不做权限限制
-    NSLog(@"全局配置Cube.json: %@",RUNTIME_CFG_URL);
-    NSString *globalCube = [NSString stringWithContentsOfURL:RUNTIME_CFG_URL encoding:NSUTF8StringEncoding error:nil];
+    //到全局Cube.json读取预安装模块, 预安装模块不做权限限制   开启用户信息隔离后,不会再把Cube.json复制过去,所以要读BUNDLE的路径才能取到
+    NSString *globalCube = [NSString stringWithContentsOfURL:BUNDLE_CFG_URL encoding:NSUTF8StringEncoding error:nil];
     NSDictionary *globalCubeDic = [globalCube objectFromJSONString];
     NSArray *preInstallModule = [globalCubeDic objectForKey:@"preInstallationModules"];
     for(NSDictionary *pre_module in preInstallModule){

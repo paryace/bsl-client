@@ -1,10 +1,18 @@
 var isUpdate = false;
+// var isFromLogin = false;
 document.addEventListener("deviceready", function(){
 	queryAndFillDeviceInfo();
 	$("#submitBtn").click(function(){
 		submit();
 	});
+	$("#cancelBtn").click(function(){
+		cancel();
+	});
 }, false);
+
+// function setIsFromLogin(yesOrNo){
+// 	isFromLogin = yesOrNo;
+// }
 
 function fillId(id){
 	$("#identifier").val(id);
@@ -57,5 +65,27 @@ function submit(){
 				alert("提交失败,请检查网络连接！");
         	}
         , "DeviceRegister", submitType, [JSON.stringify(json)]);
+	}
+}
+
+
+function cancel(){
+	if(cordova &&cordova.exec){
+		cordova.exec(
+				function(){
+				}, 
+				function(err) {
+	        	}
+	        , "DeviceRegister", "redirectMain", []);
+	}
+}
+
+function fillData(data){
+	data = JSON.parse(data);
+	var inputs = $("input");
+	for(var i = 0; i < inputs.length; i++){
+		if(data[input.name] && data[input.name] != null){
+			$(input).val(data[input.name]);
+		}
 	}
 }

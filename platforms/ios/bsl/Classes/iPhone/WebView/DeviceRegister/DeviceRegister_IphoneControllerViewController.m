@@ -15,7 +15,6 @@
 
 @implementation DeviceRegister_IphoneControllerViewController
 @synthesize aCubeWebViewController = _aCubeWebViewController;
-@synthesize navigationController = _navigationController;
 
 
 - (void)viewDidLoad
@@ -42,6 +41,7 @@
         //显示页面
         [self performSelector:@selector(showWebViewController) withObject:nil afterDelay:0.7f];
         NSLog(@"[DeviceRegister_IphoneControllerViewController]   显示页面");
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popMe) name:@"PopDeviceRegistView" object:nil];
 //        [self.navigationController pushViewController:self animated:NO];
         
     }didErrorBlock:^(){
@@ -66,6 +66,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)popMe{
+    NSLog(@"[DeviceRegister_IphoneControllerViewController] popMe");
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

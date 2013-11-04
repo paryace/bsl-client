@@ -11,7 +11,6 @@
 
 @interface DeviceRegister_IphoneControllerViewController : UIViewController
 
-@property (strong,nonatomic) UINavigationController *navigationController;
 @property (strong,nonatomic) CubeWebViewController *aCubeWebViewController;
 
 @end

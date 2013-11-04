@@ -579,7 +579,7 @@
 		180B81821818A9B90091E3AE /* BaseNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 394B98A318056BBA00F657D2 /* BaseNavViewController.m */; };
 		180B81831818A9B90091E3AE /* CubeMessageCommandHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FAA17E8BFB90067A023 /* CubeMessageCommandHandler.m */; };
 		180B81841818A9B90091E3AE /* CubeResetHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FAC17E8BFB90067A023 /* CubeResetHandler.m */; };
-		180B81851818A9B90091E3AE /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FB317E8BFB90067A023 /* cube.xcdatamodeld */; };
+		180B81851818A9B90091E3AE /* (null) in Sources */ = {isa = PBXBuildFile; };
 		180B81861818A9B90091E3AE /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C20E1803AB0F00B874B8 /* LevelViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		180B81871818A9B90091E3AE /* CubeApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FBC17E8BFBA0067A023 /* CubeApplication.m */; };
 		180B81881818A9B90091E3AE /* CloudHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9C2031803AB0E00B874B8 /* CloudHeight.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -3886,11 +3886,9 @@
 
 /* Begin PBXFileReference section */
 		1801377B17F3D1AA00261B66 /* local_module.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = local_module.plist; sourceTree = "<group>"; };
-		180B7B161816232E0091E3AE /* cube1022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1022.xcdatamodel; sourceTree = "<group>"; };
 		180B7F421818A6FF0091E3AE /* Config-impc-pro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config-impc-pro.m"; sourceTree = "<group>"; };
 		180B83021818A9B90091E3AE /* bsl_impc copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bsl_impc copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		180B83031818A9BA0091E3AE /* bsl_impc copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl_impc copy-Info.plist"; path = "/Users/apple/Documents/bsl-client/platforms/ios/bsl_impc copy-Info.plist"; sourceTree = "<absolute>"; };
-		180F234F180CE0D80037751C /* cube1015.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1015.xcdatamodel; sourceTree = "<group>"; };
 		180F2376180D237D0037751C /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		180F2377180D237D0037751C /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		180F2378180D237D0037751C /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
@@ -10892,7 +10890,7 @@
 				180B81821818A9B90091E3AE /* BaseNavViewController.m in Sources */,
 				180B81831818A9B90091E3AE /* CubeMessageCommandHandler.m in Sources */,
 				180B81841818A9B90091E3AE /* CubeResetHandler.m in Sources */,
-				180B81851818A9B90091E3AE /* cube.xcdatamodeld in Sources */,
+				180B81851818A9B90091E3AE /* (null) in Sources */,
 				180B81861818A9B90091E3AE /* LevelViewController.m in Sources */,
 				180B81871818A9B90091E3AE /* CubeApplication.m in Sources */,
 				180B81881818A9B90091E3AE /* CloudHeight.m in Sources */,
