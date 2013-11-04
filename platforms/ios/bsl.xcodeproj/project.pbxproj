@@ -969,6 +969,9 @@
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
 		188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
+		18AFE15918274D55000462DB /* AttachmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE15818274D55000462DB /* AttachmentImageView.m */; };
+		18AFE15A18274D55000462DB /* AttachmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE15818274D55000462DB /* AttachmentImageView.m */; };
+		18AFE15B18274D55000462DB /* AttachmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE15818274D55000462DB /* AttachmentImageView.m */; };
 		18BE6C4418198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4518198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4618198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
@@ -3905,6 +3908,8 @@
 		18240E111804EBFC00846FF9 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		188487F21807A41E0039F67F /* CubeAccountPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAccountPlugin.h; path = CubeAccount/CubeAccountPlugin.h; sourceTree = "<group>"; };
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
+		18AFE15718274D55000462DB /* AttachmentImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentImageView.h; sourceTree = "<group>"; };
+		18AFE15818274D55000462DB /* AttachmentImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentImageView.m; sourceTree = "<group>"; };
 		18BE6C4218198F1500D96581 /* XMPPIMActorFriendQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActorFriendQueue.h; sourceTree = "<group>"; };
 		18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActorFriendQueue.m; sourceTree = "<group>"; };
 		18E023801821FA7300AB6215 /* GeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLocation.h; sourceTree = "<group>"; };
@@ -7069,6 +7074,8 @@
 			children = (
 				F54D800817E8BFBA0067A023 /* AnnouncementTableViewCell.h */,
 				F54D800917E8BFBA0067A023 /* AnnouncementTableViewCell.m */,
+				18AFE15718274D55000462DB /* AttachmentImageView.h */,
+				18AFE15818274D55000462DB /* AttachmentImageView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -11206,6 +11213,7 @@
 				180B82B91818A9B90091E3AE /* CabinOrderQuery.m in Sources */,
 				180B82BA1818A9B90091E3AE /* CustomTextView.m in Sources */,
 				180B82BB1818A9B90091E3AE /* Unit.m in Sources */,
+				18AFE15B18274D55000462DB /* AttachmentImageView.m in Sources */,
 				180B82BC1818A9B90091E3AE /* CIDType2Font.m in Sources */,
 				180B82BD1818A9B90091E3AE /* RenderingState.m in Sources */,
 				180B82BE1818A9B90091E3AE /* NSObject+propertyList.m in Sources */,
@@ -11350,6 +11358,7 @@
 				F54D836417E8BFBB0067A023 /* VoiceModule.m in Sources */,
 				F54D836517E8BFBB0067A023 /* VVMessageCell.m in Sources */,
 				F5A96C4617F006B400F9CA68 /* CDVDevice.m in Sources */,
+				18AFE15918274D55000462DB /* AttachmentImageView.m in Sources */,
 				F54D836D17E8BFBB0067A023 /* LoginViewController.m in Sources */,
 				F54D836E17E8BFBB0067A023 /* MessageRecordTableViewController.m in Sources */,
 				F54D837017E8BFBB0067A023 /* MessageRecordHeaderView.m in Sources */,
@@ -11719,6 +11728,7 @@
 				18E9C4851803AB1200B874B8 /* FPOptionTableViewCell.m in Sources */,
 				18E9C4931803AB1200B874B8 /* FPHealthDeclarationViewController.m in Sources */,
 				39D9EA4117F27C03001ED6F5 /* SearchDataSource.m in Sources */,
+				18AFE15A18274D55000462DB /* AttachmentImageView.m in Sources */,
 				39D9EA4417F27C03001ED6F5 /* SwitchButton.m in Sources */,
 				39D9EA4517F27C03001ED6F5 /* UIColor+expanded.m in Sources */,
 				F5730F3318093BAB00E4541D /* KKProgressToolbar.m in Sources */,

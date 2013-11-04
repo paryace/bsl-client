@@ -71,9 +71,9 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
-                  moduleName = "bsl_impc copy"
+                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
                   urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "404960161.481071"
+                  timestampString = "405242876.878654"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "501"
@@ -85,9 +85,9 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
-                  moduleName = "bsl_impc copy"
+                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
                   urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "404960161.481687"
+                  timestampString = "405242876.879034"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "501"
@@ -142,6 +142,22 @@
             startingLineNumber = "843"
             endingLineNumber = "843"
             landmarkName = "-xmppStream:didReceiveIQ:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bsl/Classes/iPhone/WebView/Login/Login_IphoneViewController.m"
+            timestampString = "405242869.876562"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-deviceRegist"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

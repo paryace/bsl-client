@@ -58,8 +58,10 @@
 +(void)requestAnnouncement:(NSDictionary*)data{
     NSDictionary *module = [data objectForKey:@"extras"];
     NSString* recordId=nil;
+    NSString* noticeFiles=nil;
     if (module) {
         recordId=[module objectForKey:@"announceId"];
+        noticeFiles = [module valueForKey:@"noticeFiles"];
     }
     
     Announcement *announcement = [Announcement insert];
@@ -82,6 +84,7 @@
     [announcement setIsRead:0];
     [announcement setUsername:username];
     [announcement setReviceTime:[NSDate date]];
+    [announcement setAttachment:noticeFiles];
 }
 
 
