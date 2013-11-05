@@ -10,7 +10,9 @@
 
 #import "AnnouncementTableViewCell.h"
 #import "UIColor+expanded.h"
-
+#import "AttachmentImageView.h"
+#import "AttachMents.h"
+#import "KxMenu.h"
 @implementation AnnouncementTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -57,10 +59,11 @@
         timeLabel.font=[UIFont systemFontOfSize:15.0f];
         timeLabel.backgroundColor=[UIColor clearColor];
         timeLabel.textColor=[UIColor blackColor];
+        [bgView addSubview:timeLabel];
         attachView = [[UIView alloc]init];
         attachView.backgroundColor =[UIColor clearColor];
         [bgView addSubview:attachView];
-        [bgView addSubview:timeLabel];
+        
         
     }
     return self;
@@ -86,7 +89,7 @@
     [contentLabel sizeToFit];
 
     
-    float height=CGRectGetMaxY(contentLabel.frame)+3.0f+35.0f;
+    float height=CGRectGetMaxY(contentLabel.frame)+3.0f+40.0f;
     titleLabel=nil;
     contentLabel=nil;
     return height;
@@ -133,14 +136,99 @@
         attachView.hidden =YES;
     }
     else{
-        NSMutableArray *filesArray = [files objectFromJSONString];
         
-        for (int i=0; i<filesArray.count; i++) {
+        NSMutableArray *filesArray = [files objectFromJSONString];
+        int i=0;
+        for (NSDictionary *dict in filesArray) {
+            NSDictionary *dict1 = [@"{\"fileId\":\"T1IaETBXZT1RCvBVdK\",\"fileName\":\"120.png\",\"fileSize\":22}" objectFromJSONString];
+            if([[dict1 JSONString]objectFromJSONString] == nil)
+            {
+                NSLog(@"不是json 字符串");
+                return;
+            }
+            NSString*fileName = [dict1 valueForKey:@"fileName"];
+            NSString*fileId = [dict1 valueForKey:@"fileId"];
+            NSString*fileSize =  [dict1 valueForKey:@"fileSize"];
+            AttachMents *attachment = [AttachMents insert];
+            attachment.fileName = fileName;
+            attachment.fileId = fileId;
+            attachment.fileSize = [NSNumber numberWithFloat:[fileSize floatValue]];
+            [attachment downloadFile:fileId];
+            //判断文件类型
+            UIImage *image;
+            if([fileName hasSuffix:@"pdf"])
+            {
+                image = [UIImage imageNamed:@"pdf_default.png"];
+            }
+            else if ([fileName hasSuffix:@"txt"])
+            {
+                image = [UIImage imageNamed:@"txt_default.png"];
+            }
+            else if ([fileName hasSuffix:@"jpg"] || [fileName hasSuffix:@"png"] || [fileName hasSuffix:@"jpeg"])
+            {
+                image = [UIImage imageNamed:@"image_default.png"];
+            }
+            else if([fileName hasSuffix:@"doc"] || [fileName hasSuffix:@"docx"])
+            {
+                image = [UIImage imageNamed:@"word_default.png"];
+            }
+            else if ([fileName hasSuffix:@"xls"] || [fileName hasSuffix:@"xlsx"])
+            {
+                image = [UIImage imageNamed:@"xls_default.png"];
+            }
+            else
+            {
+                image = [UIImage imageNamed:@"default_default.png"];
+            }
             
-            [filesArray objectAtIndex:i];
+            AttachmentImageView *imageview = [[AttachmentImageView alloc]initWithImage:image];
+            CGRect frame = imageview.frame;
+            frame.origin.x = 35*i;
+            i++;
+            frame.origin.y = 3.5f;
+            frame.size.width = 30;
+            frame.size.height = 30;
+            imageview.frame = frame;
+            imageview.userInteractionEnabled = YES;
+            UIGestureRecognizer *tapGesture = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(showMenu:)];
+            [imageview addGestureRecognizer:tapGesture];
+            [attachView addSubview:imageview];
+            
         }
     }
 }
+
+-(void)showMenu:(UIGestureRecognizer*)sender
+{
+    AttachmentImageView *view = (AttachmentImageView*)sender.view;
+    NSArray *menuItems =
+    @[
+      
+      [KxMenuItem menuItem:@"ACTION MENU 1234456"
+                     image:nil
+                    target:nil
+                    action:NULL],
+      
+      [KxMenuItem menuItem:@"打开"
+                     image:[UIImage imageNamed:@"action_icon"]
+                    target:self
+                    action:@selector(pushMenuItem:)]
+      ];
+    
+    KxMenuItem *first = menuItems[0];
+    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+    first.alignment = NSTextAlignmentCenter;
+    
+    [KxMenu showMenuInView:self
+                  fromRect:view.frame
+                 menuItems:menuItems];
+}
+
+-(void)pushMenuItem:(id)sender
+{
+    
+}
+
 
 
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead {
@@ -185,8 +273,8 @@
     contentLabel.frame=CGRectMake(__offset+offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f-__offset, 0.0f);
     [contentLabel sizeToFit];
     
-    timeLabel.frame=CGRectMake(w-150.0f-OFFSET-__offset, CGRectGetMaxY(contentLabel.frame)+3.0f, 150.0f, 20.0f);
-    attachView.frame =CGRectMake(10, CGRectGetMaxY(contentLabel.frame)+3.0f, 200, 30);
+    timeLabel.frame=CGRectMake(w-150.0f-OFFSET-__offset, CGRectGetMaxY(contentLabel.frame)+8.0f, 150.0f, 20.0f);
+    attachView.frame =CGRectMake(offset, CGRectGetMaxY(contentLabel.frame)+3.0f, 220, 32);
 
 }
 

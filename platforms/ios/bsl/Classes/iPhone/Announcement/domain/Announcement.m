@@ -11,7 +11,7 @@
 #import "HTTPRequest.h"
 #import "NSObject+propertyList.h"
 #import "NSManagedObject+Repository.h"
-
+#import "JSONKit.h"
 
 @implementation Announcement
 
@@ -61,7 +61,7 @@
     NSString* noticeFiles=nil;
     if (module) {
         recordId=[module objectForKey:@"announceId"];
-        noticeFiles = [module valueForKey:@"noticeFiles"];
+        noticeFiles = [[module valueForKey:@"noticeFiles"] JSONString];
     }
     
     Announcement *announcement = [Announcement insert];

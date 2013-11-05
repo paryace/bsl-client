@@ -208,7 +208,7 @@
     }
     
     Announcement* announcent = [list objectAtIndex:[indexPath section]];
-    [cell title:announcent.title content:announcent.content time:announcent.reviceTime isRead:[announcent.isRead boolValue]];
+    [cell title:announcent.title content:announcent.content time:announcent.reviceTime isRead:[announcent.isRead boolValue] withAttachment:announcent.attachment];
     return cell;
     
 }

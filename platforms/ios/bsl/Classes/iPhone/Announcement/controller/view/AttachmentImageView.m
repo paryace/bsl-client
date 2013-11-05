@@ -7,9 +7,11 @@
 //
 
 #import "AttachmentImageView.h"
-
+#import "AttachMents.h"
 @implementation AttachmentImageView
-
+@synthesize fileName;
+@synthesize fileId;
+@synthesize fileSize;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -19,16 +21,15 @@
     }
     return self;
 }
--(AttachmentImageView*)showImageView:(NSString*)filesId
+-(void)openFile:(NSString*)attachmentId
 {
-    if(!fileId || filesId.length==0)
-    {
-        return nil;
-    }
-    
-    return self;
+    AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",attachmentId]];
+    NSString *realPath = [NSHomeDirectory() stringByAppendingPathComponent:[attachment filePath]];
+    CGRect frame = [[UIApplication sharedApplication]keyWindow].frame;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:realPath]];
+    webView = [[CubeWebViewController alloc]init];
+    [webView loadRequest:request withFrame:frame didFinishBlock:^{} didErrorBlock:^{}];
 }
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

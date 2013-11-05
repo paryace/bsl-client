@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Announcement" representedClassName="Announcement" syncable="YES">
+        <attribute name="activeTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="announcementId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="applicationId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attachment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="invalidTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="modifiedAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reviceTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="AttachMents" representedClassName="AttachMents" syncable="YES">
+        <attribute name="announceId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="filePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileSize" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="EBArticleLogInfo" syncable="YES">
+        <attribute name="filename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="operDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="operType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="staffNo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Ebook" syncable="YES">
+        <attribute name="bookId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bookName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bookType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="upTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HealthyDeclareLocalInfo" syncable="YES">
+        <attribute name="fltDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fltNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="staffNo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MessageRecord" representedClassName="MessageRecord" syncable="YES">
+        <attribute name="alert" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="allContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="badge" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="faceBackId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isIconBadge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isMessageBadge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="module" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reviceTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sound" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="store" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="warningId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="OperateLog" syncable="YES">
+        <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="datetime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="moduleName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="baseCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pilotFlag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workNo" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Announcement" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="EBArticleLogInfo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Ebook" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="HealthyDeclareLocalInfo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MessageRecord" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="OperateLog" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AttachMents" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

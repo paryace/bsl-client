@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CubeWebViewController.h"
 @interface AttachmentImageView : UIImageView{
-    NSString *fileName;
-    NSString *fileId;
-    NSString *fileSize;
-    
+    CubeWebViewController *webView;
 }
--(AttachmentImageView*)showImageView:(NSString*)fileId;
+@property(nonatomic,strong)NSString *fileName;
+@property(nonatomic,strong)NSString *fileId;
+@property(nonatomic,strong)NSString *fileSize;
 
+-(void)openFile:(NSString*)fileId;
 @end
