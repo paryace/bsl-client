@@ -69,10 +69,10 @@ function submit(){
 		}
 		cordova.exec(
 			function(){	
-				alert("注册成功"); 
+				// alert("注册成功"); 
 			}, 
 			function(err) {
-				alert("提交失败,请检查网络连接！");
+				// alert("提交失败,请检查网络连接！");
         	}
         , "DeviceRegister", submitType, [JSON.stringify(json)]);
 	}
