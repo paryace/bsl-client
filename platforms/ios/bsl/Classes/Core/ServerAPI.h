@@ -20,4 +20,6 @@
 //南航定制的业务同步模块
 +(NSString*)urlForSyncImpc;
 
++(NSString*)urlForGeoLocation:(NSString* )sessionKey;
+
 @end

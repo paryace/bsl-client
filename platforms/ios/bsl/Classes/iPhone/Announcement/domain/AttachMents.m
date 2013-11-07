@@ -20,7 +20,7 @@
 {
     NSString *url = [ServerAPI urlForAttachmentId:attachId];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *filePath = [[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"];
+    NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:self.fileName];
     BOOL flag = YES;
     NSFileManager *fm = [NSFileManager defaultManager];
     if(![fm fileExistsAtPath:filePath isDirectory:&flag])
@@ -32,7 +32,7 @@
     [request setPersistentConnectionTimeoutSeconds:30.0];
     [request setCompletionBlock:^{
         NSLog(@"download successfully");
-        self.filePath = [@"attachmens" stringByAppendingPathComponent:self.fileName];
+//        self.filePath = [@"attachmens" stringByAppendingPathComponent:self.fileName];
         [self save];
         
     }];

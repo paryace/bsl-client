@@ -12,9 +12,9 @@
 #import "UIColor+expanded.h"
 #import "AttachmentImageView.h"
 #import "AttachMents.h"
-#import "KxMenu.h"
+#import "KxMenueItemExt.h"
 @implementation AnnouncementTableViewCell
-
+@synthesize  delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -140,20 +140,24 @@
         NSMutableArray *filesArray = [files objectFromJSONString];
         int i=0;
         for (NSDictionary *dict in filesArray) {
-            NSDictionary *dict1 = [@"{\"fileId\":\"T1IaETBXZT1RCvBVdK\",\"fileName\":\"120.png\",\"fileSize\":22}" objectFromJSONString];
-            if([[dict1 JSONString]objectFromJSONString] == nil)
+//            NSDictionary *dict1 = [@"{\"fileId\":\"T1IaETBXZT1RCvBVdK\",\"fileName\":\"120.png\",\"fileSize\":22}" objectFromJSONString];
+            if([[dict JSONString]objectFromJSONString] == nil)
             {
                 NSLog(@"不是json 字符串");
                 return;
             }
-            NSString*fileName = [dict1 valueForKey:@"fileName"];
-            NSString*fileId = [dict1 valueForKey:@"fileId"];
-            NSString*fileSize =  [dict1 valueForKey:@"fileSize"];
-            AttachMents *attachment = [AttachMents insert];
-            attachment.fileName = fileName;
-            attachment.fileId = fileId;
-            attachment.fileSize = [NSNumber numberWithFloat:[fileSize floatValue]];
-            [attachment downloadFile:fileId];
+            NSString*fileName = [dict valueForKey:@"fileName"];
+            NSString*fileId = [dict valueForKey:@"fileId"];
+            NSString*fileSize =  [dict valueForKey:@"fileSize"];
+            AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",fileId]];
+            if(!attachment)
+            {
+                attachment = [AttachMents insert];
+                attachment.fileName = fileName;
+                attachment.fileId = fileId;
+                attachment.fileSize = [NSNumber numberWithFloat:[fileSize floatValue]];
+                [attachment downloadFile:fileId];
+            }
             //判断文件类型
             UIImage *image;
             if([fileName hasSuffix:@"pdf"])
@@ -182,6 +186,9 @@
             }
             
             AttachmentImageView *imageview = [[AttachmentImageView alloc]initWithImage:image];
+            imageview.fileId = fileId;
+            imageview.fileName = fileName;
+            imageview.fileSize = fileSize;
             CGRect frame = imageview.frame;
             frame.origin.x = 35*i;
             i++;
@@ -190,7 +197,9 @@
             frame.size.height = 30;
             imageview.frame = frame;
             imageview.userInteractionEnabled = YES;
-            UIGestureRecognizer *tapGesture = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(showMenu:)];
+            
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMenu:)];
+            tapGesture.numberOfTapsRequired=1;
             [imageview addGestureRecognizer:tapGesture];
             [attachView addSubview:imageview];
             
@@ -198,38 +207,44 @@
     }
 }
 
--(void)showMenu:(UIGestureRecognizer*)sender
+-(void)showMenu:(UITapGestureRecognizer*)sender
 {
     AttachmentImageView *view = (AttachmentImageView*)sender.view;
+    KxMenueItemExt *item =[KxMenueItemExt menuItem:@"打开"
+                   image:[UIImage imageNamed:@"action_icon"]
+                  target:self
+                  action:@selector(pushMenuItem:)
+                                        attachName:view.fileName attachId:view.fileId attachSize:view.fileSize
+     
+                       ];
     NSArray *menuItems =
     @[
       
-      [KxMenuItem menuItem:@"ACTION MENU 1234456"
+      [KxMenuItem menuItem:[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]
                      image:nil
                     target:nil
                     action:NULL],
+      item
       
-      [KxMenuItem menuItem:@"打开"
-                     image:[UIImage imageNamed:@"action_icon"]
-                    target:self
-                    action:@selector(pushMenuItem:)]
       ];
     
     KxMenuItem *first = menuItems[0];
     first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
     first.alignment = NSTextAlignmentCenter;
-    
+    CGRect frame = view.frame;
+    frame.origin.x +=frame.size.width;
+    frame.origin.y = view.superview.frame.origin.y;
     [KxMenu showMenuInView:self
-                  fromRect:view.frame
+                  fromRect:frame
                  menuItems:menuItems];
+    
 }
 
 -(void)pushMenuItem:(id)sender
 {
-    
+    KxMenueItemExt *item = (KxMenueItemExt*)sender;
+    [delegate openFile:item.fileId];
 }
-
-
 
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead {
     [self title:title content:content time:time isRead:isRead withAttachment:nil];

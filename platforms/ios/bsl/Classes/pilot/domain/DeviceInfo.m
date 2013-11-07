@@ -169,7 +169,7 @@ extern NSString* CTSettingCopyMyPhoneNumber();
         NSLog(@"totalSpace %llu MiB", ((totalSpace/1024ll)/1024ll));
     } else {  
         NSLog(@"Error Obtaining System Memory Info: Domain = %@, Code = %@", [error domain], [error code]);  
-    }  
+    }
     
     return totalSpace;
 }

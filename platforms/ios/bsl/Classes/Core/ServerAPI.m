@@ -79,6 +79,10 @@
      return [kServerURLString stringByAppendingFormat:@"/csair-system/api/system/mobile/accounts/logout/%@", sessionKey];
 }
 
++(NSString*)urlForGeoLocation:(NSString* )sessionKey
+{
+    return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/device/position/add?sessionKey=%@", sessionKey];
+}
 
 #endif
 

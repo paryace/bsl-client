@@ -7,11 +7,12 @@
 //
 
 #import "AnnouncementTableViewController.h"
-#import "AnnouncementTableViewCell.h"
 #import "NSManagedObject+Repository.h"
 #import "Announcement.h"
 #import "MessageRecord.h"
-
+#import "AttachMents.h"
+#import "ImageAttachViewController.h"
+#import "PDFViewController.h"
 @interface AnnouncementTableViewController ()<UITableViewDataSource,UITableViewDelegate>
 -(void)createRrightNavItem;
 -(void)rightNavClick;
@@ -38,6 +39,56 @@
 
     }
     return self;
+}
+-(void)openFile:(NSString*)attachmentId
+{
+    @autoreleasepool {
+        AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",attachmentId]];
+        NSString *fileName = attachment.fileName;
+        if([fileName hasSuffix:@"pdf"]||[fileName hasSuffix:@"txt"])
+        {
+            PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
+            viewcontroller.attachment = attachment;
+            [self.navigationController pushViewController:viewcontroller animated:YES];
+        }
+        else if ([fileName hasSuffix:@"jpg"] || [fileName hasSuffix:@"png"] || [fileName hasSuffix:@"jpeg"])
+        {
+            NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachment.fileName];
+            ImageAttachViewController *controller =  (ImageAttachViewController*)[[NSClassFromString(@"ImageAttachViewController") alloc] init];
+            controller.title =@"附件详情";
+            controller.filepath = filePath;
+            [self.navigationController pushViewController:controller animated:YES];
+            
+        }
+        else if([fileName hasSuffix:@"doc"] || [fileName hasSuffix:@"docx"])
+        {
+            
+        }
+        else if ([fileName hasSuffix:@"xls"] || [fileName hasSuffix:@"xlsx"])
+        {
+            
+        }
+        else
+        {
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+//        UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+//        
+//        CGRect frame = [[UIApplication sharedApplication]keyWindow].frame;
+//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:filePath]];
+//        
+//        [self.navigationController pushViewController:Nil animated:YES];
+        
+    }
+    
 }
 
 
@@ -203,6 +254,7 @@
     AnnouncementTableViewCell *cell = [__tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[AnnouncementTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.delegate = self;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
     }

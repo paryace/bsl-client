@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AnnouncementTableViewController : UIViewController{
+#import "AnnouncementTableViewCell.h"
+@interface AnnouncementTableViewController : UIViewController<OpenAttachmentDelegate>{
     NSTimer* delayLoadTimer;
     UITableView* tableView;
 }

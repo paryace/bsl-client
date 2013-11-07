@@ -31,6 +31,7 @@
            fromLocation:(CLLocation *)oldLocation
 {
     CLLocationCoordinate2D mylocation = newLocation.coordinate;//手机GPS
+
     
 }
 // 定位失败时调用

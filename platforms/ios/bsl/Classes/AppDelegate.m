@@ -55,7 +55,7 @@
 #import "IMServerAPI.h"
 #import "ChatLogic.h"
 #import "JSONKit.h"
-
+#import "ServerAPI.h"
 
 /**
  *      南航业务
@@ -74,7 +74,10 @@ void uncaughtExceptionHandler(NSException*exception){
 
 }
 
-@interface AppDelegate ()<UIApplicationDelegate,XMPPIMActorDelegate,UIAlertViewDelegate>
+@interface AppDelegate ()<UIApplicationDelegate,XMPPIMActorDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+}
 @property (assign,nonatomic) CFURLRef soundFileURLRef;
 @property (assign,nonatomic) SystemSoundID soundFileObject;
 
@@ -582,6 +585,7 @@ void uncaughtExceptionHandler(NSException*exception){
             NSString* urlStr = kUpdatePushTagsUrl;
             NSString *deviceID = [[UIDevice currentDevice] uniqueDeviceIdentifier];
             ASIFormDataRequest * tagRequest = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlStr]];
+            [tagRequest setPostValue:[defaults valueForKey:@"username"] forKey:@"alias"];
             [tagRequest setPostValue:deviceID forKey:@"deviceId"];
             [tagRequest setPostValue:kAPPKey forKey:@"appId"];
             [tagRequest setPostValue:updateTags forKey:@"tags"];
@@ -606,7 +610,8 @@ void uncaughtExceptionHandler(NSException*exception){
         [self setupXmppStream];
     [self updateCheckInTags];
     [self updateCollectionFriends];
-    
+//    [NSTimer timerWithTimeInterval:10.0f target:self selector:@selector(sendGeoInfo2Server) userInfo:nil repeats:YES];
+    [self performSelector:@selector(sendGeoInfo2Server) withObject:nil afterDelay:20.0f];
     //开启访问 获取到未收到的推送信息
     [[PushGetMessageInfo sharedInstance] updatePushMessage];
     [navControl popToRootViewControllerAnimated:NO];
@@ -689,4 +694,69 @@ void uncaughtExceptionHandler(NSException*exception){
     AudioServicesDisposeSystemSoundID (_soundFileObject);
     CFRelease (_soundFileURLRef);
 }
+
+-(void)sendGeoInfo2Server
+{
+    if([CLLocationManager locationServicesEnabled])
+    {
+        locationManager = [[CLLocationManager alloc] init];
+        [locationManager setDelegate:self ];
+        locationManager.distanceFilter=1000.0f;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [locationManager startUpdatingLocation]; // 开始定位
+    }
+    else
+    {
+        UIAlertView *alertView  = [[UIAlertView alloc]initWithTitle:nil message:@"没有给应用开启定位服务" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil ];
+        [alertView show];
+    }
+}
+// 定位成功时调用
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    CLLocationCoordinate2D mylocation = newLocation.coordinate;//手机GPS
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *sessionKey = [defaults valueForKey:@"token"];
+    NSURL *url = [NSURL URLWithString:[ServerAPI urlForGeoLocation:sessionKey]];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
+    NSString *deviceID = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    [dictionary setValue:deviceID forKey:@"deviceId"];
+    float longitude = mylocation.longitude;
+    float latitude = mylocation.latitude;
+    NSArray *postions = @[[NSNumber numberWithFloat:longitude],[NSNumber numberWithFloat:latitude]];
+    [dictionary setObject:postions forKey:@"position"];
+    NSMutableData * data = [NSMutableData dataWithData:[dictionary JSONData]];
+    [request addRequestHeader:@"Content-Type" value:@"application/json; encoding=utf-8"];
+    [request addRequestHeader:@"Accept" value:@"application/json"];
+    [request setRequestMethod:@"POST"];
+    [request setPostBody:data];
+    __block ASIHTTPRequest *_request = request;
+    [_request setCompletionBlock:^{
+        if([request responseStatusCode] == 200)
+        {
+            NSLog(@"geo data=======[%@]",[request responseString]);
+            NSLog(@"geoLocation successful");
+        }
+    }];
+    [_request setFailedBlock:^{
+        NSLog(@"geo data=======[%@]",[dictionary JSONString]);
+    }];
+    [request startAsynchronous];
+    
+    
+    
+}
+// 定位失败时调用
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
+    NSLog(@"定位失败－－－－－－");
+    
+}
+
+
+
+
 @end

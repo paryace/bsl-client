@@ -967,6 +967,18 @@
 		180F2389180D237D0037751C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F237F180D237D0037751C /* Default@2x.png */; };
 		18240E0D1803C6C400846FF9 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 18240E0C1803C6C400846FF9 /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
+		18617A2E182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
+		18617A2F182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
+		18617A30182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
+		18617A31182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
+		18617A32182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
+		18617A33182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
+		18617A36182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
+		18617A37182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
+		18617A38182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
+		18617A39182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
+		18617A3A182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
+		18617A3B182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
 		188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		18AFE15918274D55000462DB /* AttachmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE15818274D55000462DB /* AttachmentImageView.m */; };
@@ -1062,6 +1074,13 @@
 		18AFE1E31828F032000462DB /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1DF1828F032000462DB /* KxMenu.m */; };
 		18AFE1E41828F032000462DB /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1DF1828F032000462DB /* KxMenu.m */; };
 		18AFE1E51828F032000462DB /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1DF1828F032000462DB /* KxMenu.m */; };
+		18AFE1F21829E497000462DB /* KxMenueItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1F11829E497000462DB /* KxMenueItemExt.m */; };
+		18AFE1F31829E497000462DB /* KxMenueItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1F11829E497000462DB /* KxMenueItemExt.m */; };
+		18AFE1F41829E497000462DB /* KxMenueItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1F11829E497000462DB /* KxMenueItemExt.m */; };
+		18AFE1F51829E497000462DB /* KxMenueItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1F11829E497000462DB /* KxMenueItemExt.m */; };
+		18AFE1F61829E497000462DB /* KxMenueItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1F11829E497000462DB /* KxMenueItemExt.m */; };
+		18AFE1F71829E497000462DB /* KxMenueItemExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE1F11829E497000462DB /* KxMenueItemExt.m */; };
+		18AFE1F8182A0809000462DB /* AnnouncementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D800517E8BFBA0067A023 /* AnnouncementTableViewController.m */; };
 		18BE6C4418198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4518198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4618198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
@@ -1884,7 +1903,6 @@
 		39D9E9DA17F27C03001ED6F5 /* CloverTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FF717E8BFBA0067A023 /* CloverTabBar.m */; };
 		39D9E9DB17F27C03001ED6F5 /* SkinView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D7FFA17E8BFBA0067A023 /* SkinView.m */; };
 		39D9E9DC17F27C03001ED6F5 /* iphoneAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D800017E8BFBA0067A023 /* iphoneAboutViewController.m */; };
-		39D9E9DD17F27C03001ED6F5 /* AnnouncementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D800517E8BFBA0067A023 /* AnnouncementTableViewController.m */; };
 		39D9E9DE17F27C03001ED6F5 /* AnnouncementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D800917E8BFBA0067A023 /* AnnouncementTableViewCell.m */; };
 		39D9E9DF17F27C03001ED6F5 /* Announcement.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D800D17E8BFBA0067A023 /* Announcement.m */; };
 		39D9E9E017F27C03001ED6F5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D801117E8BFBA0067A023 /* BaseViewController.m */; };
@@ -3996,6 +4014,10 @@
 		18240E0C1803C6C400846FF9 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		18240E0E1803D04400846FF9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		18240E111804EBFC00846FF9 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18617A2C182A304600D85380 /* ImageAttachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAttachViewController.h; sourceTree = "<group>"; };
+		18617A2D182A304600D85380 /* ImageAttachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAttachViewController.m; sourceTree = "<group>"; };
+		18617A34182A822200D85380 /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
+		18617A35182A822200D85380 /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
 		188487F21807A41E0039F67F /* CubeAccountPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAccountPlugin.h; path = CubeAccount/CubeAccountPlugin.h; sourceTree = "<group>"; };
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
 		18AFE15718274D55000462DB /* AttachmentImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentImageView.h; sourceTree = "<group>"; };
@@ -4006,10 +4028,10 @@
 		18AFE17918287E30000462DB /* txt_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = txt_default.png; sourceTree = "<group>"; };
 		18AFE17A18287E30000462DB /* word_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = word_default.png; sourceTree = "<group>"; };
 		18AFE17B18287E30000462DB /* xls_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xls_default.png; sourceTree = "<group>"; };
-		18AFE18E18288117000462DB /* XMPP_Model 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "XMPP_Model 5.xcdatamodel"; sourceTree = "<group>"; };
+		18AFE18E18288117000462DB /* XMPP_Model 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "XMPP_Model 5.xcdatamodel"; sourceTree = "<group>"; };
 		18AFE18F182881F2000462DB /* AttachMents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachMents.h; sourceTree = "<group>"; };
 		18AFE190182881F2000462DB /* AttachMents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachMents.m; sourceTree = "<group>"; };
-		18AFE1971828845C000462DB /* cube1105.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = cube1105.xcdatamodel; sourceTree = "<group>"; };
+		18AFE1971828845C000462DB /* cube1105.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1105.xcdatamodel; sourceTree = "<group>"; };
 		18AFE1981828F01A000462DB /* action_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action_icon.png; sourceTree = "<group>"; };
 		18AFE1991828F01A000462DB /* action_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action_icon@2x.png"; sourceTree = "<group>"; };
 		18AFE19A1828F01A000462DB /* check_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_icon.png; sourceTree = "<group>"; };
@@ -4022,6 +4044,8 @@
 		18AFE1A11828F01A000462DB /* search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_icon@2x.png"; sourceTree = "<group>"; };
 		18AFE1DE1828F032000462DB /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
 		18AFE1DF1828F032000462DB /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
+		18AFE1F01829E497000462DB /* KxMenueItemExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenueItemExt.h; sourceTree = "<group>"; };
+		18AFE1F11829E497000462DB /* KxMenueItemExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenueItemExt.m; sourceTree = "<group>"; };
 		18BE6C4218198F1500D96581 /* XMPPIMActorFriendQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActorFriendQueue.h; sourceTree = "<group>"; };
 		18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActorFriendQueue.m; sourceTree = "<group>"; };
 		18E023801821FA7300AB6215 /* GeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLocation.h; sourceTree = "<group>"; };
@@ -7199,6 +7223,10 @@
 			children = (
 				F54D800417E8BFBA0067A023 /* AnnouncementTableViewController.h */,
 				F54D800517E8BFBA0067A023 /* AnnouncementTableViewController.m */,
+				18617A2C182A304600D85380 /* ImageAttachViewController.h */,
+				18617A2D182A304600D85380 /* ImageAttachViewController.m */,
+				18617A34182A822200D85380 /* PDFViewController.h */,
+				18617A35182A822200D85380 /* PDFViewController.m */,
 				F54D800717E8BFBA0067A023 /* view */,
 			);
 			path = controller;
@@ -7207,13 +7235,15 @@
 		F54D800717E8BFBA0067A023 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				18AFE1DE1828F032000462DB /* KxMenu.h */,
-				18AFE1DF1828F032000462DB /* KxMenu.m */,
 				18AFE17518287E30000462DB /* resources */,
 				F54D800817E8BFBA0067A023 /* AnnouncementTableViewCell.h */,
 				F54D800917E8BFBA0067A023 /* AnnouncementTableViewCell.m */,
 				18AFE15718274D55000462DB /* AttachmentImageView.h */,
 				18AFE15818274D55000462DB /* AttachmentImageView.m */,
+				18AFE1F01829E497000462DB /* KxMenueItemExt.h */,
+				18AFE1F11829E497000462DB /* KxMenueItemExt.m */,
+				18AFE1DE1828F032000462DB /* KxMenu.h */,
+				18AFE1DF1828F032000462DB /* KxMenu.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -11111,6 +11141,7 @@
 				180B817E1818A9B90091E3AE /* CubeCommandDispatcher.m in Sources */,
 				180B817F1818A9B90091E3AE /* CubeDownloadCommandHandler.m in Sources */,
 				180B81801818A9B90091E3AE /* WaitDialog.m in Sources */,
+				18617A33182A304600D85380 /* ImageAttachViewController.m in Sources */,
 				180B81811818A9B90091E3AE /* FPAnnexListViewController.m in Sources */,
 				180B81821818A9B90091E3AE /* BaseNavViewController.m in Sources */,
 				180B81831818A9B90091E3AE /* CubeMessageCommandHandler.m in Sources */,
@@ -11210,6 +11241,7 @@
 				180B81DE1818A9B90091E3AE /* LoginViewCell.m in Sources */,
 				180B81DF1818A9B90091E3AE /* FunctionDetailScrollViewWrapper.m in Sources */,
 				180B81E01818A9B90091E3AE /* FPFlightReportViewController.m in Sources */,
+				18617A3B182A822200D85380 /* PDFViewController.m in Sources */,
 				180B81E11818A9B90091E3AE /* FlightTaskQuery.m in Sources */,
 				180B81E21818A9B90091E3AE /* GTGZImageDownloadedManager.m in Sources */,
 				180B81E31818A9B90091E3AE /* IphoneDownloadingTableViewCell.m in Sources */,
@@ -11417,6 +11449,7 @@
 				180B82AA1818A9B90091E3AE /* UIView+GMGridViewAdditions.m in Sources */,
 				180B82AB1818A9B90091E3AE /* NSString+MD5Addition.m in Sources */,
 				180B82AC1818A9B90091E3AE /* UIDevice+IdentifierAddition.m in Sources */,
+				18AFE1F71829E497000462DB /* KxMenueItemExt.m in Sources */,
 				180B82AD1818A9B90091E3AE /* AsyncImageView.m in Sources */,
 				180B82AE1818A9B90091E3AE /* Cache.m in Sources */,
 				180B82AF1818A9B90091E3AE /* DownloadManager.m in Sources */,
@@ -11526,6 +11559,7 @@
 				F54D82DC17E8BFBB0067A023 /* NativePageControl.m in Sources */,
 				F54D82DD17E8BFBB0067A023 /* NSMutableDictionary+SortedAllkeys.m in Sources */,
 				F54D82DE17E8BFBB0067A023 /* DownloadingTableViewCell.m in Sources */,
+				18617A36182A822200D85380 /* PDFViewController.m in Sources */,
 				F54D82E017E8BFBB0067A023 /* FunctionDetailScrollView.m in Sources */,
 				F5A96C4717F006B400F9CA68 /* CDVNotification.m in Sources */,
 				F54D82E117E8BFBB0067A023 /* FunctionDetailScrollViewWrapper.m in Sources */,
@@ -11584,12 +11618,14 @@
 				F54D837017E8BFBB0067A023 /* MessageRecordHeaderView.m in Sources */,
 				F54D837217E8BFBB0067A023 /* MessageRecordTableViewCell.m in Sources */,
 				F54D837417E8BFBB0067A023 /* MessageRecord.m in Sources */,
+				18617A2E182A304600D85380 /* ImageAttachViewController.m in Sources */,
 				F54D837517E8BFBB0067A023 /* MessageRecordManager.m in Sources */,
 				F54D837617E8BFBB0067A023 /* RemoteDebuggerViewController.m in Sources */,
 				3968622A17EE7D1D00C84A6A /* ContactListView.m in Sources */,
 				F54D837717E8BFBB0067A023 /* DownloadedAsync.m in Sources */,
 				39F02A0C1807C3B300051656 /* VoiceUploadManager.m in Sources */,
 				F54D837817E8BFBB0067A023 /* ThreadTask.m in Sources */,
+				18AFE1F21829E497000462DB /* KxMenueItemExt.m in Sources */,
 				F54D837917E8BFBB0067A023 /* AboutViewController.m in Sources */,
 				F54D837D17E8BFBB0067A023 /* SettingMainViewController.m in Sources */,
 				F5A96C4917F006B400F9CA68 /* CDVFileTransfer.m in Sources */,
@@ -11716,6 +11752,7 @@
 				18E9C4B11803AB1200B874B8 /* FPWeatherMapViewController.m in Sources */,
 				18E9C4E91803AB1200B874B8 /* HealthyDeclareLocalInfo.m in Sources */,
 				18BE6C4718198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */,
+				18AFE1F8182A0809000462DB /* AnnouncementTableViewController.m in Sources */,
 				18E9C4671803AB1200B874B8 /* CAS-TAS.m in Sources */,
 				18E9C4A91803AB1200B874B8 /* FPPicDownloader.m in Sources */,
 				18E9C4D91803AB1200B874B8 /* AirPath.m in Sources */,
@@ -11731,7 +11768,6 @@
 				39D9E9DA17F27C03001ED6F5 /* CloverTabBar.m in Sources */,
 				39D9E9DB17F27C03001ED6F5 /* SkinView.m in Sources */,
 				39D9E9DC17F27C03001ED6F5 /* iphoneAboutViewController.m in Sources */,
-				39D9E9DD17F27C03001ED6F5 /* AnnouncementTableViewController.m in Sources */,
 				39D9E9DE17F27C03001ED6F5 /* AnnouncementTableViewCell.m in Sources */,
 				18E9C4FC1803AB1200B874B8 /* NSFileManager+ex_enumeratorAtURL.m in Sources */,
 				39D9E9DF17F27C03001ED6F5 /* Announcement.m in Sources */,
@@ -11760,6 +11796,7 @@
 				18E9C4EE1803AB1200B874B8 /* PushParam.m in Sources */,
 				18E9C4E11803AB1200B874B8 /* EBArticleLogInfo.m in Sources */,
 				39D9E9E717F27C03001ED6F5 /* FunctionDetailScrollView.m in Sources */,
+				18617A31182A304600D85380 /* ImageAttachViewController.m in Sources */,
 				39D9E9E817F27C03001ED6F5 /* CDVNotification.m in Sources */,
 				18AFE194182881F2000462DB /* AttachMents.m in Sources */,
 				18E9C4BC1803AB1200B874B8 /* LoginViewCell.m in Sources */,
@@ -11930,6 +11967,7 @@
 				18E9C4951803AB1200B874B8 /* FPSymptomExpressionViewController.m in Sources */,
 				18E9C4C11803AB1200B874B8 /* PilotLoginViewController.m in Sources */,
 				39D9EA3317F27C03001ED6F5 /* CubeModuleOperatorPlugin.m in Sources */,
+				18AFE1F51829E497000462DB /* KxMenueItemExt.m in Sources */,
 				39D9EA3417F27C03001ED6F5 /* CubeModulePlugin.m in Sources */,
 				18E9C5061803AB1200B874B8 /* ReaderMainToolbar.m in Sources */,
 				39D9EA3517F27C03001ED6F5 /* InformationPlugin.m in Sources */,
@@ -11995,6 +12033,7 @@
 				39D9EA5C17F27C03001ED6F5 /* UIImage+Resize.m in Sources */,
 				18E9C59C1803AB1200B874B8 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
 				18E9C4AE1803AB1200B874B8 /* FPWeatherInfoCell.m in Sources */,
+				18617A39182A822200D85380 /* PDFViewController.m in Sources */,
 				39D9EA5D17F27C03001ED6F5 /* UIView+ViewID.m in Sources */,
 				18E9C4F61803AB1200B874B8 /* NewPDFDownloadListViewController.m in Sources */,
 				18E9C4881803AB1200B874B8 /* FPFlightNoticeCell.m in Sources */,
@@ -12071,6 +12110,7 @@
 				39E052B617F00AEA00BCF7F8 /* SkinView.m in Sources */,
 				39E052B717F00AEA00BCF7F8 /* iphoneAboutViewController.m in Sources */,
 				39E052B817F00AEA00BCF7F8 /* AnnouncementTableViewController.m in Sources */,
+				18AFE1F31829E497000462DB /* KxMenueItemExt.m in Sources */,
 				39E052B917F00AEA00BCF7F8 /* AnnouncementTableViewCell.m in Sources */,
 				39E052BA17F00AEA00BCF7F8 /* Announcement.m in Sources */,
 				39E052BB17F00AEA00BCF7F8 /* BaseViewController.m in Sources */,
@@ -12142,10 +12182,12 @@
 				39E0530317F00AEA00BCF7F8 /* ContactListView.m in Sources */,
 				39E0530417F00AEA00BCF7F8 /* DownloadedAsync.m in Sources */,
 				39F02A0D1807C3B300051656 /* VoiceUploadManager.m in Sources */,
+				18617A37182A822200D85380 /* PDFViewController.m in Sources */,
 				39E0530517F00AEA00BCF7F8 /* ThreadTask.m in Sources */,
 				39E0530617F00AEA00BCF7F8 /* AboutViewController.m in Sources */,
 				39E0530717F00AEA00BCF7F8 /* SettingMainViewController.m in Sources */,
 				39E0530817F00AEA00BCF7F8 /* CDVFileTransfer.m in Sources */,
+				18617A2F182A304600D85380 /* ImageAttachViewController.m in Sources */,
 				39E0530917F00AEA00BCF7F8 /* SettingsViewController.m in Sources */,
 				18E023831821FA7300AB6215 /* GeoLocation.m in Sources */,
 				39E0530A17F00AEA00BCF7F8 /* SetttingIMViewController.m in Sources */,
@@ -12243,6 +12285,7 @@
 				39E9C5B5180EBAAA004CEF1D /* SkinView.m in Sources */,
 				39E9C5B6180EBAAA004CEF1D /* iphoneAboutViewController.m in Sources */,
 				39E9C5B7180EBAAA004CEF1D /* AnnouncementTableViewController.m in Sources */,
+				18AFE1F61829E497000462DB /* KxMenueItemExt.m in Sources */,
 				39E9C5B8180EBAAA004CEF1D /* AnnouncementTableViewCell.m in Sources */,
 				39E9C5B9180EBAAA004CEF1D /* Announcement.m in Sources */,
 				39E9C5BA180EBAAA004CEF1D /* BaseViewController.m in Sources */,
@@ -12314,10 +12357,12 @@
 				39E9C5F8180EBAAA004CEF1D /* ContactListView.m in Sources */,
 				39E9C5F9180EBAAA004CEF1D /* DownloadedAsync.m in Sources */,
 				39E9C5FA180EBAAA004CEF1D /* ThreadTask.m in Sources */,
+				18617A3A182A822200D85380 /* PDFViewController.m in Sources */,
 				39E9C5FB180EBAAA004CEF1D /* VoiceUploadManager.m in Sources */,
 				39E9C5FC180EBAAA004CEF1D /* AboutViewController.m in Sources */,
 				39E9C5FD180EBAAA004CEF1D /* SettingMainViewController.m in Sources */,
 				39E9C5FE180EBAAA004CEF1D /* CDVFileTransfer.m in Sources */,
+				18617A32182A304600D85380 /* ImageAttachViewController.m in Sources */,
 				39E9C5FF180EBAAA004CEF1D /* SettingsViewController.m in Sources */,
 				18E023861821FA7300AB6215 /* GeoLocation.m in Sources */,
 				39E9C600180EBAAA004CEF1D /* SetttingIMViewController.m in Sources */,
@@ -12415,6 +12460,7 @@
 				39FF0B7017F13CBB0086B76C /* SkinView.m in Sources */,
 				39FF0B7117F13CBB0086B76C /* iphoneAboutViewController.m in Sources */,
 				39FF0B7217F13CBB0086B76C /* AnnouncementTableViewController.m in Sources */,
+				18AFE1F41829E497000462DB /* KxMenueItemExt.m in Sources */,
 				39FF0B7317F13CBB0086B76C /* AnnouncementTableViewCell.m in Sources */,
 				39FF0B7417F13CBB0086B76C /* Announcement.m in Sources */,
 				39FF0B7517F13CBB0086B76C /* BaseViewController.m in Sources */,
@@ -12486,10 +12532,12 @@
 				39FF0BBB17F13CBB0086B76C /* ContactListView.m in Sources */,
 				39FF0BBC17F13CBB0086B76C /* DownloadedAsync.m in Sources */,
 				39FF0BBD17F13CBB0086B76C /* ThreadTask.m in Sources */,
+				18617A38182A822200D85380 /* PDFViewController.m in Sources */,
 				39F02A0E1807C3B300051656 /* VoiceUploadManager.m in Sources */,
 				39FF0BBE17F13CBB0086B76C /* AboutViewController.m in Sources */,
 				39FF0BBF17F13CBB0086B76C /* SettingMainViewController.m in Sources */,
 				39FF0BC017F13CBB0086B76C /* CDVFileTransfer.m in Sources */,
+				18617A30182A304600D85380 /* ImageAttachViewController.m in Sources */,
 				39FF0BC117F13CBB0086B76C /* SettingsViewController.m in Sources */,
 				18E023841821FA7300AB6215 /* GeoLocation.m in Sources */,
 				39FF0BC217F13CBB0086B76C /* SetttingIMViewController.m in Sources */,
@@ -12816,7 +12864,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -12853,7 +12901,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -61,7 +61,11 @@
     NSString* noticeFiles=nil;
     if (module) {
         recordId=[module objectForKey:@"announceId"];
-        noticeFiles = [[module valueForKey:@"noticeFiles"] JSONString];
+        if([module valueForKey:@"noticeFiles"] != [NSNull null])
+        {
+            noticeFiles = [[module valueForKey:@"noticeFiles"] JSONString];
+        }
+        
     }
     
     Announcement *announcement = [Announcement insert];
