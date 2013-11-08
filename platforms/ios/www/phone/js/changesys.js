@@ -63,7 +63,7 @@ var changesys = {
     },
     //取消登陆
     onLoginCanceled:function(){
-
+        $("#change_sys_submit").html("提交");
     },
     //登陆失败
     onLoginFail:function(){
