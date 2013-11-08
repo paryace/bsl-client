@@ -1,128 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-<meta charset="utf-8">
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="Gorphen Su">
-<!-- Le styles -->
-
-<script type="text/javascript" src="../cordova.js"></script>
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<link href="css/gridview.css" rel="stylesheet">
-<link href="css/small.css" rel="stylesheet" media="screen and(max-device-width:320px)">
-
-
-</head>
-<body>
-	<div class="topContent">
-
-			<div id="top_left_btn" 
-				class="left_btn">
-				<!-- <img class="set_img" src="img/set.png"> btn btn-primary -->
-			</div>
-
-		<h3 id="title">南航移动应用</h3>
-			<div id="manager_btn" type="button"
-				class="right_btn btn btn-primary">管理</div>
-	</div>
-	<div id="wrapper">
-		<div id="scroller">
-			<div class="searchContent">
-				<div class="inputContent">
-					<span class="icon-search"></span> 
-					<input id="searchInput"
-						type="text" class="search-query" placeholder="搜索">
-					<div class="del_content">
-			            <img id="search_del" src="img/app_search_close.ing"></img>
-			        </div>
-				</div>
-				<div class="layout_bt_group btn-group" data-toggle="buttons-radio">
-					<div id="gridview_btn" class="active btn" data-toggle="button">
-						<!-- <i class="icon-th-large"></i> -->
-					</div>
-					<div id="listview_btn" class="btn" data-toggle="button">
-						<!-- <i class="icon-th-list"></i> -->
-					</div>
-				</div>
-				 <div class="account_content">
-					<!-- <h4>欢迎光临</h4> -->
-				</div>
-			</div>
-
-			<div class="mainContent">
-				<ul id="myul" class="scrollContent nav nav-list">
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<div class="buttomContent">
-		<div class="buttom_btn_group btn-group">
-			<div data="uninstall" class="btn active">未安装</div>
-			<div data="install" class="btn">已安装</div>
-			<div data="upgrade" class="btn">待更新</div>
-		</div>
-	</div>
-
-</body>
-
-
-<script id="t2" type="text/html"> 
-	<li class="scrollContent_li" modules_title="<%=muduleTitle%>">
-		<h5><%=muduleTitle%></h5>
-		<div class="module_div">
-			<ul num="<%=tag%>" class="module_div_ul">
-				
-			</ul>
-		</div>
-	</li>
-</script>
-<!--		<img src="img/update_icon.png" 
-				<%if(updatable==true){%>style="display:block"<%}else{%>style="display:none"<%}%>-->
-<script id="module_div_ul" type="text/html">
-	<li class="module_li" moduleType="<%=moduleType%>"  identifier="<%=identifier%>" hidden="<%=hidden%>">
-		
-		<div class="module_li_img">
-				<img src="<%=icon%>" onerror="this.src='img/default_icon2.ing'">
-				<div class="progress progress-striped active" identifier="<%=identifier%>">
-  					<div class="bar"></div>
-  				</div>
-		</div>
-		
-		<div class="module_push">
-			<div class="module_UpdateTips">
-					<img src="img/update_icon.ing" 
-				<%if(updatable==true){%>style="display:block"<%}else{%>style="display:none"<%}%>
-				>
-			</div>
-			<div class="module_Tips" moduletype="<%=moduleType%>" identifier="<%=identifier%>"  <%if(msgCount!==0  && moduleType ==="main"){%>style="display:inline"<%}else{%>style="display:none"<%}%>><%=msgCount%>
-			</div>
-		</div>
-		<div class="detail">
-			<div class="module_li_titlename">
-				<%=name%></div>
-			<div class="module_li_version"><%=version%></div>
-			<div class="module_li_releasenote"><%=releasenote%></div>
-		</div>
-
-		<div class="icon-chevron-right"></div>
-		<button class="curd_btn btn-mini" type="button" local="<%=local%>" moduleType="<%=moduleType%>" identifier="<%=identifier%>"><%=btn_title%></button>
-
-	</li>
-</script>
-
-<script src="vendor/zepto/zepto.js"></script>
-<script src="vendor/zepto/touch.js"></script>
-<script src="vendor/underscore-min.js"></script>
-<script src="vendor/iscroll-lite.js"></script>
-<script type="text/javascript" src="vendor/fastclick/fastclick.js"></script>
-<script src="js/setiscroll.js"></script>
-<script src="js/util.js"></script>
-<script src="js/main.js"></script>
-<!-- <script src="http://10.108.1.54:8888/target/target-script-min.js#anonymous"></script> -->
+    
+    <head>
+        <meta charset="utf-8">
+            <title></title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="description" content="">
+            <meta name="author" content="Gorphen Su">
+            <script type="text/javascript" src="../cordova.js"></script>
+            <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <link href="css/main.css" rel="stylesheet">
+            <link href="css/gridview.css" rel="stylesheet">
+            <link href="css/small.css" rel="stylesheet" media="screen and(max-device-width:320px)">
+            <link href="css/changesyslogin.css" rel="stylesheet"  />
+    </head>
+    <body>
+        <div class="topContent">
+            
+            <div id="top_left_btn"
+                class="left_btn">
+                <!-- <img class="set_img" src="img/set.png"> btn btn-primary -->
+            </div>
+            
+            <h3 id="title">南航移动应用</h3>
+            <select id="sysSelect" style="hidden">
+                <option>南航移动应用</option>
+                <option>移动保障</option>
+            </select>
+            <div id="manager_btn" type="button"
+                class="right_btn btn btn-primary">管理</div>
+        </div>
+        <div id="wrapper">
+            <div id="scroller">
+                <div class="searchContent">
+                    <div class="inputContent">
+                        <span class="icon-search"></span>
+                        <input id="searchInput"
+                            type="text" class="search-query" placeholder="搜索">
+                            <div class="del_content">
+                                <img id="search_del" src="img/app_search_close.ing"></img>
+                            </div>
+                            </div>
+                    <div class="layout_bt_group btn-group" data-toggle="buttons-radio">
+                        <div id="gridview_btn" class="active btn" data-toggle="button">
+                            <!-- <i class="icon-th-large"></i> -->
+                        </div>
+                        <div id="listview_btn" class="btn" data-toggle="button">
+                            <!-- <i class="icon-th-list"></i> -->
+                        </div>
+                    </div>
+                    <div class="account_content">
+                        <!-- <h4>欢迎光临</h4> -->
+                    </div>
+                </div>
+                
+                <div class="mainContent">
+                    <ul id="myul" class="scrollContent nav nav-list">
+                        
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div id="change_sys_login_wrapper">
+            
+            <div id="change_sys_login" class="centerWindow">
+                <h4 id="change_sys_login_title" style="text-align:center;color:white">登陆</h4>
+                <div class="input_field" style="border-top-right-radius: 6px;border-top-left-radius: 6px;">
+                    <span id="username_lab">账&nbsp;&nbsp;号:</span><input type="text" class="change_sys_input" id="username" name="username" value=""  placeholder="请输入账号">
+                        </div>
+                <div class="input_field" style="border-bottom-right-radius: 6px;border-bottom-left-radius: 6px;border-bottom: 1px solid gray;">
+                    <span id="password_lab">密&nbsp;&nbsp;码:</span><input class="change_sys_input" id="password" name="password" type="password" value="" placeholder="请输入密码"  autocomplete="off">
+                        </div>
+                <button id="change_sys_submit" type="button" class="btn change_sys_login_btn" style="margin-right:5px">提交</button>
+                <button id="change_sys_cancel" type="button" class="btn change_sys_login_btn">取消</button>
+            </div>
+        </div>
+        
+        
+        <div class="buttomContent">
+            <div class="buttom_btn_group btn-group">
+                <div data="uninstall" class="btn active">未安装</div>
+                <div data="install" class="btn">已安装</div>
+                <div data="upgrade" class="btn">待更新</div>
+            </div>
+        </div>
+        
+        
+    </body>
+    
+    
+    <script id="t2" type="text/html">
+        <li class="scrollContent_li" modules_title="<%=muduleTitle%>">
+        <h5><%=muduleTitle%></h5>
+        <div class="module_div">
+        <ul num="<%=tag%>" class="module_div_ul">
+        
+        </ul>
+        </div>
+        </li>
+        </script>
+    <!--        <img src="img/update_icon.png"
+     <%if(updatable==true){%>style="display:block"<%}else{%>style="display:none"<%}%>-->
+    <script id="module_div_ul" type="text/html">
+        <li class="module_li" moduleType="<%=moduleType%>"  identifier="<%=identifier%>" hidden="<%=hidden%>">
+        
+        <div class="module_li_img">
+        <img src="<%=icon%>" onerror="this.src='img/default_icon2.ing'">
+        <div class="progress progress-striped active" identifier="<%=identifier%>">
+        <div class="bar"></div>
+        </div>
+        </div>
+        
+        <div class="module_push">
+        <div class="module_UpdateTips">
+        <img src="img/update_icon.ing"
+        <%if(updatable==true){%>style="display:block"<%}else{%>style="display:none"<%}%>
+        >
+        </div>
+        <div class="module_Tips" moduletype="<%=moduleType%>" identifier="<%=identifier%>"  <%if(msgCount!==0  && moduleType ==="main"){%>style="display:inline"<%}else{%>style="display:none"<%}%>><%=msgCount%>
+        </div>
+        </div>
+        <div class="detail">
+        <div class="module_li_titlename">
+        <%=name%></div>
+        <div class="module_li_version"><%=version%></div>
+        <div class="module_li_releasenote"><%=releasenote%></div>
+        </div>
+        
+        <div class="icon-chevron-right"></div>
+        <button class="curd_btn btn-mini" type="button" local="<%=local%>" moduleType="<%=moduleType%>" identifier="<%=identifier%>"><%=btn_title%></button>
+        
+        </li>
+        </script>
+    
+    <script src="vendor/zepto/zepto.js"></script>
+    <script src="vendor/zepto/touch.js"></script>
+    <script src="vendor/underscore-min.js"></script>
+    <script src="vendor/iscroll-lite.js"></script>
+    <script type="text/javascript" src="vendor/fastclick/fastclick.js"></script>
+    <script src="js/setiscroll.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/changesys.js"></script>
+    <!-- <script src="http://10.108.1.54:8888/target/target-script-min.js#anonymous"></script> -->
 </html>

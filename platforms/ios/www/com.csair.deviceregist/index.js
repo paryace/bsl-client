@@ -8,7 +8,7 @@ document.addEventListener("deviceready", function(){
 		console.info("cancel");
 		cancel();
 	});
-	//testData();
+	// testData();
 }, false);
 
 //测试用
@@ -87,6 +87,7 @@ function cancel(){
 				function(err) {
 	        	}
 	        , "DeviceRegister", "redirectMain", []);
+		window.location.href="index.html?cube-action=pop";
 	}
 }
 

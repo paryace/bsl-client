@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
   <head> 
-    <title>天气信息</title> 
+    <title>设备注册</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -86,6 +86,7 @@
 <body>
     <div class="content">
     <img src="images/logo.png" style="width:200px;margin-bottom:10px">
+    <div>为了正常的系统使用,您需要进行设备注册</div>
     <div id="regist" style="height:100%;">
        <div style="padding-bottom:10px;font-size:13pt;">
         <form id="weather-form" style="margin-bottom:10px">
@@ -116,13 +117,18 @@
               </div>
               <div class="cube-form-field">
                 <div class="cube-form-label" >设备来源:</div>
-                <div class="cube-form-textfield"><input type="text" required name="deviceSrc"/></div>
+                <div class="cube-form-textfield">
+                  <span>
+                    <input type="radio" name="deviceSrc" value="公司配发" style="width:16px" required/>公司配发 
+                    <input type="radio" name="deviceSrc" value="自备设备" style="width:16px" required/>自备设备
+                  <span>
+                </div>
               </div>
             </div>
           </div>
         </form>
         <button id="submitBtn" class="btn btn-large" style="width:100%">提交</button>
-        <a id="cancelBtn" href="../com.csair.deviceregist/index.html?cube-action=pop" cube-action="pop" class="btn btn-large" style="width:98.5%;margin-top:8px">取消</a>
+        <button id="cancelBtn"  class="btn btn-large" style="width:100%">取消</button>
       </div>
   </div>
 </div>
