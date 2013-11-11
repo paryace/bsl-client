@@ -69,6 +69,11 @@ $("#LoginBtn").click(function() {
 	if (isRemember === undefined) {
 		isRemember = "false";
 	}
+	//是否启用离线登陆
+	var isOffLine = $('#isOffLine:checked').val();
+	if(isOffLine === undefined){
+		isOffLine = "false";
+	}
 
 
 	cordova.exec(function(data) {
@@ -80,7 +85,7 @@ $("#LoginBtn").click(function() {
 
 		err = $.parseJSON(err);
 		$("#LoginBtn").removeAttr("disabled");
-	}, "CubeLogin", "login", [username, password, isRemember]);
+	}, "CubeLogin", "login", [username, password, isRemember, isOffLine]);
 
 });
 
@@ -132,6 +137,11 @@ var app = {
 				$("#isRemember").attr("checked", 'checked');
 				//myPsw = data.password;
 			}
+			
+			if (data.isOffLine === true) {
+				$("#isOffLine").attr("checked", 'checked');
+			}
+
 			myPsw = data.password;
             $("#realpsw").val(data.password);
             

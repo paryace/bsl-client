@@ -1,4 +1,5 @@
 var me;
+var preSelected;
 var changesys = {
     initialize:function(){
         me = this;
@@ -10,8 +11,9 @@ var changesys = {
     },
     bindEvents:function(){
         $("#title").bind("click",function(){
-                         $("#sysSelect").focus();
-                         })
+            $("#sysSelect").focus();
+            preSelected = $("#sysSelect").val();
+        });
         
         $("#sysSelect").bind("change",function(){
             me.showLoginView(this.value);
@@ -23,7 +25,11 @@ var changesys = {
     },
     getSysInfo:function(callback){
         if(this.hasCordova()){
-            callback();
+            cordova.exec(function(data) {
+                callback();
+            }, function(err) {
+                alert(err);
+            }, "ExtroSystem", "listAllExtroSystem", []);
         }
     },
     hasCordova:function(){
@@ -47,27 +53,33 @@ var changesys = {
             $("#change_sys_submit").html("取消");
             me.onLoginSuccess();
         });
+
         $("#change_sys_cancel").unbind("click");
         $("#change_sys_cancel").bind("click",function(){
              console.log("关闭窗口");
              $("#change_sys_login_wrapper").find("input").val("");
              $("#wrapper").click();
+             $("#sysSelect").val(preSelected);
              $("#change_sys_login_wrapper").hide();
-        })
+        });
     },
     //登陆成功
-    onLoginSuccess:function(){
-       var sysName = $("#sysSelect").val(); 
-       $("#title").html(sysName);
+    onLoginSuccess:function(sysName){
+       $("#title").html(sysName+"▼");
        $("#change_sys_login_wrapper").hide();
     },
     //取消登陆
     onLoginCanceled:function(){
         $("#change_sys_submit").html("提交");
+        cordova.exec(function(data) {
+                
+            }, function(err) {
+                alert(err);
+            }, "CubeLogin", "cancelLogin", []);
     },
     //登陆失败
     onLoginFail:function(){
-        
+        $("#change_sys_submit").html("提交");
     }
 }
 
