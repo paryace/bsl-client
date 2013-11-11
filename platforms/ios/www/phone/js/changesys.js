@@ -27,6 +27,15 @@ var changesys = {
         if(this.hasCordova()){
             cordova.exec(function(data) {
                 callback();
+                var sysList = [];
+                //清空选项
+                $("#sysSelect").html("");
+                //插入选项
+                var option = "";
+                for(var i = 0; i < sysList.length; i++){
+                     option += "<option>"+sysList[i]+"</option>";
+                }
+                $("#sysSelect").html(option);
             }, function(err) {
                 alert(err);
             }, "ExtroSystem", "listAllExtroSystem", []);
