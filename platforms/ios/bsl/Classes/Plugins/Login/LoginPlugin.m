@@ -11,7 +11,9 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "ServerAPI.h"
 #import "HTTPRequest.h"
-
+#import "SystemInfo.h"
+#import "MultiUserInfo.h"
+#import "NSString+MD5Addition.h"
 @implementation LoginPlugin
 /**
  *	@author 	张国东
@@ -28,7 +30,7 @@
         NSMutableDictionary *json = [NSMutableDictionary dictionary];
         [json setValue:[defaults objectForKey:@"username"] forKey:@"username"];
         [json setValue:[defaults objectForKey:@"password"]  forKey:@"password"];
-   
+        [json setValue:[NSNumber numberWithBool:[defaults boolForKey:@"isOffLogin"]] forKey:@"isOffLine"];
         [json setValue: [NSNumber numberWithBool:switchIsOn] forKey:@"isRemember"];
 
         CDVPluginResult* pluginResult = nil;
@@ -60,13 +62,136 @@
     NSString* userName =  [command.arguments objectAtIndex:0];
     NSString* userPass =  [command.arguments objectAtIndex:1];
     NSString* userSwithch =  [command.arguments objectAtIndex:2];
+    NSString* isOffLogin = [command.arguments objectAtIndex:3];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if ([userSwithch boolValue]) {
+        [defaults setBool:YES forKey:@"switchIsOn"];
+        [defaults setObject:userName forKey:@"loginUsername"];
+        [defaults setObject:userPass forKey:@"loginPassword"];
+        [defaults setObject:userName forKey:@"LoginUser"];
+        [defaults setObject:userName forKey:@"username"];
+        [defaults setObject:userPass forKey:@"password"];
+        
+        
+    }else{
+        [defaults setBool:NO forKey:@"switchIsOn"];
+        [defaults setObject:userName forKey:@"loginUsername"];
+        [defaults setObject:userName forKey:@"LoginUser"];
+        [defaults setObject:userName forKey:@"username"];
+        
+    }
+    if([isOffLogin boolValue])
+    {
+        [defaults setBool:YES forKey:@"isOffLogin"];
+        [defaults setObject:[NSNumber numberWithBool:YES] forKey:@"offLineSwitch"];
+    }
+    else
+    {
+        [defaults setBool:NO forKey:@"isOffLogin"];
+        [defaults setObject:[NSNumber numberWithBool:NO] forKey:@"offLineSwitch"];
+    }
+    [defaults synchronize];
+    if(![isOffLogin boolValue])
+    {
+        [self didLoginAndSaveData:userName withPwd:userPass withSystemId:nil andswitchIsOn:userSwithch andPluginCommon:command];
+    }
+    else
+    {
+        NSString *md5Str = [[[userName stringByAppendingString:@"-"]stringByAppendingString:userPass]stringFromMD5];
+        NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@",md5Str]];
+        if(!userArray)
+        {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alertView show];
+            alertView = nil;
+        }
+        else
+        {
+            if(!_options)
+            {
+                _options = [[NSMutableArray alloc]initWithCapacity:0];
+            }
+            else
+            {
+                [_options removeLastObject];
+            }
+            NSMutableArray *systemIds = [[NSMutableArray alloc]initWithCapacity:0];
+            for(MultiUserInfo *user in userArray) {
+                if(user.systemId)
+                {
+                    [systemIds addObject:user.systemId];
+                }
+            }
+            NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+            for (SystemInfo * system in temArray) {
+                for (NSString *sysId in systemIds) {
+                    if([sysId isEqualToString:system.systemId])
+                    {
+                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:system.systemName,@"text" ,sysId,@"systemId",nil];
+                        [_options addObject:dictonary];
+                    }
+                }
+            }
+            if(_options.count>0)
+            {
+                LeveyPopListView *lplv = [[LeveyPopListView alloc] initWithTitle:@"子系统" options:_options];
+                lplv.delegate = self;
+                [lplv showInView:[[UIApplication sharedApplication]keyWindow] animated:YES];
+                
+            }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alertView show];
+                alertView = nil;
+            }
+            
+        }
+    }
     
+    
+}
+- (void)leveyPopListView:(LeveyPopListView *)popListView didSelectedIndex:(NSInteger)anIndex
+{
+    NSDictionary *dictionary = [_options objectAtIndex:anIndex];
+    NSString *systemId = [dictionary valueForKey:@"systemId"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userName = [defaults valueForKey:@"LoginUser"];
+    NSString *userPass = [defaults valueForKey:@"loginPassword"];
+    popListView.hidden = YES;
+    NSString* swithIsOn = [defaults valueForKey:@"switchIsOn"];
+    [_options removeAllObjects];
+    if([defaults boolForKey:@"isOffLogin"])
+    {
+        [defaults setObject:@"" forKey:@"token"];
+        [defaults setObject:userName forKey:@"loginUsername"];
+        [defaults setObject:userPass forKey:@"loginPassword"];
+        [defaults setObject:userName forKey:@"LoginUser"];
+        [defaults setValue:systemId forKey:@"systemId"];
+        [defaults synchronize];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate didOffLogin];
+        
+    }
+    else
+    {
+        [self didLoginAndSaveData:userName withPwd:userPass withSystemId:systemId andswitchIsOn:swithIsOn andPluginCommon:nil];
+
+    }
+    
+}
+
+-(void)didLoginAndSaveData:(NSString*)userName withPwd:(NSString*)userPass withSystemId:(NSString*)sysId andswitchIsOn:(NSString*)swithIsOn andPluginCommon:(CDVInvokedUrlCommand*)command
+{
     if ([userName isEqualToString:@""] || [userPass isEqualToString:@""]) {
         UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"用户名或密码不能为空！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
         
-        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        if(command)
+        {
+            CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
     }else{
         if(![SVProgressHUD isVisible]){
             [SVProgressHUD showWithStatus:@"正在登录..."  maskType:SVProgressHUDMaskTypeGradient ];
@@ -75,21 +200,24 @@
         [httRequest setCompletionBlock:nil];
         [httRequest setFailedBlock:nil];
         [httRequest cancel];
-
-        FormDataRequest* request = [FormDataRequest requestWithURL:[NSURL URLWithString:[ServerAPI urlForLogin]]];
+        
+        FormDataRequest* request = [FormDataRequest requestWithURL:[NSURL URLWithString:[ServerAPI urlForNewLogin]]];
         httRequest=request;
         __block FormDataRequest*  __request=request;
-
+        
         request.timeOutSeconds=120.0f;
         request.persistentConnectionTimeoutSeconds=120.0f;
         [request setPostValue:kAPPKey forKey:@"appKey"];
         [request setPostValue:userName forKey:@"username"];
         [request setPostValue:userPass forKey:@"password"];
         [request setPostValue:[[UIDevice currentDevice] uniqueDeviceIdentifier]  forKey:@"deviceId"];
-
-        [request setPostValue:[[NSBundle mainBundle]bundleIdentifier] forKey:@"appId"];
+        if(sysId)
+        {
+            [request setPostValue:sysId forKey:@"sysId"];
+        }
+        [request setPostValue:[[NSBundle mainBundle]bundleIdentifier] forKey:@"appIdentify"];
         
-
+        
         [request setFailedBlock:^{
             httRequest=nil;
             if([SVProgressHUD isVisible]){
@@ -100,8 +228,12 @@
             NSMutableDictionary *json = [NSMutableDictionary dictionary];
             [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
             [json setValue:@"连接服务器失败！" forKey:@"message"];
-            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            if(command)
+            {
+                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                
+            }
             [__request cancel];
             
         }];
@@ -110,100 +242,193 @@
             httRequest=nil;
             if([__request responseStatusCode] == 404){
                 [SVProgressHUD showErrorWithStatus:@"连接服务器失败！" ];
-
+                
                 [__request cancel];
                 return ;
             }
             if([SVProgressHUD isVisible]){
                 [SVProgressHUD dismiss];
             }
-
+            
             NSData* data = [__request responseData];
             NSDictionary* messageDictionary = [data objectFromJSONData];
-            NSString* message = [messageDictionary objectForKey:@"message"];
-            if (message !=nil) {
-                if([SVProgressHUD isVisible]){
-                    [SVProgressHUD dismiss];
+            NSString* message = [messageDictionary objectForKey:@"loginOK"];
+            NSString *tips = [messageDictionary objectForKey:@"errmsg"];
+            NSString *currentSysId=@"";
+            if([SVProgressHUD isVisible]){
+                [SVProgressHUD dismiss];
+            }
+            if(![message boolValue]&& nil != tips)
+            {
+                
+                if(command)
+                {
+                    NSMutableDictionary *json = [NSMutableDictionary dictionary];
+                    [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+                    [json setValue:tips  forKey:@"message"];
+                    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                 }
-                UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"用户名或密码不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 alert=nil;
-            }else{
-            NSString* messageAlert =   [messageDictionary objectForKey:@"message"];
-            NSNumber* number =  [messageDictionary objectForKey:@"result"];
-            if ([number boolValue]) {
-                if([[messageDictionary valueForKey:@"hasOperation"] isEqualToString:@"false"])
-                {
-                    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户没有操作权限请联系管理员" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                    [alert show];
-                    alert=nil;
-                    return;
-                }
-//                NSMutableDictionary *json = [NSMutableDictionary dictionary];
-//                [json setValue:@"true" forKey:@"isSuccess"];
-//                
-//                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsString:json.JSONString];
-//                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-//                return;
-                NSString* token = [messageDictionary objectForKey:@"sessionKey"];
-                                                
-                NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+                return;
                 
-                if ([userSwithch boolValue]) {
-                    [defaults setBool:YES forKey:@"switchIsOn"];
-                    [defaults setObject:userName forKey:@"username"];
-                    [defaults setObject:userPass forKey:@"password"];
+            }
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+            if (![message boolValue] && [[messageDictionary valueForKey:@"showOpt"]boolValue]) {
+                _options = [[NSMutableArray alloc]initWithCapacity:0];
+                NSArray *systems =[messageDictionary objectForKey:@"authSysList"];
+                NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+                
+                for (NSDictionary *dict in systems) {
+                    NSString* systemId = [dict valueForKey:@"id"];
+                    if(temArray && temArray.count >0)
+                    {
+                        for (SystemInfo *sys in temArray) {
+                            if([sys.systemId isEqualToString:systemId])
+                            {
+                                NSString* systemName = [dict valueForKey:@"sysName"];
+                                NSString* alias = [dict valueForKey:@"alias"];
+                                NSString* curr = [dict valueForKey:@"curr"];
+                                NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"text" ,systemId,@"systemId",nil];
+                                [_options addObject:dictonary];
+                                sys.alias= alias;
+                                sys.curr = [NSNumber numberWithBool:[curr boolValue]];
+                                if([curr boolValue])
+                                {
+                                    currentSysId =systemId;
+                                }
+                                sys.systemName=  systemName;
+                                sys.username = userName;
+                                [sys save];
+                            }
+                        }
+                    }
+                    else
+                    {
+                        SystemInfo *system  = [SystemInfo insert];
+                        
+                        NSString* systemName = [dict valueForKey:@"sysName"];
+                        NSString* alias = [dict valueForKey:@"alias"];
+                        NSString* curr = [dict valueForKey:@"curr"];
+                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"text" ,systemId,@"systemId",nil];
+                        [_options addObject:dictonary];
+                        system.systemId = systemId;
+                        system.alias= alias;
+                        system.curr = [NSNumber numberWithBool:[curr boolValue]];
+                        if([curr boolValue])
+                        {
+                            currentSysId =systemId;
+                        }
+                        system.systemName=  systemName;
+                        system.username = userName;
+                        [system save];
+                    }
+                    
+                }
+                LeveyPopListView *lplv = [[LeveyPopListView alloc] initWithTitle:@"子系统" options:_options];
+                lplv.delegate = self;
+                [lplv showInView:[[UIApplication sharedApplication]keyWindow] animated:YES];
+                
+            }
+            else
+            {
+                
+                NSNumber* number =  [messageDictionary objectForKey:@"loginOK"];
+                if ([number boolValue])
+                {
+                    NSString* token = [messageDictionary objectForKey:@"sessionKey"];
+                    
+                    //------------------------------------------------------------------------------------------
+                    NSArray *systems =[messageDictionary objectForKey:@"authSysList"];
+                    NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+                    
+                    for (NSDictionary *dict in systems) {
+                        NSString* systemId = [dict valueForKey:@"id"];
+                        if(temArray && temArray.count >0)
+                        {
+                            for (SystemInfo *sys in temArray) {
+                                if([sys.systemId isEqualToString:systemId])
+                                {
+                                    NSString* systemName = [dict valueForKey:@"sysName"];
+                                    NSString* alias = [dict valueForKey:@"alias"];
+                                    NSString* curr = [dict valueForKey:@"curr"];
+                                    sys.alias= alias;
+                                    sys.curr = [NSNumber numberWithBool:[curr boolValue]];
+                                    if([curr boolValue])
+                                    {
+                                        currentSysId =systemId;
+                                    }
+                                    sys.systemName=  systemName;
+                                    sys.username = userName;
+                                    [sys save];
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                    [defaults setObject:token forKey:@"token"];
+                    [defaults setObject:[messageDictionary objectForKey:@"phone"] forKey:@"phone"];
+                    [defaults setObject:[messageDictionary objectForKey:@"sex"] forKey:@"sex"];
+                    [defaults setObject:[messageDictionary objectForKey:@"zhName"] forKey:@"zhName"];
+                    [defaults setObject:[messageDictionary objectForKey:@"privileges"] forKey:@"privileges"];
+                    //end ================
+                    [defaults setValue:currentSysId forKey:@"systemId"];
+                    [defaults synchronize];
+  
+                    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                    NSArray *tmpArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"systemId=%@",currentSysId]];
+                    if(tmpArray && tmpArray.count >0)
+                    {
+                        MultiUserInfo *user= [tmpArray objectAtIndex:0];
+                        user.username = userName;
+                        user.password = userPass;
+                        user.systemId = currentSysId;
+                        user.md5Str = [[user.username stringByAppendingFormat:@"-%@",user.password ]stringFromMD5];
+                        [user save];
+                    }
+                    else
+                    {
+                        MultiUserInfo *user = [MultiUserInfo insert];
+                        user.username = userName;
+                        user.password = userPass;
+                        user.systemId = currentSysId;
+                        user.md5Str = [[user.username stringByAppendingFormat:@"-%@",user.password ]stringFromMD5];
+                        [user save];
+                    }
+                    [appDelegate didLogin];
                 }else{
-                    [defaults setObject:userName forKey:@"username"];
-                    [defaults setObject:@"" forKey:@"password"];
-                    [defaults setBool:NO forKey:@"switchIsOn"];
+                    NSString* messageAlert =   [messageDictionary objectForKey:@"errmsg"];
+                    if ([messageAlert length] <= 0) {
+                        messageAlert = @"服务器出错，请联系管理员！";
+                    }
+                    NSMutableDictionary *json = [NSMutableDictionary dictionary];
+                    [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+                    [json setValue:messageAlert  forKey:@"message"];
+                    if(command)
+                    {
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    }
                 }
-                //------------------------------------------------------------------------------------------
-
-                [defaults setObject:userName forKey:@"loginUsername"];
-                [defaults setObject:userPass forKey:@"loginPassword"];
-                
-                [defaults setObject:token forKey:@"token"];
-                [defaults setObject:userName forKey:@"LoginUser"];
-                [defaults setObject:[messageDictionary objectForKey:@"phone"] forKey:@"phone"];
-                [defaults setObject:[messageDictionary objectForKey:@"sex"] forKey:@"sex"];
-                [defaults setObject:[messageDictionary objectForKey:@"zhName"] forKey:@"zhName"];
-                [defaults setObject:[messageDictionary objectForKey:@"privileges"] forKey:@"privileges"];
-                //end ================
-                
-                [defaults synchronize];
-                
-                
-                
-                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [appDelegate didLogin];
-
-            }else{
-                if([[messageDictionary valueForKey:@"result"] isEqualToString:@"false"])
-                {
-                    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:@"用户名或密码不正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                    [alert show];
-                    alert=nil;
-                }
-                if ([messageAlert length] <= 0) {
-                    messageAlert = @"服务器出错，请联系管理员！";
-                }
-                NSMutableDictionary *json = [NSMutableDictionary dictionary];
-                [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
-                [json setValue:messageAlert  forKey:@"message"];
-                
-                CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
-                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
                 
             }
             [__request cancel];
-
-                
-            }
+            
         }];
         [request startAsynchronous];
     }
+}
+-(void)canceLogin:(CDVInvokedUrlCommand*)command
+{
+    [httRequest cancel];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT messageAsString:@""];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+- (void)leveyPopListViewDidCancel
+{
 }
 
 @end

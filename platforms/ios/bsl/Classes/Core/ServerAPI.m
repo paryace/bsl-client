@@ -29,6 +29,9 @@
 +(NSString*)urlForLogin {
     return kServerLoginURLString;
 }
++(NSString*)urlForNewLogin {
+    return [kServerURLString stringByAppendingString:@"/csair-extension/api/csairauth/login"];
+}
 
 +(NSString*)urlForSync {
     return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/clients/ios/%@/%@/", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
@@ -83,7 +86,9 @@
 {
     return [kServerURLString stringByAppendingFormat:@"/csair-mam/api/mam/device/position/add?sessionKey=%@", sessionKey];
 }
-
++(NSString*)urlForNewLogin {
+    return [kServerURLString stringByAppendingString:@"/csair-extension/api/csairauth/login"];
+}
 #endif
 
 @end

@@ -63,7 +63,7 @@
 //全局预安装模块
 -(void)loadGlobalApplication;
 -(void)removeGlobalApplication;
-
+-(void)loadApplicatioFromURL:(NSURL*)aurl;
 @end
 
 extern NSString* const CubeSyncClickNotification;

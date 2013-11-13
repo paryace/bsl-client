@@ -89,7 +89,7 @@
     [contentLabel sizeToFit];
 
     
-    float height=CGRectGetMaxY(contentLabel.frame)+3.0f+40.0f;
+    float height=CGRectGetMaxY(contentLabel.frame)+3.0f+40.0f+30.0f;
     titleLabel=nil;
     contentLabel=nil;
     return height;
@@ -210,41 +210,53 @@
 -(void)showMenu:(UITapGestureRecognizer*)sender
 {
     AttachmentImageView *view = (AttachmentImageView*)sender.view;
-    KxMenueItemExt *item =[KxMenueItemExt menuItem:@"打开"
-                   image:[UIImage imageNamed:@"action_icon"]
-                  target:self
-                  action:@selector(pushMenuItem:)
-                                        attachName:view.fileName attachId:view.fileId attachSize:view.fileSize
-     
-                       ];
-    NSArray *menuItems =
-    @[
-      
-      [KxMenuItem menuItem:[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]
-                     image:nil
-                    target:nil
-                    action:NULL],
-      item
-      
-      ];
-    
-    KxMenuItem *first = menuItems[0];
-    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
-    first.alignment = NSTextAlignmentCenter;
-    CGRect frame = view.frame;
-    frame.origin.x +=frame.size.width;
-    frame.origin.y = view.superview.frame.origin.y;
-    [KxMenu showMenuInView:self
-                  fromRect:frame
-                 menuItems:menuItems];
+    currentFileId = view.fileId;
+    NSString *tips = [NSString stringWithFormat:@"你确定要打开%@?",[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]];
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alertView show];
+//    KxMenueItemExt *item =[KxMenueItemExt menuItem:@"打开"
+//                   image:[UIImage imageNamed:@"action_icon"]
+//                  target:self
+//                  action:@selector(pushMenuItem:)
+//                                        attachName:view.fileName attachId:view.fileId attachSize:view.fileSize
+//     
+//                       ];
+//    NSArray *menuItems =
+//    @[
+//      
+//      [KxMenuItem menuItem:[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]
+//                     image:nil
+//                    target:nil
+//                    action:NULL],
+//      item
+//      
+//      ];
+//    
+//    KxMenuItem *first = menuItems[0];
+//    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+//    first.alignment = NSTextAlignmentCenter;
+//    CGRect frame = view.frame;
+//    frame.origin.x +=frame.size.width;
+//    frame.origin.y = view.superview.frame.origin.y;
+//    [KxMenu showMenuInView:self
+//                  fromRect:frame
+//                 menuItems:menuItems];
     
 }
 
--(void)pushMenuItem:(id)sender
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    KxMenueItemExt *item = (KxMenueItemExt*)sender;
-    [delegate openFile:item.fileId];
+    if(buttonIndex == 0)
+    {
+        [delegate openFile:currentFileId];
+    }
 }
+
+//-(void)pushMenuItem:(id)sender
+//{
+//    KxMenueItemExt *item = (KxMenueItemExt*)sender;
+//    [delegate openFile:item.fileId];
+//}
 
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead {
     [self title:title content:content time:time isRead:isRead withAttachment:nil];
@@ -289,7 +301,7 @@
     [contentLabel sizeToFit];
     
     timeLabel.frame=CGRectMake(w-150.0f-OFFSET-__offset, CGRectGetMaxY(contentLabel.frame)+8.0f, 150.0f, 20.0f);
-    attachView.frame =CGRectMake(offset, CGRectGetMaxY(contentLabel.frame)+3.0f, 220, 32);
+    attachView.frame =CGRectMake(offset, CGRectGetMaxY(contentLabel.frame)+5.0f, 220, 32);
 
 }
 

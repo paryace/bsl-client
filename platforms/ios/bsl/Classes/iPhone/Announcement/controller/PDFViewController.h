@@ -10,7 +10,8 @@
 #import "AttachMents.h"
 @interface PDFViewController : UIViewController
 {
-    UIWebView *webView;
+    UIWebView *webview;
+    UITextView *label;
 }
 @property(nonatomic,strong)AttachMents* attachment;
 @end

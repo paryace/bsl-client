@@ -161,7 +161,6 @@
         }
         else{
             [navRightButton setTitle:@"群聊" forState:UIControlStateNormal];
-            navRightButton.hidden = YES;
             
         }
         [[navRightButton titleLabel] setFont:[UIFont systemFontOfSize:13]];

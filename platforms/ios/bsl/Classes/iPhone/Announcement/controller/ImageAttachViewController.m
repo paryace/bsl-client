@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     imageView = [[MRZoomScrollView alloc]initWithFrame:self.view.frame ];
     [self.view addSubview:imageView];
     if(filepath)

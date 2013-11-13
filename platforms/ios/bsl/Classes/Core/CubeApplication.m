@@ -36,8 +36,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 
 //运行时配置文件路径
 #define RUNTIME_CFG_URL [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:@"Cube.json"]
-#define RUNTIME_CFG_USER_URL(A) [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"Cube_%@.json",A]]
-
+#define RUNTIME_CFG_USER_URL(A,B) [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"Cube_%@_%@.json",A,B]]
 
 
 #define BUNDLE_CFG_URL [[NSBundle mainBundle] URLForResource:@"Cube" withExtension:@"json"]
@@ -263,8 +262,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     if (ManagerUsers) {
         NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
         NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-        
-        return [FS fileExistsAtPath:[RUNTIME_CFG_USER_URL(stringUser) path]];
+        NSString* systemId = [userDefaults valueForKey:@"systemId"];
+        return [FS fileExistsAtPath:[RUNTIME_CFG_USER_URL(stringUser,systemId) path]];
     }else{
         return [FS fileExistsAtPath:[RUNTIME_CFG_URL path]];
     }
@@ -453,7 +452,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     if (ManagerUsers) {
         NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
         NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-        success = [jsonString writeToURL:RUNTIME_CFG_USER_URL(stringUser) atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        NSString* systemId = [userDefaults valueForKey:@"systemId"];
+        success = [jsonString writeToURL:RUNTIME_CFG_USER_URL(stringUser,systemId) atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }else{
         success = [jsonString writeToURL:RUNTIME_CFG_URL atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }
@@ -516,7 +516,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     if (self.installed) {
             NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
             NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser);
+            NSString* systemId = [userDefaults valueForKey:@"systemId"];
+            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser,systemId);
             [self loadApplicatioFromURL:cubeURL];
     }
     

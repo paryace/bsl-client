@@ -638,6 +638,31 @@ void uncaughtExceptionHandler(NSException*exception){
     }
 }
 
+-(void)didOffLogin
+{
+    [navControl popToRootViewControllerAnimated:NO];
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone){
+        [self.navControl popToRootViewControllerAnimated:NO];
+        
+        Main_IphoneViewController* main=[[Main_IphoneViewController alloc] init];
+        //         UINavigationController *__navControl =[[[NSBundle mainBundle] loadNibNamed:@"MainNewWindow" owner:self options:nil] objectAtIndex:0];
+        //        self.window.rootViewController = __navControl;
+        main.navController=self.navControl;
+        UIView* view=main.view;
+        view=nil;
+        main=nil;
+    }else{
+        
+        [self.navControl popToRootViewControllerAnimated:NO];
+        MainViewViewController* main=[[MainViewViewController alloc] init];
+        main.navController=self.navControl;
+        //this isvery import
+        UIView* view=main.view;
+        view=nil;
+        //
+        main=nil;
+    }
+}
 
 
 -(void)setupXmppStream{

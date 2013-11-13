@@ -53,7 +53,7 @@
         }
         else if ([fileName hasSuffix:@"jpg"] || [fileName hasSuffix:@"png"] || [fileName hasSuffix:@"jpeg"])
         {
-            NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachment.fileName];
+            NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachment.fileId];
             ImageAttachViewController *controller =  (ImageAttachViewController*)[[NSClassFromString(@"ImageAttachViewController") alloc] init];
             controller.title =@"附件详情";
             controller.filepath = filePath;

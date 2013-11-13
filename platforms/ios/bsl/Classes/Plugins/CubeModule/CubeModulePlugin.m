@@ -9,6 +9,8 @@
 #import "CubeModulePlugin.h"
 #import "JSONKit.h"
 #import "MessageRecord.h"
+#import "NSFileManager+Extra.h"
+#define RUNTIME_CFG_USER_URL(A,B) [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"Cube_%@_%@.json",A,B]]
 
 @implementation CubeModulePlugin
 
@@ -88,6 +90,15 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DISMISS_VIEW" object:[NSNumber numberWithInt:1]];
     CubeApplication *cubeApp = [CubeApplication currentApplication];
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"isOffLogin"])
+    {
+        NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+        NSString*systemId = [userDefaults valueForKey:@"systemId"];
+        NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser,systemId);
+        [cubeApp loadApplicatioFromURL:cubeURL];
+    }
+
     //循环获取所有安装模块的category
     NSMutableDictionary *moduleCategoryDictionary = [self getCategoryFromArray:cubeApp.modules];
     
@@ -157,7 +168,7 @@
         [jsonCube  setObject:each.version forKey:@"version"];
    
         [jsonCube setObject:[NSNumber numberWithBool:each.hidden] forKey:@"hidden"];
-        [jsonCube  setObject:each.releaseNote forKey:@"releaseNote"];
+        [jsonCube  setObject:each.releaseNote?each.releaseNote:@"" forKey:@"releaseNote"];
         [jsonCube  setObject:each.category forKey:@"category"];
         if ([each.local length]>0)
         {

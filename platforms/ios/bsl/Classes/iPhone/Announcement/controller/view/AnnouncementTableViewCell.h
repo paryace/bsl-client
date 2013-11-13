@@ -14,7 +14,7 @@
 @required
 -(void)openFile:(NSString*)attachmentId;
 @end
-@interface AnnouncementTableViewCell : UITableViewCell{
+@interface AnnouncementTableViewCell : UITableViewCell<UIAlertViewDelegate>{
     UIView* bgView;
     UILabel* titleLabel;
     UILabel* contentLabel;
@@ -22,6 +22,7 @@
     UILabel* timeLabel;
     UIView* lineView;
     UIView *attachView;
+    NSString *currentFileId;
     __unsafe_unretained id <OpenAttachmentDelegate> delegate;
 }
 @property(nonatomic,assign)id <OpenAttachmentDelegate> delegate;

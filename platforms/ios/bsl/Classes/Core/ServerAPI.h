@@ -21,5 +21,5 @@
 +(NSString*)urlForSyncImpc;
 
 +(NSString*)urlForGeoLocation:(NSString* )sessionKey;
-
++(NSString*)urlForNewLogin;
 @end

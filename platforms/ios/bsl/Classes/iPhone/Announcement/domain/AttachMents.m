@@ -20,7 +20,11 @@
 {
     NSString *url = [ServerAPI urlForAttachmentId:attachId];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:self.fileName];
+    if([self.fileName hasSuffix:@"pdf"])
+    {
+        attachId = [NSString stringWithFormat:@"%@.pdf",attachId];
+    }
+    NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachId];
     BOOL flag = YES;
     NSFileManager *fm = [NSFileManager defaultManager];
     if(![fm fileExistsAtPath:filePath isDirectory:&flag])

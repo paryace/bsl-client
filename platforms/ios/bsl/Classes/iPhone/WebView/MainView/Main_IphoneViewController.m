@@ -219,7 +219,11 @@
         [self autoShowModule];
         isFirst = true;
     }
-    [self checkModules];
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"isOffLogin"])
+    {
+        [self checkModules];
+    }
+    
 }
 
 -(void)checkModules{

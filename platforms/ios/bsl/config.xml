@@ -31,6 +31,9 @@
     <feature name="CubeLogin">
         <param name="ios-package" value="LoginPlugin" />
     </feature>
+    <feature name="ExtroSystem">
+        <param name="ios-package" value="ExtroSystemPlugin" />
+    </feature>
     <feature name="Information">
         <param name="ios-package" value="InformationPlugin" />
     </feature>
