@@ -7,7 +7,8 @@ var changesys = {
     },
     onDeviceReady:function(){
         // this.getSysInfo(this.bindEvents);
-        me.bindEvents();
+        me.getSysInfo(me.bindEvents);
+        // me.bindEvents();
     },
     bindEvents:function(){
         $("#title").bind("click",function(){
@@ -16,6 +17,7 @@ var changesys = {
         });
         
         $("#sysSelect").bind("change",function(){
+            alert("change");
             me.showLoginView(this.value);
         })
     },
@@ -26,16 +28,22 @@ var changesys = {
     getSysInfo:function(callback){
         if(this.hasCordova()){
             cordova.exec(function(data) {
-                callback();
-                var sysList = [];
+                // var sysList = ["南航统一移动应用","OA验证"];
+                var sysList = JSON.parse(data);
                 //清空选项
                 $("#sysSelect").html("");
                 //插入选项
                 var option = "";
+                var currSysName = "";
                 for(var i = 0; i < sysList.length; i++){
-                     option += "<option>"+sysList[i]+"</option>";
+                     option += "<option>"+sysList[i].sysName+"</option>";
+                     if(sysList[i].curr){
+                        currSysName = sysList[i].sysName;
+                     }
                 }
+                $("#title").html(currSysName)
                 $("#sysSelect").html(option);
+                callback();
             }, function(err) {
                 alert(err);
             }, "ExtroSystem", "listAllExtroSystem", []);
