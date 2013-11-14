@@ -28,8 +28,14 @@
         NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
         [dictionary setValue:system.username forKey:@"username"];
         [dictionary setValue:system.systemId forKey:@"sysId"];
-        [dictionary setValue:system.systemName forKey:@"sysnName"];
+        [dictionary setValue:system.systemName forKey:@"sysName"];
         [dictionary setValue:system.alias forKey:@"alias"];
+        
+        NSNumber *curr = [NSNumber numberWithInt:1];
+        if([system.curr isEqualToNumber:curr]){
+           [dictionary setValue:system.curr forKey:@"curr"];
+        }
+        
         [backArray addObject:dictionary];
     }
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[backArray JSONString]];

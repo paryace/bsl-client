@@ -13,6 +13,17 @@
             <link href="css/gridview.css" rel="stylesheet">
             <link href="css/small.css" rel="stylesheet" media="screen and(max-device-width:320px)">
             <link href="css/changesyslogin.css" rel="stylesheet"  />
+            
+            <script type="text/javascript">
+                // try {window.WeinreServerId = location.hash.split("#")[1]} catch(e) {window.WeinreServerId = "anonymous"}
+                // setTimeout(function() {
+                //     var weinrejs = document.createElement('script');
+                //     weinrejs.setAttribute('type', 'text/javascript');
+                //     weinrejs.setAttribute('src', 'http://192.168.1.140:8080/target/target-script-min.js#anonymous');
+                //     document.head.appendChild(weinrejs);
+                // }, 3000);
+            </script>
+
     </head>
     <body>
         <div class="topContent">
@@ -70,10 +81,10 @@
             <div id="change_sys_login" class="centerWindow">
                 <h4 id="change_sys_login_title" style="text-align:center;color:white">登陆</h4>
                 <div class="input_field" style="border-top-right-radius: 6px;border-top-left-radius: 6px;">
-                    <span id="username_lab">账&nbsp;&nbsp;号:</span><input type="text" class="change_sys_input" id="username" name="username" value=""  placeholder="请输入账号">
+                    <span id="username_lab" class="change_sys_label">账&nbsp;&nbsp;号:</span><input type="text" class="change_sys_input" id="username" name="username" value=""  placeholder="请输入账号">
                         </div>
                 <div class="input_field" style="border-bottom-right-radius: 6px;border-bottom-left-radius: 6px;border-bottom: 1px solid gray;">
-                    <span id="password_lab">密&nbsp;&nbsp;码:</span><input class="change_sys_input" id="password" name="password" type="password" value="" placeholder="请输入密码"  autocomplete="off">
+                    <span id="password_lab" class="change_sys_label">密&nbsp;&nbsp;码:</span><input class="change_sys_input" id="password" name="password" type="password" value="" placeholder="请输入密码"  autocomplete="off">
                         </div>
                 <button id="change_sys_submit" type="button" class="btn change_sys_login_btn" style="margin-right:5px">提交</button>
                 <button id="change_sys_cancel" type="button" class="btn change_sys_login_btn">关闭</button>

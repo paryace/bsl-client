@@ -1,13 +1,15 @@
-var me;
 var preSelected;
 var changesys = {
+
+    sysList:[],
+
     initialize:function(){
-        me = this;
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady:function(){
         // this.getSysInfo(this.bindEvents);
-        me.bindEvents();
+        changesys.getSysInfo(changesys.bindEvents);
+        // changesys.bindEvents();
     },
     bindEvents:function(){
         $("#title").bind("click",function(){
@@ -15,8 +17,16 @@ var changesys = {
             preSelected = $("#sysSelect").val();
         });
         
-        $("#sysSelect").bind("change",function(){
-            me.showLoginView(this.value);
+        $("#sysSelect").bind("change",function(e){
+            var sysId = "";
+            var options = $("#sysSelect").find("option")
+            for(var i = 0; i < options.length; i++){
+                var option = $(options[i]);
+                if(option.html() == this.value){
+                    sysId = option.attr("data-sysid");
+                }
+            }
+            changesys.showLoginView(sysId,this.value);
         })
     },
     disableEvents:function(){
@@ -26,16 +36,24 @@ var changesys = {
     getSysInfo:function(callback){
         if(this.hasCordova()){
             cordova.exec(function(data) {
-                callback();
-                var sysList = [];
+                // var sysList = ["南航统一移动应用","OA验证"];
+                var sysList = JSON.parse(data);
+                changesys.sysList = sysList;
                 //清空选项
                 $("#sysSelect").html("");
                 //插入选项
                 var option = "";
+                var currSysName = "";
                 for(var i = 0; i < sysList.length; i++){
-                     option += "<option>"+sysList[i]+"</option>";
+                     option += "<option data-sysid='"+sysList[i].sysId+"'>"+sysList[i].sysName+"</option>";
+                     if(sysList[i].curr){
+                        currSysName = sysList[i].sysName;
+                     }
                 }
+                $("#title").html(currSysName);
                 $("#sysSelect").html(option);
+                $("#sysSelect").val(currSysName);
+                callback();
             }, function(err) {
                 alert(err);
             }, "ExtroSystem", "listAllExtroSystem", []);
@@ -50,7 +68,7 @@ var changesys = {
         }
     },
     //显示登陆框
-    showLoginView:function(title){
+    showLoginView:function(sysId,title){
         $("#change_sys_login_title").html("登陆"+title);
 
         // $("#username").click();
@@ -60,7 +78,17 @@ var changesys = {
         $("#change_sys_submit").bind("click",function(){
             console.log("提交登陆信息");
             $("#change_sys_submit").html("取消");
-            me.onLoginSuccess();
+            var username = $("#username").val();
+            var password = $("#password").val();
+            // cordova.exec(function(data) {
+            //     data = $.parseJSON(data);
+            //     alert(data);
+            //     changesys.onLoginSuccess();
+            // }, function(err) {
+            //     err = $.parseJSON(err);
+            //     alert(err);
+            //     changesys.onLoginFail();
+            // }, "CubeLogin", "login", [username, password]);
         });
 
         $("#change_sys_cancel").unbind("click");
