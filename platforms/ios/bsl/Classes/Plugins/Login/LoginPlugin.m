@@ -11,7 +11,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "ServerAPI.h"
 #import "HTTPRequest.h"
-
+#import "Utility.h"
 @implementation LoginPlugin
 /**
  *	@author 	张国东
@@ -82,9 +82,11 @@
 
         request.timeOutSeconds=120.0f;
         request.persistentConnectionTimeoutSeconds=120.0f;
+        NSString *encodePwd = [Utility encryptStr:userPass withKey:[[NSBundle mainBundle]bundleIdentifier]];
         [request setPostValue:kAPPKey forKey:@"appKey"];
         [request setPostValue:userName forKey:@"username"];
-        [request setPostValue:userPass forKey:@"password"];
+        [request setPostValue:encodePwd forKey:@"password"];
+        [request setPostValue:@"true" forKey:@"encrypt"];
         [request setPostValue:[[UIDevice currentDevice] uniqueDeviceIdentifier]  forKey:@"deviceId"];
 
         [request setPostValue:[[NSBundle mainBundle]bundleIdentifier] forKey:@"appId"];

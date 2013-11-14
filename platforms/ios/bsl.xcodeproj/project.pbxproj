@@ -969,6 +969,12 @@
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
 		188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
+		18AC9ACA1834E85A00AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AC91834E85A00AB401C /* Utility.m */; };
+		18AC9ACB1834E85A00AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AC91834E85A00AB401C /* Utility.m */; };
+		18AC9ACC1834E85A00AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AC91834E85A00AB401C /* Utility.m */; };
+		18AC9ACD1834E85A00AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AC91834E85A00AB401C /* Utility.m */; };
+		18AC9ACE1834E85A00AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AC91834E85A00AB401C /* Utility.m */; };
+		18AC9ACF1834E85A00AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AC91834E85A00AB401C /* Utility.m */; };
 		18BE6C4418198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4518198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
 		18BE6C4618198F1500D96581 /* XMPPIMActorFriendQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */; };
@@ -3889,6 +3895,8 @@
 		18240E111804EBFC00846FF9 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		188487F21807A41E0039F67F /* CubeAccountPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAccountPlugin.h; path = CubeAccount/CubeAccountPlugin.h; sourceTree = "<group>"; };
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
+		18AC9AC81834E85A00AB401C /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		18AC9AC91834E85A00AB401C /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		18BE6C4218198F1500D96581 /* XMPPIMActorFriendQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIMActorFriendQueue.h; sourceTree = "<group>"; };
 		18BE6C4318198F1500D96581 /* XMPPIMActorFriendQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIMActorFriendQueue.m; sourceTree = "<group>"; };
 		18E9C1E81803AB0E00B874B8 /* AbstractTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTableViewController.h; sourceTree = "<group>"; };
@@ -7552,6 +7560,8 @@
 		F54D816117E8BFBA0067A023 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				18AC9AC81834E85A00AB401C /* Utility.h */,
+				18AC9AC91834E85A00AB401C /* Utility.m */,
 				F54D816417E8BFBA0067A023 /* ButtonGroup.h */,
 				F54D816517E8BFBA0067A023 /* ButtonGroup.m */,
 				F54D816617E8BFBA0067A023 /* CustomNavigationBar.h */,
@@ -11167,6 +11177,7 @@
 				180B82CD1818A9B90091E3AE /* CollectedFriend.m in Sources */,
 				180B82CE1818A9B90091E3AE /* OtherTask.m in Sources */,
 				180B82CF1818A9B90091E3AE /* CDACell.m in Sources */,
+				18AC9ACF1834E85A00AB401C /* Utility.m in Sources */,
 				180B82D01818A9B90091E3AE /* GroupRoomUserEntity.m in Sources */,
 				180B82D11818A9B90091E3AE /* MessageEntity.m in Sources */,
 				180B82D21818A9B90091E3AE /* MMType1Font.m in Sources */,
@@ -11300,6 +11311,7 @@
 				3968622A17EE7D1D00C84A6A /* ContactListView.m in Sources */,
 				F54D837717E8BFBB0067A023 /* DownloadedAsync.m in Sources */,
 				39F02A0C1807C3B300051656 /* VoiceUploadManager.m in Sources */,
+				18AC9ACA1834E85A00AB401C /* Utility.m in Sources */,
 				F54D837817E8BFBB0067A023 /* ThreadTask.m in Sources */,
 				F54D837917E8BFBB0067A023 /* AboutViewController.m in Sources */,
 				F54D837D17E8BFBB0067A023 /* SettingMainViewController.m in Sources */,
@@ -11520,6 +11532,7 @@
 				18E9C51F1803AB1200B874B8 /* SimpleFont.m in Sources */,
 				18E9C49B1803AB1200B874B8 /* FPWriteInfoViewController.m in Sources */,
 				39D9E9FB17F27C03001ED6F5 /* ImageScroller.m in Sources */,
+				18AC9ACD1834E85A00AB401C /* Utility.m in Sources */,
 				18E9C5441803AB1200B874B8 /* UIViewController+NIB.m in Sources */,
 				18E9C4DA1803AB1200B874B8 /* AirportWeatherInfo.m in Sources */,
 				39D9E9FC17F27C03001ED6F5 /* ImageUploaded.m in Sources */,
@@ -11890,6 +11903,7 @@
 				39E0533817F00AEA00BCF7F8 /* NSObject+propertyList.m in Sources */,
 				39E0533917F00AEA00BCF7F8 /* UIImage+Antialiase.m in Sources */,
 				39E0533A17F00AEA00BCF7F8 /* UIImage+Resize.m in Sources */,
+				18AC9ACB1834E85A00AB401C /* Utility.m in Sources */,
 				39E0533B17F00AEA00BCF7F8 /* UIView+ViewID.m in Sources */,
 				39E0533C17F00AEA00BCF7F8 /* IIViewDeckController.m in Sources */,
 				39E0533D17F00AEA00BCF7F8 /* WrapController.m in Sources */,
@@ -12058,6 +12072,7 @@
 				39E9C62B180EBAAA004CEF1D /* NSObject+propertyList.m in Sources */,
 				39E9C62C180EBAAA004CEF1D /* UIImage+Antialiase.m in Sources */,
 				39E9C62D180EBAAA004CEF1D /* UIImage+Resize.m in Sources */,
+				18AC9ACE1834E85A00AB401C /* Utility.m in Sources */,
 				39E9C62E180EBAAA004CEF1D /* UIView+ViewID.m in Sources */,
 				39E9C62F180EBAAA004CEF1D /* IIViewDeckController.m in Sources */,
 				39E9C630180EBAAA004CEF1D /* WrapController.m in Sources */,
@@ -12226,6 +12241,7 @@
 				39FF0BEF17F13CBB0086B76C /* NSManagedObject+Repository.m in Sources */,
 				39FF0BF017F13CBB0086B76C /* NSObject+propertyList.m in Sources */,
 				39FF0BF117F13CBB0086B76C /* UIImage+Antialiase.m in Sources */,
+				18AC9ACC1834E85A00AB401C /* Utility.m in Sources */,
 				39FF0BF217F13CBB0086B76C /* UIImage+Resize.m in Sources */,
 				39FF0BF317F13CBB0086B76C /* UIView+ViewID.m in Sources */,
 				39FF0BF417F13CBB0086B76C /* IIViewDeckController.m in Sources */,
