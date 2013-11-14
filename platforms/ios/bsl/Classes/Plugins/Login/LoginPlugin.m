@@ -213,7 +213,7 @@
 -(void)didLoginAndSaveData:(NSString*)userName withPwd:(NSString*)userPass withSystemId:(NSString*)sysId andswitchIsOn:(NSString*)swithIsOn andPluginCommon:(CDVInvokedUrlCommand*)command
 {
     if ([userName isEqualToString:@""] || [userPass isEqualToString:@""]) {
-        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"用户名或密码不能为空！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"用户名和密码不能为空！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
         
         if(command)
@@ -241,6 +241,7 @@
         [request setPostValue:userName forKey:@"username"];
         [request setPostValue:encodePwd forKey:@"password"];
         [request setPostValue:[[UIDevice currentDevice] uniqueDeviceIdentifier]  forKey:@"deviceId"];
+        [request setPostValue:@"true" forKey:@"encrypt"];
         if(sysId)
         {
             [request setPostValue:sysId forKey:@"sysId"];
