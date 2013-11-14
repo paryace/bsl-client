@@ -74,7 +74,6 @@ static const short _base64DecodingTable[256] = {
 + (NSString *)doCipher:(NSString *)sTextIn key:(NSString *)sKey
                context:(CCOperation)encryptOrDecrypt {
     NSStringEncoding EnC = NSUTF8StringEncoding;
-    NSLog(@"=======原内容＝［%@］",sTextIn);
     NSMutableData * dTextIn;
     if (encryptOrDecrypt == kCCDecrypt) {
         dTextIn =  [[Utility decodeBase64WithString:sTextIn] mutableCopy];
