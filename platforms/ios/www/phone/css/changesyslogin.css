@@ -17,6 +17,7 @@
 	background:-webkit-gradient(linear, 0% 96%, 0% 0%, from(#397cbb), to(#54a4df));
 	padding: 5px;
 	border-radius: 4px;
+	border:1px solid black;
 }
 
 .input_field input{
