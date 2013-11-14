@@ -971,18 +971,6 @@
 		18111FDF182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
 		18111FE0182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
 		18111FE1182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
-		18111FE7182CB7D5003A37A4 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */; };
-		18111FE8182CB7D5003A37A4 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */; };
-		18111FE9182CB7D5003A37A4 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */; };
-		18111FEA182CB7D5003A37A4 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		18111FEB182CB7D5003A37A4 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */; };
-		18111FEC182CB7D5003A37A4 /* LeveyPopListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */; };
-		18111FED182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */; };
-		18111FEE182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */; };
-		18111FEF182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */; };
-		18111FF0182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */; };
-		18111FF1182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */; };
-		18111FF2182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */; };
 		18111FF5182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
 		18111FF6182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
 		18111FF7182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
@@ -1011,6 +999,18 @@
 		18AC9A781830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
 		18AC9A791830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
 		18AC9A7A1830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
+		18AC9A9818337E2F00AB401C /* MultiSystemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A9618337E2F00AB401C /* MultiSystemsView.m */; };
+		18AC9A9918337E2F00AB401C /* MultiSystemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A9618337E2F00AB401C /* MultiSystemsView.m */; };
+		18AC9A9A18337E2F00AB401C /* MultiSystemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A9618337E2F00AB401C /* MultiSystemsView.m */; };
+		18AC9A9B18337E2F00AB401C /* MultiSystemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A9618337E2F00AB401C /* MultiSystemsView.m */; };
+		18AC9A9C18337E2F00AB401C /* MultiSystemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A9618337E2F00AB401C /* MultiSystemsView.m */; };
+		18AC9A9D18337E2F00AB401C /* MultiSystemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A9618337E2F00AB401C /* MultiSystemsView.m */; };
+		18AC9AAB1834649000AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AAA1834649000AB401C /* Utility.m */; };
+		18AC9AAC1834649000AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AAA1834649000AB401C /* Utility.m */; };
+		18AC9AAD1834649000AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AAA1834649000AB401C /* Utility.m */; };
+		18AC9AAE1834649000AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AAA1834649000AB401C /* Utility.m */; };
+		18AC9AAF1834649000AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AAA1834649000AB401C /* Utility.m */; };
+		18AC9AB01834649000AB401C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9AAA1834649000AB401C /* Utility.m */; };
 		18AFE15918274D55000462DB /* AttachmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE15818274D55000462DB /* AttachmentImageView.m */; };
 		18AFE15A18274D55000462DB /* AttachmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE15818274D55000462DB /* AttachmentImageView.m */; };
 		18AFE15B18274D55000462DB /* AttachmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AFE15818274D55000462DB /* AttachmentImageView.m */; };
@@ -4042,10 +4042,6 @@
 		180F237F180D237D0037751C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		18111FDA182C819C003A37A4 /* MultiUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiUserInfo.h; sourceTree = "<group>"; };
 		18111FDB182C819C003A37A4 /* MultiUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiUserInfo.m; sourceTree = "<group>"; };
-		18111FE3182CB7D5003A37A4 /* LeveyPopListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeveyPopListView.h; sourceTree = "<group>"; };
-		18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeveyPopListView.m; sourceTree = "<group>"; };
-		18111FE5182CB7D5003A37A4 /* LeveyPopListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeveyPopListViewCell.h; sourceTree = "<group>"; };
-		18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeveyPopListViewCell.m; sourceTree = "<group>"; };
 		18111FF3182CBAC1003A37A4 /* SystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
 		18111FF4182CBAC1003A37A4 /* SystemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
 		18240E0B1803C6C400846FF9 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
@@ -4061,6 +4057,10 @@
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
 		18AC9A731830ACF300AB401C /* ExtroSystemPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtroSystemPlugin.h; sourceTree = SOURCE_ROOT; };
 		18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtroSystemPlugin.m; sourceTree = SOURCE_ROOT; };
+		18AC9A9618337E2F00AB401C /* MultiSystemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSystemsView.m; sourceTree = "<group>"; };
+		18AC9A9718337E2F00AB401C /* MultiSystemsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiSystemsView.h; sourceTree = "<group>"; };
+		18AC9AA91834649000AB401C /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		18AC9AAA1834649000AB401C /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		18AFE15718274D55000462DB /* AttachmentImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentImageView.h; sourceTree = "<group>"; };
 		18AFE15818274D55000462DB /* AttachmentImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentImageView.m; sourceTree = "<group>"; };
 		18AFE17618287E30000462DB /* default_file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_file.png; sourceTree = "<group>"; };
@@ -5586,17 +5586,6 @@
 			path = multiuser;
 			sourceTree = "<group>";
 		};
-		18111FE2182CB7B7003A37A4 /* MultiSystem */ = {
-			isa = PBXGroup;
-			children = (
-				18111FE3182CB7D5003A37A4 /* LeveyPopListView.h */,
-				18111FE4182CB7D5003A37A4 /* LeveyPopListView.m */,
-				18111FE5182CB7D5003A37A4 /* LeveyPopListViewCell.h */,
-				18111FE6182CB7D5003A37A4 /* LeveyPopListViewCell.m */,
-			);
-			path = MultiSystem;
-			sourceTree = "<group>";
-		};
 		188487F11807A3CE0039F67F /* CubeAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -5604,6 +5593,15 @@
 				188487F31807A41E0039F67F /* CubeAccountPlugin.m */,
 			);
 			name = CubeAccount;
+			sourceTree = "<group>";
+		};
+		18AC9A9518337E1200AB401C /* MultiSystem */ = {
+			isa = PBXGroup;
+			children = (
+				18AC9A9718337E2F00AB401C /* MultiSystemsView.h */,
+				18AC9A9618337E2F00AB401C /* MultiSystemsView.m */,
+			);
+			path = MultiSystem;
 			sourceTree = "<group>";
 		};
 		18AFE17518287E30000462DB /* resources */ = {
@@ -7786,7 +7784,7 @@
 		F54D814017E8BFBA0067A023 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				18111FE2182CB7B7003A37A4 /* MultiSystem */,
+				18AC9A9518337E1200AB401C /* MultiSystem */,
 				F54D814117E8BFBA0067A023 /* Login_IphoneViewController.h */,
 				F54D814217E8BFBA0067A023 /* Login_IphoneViewController.m */,
 			);
@@ -7849,6 +7847,8 @@
 		F54D816117E8BFBA0067A023 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				18AC9AA91834649000AB401C /* Utility.h */,
+				18AC9AAA1834649000AB401C /* Utility.m */,
 				F54D816417E8BFBA0067A023 /* ButtonGroup.h */,
 				F54D816517E8BFBA0067A023 /* ButtonGroup.m */,
 				F54D816617E8BFBA0067A023 /* CustomNavigationBar.h */,
@@ -11274,6 +11274,7 @@
 				180B81BB1818A9B90091E3AE /* (null) in Sources */,
 				180B81BC1818A9B90091E3AE /* AAPanelView.m in Sources */,
 				180B81BD1818A9B90091E3AE /* CloverTabBar.m in Sources */,
+				18AC9A9D18337E2F00AB401C /* MultiSystemsView.m in Sources */,
 				180B81BE1818A9B90091E3AE /* SkinView.m in Sources */,
 				18E0239C182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				180B81BF1818A9B90091E3AE /* iphoneAboutViewController.m in Sources */,
@@ -11292,7 +11293,6 @@
 				180B81CC1818A9B90091E3AE /* CJSONScanner.m in Sources */,
 				180B81CD1818A9B90091E3AE /* FilghtCaleMenuViewController.m in Sources */,
 				180B81CE1818A9B90091E3AE /* ZipArchive.m in Sources */,
-				18111FEC182CB7D5003A37A4 /* LeveyPopListView.m in Sources */,
 				180B81CF1818A9B90091E3AE /* FPButtonTableViewCell.m in Sources */,
 				180B81D01818A9B90091E3AE /* EBExamLogInfo.m in Sources */,
 				180B81D11818A9B90091E3AE /* FunctionDetialInfoViewController.m in Sources */,
@@ -11323,6 +11323,7 @@
 				180B81E91818A9B90091E3AE /* ChatCell.m in Sources */,
 				180B81EA1818A9B90091E3AE /* VersionInfoQuery.m in Sources */,
 				180B81EB1818A9B90091E3AE /* CDVVibration.m in Sources */,
+				18AC9AB01834649000AB401C /* Utility.m in Sources */,
 				180B81EC1818A9B90091E3AE /* Config-impc-pro.m in Sources */,
 				180B81ED1818A9B90091E3AE /* ChatImageCell.m in Sources */,
 				180B81EE1818A9B90091E3AE /* ContactCell.m in Sources */,
@@ -11555,7 +11556,6 @@
 				180B82CB1818A9B90091E3AE /* ReaderConstants.m in Sources */,
 				180B82CC1818A9B90091E3AE /* WrapController.m in Sources */,
 				180B82CD1818A9B90091E3AE /* CollectedFriend.m in Sources */,
-				18111FF2182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */,
 				180B82CE1818A9B90091E3AE /* OtherTask.m in Sources */,
 				180B82CF1818A9B90091E3AE /* CDACell.m in Sources */,
 				180B82D01818A9B90091E3AE /* GroupRoomUserEntity.m in Sources */,
@@ -11615,6 +11615,7 @@
 				F54D82BD17E8BFBB0067A023 /* Login_IpadViewController.m in Sources */,
 				F54D82BF17E8BFBB0067A023 /* MainViewViewController.m in Sources */,
 				39F02A13180810BE00051656 /* MessageRecordCell.m in Sources */,
+				18AC9A9818337E2F00AB401C /* MultiSystemsView.m in Sources */,
 				F54D82C717E8BFBB0067A023 /* AAPanelView.m in Sources */,
 				F54D82C817E8BFBB0067A023 /* CloverTabBar.m in Sources */,
 				F54D82CA17E8BFBB0067A023 /* SkinView.m in Sources */,
@@ -11646,7 +11647,6 @@
 				F54D82EC17E8BFBB0067A023 /* ContactCheckBoxCell.m in Sources */,
 				F54D82ED17E8BFBB0067A023 /* RectangleCell.m in Sources */,
 				3968622D17EE7D1D00C84A6A /* RecentTalkView.m in Sources */,
-				18111FED182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */,
 				F54D82EE17E8BFBB0067A023 /* VoiceCell.m in Sources */,
 				F54D82EF17E8BFBB0067A023 /* CameraPanel.m in Sources */,
 				F54D82F017E8BFBB0067A023 /* ChatPanel.m in Sources */,
@@ -11692,6 +11692,7 @@
 				F54D837217E8BFBB0067A023 /* MessageRecordTableViewCell.m in Sources */,
 				F54D837417E8BFBB0067A023 /* MessageRecord.m in Sources */,
 				18617A2E182A304600D85380 /* ImageAttachViewController.m in Sources */,
+				18AC9AAB1834649000AB401C /* Utility.m in Sources */,
 				18111FDC182C819C003A37A4 /* MultiUserInfo.m in Sources */,
 				F54D837517E8BFBB0067A023 /* MessageRecordManager.m in Sources */,
 				F54D837617E8BFBB0067A023 /* RemoteDebuggerViewController.m in Sources */,
@@ -11739,7 +11740,6 @@
 				F54D83A817E8BFBB0067A023 /* UIView+GMGridViewAdditions.m in Sources */,
 				F54D83A917E8BFBB0067A023 /* NSString+MD5Addition.m in Sources */,
 				F54D83AA17E8BFBB0067A023 /* UIDevice+IdentifierAddition.m in Sources */,
-				18111FE7182CB7D5003A37A4 /* LeveyPopListView.m in Sources */,
 				F54D83AC17E8BFBB0067A023 /* AsyncImageView.m in Sources */,
 				F54D83AD17E8BFBC0067A023 /* Cache.m in Sources */,
 				F54D83AE17E8BFBC0067A023 /* DownloadManager.m in Sources */,
@@ -11974,6 +11974,7 @@
 				18E9C5401803AB1200B874B8 /* NewEbookQuery.m in Sources */,
 				39D9EA1117F27C03001ED6F5 /* iphoneLandingViewController.m in Sources */,
 				39D9EA1217F27C03001ED6F5 /* iphoneVoiceDetailViewController.m in Sources */,
+				18AC9A9B18337E2F00AB401C /* MultiSystemsView.m in Sources */,
 				39D9EA1317F27C03001ED6F5 /* CubeWebViewController.m in Sources */,
 				39EF1D82181BB9F300AB7F0C /* (null) in Sources */,
 				39D9EA1417F27C03001ED6F5 /* DetailViewController.m in Sources */,
@@ -12019,6 +12020,7 @@
 				18E9C5271803AB1200B874B8 /* PDFDocumentsViewController.m in Sources */,
 				39D9EA2317F27C03001ED6F5 /* MessageRecordManager.m in Sources */,
 				18E0239A182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
+				18AC9AAE1834649000AB401C /* Utility.m in Sources */,
 				39D9EA2417F27C03001ED6F5 /* RemoteDebuggerViewController.m in Sources */,
 				18E9C4A11803AB1200B874B8 /* FPDocContentViewController.m in Sources */,
 				39D9EA2517F27C03001ED6F5 /* ContactListView.m in Sources */,
@@ -12030,7 +12032,6 @@
 				18E9C5A61803AB1200B874B8 /* MBProgressHUD.m in Sources */,
 				39D9EA2817F27C03001ED6F5 /* AboutViewController.m in Sources */,
 				39D9EA2917F27C03001ED6F5 /* SettingMainViewController.m in Sources */,
-				18111FEA182CB7D5003A37A4 /* LeveyPopListView.m in Sources */,
 				39D9EA2A17F27C03001ED6F5 /* CDVFileTransfer.m in Sources */,
 				18E9C4791803AB1200B874B8 /* SDA.m in Sources */,
 				18E9C4871803AB1200B874B8 /* FPAirlineAnnounceCell.m in Sources */,
@@ -12110,7 +12111,6 @@
 				18E9C5131803AB1200B874B8 /* CIDType2Font.m in Sources */,
 				18E9C51B1803AB1200B874B8 /* RenderingState.m in Sources */,
 				39D9EA5A17F27C03001ED6F5 /* NSObject+propertyList.m in Sources */,
-				18111FF0182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */,
 				39D9EA5B17F27C03001ED6F5 /* UIImage+Antialiase.m in Sources */,
 				39D9EA5C17F27C03001ED6F5 /* UIImage+Resize.m in Sources */,
 				18E9C59C1803AB1200B874B8 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
@@ -12212,7 +12212,6 @@
 				18E02398182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39E052C617F00AEA00BCF7F8 /* MenuView.m in Sources */,
 				39E052C917F00AEA00BCF7F8 /* ChatCell.m in Sources */,
-				18111FEE182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */,
 				39E052CA17F00AEA00BCF7F8 /* CDVVibration.m in Sources */,
 				39E052CB17F00AEA00BCF7F8 /* ChatImageCell.m in Sources */,
 				39E052CC17F00AEA00BCF7F8 /* ContactCell.m in Sources */,
@@ -12241,6 +12240,7 @@
 				39E052E517F00AEA00BCF7F8 /* IMServerAPI.m in Sources */,
 				39E052E917F00AEA00BCF7F8 /* MRZoomScrollView.m in Sources */,
 				39E052EB17F00AEA00BCF7F8 /* MySelfView.m in Sources */,
+				18AC9A9918337E2F00AB401C /* MultiSystemsView.m in Sources */,
 				39E052EC17F00AEA00BCF7F8 /* SwipeView.m in Sources */,
 				39E052EF17F00AEA00BCF7F8 /* iphoneLandingViewController.m in Sources */,
 				39E052F017F00AEA00BCF7F8 /* iphoneVoiceDetailViewController.m in Sources */,
@@ -12262,6 +12262,7 @@
 				39E052FE17F00AEA00BCF7F8 /* MessageRecordHeaderView.m in Sources */,
 				39E052FF17F00AEA00BCF7F8 /* MessageRecordTableViewCell.m in Sources */,
 				39E0530017F00AEA00BCF7F8 /* MessageRecord.m in Sources */,
+				18AC9AAC1834649000AB401C /* Utility.m in Sources */,
 				39E0530117F00AEA00BCF7F8 /* MessageRecordManager.m in Sources */,
 				39E0530217F00AEA00BCF7F8 /* RemoteDebuggerViewController.m in Sources */,
 				39E0530317F00AEA00BCF7F8 /* ContactListView.m in Sources */,
@@ -12284,7 +12285,6 @@
 				39E0531017F00AEA00BCF7F8 /* CallPhonePlugin.m in Sources */,
 				39E0531117F00AEA00BCF7F8 /* CubeModuleOperatorPlugin.m in Sources */,
 				39E0531217F00AEA00BCF7F8 /* CubeModulePlugin.m in Sources */,
-				18111FE8182CB7D5003A37A4 /* LeveyPopListView.m in Sources */,
 				39E0531317F00AEA00BCF7F8 /* InformationPlugin.m in Sources */,
 				39E0531417F00AEA00BCF7F8 /* LocalDBPlugin.m in Sources */,
 				39E0531517F00AEA00BCF7F8 /* LoginPlugin.m in Sources */,
@@ -12392,7 +12392,6 @@
 				18E0239B182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39E9C5C6180EBAAA004CEF1D /* MenuView.m in Sources */,
 				39E9C5C7180EBAAA004CEF1D /* ChatCell.m in Sources */,
-				18111FF1182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */,
 				39E9C5C8180EBAAA004CEF1D /* CDVVibration.m in Sources */,
 				39E9C5C9180EBAAA004CEF1D /* ChatImageCell.m in Sources */,
 				39E9C5CA180EBAAA004CEF1D /* ContactCell.m in Sources */,
@@ -12421,6 +12420,7 @@
 				39E9C5E0180EBAAA004CEF1D /* IMServerAPI.m in Sources */,
 				39E9C5E1180EBAAA004CEF1D /* MRZoomScrollView.m in Sources */,
 				39E9C5E2180EBAAA004CEF1D /* MySelfView.m in Sources */,
+				18AC9A9C18337E2F00AB401C /* MultiSystemsView.m in Sources */,
 				39E9C5E3180EBAAA004CEF1D /* SwipeView.m in Sources */,
 				39E9C5E4180EBAAA004CEF1D /* iphoneLandingViewController.m in Sources */,
 				39E9C5E5180EBAAA004CEF1D /* iphoneVoiceDetailViewController.m in Sources */,
@@ -12442,6 +12442,7 @@
 				39E9C5F3180EBAAA004CEF1D /* MessageRecordHeaderView.m in Sources */,
 				39E9C5F4180EBAAA004CEF1D /* MessageRecordTableViewCell.m in Sources */,
 				39E9C5F5180EBAAA004CEF1D /* MessageRecord.m in Sources */,
+				18AC9AAF1834649000AB401C /* Utility.m in Sources */,
 				39E9C5F6180EBAAA004CEF1D /* MessageRecordManager.m in Sources */,
 				39E9C5F7180EBAAA004CEF1D /* RemoteDebuggerViewController.m in Sources */,
 				39E9C5F8180EBAAA004CEF1D /* ContactListView.m in Sources */,
@@ -12464,7 +12465,6 @@
 				39E9C605180EBAAA004CEF1D /* CubeModuleOperatorPlugin.m in Sources */,
 				39E9C606180EBAAA004CEF1D /* CubeModulePlugin.m in Sources */,
 				39E9C607180EBAAA004CEF1D /* InformationPlugin.m in Sources */,
-				18111FEB182CB7D5003A37A4 /* LeveyPopListView.m in Sources */,
 				39E9C608180EBAAA004CEF1D /* LocalDBPlugin.m in Sources */,
 				39E9C609180EBAAA004CEF1D /* LoginPlugin.m in Sources */,
 				39E9C60B180EBAAA004CEF1D /* CDVFile.m in Sources */,
@@ -12572,7 +12572,6 @@
 				18E02399182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39FF0B8017F13CBB0086B76C /* MenuView.m in Sources */,
 				39FF0B8317F13CBB0086B76C /* ChatCell.m in Sources */,
-				18111FEF182CB7D5003A37A4 /* LeveyPopListViewCell.m in Sources */,
 				39FF0B8417F13CBB0086B76C /* CDVVibration.m in Sources */,
 				39FF0B8517F13CBB0086B76C /* ChatImageCell.m in Sources */,
 				39FF0B8617F13CBB0086B76C /* ContactCell.m in Sources */,
@@ -12601,6 +12600,7 @@
 				39FF0B9D17F13CBB0086B76C /* IMServerAPI.m in Sources */,
 				39FF0BA117F13CBB0086B76C /* MRZoomScrollView.m in Sources */,
 				39FF0BA317F13CBB0086B76C /* MySelfView.m in Sources */,
+				18AC9A9A18337E2F00AB401C /* MultiSystemsView.m in Sources */,
 				39FF0BA417F13CBB0086B76C /* SwipeView.m in Sources */,
 				39FF0BA717F13CBB0086B76C /* iphoneLandingViewController.m in Sources */,
 				39FF0BA817F13CBB0086B76C /* iphoneVoiceDetailViewController.m in Sources */,
@@ -12622,6 +12622,7 @@
 				39FF0BB617F13CBB0086B76C /* MessageRecordHeaderView.m in Sources */,
 				39FF0BB717F13CBB0086B76C /* MessageRecordTableViewCell.m in Sources */,
 				39FF0BB817F13CBB0086B76C /* MessageRecord.m in Sources */,
+				18AC9AAD1834649000AB401C /* Utility.m in Sources */,
 				39FF0BB917F13CBB0086B76C /* MessageRecordManager.m in Sources */,
 				39FF0BBA17F13CBB0086B76C /* RemoteDebuggerViewController.m in Sources */,
 				39FF0BBB17F13CBB0086B76C /* ContactListView.m in Sources */,
@@ -12644,7 +12645,6 @@
 				39FF0BC917F13CBB0086B76C /* CubeModuleOperatorPlugin.m in Sources */,
 				39FF0BCA17F13CBB0086B76C /* CubeModulePlugin.m in Sources */,
 				39FF0BCB17F13CBB0086B76C /* InformationPlugin.m in Sources */,
-				18111FE9182CB7D5003A37A4 /* LeveyPopListView.m in Sources */,
 				39FF0BCC17F13CBB0086B76C /* LocalDBPlugin.m in Sources */,
 				39FF0BCD17F13CBB0086B76C /* LoginPlugin.m in Sources */,
 				39FF0BCF17F13CBB0086B76C /* CDVFile.m in Sources */,

@@ -63,12 +63,17 @@ $("#LoginBtn").click(function() {
 	var username = $("#username").val();
 	
 	var password = $("#realpsw").val();
-
+    
 	var isRemember = $('#isRemember:checked').val();
 
 	if (isRemember === undefined) {
 		isRemember = "false";
 	}
+    if(isRemember === 'false')
+    {
+        $("#realpsw").val("");
+
+    }
 	//是否启用离线登陆
 	var isOffLine = $('#isOffLine:checked').val();
 	if(isOffLine === undefined){

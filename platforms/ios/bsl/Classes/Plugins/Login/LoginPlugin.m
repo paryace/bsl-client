@@ -14,6 +14,8 @@
 #import "SystemInfo.h"
 #import "MultiUserInfo.h"
 #import "NSString+MD5Addition.h"
+#import "RCPopoverView.h"
+#import "Utility.h"
 @implementation LoginPlugin
 /**
  *	@author 	张国东
@@ -59,10 +61,19 @@
 -(void)login:(CDVInvokedUrlCommand*)command
 {
 
+    if(!_options)
+    {
+        _options = [[NSMutableArray alloc]initWithCapacity:0];
+    }
+    else
+    {
+        [_options removeLastObject];
+    }
     NSString* userName =  [command.arguments objectAtIndex:0];
     NSString* userPass =  [command.arguments objectAtIndex:1];
     NSString* userSwithch =  [command.arguments objectAtIndex:2];
     NSString* isOffLogin = [command.arguments objectAtIndex:3];
+    _password = userPass;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if ([userSwithch boolValue]) {
         [defaults setBool:YES forKey:@"switchIsOn"];
@@ -78,6 +89,8 @@
         [defaults setObject:userName forKey:@"loginUsername"];
         [defaults setObject:userName forKey:@"LoginUser"];
         [defaults setObject:userName forKey:@"username"];
+        [defaults setObject:@"" forKey:@"password"];
+        [defaults setObject:@"" forKey:@"loginPassword"];
         
     }
     if([isOffLogin boolValue])
@@ -127,17 +140,17 @@
                 for (NSString *sysId in systemIds) {
                     if([sysId isEqualToString:system.systemId])
                     {
-                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:system.systemName,@"text" ,sysId,@"systemId",nil];
+                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:system.systemName,@"sysName" ,sysId,@"systemId",nil];
                         [_options addObject:dictonary];
                     }
                 }
             }
             if(_options.count>0)
             {
-                LeveyPopListView *lplv = [[LeveyPopListView alloc] initWithTitle:@"子系统" options:_options];
-                lplv.delegate = self;
-                [lplv showInView:[[UIApplication sharedApplication]keyWindow] animated:YES];
-                
+                MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
+                [view initWithDataSource:_options];
+                view.multiDelegate = self;
+                [RCPopoverView showWithView:view];
             }
             else
             {
@@ -151,16 +164,18 @@
     
     
 }
-- (void)leveyPopListView:(LeveyPopListView *)popListView didSelectedIndex:(NSInteger)anIndex
+-(void)itemDidSelected:(NSIndexPath *)indexPath
 {
-    NSDictionary *dictionary = [_options objectAtIndex:anIndex];
+ 
+    NSDictionary *dictionary = [_options objectAtIndex:indexPath.row];
     NSString *systemId = [dictionary valueForKey:@"systemId"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *userName = [defaults valueForKey:@"LoginUser"];
-    NSString *userPass = [defaults valueForKey:@"loginPassword"];
-    popListView.hidden = YES;
+    NSString *userPass = [_password copy];
+    _password = nil;
     NSString* swithIsOn = [defaults valueForKey:@"switchIsOn"];
     [_options removeAllObjects];
+    [RCPopoverView dismiss];
     if([defaults boolForKey:@"isOffLogin"])
     {
         [defaults setObject:@"" forKey:@"token"];
@@ -169,6 +184,20 @@
         [defaults setObject:userName forKey:@"LoginUser"];
         [defaults setValue:systemId forKey:@"systemId"];
         [defaults synchronize];
+        //修改其他系统是否为当前登录系统
+        NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+        for(SystemInfo *system in temArray)
+        {
+            if([systemId isEqualToString:system.systemId])
+            {
+                system.curr = [NSNumber numberWithBool:YES];
+            }
+            else
+            {
+                system.curr = [NSNumber numberWithBool:NO];
+            }
+            [system save];
+        }
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [appDelegate didOffLogin];
         
@@ -204,12 +233,13 @@
         FormDataRequest* request = [FormDataRequest requestWithURL:[NSURL URLWithString:[ServerAPI urlForNewLogin]]];
         httRequest=request;
         __block FormDataRequest*  __request=request;
-        
+        NSString *identifier =  [[NSBundle mainBundle]bundleIdentifier];
+        NSString *encodePwd =  [Utility encryptStr:userPass withKey:identifier];
         request.timeOutSeconds=120.0f;
         request.persistentConnectionTimeoutSeconds=120.0f;
         [request setPostValue:kAPPKey forKey:@"appKey"];
         [request setPostValue:userName forKey:@"username"];
-        [request setPostValue:userPass forKey:@"password"];
+        [request setPostValue:encodePwd forKey:@"password"];
         [request setPostValue:[[UIDevice currentDevice] uniqueDeviceIdentifier]  forKey:@"deviceId"];
         if(sysId)
         {
@@ -246,10 +276,6 @@
                 [__request cancel];
                 return ;
             }
-            if([SVProgressHUD isVisible]){
-                [SVProgressHUD dismiss];
-            }
-            
             NSData* data = [__request responseData];
             NSDictionary* messageDictionary = [data objectFromJSONData];
             NSString* message = [messageDictionary objectForKey:@"loginOK"];
@@ -277,7 +303,7 @@
             }
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             if (![message boolValue] && [[messageDictionary valueForKey:@"showOpt"]boolValue]) {
-                _options = [[NSMutableArray alloc]initWithCapacity:0];
+                [_options removeAllObjects];
                 NSArray *systems =[messageDictionary objectForKey:@"authSysList"];
                 NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
                 
@@ -291,7 +317,7 @@
                                 NSString* systemName = [dict valueForKey:@"sysName"];
                                 NSString* alias = [dict valueForKey:@"alias"];
                                 NSString* curr = [dict valueForKey:@"curr"];
-                                NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"text" ,systemId,@"systemId",nil];
+                                NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"sysName" ,systemId,@"systemId",nil];
                                 [_options addObject:dictonary];
                                 sys.alias= alias;
                                 sys.curr = [NSNumber numberWithBool:[curr boolValue]];
@@ -312,7 +338,7 @@
                         NSString* systemName = [dict valueForKey:@"sysName"];
                         NSString* alias = [dict valueForKey:@"alias"];
                         NSString* curr = [dict valueForKey:@"curr"];
-                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"text" ,systemId,@"systemId",nil];
+                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"sysName" ,systemId,@"systemId",nil];
                         [_options addObject:dictonary];
                         system.systemId = systemId;
                         system.alias= alias;
@@ -327,9 +353,10 @@
                     }
                     
                 }
-                LeveyPopListView *lplv = [[LeveyPopListView alloc] initWithTitle:@"子系统" options:_options];
-                lplv.delegate = self;
-                [lplv showInView:[[UIApplication sharedApplication]keyWindow] animated:YES];
+                MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
+                [view initWithDataSource:_options];
+                view.multiDelegate = self;
+                [RCPopoverView showWithView:view];
                 
             }
             else
@@ -338,6 +365,15 @@
                 NSNumber* number =  [messageDictionary objectForKey:@"loginOK"];
                 if ([number boolValue])
                 {
+                    
+                    if(command)
+                    {
+                        NSMutableDictionary *json = [NSMutableDictionary dictionary];
+                        [json setValue:[NSNumber numberWithBool:YES] forKey:@"isSuccess"];
+                        [json setValue:tips  forKey:@"message"];
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    }
                     NSString* token = [messageDictionary objectForKey:@"sessionKey"];
                     
                     //------------------------------------------------------------------------------------------
@@ -426,9 +462,6 @@
     [httRequest cancel];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT messageAsString:@""];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-- (void)leveyPopListViewDidCancel
-{
 }
 
 @end

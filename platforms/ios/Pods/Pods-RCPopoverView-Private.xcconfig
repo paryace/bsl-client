@@ -1,0 +1,5 @@
+#include "Pods-RCPopoverView.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/RCPopoverView" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ASIHTTPRequest" "${PODS_ROOT}/Headers/CocoaAsyncSocket" "${PODS_ROOT}/Headers/CocoaLumberjack" "${PODS_ROOT}/Headers/FMDB" "${PODS_ROOT}/Headers/JSONKit" "${PODS_ROOT}/Headers/MTStatusBarOverlay" "${PODS_ROOT}/Headers/RCPopoverView" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/SSZipArchive" "${PODS_ROOT}/Headers/SSZipArchive/minizip" "${PODS_ROOT}/Headers/SVProgressHUD" "${PODS_ROOT}/Headers/XMPPFramework"
+OTHER_LDFLAGS = -ObjC ${PODS_RCPOPOVERVIEW_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}

@@ -8,12 +8,12 @@
 
 #import <Cordova/CDVPlugin.h>
 #import "SVProgressHUD.h"
-
-#import "LeveyPopListView.h"
+#import "MultiSystemsView.h"
 @class ASIHTTPRequest;
-@interface LoginPlugin : CDVPlugin<LeveyPopListViewDelegate>{
+@interface LoginPlugin : CDVPlugin<MultiSystemDelegate>{
     ASIHTTPRequest* httRequest;
     NSMutableArray *_options;
+    NSString *_password;
 }
 //获取用户保存本地的数据
 -(void)getAccountMessage:(CDVInvokedUrlCommand*)command;
