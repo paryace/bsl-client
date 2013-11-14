@@ -68,17 +68,14 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString*identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if(!cell)
-    {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 5, 200, 35)];
     label.layer.cornerRadius = 5;
     label.layer.borderColor = [UIColor grayColor].CGColor;
     label.layer.borderWidth = 3;
     label.text =  [[_options objectAtIndex:indexPath.row] valueForKey:@"sysName"];
     label.textAlignment = NSTextAlignmentCenter;
+    label.tag = indexPath.row+100;
     [cell addSubview:label];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

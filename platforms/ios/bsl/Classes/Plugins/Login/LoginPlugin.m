@@ -110,57 +110,71 @@
     }
     else
     {
-        NSString *md5Str = [[[userName stringByAppendingString:@"-"]stringByAppendingString:userPass]stringFromMD5];
-        NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@",md5Str]];
-        if(!userArray)
-        {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alertView show];
-            alertView = nil;
+        if ([userName isEqualToString:@""] || [userPass isEqualToString:@""]) {
+            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:nil message:@"用户名和密码不能为空！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            
+            if(command)
+            {
+                CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            }
         }
         else
         {
-            if(!_options)
-            {
-                _options = [[NSMutableArray alloc]initWithCapacity:0];
-            }
-            else
-            {
-                [_options removeLastObject];
-            }
-            NSMutableArray *systemIds = [[NSMutableArray alloc]initWithCapacity:0];
-            for(MultiUserInfo *user in userArray) {
-                if(user.systemId)
-                {
-                    [systemIds addObject:user.systemId];
-                }
-            }
-            NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
-            for (SystemInfo * system in temArray) {
-                for (NSString *sysId in systemIds) {
-                    if([sysId isEqualToString:system.systemId])
-                    {
-                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:system.systemName,@"sysName" ,sysId,@"systemId",nil];
-                        [_options addObject:dictonary];
-                    }
-                }
-            }
-            if(_options.count>0)
-            {
-                MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
-                [view initWithDataSource:_options];
-                view.multiDelegate = self;
-                [RCPopoverView showWithView:view];
-            }
-            else
+            NSString *md5Str = [[[userName stringByAppendingString:@"-"]stringByAppendingString:userPass]stringFromMD5];
+            NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@",md5Str]];
+            if(!userArray)
             {
                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alertView show];
                 alertView = nil;
             }
-            
+            else
+            {
+                if(!_options)
+                {
+                    _options = [[NSMutableArray alloc]initWithCapacity:0];
+                }
+                else
+                {
+                    [_options removeLastObject];
+                }
+                NSMutableArray *systemIds = [[NSMutableArray alloc]initWithCapacity:0];
+                for(MultiUserInfo *user in userArray) {
+                    if(user.systemId)
+                    {
+                        [systemIds addObject:user.systemId];
+                    }
+                }
+                NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+                for (SystemInfo * system in temArray) {
+                    for (NSString *sysId in systemIds) {
+                        if([sysId isEqualToString:system.systemId])
+                        {
+                            NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:system.systemName,@"sysName" ,sysId,@"systemId",nil];
+                            [_options addObject:dictonary];
+                        }
+                    }
+                }
+                if(_options.count>0)
+                {
+                    MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
+                    [view initWithDataSource:_options];
+                    view.multiDelegate = self;
+                    [RCPopoverView showWithView:view];
+                }
+                else
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alertView show];
+                    alertView = nil;
+                }
+                
+            }
         }
     }
+        
     
     
 }
@@ -305,54 +319,83 @@
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             if (![message boolValue] && [[messageDictionary valueForKey:@"showOpt"]boolValue]) {
                 [_options removeAllObjects];
-                NSArray *systems =[messageDictionary objectForKey:@"authSysList"];
+                NSMutableArray *systems =[messageDictionary objectForKey:@"authSysList"];
                 NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
-                
+                NSMutableDictionary *existDictionary = [[NSMutableDictionary alloc]init];
                 for (NSDictionary *dict in systems) {
-                    NSString* systemId = [dict valueForKey:@"id"];
-                    if(temArray && temArray.count >0)
-                    {
-                        for (SystemInfo *sys in temArray) {
-                            if([sys.systemId isEqualToString:systemId])
-                            {
-                                NSString* systemName = [dict valueForKey:@"sysName"];
-                                NSString* alias = [dict valueForKey:@"alias"];
-                                NSString* curr = [dict valueForKey:@"curr"];
-                                NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"sysName" ,systemId,@"systemId",nil];
-                                [_options addObject:dictonary];
-                                sys.alias= alias;
-                                sys.curr = [NSNumber numberWithBool:[curr boolValue]];
-                                if([curr boolValue])
-                                {
-                                    currentSysId =systemId;
-                                }
-                                sys.systemName=  systemName;
-                                sys.username = userName;
-                                [sys save];
-                            }
-                        }
-                    }
-                    else
+                    [existDictionary setObject:dict forKey:[dict valueForKey:@"id"]];
+                    NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:[dict valueForKey:@"sysName"],@"sysName" ,[dict valueForKey:@"id"],@"systemId",nil];
+                    [_options addObject:dictonary];
+                    
+                    if(!temArray || temArray.count ==0)
                     {
                         SystemInfo *system  = [SystemInfo insert];
-                        
                         NSString* systemName = [dict valueForKey:@"sysName"];
                         NSString* alias = [dict valueForKey:@"alias"];
                         NSString* curr = [dict valueForKey:@"curr"];
-                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:systemName,@"sysName" ,systemId,@"systemId",nil];
-                        [_options addObject:dictonary];
-                        system.systemId = systemId;
+                        system.systemId = [dict valueForKey:@"id"];
                         system.alias= alias;
                         system.curr = [NSNumber numberWithBool:[curr boolValue]];
                         if([curr boolValue])
                         {
-                            currentSysId =systemId;
+                            currentSysId =[dict valueForKey:@"id"];
                         }
                         system.systemName=  systemName;
                         system.username = userName;
                         [system save];
                     }
+                    else
+                    {
+                        for (SystemInfo *system in temArray) {
+                            if([system.systemId isEqualToString:[dict valueForKey:@"id"]])
+                            {
+                                NSString* systemName = [dict valueForKey:@"sysName"];
+                                NSString* alias = [dict valueForKey:@"alias"];
+                                NSString* curr = [dict valueForKey:@"curr"];
+                                system.alias= alias;
+                                system.curr = [NSNumber numberWithBool:[curr boolValue]];
+                                if([curr boolValue])
+                                {
+                                    currentSysId =system.systemId;
+                                }
+                                system.systemName=  systemName;
+                                system.username = userName;
+                                [system save];
+                            }
+                        }
+                    }
                     
+                }//删除不存在的系统
+                for(SystemInfo *sys in temArray)
+                {
+                    if(![[existDictionary allKeys] containsObject:sys.systemId])
+                    {
+                        [sys remove];
+                    }
+                    else
+                    {
+                        [existDictionary removeObjectForKey:sys.systemId];
+                    }
+                }//插入新增的系统
+                if([[existDictionary allValues] count]>0)
+                {
+                    for(NSDictionary *dict in [existDictionary allValues])
+                    {
+                        SystemInfo *system  = [SystemInfo insert];
+                        NSString* systemName = [dict valueForKey:@"sysName"];
+                        NSString* alias = [dict valueForKey:@"alias"];
+                        NSString* curr = [dict valueForKey:@"curr"];
+                        system.systemId = [dict valueForKey:@"id"];
+                        system.alias= alias;
+                        system.curr = [NSNumber numberWithBool:[curr boolValue]];
+                        if([curr boolValue])
+                        {
+                            currentSysId =[dict valueForKey:@"id"];
+                        }
+                        system.systemName=  systemName;
+                        system.username = userName;
+                        [system save];
+                    }
                 }
                 MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
                 [view initWithDataSource:_options];
@@ -463,6 +506,11 @@
     [httRequest cancel];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT messageAsString:@""];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void)storeSyste:(NSDictionary *)dict
+{
+    
 }
 
 @end

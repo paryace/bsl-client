@@ -16,9 +16,11 @@
 #import "Utility.h"
 #import "MultiUserInfo.h"
 #import "NSString+MD5Addition.h"
+#import "RCPopoverView.h"
 @implementation ExtroSystemPlugin
 -(void)listAllExtroSystem:(CDVInvokedUrlCommand*)command
 {
+    _command = command;
     NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
     NSString* userName = [defaults valueForKey:@"username"];
     NSArray *systems =  [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
@@ -37,9 +39,16 @@
         }
         
         [backArray addObject:dictionary];
+        
+        
     }
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[backArray JSONString]];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    _options = backArray;
+    MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
+    [view initWithDataSource:_options];
+    view.multiDelegate = self;
+    [RCPopoverView showWithView:view];
+//    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[backArray JSONString]];
+//    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 -(void)login:(CDVInvokedUrlCommand*)command
@@ -160,15 +169,6 @@
                 NSNumber* number =  [messageDictionary objectForKey:@"loginOK"];
                 if ([number boolValue])
                 {
-                    
-                    if(command)
-                    {
-                        NSMutableDictionary *json = [NSMutableDictionary dictionary];
-                        [json setValue:[NSNumber numberWithBool:YES] forKey:@"isSuccess"];
-                        [json setValue:tips  forKey:@"message"];
-                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
-                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-                    }
                     NSString* token = [messageDictionary objectForKey:@"sessionKey"];
                     
                     //------------------------------------------------------------------------------------------
@@ -228,6 +228,14 @@
                         user.md5Str = [[user.username stringByAppendingFormat:@"-%@",user.password ]stringFromMD5];
                         [user save];
                     }
+                    if(command)
+                    {
+                        NSMutableDictionary *json = [NSMutableDictionary dictionary];
+                        [json setValue:[NSNumber numberWithBool:YES] forKey:@"isSuccess"];
+                        [json setValue:tips  forKey:@"message"];
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    }
                 }else{
                     NSString* messageAlert =   [messageDictionary objectForKey:@"errmsg"];
                     if ([messageAlert length] <= 0) {
@@ -251,5 +259,15 @@
     }
 }
 
+-(void)itemDidSelected:(NSIndexPath *)indexPath
+{
+    if(_options)
+    {
+        NSDictionary *dict = [_options objectAtIndex:indexPath.row];
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[dict JSONString]];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:_command.callbackId];
+        _command = nil;
 
+    }
+}
 @end

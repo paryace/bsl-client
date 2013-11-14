@@ -7,10 +7,13 @@
 //
 
 #import <Cordova/CDVPlugin.h>
+#import "MultiSystemsView.h"
 @class ASIHTTPRequest;
-@interface ExtroSystemPlugin : CDVPlugin
+@interface ExtroSystemPlugin : CDVPlugin<MultiSystemDelegate>
 {
     ASIHTTPRequest* httRequest;
+    CDVInvokedUrlCommand*_command;
+    NSMutableArray *_options;
 }
 -(void)listAllExtroSystem:(CDVInvokedUrlCommand*)command;
 -(void)login:(CDVInvokedUrlCommand*)command;
