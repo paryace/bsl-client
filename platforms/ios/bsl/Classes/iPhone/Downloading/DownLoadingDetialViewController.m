@@ -194,7 +194,7 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
 //请求快照图片地址数据
 -(void)loadImageData{
     
-   HTTPRequest* request = [HTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mam/api/mam/clients/widget/%@/%@/snapshot?appKey=%@",kServerURLString,self.curCubeModlue.identifier,self.curCubeModlue.version,kAPPKey]]];
+   HTTPRequest* request = [HTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/csair-mam/api/mam/clients/widget/%@/%@/snapshot?appKey=%@",kServerURLString,self.curCubeModlue.identifier,self.curCubeModlue.version,kAPPKey]]];
     __block HTTPRequest*  __request=request;
     
     
