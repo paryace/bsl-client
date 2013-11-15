@@ -9,15 +9,8 @@ var changesys = {
     onDeviceReady:function(){
         // this.getSysInfo(this.bindEvents);
         console.log("initialize");
-        cordova.exec(function(data) { 
-            // console.log(data);
-            data = JSON.parse(data);
-            $("#title").html(data.sysName);
-        }, function(data) {              //不需要登陆
-            console.log(data);
-        }, "ExtroSystem", "getCurrSystem", []);
-
-        changesys.bindEvents();
+        changesys.onGoingIntoIndex();
+       
     },
     bindEvents:function(){
         console.log("bind event");
@@ -92,8 +85,6 @@ var changesys = {
     //登陆成功
     onLoginSuccess:function(sysName){
         console.log("login success");
-       $("#title").html(sysName+"▼");
-       $("#change_sys_login_wrapper").hide();
     },
     //取消登陆
     onLoginCanceled:function(){
@@ -109,12 +100,14 @@ var changesys = {
         console.log("login failed");
         // $("#change_sys_submit").html("提交");
     },
+    //跳转到模块管理页面时调用
     onGoingIntoManage:function(){
         //切换标题到管理,取消title的点击事件
         $("#title").html("模块管理");
         $("#triangle").hide();
         changesys.disableEvents();
     },
+    //跳转到首页时调用
     onGoingIntoIndex:function(){
         //切换标题到主页,激活title的点击事件
         cordova.exec(function(data) { 
