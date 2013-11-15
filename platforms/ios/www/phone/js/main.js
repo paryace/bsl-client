@@ -554,14 +554,14 @@ $('#top_left_btn')
 				//alert("shanchu le back_bt_class");
 				$('.buttomContent').css('display', 'none');
 
-
-				$('#title').html("南航移动应用");
+				$("window").trigger("toIndex");
+				
 				$('#manager_btn').show();
 				//$('#top_left_btn').addClass("btn").css("background","url('img/settingbutton.ing') no-repeat").css("width","24px").css("height","24px");
 
 				//$('#top_left_btn').addClass("left_btn").addClass("btn");
 				
-				
+				changesys.onGoingIntoIndex();				
 
 				//开启欢迎光临
 				$('.account_content').show();
@@ -880,6 +880,11 @@ $('#manager_btn')
 		console.log("点击管理按键");
 
 		$('#manager_btn').addClass("disabled");
+
+		//跳到管理界面
+		// $("window").trigger("toManage");
+		changesys.onGoingIntoManage();
+
 		console.log("点击");
 
 		cordovaExec("CubeModuleOperator", "sync", ["manager"], function() {

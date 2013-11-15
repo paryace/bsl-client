@@ -24,10 +24,10 @@ var changesys = {
         $("#title").bind("click",function(){
             changesys.getSysInfo();
         });
+        // changesys.onGoingIntoIndex();
     },
     disableEvents:function(){
         $("#title").unbind("click");
-        $("#sysSelect").unbind("change");
     },
     getSysInfo:function(callback){
         console.log("get system info");
@@ -108,6 +108,23 @@ var changesys = {
     onLoginFail:function(){
         console.log("login failed");
         // $("#change_sys_submit").html("提交");
+    },
+    onGoingIntoManage:function(){
+        //切换标题到管理,取消title的点击事件
+        $("#title").html("模块管理");
+        $("#triangle").hide();
+        changesys.disableEvents();
+    },
+    onGoingIntoIndex:function(){
+        //切换标题到主页,激活title的点击事件
+        cordova.exec(function(data) { 
+            // console.log(data);
+            data = JSON.parse(data);
+            $("#title").html(data.sysName);
+            $("#triangle").show();
+            changesys.bindEvents();
+        }, function(data) {              //不需要登陆
+        }, "ExtroSystem", "getCurrSystem", []);
     }
 }
 
