@@ -92,6 +92,13 @@ function cancel(){
 }
 
 function fillData(data){
+	alert("fill data: "+data);
+	if(data){
+		$("#registInfo").html("您的设备已注册");
+	}else{
+		$("#registInfo").html("您的设备未进行注册");
+	}
+	
 	data = JSON.parse(data);
 	var inputs = $("input");
 	for(var i = 0; i < inputs.length; i++){
@@ -100,4 +107,5 @@ function fillData(data){
 			$(input).val(data[input.name]);
 		}
 	}
+	
 }

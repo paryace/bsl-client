@@ -8,54 +8,40 @@ var changesys = {
     },
     onDeviceReady:function(){
         // this.getSysInfo(this.bindEvents);
-        changesys.getSysInfo(changesys.bindEvents);
-        // changesys.bindEvents();
+        console.log("initialize");
+        cordova.exec(function(data) { 
+            // alert(data);
+            data = JSON.parse(data);
+            $("#title").html(data.sysName);
+        }, function(data) {              //不需要登陆
+            console.log(data);
+        }, "ExtroSystem", "getCurrSystem", []);
+
+        changesys.bindEvents();
     },
     bindEvents:function(){
+        console.log("bind event");
         $("#title").bind("click",function(){
-            $("#sysSelect").focus();
-            preSelected = $("#sysSelect").val();
+            changesys.getSysInfo();
         });
-        
-        $("#sysSelect").bind("change",function(e){
-            var sysId = "";
-            var options = $("#sysSelect").find("option")
-            for(var i = 0; i < options.length; i++){
-                var option = $(options[i]);
-                if(option.html() == this.value){
-                    sysId = option.attr("data-sysid");
-                }
-            }
-            changesys.showLoginView(sysId,this.value);
-        })
     },
     disableEvents:function(){
         $("#title").unbind("click");
         $("#sysSelect").unbind("change");
     },
     getSysInfo:function(callback){
+        console.log("get system info");
         if(this.hasCordova()){
-            cordova.exec(function(data) {
+            cordova.exec(function(data) {   //需要弹框登陆
                 // var sysList = ["南航统一移动应用","OA验证"];
-                var sysList = JSON.parse(data);
-                changesys.sysList = sysList;
-                //清空选项
-                $("#sysSelect").html("");
-                //插入选项
-                var option = "";
-                var currSysName = "";
-                for(var i = 0; i < sysList.length; i++){
-                     option += "<option data-sysid='"+sysList[i].sysId+"'>"+sysList[i].sysName+"</option>";
-                     if(sysList[i].curr){
-                        currSysName = sysList[i].sysName;
-                     }
-                }
-                $("#title").html(currSysName);
-                $("#sysSelect").html(option);
-                $("#sysSelect").val(currSysName);
+                console.log(data);
+                console.log("need show window");
+                data = JSON.parse(data);
+                changesys.showLoginView(data.sysId,data.sysName);
                 callback();
-            }, function(err) {
-                alert(err);
+            }, function(data) {              //不需要弹框登陆
+                console.log(data);
+                alert("登陆成功!");
             }, "ExtroSystem", "listAllExtroSystem", []);
         }
     },
@@ -63,12 +49,13 @@ var changesys = {
         if(cordova && cordova.exec){
             return true;
         }else{
-            alert("请检查phonegap配置");
+            console.log("请检查phonegap配置");
             return false;
         }
     },
     //显示登陆框
     showLoginView:function(sysId,title){
+        console.log("show login view");
         $("#change_sys_login_title").html("登陆"+title);
 
         // $("#username").click();
@@ -77,18 +64,19 @@ var changesys = {
         $("#change_sys_submit").unbind("click");
         $("#change_sys_submit").bind("click",function(){
             console.log("提交登陆信息");
-            $("#change_sys_submit").html("取消");
+            // $("#change_sys_submit").html("取消");
             var username = $("#username").val();
             var password = $("#password").val();
-            // cordova.exec(function(data) {
-            //     data = $.parseJSON(data);
-            //     alert(data);
-            //     changesys.onLoginSuccess();
-            // }, function(err) {
-            //     err = $.parseJSON(err);
-            //     alert(err);
-            //     changesys.onLoginFail();
-            // }, "CubeLogin", "login", [username, password]);
+            console.log("username:"+username+",password:"+password+",sysId:"+sysId);
+            cordova.exec(function(data) {
+                data = $.parseJSON(data);
+                console.log(data);
+                changesys.onLoginSuccess();
+            }, function(err) {
+                err = $.parseJSON(err);
+                console.log(err);
+                changesys.onLoginFail();
+            }, "ExtroSystem", "login", [username, password, sysId]);
         });
 
         $("#change_sys_cancel").unbind("click");
@@ -99,24 +87,27 @@ var changesys = {
              $("#sysSelect").val(preSelected);
              $("#change_sys_login_wrapper").hide();
         });
+        $("#username").focus();
     },
     //登陆成功
     onLoginSuccess:function(sysName){
+        console.log("login success");
        $("#title").html(sysName+"▼");
        $("#change_sys_login_wrapper").hide();
     },
     //取消登陆
     onLoginCanceled:function(){
-        $("#change_sys_submit").html("提交");
+        console.log("canceled login");
+        // $("#change_sys_submit").html("提交");
         cordova.exec(function(data) {
                 
-            }, function(err) {
-                alert(err);
-            }, "CubeLogin", "cancelLogin", []);
+        }, function(err) {
+        }, "ExtroSystem", "cancel", []);
     },
     //登陆失败
     onLoginFail:function(){
-        $("#change_sys_submit").html("提交");
+        console.log("login failed");
+        // $("#change_sys_submit").html("提交");
     }
 }
 
