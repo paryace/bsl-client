@@ -56,7 +56,7 @@
 #import "ChatLogic.h"
 #import "JSONKit.h"
 #import "ServerAPI.h"
-
+#import "MultiUserInfo.h"
 /**
  *      南航业务
  **/
@@ -128,6 +128,12 @@ void uncaughtExceptionHandler(NSException*exception){
         }
         
     }
+    dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+        NSArray * userarray = [MultiUserInfo findAll];
+        for (MultiUserInfo *user in userarray) {
+            [user remove];
+        }
+    });
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 

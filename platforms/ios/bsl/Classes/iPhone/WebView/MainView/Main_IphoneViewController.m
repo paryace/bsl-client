@@ -37,6 +37,7 @@
     UIAlertView*  singleAlert;
     
     UIAlertView* failedAlert;
+    NSURL* fileUrl;
 }
 
 @property(strong,nonatomic) id selfObj;
@@ -79,6 +80,7 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFinishedNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFailedNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadWebpage) name:@"reload_web_page" object:nil];
         
 
     }
@@ -93,7 +95,6 @@
     aCubeWebViewController.showCloseButton=YES;
     aCubeWebViewController.title=@"登录";
     aCubeWebViewController.wwwFolderName = @"www";
-    NSURL* fileUrl = nil;
 #ifdef MOBILE_BSL
     aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"home/index.html"] absoluteString];
     fileUrl = [[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"home/index.html"];
@@ -106,8 +107,8 @@
         rect.origin.y=20.0f;
         rect.size.height-=20.0f;
     }
-    aCubeWebViewController.view.frame = rect;
     [self.view addSubview:aCubeWebViewController.view];
+    aCubeWebViewController.view.frame = rect;
     aCubeWebViewController.webView.scrollView.bounces=NO;
     [aCubeWebViewController loadWebPageWithUrl: [fileUrl absoluteString] didFinishBlock: ^(){
         [self.navController pushViewController:self animated:NO];
@@ -126,9 +127,15 @@
         self.navController=nil;
         self.selfObj=nil;
     }];
-	
-    
 }
+
+-(void)loadWebpage
+{
+    [aCubeWebViewController.webView reload];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];

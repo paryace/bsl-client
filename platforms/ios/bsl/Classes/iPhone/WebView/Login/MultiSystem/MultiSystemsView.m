@@ -73,7 +73,13 @@
     label.layer.cornerRadius = 5;
     label.layer.borderColor = [UIColor grayColor].CGColor;
     label.layer.borderWidth = 3;
-    label.text =  [[_options objectAtIndex:indexPath.row] valueForKey:@"sysName"];
+    NSString *text = [[_options objectAtIndex:indexPath.row] valueForKey:@"sysName"];
+    if([[_options objectAtIndex:indexPath.row] valueForKey:@"loginFlag"])
+    {
+        text = [text stringByAppendingString:@"(已登录)"];
+    }
+    label.text = text;
+    label.font = [UIFont systemFontOfSize:12.0];
     label.textAlignment = NSTextAlignmentCenter;
     label.tag = indexPath.row+100;
     [cell addSubview:label];
