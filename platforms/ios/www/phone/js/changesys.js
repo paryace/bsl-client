@@ -10,7 +10,7 @@ var changesys = {
         // this.getSysInfo(this.bindEvents);
         console.log("initialize");
         cordova.exec(function(data) { 
-            // alert(data);
+            // console.log(data);
             data = JSON.parse(data);
             $("#title").html(data.sysName);
         }, function(data) {              //不需要登陆
