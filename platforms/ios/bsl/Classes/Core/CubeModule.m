@@ -567,7 +567,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     [json setValue:[NSNumber numberWithBool:self.installed] forKey:@"installed"];
     if([self.local length]>0)
         [json setValue:self.local forKey:@"local"];
-    if([self.privileges count]>0)
+    if([self.privileges length]>0)
         [json setValue:self.privileges forKey:@"privileges"];
     if([self.pushMsgLink length]>0)
         [json setValue:self.pushMsgLink forKey:@"pushMsgLink"];

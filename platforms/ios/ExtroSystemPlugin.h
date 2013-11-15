@@ -18,4 +18,5 @@
 -(void)listAllExtroSystem:(CDVInvokedUrlCommand*)command;
 -(void)login:(CDVInvokedUrlCommand*)command;
 -(void)cancel:(CDVInvokedUrlCommand*)command;
+-(void)getCurrSystem:(CDVInvokedUrlCommand*)command;
 @end

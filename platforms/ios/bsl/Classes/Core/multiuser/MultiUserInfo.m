@@ -2,7 +2,7 @@
 //  MultiUserInfo.m
 //  bsl
 //
-//  Created by zhoujun on 13-11-8.
+//  Created by zhoujun on 13-11-15.
 //
 //
 
@@ -11,9 +11,13 @@
 
 @implementation MultiUserInfo
 
-@dynamic username;
+@dynamic md5Str;
 @dynamic password;
 @dynamic systemId;
-@dynamic md5Str;
+@dynamic username;
+@dynamic zhName;
+@dynamic privileges;
+@dynamic sex;
+@dynamic phone;
 
 @end

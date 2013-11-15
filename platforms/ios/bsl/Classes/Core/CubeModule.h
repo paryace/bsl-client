@@ -54,7 +54,7 @@
 
 @property(nonatomic,assign)BOOL isDownloading;
 @property(nonatomic,assign)float downloadProgress;
-@property(nonatomic,strong)NSMutableArray *privileges;
+@property(nonatomic,strong)NSString *privileges;
 
 @property(weak, nonatomic,readonly)NSString *iconUrl;
 

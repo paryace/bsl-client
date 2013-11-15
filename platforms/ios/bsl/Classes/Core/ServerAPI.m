@@ -38,7 +38,7 @@
     
 }
 +(NSString*)urlForSyncImpc {
-    return [kServerURLString stringByAppendingFormat:@"/csair-extension/api/extendClients/ios/%@/%@/", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    return [kServerURLString stringByAppendingFormat:@"/csair-extension/api/csairauth/privileges?sessionKey="];
     
 }
 
@@ -74,7 +74,7 @@
     
 }
 +(NSString*)urlForSyncImpc {
-    return [kServerURLString stringByAppendingFormat:@"/csair-extension/api/extendClients/ios/%@/%@/", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    return [kServerURLString stringByAppendingFormat:@"/csair-extension/api/csairauth/privileges?sessionKey="];
     
 }
 

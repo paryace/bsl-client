@@ -76,7 +76,7 @@ void uncaughtExceptionHandler(NSException*exception){
 
 @interface AppDelegate ()<UIApplicationDelegate,XMPPIMActorDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 {
-    CLLocationManager *locationManager;
+    __strong CLLocationManager *locationManager;
 }
 @property (assign,nonatomic) CFURLRef soundFileURLRef;
 @property (assign,nonatomic) SystemSoundID soundFileObject;
@@ -762,6 +762,8 @@ void uncaughtExceptionHandler(NSException*exception){
     [_request setCompletionBlock:^{
         if([request responseStatusCode] == 200)
         {
+            [locationManager stopUpdatingLocation];
+            locationManager = nil;
             NSLog(@"geo data=======[%@]",[request responseString]);
             NSLog(@"geoLocation successful");
         }

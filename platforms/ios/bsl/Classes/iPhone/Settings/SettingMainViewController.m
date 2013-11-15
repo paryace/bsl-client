@@ -228,7 +228,7 @@
     if (indexPath.section == 0 ) {
         if (indexPath.row == 0 ) {
             NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-            if ((BOOL)[defaults objectForKey:@"offLineSwitch"]) {
+            if ([defaults boolForKey:@"offLineSwitch"]) {
                 NSString *message = [NSString stringWithFormat:@"离线模式不能更新"];
                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"版本更新" message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [av show];

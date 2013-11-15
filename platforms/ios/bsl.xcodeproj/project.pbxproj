@@ -954,6 +954,12 @@
 		180B82FB1818A9B90091E3AE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		180B82FC1818A9B90091E3AE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		180B82FD1818A9B90091E3AE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C023708B9AC24DB48757A8FC /* libPods.a */; };
+		180DCF0F1835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
+		180DCF101835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
+		180DCF111835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
+		180DCF121835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
+		180DCF131835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
+		180DCF141835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
 		180F2374180D1A170037751C /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B81D1806503500668DED /* Default-Landscape@2x~ipad.png */; };
 		180F2380180D237D0037751C /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F2376180D237D0037751C /* 114.png */; };
 		180F2381180D237D0037751C /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F2377180D237D0037751C /* 120.png */; };
@@ -965,12 +971,6 @@
 		180F2387180D237D0037751C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F237D180D237D0037751C /* Default-568h@2x.png */; };
 		180F2388180D237D0037751C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F237E180D237D0037751C /* Default.png */; };
 		180F2389180D237D0037751C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F237F180D237D0037751C /* Default@2x.png */; };
-		18111FDC182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
-		18111FDD182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
-		18111FDE182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
-		18111FDF182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
-		18111FE0182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
-		18111FE1182C819C003A37A4 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FDB182C819C003A37A4 /* MultiUserInfo.m */; };
 		18111FF5182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
 		18111FF6182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
 		18111FF7182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
@@ -4030,6 +4030,9 @@
 		180B7F421818A6FF0091E3AE /* Config-impc-pro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config-impc-pro.m"; sourceTree = "<group>"; };
 		180B83021818A9B90091E3AE /* bsl_impc copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bsl_impc copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		180B83031818A9BA0091E3AE /* bsl_impc copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl_impc copy-Info.plist"; path = "/Users/apple/Documents/bsl-client/platforms/ios/bsl_impc copy-Info.plist"; sourceTree = "<absolute>"; };
+		180DCF0C1835BF8E00CAB8C9 /* cube1115.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = cube1115.xcdatamodel; sourceTree = "<group>"; };
+		180DCF0D1835C0C400CAB8C9 /* MultiUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiUserInfo.h; sourceTree = "<group>"; };
+		180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiUserInfo.m; sourceTree = "<group>"; };
 		180F2376180D237D0037751C /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		180F2377180D237D0037751C /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		180F2378180D237D0037751C /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
@@ -4040,8 +4043,6 @@
 		180F237D180D237D0037751C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		180F237E180D237D0037751C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		180F237F180D237D0037751C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		18111FDA182C819C003A37A4 /* MultiUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiUserInfo.h; sourceTree = "<group>"; };
-		18111FDB182C819C003A37A4 /* MultiUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiUserInfo.m; sourceTree = "<group>"; };
 		18111FF3182CBAC1003A37A4 /* SystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
 		18111FF4182CBAC1003A37A4 /* SystemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
 		18240E0B1803C6C400846FF9 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
@@ -5578,10 +5579,10 @@
 		18111FD9182C8176003A37A4 /* multiuser */ = {
 			isa = PBXGroup;
 			children = (
+				180DCF0D1835C0C400CAB8C9 /* MultiUserInfo.h */,
+				180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */,
 				18111FF3182CBAC1003A37A4 /* SystemInfo.h */,
 				18111FF4182CBAC1003A37A4 /* SystemInfo.m */,
-				18111FDA182C819C003A37A4 /* MultiUserInfo.h */,
-				18111FDB182C819C003A37A4 /* MultiUserInfo.m */,
 			);
 			path = multiuser;
 			sourceTree = "<group>";
@@ -11335,6 +11336,7 @@
 				180B81F41818A9B90091E3AE /* RNCachingURLProtocol.m in Sources */,
 				180B81F51818A9B90091E3AE /* GDataXMLNode.m in Sources */,
 				180B81F61818A9B90091E3AE /* RectangleCell.m in Sources */,
+				180DCF141835C0C400CAB8C9 /* MultiUserInfo.m in Sources */,
 				180B81F71818A9B90091E3AE /* RecentTalkView.m in Sources */,
 				180B81F81818A9B90091E3AE /* VoiceCell.m in Sources */,
 				180B81F91818A9B90091E3AE /* CameraPanel.m in Sources */,
@@ -11423,7 +11425,6 @@
 				180B824B1818A9B90091E3AE /* RatingView.m in Sources */,
 				180B824C1818A9B90091E3AE /* PrettyTableViewCell.m in Sources */,
 				180B824D1818A9B90091E3AE /* Scanner.m in Sources */,
-				18111FE1182C819C003A37A4 /* MultiUserInfo.m in Sources */,
 				180B824E1818A9B90091E3AE /* VoiceModule.m in Sources */,
 				180B824F1818A9B90091E3AE /* WeatherInfo.m in Sources */,
 				180B82501818A9B90091E3AE /* NSString+Verification.m in Sources */,
@@ -11601,6 +11602,7 @@
 				394B98A418056BBA00F657D2 /* BaseNavViewController.m in Sources */,
 				F54D82A617E8BFBB0067A023 /* CubeMessageCommandHandler.m in Sources */,
 				F54D82A717E8BFBB0067A023 /* CubeResetHandler.m in Sources */,
+				180DCF0F1835C0C400CAB8C9 /* MultiUserInfo.m in Sources */,
 				F54D82AE17E8BFBB0067A023 /* CubeApplication.m in Sources */,
 				F54D82AF17E8BFBB0067A023 /* CubeModule.m in Sources */,
 				F54D82B017E8BFBB0067A023 /* CudeModuleDownDictionary.m in Sources */,
@@ -11693,7 +11695,6 @@
 				F54D837417E8BFBB0067A023 /* MessageRecord.m in Sources */,
 				18617A2E182A304600D85380 /* ImageAttachViewController.m in Sources */,
 				18AC9AAB1834649000AB401C /* Utility.m in Sources */,
-				18111FDC182C819C003A37A4 /* MultiUserInfo.m in Sources */,
 				F54D837517E8BFBB0067A023 /* MessageRecordManager.m in Sources */,
 				F54D837617E8BFBB0067A023 /* RemoteDebuggerViewController.m in Sources */,
 				3968622A17EE7D1D00C84A6A /* ContactListView.m in Sources */,
@@ -12050,6 +12051,7 @@
 				39D9EA3317F27C03001ED6F5 /* CubeModuleOperatorPlugin.m in Sources */,
 				18AFE1F51829E497000462DB /* KxMenueItemExt.m in Sources */,
 				39D9EA3417F27C03001ED6F5 /* CubeModulePlugin.m in Sources */,
+				180DCF121835C0C400CAB8C9 /* MultiUserInfo.m in Sources */,
 				18E9C5061803AB1200B874B8 /* ReaderMainToolbar.m in Sources */,
 				39D9EA3517F27C03001ED6F5 /* InformationPlugin.m in Sources */,
 				39D9EA3617F27C03001ED6F5 /* LocalDBPlugin.m in Sources */,
@@ -12102,7 +12104,6 @@
 				39D9EA5617F27C03001ED6F5 /* LongPressButton.m in Sources */,
 				18E9C5471803AB1200B874B8 /* pilot.xcdatamodeld in Sources */,
 				39D9EA5717F27C03001ED6F5 /* MoreIconButton.m in Sources */,
-				18111FDF182C819C003A37A4 /* MultiUserInfo.m in Sources */,
 				39D9EA5817F27C03001ED6F5 /* NSFileManager+Extra.m in Sources */,
 				39D9EA5917F27C03001ED6F5 /* NSManagedObject+Repository.m in Sources */,
 				18E9C5361803AB1200B874B8 /* CabinOrderQuery.m in Sources */,
@@ -12208,7 +12209,6 @@
 				39E052C417F00AEA00BCF7F8 /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39F02A1B18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				39E052C517F00AEA00BCF7F8 /* IphoneDownloadingTableViewCell.m in Sources */,
-				18111FDD182C819C003A37A4 /* MultiUserInfo.m in Sources */,
 				18E02398182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39E052C617F00AEA00BCF7F8 /* MenuView.m in Sources */,
 				39E052C917F00AEA00BCF7F8 /* ChatCell.m in Sources */,
@@ -12271,6 +12271,7 @@
 				18617A37182A822200D85380 /* PDFViewController.m in Sources */,
 				39E0530517F00AEA00BCF7F8 /* ThreadTask.m in Sources */,
 				39E0530617F00AEA00BCF7F8 /* AboutViewController.m in Sources */,
+				180DCF101835C0C400CAB8C9 /* MultiUserInfo.m in Sources */,
 				39E0530717F00AEA00BCF7F8 /* SettingMainViewController.m in Sources */,
 				39E0530817F00AEA00BCF7F8 /* CDVFileTransfer.m in Sources */,
 				18617A2F182A304600D85380 /* ImageAttachViewController.m in Sources */,
@@ -12388,7 +12389,6 @@
 				39E9C5C3180EBAAA004CEF1D /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39E9C5C4180EBAAA004CEF1D /* IphoneDownloadingTableViewCell.m in Sources */,
 				39E9C5C5180EBAAA004CEF1D /* GTGZImageDownloadedManager.m in Sources */,
-				18111FE0182C819C003A37A4 /* MultiUserInfo.m in Sources */,
 				18E0239B182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39E9C5C6180EBAAA004CEF1D /* MenuView.m in Sources */,
 				39E9C5C7180EBAAA004CEF1D /* ChatCell.m in Sources */,
@@ -12451,6 +12451,7 @@
 				18617A3A182A822200D85380 /* PDFViewController.m in Sources */,
 				39E9C5FB180EBAAA004CEF1D /* VoiceUploadManager.m in Sources */,
 				39E9C5FC180EBAAA004CEF1D /* AboutViewController.m in Sources */,
+				180DCF131835C0C400CAB8C9 /* MultiUserInfo.m in Sources */,
 				39E9C5FD180EBAAA004CEF1D /* SettingMainViewController.m in Sources */,
 				39E9C5FE180EBAAA004CEF1D /* CDVFileTransfer.m in Sources */,
 				18617A32182A304600D85380 /* ImageAttachViewController.m in Sources */,
@@ -12568,7 +12569,6 @@
 				39FF0B7E17F13CBB0086B76C /* FunctionDetailScrollViewWrapper.m in Sources */,
 				39FF0B7F17F13CBB0086B76C /* IphoneDownloadingTableViewCell.m in Sources */,
 				39F02A1C18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
-				18111FDE182C819C003A37A4 /* MultiUserInfo.m in Sources */,
 				18E02399182285CA00AB6215 /* cube.xcdatamodeld in Sources */,
 				39FF0B8017F13CBB0086B76C /* MenuView.m in Sources */,
 				39FF0B8317F13CBB0086B76C /* ChatCell.m in Sources */,
@@ -12631,6 +12631,7 @@
 				18617A38182A822200D85380 /* PDFViewController.m in Sources */,
 				39F02A0E1807C3B300051656 /* VoiceUploadManager.m in Sources */,
 				39FF0BBE17F13CBB0086B76C /* AboutViewController.m in Sources */,
+				180DCF111835C0C400CAB8C9 /* MultiUserInfo.m in Sources */,
 				39FF0BBF17F13CBB0086B76C /* SettingMainViewController.m in Sources */,
 				39FF0BC017F13CBB0086B76C /* CDVFileTransfer.m in Sources */,
 				18617A30182A304600D85380 /* ImageAttachViewController.m in Sources */,
@@ -13392,6 +13393,7 @@
 			children = (
 				18AFE1971828845C000462DB /* cube1105.xcdatamodel */,
 				18617A3F182C7BDB00D85380 /* cube1108.xcdatamodel */,
+				180DCF0C1835BF8E00CAB8C9 /* cube1115.xcdatamodel */,
 				18E0238D182285CA00AB6215 /* cube.xcdatamodel */,
 				18E0238E182285CA00AB6215 /* cube0409.xcdatamodel */,
 				18E0238F182285CA00AB6215 /* cube0505.xcdatamodel */,
@@ -13403,7 +13405,7 @@
 				18E02395182285CA00AB6215 /* cube1017.xcdatamodel */,
 				18E02396182285CA00AB6215 /* cube1022.xcdatamodel */,
 			);
-			currentVersion = 18617A3F182C7BDB00D85380 /* cube1108.xcdatamodel */;
+			currentVersion = 180DCF0C1835BF8E00CAB8C9 /* cube1115.xcdatamodel */;
 			path = cube.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

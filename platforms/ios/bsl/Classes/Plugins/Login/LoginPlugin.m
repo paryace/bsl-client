@@ -96,12 +96,12 @@
     if([isOffLogin boolValue])
     {
         [defaults setBool:YES forKey:@"isOffLogin"];
-        [defaults setObject:[NSNumber numberWithBool:YES] forKey:@"offLineSwitch"];
+        [defaults setBool:YES forKey:@"offLineSwitch"];
     }
     else
     {
         [defaults setBool:NO forKey:@"isOffLogin"];
-        [defaults setObject:[NSNumber numberWithBool:NO] forKey:@"offLineSwitch"];
+        [defaults setBool:NO forKey:@"offLineSwitch"];
     }
     [defaults synchronize];
     if(![isOffLogin boolValue])
@@ -123,7 +123,7 @@
         else
         {
             NSString *md5Str = [[[userName stringByAppendingString:@"-"]stringByAppendingString:userPass]stringFromMD5];
-            NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@",md5Str]];
+            NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@ and username=%@",md5Str,userName]];
             if(!userArray)
             {
                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -132,14 +132,6 @@
             }
             else
             {
-                if(!_options)
-                {
-                    _options = [[NSMutableArray alloc]initWithCapacity:0];
-                }
-                else
-                {
-                    [_options removeLastObject];
-                }
                 NSMutableArray *systemIds = [[NSMutableArray alloc]initWithCapacity:0];
                 for(MultiUserInfo *user in userArray) {
                     if(user.systemId)
@@ -163,6 +155,7 @@
                     [view initWithDataSource:_options];
                     view.multiDelegate = self;
                     [RCPopoverView showWithView:view];
+                    
                 }
                 else
                 {
@@ -322,13 +315,12 @@
                 NSMutableArray *systems =[messageDictionary objectForKey:@"authSysList"];
                 NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
                 NSMutableDictionary *existDictionary = [[NSMutableDictionary alloc]init];
-                for (NSDictionary *dict in systems) {
-                    [existDictionary setObject:dict forKey:[dict valueForKey:@"id"]];
-                    NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:[dict valueForKey:@"sysName"],@"sysName" ,[dict valueForKey:@"id"],@"systemId",nil];
-                    [_options addObject:dictonary];
-                    
-                    if(!temArray || temArray.count ==0)
-                    {
+                if(temArray.count == 0)
+                {
+                    for (NSDictionary *dict in systems) {
+                        [existDictionary setObject:dict forKey:[dict valueForKey:@"id"]];
+                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:[dict valueForKey:@"sysName"],@"sysName" ,[dict valueForKey:@"id"],@"systemId",nil];
+                        [_options addObject:dictonary];
                         SystemInfo *system  = [SystemInfo insert];
                         NSString* systemName = [dict valueForKey:@"sysName"];
                         NSString* alias = [dict valueForKey:@"alias"];
@@ -344,8 +336,14 @@
                         system.username = userName;
                         [system save];
                     }
-                    else
-                    {
+                }
+                else
+                {
+                    for (NSDictionary *dict in systems) {
+                        [existDictionary setObject:dict forKey:[dict valueForKey:@"id"]];
+                        NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:[dict valueForKey:@"sysName"],@"sysName" ,[dict valueForKey:@"id"],@"systemId",nil];
+                        [_options addObject:dictonary];
+                        
                         for (SystemInfo *system in temArray) {
                             if([system.systemId isEqualToString:[dict valueForKey:@"id"]])
                             {
@@ -363,40 +361,45 @@
                                 [system save];
                             }
                         }
-                    }
-                    
-                }//删除不存在的系统
-                for(SystemInfo *sys in temArray)
-                {
-                    if(![[existDictionary allKeys] containsObject:sys.systemId])
-                    {
-                        [sys remove];
-                    }
-                    else
-                    {
-                        [existDictionary removeObjectForKey:sys.systemId];
-                    }
-                }//插入新增的系统
-                if([[existDictionary allValues] count]>0)
-                {
-                    for(NSDictionary *dict in [existDictionary allValues])
-                    {
-                        SystemInfo *system  = [SystemInfo insert];
-                        NSString* systemName = [dict valueForKey:@"sysName"];
-                        NSString* alias = [dict valueForKey:@"alias"];
-                        NSString* curr = [dict valueForKey:@"curr"];
-                        system.systemId = [dict valueForKey:@"id"];
-                        system.alias= alias;
-                        system.curr = [NSNumber numberWithBool:[curr boolValue]];
-                        if([curr boolValue])
-                        {
-                            currentSysId =[dict valueForKey:@"id"];
-                        }
-                        system.systemName=  systemName;
-                        system.username = userName;
-                        [system save];
+                        
                     }
                 }
+                if(temArray.count >0)
+                {
+                    //删除不存在的系统
+                    for(SystemInfo *sys in temArray)
+                    {
+                        if(![[existDictionary allKeys] containsObject:sys.systemId])
+                        {
+                            [sys remove];
+                        }
+                        else
+                        {
+                            [existDictionary removeObjectForKey:sys.systemId];
+                        }
+                    }//插入新增的系统
+                    if([[existDictionary allValues] count]>0)
+                    {
+                        for(NSDictionary *dict in [existDictionary allValues])
+                        {
+                            SystemInfo *system  = [SystemInfo insert];
+                            NSString* systemName = [dict valueForKey:@"sysName"];
+                            NSString* alias = [dict valueForKey:@"alias"];
+                            NSString* curr = [dict valueForKey:@"curr"];
+                            system.systemId = [dict valueForKey:@"id"];
+                            system.alias= alias;
+                            system.curr = [NSNumber numberWithBool:[curr boolValue]];
+                            if([curr boolValue])
+                            {
+                                currentSysId =[dict valueForKey:@"id"];
+                            }
+                            system.systemName=  systemName;
+                            system.username = userName;
+                            [system save];
+                        }
+                    }
+                }
+                
                 MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
                 [view initWithDataSource:_options];
                 view.multiDelegate = self;
@@ -459,14 +462,18 @@
                     [defaults synchronize];
   
                     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                    NSArray *tmpArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"systemId=%@",currentSysId]];
-                    if(tmpArray && tmpArray.count >0)
+                    NSArray *tmpArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"systemId=%@ and username=%@",currentSysId,userName]];
+                    if(tmpArray.count >0)
                     {
                         MultiUserInfo *user= [tmpArray objectAtIndex:0];
                         user.username = userName;
                         user.password = userPass;
                         user.systemId = currentSysId;
                         user.md5Str = [[user.username stringByAppendingFormat:@"-%@",user.password ]stringFromMD5];
+                        user.sex = [messageDictionary objectForKey:@"sex"];
+                        user.phone = [messageDictionary objectForKey:@"phone"];
+                        user.zhName = [messageDictionary objectForKey:@"zhName"];
+                        user.privileges = [[messageDictionary objectForKey:@"privileges"] JSONString];
                         [user save];
                     }
                     else
@@ -476,6 +483,11 @@
                         user.password = userPass;
                         user.systemId = currentSysId;
                         user.md5Str = [[user.username stringByAppendingFormat:@"-%@",user.password ]stringFromMD5];
+                        user.sex = [messageDictionary objectForKey:@"sex"];
+                        user.phone = [messageDictionary objectForKey:@"phone"];
+                        user.zhName = [messageDictionary objectForKey:@"zhName"];
+                        user.privileges = [[messageDictionary objectForKey:@"privileges"]JSONString];
+                        
                         [user save];
                     }
                     [appDelegate didLogin];

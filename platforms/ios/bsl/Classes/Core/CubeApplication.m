@@ -524,7 +524,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *token =  [defaults objectForKey:@"token"];
     
-    NSString *userName = [defaults objectForKey:@"LoginUser"];
+    
     //判断如果是南航移动应用的标示，就切换到定制的接口进行数据同步
     NSString *urlString;
     if([[[NSBundle mainBundle]bundleIdentifier] isEqualToString:@"com.csair.impc"])
@@ -535,10 +535,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     {
         urlString = [ServerAPI urlForSync] ;
     }
-    urlString = [urlString stringByAppendingString:@"?username="];
-    urlString = [urlString stringByAppendingString:userName];
     if (token) {
-        urlString = [urlString stringByAppendingString:@"&sessionKey="];
         urlString = [urlString stringByAppendingString:token];
     }
     
@@ -551,7 +548,15 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     if (([Reachability reachabilityForInternetConnection].currentReachabilityStatus != NotReachable) &&
         ([Reachability reachabilityForLocalWiFi].currentReachabilityStatus != NotReachable)) {
             if(!syncing){
-            [[AFAppDotNetAPIClient sharedClient]getPath:aURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]init];
+                [dictionary setObject:@"ios" forKey:@"platform"];
+                [dictionary setObject:[NSBundle mainBundle].bundleIdentifier forKey:@"identifier"];
+                [dictionary setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSString *userName = [defaults objectForKey:@"LoginUser"];
+                [dictionary setObject:userName forKey:@"username"];
+                [dictionary setObject:[defaults valueForKey:@"systemId" ] forKey:@"sysId"];
+            [[AFAppDotNetAPIClient sharedClient]postPath:aURL parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 syncing = false;
                 int statusCode =operation.response.statusCode;
                 if (statusCode== 400 ) {
@@ -684,7 +689,7 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
                     //remote_module.autoDownload = YES;
                     if (remote_module.autoDownload) {
                         //优化自动下载 zhoujn begin-----
-                        if([remote_module.privileges count]>0)
+                        if([remote_module.privileges length]>0)
                         {
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                             NSString *userName = [defaults valueForKey:@"username"];
