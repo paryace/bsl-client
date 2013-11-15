@@ -71,9 +71,9 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
-                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
+                  moduleName = "bsl_impc copy"
                   urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "406121006.872271"
+                  timestampString = "406130850.609867"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "501"
@@ -85,9 +85,9 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
-                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
+                  moduleName = "bsl_impc copy"
                   urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "406121006.872516"
+                  timestampString = "406130850.610167"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "501"
@@ -142,6 +142,22 @@
             startingLineNumber = "59"
             endingLineNumber = "59"
             landmarkName = "-init:image:target:action:fileName:fileId:fileSize:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bsl/Classes/Plugins/Login/LoginPlugin.m"
+            timestampString = "406128693.964394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-login:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
