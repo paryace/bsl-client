@@ -92,7 +92,6 @@ function cancel(){
 }
 
 function fillData(data){
-	alert("fill data: "+data);
 	if(data){
 		$("#registInfo").html("您的设备已注册");
 	}else{
