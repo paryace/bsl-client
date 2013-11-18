@@ -8,6 +8,13 @@ document.addEventListener("deviceready", function(){
 		console.info("cancel");
 		cancel();
 	});
+
+	$(".btn").bind("touchstart",function(){
+		$(this).addClass("active");
+	})
+	$(".btn").bind("touchend",function(){
+		$(this).removeClass("active");
+	})
 	// testData();
 }, false);
 
@@ -62,8 +69,9 @@ function submit(){
 		for(var i = 0; i < inputs.length; i++){
 			var value = inputs[i].value;
 			var key = inputs[i].name;
-			if(!value){  //替换null或者undefined
-				value = "";
+			if(!value || value == ""){  //替换null或者undefined
+				alert(inputs[i].placeholder);
+				return;
 			}
 			json[key] = value;//组装数据
 		}
@@ -97,6 +105,7 @@ function fillData(data){
 	}else{
 		$("#registInfo").html("您的设备未进行注册");
 	}
+	$("input[name=deviceSrc]").val("公司配发");
 	
 	data = JSON.parse(data);
 	var inputs = $("input");
