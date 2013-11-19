@@ -116,7 +116,7 @@ var changesys = {
             $("#title").html(data.sysName);
             $("#triangle").show();
             changesys.bindEvents();
-        }, function(data) {              //不需要登陆
+        }, function(data) { 
         }, "ExtroSystem", "getCurrSystem", []);
     }
 }

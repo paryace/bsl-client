@@ -1,4 +1,7 @@
 document.addEventListener("deviceready", function(){
+	//激活单选框
+	$("input[name=deviceSrc]").click();
+	//查询设备注册数据并填好
 	queryAndFillDeviceInfo();
 	$("#submitBtn").click(function(){
 		console.info("submit");
@@ -8,6 +11,7 @@ document.addEventListener("deviceready", function(){
 		console.info("cancel");
 		cancel();
 	});
+	
 
 	$(".btn").bind("touchstart",function(){
 		$(this).addClass("active");
@@ -17,6 +21,12 @@ document.addEventListener("deviceready", function(){
 	})
 	// testData();
 }, false);
+
+function testPhone(phoneNum){
+	var pat = /^([0-9-\s])+$/g;
+	var value = $(this).val();
+	return pat.test(phoneNum);
+}
 
 //测试用
 function testData(){
@@ -75,6 +85,13 @@ function submit(){
 			}
 			json[key] = value;//组装数据
 		}
+		
+		var value = $("input[name=telPhone]").val();
+		if(!testPhone(value)){
+			alert("请正确填写您的联系方式");
+			return;
+		}
+
 		cordova.exec(
 			function(){	
 				// alert("注册成功"); 
