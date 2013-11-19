@@ -27,7 +27,7 @@
 }
 @property(nonatomic,assign)id <OpenAttachmentDelegate> delegate;
 +(float)cellHeight:(NSString*)title content:(NSString*)content width:(float)w ;
-
++(float)cellHeight:(NSString*)title content:(NSString*)content width:(float)w attachments:(NSString *)attachments;
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead;
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead withAttachment:(NSString*)files;
 

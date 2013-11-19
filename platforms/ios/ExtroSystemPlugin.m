@@ -31,40 +31,25 @@
         
         for(SystemInfo *system in systems)
         {
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
+            [dictionary setValue:system.username forKey:@"username"];
+            [dictionary setValue:system.systemId forKey:@"sysId"];
+            [dictionary setValue:system.systemName forKey:@"sysName"];
+            [dictionary setValue:system.alias forKey:@"alias"];
+            NSNumber *curr = [NSNumber numberWithInt:1];
+            if([system.curr isEqualToNumber:curr]){
+                [dictionary setValue:system.curr forKey:@"curr"];
+            }
+            
             for (MultiUserInfo *user in userArray) {
                 if([user.systemId isEqualToString:system.systemId])
                 {
-                    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
-                    [dictionary setValue:system.username forKey:@"username"];
-                    [dictionary setValue:system.systemId forKey:@"sysId"];
-                    [dictionary setValue:system.systemName forKey:@"sysName"];
-                    [dictionary setValue:system.alias forKey:@"alias"];
-                    [dictionary setObject:@"已登录" forKey:@"loginFlag"];
-                    NSNumber *curr = [NSNumber numberWithInt:1];
-                    if([system.curr isEqualToNumber:curr]){
-                        [dictionary setValue:system.curr forKey:@"curr"];
-                    }
-                    [backArray addObject:dictionary];
                     
-                }
-                else
-                {
-                    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
-                    [dictionary setValue:system.username forKey:@"username"];
-                    [dictionary setValue:system.systemId forKey:@"sysId"];
-                    [dictionary setValue:system.systemName forKey:@"sysName"];
-                    [dictionary setValue:system.alias forKey:@"alias"];
-                    NSNumber *curr = [NSNumber numberWithInt:1];
-                    if([system.curr isEqualToNumber:curr]){
-                        [dictionary setValue:system.curr forKey:@"curr"];
-                    }
-                    [backArray addObject:dictionary];
+                    [dictionary setObject:@"已登录" forKey:@"loginFlag"];
                 }
                 
             }
-            
-            
-            
+            [backArray addObject:dictionary];
         }
         
     }
@@ -106,6 +91,7 @@
     NSString *userName = [command.arguments objectAtIndex:0];
     NSString *password = [command.arguments objectAtIndex:1];
     NSString *systemId = [command.arguments objectAtIndex:2];
+    
     [self didLoginAndSaveData:userName withPwd:password withSystemId:systemId andPluginCommon:command];
     
 }
@@ -313,12 +299,29 @@
                 if ([number boolValue])
                 {
                     
+//                    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+                    if ([defaults boolForKey:@"switchIsOn" ]) {
+                        [defaults setObject:userName forKey:@"loginUsername"];
+                        [defaults setObject:userPass forKey:@"loginPassword"];
+                        [defaults setObject:userName forKey:@"LoginUser"];
+                        [defaults setObject:userName forKey:@"username"];
+                        [defaults setObject:userPass forKey:@"password"];
+                        
+                        
+                    }else{
+                        [defaults setObject:userName forKey:@"loginUsername"];
+                        [defaults setObject:userName forKey:@"LoginUser"];
+                        [defaults setObject:userName forKey:@"username"];
+                        [defaults setObject:@"" forKey:@"password"];
+                        [defaults setObject:@"" forKey:@"loginPassword"];
+                        
+                    }
                     if(command)
                     {
                         NSMutableDictionary *json = [NSMutableDictionary dictionary];
                         [json setValue:[NSNumber numberWithBool:YES] forKey:@"isSuccess"];
                         [json setValue:tips  forKey:@"message"];
-                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsString:json.JSONString];
                         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                     }
                     NSString* token = [messageDictionary objectForKey:@"sessionKey"];
@@ -348,6 +351,22 @@
                                     [sys save];
                                 }
                             }
+                        }
+                        else{
+                            SystemInfo *system  = [SystemInfo insert];
+                            NSString* systemName = [dict valueForKey:@"sysName"];
+                            NSString* alias = [dict valueForKey:@"alias"];
+                            NSString* curr = [dict valueForKey:@"curr"];
+                            system.systemId = [dict valueForKey:@"id"];
+                            system.alias= alias;
+                            system.curr = [NSNumber numberWithBool:[curr boolValue]];
+                            if([curr boolValue])
+                            {
+                                currentSysId =[dict valueForKey:@"id"];
+                            }
+                            system.systemName=  systemName;
+                            system.username = userName;
+                            [system save];
                         }
                         
                     }
@@ -424,6 +443,15 @@
         NSDictionary *dict = [_options objectAtIndex:indexPath.row];
         NSString *username = [dict valueForKey:@"username"];
         NSString *systemId = [dict valueForKey:@"sysId"];
+        NSString *sysId = [[NSUserDefaults standardUserDefaults]valueForKey:@"systemId"];
+        if([systemId isEqualToString:sysId])
+        {
+            UIAlertView *alert  = [[UIAlertView alloc]initWithTitle:@"提示" message:@"已经是当前系统，不需要切换" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            alert = nil;
+            return ;
+        }
+        
         NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@ and systemId=%@",username,systemId]];
         NSString *password =@"";
         if(userArray.count>0)
@@ -481,19 +509,23 @@
     NSString *systemId = [[NSUserDefaults standardUserDefaults] valueForKey:@"systemId"];
     NSString *userName = [[NSUserDefaults standardUserDefaults]valueForKey:@"username"];
     NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"systemId=%@ and username=%@",systemId,userName]];
-    SystemInfo *system = [temArray objectAtIndex:0];
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
-    [dictionary setValue:system.username forKey:@"username"];
-    [dictionary setValue:system.systemId forKey:@"sysId"];
-    [dictionary setValue:system.systemName forKey:@"sysName"];
-    [dictionary setValue:system.alias forKey:@"alias"];
-    
-    NSNumber *curr = [NSNumber numberWithInt:1];
-    if([system.curr isEqualToNumber:curr]){
-        [dictionary setValue:system.curr forKey:@"curr"];
+    if(temArray.count > 0)
+    {
+        SystemInfo *system = [temArray objectAtIndex:0];
+        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
+        [dictionary setValue:system.username forKey:@"username"];
+        [dictionary setValue:system.systemId forKey:@"sysId"];
+        [dictionary setValue:system.systemName forKey:@"sysName"];
+        [dictionary setValue:system.alias forKey:@"alias"];
+        
+        NSNumber *curr = [NSNumber numberWithInt:1];
+        if([system.curr isEqualToNumber:curr]){
+            [dictionary setValue:system.curr forKey:@"curr"];
+        }
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[dictionary JSONString]];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[dictionary JSONString]];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
     
 }
 @end

@@ -59,7 +59,7 @@
 
 - (void)handleDoubleTap:(UIGestureRecognizer *)gesture
 {
-    float newScale = self.zoomScale * 1.5;
+    float newScale = self.zoomScale * 2.0;
     CGRect zoomRect = [self zoomRectForScale:newScale withCenter:[gesture locationInView:gesture.view]];
     [self zoomToRect:zoomRect animated:YES];
 }

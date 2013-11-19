@@ -44,7 +44,7 @@
 {
     @autoreleasepool {
         AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",attachmentId]];
-        NSString *fileName = attachment.fileName;
+        NSString *fileName = [attachment.fileName lowercaseString];
         if([fileName hasSuffix:@"pdf"]||[fileName hasSuffix:@"txt"])
         {
             PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
@@ -245,7 +245,7 @@
 - (CGFloat)tableView:(UITableView *)__tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Announcement* announcent = [list objectAtIndex:[indexPath section]];
 
-    return [AnnouncementTableViewCell cellHeight:announcent.title content:announcent.content width:__tableView.frame.size.width];
+    return [AnnouncementTableViewCell cellHeight:announcent.title content:announcent.content width:__tableView.frame.size.width attachments:announcent.attachment];
 }
 
 
@@ -258,7 +258,6 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
     }
-    
     Announcement* announcent = [list objectAtIndex:[indexPath section]];
     [cell title:announcent.title content:announcent.content time:announcent.reviceTime isRead:[announcent.isRead boolValue] withAttachment:announcent.attachment];
     return cell;

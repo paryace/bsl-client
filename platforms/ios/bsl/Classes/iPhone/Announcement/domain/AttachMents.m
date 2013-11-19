@@ -20,9 +20,13 @@
 {
     NSString *url = [ServerAPI urlForAttachmentId:attachId];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    if([self.fileName hasSuffix:@"pdf"])
+    if([[self.fileName lowercaseString] hasSuffix:@"pdf"])
     {
         attachId = [NSString stringWithFormat:@"%@.pdf",attachId];
+    }
+    else if([[self.fileName lowercaseString] hasSuffix:@"txt"])
+    {
+        attachId = [NSString stringWithFormat:@"%@.txt",attachId];
     }
     NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachId];
     BOOL flag = YES;

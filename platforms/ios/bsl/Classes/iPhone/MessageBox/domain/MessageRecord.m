@@ -126,7 +126,7 @@
         NSString *module = message.module;
         NSString *lastReceiveTime = [appDelegate.moduleReceiveMsg objectForKey:module];
         
-        long lrt = [lastReceiveTime longLongValue];
+        long long lrt = [lastReceiveTime longLongValue];
         
         long now = [[NSDate date] timeIntervalSince1970];
         
@@ -334,8 +334,15 @@
 +(NSArray *)findForModuleIdentifierAtBadge:(NSString *)identifier{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [defaults valueForKey:@"username"];
+    if([identifier isEqualToString:@"com.foss.chat"])
+    {
+        return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and isIconBadge=%@",identifier,[NSNumber numberWithInt:1]]];
+    }
+    else
+    {
+        return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and isIconBadge=%@ and username=%@",identifier,[NSNumber numberWithInt:1],username]];
+    }
     
-    return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and isIconBadge=%@ and username=%@",identifier,[NSNumber numberWithInt:1],username]];
 }
 
 +(NSArray *)findSystemRecord{

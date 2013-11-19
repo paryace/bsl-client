@@ -33,24 +33,51 @@
 {
     [super viewDidLoad];
     webview = [[UIWebView alloc]initWithFrame:self.view.frame ];
+    CGRect frame = webview.frame;
+    frame.size.height =  frame.size.height - self.navigationController.navigationBar.frame.size.height;
+    frame.origin.y = 0;
+    webview.frame = frame;
     [self.view addSubview:webview];
     self.title = @"附件详情";
     self.view.backgroundColor = [UIColor whiteColor];
     if(attachment)
     {
         NSString *fileName = attachment.fileName;
+        self.title = fileName;
         if([fileName hasSuffix:@"txt"])
         {
             NSString *path = [[self documentsPath] stringByAppendingPathComponent:@"attachmens"];
             NSArray *fileArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
             
-            NSArray *realArray = [fileArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF==%@",attachment.fileId]];
+            NSArray *realArray = [fileArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF==%@",[attachment.fileId stringByAppendingString:@".txt"]]];
             if(realArray.count >0)
             {
                 NSString *file = [realArray objectAtIndex:0];
                 NSString *realPath = [path stringByAppendingPathComponent:file];
-                NSString *content = [NSString stringWithContentsOfFile:realPath encoding:NSUTF8StringEncoding error:nil];
                 
+//                webview.multipleTouchEnabled = YES;
+//                webview.scalesPageToFit = YES;
+//                webview.backgroundColor = [UIColor whiteColor];
+//                NSURL *url = [NSURL fileURLWithPath:realPath];
+//                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//                [webview loadRequest:request];
+                
+                
+                
+                
+                
+                BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:realPath isDirectory:NO];
+                NSLog(@"==========%d",isExist);
+                NSString *content=@"";
+                if(isExist)
+                {
+                    content = [NSString stringWithContentsOfFile:realPath encoding:NSUTF8StringEncoding error:nil];
+                }
+                else
+                {
+                    [attachment downloadFile:attachment.fileId];
+                    content = [NSString stringWithContentsOfFile:realPath encoding:NSUTF8StringEncoding error:nil];
+                }
                 //下面两行协助 UIWebView 背景透明化，这两属性可以在 xib 中进行设置
                 webview.backgroundColor = [UIColor clearColor];//但是这个属性必须用代码设置，光 xib 设置不行
                 webview.opaque = NO;
@@ -61,7 +88,7 @@
                 //下面的 backgroud-color:transparent 结合最前面的两行代码指定的属性就真正使得 WebView 的背景透明了
                 //而后的 font:16px/18px 就是设置字体大小为 16px, 行间距为 18px，也可用  line-height: 18px 单独设置行间距
                 //最后的 Custom-Font-Name 就是前面在项目中加上的字体文件所对应的字体名称了
-                NSString *webviewText = @"<style>body{margin:0;background-color:transparent;font:18px/15px Custom-Font-Name}</style>";
+                NSString *webviewText = @"<style>body{margin:0;background-color:transparent;font:14px/18px Custom-Font-Name}</style>";
                 NSString *htmlString = [webviewText stringByAppendingFormat:@"%@",content];
                 [webview loadHTMLString:htmlString baseURL:nil]; //在 WebView 中显示本地的字符串
             }

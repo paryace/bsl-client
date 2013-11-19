@@ -7,7 +7,7 @@
 //
 
 #import "MessageEntity.h"
-
+#import "UserInfo.h"
 @implementation MessageEntity
 
 @dynamic uqID;
@@ -34,5 +34,11 @@
     }
     return @"";
 }
-
+-(NSString*)zhName
+{
+    if([self.sendUser length]>0){
+        return @"";
+    }
+    return @"";
+}
 @end
