@@ -398,10 +398,30 @@
      touchesBegan:(NSSet *)touches
         withEvent:(UIEvent *)event{
     [searchBar resignFirstResponder];
+    searchBar.showsCancelButton = NO;
+    for(id cc in [searchBar subviews])
+    {
+        if([cc isKindOfClass:[UIButton class]])
+        {
+            UIButton *btn = (UIButton *)cc;
+            [btn removeFromSuperview];
+            
+        }
+    }
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [searchBar resignFirstResponder];
+    searchBar.showsCancelButton = NO;
+    for(id cc in [searchBar subviews])
+    {
+        if([cc isKindOfClass:[UIButton class]])
+        {
+            UIButton *btn = (UIButton *)cc;
+            [btn removeFromSuperview];
+            
+        }
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -473,7 +493,19 @@
 -(void)tableView:(UITableView *)__tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [__tableView deselectRowAtIndexPath:indexPath animated:YES];
     [searchBar resignFirstResponder];
-
+    if (searchBar.showsCancelButton) {
+        searchBar.showsCancelButton = NO;
+        for(id cc in [searchBar subviews])
+        {
+            if([cc isKindOfClass:[UIButton class]])
+            {
+                UIButton *btn = (UIButton *)cc;
+                [btn removeFromSuperview];
+                
+            }
+        }
+    }
+    
     NSString* key=[sortedKeys objectAtIndex:[indexPath section]];
     
     NSArray* array=[showDicts objectForKey:key];
@@ -548,10 +580,18 @@
         {
             UIButton *btn = (UIButton *)cc;
             [btn setTitle:@"取消"  forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(resetSearchBar:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
 }
-
+//取消按钮点击事件
+-(void)resetSearchBar:(id)sender
+{
+    searchBar.text=nil;
+    [tableView reloadData];
+    [self filterClick];
+    
+}
 
 - (void)searchBar:(UISearchBar *)_searchBar textDidChange:(NSString *)searchText{
     [self loadShowData];

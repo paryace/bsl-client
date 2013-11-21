@@ -57,6 +57,8 @@
 #import "JSONKit.h"
 #import "ServerAPI.h"
 #import "MultiUserInfo.h"
+#define RUNTIME_CFG_USER_URL(A,B) [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"Cube_%@_%@.json",A,B]]
+
 /**
  *      南航业务
  **/
@@ -616,6 +618,12 @@ void uncaughtExceptionHandler(NSException*exception){
         [self setupXmppStream];
     [self updateCheckInTags];
     [self updateCollectionFriends];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+    NSString* systemId = [userDefaults valueForKey:@"systemId"];
+    NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser,systemId);
+    //
+    [[CubeApplication currentApplication] loadApplicatioFromURL:cubeURL];
 //    [NSTimer timerWithTimeInterval:10.0f target:self selector:@selector(sendGeoInfo2Server) userInfo:nil repeats:YES];
     [self performSelector:@selector(sendGeoInfo2Server) withObject:nil afterDelay:20.0f];
     //开启访问 获取到未收到的推送信息

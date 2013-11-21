@@ -195,7 +195,10 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
 -(void)loadApplicatioFromURL:(NSURL*)aurl{
     //加载应用配置
     NSString *content = [NSString stringWithContentsOfURL:aurl encoding:NSUTF8StringEncoding error:nil];
-    NSAssert(content != nil, @"不能解析应用程序描述文件，请检查文件是否存在且语法正确");
+    if(content == nil)
+    {
+        return;
+    }
     
     NSDictionary *jo_app = [content objectFromJSONString];
     self.identifier = [jo_app objectForKey:@"identifier"];
@@ -453,7 +456,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
         NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
         NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
         NSString* systemId = [userDefaults valueForKey:@"systemId"];
-        success = [jsonString writeToURL:RUNTIME_CFG_USER_URL(stringUser,systemId) atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        NSURL *acurl = RUNTIME_CFG_USER_URL(stringUser,systemId);
+        success = [jsonString writeToURL:acurl atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }else{
         success = [jsonString writeToURL:RUNTIME_CFG_URL atomically:YES encoding:NSUTF8StringEncoding error:&error];
     }
@@ -509,17 +513,20 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     return FALSE;
 }
 
+
+
+
 #pragma mark - Sync
 -(void)sync
 {
     
-    if (self.installed) {
-            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
-            NSString* systemId = [userDefaults valueForKey:@"systemId"];
-            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser,systemId);
-            [self loadApplicatioFromURL:cubeURL];
-    }
+//    if (self.installed) {
+//            NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+//            NSString* stringUser = [userDefaults objectForKey:@"LoginUser"];
+//            NSString* systemId = [userDefaults valueForKey:@"systemId"];
+//            NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser,systemId);
+//            [self loadApplicatioFromURL:cubeURL];
+//    }
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSString *token =  [defaults objectForKey:@"token"];
@@ -622,11 +629,19 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     //加载本地模块的配置
     NSString *path = [[NSBundle mainBundle] pathForResource:@"local_module" ofType:@"plist"];
     NSMutableDictionary *moduleDict = [[NSMutableDictionary alloc]initWithContentsOfFile:path];
-    
+    if(tmpDict)
+    {
+        [tmpDict removeAllObjects];
+    }
+    else
+    {
+        tmpDict = [[NSMutableDictionary alloc]init];
+    }
     
     for (id remote_module_json in remote_modules_json) {
         //获取网络版本CubeModule
         CubeModule *remote_module = [CubeModule moduleFromJSONObject:remote_module_json];
+        [tmpDict setObject:remote_module forKey:remote_module.identifier];
         //判断本地模块是否存在如果不存在就直接忽略
         if([remote_module.local length]>0)
         {
@@ -714,6 +729,18 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
         }
     }
     moduleDict=nil;
+    NSMutableArray *moduleArray = [[NSMutableArray alloc]init];
+    for (CubeModule *cm in modules) {
+        if([[tmpDict allKeys] containsObject:cm.identifier])
+        {
+            [moduleArray addObject:cm];
+        }
+        
+    }
+    [modules removeAllObjects];
+    [tmpDict removeAllObjects];
+    [modules addObjectsFromArray:moduleArray];
+    moduleArray = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:CubeSyncFinishedNotification object:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_DETIALPAGE_SYNSUCCESS object:nil];
     

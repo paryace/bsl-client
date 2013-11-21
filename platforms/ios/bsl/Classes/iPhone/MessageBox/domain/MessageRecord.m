@@ -15,7 +15,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "MessageObject.h"
 #import "MessageDelayHandler.h"
-
+#import "XMPPSqlManager.h"
 @implementation MessageRecord
 @dynamic alert;
 @dynamic sound;
@@ -269,6 +269,10 @@
     if (identifier.length ==0 ) {
         return  0;
     }
+    if([identifier isEqualToString:@"com.foss.chat"])
+    {
+        return [XMPPSqlManager getMessageCount];
+    }
     return [[MessageRecord findForModuleIdentifierAtBadge:identifier] count];
 }
 
@@ -334,14 +338,8 @@
 +(NSArray *)findForModuleIdentifierAtBadge:(NSString *)identifier{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [defaults valueForKey:@"username"];
-    if([identifier isEqualToString:@"com.foss.chat"])
-    {
-        return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and isIconBadge=%@",identifier,[NSNumber numberWithInt:1]]];
-    }
-    else
-    {
+    
         return [MessageRecord findByPredicate:[NSPredicate predicateWithFormat:@"module=%@ and isIconBadge=%@ and username=%@",identifier,[NSNumber numberWithInt:1],username]];
-    }
     
 }
 

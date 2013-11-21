@@ -7,7 +7,7 @@
 //
 
 #import "MessageEntity.h"
-#import "UserInfo.h"
+#import "UserQueue.h"
 @implementation MessageEntity
 
 @dynamic uqID;
@@ -36,9 +36,11 @@
 }
 -(NSString*)zhName
 {
-    if([self.sendUser length]>0){
-        return @"";
+    if([self.name length]>0){
+        NSLog(@"888888=%@",self.name);
+        NSLog(@"999999=%@",[[UserQueue instance].userCache valueForKey:self.name]);
+        return [[UserQueue instance].userCache valueForKey:self.name]?[[UserQueue instance].userCache valueForKey:self.name]:self.name;
     }
-    return @"";
+    return self.name;
 }
 @end
