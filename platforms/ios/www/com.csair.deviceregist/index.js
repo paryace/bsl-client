@@ -49,12 +49,8 @@ function queryAndFillDeviceInfo(){
 			function(data){
 				console.log("查询成功");
 				if(data){
-					var inputs = $("input");
-					for(var i = 0; i < inputs.length; i++){//填充数据
-						var key = inputs[i].name;
-						inputs[i].value = data[key];
-					}
-					isUpdate = true;
+					fillData(data);
+				    isUpdate = true;
 				}else{
 					isUpdate = false;
 				}
@@ -80,7 +76,7 @@ function submit(){
 			var value = inputs[i].value;
 			var key = inputs[i].name;
 			if(!value || value == ""){  //替换null或者undefined
-				alert(inputs[i].placeholder);
+				alert(inputs[i].placeholder.split(",")[0]);
 				return;
 			}
 			json[key] = value;//组装数据
@@ -132,5 +128,16 @@ function fillData(data){
 			$(input).val(data[input.name]);
 		}
 	}
-	
+	var radios = $("input[name=deviceSrc]");
+    for(var i = 0; i <radios.length; i++){
+    	var radio = $(radios[i]);
+    	if(radio.val() == data.deviceSrc){
+    		console.log("匹配"+data.deviceSrc);
+    		radios[i].checked = true;
+    	}
+    }
+}
+
+function validate(){
+
 }
