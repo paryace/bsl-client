@@ -79,9 +79,17 @@ function submit(){
 				alert(inputs[i].placeholder.split(",")[0]);
 				return;
 			}
-			json[key] = value;//组装数据
+			if(inputs[i].type != "radio")
+				json[key] = value;//组装数据
 		}
-		
+
+		var radios = $("input[name=deviceSrc]");
+	    for(var i = 0; i <radios.length; i++){
+	    	if(radios[i].checked){
+	    		json[key] = radios[i].value;
+	    	}
+	    }
+
 		var value = $("input[name=telPhone]").val();
 		if(!testPhone(value)){
 			alert("请正确填写您的联系方式");
@@ -118,13 +126,13 @@ function fillData(data){
 	}else{
 		$("#registInfo").html("您的设备未进行注册");
 	}
-	$("input[name=deviceSrc]").val("公司配发");
+	$("input[name=deviceSrc]")[0].checked=true
 	
 	data = JSON.parse(data);
 	var inputs = $("input");
 	for(var i = 0; i < inputs.length; i++){
 		var input = inputs[i];
-		if(data[input.name] && data[input.name] != null){
+		if(data[input.name] && data[input.name] != null && input.type != "radio"){
 			$(input).val(data[input.name]);
 		}
 	}
