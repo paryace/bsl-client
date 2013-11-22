@@ -49,6 +49,8 @@ function queryAndFillDeviceInfo(){
 			function(data){
 				console.log("查询成功");
 				if(data){
+                    //安卓是在这里如,传入object,ios是直接调用fillData
+                    data = JSON.stringify(data);
 					fillData(data);
 				    isUpdate = true;
 				}else{
@@ -75,18 +77,19 @@ function submit(){
 		for(var i = 0; i < inputs.length; i++){
 			var value = inputs[i].value;
 			var key = inputs[i].name;
-			if(!value || value == ""){  //替换null或者undefined
-				// alert(inputs[i].placeholder.split(",")[0]);
-				navigator.notification.alert( 
-		            inputs[i].placeholder.split(",")[0],  // 显示信息 
-		            null,         // 警告被忽视的回调函数 
-		            '提示',            // 标题 
-		            '确定'                  // 按钮名称 
-		        ); 
-				return;
-			}
-			if(inputs[i].type != "radio")
+			if(inputs[i].type != "radio"){
+				if(!value || value == ""){  //替换null或者undefined
+					// alert(inputs[i].placeholder.split(",")[0]);
+					navigator.notification.alert( 
+			            inputs[i].placeholder.split(",")[0],  // 显示信息 
+			            null,         // 警告被忽视的回调函数 
+			            '提示',            // 标题 
+			            '确定'                  // 按钮名称 
+			        ); 
+					return;
+				}
 				json[key] = value;//组装数据
+			}
 		}
 
 		var radios = $("input[name=deviceSrc]");
@@ -110,7 +113,6 @@ function submit(){
 				// alert("提交失败,请检查网络连接！");
         	}
         , "DeviceRegister", submitType, [JSON.stringify(json)]);
-        window.location.href="index.html?cube-action=pop";
 	}
 }
 
@@ -134,7 +136,7 @@ function fillData(data){
 		$("#registInfo").html("您的设备未进行注册");
 	}
 	$("input[name=deviceSrc]")[0].checked=true
-	
+
 	data = JSON.parse(data);
 	var inputs = $("input");
 	for(var i = 0; i < inputs.length; i++){
