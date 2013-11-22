@@ -42,7 +42,7 @@
             }
             
             for (MultiUserInfo *user in userArray) {
-                if([user.systemId isEqualToString:system.systemId])
+                if([user.systemId isEqualToString:system.systemId] && ([user.loginFlag isEqualToNumber:[NSNumber numberWithBool:YES]]))
                 {
                     
                     [dictionary setObject:@"已登录" forKey:@"loginFlag"];
@@ -57,7 +57,7 @@
     {
         for (MultiUserInfo *user in userArray) {
             for (SystemInfo *system in systems) {
-                if([user.systemId isEqualToString:system.systemId])
+                if([user.systemId isEqualToString:system.systemId] && ([user.loginFlag isEqualToNumber:[NSNumber numberWithBool:YES]]))
                 {
                     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:0];
                     [dictionary setValue:system.username forKey:@"username"];
@@ -393,6 +393,7 @@
                         user.phone = [messageDictionary objectForKey:@"phone"];
                         user.zhName = [messageDictionary objectForKey:@"zhName"];
                         user.privileges = [[messageDictionary objectForKey:@"privileges"] JSONString];
+                        user.loginFlag = [NSNumber numberWithBool:YES];
                         [user save];
                     }
                     else
@@ -406,7 +407,7 @@
                         user.phone = [messageDictionary objectForKey:@"phone"];
                         user.zhName = [messageDictionary objectForKey:@"zhName"];
                         user.privileges = [[messageDictionary objectForKey:@"privileges"]JSONString];
-                        
+                        user.loginFlag = [NSNumber numberWithBool:YES];
                         [user save];
                     }
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"reload_web_page" object:nil];
@@ -452,7 +453,7 @@
             return ;
         }
         
-        NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@ and systemId=%@",username,systemId]];
+        NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@ and systemId=%@ and loginFlag=%@",username,systemId,[NSNumber numberWithBool:YES]]];
         NSString *password =@"";
         if(userArray.count>0)
         {
@@ -487,11 +488,6 @@
                     [system save];
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"reload_web_page" object:nil];
-                
-                
-//                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//                
-//                [appDelegate didOffLogin];
             }
         }
         else

@@ -368,6 +368,7 @@
                                 system.username = userName;
                                 [system save];
                             }
+                            
                         }
                         
                     }
@@ -434,9 +435,11 @@
                     //------------------------------------------------------------------------------------------
                     NSArray *systems =[messageDictionary objectForKey:@"authSysList"];
                     NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+                    NSMutableDictionary *existDictionary = [[NSMutableDictionary alloc]init];
                     
                     for (NSDictionary *dict in systems) {
                         NSString* systemId = [dict valueForKey:@"id"];
+                        [existDictionary setObject:dict forKey:[dict valueForKey:@"id"]];
                         if(temArray && temArray.count >0)
                         {
                             for (SystemInfo *sys in temArray) {
@@ -457,9 +460,61 @@
                                 }
                             }
                         }
+                        else
+                        {
+                            SystemInfo *system  = [SystemInfo insert];
+                            NSString* systemName = [dict valueForKey:@"sysName"];
+                            NSString* alias = [dict valueForKey:@"alias"];
+                            NSString* curr = [dict valueForKey:@"curr"];
+                            system.systemId = [dict valueForKey:@"id"];
+                            system.alias= alias;
+                            system.curr = [NSNumber numberWithBool:[curr boolValue]];
+                            if([curr boolValue])
+                            {
+                                currentSysId =[dict valueForKey:@"id"];
+                            }
+                            system.systemName=  systemName;
+                            system.username = userName;
+                            [system save];
+                        }
                         
                     }
-                    
+                    if(temArray.count >0)
+                    {
+                        //删除不存在的系统
+                        for(SystemInfo *sys in temArray)
+                        {
+                            if(![[existDictionary allKeys] containsObject:sys.systemId])
+                            {
+                                [sys remove];
+                            }
+                            else
+                            {
+                                [existDictionary removeObjectForKey:sys.systemId];
+                            }
+                        }//插入新增的系统
+                        if([[existDictionary allValues] count]>0)
+                        {
+                            for(NSDictionary *dict in [existDictionary allValues])
+                            {
+                                SystemInfo *system  = [SystemInfo insert];
+                                NSString* systemName = [dict valueForKey:@"sysName"];
+                                NSString* alias = [dict valueForKey:@"alias"];
+                                NSString* curr = [dict valueForKey:@"curr"];
+                                system.systemId = [dict valueForKey:@"id"];
+                                system.alias= alias;
+                                system.curr = [NSNumber numberWithBool:[curr boolValue]];
+                                if([curr boolValue])
+                                {
+                                    currentSysId =[dict valueForKey:@"id"];
+                                }
+                                system.systemName=  systemName;
+                                system.username = userName;
+                                [system save];
+                            }
+                        }
+                    }
+
                     [defaults setObject:token forKey:@"token"];
                     [defaults setObject:[messageDictionary objectForKey:@"phone"] forKey:@"phone"];
                     [defaults setObject:[messageDictionary objectForKey:@"sex"] forKey:@"sex"];
@@ -482,6 +537,7 @@
                         user.phone = [messageDictionary objectForKey:@"phone"];
                         user.zhName = [messageDictionary objectForKey:@"zhName"];
                         user.privileges = [[messageDictionary objectForKey:@"privileges"] JSONString];
+                        user.loginFlag = [NSNumber numberWithBool:YES];
                         [user save];
                     }
                     else
@@ -495,7 +551,7 @@
                         user.phone = [messageDictionary objectForKey:@"phone"];
                         user.zhName = [messageDictionary objectForKey:@"zhName"];
                         user.privileges = [[messageDictionary objectForKey:@"privileges"]JSONString];
-                        
+                        user.loginFlag = [NSNumber numberWithBool:YES];
                         [user save];
                     }
                     [appDelegate didLogin];

@@ -57,6 +57,7 @@
 #import "JSONKit.h"
 #import "ServerAPI.h"
 #import "MultiUserInfo.h"
+#import "SystemInfo.h"
 #define RUNTIME_CFG_USER_URL(A,B) [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"Cube_%@_%@.json",A,B]]
 
 /**
@@ -133,8 +134,14 @@ void uncaughtExceptionHandler(NSException*exception){
     dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
         NSArray * userarray = [MultiUserInfo findAll];
         for (MultiUserInfo *user in userarray) {
-            [user remove];
+            user.loginFlag = [NSNumber numberWithBool:NO];
+            [user save];
         }
+//        NSArray *systemArray = [SystemInfo findAll];
+//        for (SystemInfo * system in systemArray) {
+//            [system remove];
+//        };
+        
     });
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -195,7 +202,7 @@ void uncaughtExceptionHandler(NSException*exception){
     
     //[NSTimer timerWithTimeInterval:10.0f target:self selector:@selector(postOpreateLog) userInfo:nil repeats:NO];
 
-    [self performSelector:@selector(postOpreateLog) withObject:nil afterDelay:30.0f];
+    [self performSelector:@selector(postOpreateLog) withObject:nil afterDelay:60.0f];
     
     
     return YES;
@@ -624,8 +631,8 @@ void uncaughtExceptionHandler(NSException*exception){
     NSURL *cubeURL = RUNTIME_CFG_USER_URL(stringUser,systemId);
     //
     [[CubeApplication currentApplication] loadApplicatioFromURL:cubeURL];
-//    [NSTimer timerWithTimeInterval:10.0f target:self selector:@selector(sendGeoInfo2Server) userInfo:nil repeats:YES];
-    [self performSelector:@selector(sendGeoInfo2Server) withObject:nil afterDelay:20.0f];
+//    [NSTimer timerWithTimeInterval:60.0f target:self selector:@selector(sendGeoInfo2Server) userInfo:nil repeats:YES];
+    [self performSelector:@selector(sendGeoInfo2Server) withObject:nil afterDelay:60.0f];
     //开启访问 获取到未收到的推送信息
     [[PushGetMessageInfo sharedInstance] updatePushMessage];
     [navControl popToRootViewControllerAnimated:NO];

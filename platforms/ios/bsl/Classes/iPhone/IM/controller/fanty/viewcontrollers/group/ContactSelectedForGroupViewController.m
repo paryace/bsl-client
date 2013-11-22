@@ -43,7 +43,7 @@
     self = [super init];
     if (self) {
         
-        self.title=@"选择联系人";
+        self.title=@"邀请成员";
         selectedUserInfos=[[NSMutableArray alloc] initWithCapacity:2];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createRoomFinishNotification:) name:@"XMPP_CREATEROOM_NOTIFICATION" object:nil];
@@ -94,6 +94,17 @@
     [vv addSubview:label];
     navItem.titleView = vv;
      }
+    else
+    {
+        UILabel *tv = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+        tv.backgroundColor = [UIColor clearColor];
+        tv.font = [UIFont systemFontOfSize:20];
+        tv.textAlignment = NSTextAlignmentCenter;
+        tv.text = @"邀请成员";
+        tv.textColor = [UIColor whiteColor];
+        
+        navItem.titleView =tv;
+    }
     [bar pushNavigationItem:navItem animated:NO];
     
     [self.view addSubview:bar];

@@ -34,6 +34,7 @@
     {
         UIImage *image = [UIImage imageWithContentsOfFile:filepath];
         [imageView.imageView setImage:image];
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
 	// Do any additional setup after loading the view.
 }
