@@ -10,7 +10,6 @@ var changesys = {
         // this.getSysInfo(this.bindEvents);
         console.log("initialize");
         changesys.onGoingIntoIndex();
-       
     },
     bindEvents:function(){
         console.log("bind event");
@@ -61,6 +60,15 @@ var changesys = {
             var username = $("#username").val();
             var password = $("#password").val();
             console.log("username:"+username+",password:"+password+",sysId:"+sysId);
+            if(username == "" || password == ""){
+                navigator.notification.alert( 
+                    "账号和密码不能为空",  // 显示信息 
+                    null,         // 警告被忽视的回调函数 
+                    '提示',            // 标题 
+                    '确定'                  // 按钮名称 
+                ); 
+                return;
+            }
             cordova.exec(function(data) {
                 data = $.parseJSON(data);
                 console.log(data);
