@@ -110,6 +110,7 @@ function submit(){
 				// alert("提交失败,请检查网络连接！");
         	}
         , "DeviceRegister", submitType, [JSON.stringify(json)]);
+        window.location.href="index.html?cube-action=pop";
 	}
 }
 
