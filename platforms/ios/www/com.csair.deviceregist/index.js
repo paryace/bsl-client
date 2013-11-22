@@ -93,7 +93,6 @@ function submit(){
 				return;
 			}
 			json[key] = value;//组装数据
-			alert("key->")
 		}
 		var id = $("#identifier").val();
 		if(id && id != ""){
