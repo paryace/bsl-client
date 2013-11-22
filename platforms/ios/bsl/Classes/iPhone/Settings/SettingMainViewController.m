@@ -42,17 +42,12 @@
          self.modalPresentationCapturesStatusBarAppearance = YES;
          }
         
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationDidExist) name:@"LOGOUTSENDEXITNOTIFICATION" object:nil];
     }
 
     return self;
 }
 
--(void)checkDRFinish{
-    [self.navigationController popToViewController:self animated:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
-}
 
 - (void)viewDidLoad{
     [super viewDidLoad];

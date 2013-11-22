@@ -67,7 +67,7 @@
     }
     else
     {
-        [_options removeLastObject];
+        [_options removeAllObjects];
     }
     NSString* userName =  [command.arguments objectAtIndex:0];
     NSString* userPass =  [command.arguments objectAtIndex:1];
@@ -141,15 +141,19 @@
                     }
                 }
                 NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+                NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc]init];
                 for (SystemInfo * system in temArray) {
                     for (NSString *sysId in systemIds) {
                         if([sysId isEqualToString:system.systemId])
                         {
                             NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:system.systemName,@"sysName" ,sysId,@"systemId",nil];
-                            [_options addObject:dictonary];
+                            if(![[tmpDict allKeys] containsObject:sysId])
+                            [tmpDict setObject:dictonary forKey:sysId];
+                            
                         }
                     }
                 }
+                [_options addObjectsFromArray:[tmpDict allValues]];
                 if(_options.count>0)
                 {
                     MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
