@@ -81,21 +81,19 @@ function submit(){
 		for(var i = 0; i < inputs.length; i++){
 			var value = $(inputs[i]).val();
 			var key = inputs[i].name;
-			if(inputs[i].type != "radio"){
-				if(!value || value == ""){  //替换null或者undefined
-					// alert(inputs[i].placeholder.split(",")[0]);
-					navigator.notification.alert( 
-			           	//inputs[i].placeholder.split(",")[0],  // 显示信息
-			            "请填写" + $(labels[i]).html().split(":")[0], 
-			            null,         // 警告被忽视的回调函数 
-			            '提示',            // 标题 
-			            '确定'                  // 按钮名称 
-			        ); 
-			        
-					return;
-				}
-				json[key] = value;//组装数据
+			if(!value || value == ""){  //替换null或者undefined
+				// alert(inputs[i].placeholder.split(",")[0]);
+				navigator.notification.alert( 
+		           	//inputs[i].placeholder.split(",")[0],  // 显示信息
+		            "请填写" + $(labels[i]).html().split(":")[0], 
+		            null,         // 警告被忽视的回调函数 
+		            '提示',            // 标题 
+		            '确定'                  // 按钮名称 
+		        ); 
+				return;
 			}
+			json[key] = value;//组装数据
+			alert("key->")
 		}
 		var id = $("#identifier").val();
 		if(id && id != ""){
@@ -109,7 +107,13 @@ function submit(){
 	    }
 		var value = $("input[name=telPhone]").val();
 		if(!testPhone(value)){
-			alert("请正确填写您的联系方式");
+			navigator.notification.alert( 
+	           	//inputs[i].placeholder.split(",")[0],  // 显示信息
+	            "请正确填写您的联系方式", 
+	            null,         // 警告被忽视的回调函数 
+	            '提示',            // 标题 
+	            '确定'                  // 按钮名称 
+	        ); 
 			return;
 		}
 		
