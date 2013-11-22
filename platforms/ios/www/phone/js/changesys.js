@@ -25,7 +25,6 @@ var changesys = {
         console.log("get system info");
         if(this.hasCordova()){
             cordova.exec(function(data) {   //需要弹框登陆
-                // var sysList = ["南航统一移动应用","OA验证"];
                 console.log(data);
                 console.log("need show window");
                 data = JSON.parse(data);
