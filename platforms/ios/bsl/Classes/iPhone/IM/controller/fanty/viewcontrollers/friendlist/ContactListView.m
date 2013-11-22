@@ -12,7 +12,8 @@
 #import "SVProgressHUD.h"
 #import "TouchScroller.h"
 #import "ContactCell.h"
-
+#import "pinyin.h"
+#import "ChineseString.h"
 
 @interface ContactListView()<UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate,UISearchBarDelegate,TouchScrollerDelegate>{
     
@@ -130,12 +131,32 @@
         fetchRequest.resultType = NSDictionaryResultType;
         //排序
         NSArray* groups = [[ShareAppDelegate xmpp].managedObjectContext executeFetchRequest:fetchRequest error:nil];
-        
+        NSMutableArray *chineseArray = [NSMutableArray array];
         for(NSDictionary * dict in groups){
-//            NSString* group=NSLocalizedString(userInfo.userGroup,nil);
+
             NSString* group=[dict objectForKey:@"userGroup"];
-            [friendGroups addObject:group];
+//            group=NSLocalizedString(group,nil);
+//            NSString *pinYinResult=[NSString string];
+//            for(int i=0;i<group.length;i++)
+//            {
+//                NSString *singlePinyinLetter=[[NSString stringWithFormat:@"%c",pinyinFirstLetter([group characterAtIndex:i])]uppercaseString];
+//                
+//                pinYinResult=[pinYinResult stringByAppendingString:singlePinyinLetter];
+//
+//                
+//            }
+            ChineseString *chineseString = [[ChineseString alloc]init];
+//            chineseString.pinYin = pinYinResult;
+            chineseString.string = group;
+            [chineseArray addObject:chineseString];
         }
+        //中文排序
+        NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"string" ascending:YES]];
+        [chineseArray sortUsingDescriptors:sortDescriptors];
+        for(int i=0;i<[chineseArray count];i++){
+            [friendGroups addObject:((ChineseString*)[chineseArray objectAtIndex:i]).string];
+        }
+        
     }
     else{
         [friendGroups addObject:@"搜索结果"];

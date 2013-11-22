@@ -44,6 +44,7 @@
     {
         NSString *fileName = attachment.fileName;
         self.title = fileName;
+        fileName  = [fileName lowercaseString];
         if([fileName hasSuffix:@"txt"])
         {
             NSString *path = [[self documentsPath] stringByAppendingPathComponent:@"attachmens"];
@@ -67,7 +68,7 @@
                 
                 
                 BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:realPath isDirectory:NO];
-                NSLog(@"==========%d",isExist);
+//                NSLog(@"==========%d",isExist);
                 NSString *content=@"";
                 if(isExist)
                 {
@@ -93,7 +94,7 @@
                 [webview loadHTMLString:htmlString baseURL:nil]; //在 WebView 中显示本地的字符串
             }
         }
-        else
+        else if([fileName hasSuffix:@"pdf"])
         {
             NSString *path = [[self documentsPath] stringByAppendingPathComponent:@"attachmens"];
             NSArray *fileArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
@@ -111,6 +112,26 @@
                 NSURLRequest *request = [NSURLRequest requestWithURL:url];
                 [webview loadRequest:request];
                 
+            }
+        }
+        else
+        {
+            NSString *path = [[self documentsPath] stringByAppendingPathComponent:@"attachmens"];
+            NSArray *fileArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
+            
+            NSArray *realArray = [fileArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF==%@",attachment.fileId]];
+            if(realArray.count >0)
+            {
+                webview.multipleTouchEnabled = YES;
+                webview.scalesPageToFit = YES;
+                webview.backgroundColor = [UIColor whiteColor];
+                NSString *file = [realArray objectAtIndex:0];
+                NSString *realPath = [path stringByAppendingPathComponent:file];
+                NSURL *url = [NSURL fileURLWithPath:realPath];
+                NSString* showHtml = @"<html><head></head><body><img src='data:image/png;base64,%@'/></body></html>";
+                NSData* imageData = [[NSData alloc] initWithContentsOfURL:url];
+                NSString* imageString = [imageData base64Encoding];
+                [webview loadHTMLString:[NSString stringWithFormat:showHtml, imageString] baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
             }
         }
     }

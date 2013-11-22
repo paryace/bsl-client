@@ -44,48 +44,47 @@
 {
     @autoreleasepool {
         AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",attachmentId]];
-        NSString *fileName = [attachment.fileName lowercaseString];
-        if([fileName hasSuffix:@"pdf"]||[fileName hasSuffix:@"txt"])
-        {
-            PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
-            viewcontroller.attachment = attachment;
-            [self.navigationController pushViewController:viewcontroller animated:YES];
-        }
-        else if ([fileName hasSuffix:@"jpg"] || [fileName hasSuffix:@"png"] || [fileName hasSuffix:@"jpeg"])
-        {
-            NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachment.fileId];
-            ImageAttachViewController *controller =  (ImageAttachViewController*)[[NSClassFromString(@"ImageAttachViewController") alloc] init];
-            controller.title =@"附件详情";
-            controller.filepath = filePath;
-            [self.navigationController pushViewController:controller animated:YES];
-            
-        }
-        else if([fileName hasSuffix:@"doc"] || [fileName hasSuffix:@"docx"])
-        {
-            
-        }
-        else if ([fileName hasSuffix:@"xls"] || [fileName hasSuffix:@"xlsx"])
-        {
-            
-        }
-        else
-        {
-            
-        }
         
-        
-        
-        
-        
-        
-        
-        
-//        UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+        PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
+        viewcontroller.attachment = attachment;
+        [self.navigationController pushViewController:viewcontroller animated:YES];
+//    
 //        
-//        CGRect frame = [[UIApplication sharedApplication]keyWindow].frame;
-//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:filePath]];
 //        
-//        [self.navigationController pushViewController:Nil animated:YES];
+//        NSString *fileName = [attachment.fileName lowercaseString];
+//        if([fileName hasSuffix:@"pdf"]||[fileName hasSuffix:@"txt"])
+//        {
+//            PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
+//            viewcontroller.attachment = attachment;
+//            [self.navigationController pushViewController:viewcontroller animated:YES];
+//        }
+//        else if ([fileName hasSuffix:@"jpg"] || [fileName hasSuffix:@"png"] || [fileName hasSuffix:@"jpeg"])
+//        {
+//            PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
+//            viewcontroller.attachment = attachment;
+//            [self.navigationController pushViewController:viewcontroller animated:YES];
+//            NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachment.fileId];
+//            ImageAttachViewController *controller =  (ImageAttachViewController*)[[NSClassFromString(@"ImageAttachViewController") alloc] init];
+//            controller.title =@"附件详情";
+//            controller.filepath = filePath;
+//            [self.navigationController pushViewController:controller animated:YES];
+//            
+//        }
+//        else if([fileName hasSuffix:@"doc"] || [fileName hasSuffix:@"docx"])
+//        {
+//            
+//        }
+//        else if ([fileName hasSuffix:@"xls"] || [fileName hasSuffix:@"xlsx"])
+//        {
+//            
+//        }
+//        else
+//        {
+//            
+//        }
+//        
+//        
+//        
         
     }
     

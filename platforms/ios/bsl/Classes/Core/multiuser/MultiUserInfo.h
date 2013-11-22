@@ -2,7 +2,7 @@
 //  MultiUserInfo.h
 //  bsl
 //
-//  Created by zhoujun on 13-11-15.
+//  Created by zhoujun on 13-11-22.
 //
 //
 
@@ -12,13 +12,14 @@
 
 @interface MultiUserInfo : NSManagedObject
 
-@property (nonatomic, retain) NSString * md5Str;
-@property (nonatomic, retain) NSString * password;
-@property (nonatomic, retain) NSString * systemId;
-@property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSString * zhName;
-@property (nonatomic, retain) NSString * privileges;
-@property (nonatomic, retain) NSString * sex;
-@property (nonatomic, retain) NSString * phone;
+@property (nonatomic, strong) NSString * md5Str;
+@property (nonatomic, strong) NSString * password;
+@property (nonatomic, strong) NSString * phone;
+@property (nonatomic, strong) NSString * privileges;
+@property (nonatomic, strong) NSString * sex;
+@property (nonatomic, strong) NSString * systemId;
+@property (nonatomic, strong) NSString * username;
+@property (nonatomic, strong) NSString * zhName;
+@property (nonatomic, strong) NSNumber * loginFlag;
 
 @end

@@ -60,6 +60,7 @@
         <attribute name="warningId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="MultiUserInfo" representedClassName="MultiUserInfo" syncable="YES">
+        <attribute name="loginFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="md5Str" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
