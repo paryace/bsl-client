@@ -4030,7 +4030,7 @@
 		180B7F421818A6FF0091E3AE /* Config-impc-pro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Config-impc-pro.m"; sourceTree = "<group>"; };
 		180B83021818A9B90091E3AE /* bsl_impc copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bsl_impc copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		180B83031818A9BA0091E3AE /* bsl_impc copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "bsl_impc copy-Info.plist"; path = "/Users/apple/Documents/bsl-client/platforms/ios/bsl_impc copy-Info.plist"; sourceTree = "<absolute>"; };
-		180DCF0C1835BF8E00CAB8C9 /* cube1115.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = cube1115.xcdatamodel; sourceTree = "<group>"; };
+		180DCF0C1835BF8E00CAB8C9 /* cube1115.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1115.xcdatamodel; sourceTree = "<group>"; };
 		180DCF0D1835C0C400CAB8C9 /* MultiUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiUserInfo.h; sourceTree = "<group>"; };
 		180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiUserInfo.m; sourceTree = "<group>"; };
 		180F2376180D237D0037751C /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
@@ -12934,7 +12934,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 小 健 (C5WDHZC52H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -12962,8 +12962,12 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "61A5779A-D443-4718-95FA-23E1C14D509A";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -12973,7 +12977,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 小 健 (C5WDHZC52H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -12999,8 +13003,12 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "61A5779A-D443-4718-95FA-23E1C14D509A";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
