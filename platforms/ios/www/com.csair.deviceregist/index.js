@@ -51,9 +51,11 @@ function queryAndFillDeviceInfo(){
 				if(data){
                     //安卓是在这里如,传入object,ios是直接调用fillData
                     data = JSON.stringify(data);
+                    $("#registInfo").html("您的设备已注册");
 					fillData(data);
 				    isUpdate = true;
 				}else{
+					$("#registInfo").html("您的设备未进行注册");
 					isUpdate = false;
 				}
 			}, 
@@ -74,6 +76,7 @@ function submit(){
 		// }
 		
 		var inputs = $("input[type=text]");
+		var labels = $(".cube-form-label")
 		var json = {};//传给客户端的参数是json
 		for(var i = 0; i < inputs.length; i++){
 			var value = $(inputs[i]).val();
@@ -82,8 +85,8 @@ function submit(){
 				if(!value || value == ""){  //替换null或者undefined
 					// alert(inputs[i].placeholder.split(",")[0]);
 					navigator.notification.alert( 
-			             inputs[i].placeholder.split(",")[0],  // 显示信息
-			            //"请填写" + $(labels[i]).html().split(":")[0], 
+			           	//inputs[i].placeholder.split(",")[0],  // 显示信息
+			            "请填写" + $(labels[i]).html().split(":")[0], 
 			            null,         // 警告被忽视的回调函数 
 			            '提示',            // 标题 
 			            '确定'                  // 按钮名称 

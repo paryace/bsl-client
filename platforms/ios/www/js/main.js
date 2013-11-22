@@ -558,7 +558,7 @@ $('#top_left_btn')
 				$('.buttomContent').css('display', 'none');
 
 
-				$('#title').html("南航移动应用");
+				// $('#title').html("南航移动应用");
 				$('#manager_btn').show();
 				//$('#top_left_btn').addClass("btn").css("background","url('img/settingbutton.ing') no-repeat").css("width","24px").css("height","24px");
 
