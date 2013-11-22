@@ -25,7 +25,7 @@
 #import "IMServerAPI.h"
 
 #import "VoiceUploadManager.h"
-
+#import "UserQueue.h"
 #import "GTGZImageDownloadedManager.h"
 
 @interface ChatMainViewController ()<TouchScrollerDelegate,UITableViewDataSource,UITableViewDelegate,ChatPanelDelegate,NSFetchedResultsControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,RecorderDelegate,UIPopoverControllerDelegate,ChatImageCellDelegate,GroupMemberManagerViewControllerDelegate,VoiceUploadManagerDelegate>
@@ -61,7 +61,7 @@
 
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(iMOffLine) name:@"XMPPSTREAMIMOFFLINE" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(IMOnLine) name:@"XMPPSTREAMIMONLINE" object:nil];
-
+        [UserQueue instance];
     }
     return self;
 }
@@ -244,7 +244,7 @@
             }
             cell.type=([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse);
             [cell headerUrl:@""];
-            [cell name:[messageEntity name]];
+            [cell name:[messageEntity zhName]];
             [cell sendDate:messageEntity.sendDate];
             [cell playAnimated:([messageEntity.statue intValue]==1 && (playingIndex==[indexPath row]))];
             [cell voiceLength:1 animate:NO];
@@ -274,7 +274,7 @@
                 rect.size.width=tableView.frame.size.width;
                 cell.frame=rect;
             }
-            [cell headerUrl:@"" name:[messageEntity name] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
+            [cell headerUrl:@"" name:[messageEntity zhName] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
             cell.tag=[indexPath row];
             
             return cell;
@@ -289,7 +289,7 @@
                 cell.frame=rect;
             }
             cell.emoctionList=emoctionList;
-            [cell headerUrl:@"" name:[messageEntity name] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
+            [cell headerUrl:@"" name:[messageEntity zhName] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
             cell.tag=[indexPath row];
 
             return cell;

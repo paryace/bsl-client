@@ -73,7 +73,7 @@
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
                   moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
                   urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "406202318.327259"
+                  timestampString = "406687187.287084"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "501"
@@ -87,7 +87,7 @@
                   symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
                   moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
                   urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "406202318.327577"
+                  timestampString = "406687187.287318"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "501"
@@ -119,12 +119,28 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bsl/Classes/XMPP/XMPPIMActor.m"
-            timestampString = "404329762.970453"
+            filePath = "bsl/Classes/iPhone/Announcement/controller/view/KxMenuItem+Extension.m"
+            timestampString = "405397630.395642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "843"
-            endingLineNumber = "843"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-init:image:target:action:fileName:fileId:fileSize:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bsl/Classes/XMPP/XMPPIMActor.m"
+            timestampString = "406629320.268828"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "767"
+            endingLineNumber = "767"
             landmarkName = "-xmppStream:didReceiveIQ:"
             landmarkType = "5">
          </BreakpointContent>
@@ -135,13 +151,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bsl/Classes/iPhone/Announcement/controller/view/KxMenuItem+Extension.m"
-            timestampString = "405397630.395642"
+            filePath = "bsl/Classes/XMPP/XMPPIMActor.m"
+            timestampString = "406629692.784141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-init:image:target:action:fileName:fileId:fileSize:"
+            startingLineNumber = "744"
+            endingLineNumber = "744"
+            landmarkName = "-xmppStream:didReceiveIQ:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

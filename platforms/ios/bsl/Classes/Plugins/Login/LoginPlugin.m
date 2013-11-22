@@ -72,7 +72,7 @@
     NSString* userName =  [command.arguments objectAtIndex:0];
     NSString* userPass =  [command.arguments objectAtIndex:1];
     NSString* userSwithch =  [command.arguments objectAtIndex:2];
-    NSString* isOffLogin = [command.arguments objectAtIndex:3];
+    NSString* isOffLogin =[command.arguments objectAtIndex:3];
     _password = userPass;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if ([userSwithch boolValue]) {
@@ -106,6 +106,7 @@
     [defaults synchronize];
     if(![isOffLogin boolValue])
     {
+        _command = command;
         [self didLoginAndSaveData:userName withPwd:userPass withSystemId:nil andswitchIsOn:userSwithch andPluginCommon:command];
     }
     else
@@ -211,7 +212,7 @@
     }
     else
     {
-        [self didLoginAndSaveData:userName withPwd:userPass withSystemId:systemId andswitchIsOn:swithIsOn andPluginCommon:nil];
+        [self didLoginAndSaveData:userName withPwd:userPass withSystemId:systemId andswitchIsOn:swithIsOn andPluginCommon:_command];
 
     }
     
@@ -289,19 +290,27 @@
             NSString* message = [messageDictionary objectForKey:@"loginOK"];
             NSString *tips = [messageDictionary objectForKey:@"errmsg"];
             NSString *currentSysId=@"";
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             if([SVProgressHUD isVisible]){
                 [SVProgressHUD dismiss];
             }
             if(![message boolValue]&& nil != tips)
             {
                 
+                [defaults setObject:@"" forKey:@"password"];
+                [defaults setObject:@"" forKey:@"loginPassword"];
+                [defaults synchronize];
                 if(command)
                 {
-                    NSMutableDictionary *json = [NSMutableDictionary dictionary];
-                    [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
-                    [json setValue:tips  forKey:@"message"];
-                    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
-                    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    NSRange range = [tips rangeOfString:@"密码"];
+                    if( range.location != NSNotFound)
+                    {
+                        NSMutableDictionary *json = [NSMutableDictionary dictionary];
+                        [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+                        [json setValue:tips  forKey:@"message"];
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    }
                 }
                 UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"登录失败" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
@@ -309,7 +318,6 @@
                 return;
                 
             }
-            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             if (![message boolValue] && [[messageDictionary valueForKey:@"showOpt"]boolValue]) {
                 [_options removeAllObjects];
                 NSMutableArray *systems =[messageDictionary objectForKey:@"authSysList"];
@@ -418,7 +426,7 @@
                         NSMutableDictionary *json = [NSMutableDictionary dictionary];
                         [json setValue:[NSNumber numberWithBool:YES] forKey:@"isSuccess"];
                         [json setValue:tips  forKey:@"message"];
-                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsString:json.JSONString];
                         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                     }
                     NSString* token = [messageDictionary objectForKey:@"sessionKey"];

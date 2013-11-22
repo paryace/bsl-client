@@ -11,6 +11,7 @@
 
 @interface CubeApplication : NSObject{
     BOOL syncing;//是否正在同步
+    NSMutableDictionary *tmpDict;
 }
 
 //属性

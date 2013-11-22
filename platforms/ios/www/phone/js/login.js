@@ -79,8 +79,6 @@ $("#LoginBtn").click(function() {
 	if(isOffLine === undefined){
 		isOffLine = "false";
 	}
-
-
 	cordova.exec(function(data) {
 		data = $.parseJSON(data);
 		if (data.isSuccess === true) {
@@ -89,6 +87,8 @@ $("#LoginBtn").click(function() {
 	}, function(err) {
 
 		err = $.parseJSON(err);
+        $("#realpsw").val("");
+        $("#password").val("");
 		$("#LoginBtn").removeAttr("disabled");
 	}, "CubeLogin", "login", [username, password, isRemember, isOffLine]);
 

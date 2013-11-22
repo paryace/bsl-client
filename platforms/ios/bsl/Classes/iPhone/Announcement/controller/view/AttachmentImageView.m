@@ -17,19 +17,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+    
         
     }
     return self;
 }
--(void)openFile:(NSString*)attachmentId
-{
-    AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",attachmentId]];
-    NSString *realPath = [NSHomeDirectory() stringByAppendingPathComponent:[attachment filePath]];
-    CGRect frame = [[UIApplication sharedApplication]keyWindow].frame;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:realPath]];
-    webView = [[CubeWebViewController alloc]init];
-    [webView loadRequest:request withFrame:frame didFinishBlock:^{} didErrorBlock:^{}];
-}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

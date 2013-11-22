@@ -131,6 +131,7 @@
 
 -(void)loadWebpage
 {
+    [[CubeApplication currentApplication] sync];
     [aCubeWebViewController.webView reload];
 }
 

@@ -960,6 +960,12 @@
 		180DCF121835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
 		180DCF131835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
 		180DCF141835C0C400CAB8C9 /* MultiUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */; };
+		180DCF18183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
+		180DCF19183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
+		180DCF1A183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
+		180DCF1B183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
+		180DCF1C183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
+		180DCF1D183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
 		180F2374180D1A170037751C /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B81D1806503500668DED /* Default-Landscape@2x~ipad.png */; };
 		180F2380180D237D0037751C /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F2376180D237D0037751C /* 114.png */; };
 		180F2381180D237D0037751C /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F2377180D237D0037751C /* 120.png */; };
@@ -4033,6 +4039,8 @@
 		180DCF0C1835BF8E00CAB8C9 /* cube1115.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1115.xcdatamodel; sourceTree = "<group>"; };
 		180DCF0D1835C0C400CAB8C9 /* MultiUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiUserInfo.h; sourceTree = "<group>"; };
 		180DCF0E1835C0C400CAB8C9 /* MultiUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiUserInfo.m; sourceTree = "<group>"; };
+		180DCF16183C509600CAB8C9 /* UserQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQueue.h; sourceTree = "<group>"; };
+		180DCF17183C509600CAB8C9 /* UserQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQueue.m; sourceTree = "<group>"; };
 		180F2376180D237D0037751C /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
 		180F2377180D237D0037751C /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		180F2378180D237D0037751C /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
@@ -7520,6 +7528,8 @@
 				F54D806517E8BFBA0067A023 /* Recorder.m */,
 				39F02A0A1807C3B300051656 /* VoiceUploadManager.h */,
 				39F02A0B1807C3B300051656 /* VoiceUploadManager.m */,
+				180DCF16183C509600CAB8C9 /* UserQueue.h */,
+				180DCF17183C509600CAB8C9 /* UserQueue.m */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -11549,6 +11559,7 @@
 				180B82C21818A9B90091E3AE /* FPWeatherInfoCell.m in Sources */,
 				180B82C31818A9B90091E3AE /* UIView+ViewID.m in Sources */,
 				180B82C41818A9B90091E3AE /* NewPDFDownloadListViewController.m in Sources */,
+				180DCF1D183C509600CAB8C9 /* UserQueue.m in Sources */,
 				180B82C51818A9B90091E3AE /* FPFlightNoticeCell.m in Sources */,
 				180B82C71818A9B90091E3AE /* IIViewDeckController.m in Sources */,
 				180B82C81818A9B90091E3AE /* PDFSubChatperViewController.m in Sources */,
@@ -11633,6 +11644,7 @@
 				F54D82D817E8BFBB0067A023 /* FunctionDetialInfoViewController.m in Sources */,
 				F54D82DC17E8BFBB0067A023 /* NativePageControl.m in Sources */,
 				F54D82DD17E8BFBB0067A023 /* NSMutableDictionary+SortedAllkeys.m in Sources */,
+				180DCF18183C509600CAB8C9 /* UserQueue.m in Sources */,
 				F54D82DE17E8BFBB0067A023 /* DownloadingTableViewCell.m in Sources */,
 				18617A36182A822200D85380 /* PDFViewController.m in Sources */,
 				F54D82E017E8BFBB0067A023 /* FunctionDetailScrollView.m in Sources */,
@@ -12089,6 +12101,7 @@
 				18E9C4D01803AB1200B874B8 /* PlaneTypeViewController.m in Sources */,
 				18E9C5261803AB1200B874B8 /* PDFDocumentsCheckBoxCell.m in Sources */,
 				39D9EA4C17F27C03001ED6F5 /* GMGridViewLayoutStrategies.m in Sources */,
+				180DCF1B183C509600CAB8C9 /* UserQueue.m in Sources */,
 				18E9C4691803AB1200B874B8 /* CDA1.m in Sources */,
 				39D9EA4D17F27C03001ED6F5 /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */,
 				39D9EA4E17F27C03001ED6F5 /* UIView+GMGridViewAdditions.m in Sources */,
@@ -12188,6 +12201,7 @@
 				39E052AC17F00AEA00BCF7F8 /* Login_IpadViewController.m in Sources */,
 				39E052AE17F00AEA00BCF7F8 /* MainViewViewController.m in Sources */,
 				39F02A14180810BE00051656 /* MessageRecordCell.m in Sources */,
+				180DCF19183C509600CAB8C9 /* UserQueue.m in Sources */,
 				39E052B417F00AEA00BCF7F8 /* AAPanelView.m in Sources */,
 				39E052B517F00AEA00BCF7F8 /* CloverTabBar.m in Sources */,
 				39E052B617F00AEA00BCF7F8 /* SkinView.m in Sources */,
@@ -12368,6 +12382,7 @@
 				39E9C5AB180EBAAA004CEF1D /* IconButton.m in Sources */,
 				39E9C5AC180EBAAA004CEF1D /* Login_IpadViewController.m in Sources */,
 				39E9C5B2180EBAAA004CEF1D /* MessageRecordCell.m in Sources */,
+				180DCF1C183C509600CAB8C9 /* UserQueue.m in Sources */,
 				39E9C5B3180EBAAA004CEF1D /* AAPanelView.m in Sources */,
 				39E9C5B4180EBAAA004CEF1D /* CloverTabBar.m in Sources */,
 				39E9C5B5180EBAAA004CEF1D /* SkinView.m in Sources */,
@@ -12548,6 +12563,7 @@
 				39FF0B6517F13CBB0086B76C /* IconButton.m in Sources */,
 				39FF0B6617F13CBB0086B76C /* Login_IpadViewController.m in Sources */,
 				39F02A15180810BE00051656 /* MessageRecordCell.m in Sources */,
+				180DCF1A183C509600CAB8C9 /* UserQueue.m in Sources */,
 				39FF0B6E17F13CBB0086B76C /* AAPanelView.m in Sources */,
 				39FF0B6F17F13CBB0086B76C /* CloverTabBar.m in Sources */,
 				39FF0B7017F13CBB0086B76C /* SkinView.m in Sources */,

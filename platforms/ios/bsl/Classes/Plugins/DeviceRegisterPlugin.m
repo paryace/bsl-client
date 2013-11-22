@@ -73,6 +73,11 @@ typedef void (^RegistFinsh)(NSString *responseStr);
             NSString *jscode =  [NSString stringWithFormat:@"%@%@%@",@"fillData('",secondResStr,@"')"];
             [self.webView stringByEvaluatingJavaScriptFromString:jscode];
         }];
+        [secondRes setFailedBlock:^{
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"提交失败,请稍后再试" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+            alertView.tag = 100;
+            [alertView show];
+        }];
         [secondRes startAsynchronous];
         
         
@@ -107,6 +112,10 @@ typedef void (^RegistFinsh)(NSString *responseStr);
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(alertView.tag == 0){
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"DeviceRegistFinished" object:nil]];
+    }
+    else if(alertView.tag == 100)
+    {
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"DeviceRegistFinished" object:nil]];
     }
 }

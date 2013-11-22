@@ -29,5 +29,6 @@
 @property(nonatomic,strong) NSDate* receiveDate;
 
 -(NSString*)name;
+-(NSString*)zhName;
 
 @end

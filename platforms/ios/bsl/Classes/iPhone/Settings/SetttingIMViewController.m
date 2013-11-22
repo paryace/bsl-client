@@ -96,14 +96,29 @@
 }
 
 - (IBAction)switchIMTouchdown:(id)sender {
-     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    if ([[[ShareAppDelegate xmpp]xmppStream] isConnected] ) {
-        [[ShareAppDelegate xmpp] disConnect];
-        [defaults setBool:YES forKey:@"IMXMPP"];
-    }else{
-         [[ShareAppDelegate xmpp] setupXmppStream];
-        [defaults setBool:NO forKey:@"IMXMPP"];
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"offLineSwitch"])
+    {
+        
+        if ([[[ShareAppDelegate xmpp]xmppStream] isConnected] ) {
+            [[ShareAppDelegate xmpp] disConnect];
+            [defaults setBool:YES forKey:@"IMXMPP"];
+        }else{
+            [[ShareAppDelegate xmpp] setupXmppStream];
+            [defaults setBool:NO forKey:@"IMXMPP"];
+        }
     }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"离线模式不能打开即时通讯连接" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alertView show];
+        alertView = nil;
+        UISwitch *switchs = (UISwitch*)sender;
+        [switchs setOn:NO animated:YES];
+        
+    }
+    
 }
 
 - (IBAction)switchPushTouchdown:(id)sender {

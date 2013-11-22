@@ -63,6 +63,7 @@
         attachView = [[UIView alloc]init];
         attachView.backgroundColor =[UIColor clearColor];
         [bgView addSubview:attachView];
+    
         
         
     }
@@ -71,9 +72,12 @@
 
 +(float)cellHeight:(NSString*)title content:(NSString*)content width:(float)w{
     
+    return [self cellHeight:title content:content width:w attachments:nil];
+}
++(float)cellHeight:(NSString*)title content:(NSString*)content width:(float)w attachments:(NSString *)attachments{
     float offset=OFFSET;
     CGRect isReadLabelFrame=CGRectMake(w-35.0f-OFFSET, 10.0f, 35.0f, 25.0f);
-
+    
     UILabel* titleLabel=[[UILabel alloc] init];
     titleLabel.numberOfLines=0;
     titleLabel.font=[UIFont boldSystemFontOfSize:19.0f];
@@ -87,14 +91,24 @@
     contentLabel.font=[UIFont systemFontOfSize:16.0f];
     contentLabel.text=content;
     [contentLabel sizeToFit];
-
     
-    float height=CGRectGetMaxY(contentLabel.frame)+3.0f+40.0f+30.0f;
+    
+    float height=CGRectGetMaxY(contentLabel.frame)+3.0f;
     titleLabel=nil;
     contentLabel=nil;
-    return height;
+    if(attachments)
+    {
+        NSArray *array = [attachments objectFromJSONString];
+        return height + 35 * array.count + 15;
+    }
+    else
+    {
+        return height + 35.0;
+    }
+    
     
 }
+
 -(void)title:(NSString*)title content:(NSString*)content time:(NSDate*)time isRead:(BOOL)isRead withAttachment:(NSString*)files
 {
     titleLabel.text=title;
@@ -133,10 +147,18 @@
     }
     if(!files || files.length==0)
     {
-        attachView.hidden =YES;
+        for(UIView *view in [attachView subviews])
+        {
+            [view removeFromSuperview];
+        }
+//        [attachView removeFromSuperview];
+//        attachView = nil;
     }
     else{
-        
+        for(UIView *view in [attachView subviews])
+        {
+            [view removeFromSuperview];
+        }
         NSMutableArray *filesArray = [files objectFromJSONString];
         int i=0;
         for (NSDictionary *dict in filesArray) {
@@ -146,18 +168,11 @@
                 NSLog(@"不是json 字符串");
                 return;
             }
-            NSString*fileName = [dict valueForKey:@"fileName"];
+            NSLog(@"%@",[dict valueForKey:@"fileName"]);
+            NSString*fileName = [[dict valueForKey:@"fileName"] lowercaseString];
             NSString*fileId = [dict valueForKey:@"fileId"];
             NSString*fileSize =  [dict valueForKey:@"fileSize"];
-            AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",fileId]];
-            if(!attachment)
-            {
-                attachment = [AttachMents insert];
-                attachment.fileName = fileName;
-                attachment.fileId = fileId;
-                attachment.fileSize = [NSNumber numberWithFloat:[fileSize floatValue]];
-                [attachment downloadFile:fileId];
-            }
+            NSLog(@"=======%@",fileName);
             //判断文件类型
             UIImage *image;
             if([fileName hasSuffix:@"pdf"])
@@ -186,61 +201,69 @@
             }
             
             AttachmentImageView *imageview = [[AttachmentImageView alloc]initWithImage:image];
+            [imageview setUserInteractionEnabled: YES];
+            [imageview setMultipleTouchEnabled:YES];
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMenu:)];
+            tapGesture.numberOfTapsRequired=1;
+            tapGesture.delegate = self;
+            [imageview addGestureRecognizer:tapGesture];
+//
             imageview.fileId = fileId;
             imageview.fileName = fileName;
             imageview.fileSize = fileSize;
             CGRect frame = imageview.frame;
-            frame.origin.x = 35*i;
-            i++;
-            frame.origin.y = 3.5f;
+            frame.origin.x = 0.0f;
+            frame.origin.y = 35*i;
             frame.size.width = 30;
             frame.size.height = 30;
             imageview.frame = frame;
-            imageview.userInteractionEnabled = YES;
             
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMenu:)];
-            tapGesture.numberOfTapsRequired=1;
-            [imageview addGestureRecognizer:tapGesture];
+            imageview.backgroundColor = [UIColor clearColor];
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(32, 35*i, 150, 30)];
+            label.text = [fileName stringByAppendingFormat:@"(%@kb)",fileSize];
+            label.font = [UIFont systemFontOfSize:12];
+            label.backgroundColor = [UIColor clearColor];
+            [attachView addSubview:label];
             [attachView addSubview:imageview];
-            
+            i++;
         }
+        
     }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    // 输出点击的view的类名
+    NSLog(@"---%@", NSStringFromClass([touch.view class]));
+    
+    // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"AnnouncementTableViewCell"]) {
+        return NO;
+    }
+    return  YES;
 }
 
 -(void)showMenu:(UITapGestureRecognizer*)sender
 {
     AttachmentImageView *view = (AttachmentImageView*)sender.view;
     currentFileId = view.fileId;
-    NSString *tips = [NSString stringWithFormat:@"你确定要打开%@?",[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]];
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-    [alertView show];
-//    KxMenueItemExt *item =[KxMenueItemExt menuItem:@"打开"
-//                   image:[UIImage imageNamed:@"action_icon"]
-//                  target:self
-//                  action:@selector(pushMenuItem:)
-//                                        attachName:view.fileName attachId:view.fileId attachSize:view.fileSize
-//     
-//                       ];
-//    NSArray *menuItems =
-//    @[
-//      
-//      [KxMenuItem menuItem:[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]
-//                     image:nil
-//                    target:nil
-//                    action:NULL],
-//      item
-//      
-//      ];
-//    
-//    KxMenuItem *first = menuItems[0];
-//    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
-//    first.alignment = NSTextAlignmentCenter;
-//    CGRect frame = view.frame;
-//    frame.origin.x +=frame.size.width;
-//    frame.origin.y = view.superview.frame.origin.y;
-//    [KxMenu showMenuInView:self
-//                  fromRect:frame
-//                 menuItems:menuItems];
+    AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",currentFileId]];
+    if(!attachment)
+    {
+        attachment = [AttachMents insert];
+        attachment.fileName = view.fileName;
+        attachment.fileId = currentFileId;
+        attachment.fileSize = [NSNumber numberWithFloat:[view.fileSize floatValue]];
+        [attachment downloadFile:currentFileId];
+        [attachment save];
+        NSString *tips = [NSString stringWithFormat:@"你确定要打开:%@?",[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        [alertView show];
+    }
+    else
+    {
+        [self.delegate openFile:currentFileId];
+    }
     
 }
 
@@ -300,8 +323,8 @@
     contentLabel.frame=CGRectMake(__offset+offset, CGRectGetMaxY(titleLabel.frame)+5.0f, w-offset*2.0f-__offset, 0.0f);
     [contentLabel sizeToFit];
     
-    timeLabel.frame=CGRectMake(w-150.0f-OFFSET-__offset, CGRectGetMaxY(contentLabel.frame)+8.0f, 150.0f, 20.0f);
-    attachView.frame =CGRectMake(offset, CGRectGetMaxY(contentLabel.frame)+5.0f, 220, 32);
+    timeLabel.frame=CGRectMake(w-150.0f-OFFSET-__offset, bgView.frame.size.height - 20, 150.0f, 20.0f);
+    attachView.frame =CGRectMake(offset, CGRectGetMaxY(contentLabel.frame)+5.0f, 220, 35*5);
 
 }
 
