@@ -76,7 +76,13 @@ function submit(){
 			var value = inputs[i].value;
 			var key = inputs[i].name;
 			if(!value || value == ""){  //替换null或者undefined
-				alert(inputs[i].placeholder.split(",")[0]);
+				// alert(inputs[i].placeholder.split(",")[0]);
+				navigator.notification.alert( 
+		            inputs[i].placeholder.split(",")[0],  // 显示信息 
+		            null,         // 警告被忽视的回调函数 
+		            '提示',            // 标题 
+		            '确定'                  // 按钮名称 
+		        ); 
 				return;
 			}
 			if(inputs[i].type != "radio")
@@ -144,8 +150,4 @@ function fillData(data){
     		radios[i].checked = true;
     	}
     }
-}
-
-function validate(){
-
 }
