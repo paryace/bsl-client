@@ -137,11 +137,6 @@ void uncaughtExceptionHandler(NSException*exception){
             user.loginFlag = [NSNumber numberWithBool:NO];
             [user save];
         }
-//        NSArray *systemArray = [SystemInfo findAll];
-//        for (SystemInfo * system in systemArray) {
-//            [system remove];
-//        };
-        
     });
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -291,6 +286,13 @@ void uncaughtExceptionHandler(NSException*exception){
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag == 100 && buttonIndex == 0) {
 
+        dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+            NSArray * userarray = [MultiUserInfo findAll];
+            for (MultiUserInfo *user in userarray) {
+                user.loginFlag = [NSNumber numberWithBool:NO];
+                [user save];
+            }
+        });
         [self showLoginView:NO];
     }
 }

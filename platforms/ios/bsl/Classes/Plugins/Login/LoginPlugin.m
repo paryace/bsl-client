@@ -301,14 +301,32 @@
             if(![message boolValue]&& nil != tips)
             {
                 
-                [defaults setObject:@"" forKey:@"password"];
-                [defaults setObject:@"" forKey:@"loginPassword"];
-                [defaults synchronize];
+                
                 if(command)
                 {
-                    NSRange range = [tips rangeOfString:@"密码"];
+                    NSRange range = [tips rangeOfString:@"帐号或密码错误"];
                     if( range.location != NSNotFound)
                     {
+                        [defaults setObject:@"" forKey:@"password"];
+                        [defaults setObject:@"" forKey:@"loginPassword"];
+                        [defaults setObject:@"" forKey:@"loginUsername"];
+                        [defaults setObject:@"" forKey:@"LoginUser"];
+                        [defaults setObject:@"" forKey:@"username"];
+                        [defaults synchronize];
+                        NSMutableDictionary *json = [NSMutableDictionary dictionary];
+                        [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+                        [json setValue:tips  forKey:@"message"];
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    }
+                    else if ([tips rangeOfString:@"用户不存在"].location != NSNotFound )
+                    {
+                        [defaults setObject:@"" forKey:@"password"];
+                        [defaults setObject:@"" forKey:@"loginPassword"];
+                        [defaults setObject:@"" forKey:@"loginUsername"];
+                        [defaults setObject:@"" forKey:@"LoginUser"];
+                        [defaults setObject:@"" forKey:@"username"];
+                        [defaults synchronize];
                         NSMutableDictionary *json = [NSMutableDictionary dictionary];
                         [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
                         [json setValue:tips  forKey:@"message"];

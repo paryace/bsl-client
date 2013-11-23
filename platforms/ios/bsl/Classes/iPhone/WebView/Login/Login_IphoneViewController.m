@@ -124,7 +124,7 @@
         NSLog(@"[Login_IphoneViewController] -deviceRegist  设备注册返回值 : %@",[request responseString]);
         if([@"false" isEqual:[request responseString]]){
             NSLog(@"设备未注册");
-            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
+//            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
             DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
 //            drController.navigationController = self.navigationController;
             [self.navigationController pushViewController:drController animated:YES];
@@ -139,9 +139,9 @@
     
 }
 
--(void)checkDRFinish{
-    [self.navigationController popToViewController:self animated:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
-}
+//-(void)checkDRFinish{
+//    [self.navigationController popToViewController:self animated:YES];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
+//}
 
 @end

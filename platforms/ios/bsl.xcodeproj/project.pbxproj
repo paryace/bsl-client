@@ -345,7 +345,6 @@
 		180B80971818A9B90091E3AE /* f083.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843317E8C77E0067A023 /* f083.png */; };
 		180B80981818A9B90091E3AE /* f084.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843417E8C77E0067A023 /* f084.png */; };
 		180B80991818A9B90091E3AE /* f085.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843517E8C77E0067A023 /* f085.png */; };
-		180B809A1818A9B90091E3AE /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
 		180B809B1818A9B90091E3AE /* LoginViewCell_Phone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C2891803AB0F00B874B8 /* LoginViewCell_Phone.xib */; };
 		180B809C1818A9B90091E3AE /* f086.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D843617E8C77E0067A023 /* f086.png */; };
 		180B809D1818A9B90091E3AE /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -993,6 +992,9 @@
 		18617A3B182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
 		188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
+		18A5D18218407D2400E3F089 /* nav_add_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8C17F007FC00F9CA68 /* nav_add_btn_active@2x.png */; };
+		18A5D18318407D2400E3F089 /* MoreIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D81BD17E8BFBB0067A023 /* MoreIconButton.xib */; };
+		18A5D18418407D2400E3F089 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
 		18AC9A751830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
 		18AC9A761830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
 		18AC9A771830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
@@ -1694,7 +1696,6 @@
 		39D9E86217F27C03001ED6F5 /* SettingMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D813717E8BFBA0067A023 /* SettingMainViewController.xib */; };
 		39D9E86317F27C03001ED6F5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D813A17E8BFBA0067A023 /* SettingsViewController.xib */; };
 		39D9E86417F27C03001ED6F5 /* SetttingIMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D813D17E8BFBA0067A023 /* SetttingIMViewController.xib */; };
-		39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D81BD17E8BFBB0067A023 /* MoreIconButton.xib */; };
 		39D9E87217F27C03001ED6F5 /* bg_search_lightgray.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83D417E8C77D0067A023 /* bg_search_lightgray.png */; };
 		39D9E87417F27C03001ED6F5 /* clicked_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D83D617E8C77D0067A023 /* clicked_bg.png */; };
 		39D9E87517F27C03001ED6F5 /* top_bar_bg@simple.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96CAA17F007FC00F9CA68 /* top_bar_bg@simple.png */; };
@@ -1871,7 +1872,6 @@
 		39D9E94617F27C03001ED6F5 /* field@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968623F17EE898300C84A6A /* field@2x.png */; };
 		39D9E94717F27C03001ED6F5 /* top_bar_bg@simple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96CAB17F007FC00F9CA68 /* top_bar_bg@simple@2x.png */; };
 		39D9E95F17F27C03001ED6F5 /* messageDeleteSelect.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8617F007FC00F9CA68 /* messageDeleteSelect.png */; };
-		39D9E96717F27C03001ED6F5 /* nav_add_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8C17F007FC00F9CA68 /* nav_add_btn_active@2x.png */; };
 		39D9E96B17F27C03001ED6F5 /* setting_about.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847317E8C77E0067A023 /* setting_about.png */; };
 		39D9E96C17F27C03001ED6F5 /* setting_about_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847417E8C77E0067A023 /* setting_about_logo.png */; };
 		39D9E96D17F27C03001ED6F5 /* setting_exitBg.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D847517E8C77E0067A023 /* setting_exitBg.png */; };
@@ -3059,7 +3059,6 @@
 		39E9C64A180EBAAA004CEF1D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF5C4109A6A2B0062928A /* SystemConfiguration.framework */; };
 		39E9C64B180EBAAA004CEF1D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		39E9C64C180EBAAA004CEF1D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		39E9C64D180EBAAA004CEF1D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEE5B34173C68D80009041E /* CoreLocation.framework */; };
 		39E9C64E180EBAAA004CEF1D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C023708B9AC24DB48757A8FC /* libPods.a */; };
 		39E9C655180EBC55004CEF1D /* Config-soc_alone.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E9C3F9180EB6B7004CEF1D /* Config-soc_alone.m */; };
 		39EF1D7F181BB9F300AB7F0C /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -5525,7 +5524,6 @@
 				39E9C64A180EBAAA004CEF1D /* SystemConfiguration.framework in Frameworks */,
 				39E9C64B180EBAAA004CEF1D /* MobileCoreServices.framework in Frameworks */,
 				39E9C64C180EBAAA004CEF1D /* CoreMedia.framework in Frameworks */,
-				39E9C64D180EBAAA004CEF1D /* CoreLocation.framework in Frameworks */,
 				39E9C64E180EBAAA004CEF1D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -8874,9 +8872,8 @@
 				180B80971818A9B90091E3AE /* f083.png in Resources */,
 				180B80981818A9B90091E3AE /* f084.png in Resources */,
 				180B80991818A9B90091E3AE /* f085.png in Resources */,
-				180B809A1818A9B90091E3AE /* nav_bg@2x.png in Resources */,
+				18A5D18418407D2400E3F089 /* nav_bg@2x.png in Resources */,
 				180B809B1818A9B90091E3AE /* LoginViewCell_Phone.xib in Resources */,
-				180B809A1818A9B90091E3AE /* nav_bg@2x.png in Resources */,
 				180B809C1818A9B90091E3AE /* f086.png in Resources */,
 				180B809D1818A9B90091E3AE /* (null) in Resources */,
 				180B809E1818A9B90091E3AE /* f087.png in Resources */,
@@ -9552,11 +9549,10 @@
 				18E9C52F1803AB1200B874B8 /* tempfile.tmp in Resources */,
 				39D9E86417F27C03001ED6F5 /* SetttingIMViewController.xib in Resources */,
 				18E9C4A01803AB1200B874B8 /* FPAnnexListViewController.xib in Resources */,
-				39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */,
+				18A5D18318407D2400E3F089 /* MoreIconButton.xib in Resources */,
 				18E9C57A1803AB1200B874B8 /* FlightSchedule.png in Resources */,
 				18E9C5631803AB1200B874B8 /* Button_Phone_Consult.png in Resources */,
 				18E9C5821803AB1200B874B8 /* 电子书目录_pad.png in Resources */,
-				39D9E86917F27C03001ED6F5 /* MoreIconButton.xib in Resources */,
 				39D9E87217F27C03001ED6F5 /* bg_search_lightgray.png in Resources */,
 				39D9E87417F27C03001ED6F5 /* clicked_bg.png in Resources */,
 				18E9C5661803AB1200B874B8 /* start_zh.png in Resources */,
@@ -9846,10 +9842,9 @@
 				18E9C4B81803AB1200B874B8 /* LandingViewController_Pad.xib in Resources */,
 				18E9C56F1803AB1200B874B8 /* button-pause.png in Resources */,
 				18E9C58E1803AB1200B874B8 /* Cell_Middel.png in Resources */,
-				39D9E96717F27C03001ED6F5 /* nav_add_btn_active@2x.png in Resources */,
+				18A5D18218407D2400E3F089 /* nav_add_btn_active@2x.png in Resources */,
 				18E9C4D61803AB1200B874B8 /* TowFilesViewController.xib in Resources */,
 				18E9C4D11803AB1200B874B8 /* PlaneTypeViewController.xib in Resources */,
-				39D9E96717F27C03001ED6F5 /* nav_add_btn_active@2x.png in Resources */,
 				39D9E96B17F27C03001ED6F5 /* setting_about.png in Resources */,
 				39D9E96C17F27C03001ED6F5 /* setting_about_logo.png in Resources */,
 				39D9E96D17F27C03001ED6F5 /* setting_exitBg.png in Resources */,
@@ -13011,7 +13006,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13052,7 +13047,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";

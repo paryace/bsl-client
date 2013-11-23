@@ -15,7 +15,7 @@
 #define kDeviceRegUpdate @"update"
 #define kDeviceRegCheck @"check/"
 #define kDeviceRegQuery @"get/"
-
+#import "SVProgressHUD.h"
 typedef void (^RegistFinsh)(NSString *responseStr);
 
 @implementation DeviceRegisterPlugin
@@ -27,6 +27,10 @@ typedef void (^RegistFinsh)(NSString *responseStr);
 }
 
 -(void)submitInfo:(CDVInvokedUrlCommand*)command{
+    if(![SVProgressHUD isVisible])
+    {
+        [SVProgressHUD showWithStatus:@"数据提交中...." maskType:SVProgressHUDMaskTypeBlack];
+    }
     NSString *jsonStr = [command argumentAtIndex:0];
     NSDictionary *json  =  [jsonStr objectFromJSONString];
     
@@ -93,9 +97,19 @@ typedef void (^RegistFinsh)(NSString *responseStr);
         [request setPostValue:[json objectForKey:[keys objectAtIndex:i]] forKey:[keys objectAtIndex:i]];
     }
     [request setCompletionBlock:^(void){
+        if([SVProgressHUD isVisible])
+        {
+            [SVProgressHUD dismiss];
+        }
         NSString *responseStr = [request responseString];
         NSLog(@"[DeviceRegisterPlugin]: 请求成功,返回结果->  %@",responseStr);
         finishBlock(responseStr);
+    }];
+    [request setFailedBlock:^{
+        if([SVProgressHUD isVisible])
+        {
+            [SVProgressHUD dismiss];
+        }
     }];
     [request startAsynchronous];
 }
