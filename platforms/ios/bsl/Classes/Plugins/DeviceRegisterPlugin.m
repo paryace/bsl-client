@@ -106,10 +106,14 @@ typedef void (^RegistFinsh)(NSString *responseStr);
         finishBlock(responseStr);
     }];
     [request setFailedBlock:^{
+        
         if([SVProgressHUD isVisible])
         {
             [SVProgressHUD dismiss];
         }
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"提交失败,请稍后再试" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        alertView.tag = 100;
+        [alertView show];
     }];
     [request startAsynchronous];
 }

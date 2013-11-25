@@ -12872,7 +12872,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
@@ -12912,7 +12912,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: China Southern Airlines Company Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Southern Airlines Company Limited";
 				COPY_PHASE_STRIP = YES;
@@ -13016,7 +13016,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
@@ -13045,7 +13045,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13060,7 +13060,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
@@ -13087,7 +13087,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13373,7 +13373,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Southern Airlines Company Limited";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
