@@ -8,7 +8,7 @@
 
 #import "UIDevice+IdentifierAddition.h"
 #import "NSString+MD5Addition.h"
-
+#import "KeychainItemWrapper.h"
 #include <sys/socket.h> // Per msqr
 #include <sys/sysctl.h>
 #include <net/if.h>
@@ -68,7 +68,7 @@
     ifm = (struct if_msghdr *)buf;
     sdl = (struct sockaddr_dl *)(ifm + 1);
     ptr = (unsigned char *)LLADDR(sdl);
-    NSString *outstring = [NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X", 
+    NSString *outstring = [NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X",
                            *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
     free(buf);
     
@@ -80,19 +80,40 @@
 #pragma mark Public Methods
 
 - (NSString *) uniqueDeviceIdentifier{
-    NSString *macaddress = [[UIDevice currentDevice] macaddress];
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSString *stringToHash = [NSString stringWithFormat:@"%@%@",macaddress,bundleIdentifier];
-    NSString *uniqueIdentifier = [stringToHash stringFromMD5];
     
+    NSString* bundleId=[[NSBundle mainBundle] bundleIdentifier];
+    
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc]
+                                         
+                                         initWithIdentifier:@"BSL_DEVICE_ID"
+                                         
+                                         accessGroup:nil];
+    
+    NSString *strUUID = [keychainItem objectForKey:(id)kSecValueData];
+    
+    if ([strUUID length]<1)
+    {
+        
+        CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+        
+        strUUID = (NSString *)CFUUIDCreateString (kCFAllocatorDefault,uuidRef);
+        [keychainItem setObject:strUUID forKey:(__bridge id)kSecAttrService];
+        [keychainItem setObject:strUUID forKey:(id)kSecValueData];
+        
+        [strUUID release];
+        CFRelease(uuidRef);
+    }
+    
+    strUUID = [keychainItem objectForKey:(id)kSecValueData];
+    
+    NSString *stringToHash = [NSString stringWithFormat:@"%@%@",strUUID,bundleId];
+    
+    [keychainItem release];
+    
+    NSString *uniqueIdentifier = [stringToHash stringFromMD5];
+
     return uniqueIdentifier;
 }
 
-- (NSString *) uniqueGlobalDeviceIdentifier{
-    NSString *macaddress = [[UIDevice currentDevice] macaddress];
-    NSString *uniqueIdentifier = [macaddress stringFromMD5];
-    
-    return uniqueIdentifier;
-}
 
 @end

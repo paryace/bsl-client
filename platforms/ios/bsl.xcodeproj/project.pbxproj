@@ -873,7 +873,7 @@
 		180B82A91818A9B90091E3AE /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81A517E8BFBB0067A023 /* UIGestureRecognizer+GMGridViewAdditions.m */; };
 		180B82AA1818A9B90091E3AE /* UIView+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81A717E8BFBB0067A023 /* UIView+GMGridViewAdditions.m */; };
 		180B82AB1818A9B90091E3AE /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81AA17E8BFBB0067A023 /* NSString+MD5Addition.m */; };
-		180B82AC1818A9B90091E3AE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81AC17E8BFBB0067A023 /* UIDevice+IdentifierAddition.m */; };
+		180B82AC1818A9B90091E3AE /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81AC17E8BFBB0067A023 /* UIDevice+IdentifierAddition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		180B82AD1818A9B90091E3AE /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81B117E8BFBB0067A023 /* AsyncImageView.m */; };
 		180B82AE1818A9B90091E3AE /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81B317E8BFBB0067A023 /* Cache.m */; };
 		180B82AF1818A9B90091E3AE /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81B517E8BFBB0067A023 /* DownloadManager.m */; };
@@ -995,6 +995,20 @@
 		18A5D18218407D2400E3F089 /* nav_add_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8C17F007FC00F9CA68 /* nav_add_btn_active@2x.png */; };
 		18A5D18318407D2400E3F089 /* MoreIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D81BD17E8BFBB0067A023 /* MoreIconButton.xib */; };
 		18A5D18418407D2400E3F089 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
+		18A5D1861840A30B00E3F089 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5D1851840A30B00E3F089 /* Security.framework */; };
+		18A5D1891840A3B600E3F089 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */; };
+		18A5D18A1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */; };
+		18A5D18B1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */; };
+		18A5D18C1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A5D18D1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */; };
+		18A5D18E1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18A5D1971840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */; };
+		18A5D1981840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */; };
+		18A5D1991840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */; };
+		18A5D19A1840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */; };
+		18A5D19B1840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */; };
+		18A5D19C1840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */; };
+		18A5D19D1840A57200E3F089 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A5D1851840A30B00E3F089 /* Security.framework */; };
 		18AC9A751830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
 		18AC9A761830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
 		18AC9A771830ACF300AB401C /* ExtroSystemPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */; };
@@ -2051,7 +2065,7 @@
 		39D9EA4D17F27C03001ED6F5 /* UIGestureRecognizer+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81A517E8BFBB0067A023 /* UIGestureRecognizer+GMGridViewAdditions.m */; };
 		39D9EA4E17F27C03001ED6F5 /* UIView+GMGridViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81A717E8BFBB0067A023 /* UIView+GMGridViewAdditions.m */; };
 		39D9EA4F17F27C03001ED6F5 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81AA17E8BFBB0067A023 /* NSString+MD5Addition.m */; };
-		39D9EA5017F27C03001ED6F5 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81AC17E8BFBB0067A023 /* UIDevice+IdentifierAddition.m */; };
+		39D9EA5017F27C03001ED6F5 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81AC17E8BFBB0067A023 /* UIDevice+IdentifierAddition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		39D9EA5217F27C03001ED6F5 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81B117E8BFBB0067A023 /* AsyncImageView.m */; };
 		39D9EA5317F27C03001ED6F5 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81B317E8BFBB0067A023 /* Cache.m */; };
 		39D9EA5417F27C03001ED6F5 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F54D81B517E8BFBB0067A023 /* DownloadManager.m */; };
@@ -4073,6 +4087,10 @@
 		18617A3F182C7BDB00D85380 /* cube1108.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1108.xcdatamodel; sourceTree = "<group>"; };
 		188487F21807A41E0039F67F /* CubeAccountPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAccountPlugin.h; path = CubeAccount/CubeAccountPlugin.h; sourceTree = "<group>"; };
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
+		18A5D1851840A30B00E3F089 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		18A5D1871840A3B600E3F089 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = SOURCE_ROOT; };
 		18AC9A731830ACF300AB401C /* ExtroSystemPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtroSystemPlugin.h; sourceTree = SOURCE_ROOT; };
 		18AC9A741830ACF300AB401C /* ExtroSystemPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtroSystemPlugin.m; sourceTree = SOURCE_ROOT; };
 		18AC9A9618337E2F00AB401C /* MultiSystemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiSystemsView.m; sourceTree = "<group>"; };
@@ -5398,6 +5416,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A5D19D1840A57200E3F089 /* Security.framework in Frameworks */,
 				18E0238B1821FF6A00AB6215 /* MapKit.framework in Frameworks */,
 				180B82EA1818A9B90091E3AE /* CoreTelephony.framework in Frameworks */,
 				180B82EB1818A9B90091E3AE /* CoreLocation.framework in Frameworks */,
@@ -5452,6 +5471,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A5D1861840A30B00E3F089 /* Security.framework in Frameworks */,
 				18E0238A1821FF5B00AB6215 /* MapKit.framework in Frameworks */,
 				18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */,
 				39D9EA6D17F27C03001ED6F5 /* CoreLocation.framework in Frameworks */,
@@ -6829,6 +6849,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18A5D1961840A4A300E3F089 /* KeychainAccessGroups.plist */,
 				180F2375180D237D0037751C /* impc_default_icon */,
 				39590A20181E5EAB00133B6F /* soc_default_module */,
 				39F23A901805B25F0035FCF8 /* soc_default_icon */,
@@ -6861,6 +6882,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18A5D1851840A30B00E3F089 /* Security.framework */,
 				18E023891821FF5B00AB6215 /* MapKit.framework */,
 				18240E0E1803D04400846FF9 /* CoreTelephony.framework */,
 				5AEE5B34173C68D80009041E /* CoreLocation.framework */,
@@ -7948,6 +7970,8 @@
 		F54D81A817E8BFBB0067A023 /* IdentifierAddition */ = {
 			isa = PBXGroup;
 			children = (
+				18A5D1871840A3B600E3F089 /* KeychainItemWrapper.h */,
+				18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */,
 				F54D81A917E8BFBB0067A023 /* NSString+MD5Addition.h */,
 				F54D81AA17E8BFBB0067A023 /* NSString+MD5Addition.m */,
 				F54D81AB17E8BFBB0067A023 /* UIDevice+IdentifierAddition.h */,
@@ -8618,6 +8642,7 @@
 				180B7F9E1818A9B90091E3AE /* iphoneLoginViewController_retina4.xib in Resources */,
 				180B7F9F1818A9B90091E3AE /* iphoneLoginViewController.xib in Resources */,
 				180B7FA01818A9B90091E3AE /* Turn.xib in Resources */,
+				18A5D19C1840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */,
 				180B7FA11818A9B90091E3AE /* Background_768X1024.png in Resources */,
 				180B7FA21818A9B90091E3AE /* iphoneLoginViewController_retina4.xib in Resources */,
 				180B7FA31818A9B90091E3AE /* Button_Orange_Pad.png in Resources */,
@@ -9232,6 +9257,7 @@
 				F54D84CB17E8C77E0067A023 /* f022.png in Resources */,
 				3968627917EE898300C84A6A /* h_line@2x.png in Resources */,
 				3968628617EE898300C84A6A /* ToolViewInputVoiceHL@2x.png in Resources */,
+				18A5D1971840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */,
 				F54D84CC17E8C77E0067A023 /* f023.png in Resources */,
 				F54D84CD17E8C77E0067A023 /* f024.png in Resources */,
 				F5A96D0317F007FC00F9CA68 /* scorllview_dot_unchoose.png in Resources */,
@@ -9752,6 +9778,7 @@
 				39D9E90417F27C03001ED6F5 /* f075.png in Resources */,
 				18E9C5481803AB1200B874B8 /* Background_1024X768.png in Resources */,
 				39D9E90517F27C03001ED6F5 /* f076.png in Resources */,
+				18A5D19A1840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */,
 				39D9E90617F27C03001ED6F5 /* f077.png in Resources */,
 				18E9C4CB1803AB1200B874B8 /* ManifestViewController_Phone.xib in Resources */,
 				18AFE1C31828F01B000462DB /* home_icon@2x.png in Resources */,
@@ -9954,6 +9981,7 @@
 				39F23A821805B2520035FCF8 /* 72.png in Resources */,
 				39E050FA17F00AEA00BCF7F8 /* bottom_bar.png in Resources */,
 				39E050FB17F00AEA00BCF7F8 /* blueArrow.png in Resources */,
+				18A5D1981840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */,
 				39E050FC17F00AEA00BCF7F8 /* home.png in Resources */,
 				39E050FD17F00AEA00BCF7F8 /* iphoneAboutViewController.xib in Resources */,
 				39E0510017F00AEA00BCF7F8 /* TypeSelectorBtn_Black@2x.png in Resources */,
@@ -10274,6 +10302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A5D19B1840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */,
 				39E9C400180EBAAA004CEF1D /* config.xml in Resources */,
 				39E9C401180EBAAA004CEF1D /* Localizable.strings in Resources */,
 				39E9C402180EBAAA004CEF1D /* Localizable.strings in Resources */,
@@ -10613,6 +10642,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A5D1991840A4A300E3F089 /* KeychainAccessGroups.plist in Resources */,
 				39FF09A517F13CBB0086B76C /* config.xml in Resources */,
 				39FF09A617F13CBB0086B76C /* Localizable.strings in Resources */,
 				39FF09A717F13CBB0086B76C /* Localizable.strings in Resources */,
@@ -11298,6 +11328,7 @@
 				180B81B81818A9B90091E3AE /* EbookQuery.m in Sources */,
 				180B81B91818A9B90091E3AE /* DCRoundSwitchToggleLayer.m in Sources */,
 				18111FFA182CBAC1003A37A4 /* SystemInfo.m in Sources */,
+				18A5D18E1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */,
 				180B81BA1818A9B90091E3AE /* MessageRecordCell.m in Sources */,
 				180B81BB1818A9B90091E3AE /* (null) in Sources */,
 				180B81BC1818A9B90091E3AE /* AAPanelView.m in Sources */,
@@ -11668,6 +11699,7 @@
 				F54D82E017E8BFBB0067A023 /* FunctionDetailScrollView.m in Sources */,
 				F5A96C4717F006B400F9CA68 /* CDVNotification.m in Sources */,
 				F54D82E117E8BFBB0067A023 /* FunctionDetailScrollViewWrapper.m in Sources */,
+				18A5D1891840A3B600E3F089 /* KeychainItemWrapper.m in Sources */,
 				39F02A1A18082DBB00051656 /* GTGZImageDownloadedManager.m in Sources */,
 				F54D82E217E8BFBB0067A023 /* IphoneDownloadingTableViewCell.m in Sources */,
 				F54D82E517E8BFBB0067A023 /* MenuView.m in Sources */,
@@ -11813,6 +11845,7 @@
 				39D9E9BF17F27C03001ED6F5 /* AutoShowRecord.m in Sources */,
 				18E9C48C1803AB1200B874B8 /* FPFligthNoticeViewController.m in Sources */,
 				18E9C51E1803AB1200B874B8 /* Selection.m in Sources */,
+				18A5D18C1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */,
 				18E9C4EA1803AB1200B874B8 /* HealthyInfo.m in Sources */,
 				18E9C50D1803AB1200B874B8 /* ReaderThumbView.m in Sources */,
 				39D9E9C017F27C03001ED6F5 /* CubeCommandDispatcher.m in Sources */,
@@ -12352,6 +12385,7 @@
 				39E0533017F00AEA00BCF7F8 /* AsyncImageView.m in Sources */,
 				39E0533117F00AEA00BCF7F8 /* Cache.m in Sources */,
 				39E0533217F00AEA00BCF7F8 /* DownloadManager.m in Sources */,
+				18A5D18A1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */,
 				39E0533317F00AEA00BCF7F8 /* InstallButton.m in Sources */,
 				39E0533417F00AEA00BCF7F8 /* LongPressButton.m in Sources */,
 				39E0533517F00AEA00BCF7F8 /* MoreIconButton.m in Sources */,
@@ -12535,6 +12569,7 @@
 				39E9C623180EBAAA004CEF1D /* AsyncImageView.m in Sources */,
 				39E9C624180EBAAA004CEF1D /* Cache.m in Sources */,
 				39E9C625180EBAAA004CEF1D /* DownloadManager.m in Sources */,
+				18A5D18D1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */,
 				39E9C626180EBAAA004CEF1D /* InstallButton.m in Sources */,
 				39E9C627180EBAAA004CEF1D /* LongPressButton.m in Sources */,
 				39E9C628180EBAAA004CEF1D /* MoreIconButton.m in Sources */,
@@ -12718,6 +12753,7 @@
 				39FF0BE617F13CBB0086B76C /* UIDevice+IdentifierAddition.m in Sources */,
 				39FF0BE817F13CBB0086B76C /* AsyncImageView.m in Sources */,
 				39FF0BE917F13CBB0086B76C /* Cache.m in Sources */,
+				18A5D18B1840A3B600E3F089 /* KeychainItemWrapper.m in Sources */,
 				39FF0BEA17F13CBB0086B76C /* DownloadManager.m in Sources */,
 				39FF0BEB17F13CBB0086B76C /* InstallButton.m in Sources */,
 				39FF0BEC17F13CBB0086B76C /* LongPressButton.m in Sources */,
@@ -12836,6 +12872,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
@@ -12875,6 +12912,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: China Southern Airlines Company Limited";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Southern Airlines Company Limited";
 				COPY_PHASE_STRIP = YES;
@@ -12978,6 +13016,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
@@ -13021,6 +13060,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
