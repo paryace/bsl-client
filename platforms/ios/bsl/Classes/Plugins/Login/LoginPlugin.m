@@ -124,10 +124,18 @@
         else
         {
             NSString *md5Str = [[[userName stringByAppendingString:@"-"]stringByAppendingString:userPass]stringFromMD5];
-            NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@ and username=%@",md5Str,userName]];
-            if(!userArray)
+            NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+            if(userArray.count==0)
             {
                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alertView show];
+                alertView = nil;
+                return;
+            }
+            userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@ and username=%@",md5Str,userName]];
+            if(!userArray)
+            {
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户名或者密码错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alertView show];
                 alertView = nil;
             }

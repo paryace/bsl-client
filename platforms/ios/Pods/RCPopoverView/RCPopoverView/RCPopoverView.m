@@ -11,7 +11,7 @@
 
 @interface RCPopoverView() <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong, readonly) UIWindow *overlayWindow;
+@property (nonatomic, strong, readonly) UIView *overlayWindow;
 
 @end
 
@@ -168,12 +168,19 @@
     }
 }
 
-- (UIWindow *)overlayWindow {
+- (UIView *)overlayWindow {
     if(!_overlayWindow) {
-        _overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _overlayWindow = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _overlayWindow.backgroundColor = [UIColor clearColor];
-        [_overlayWindow makeKeyAndVisible];
+        
+        _overlayWindow.userInteractionEnabled=YES;
+        
+        UIWindow* window=[[UIApplication sharedApplication] keyWindow];
+        if(window==nil)
+            window=[[[UIApplication sharedApplication] windows] objectAtIndex:0];
+        [window addSubview:_overlayWindow];
+
     }
     return _overlayWindow;
 }
