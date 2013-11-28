@@ -42,13 +42,12 @@
          self.modalPresentationCapturesStatusBarAppearance = YES;
          }
         
-
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationDidExist) name:@"LOGOUTSENDEXITNOTIFICATION" object:nil];
     }
 
     return self;
 }
+
 
 - (void)viewDidLoad{
     [super viewDidLoad];

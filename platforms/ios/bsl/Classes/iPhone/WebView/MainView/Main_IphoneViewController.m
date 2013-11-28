@@ -25,7 +25,7 @@
 
 #import "KKProgressToolbar.h"
 #import "CudeModuleDownDictionary.h"
-
+#import "MultiUserInfo.h"
 
 @interface Main_IphoneViewController ()<DownloadCellDelegate,SettingMainViewControllerDelegate,UIGestureRecognizerDelegate,KKProgressToolbarDelegate>{
     KKProgressToolbar* statusToolbar;
@@ -665,6 +665,14 @@
     [[application availableModules] removeAllObjects];
     [[application updatableModules] removeAllObjects];
     [[application downloadingModules] removeAllObjects];
+    
+    dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+        NSArray * userarray = [MultiUserInfo findAll];
+        for (MultiUserInfo *user in userarray) {
+            user.loginFlag = [NSNumber numberWithBool:NO];
+            [user save];
+        }
+    });
     [(AppDelegate *)[UIApplication sharedApplication].delegate showLoginView:NO];
 
 }

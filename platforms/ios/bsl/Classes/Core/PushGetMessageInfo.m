@@ -92,7 +92,7 @@ static PushGetMessageInfo* instance=nil;
     
     formDataRequest.timeOutSeconds=5.0f;
     formDataRequest.persistentConnectionTimeoutSeconds=5.0f;
-    [formDataRequest setPostValue:ids  forKey:@"sendId"];
+    [formDataRequest setPostValue:ids  forKey:@"msgId"];
     NSString * uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     [formDataRequest setPostValue:uuid forKey:@"deviceId"];
     [formDataRequest setPostValue:kAPPKey forKey:@"appId"];
@@ -123,7 +123,7 @@ static PushGetMessageInfo* instance=nil;
     
     if (token && [token length] > 0 ) {
         NSString* deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-        NSString* requestUrl = [NSString stringWithFormat:@"%@/%@/%@/%@",kPushGetMessageUrl,token,deviceId,kAPPKey];
+        NSString* requestUrl = [NSString stringWithFormat:@"%@%@/%@",kPushGetMessageUrl,deviceId,kAPPKey];
         
         request = [HTTPRequest requestWithURL:[NSURL URLWithString:requestUrl]];
         __block HTTPRequest* __request=request;

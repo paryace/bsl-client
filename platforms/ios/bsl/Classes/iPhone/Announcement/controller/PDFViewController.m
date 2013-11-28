@@ -70,9 +70,25 @@
                 BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:realPath isDirectory:NO];
 //                NSLog(@"==========%d",isExist);
                 NSString *content=@"";
+                NSError *error;
                 if(isExist)
                 {
-                    content = [NSString stringWithContentsOfFile:realPath encoding:NSUTF8StringEncoding error:nil];
+//                    NSURL *url = [NSURL URLWithString:realPath];
+                    content = [NSString stringWithContentsOfFile:realPath encoding: NSUTF8StringEncoding error:&error];
+                    if(!content)
+                    {
+                        content = [NSString stringWithContentsOfFile:realPath encoding: 0x80000632 error:&error];
+                    }
+                    if(!content)
+                    {
+                        content = [NSString stringWithContentsOfFile:realPath encoding: 0x80000631 error:&error];
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
                 }
                 else
                 {

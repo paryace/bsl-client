@@ -162,7 +162,8 @@ static UIImage* __bubbleMineImg=nil;
         contentLabel.frame=rect;
     }
     else {
-        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        nameLabel.text=[defaults valueForKey:@"zhName"];
         CGRect rect=nameLabel.frame;
         rect.origin.x=self.frame.size.width-10.0-rect.size.width;
         rect.origin.y=cellHeight-rect.size.height+5.0f;

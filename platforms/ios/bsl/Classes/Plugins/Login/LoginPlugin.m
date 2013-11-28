@@ -67,7 +67,7 @@
     }
     else
     {
-        [_options removeLastObject];
+        [_options removeAllObjects];
     }
     NSString* userName =  [command.arguments objectAtIndex:0];
     NSString* userPass =  [command.arguments objectAtIndex:1];
@@ -141,15 +141,19 @@
                     }
                 }
                 NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+                NSMutableDictionary *tmpDict = [[NSMutableDictionary alloc]init];
                 for (SystemInfo * system in temArray) {
                     for (NSString *sysId in systemIds) {
                         if([sysId isEqualToString:system.systemId])
                         {
                             NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:system.systemName,@"sysName" ,sysId,@"systemId",nil];
-                            [_options addObject:dictonary];
+                            if(![[tmpDict allKeys] containsObject:sysId])
+                            [tmpDict setObject:dictonary forKey:sysId];
+                            
                         }
                     }
                 }
+                [_options addObjectsFromArray:[tmpDict allValues]];
                 if(_options.count>0)
                 {
                     MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
@@ -297,14 +301,32 @@
             if(![message boolValue]&& nil != tips)
             {
                 
-                [defaults setObject:@"" forKey:@"password"];
-                [defaults setObject:@"" forKey:@"loginPassword"];
-                [defaults synchronize];
+                
                 if(command)
                 {
-                    NSRange range = [tips rangeOfString:@"密码"];
+                    NSRange range = [tips rangeOfString:@"帐号或密码错误"];
                     if( range.location != NSNotFound)
                     {
+                        [defaults setObject:@"" forKey:@"password"];
+                        [defaults setObject:@"" forKey:@"loginPassword"];
+                        [defaults setObject:@"" forKey:@"loginUsername"];
+                        [defaults setObject:@"" forKey:@"LoginUser"];
+                        [defaults setObject:@"" forKey:@"username"];
+                        [defaults synchronize];
+                        NSMutableDictionary *json = [NSMutableDictionary dictionary];
+                        [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+                        [json setValue:tips  forKey:@"message"];
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    }
+                    else if ([tips rangeOfString:@"用户不存在"].location != NSNotFound )
+                    {
+                        [defaults setObject:@"" forKey:@"password"];
+                        [defaults setObject:@"" forKey:@"loginPassword"];
+                        [defaults setObject:@"" forKey:@"loginUsername"];
+                        [defaults setObject:@"" forKey:@"LoginUser"];
+                        [defaults setObject:@"" forKey:@"username"];
+                        [defaults synchronize];
                         NSMutableDictionary *json = [NSMutableDictionary dictionary];
                         [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
                         [json setValue:tips  forKey:@"message"];

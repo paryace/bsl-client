@@ -16,7 +16,7 @@ NSString* const kUpdatePushTagsUrl = @"http://192.168.11.18:18860/csair-push/api
 NSString* const kAPPKey = @"c7342d0390ac6be8da4bdae0fcde5edf";
 
 NSString* const  kPushServerReceiptsUrl=@"http://192.168.11.18:18860/csair-push/api/receipts";
-NSString* const  kPushGetMessageUrl =@"http://192.168.11.18:18860/csair-push/api/receipts/none-receipts";
+NSString* const  kPushGetMessageUrl =@"http://192.168.11.18:18860/csair-push/api/push-msgs/none-receipts/";
 NSString* const  kAPPName=@"com.csair.impc";
 int kXMPPPort= 5222;
 

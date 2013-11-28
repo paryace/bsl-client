@@ -20,6 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
+    
     
     self.aCubeWebViewController=nil;
     _aCubeWebViewController = [[CubeWebViewController alloc] init];
@@ -50,6 +52,10 @@
         [alertView show];
     }];
     
+}
+-(void)checkDRFinish{
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
 }
 
 -(void)showWebViewController{

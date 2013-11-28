@@ -33,7 +33,7 @@
 @dynamic username;
 
 +(BOOL)createByApnsInfo:(NSDictionary *)info outputArrayIds:(NSMutableArray*)outputArrayIds{
-    NSString * mFaceBackId = [info objectForKey:@"sendId"];
+    NSString * mFaceBackId = [info objectForKey:@"id"];
     BOOL ret=NO;
    
     if (![mFaceBackId isEqual:[NSNull null]] && [mFaceBackId length]>0) {
@@ -359,7 +359,7 @@
     FormDataRequest *request = [FormDataRequest requestWithURL:[NSURL URLWithString:kPushServerReceiptsUrl]];
     if (self.faceBackId) {
         
-        [request setPostValue:self.faceBackId  forKey:@"sendId"];
+        [request setPostValue:self.faceBackId  forKey:@"msgId"];
     }
     
     
