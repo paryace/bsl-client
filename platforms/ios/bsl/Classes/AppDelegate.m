@@ -140,9 +140,6 @@ void uncaughtExceptionHandler(NSException*exception){
     });
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-
-
-    
     UpdateChecker *__uc = [[UpdateChecker alloc] initWithDelegate:nil];
     self.uc=__uc;
     __uc=nil;
@@ -663,6 +660,7 @@ void uncaughtExceptionHandler(NSException*exception){
 
 -(void)didOffLogin
 {
+    [self setupXmppStream];
     [navControl popToRootViewControllerAnimated:NO];
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone){
         [self.navControl popToRootViewControllerAnimated:NO];
@@ -696,7 +694,12 @@ void uncaughtExceptionHandler(NSException*exception){
     }
     xmpp.islogin = YES;
     xmpp.loginUserStr = [defaults objectForKey:@"LoginUser"];
-    [xmpp setupXmppStream];
+    
+    if(![[NSUserDefaults standardUserDefaults]boolForKey:@"isOffLogin"])
+    {
+        [xmpp setupXmppStream];
+    }
+    
 }
 
 

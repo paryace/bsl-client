@@ -10,7 +10,8 @@
 #import <CoreData/CoreData.h>
 #import "NSManagedObject+Repository.h"
 
-@interface AttachMents : NSManagedObject
+#import "ASIHTTPRequest.h"
+@interface AttachMents : NSManagedObject<ASIHTTPRequestDelegate>
 
 @property (nonatomic, strong) NSString * announceId;
 @property (nonatomic, strong) NSString * fileId;
@@ -19,5 +20,5 @@
 @property (nonatomic, strong) NSString * filePath;
 
 -(void)downloadFile:(NSString*)attachId;
-
+-(NSString *)downloadFileForPath:(NSString*)attachId;
 @end

@@ -57,6 +57,7 @@
         self.backgroundColor = [UIColor clearColor];
 		self.alpha = 0;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //判断当前设备为Iphone还是ipad
         _inset_left = 20;
         _inset_top = 30;
     }

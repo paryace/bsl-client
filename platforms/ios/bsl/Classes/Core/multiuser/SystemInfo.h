@@ -17,4 +17,7 @@
 @property (nonatomic, strong) NSString * username;
 @property (nonatomic, strong) NSString * alias;
 @property (nonatomic, strong) NSNumber * curr;
++(NSArray*)findSystemsByuserName:(NSString*)userName;
++(BOOL)systemStore:(NSDictionary*)dictionary withUserName:(NSString*)userName;
++(BOOL)systemUpdate:(SystemInfo*)origin withObject:(NSDictionary*)newObject andUserName:(NSString*)userName;
 @end

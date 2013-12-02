@@ -231,7 +231,7 @@
     
     //if([[obj class] isSubclassOfClass:[MessageEntity class]]){
         MessageEntity *messageEntity = (MessageEntity*)[messageArray objectAtIndex:[indexPath row]];
-
+NSLog(@"-----%@",[messageEntity zhName]);
         if([messageEntity.type isEqualToString:@"voice"]){
             VoiceCell *cell = (VoiceCell*)[_tableView dequeueReusableCellWithIdentifier:@"voice_cell"];
             if(cell == nil){
@@ -289,6 +289,7 @@
                 cell.frame=rect;
             }
             cell.emoctionList=emoctionList;
+
             [cell headerUrl:@"" name:[messageEntity zhName] content:messageEntity.content sendDate:messageEntity.sendDate bubbleType:([messageEntity.sendUser isEqualToString:[[[[ShareAppDelegate xmpp]xmppStream] myJID]bare]]?BubbleTypeMine:BubbleTypeSomeoneElse)];
             cell.tag=[indexPath row];
 

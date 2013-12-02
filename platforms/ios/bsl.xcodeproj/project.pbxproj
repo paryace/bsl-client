@@ -976,6 +976,12 @@
 		18111FF8182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
 		18111FF9182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
 		18111FFA182CBAC1003A37A4 /* SystemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 18111FF4182CBAC1003A37A4 /* SystemInfo.m */; };
+		181C600E18489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
+		181C600F18489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
+		181C601018489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
+		181C601118489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
+		181C601218489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
+		181C601318489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
 		18240E0D1803C6C400846FF9 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 18240E0C1803C6C400846FF9 /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
 		18617A2E182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
@@ -4076,6 +4082,8 @@
 		180F237F180D237D0037751C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		18111FF3182CBAC1003A37A4 /* SystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInfo.h; sourceTree = "<group>"; };
 		18111FF4182CBAC1003A37A4 /* SystemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInfo.m; sourceTree = "<group>"; };
+		181C600C18489965002F2F5E /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		181C600D18489965002F2F5E /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
 		18240E0B1803C6C400846FF9 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		18240E0C1803C6C400846FF9 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		18240E0E1803D04400846FF9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -7161,6 +7169,8 @@
 				F54D7FD417E8BFBA0067A023 /* UpdateChecker.m */,
 				18E023801821FA7300AB6215 /* GeoLocation.h */,
 				18E023811821FA7300AB6215 /* GeoLocation.m */,
+				181C600C18489965002F2F5E /* CommonUtils.h */,
+				181C600D18489965002F2F5E /* CommonUtils.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -11640,6 +11650,7 @@
 				180B82E21818A9B90091E3AE /* DeviceInfo.m in Sources */,
 				180B82E31818A9B90091E3AE /* XMPPIMActor.m in Sources */,
 				180B82E41818A9B90091E3AE /* About.m in Sources */,
+				181C601318489965002F2F5E /* CommonUtils.m in Sources */,
 				180B82E51818A9B90091E3AE /* RoomService.m in Sources */,
 				180B82E61818A9B90091E3AE /* EBArticleLogInfoQuery.m in Sources */,
 				180B82E71818A9B90091E3AE /* ReaderContentTile.m in Sources */,
@@ -11817,6 +11828,7 @@
 				F54D83B517E8BFBC0067A023 /* NSObject+propertyList.m in Sources */,
 				F54D83B617E8BFBC0067A023 /* UIImage+Antialiase.m in Sources */,
 				18DF8151183F4A0E006C1836 /* ChineseString.m in Sources */,
+				181C600E18489965002F2F5E /* CommonUtils.m in Sources */,
 				F54D83B717E8BFBC0067A023 /* UIImage+Resize.m in Sources */,
 				F54D83B817E8BFBC0067A023 /* UIView+ViewID.m in Sources */,
 				F54D83B917E8BFBC0067A023 /* IIViewDeckController.m in Sources */,
@@ -12039,6 +12051,7 @@
 				18E9C5B71803AB1200B874B8 /* DCRoundSwitchOutlineLayer.m in Sources */,
 				18E9C4AD1803AB1200B874B8 /* FPTaskTeamMemberViewController.m in Sources */,
 				18E9C5231803AB1200B874B8 /* Type1Font.m in Sources */,
+				181C601118489965002F2F5E /* CommonUtils.m in Sources */,
 				18E9C5401803AB1200B874B8 /* NewEbookQuery.m in Sources */,
 				39D9EA1117F27C03001ED6F5 /* iphoneLandingViewController.m in Sources */,
 				39D9EA1217F27C03001ED6F5 /* iphoneVoiceDetailViewController.m in Sources */,
@@ -12308,6 +12321,7 @@
 				39E052DE17F00AEA00BCF7F8 /* ChatMainViewController.m in Sources */,
 				39E052E017F00AEA00BCF7F8 /* NSMutableArray+Additions.m in Sources */,
 				39E052E117F00AEA00BCF7F8 /* UIScrollView+SpiralPullToRefresh.m in Sources */,
+				181C600F18489965002F2F5E /* CommonUtils.m in Sources */,
 				39E052E217F00AEA00BCF7F8 /* XMPPShowImageViewController.m in Sources */,
 				39E052E517F00AEA00BCF7F8 /* IMServerAPI.m in Sources */,
 				39E052E917F00AEA00BCF7F8 /* MRZoomScrollView.m in Sources */,
@@ -12492,6 +12506,7 @@
 				39E9C5DC180EBAAA004CEF1D /* ChatMainViewController.m in Sources */,
 				39E9C5DD180EBAAA004CEF1D /* NSMutableArray+Additions.m in Sources */,
 				39E9C5DE180EBAAA004CEF1D /* UIScrollView+SpiralPullToRefresh.m in Sources */,
+				181C601218489965002F2F5E /* CommonUtils.m in Sources */,
 				39E9C5DF180EBAAA004CEF1D /* XMPPShowImageViewController.m in Sources */,
 				39E9C5E0180EBAAA004CEF1D /* IMServerAPI.m in Sources */,
 				39E9C5E1180EBAAA004CEF1D /* MRZoomScrollView.m in Sources */,
@@ -12676,6 +12691,7 @@
 				39FF0B9817F13CBB0086B76C /* ChatMainViewController.m in Sources */,
 				39FF0B9917F13CBB0086B76C /* NSMutableArray+Additions.m in Sources */,
 				39FF0B9A17F13CBB0086B76C /* UIScrollView+SpiralPullToRefresh.m in Sources */,
+				181C601018489965002F2F5E /* CommonUtils.m in Sources */,
 				39FF0B9B17F13CBB0086B76C /* XMPPShowImageViewController.m in Sources */,
 				39FF0B9D17F13CBB0086B76C /* IMServerAPI.m in Sources */,
 				39FF0BA117F13CBB0086B76C /* MRZoomScrollView.m in Sources */,
@@ -12901,7 +12917,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "bsl_impc copy";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -12939,7 +12955,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "bsl_impc copy";
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -13356,7 +13372,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -13405,7 +13421,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
+				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
