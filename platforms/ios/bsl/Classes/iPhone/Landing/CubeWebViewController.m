@@ -282,8 +282,9 @@
     }
     
     if ([[url absoluteString] rangeOfString:@"cube-action"].location != NSNotFound) {
-        
+        NSLog(@"请: %@", url);
         NSRange range = [[url absoluteString] rangeOfString:@"cube-action"];
+        
         NSString *tempaction = [[url absoluteString] substringFromIndex:range.location + range.length + 1];
         NSRange sharp = [tempaction rangeOfString:@"#"];
         NSString *action = tempaction;
@@ -293,13 +294,14 @@
         
         
         if ([@"pop" isEqualToString:action]) {
+            NSLog(@"页面: %@", url);
             if([self.navigationController.viewControllers count]>2){
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"POP_DISMISS_VIEW" object:nil];
             }
         } else if([@"push" isEqualToString:action]) {
-            
+            NSLog(@"面: %@", url);
             //remove ?cube-action
             url = [NSURL URLWithString:
                    [[url absoluteString] stringByReplacingOccurrencesOfString:@"?cube-action=push" withString:@""]];

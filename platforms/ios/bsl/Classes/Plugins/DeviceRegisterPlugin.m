@@ -73,14 +73,33 @@ typedef void (^RegistFinsh)(NSString *responseStr);
         [secondRes setRequestMethod:@"GET"];
         [secondRes setCompletionBlock:^(void){
             NSString *secondResStr = [secondRes responseString];
-            NSLog(@"[DeviceRegisterPlugin]-queryDeviceInfo  查询注册信息返回 -> %@",secondResStr);
-            NSString *jscode =  [NSString stringWithFormat:@"%@%@%@",@"fillData('",secondResStr,@"')"];
-            [self.webView stringByEvaluatingJavaScriptFromString:jscode];
+            NSMutableDictionary *json = [secondResStr objectFromJSONString];
+            NSString *str;
+            if(json)
+            {
+                str = json.JSONString;
+            }
+            else
+            {
+                str=@"";
+            }
+//            NSMutableDictionary *json = [NSMutableDictionary dictionary];
+//            [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+//            [json setValue:secondResStr  forKey:@"message"];
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsString:str];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//            NSLog(@"[DeviceRegisterPlugin]-queryDeviceInfo  查询注册信息返回 -> %@",secondResStr);
+//            NSString *jscode =  [NSString stringWithFormat:@"%@%@%@",@"fillData('",secondResStr,@"')"];
+//            [self.webView stringByEvaluatingJavaScriptFromString:jscode];
         }];
         [secondRes setFailedBlock:^{
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"提交失败,请稍后再试" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"查询失败,请稍后再试" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
             alertView.tag = 100;
             [alertView show];
+            NSMutableDictionary *json = [NSMutableDictionary dictionary];
+            [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
         [secondRes startAsynchronous];
         

@@ -39,7 +39,11 @@ sqlite3 * database;
 
 +(int)getMessageCount{
     int number=0;
-
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults boolForKey:@"isOffLogin"])
+    {
+        return 0;
+    }
     @autoreleasepool {
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.

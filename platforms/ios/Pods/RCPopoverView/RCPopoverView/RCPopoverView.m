@@ -11,7 +11,7 @@
 
 @interface RCPopoverView() <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong, readonly) UIWindow *overlayWindow;
+@property (nonatomic, strong, readonly) UIView *overlayWindow;
 
 @end
 
@@ -57,6 +57,7 @@
         self.backgroundColor = [UIColor clearColor];
 		self.alpha = 0;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //判断当前设备为Iphone还是ipad
         _inset_left = 20;
         _inset_top = 30;
     }
@@ -90,7 +91,9 @@
                              self.alpha = 1;
                              CGRect frame = self.popoverView.frame;
                              frame.origin.x = _inset_left;
+                             if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
                              [self.popoverView setFrame:frame];
+                             
                          }
                          completion:^(BOOL finished){
                          }];
@@ -107,6 +110,7 @@
                      animations:^{
                          float w = self.frame.size.width;
                          float h = self.frame.size.height;
+                         if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
                          [self.popoverView setFrame:CGRectMake(w, _inset_top+20.0, w-2*_inset_left, h-2*_inset_top-20.0)];
                      }
                      completion:^(BOOL finished){
@@ -122,13 +126,27 @@
 }
 
 #pragma mark - Helper Methods
-
 -(void)setupPopover
 {
     float w = self.frame.size.width;
     float h = self.frame.size.height;
     [self addSubview:_popoverView];
-    [self.popoverView setFrame:CGRectMake(w, _inset_top+20.0, w-2*_inset_left, h-2*_inset_top-20.0)];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        //如果是ipad则将view旋转90度
+        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        float center_x = (window.frame.size.width - self.popoverView.bounds.size.width)/2;
+        float center_y = (window.bounds.size.height - self.popoverView.bounds.size.height)/2;
+        [self.popoverView setFrame:CGRectMake(center_x, center_y, self.popoverView.bounds.size.width, self.popoverView.bounds.size.height)];
+        [self.popoverView setTransform:CGAffineTransformMakeRotation(90 *M_PI / 180.0)];
+        
+        
+    }
+    else
+    {
+        
+        [self.popoverView setFrame:CGRectMake(w, _inset_top+20.0, w-2*_inset_left, h-2*_inset_top-20.0)];
+    }
 }
 
 - (void)drawRect:(CGRect)rect
@@ -168,12 +186,19 @@
     }
 }
 
-- (UIWindow *)overlayWindow {
+- (UIView *)overlayWindow {
     if(!_overlayWindow) {
-        _overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _overlayWindow = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _overlayWindow.backgroundColor = [UIColor clearColor];
-        [_overlayWindow makeKeyAndVisible];
+        
+        _overlayWindow.userInteractionEnabled=YES;
+        
+        UIWindow* window=[[UIApplication sharedApplication] keyWindow];
+        if(window==nil)
+            window=[[[UIApplication sharedApplication] windows] objectAtIndex:0];
+        [window addSubview:_overlayWindow];
+
     }
     return _overlayWindow;
 }

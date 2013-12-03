@@ -1,4 +1,5 @@
 document.addEventListener("deviceready", function(){
+     console.log("ready");
 	//激活单选框
 	$("input[name=deviceSrc]").click();
 	//查询设备注册数据并填好
@@ -19,6 +20,7 @@ document.addEventListener("deviceready", function(){
 	$(".btn").bind("touchend",function(){
 		$(this).removeClass("active");
 	})
+    console.log("ready end");
 	// testData();
 }, false);
 
@@ -50,7 +52,7 @@ function queryAndFillDeviceInfo(){
 				console.log("查询成功");
 				if(data){
                     //安卓是在这里如,传入object,ios是直接调用fillData
-                    data = JSON.stringify(data);
+                    // data = JSON.stringify(data);
                     $("#registInfo").html("您的设备已注册");
 					fillData(data);
 				    isUpdate = true;
@@ -82,7 +84,7 @@ function submit(){
 			var value = $(inputs[i]).val();
 			var key = inputs[i].name;
 			if(!value || value == ""){  //替换null或者undefined
-				// alert(inputs[i].placeholder.split(",")[0]);
+				// console.log(inputs[i].placeholder.split(",")[0]);
 				navigator.notification.alert( 
 		           	//inputs[i].placeholder.split(",")[0],  // 显示信息
 		            "请填写" + $(labels[i]).html().split(":")[0], 
@@ -118,10 +120,10 @@ function submit(){
 		
 		cordova.exec(
 			function(){	
-				//alert("注册成功"); 
+				//console.log("注册成功"); 
 			}, 
 			function(err) {
-				//alert("提交失败,请检查网络连接！");
+				//console.log("提交失败,请检查网络连接！");
         	}
         , "DeviceRegister", submitType, [JSON.stringify(json)]);
 	}
@@ -141,22 +143,26 @@ function cancel(){
 }
 
 function fillData(data){
+	console.log("fillData  -> "+data);
 	if(data){
 		$("#registInfo").html("您的设备已注册");
 	}else{
 		$("#registInfo").html("您的设备未进行注册");
 	}
 	$("input[name=deviceSrc]")[0].checked=true
-
 	data = JSON.parse(data);
+
 	var inputs = $("input");
+	console.log("inputs -> "+ inputs.length);
 	for(var i = 0; i < inputs.length; i++){
 		var input = inputs[i];
+		console.log(data[input.name]);
 		if(data[input.name] && data[input.name] != null && input.type != "radio"){
 			$(input).val(data[input.name]);
 		}
 	}
 	var radios = $("input[name=deviceSrc]");
+	console.log("radios -> "+ radios.length);
     for(var i = 0; i <radios.length; i++){
     	var radio = $(radios[i]);
     	if(radio.val() == data.deviceSrc){
@@ -164,4 +170,5 @@ function fillData(data){
     		radios[i].checked = true;
     	}
     }
+    console.log("fillData end");
 }

@@ -43,6 +43,7 @@
 @synthesize islogin;
 @synthesize loginUserStr;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectContextbak = _managedObjectContextbak;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize xmppvCardTempModule = _xmppvCardTempModule;
@@ -926,6 +927,31 @@
     }
     return _managedObjectContext;
 }
+
+- (NSManagedObjectContext *)managedObjectContextbak
+{
+    NSUserDefaults* userDefaluts = [NSUserDefaults standardUserDefaults];
+    NSString* loginUserStr1  = [userDefaluts objectForKey:@"LoginUser"];
+    
+    oldLoginUser = [userDefaluts objectForKey:@"oldLoginUser"];
+    if (_managedObjectContextbak != nil  && loginUserStr1 != nil && [loginUserStr1 isEqualToString:oldLoginUser]) {
+        return _managedObjectContextbak;
+    }
+    
+    
+    _managedObjectContextbak=nil;
+    
+    [userDefaluts setValue:loginUserStr1 forKey:@"oldLoginUser"];
+    [userDefaluts synchronize];
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        _managedObjectContextbak = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContextbak setPersistentStoreCoordinator:coordinator];
+    }
+    return _managedObjectContextbak;
+}
+
+
 
 // Returns the managed object model for the application.
 // If the model doesn't already exist, it is created from the application's model.

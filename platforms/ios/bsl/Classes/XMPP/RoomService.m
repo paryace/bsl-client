@@ -56,7 +56,7 @@
                     NSString* jid=[dict objectForKey:@"roomId"];
                     NSString* userJid=[dict objectForKey:@"creator"];
                     NSString* roomName=[dict objectForKey:@"roomName"];
-                    
+                    if([jid isEqual:[NSNull null]] || [userJid isEqual:[NSNull null]])continue;
                     if([jid length]<1 || [userJid length]<1)continue;
                     RectangleChat* rectChat=[xmpp fetchRectangleChatFromJid:jid isGroup:YES];
 

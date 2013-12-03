@@ -104,9 +104,10 @@
         [defaults setBool:NO forKey:@"offLineSwitch"];
     }
     [defaults synchronize];
+    _command = command;
     if(![isOffLogin boolValue])
     {
-        _command = command;
+        
         [self didLoginAndSaveData:userName withPwd:userPass withSystemId:nil andswitchIsOn:userSwithch andPluginCommon:command];
     }
     else
@@ -123,13 +124,14 @@
         }
         else
         {
-            NSString *md5Str = [[[userName stringByAppendingString:@"-"]stringByAppendingString:userPass]stringFromMD5];
-            NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@ and username=%@",md5Str,userName]];
-            if(!userArray)
+            
+            NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+            if(userArray.count==0)
             {
                 UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alertView show];
                 alertView = nil;
+                return;
             }
             else
             {
@@ -178,7 +180,8 @@
 }
 -(void)itemDidSelected:(NSIndexPath *)indexPath
 {
- 
+    
+    
     NSDictionary *dictionary = [_options objectAtIndex:indexPath.row];
     NSString *systemId = [dictionary valueForKey:@"systemId"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -196,6 +199,28 @@
         [defaults setObject:userName forKey:@"LoginUser"];
         [defaults setValue:systemId forKey:@"systemId"];
         [defaults synchronize];
+        
+        NSString *md5Str = [[[userName stringByAppendingString:@"-"]stringByAppendingString:userPass]stringFromMD5];
+        NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@ and username=%@",md5Str,userName]];
+        if(userArray.count == 0)
+        {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"帐号或密码错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alertView show];
+            alertView = nil;
+            [defaults setObject:@"" forKey:@"password"];
+            [defaults setObject:@"" forKey:@"loginPassword"];
+            [defaults setObject:@"" forKey:@"loginUsername"];
+            [defaults setObject:@"" forKey:@"LoginUser"];
+            [defaults setObject:@"" forKey:@"username"];
+            [defaults synchronize];
+            NSMutableDictionary *json = [NSMutableDictionary dictionary];
+            [json setValue:[NSNumber numberWithBool:NO] forKey:@"isSuccess"];
+            [json setValue:@"帐号或密码错误"  forKey:@"message"];
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:_command.callbackId];
+            return;
+        }
+        
         //修改其他系统是否为当前登录系统
         NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
         for(SystemInfo *system in temArray)
@@ -351,20 +376,12 @@
                         [existDictionary setObject:dict forKey:[dict valueForKey:@"id"]];
                         NSDictionary *dictonary = [[NSDictionary alloc]initWithObjectsAndKeys:[dict valueForKey:@"sysName"],@"sysName" ,[dict valueForKey:@"id"],@"systemId",nil];
                         [_options addObject:dictonary];
-                        SystemInfo *system  = [SystemInfo insert];
-                        NSString* systemName = [dict valueForKey:@"sysName"];
-                        NSString* alias = [dict valueForKey:@"alias"];
                         NSString* curr = [dict valueForKey:@"curr"];
-                        system.systemId = [dict valueForKey:@"id"];
-                        system.alias= alias;
-                        system.curr = [NSNumber numberWithBool:[curr boolValue]];
                         if([curr boolValue])
                         {
                             currentSysId =[dict valueForKey:@"id"];
                         }
-                        system.systemName=  systemName;
-                        system.username = userName;
-                        [system save];
+                        [SystemInfo systemStore:dict withUserName:userName];
                     }
                 }
                 else
@@ -377,18 +394,12 @@
                         for (SystemInfo *system in temArray) {
                             if([system.systemId isEqualToString:[dict valueForKey:@"id"]])
                             {
-                                NSString* systemName = [dict valueForKey:@"sysName"];
-                                NSString* alias = [dict valueForKey:@"alias"];
                                 NSString* curr = [dict valueForKey:@"curr"];
-                                system.alias= alias;
-                                system.curr = [NSNumber numberWithBool:[curr boolValue]];
                                 if([curr boolValue])
                                 {
                                     currentSysId =system.systemId;
                                 }
-                                system.systemName=  systemName;
-                                system.username = userName;
-                                [system save];
+                                [SystemInfo systemUpdate:system withObject:dict andUserName:userName];
                             }
                             
                         }
@@ -413,20 +424,12 @@
                     {
                         for(NSDictionary *dict in [existDictionary allValues])
                         {
-                            SystemInfo *system  = [SystemInfo insert];
-                            NSString* systemName = [dict valueForKey:@"sysName"];
-                            NSString* alias = [dict valueForKey:@"alias"];
                             NSString* curr = [dict valueForKey:@"curr"];
-                            system.systemId = [dict valueForKey:@"id"];
-                            system.alias= alias;
-                            system.curr = [NSNumber numberWithBool:[curr boolValue]];
                             if([curr boolValue])
                             {
                                 currentSysId =[dict valueForKey:@"id"];
                             }
-                            system.systemName=  systemName;
-                            system.username = userName;
-                            [system save];
+                            [SystemInfo systemStore:dict withUserName:userName];
                         }
                     }
                 }
@@ -456,7 +459,7 @@
                     
                     //------------------------------------------------------------------------------------------
                     NSArray *systems =[messageDictionary objectForKey:@"authSysList"];
-                    NSArray *temArray = [SystemInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
+                    NSArray *temArray = [SystemInfo findSystemsByuserName:userName ];
                     NSMutableDictionary *existDictionary = [[NSMutableDictionary alloc]init];
                     
                     for (NSDictionary *dict in systems) {
@@ -467,37 +470,23 @@
                             for (SystemInfo *sys in temArray) {
                                 if([sys.systemId isEqualToString:systemId])
                                 {
-                                    NSString* systemName = [dict valueForKey:@"sysName"];
-                                    NSString* alias = [dict valueForKey:@"alias"];
                                     NSString* curr = [dict valueForKey:@"curr"];
-                                    sys.alias= alias;
-                                    sys.curr = [NSNumber numberWithBool:[curr boolValue]];
                                     if([curr boolValue])
                                     {
                                         currentSysId =systemId;
                                     }
-                                    sys.systemName=  systemName;
-                                    sys.username = userName;
-                                    [sys save];
+                                    [SystemInfo systemUpdate:sys withObject:dict andUserName:userName];
                                 }
                             }
                         }
                         else
                         {
-                            SystemInfo *system  = [SystemInfo insert];
-                            NSString* systemName = [dict valueForKey:@"sysName"];
-                            NSString* alias = [dict valueForKey:@"alias"];
                             NSString* curr = [dict valueForKey:@"curr"];
-                            system.systemId = [dict valueForKey:@"id"];
-                            system.alias= alias;
-                            system.curr = [NSNumber numberWithBool:[curr boolValue]];
                             if([curr boolValue])
                             {
                                 currentSysId =[dict valueForKey:@"id"];
                             }
-                            system.systemName=  systemName;
-                            system.username = userName;
-                            [system save];
+                            [SystemInfo systemStore:dict withUserName:userName];
                         }
                         
                     }
@@ -519,20 +508,12 @@
                         {
                             for(NSDictionary *dict in [existDictionary allValues])
                             {
-                                SystemInfo *system  = [SystemInfo insert];
-                                NSString* systemName = [dict valueForKey:@"sysName"];
-                                NSString* alias = [dict valueForKey:@"alias"];
                                 NSString* curr = [dict valueForKey:@"curr"];
-                                system.systemId = [dict valueForKey:@"id"];
-                                system.alias= alias;
-                                system.curr = [NSNumber numberWithBool:[curr boolValue]];
                                 if([curr boolValue])
                                 {
                                     currentSysId =[dict valueForKey:@"id"];
                                 }
-                                system.systemName=  systemName;
-                                system.username = userName;
-                                [system save];
+                                [SystemInfo systemStore:dict withUserName:userName];
                             }
                         }
                     }

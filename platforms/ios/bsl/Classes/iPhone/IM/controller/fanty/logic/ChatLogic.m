@@ -301,7 +301,8 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"FaviorUserInfo"];
     [fetchRequest setPredicate:predicate];
     
-    NSArray *fetchedPersonArray = [appDelegate.xmpp.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    NSError *error;
+    NSArray *fetchedPersonArray = [appDelegate.xmpp.managedObjectContextbak executeFetchRequest:fetchRequest error:&error];
     return ([fetchedPersonArray count]>0);
 }
 

@@ -21,5 +21,5 @@
 @property (nonatomic, strong) NSString * username;
 @property (nonatomic, strong) NSString * zhName;
 @property (nonatomic, strong) NSNumber * loginFlag;
-
+-(BOOL)passwordExplain:(NSString*)md5str;
 @end
