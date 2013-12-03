@@ -119,14 +119,14 @@
         if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad ) {
             //添加关闭按钮
             
-                UIButton *navRightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 7, 43, 30)];
-                [navRightButton setBackgroundImage:[UIImage imageNamed:@"nav_add_btn.png"] forState:UIControlStateNormal];
-                [navRightButton setBackgroundImage:[UIImage imageNamed:@"nav_add_btn_active.png"] forState:UIControlStateSelected];
-                [navRightButton setTitle:@"关闭" forState:UIControlStateNormal];
-                [[navRightButton titleLabel] setFont:[UIFont systemFontOfSize:13]];
-                [navRightButton addTarget:self action:@selector(closeSettingView) forControlEvents:UIControlEventTouchUpInside];
-                
-                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navRightButton];
+//                UIButton *navRightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 7, 43, 30)];
+//                [navRightButton setBackgroundImage:[UIImage imageNamed:@"nav_add_btn.png"] forState:UIControlStateNormal];
+//                [navRightButton setBackgroundImage:[UIImage imageNamed:@"nav_add_btn_active.png"] forState:UIControlStateSelected];
+//                [navRightButton setTitle:@"关闭" forState:UIControlStateNormal];
+//                [[navRightButton titleLabel] setFont:[UIFont systemFontOfSize:13]];
+//                [navRightButton addTarget:self action:@selector(closeSettingView) forControlEvents:UIControlEventTouchUpInside];
+//                
+//                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:navRightButton];
             
         }
         
@@ -196,7 +196,7 @@
         NSString* text=[array objectAtIndex:0];
         NSString* icon=[array objectAtIndex:1];
         cell.textLabel.text = text;
-        UIImageView* imageview  = [[UIImageView alloc] initWithFrame:CGRectMake(UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ? 25 : 50, 12.5, 20,20)];
+        UIImageView* imageview  = [[UIImageView alloc] initWithFrame:CGRectMake(25, 12.5, 20,20)];
         imageview.image = [UIImage imageNamed: icon];
         
         [cell addSubview:imageview];
@@ -206,7 +206,7 @@
         CubeModule* model=[array objectAtIndex:[indexPath row]];
         NSString* text=model.name;
         cell.textLabel.text = text;
-        AsyncImageView* imageview  = [[AsyncImageView alloc] initWithFrame:CGRectMake(UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ? 25 : 50, 12.5, 20,20)];
+        AsyncImageView* imageview  = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 12.5, 20,20)];
         [imageview loadImageWithURLString:model.iconUrl];
         [cell addSubview:imageview];
 

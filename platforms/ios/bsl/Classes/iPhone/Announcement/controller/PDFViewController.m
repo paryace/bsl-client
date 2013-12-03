@@ -67,8 +67,11 @@
                     content = [NSString stringWithContentsOfFile:realPath encoding: 0x80000631 error:&error];
                 }
                 UITextView *textView = [[UITextView alloc]initWithFrame:self.view.frame];
+                textView.text = content;
+                textView.textColor = [UIColor blackColor];
                 textView.backgroundColor = [UIColor clearColor];
                 textView.font = [UIFont systemFontOfSize:14];
+                textView.editable = NO;
                 [self.view addSubview:textView];
 //                //下面两行协助 UIWebView 背景透明化，这两属性可以在 xib 中进行设置
 //                webview.backgroundColor = [UIColor clearColor];//但是这个属性必须用代码设置，光 xib 设置不行
@@ -128,6 +131,26 @@
             }
         }
     }
+//    else
+//    {
+//        AttachMents *att = [AttachMents insert];
+//        att.fileId = @"T1rRxTBXWT1RCvBVdK";
+//        NSString *realPath = [att downloadFileForPath:att.fileId];
+//        NSString *content = [NSString stringWithContentsOfFile:realPath encoding:NSUTF8StringEncoding error:nil];
+//        NSError *error;
+//        if(!content)
+//        {
+//            content = [NSString stringWithContentsOfFile:realPath encoding: 0x80000632 error:&error];
+//        }
+//        if(!content)
+//        {
+//            content = [NSString stringWithContentsOfFile:realPath encoding: 0x80000631 error:&error];
+//        }
+//        UITextView *textView = [[UITextView alloc]initWithFrame:self.view.frame];
+//        textView.backgroundColor = [UIColor clearColor];
+//        textView.font = [UIFont systemFontOfSize:14];
+//        [self.view addSubview:textView];
+//    }
 
 }
 

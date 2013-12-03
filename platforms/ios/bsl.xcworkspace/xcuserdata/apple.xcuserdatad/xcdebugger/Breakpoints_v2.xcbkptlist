@@ -57,52 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-            timestampString = "403706607.663195"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
-                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
-                  urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "407642314.508086"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "501"
-                  endingLineNumber = "501"
-                  offsetFromSymbolStart = "3684">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[MainViewViewController alertView:clickedButtonAtIndex:]"
-                  moduleName = "&#21335;&#33322;&#31227;&#21160;&#24212;&#29992;"
-                  urlString = "file:///Users/apple/Documents/bsl-client/platforms/ios/bsl/Classes/iPad/MainView/controller/MainViewViewController.m"
-                  timestampString = "407642314.508648"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "501"
-                  endingLineNumber = "501"
-                  offsetFromSymbolStart = "4223">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "bsl/Classes/pilot/infrastructure/query/UserQuery.m"
             timestampString = "403769665.73775"
             startingColumnNumber = "9223372036854775807"
@@ -248,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bsl/Classes/iPhone/Announcement/controller/PDFViewController.m"
-            timestampString = "407409339.054988"
+            timestampString = "407746594.509012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

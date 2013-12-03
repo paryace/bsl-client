@@ -415,9 +415,10 @@
     SettingMainViewController *settingView = [[SettingMainViewController alloc]initWithNibName:@"SettingMainViewController" bundle:nil];
     settingView.modalPresentationStyle = UIModalPresentationFormSheet;
     settingView.delegate = self;
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:settingView];
-    nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:nav animated:YES completion:nil];
+    [self showDetailViewController:settingView];
+//    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:settingView];
+//    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+//    [self presentViewController:nav animated:YES completion:nil];
 }
 
 -(void)ExitLogin{
@@ -574,7 +575,7 @@
             }else if([module.local isEqualToString:@"Announcement"]){
                 iphoneLocal = @"AnnouncementTableViewController";
             }else{
-                iphoneLocal = module.local;
+                iphoneLocal = [module.local stringByAppendingString:@"ViewController"];
             }
             UIViewController* controller=self.detailController;
             if([controller isKindOfClass:[UINavigationController class]]){

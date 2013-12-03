@@ -91,7 +91,9 @@
                              self.alpha = 1;
                              CGRect frame = self.popoverView.frame;
                              frame.origin.x = _inset_left;
+                             if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
                              [self.popoverView setFrame:frame];
+                             
                          }
                          completion:^(BOOL finished){
                          }];
@@ -108,6 +110,7 @@
                      animations:^{
                          float w = self.frame.size.width;
                          float h = self.frame.size.height;
+                         if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
                          [self.popoverView setFrame:CGRectMake(w, _inset_top+20.0, w-2*_inset_left, h-2*_inset_top-20.0)];
                      }
                      completion:^(BOOL finished){
@@ -123,13 +126,27 @@
 }
 
 #pragma mark - Helper Methods
-
 -(void)setupPopover
 {
     float w = self.frame.size.width;
     float h = self.frame.size.height;
     [self addSubview:_popoverView];
-    [self.popoverView setFrame:CGRectMake(w, _inset_top+20.0, w-2*_inset_left, h-2*_inset_top-20.0)];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        //如果是ipad则将view旋转90度
+        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        float center_x = (window.frame.size.width - self.popoverView.bounds.size.width)/2;
+        float center_y = (window.bounds.size.height - self.popoverView.bounds.size.height)/2;
+        [self.popoverView setFrame:CGRectMake(center_x, center_y, self.popoverView.bounds.size.width, self.popoverView.bounds.size.height)];
+        [self.popoverView setTransform:CGAffineTransformMakeRotation(90 *M_PI / 180.0)];
+        
+        
+    }
+    else
+    {
+        
+        [self.popoverView setFrame:CGRectMake(w, _inset_top+20.0, w-2*_inset_left, h-2*_inset_top-20.0)];
+    }
 }
 
 - (void)drawRect:(CGRect)rect

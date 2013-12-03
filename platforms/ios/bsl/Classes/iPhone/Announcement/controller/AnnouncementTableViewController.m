@@ -48,43 +48,6 @@
         PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
         viewcontroller.attachment = attachment;
         [self.navigationController pushViewController:viewcontroller animated:YES];
-//    
-//        
-//        
-//        NSString *fileName = [attachment.fileName lowercaseString];
-//        if([fileName hasSuffix:@"pdf"]||[fileName hasSuffix:@"txt"])
-//        {
-//            PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
-//            viewcontroller.attachment = attachment;
-//            [self.navigationController pushViewController:viewcontroller animated:YES];
-//        }
-//        else if ([fileName hasSuffix:@"jpg"] || [fileName hasSuffix:@"png"] || [fileName hasSuffix:@"jpeg"])
-//        {
-//            PDFViewController *viewcontroller = (PDFViewController*)[[NSClassFromString(@"PDFViewController") alloc]init];
-//            viewcontroller.attachment = attachment;
-//            [self.navigationController pushViewController:viewcontroller animated:YES];
-//            NSString *filePath = [[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"attachmens"]stringByAppendingPathComponent:attachment.fileId];
-//            ImageAttachViewController *controller =  (ImageAttachViewController*)[[NSClassFromString(@"ImageAttachViewController") alloc] init];
-//            controller.title =@"附件详情";
-//            controller.filepath = filePath;
-//            [self.navigationController pushViewController:controller animated:YES];
-//            
-//        }
-//        else if([fileName hasSuffix:@"doc"] || [fileName hasSuffix:@"docx"])
-//        {
-//            
-//        }
-//        else if ([fileName hasSuffix:@"xls"] || [fileName hasSuffix:@"xlsx"])
-//        {
-//            
-//        }
-//        else
-//        {
-//            
-//        }
-//        
-//        
-//        
         
     }
     
@@ -189,6 +152,7 @@
         [vv addSubview:label];
         self.navigationItem.titleView= vv;
     }
+//        [self openFile:@"T1rRxTBXWT1RCvBVdK"];
 }
     
 -(void)dealloc{
