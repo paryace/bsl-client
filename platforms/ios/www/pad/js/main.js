@@ -12,6 +12,7 @@ var myScroll = new iScroll('mainContent', {
 var isKeyboardShow = function(isShow) {
 
 };
+
 $(".middleContent").bind("touchstart", function() {
 	console.log("点击了middleContent");
 	$(".menuItem").removeClass("active");
@@ -546,6 +547,9 @@ var app = {
 					$(".bottomMenu").show();
 				});
 			}
+			//系统切换
+			changesys.target= "body";
+			changesys.initialize();
 		});
 	}
 };
