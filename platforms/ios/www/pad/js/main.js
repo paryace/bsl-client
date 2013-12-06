@@ -355,21 +355,24 @@ $("li[identifier]").live("click", function() {
 //获取用户信息
 var getAccountName = function() {
 	var accountName = "";
+	console.log("进入exec获取accountName");
 	//获取用户名
 	cordova.exec(function(account) {
-		console.log("进入exec获取accountName");
 		var a = $.parseJSON(account);
 		accountName = a.accountname;
+		console.log("获取完成");
+		if (accountName !== "") {
+			accountName = " " + accountName + " ";
+		}
+		$('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
+		console.log("初始化account_content完成");
 	}, function(err) {
 		accountName = "";
+		console.log("初始化account_content失败");
 	}, "CubeAccount", "getAccount", []);
-	console.log("获取完成");
-	if (accountName !== "") {
-		accountName = " " + accountName + " ";
-	}
-	$('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
+		
 
-	console.log("初始化account_content完成");
+	
 };
 
 //加载列表，渲染成html
@@ -525,7 +528,7 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-		//getAccountName();
+		
 		//loadModuleList("CubeModuleList", "mainList", "main");
 		cordovaExec("CubeModuleOperator", "sync", [], function() {
 			var osPlatform = device.platform;
@@ -547,6 +550,7 @@ var app = {
 					$(".bottomMenu").show();
 				});
 			}
+			getAccountName();
 			//系统切换
 			changesys.target= "body";
 			changesys.initialize();
