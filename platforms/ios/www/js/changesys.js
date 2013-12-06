@@ -7,6 +7,7 @@ var changesys = {
     initialize:function(){
         // document.addEventListener('deviceready', this.onDeviceReady, false);
         this.onDeviceReady();
+        this.fitViewPort();
     },
     onDeviceReady:function(){
         // this.getSysInfo(this.bindEvents);
@@ -21,15 +22,17 @@ var changesys = {
         });
         // changesys.onGoingIntoIndex();
     },
+    fitViewPort:function(){
+        var mviewport = $("meta[name=viewport]")[0];
+        var height = Math.abs(window.orientation/90)==1?window.screen.availWidth:window.screen.availHeight;
+        mviewport.setAttribute("content",mviewport.getAttribute("content")+",height="+height+"px");
+    },
     //target是selector表达式
     initLoginWindow:function(target){
         $.ajax({
             url : "../changesys_window.html",
-            success : function(changesys_window) { 
+            success : function(changesys_window) {
                 $(target).append(changesys_window);
-                var mviewport = $("meta[name=viewport]")[0];
-                var height = Math.abs(window.orientation/90)==1?window.screen.availWidth:window.screen.availHeight;
-                mviewport.setAttribute("content",mviewport.getAttribute("content")+",height="+height+"px");
             }
         }); 
     },
