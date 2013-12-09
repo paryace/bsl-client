@@ -3,6 +3,7 @@ var changesys = {
 
     sysList:[],
     target:"",
+    el:null,
 
     initialize:function(){
         // document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -33,6 +34,7 @@ var changesys = {
             url : "../changesys_window.html",
             success : function(changesys_window) {
                 $(target).append(changesys_window);
+                changesys.el = $("#change_sys_login_wrapper");
             }
         }); 
     },
@@ -112,6 +114,7 @@ var changesys = {
     hideWindow:function(){
         $("#change_sys_login_wrapper").find("input").val("");
         $("#change_sys_login_wrapper").hide();
+        $(changesys.el).trigger("close");
     },
     //登陆成功
     onLoginSuccess:function(sysName){

@@ -554,6 +554,10 @@ var app = {
 			//系统切换
 			changesys.target= "body";
 			changesys.initialize();
+			$(changesys.el).unbind("close");
+			$(changesys.el).bind("close",function(){
+				alert('bull shit close');
+			})
 		});
 	}
 };

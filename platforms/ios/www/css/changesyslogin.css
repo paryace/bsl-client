@@ -52,6 +52,9 @@
 	width:127.5px;
 }
 
+#title{
+    color:white;
+}
 
 /*@media not screen and (width:768px){
 	@viewport{
