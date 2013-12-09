@@ -44,7 +44,7 @@
               <div id="password_del" class="del_content">
                 <img id="password_del" src="img/app_search_close.png"></img>
               </div>
-         
+              <input id="realpsw" type="hidden" value=""/>
           
             
         </div>
@@ -70,9 +70,13 @@
         </div>
       </div>
       -->
-      <div class="rememberMe">
+      <div class="checkDiv" style="margin-left:5px">
         <input id="isRemember" type="checkbox" value="true">
-        <span style="display: block;margin-top:-20px;margin-left: 30px;">记住密码</span>
+        <span >记住密码</span>
+      </div>
+      <div class="checkDiv" style="margin-right:5px;float:right;">
+        <input id="isOffLine" type="checkbox" value="true">
+        <span >离线登录</span>
       </div>
       <div class="loginBtn">
         <button id="LoginBtn" class="btn btn-block" type="button">登录</button>

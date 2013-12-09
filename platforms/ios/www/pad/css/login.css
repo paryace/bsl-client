@@ -57,17 +57,29 @@ html,body,div,span{
 	width:22px;
 }
 
-.rememberMe input{
+.checkDiv{
+	position: relative;
+	top: 5px;
+	display: inline-block;
+	color:black;
+	margin-bottom:5px;
+}
+
+.checkDiv input{
 	/*margin-top: 10px;*/
-	margin:0px;
 	width:22px;
 	height:22px;
+	margin: 0px;
 	-webkit-appearance:none;
 	/*zoom:1.1;*/
-	background-image: url(../img/checkbox_empty.png);
+	background-image: url(../img/checkbox_empty.ing);
 	background-size:100% 100%;
-
 }
+
+.checkDiv span{
+	display: inline-block;
+}
+
 input[type=checkbox]:checked{
 	background-color: none;
 	background-image: url(../img/checkbox_full.png);

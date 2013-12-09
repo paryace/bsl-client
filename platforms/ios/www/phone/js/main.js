@@ -404,34 +404,6 @@ var changeLayout = function(oldfilename, newfilename, type) {
 var initial = function(type, data) {
 	console.log("AAAAAAAA initial=" + type);
 	var i = 0;
-	
-     //把data转换成array
-     var array = [];
-     for(var category in data){
-     array.push({"key":category,"value":data[category]});
-     }
-     array.sort(function(c1,c2){
-     //        排序最前面           最后面
-     if(c1.key == "公共功能" || c2.key == "基本功能"){
-     return -1;
-     }
-     if(c1.key == "基本功能" || c2.key == "公共功能"){
-     return 1;
-     }
-     return 0;
-     })
-     
-     _.each(array, function(obj) {
-     
-     var key = obj.key;
-     var data = obj.value;
-     $("#myul").append(_.template($("#t2").html(), {
-     'muduleTitle': key,
-     'tag': i
-     }));
-     _.each((data), function(value, key) {
-     
-	/*
 	_.each(data, function(value, key) {
            
            $("#myul").append(_.template($("#t2").html(), {
@@ -440,7 +412,7 @@ var initial = function(type, data) {
                                         }));
            _.each((value), function(value, key) {
                   
-                  */
+                  
 
 			console.log('AAAAAAAA identifier icon = ' + value.identifier + " -- " + value.icon);
 
@@ -1014,8 +986,9 @@ var app = {
 					}
 				});
 			}
-
-
+			//系统切换
+			changesys.target= "body";
+			changesys.initialize();
 
 		});
 		// loadModuleList("CubeModuleList", "mainList", "main");

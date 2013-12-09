@@ -20,6 +20,10 @@ html,body,img,div,ul,li,a{
 	-webkit-tap-highlight-color: transparent; 
 }
 
+
+
+
+
 .mainBg{
 	/*display: none;*/
 	position: absolute;
@@ -47,6 +51,9 @@ html,body,img,div,ul,li,a{
 	width: 8%;
 	/*background: rgba(0,0,0,0);*/
 }
+
+
+
 /*左边栏上部分菜单*/
 .leftContent .topMenu { margin-top: 60px; text-align: center; }
 
