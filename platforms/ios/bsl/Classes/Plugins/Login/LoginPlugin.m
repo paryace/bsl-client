@@ -72,6 +72,7 @@
     NSString* userName =  [command.arguments objectAtIndex:0];
     NSString* userPass =  [command.arguments objectAtIndex:1];
     NSString* userSwithch =  [command.arguments objectAtIndex:2];
+
 //    NSString* isOffLogin =[command.arguments objectAtIndex:3];
     NSString* isOffLogin = @"false";
     _password = userPass;

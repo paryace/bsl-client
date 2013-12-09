@@ -196,7 +196,15 @@
         NSString* text=[array objectAtIndex:0];
         NSString* icon=[array objectAtIndex:1];
         cell.textLabel.text = text;
-        UIImageView* imageview  = [[UIImageView alloc] initWithFrame:CGRectMake(25, 12.5, 20,20)];
+        UIImageView* imageview;
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0f)
+        {
+            imageview  = [[UIImageView alloc] initWithFrame:CGRectMake(25, 12.5, 20,20)];
+        }
+        else
+        {
+            imageview  = [[UIImageView alloc] initWithFrame:CGRectMake(50, 12.5, 20,20)];
+        }
         imageview.image = [UIImage imageNamed: icon];
         
         [cell addSubview:imageview];
@@ -206,7 +214,15 @@
         CubeModule* model=[array objectAtIndex:[indexPath row]];
         NSString* text=model.name;
         cell.textLabel.text = text;
-        AsyncImageView* imageview  = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 12.5, 20,20)];
+        AsyncImageView* imageview;
+        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0f)
+        {
+            imageview  = [[AsyncImageView alloc] initWithFrame:CGRectMake(25, 12.5, 20,20)];
+        }
+        else
+        {
+            imageview  = [[AsyncImageView alloc] initWithFrame:CGRectMake(50, 12.5, 20,20)];
+        }
         [imageview loadImageWithURLString:model.iconUrl];
         [cell addSubview:imageview];
 

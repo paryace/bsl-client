@@ -60,9 +60,10 @@ typedef void (^RegistFinsh)(NSString *responseStr);
     NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%@%@",kServerURLString,kDeviceBaseUrl,kDeviceRegCheck,deviceId];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[self appendAppKeyForFinalUrl:urlStr]]];
+    __block ASIHTTPRequest *_request = request;
     [request setRequestMethod:@"GET"];
     [request setCompletionBlock:^(void){
-        NSString *responseStr = [request responseString];
+        NSString *responseStr = [_request responseString];
         NSLog(@"[DeviceRegisterPlugin]-queryDeviceInfo  检查更新返回: -> %@",responseStr);
         
         //二次请求查询设备注册信息
