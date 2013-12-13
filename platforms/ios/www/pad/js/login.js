@@ -125,6 +125,22 @@ $("#LoginBtn").click(function() {
 	);
 };*/
 
+var loadLogin = function(){
+    var bodyHeight = $(window).height();
+    
+    $("body").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+    
+    $("html").css({
+                  'height': bodyHeight + 'px'
+                  // ,
+                  // 'min-height': bodyHeight + 'px'
+                  });
+}
+
 function bindClearFakePwdEvent(){
 	$("#password").bind("click",function(){
         $("#password").val("");
@@ -136,6 +152,9 @@ function bindClearFakePwdEvent(){
 var app = {
 	initialize: function() {
 		this.bindEvents();
+		setTimeout(function(){
+            loadLogin();
+        },100);
 	},
 	bindEvents: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
