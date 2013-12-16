@@ -364,7 +364,7 @@ var getAccountName = function() {
 		if (accountName !== "") {
 			accountName = " " + accountName + " ";
 		}
-		$('.account_content').html("<h4>欢迎" + accountName + "登录</h4>");
+		$('.account_content').html("<h4 id='account'>欢迎" + accountName + "登录</h4>");
 		console.log("初始化account_content完成");
 	}, function(err) {
 		accountName = "";
@@ -572,12 +572,19 @@ var app = {
 			}
 			getAccountName();
 			//系统切换
+			changesys.onGoingIntoIndex=function(){
+		        //切换标题到主页,激活title的点击事件
+		        cordova.exec(function(data) { 
+		            console.log(data);
+		            data = JSON.parse(data);
+		           	var accountMsg = $("#account").html();
+		            $("#account").html(accountMsg + " " + data.sysName);
+		            changesys.bindEvents();
+		        }, function(data) { 
+		        }, "ExtroSystem", "getCurrSystem", []);
+		    }
 			changesys.target= "body";
 			changesys.initialize();
-			$(changesys.el).unbind("close");
-			$(changesys.el).bind("close",function(){
-				alert('bull shit close');
-			})
 		});
 	}
 };
