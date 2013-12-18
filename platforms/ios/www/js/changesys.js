@@ -49,7 +49,8 @@ var changesys = {
                 console.log("need show window");
                 data = JSON.parse(data);
                 changesys.showLoginView(data.sysId,data.sysName);
-                callback();
+                if(callback)
+                    callback();
             }, function(data) {              //不需要弹框登陆
                 console.log(data);
                 alert("登陆成功!");
@@ -67,6 +68,12 @@ var changesys = {
     //显示登陆框
     showLoginView:function(sysId,title){
         console.log("show login view");
+        cordova.exec(function(data) {
+            console.log("right window hided");
+        }, function(err) {
+            console.log("right window not hided");
+        }, "ExtroSystem", "dismissRightView", []);
+
         $("#change_sys_login_title").html("登陆"+title);
 
         // $("#username").click();
