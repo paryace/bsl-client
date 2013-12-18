@@ -7,6 +7,9 @@
 //
 
 #import "Utility.h"
+#import <malloc/malloc.h>
+#define gkey			@"1234567890123456" //自行修改
+#define gIv             @"0102030405060708" //自行修改
 static NSString *_key = @"com.csair.impc";
 static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 static const short _base64DecodingTable[256] = {
@@ -117,9 +120,54 @@ static const short _base64DecodingTable[256] = {
     return sResult;
 }
 
++ (NSData *)doAESCipher:(NSData *)data key:(NSString *)sKey
+                context:(CCOperation)encryptOrDecrypt {
+    
+    char keyPtr[kCCKeySizeAES128+1];
+    memset(keyPtr, 0, sizeof(keyPtr));
+    [sKey getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+    
+    //    char ivPtr[kCCBlockSizeAES128+1];
+    //    memset(ivPtr, 0, sizeof(ivPtr));
+    //    NSString *iv = @"0102030405060708";
+    //    [iv getCString:ivPtr maxLength:sizeof(ivPtr) encoding:NSUTF8StringEncoding];
+    
+//    Byte iv[] = {0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8};
+    
+    void *bufferPtr1 = NULL;
+//    size_t bufferPtrSize1 = 0;
+    size_t movedBytes1 = 0;
+//    bufferPtrSize1 = ([data length] + kCCBlockSizeAES128);
+    
+    CCCryptorRef cryptorRef = NULL;
+    CCCryptorCreate(encryptOrDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,keyPtr , kCCBlockSizeAES128, NULL, &cryptorRef);
+    size_t len = CCCryptorGetOutputLength(cryptorRef, [data length], true);
+    bufferPtr1 = malloc(len);
+    memset((void *)bufferPtr1, 0x00, len);
+    
+    size_t s = malloc_size(bufferPtr1);
+    printf("==============%zu",s);
+    CCCryptorStatus cryptStatus = CCCrypt(encryptOrDecrypt, // CCOperation op
+                                          kCCAlgorithmAES128, // CCAlgorithm alg
+                                          kCCOptionECBMode|kCCOptionPKCS7Padding, // CCOptions options
+                                          keyPtr, // const void *key
+                                          kCCBlockSizeAES128, // size_t keyLength
+                                          NULL, // const void *iv
+                                          [data bytes], // const void *dataIn
+                                          [data length],  // size_t dataInLength
+                                          bufferPtr1, // void *dataOut
+                                          len,     // size_t dataOutAvailable
+                                          &movedBytes1);      // size_t *dataOutMoved
+    
+    
+    if (cryptStatus == kCCSuccess) {
+        //the returned NSData takes ownership of the buffer and will free it on deallocation
+        return [NSData dataWithBytesNoCopy:bufferPtr1 length:movedBytes1];
+    }
+    free(bufferPtr1); //free the buffer;
+    return nil;
 
-
-
+}
 
 
 + (NSString *)encodeBase64WithString:(NSString *)strData {
@@ -248,5 +296,14 @@ static const short _base64DecodingTable[256] = {
     free(objResult);
     return objData;
 }
++(NSData *)AESEncryptWithKey:(NSString *)key withContent:(NSData*)data
+{
+    return [self doAESCipher:data key:key context:kCCEncrypt];
+}
++(NSData *)AESDecryptWithKey:(NSString *)key withContent:(NSData*)data
+{
+    return [self doAESCipher:data key:key context:kCCDecrypt];
+}
+
 
 @end

@@ -500,6 +500,17 @@
 
     }
 }
+-(void)dismissRightView:(CDVInvokedUrlCommand*)commond
+{
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"DISMISS_VIEW" object:nil];
+    }
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@""];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:commond.callbackId];
+
+
+}
 -(void)getCurrSystem:(CDVInvokedUrlCommand*)command
 {
     NSString *systemId = [[NSUserDefaults standardUserDefaults] valueForKey:@"systemId"];

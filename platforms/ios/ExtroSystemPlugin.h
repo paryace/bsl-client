@@ -19,4 +19,5 @@
 -(void)login:(CDVInvokedUrlCommand*)command;
 -(void)cancel:(CDVInvokedUrlCommand*)command;
 -(void)getCurrSystem:(CDVInvokedUrlCommand*)command;
+-(void)dismissRightView:(CDVInvokedUrlCommand*)commond;
 @end

@@ -276,9 +276,27 @@
 
     NSLog(@"请求页面: %@", url);
     if ([@"cube://exit" isEqualToString:[url absoluteString]]) {
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
-
-        return [super webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            if([self.navigationController.viewControllers count]>=2){
+                [self.navigationController setNavigationBarHidden:NO];
+                [self.navigationController popViewControllerAnimated:YES];
+                return YES;
+            }
+            else
+            {
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+                
+                return [super webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+            }
+        }
+        else
+        {
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+            
+            return [super webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+        }
+        
     }
     
     if ([[url absoluteString] rangeOfString:@"cube-action"].location != NSNotFound) {
@@ -295,7 +313,8 @@
         
         if ([@"pop" isEqualToString:action]) {
             NSLog(@"页面: %@", url);
-            if([self.navigationController.viewControllers count]>2){
+            if([self.navigationController.viewControllers count]>=2){
+                [self.navigationController setNavigationBarHidden:NO];
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"POP_DISMISS_VIEW" object:nil];
