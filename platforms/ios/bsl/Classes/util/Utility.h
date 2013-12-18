@@ -20,5 +20,7 @@
 + (NSString *) encodeBase64WithString:(NSString *)strData;
 + (NSString *) encodeBase64WithData:(NSData *)objData;
 + (NSData *) decodeBase64WithString:(NSString *)strBase64;
++(NSData *)AESEncryptWithKey:(NSString *)key withContent:(NSData*)data;
++(NSData *)AESDecryptWithKey:(NSString *)key withContent:(NSData*)data;
 
 @end

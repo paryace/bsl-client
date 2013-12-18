@@ -16,7 +16,8 @@
 #import "HTTPRequest.h"
 #import "AFHTTPRequestOperation.h"
 #import "CudeModuleDownDictionary.h"
-
+#import "Utility.h"
+#import "NSData+AES256.h"
 NSString *const CubeModuleDownloadDidStartNotification = @"CubeModuleDownloadDidStartNotification";
 NSString *const CubeModuleDownloadDidFinishNotification = @"CubeModuleDownloadDidFinishNotification";
 NSString *const CubeModuleDownloadDidFailNotification = @"CubeModuleDownloadDidFailNotification";
@@ -157,19 +158,30 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
     [request setCompletionBlock:^{
         [processTimer invalidate];
         processTimer=nil;
-
+        int contentLength = [[[__request responseHeaders] valueForKey:@"Content-Length"]intValue];
         BOOL success=NO;
         const char* __path =[path UTF8String];
-        
         FILE* fp=fopen(__path, "rb");
         if(fp!=nil){
             fseek(fp, 0, SEEK_END);
             long count=ftell(fp);
             fclose(fp);
             
-            if(count>2048){
-                success=YES;
-                [self downloadFinished:destURL];
+            if(count == contentLength){
+                
+                NSData * data = [[NSData alloc]initWithContentsOfURL:destURL];
+                data = [NSData AES256DecryptWithCipherData:data];
+                NSError *error;
+                if(![[NSFileManager defaultManager] removeItemAtURL:destURL error:&error]){
+                    NSLog(@"删除模块安装包失败，%@", error);
+                }
+                if(data)
+                {
+                    success=YES;
+                    [data writeToURL:destURL atomically:YES];
+                    data = nil;
+                    [self downloadFinished:destURL];
+                }
             }
         }
         if(!success){
@@ -186,7 +198,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
         [__request cancel];
 
     }];
-    
+
     [request setFailedBlock:^{
         [processTimer invalidate];
         processTimer=nil;
@@ -203,7 +215,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
         [__request cancel];
 
     }];
-   
+
     [request setBytesReceivedBlock:^(unsigned long long size, unsigned long long total) {
 
         downloadSize+=(float)size;
@@ -258,6 +270,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
             downUrl= [downUrl stringByAppendingString:token];
             downUrl= [downUrl stringByAppendingString:@"&appKey="];
             downUrl= [downUrl stringByAppendingString:kAPPKey];
+            downUrl= [downUrl stringByAppendingString:@"&encode=true"];
             //判断模块是否在下载列表中存在
             BOOL exitDownMoule =(BOOL) [[CudeModuleDownDictionary shareModuleDownDictionary] objectForKey:self.identifier] ;
             if(exitDownMoule ){
@@ -340,6 +353,7 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
         NSError *error = nil;
         BOOL zipSuccess=NO;
         @autoreleasepool {
+            
             zipSuccess=[SSZipArchive unzipFileAtPath:[destURL path]
                                        toDestination:runtimeUrlPath
                                            overwrite:YES password:nil error:&error];

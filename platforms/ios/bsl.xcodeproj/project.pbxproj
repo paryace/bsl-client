@@ -984,6 +984,12 @@
 		181C601318489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
 		18240E0D1803C6C400846FF9 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 18240E0C1803C6C400846FF9 /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
+		184750F1186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
+		184750F2186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
+		184750F3186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
+		184750F4186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
+		184750F5186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
+		184750F6186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
 		18617A2E182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
 		18617A2F182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
 		18617A30182A304600D85380 /* ImageAttachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A2D182A304600D85380 /* ImageAttachViewController.m */; };
@@ -4088,6 +4094,8 @@
 		18240E0C1803C6C400846FF9 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		18240E0E1803D04400846FF9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		18240E111804EBFC00846FF9 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		184750EF186013DC00CD3826 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
+		184750F0186013DC00CD3826 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
 		18617A2C182A304600D85380 /* ImageAttachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAttachViewController.h; sourceTree = "<group>"; };
 		18617A2D182A304600D85380 /* ImageAttachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAttachViewController.m; sourceTree = "<group>"; };
 		18617A34182A822200D85380 /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
@@ -7909,6 +7917,8 @@
 		F54D816117E8BFBA0067A023 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				184750EF186013DC00CD3826 /* NSData+AES256.h */,
+				184750F0186013DC00CD3826 /* NSData+AES256.m */,
 				18AC9AA91834649000AB401C /* Utility.h */,
 				18AC9AAA1834649000AB401C /* Utility.m */,
 				F54D816417E8BFBA0067A023 /* ButtonGroup.h */,
@@ -11562,6 +11572,7 @@
 				180B828E1818A9B90091E3AE /* NSData+Hex.m in Sources */,
 				180B828F1818A9B90091E3AE /* NSData+Hex.m in Sources */,
 				180B82901818A9B90091E3AE /* ThumbsMainToolbar.m in Sources */,
+				184750F6186013DC00CD3826 /* NSData+AES256.m in Sources */,
 				180B82911818A9B90091E3AE /* FontFile.m in Sources */,
 				180B82921818A9B90091E3AE /* NSObject+propertyList.m in Sources */,
 				180B82931818A9B90091E3AE /* NSData+echo.m in Sources */,
@@ -11663,6 +11674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3968623117EE7D7E00C84A6A /* GroupPanel.m in Sources */,
+				184750F1186013DC00CD3826 /* NSData+AES256.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				F54D82A017E8BFBB0067A023 /* AppDelegate.m in Sources */,
 				F54D82A117E8BFBB0067A023 /* AutoDownLoadRecord.m in Sources */,
@@ -12011,6 +12023,7 @@
 				39D9E9FC17F27C03001ED6F5 /* ImageUploaded.m in Sources */,
 				18E9C4CE1803AB1200B874B8 /* ShowGuidance.m in Sources */,
 				39D9E9FD17F27C03001ED6F5 /* NumberView.m in Sources */,
+				184750F4186013DC00CD3826 /* NSData+AES256.m in Sources */,
 				18E9C50B1803AB1200B874B8 /* ReaderThumbRequest.m in Sources */,
 				18E9C4EF1803AB1200B874B8 /* Task.m in Sources */,
 				39D9E9FE17F27C03001ED6F5 /* TouchScroller.m in Sources */,
@@ -12310,6 +12323,7 @@
 				39E052D417F00AEA00BCF7F8 /* RecordingView.m in Sources */,
 				39E052D517F00AEA00BCF7F8 /* ImageDownloadedView.m in Sources */,
 				39E052D617F00AEA00BCF7F8 /* HeadTabView.m in Sources */,
+				184750F2186013DC00CD3826 /* NSData+AES256.m in Sources */,
 				39E052D717F00AEA00BCF7F8 /* ImageScroller.m in Sources */,
 				39E052D817F00AEA00BCF7F8 /* ImageUploaded.m in Sources */,
 				39E052D917F00AEA00BCF7F8 /* NumberView.m in Sources */,
@@ -12495,6 +12509,7 @@
 				39E9C5D2180EBAAA004CEF1D /* RecordingView.m in Sources */,
 				39E9C5D3180EBAAA004CEF1D /* ImageDownloadedView.m in Sources */,
 				39E9C5D4180EBAAA004CEF1D /* HeadTabView.m in Sources */,
+				184750F5186013DC00CD3826 /* NSData+AES256.m in Sources */,
 				39E9C5D5180EBAAA004CEF1D /* ImageScroller.m in Sources */,
 				39E9C5D6180EBAAA004CEF1D /* ImageUploaded.m in Sources */,
 				39E9C5D7180EBAAA004CEF1D /* NumberView.m in Sources */,
@@ -12680,6 +12695,7 @@
 				39FF0B8E17F13CBB0086B76C /* RecordingView.m in Sources */,
 				39FF0B8F17F13CBB0086B76C /* ImageDownloadedView.m in Sources */,
 				39FF0B9017F13CBB0086B76C /* HeadTabView.m in Sources */,
+				184750F3186013DC00CD3826 /* NSData+AES256.m in Sources */,
 				39FF0B9117F13CBB0086B76C /* ImageScroller.m in Sources */,
 				39FF0B9217F13CBB0086B76C /* ImageUploaded.m in Sources */,
 				39FF0B9317F13CBB0086B76C /* NumberView.m in Sources */,
@@ -13035,8 +13051,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -13063,7 +13079,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "61A5779A-D443-4718-95FA-23E1C14D509A";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13079,8 +13095,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: China Southern Airlines Company Limited";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: China Southern Airlines Company Limited";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "bsl/bsl-Prefix.pch";
@@ -13105,7 +13121,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "南航移动应用";
-				PROVISIONING_PROFILE = "61A5779A-D443-4718-95FA-23E1C14D509A";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -13342,7 +13358,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jun zhou (69L4LQ7WF4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jun zhou (69L4LQ7WF4)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -13374,7 +13391,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -13423,7 +13440,7 @@
 					"-ObjC",
 					"$(inherited)",
 				);
-				PROVISIONING_PROFILE = "3D4602FD-12DA-43FE-80E2-1CABD8C2A5E2";
+				PROVISIONING_PROFILE = "95DA3612-1B70-45E2-8214-0D6E077494FD";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
