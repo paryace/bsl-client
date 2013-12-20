@@ -112,6 +112,24 @@
       </div>
     </a></li>
     </script>
+
+<script id="moduleItemTemplateWithoutNote" type="text/x-jquery-tmpl">
+    <li class="moduleContent" classname="<%=classname%>" identifier="<%=identifier%>" moduleType="<%=moduleType%>"><a href="#"><i class="icon-chevron-right"></i>
+      <div class="moduleItem">
+        <div class="moduleIcon"><img src="<%=icon%>" alt="" onerror="this.src='img/default_icon2.png'"></div>
+        <div class="moduleName" moduleName="<%=name%>" style="top:22px"><%=name%></div>
+        <%
+        if(updatable===true){
+        %>
+        <div class="moduleUpdateTips"><img src="img/update_icon.png" alt=""></div>
+        <%
+        }
+        %>
+        <div class="moduleTips" <%if(msgCount!==0){%>style="display:block"<%}else{%>style="display:none"<%}%>><%=msgCount%></div>
+        
+      </div>
+    </a></li>
+    </script>    
 <!--  js -->
 <script type="text/javascript" type="text/javascript" src="../cordova.js"></script>
 <script type="text/javascript" src="vendor/zepto/zepto.min.js"></script>

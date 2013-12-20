@@ -176,7 +176,13 @@ var addModule = function(identifier, type, moduleMessage) {
 		$("li[identifier='" + identifier + "']").remove();
 	}
 
-	var moduleItemTemplate = $("#moduleItemTemplate").html();
+	var templateName = "moduleItemTemplateWithoutNote";
+	var page = $(".menuItem.active").attr("data");
+	if (page === "module") {
+		templateName = "moduleItemTemplate";
+	}
+
+	var moduleItemTemplate = $("#"+templateName).html();
 
 	mm.moduleType = type;
 	mm.classname = mm.category;
@@ -413,7 +419,13 @@ var loadModuleList = function(plugin, action, type, callback) {
 			//处理成功加载首页模块列表
 			// _.each(data, function(value, key) {
 				var moduleItemHtmlContent = "";
-				var moduleItemTemplate = $("#moduleItemTemplate").html();
+
+				var templateName = "moduleItemTemplateWithoutNote";
+				var page = $(".menuItem.active").attr("data");
+				if (page === "module") {
+					templateName = "moduleItemTemplate";
+				}
+				var moduleItemTemplate = $("#"+templateName).html();
 				_.each(value, function(value) {
 					value.moduleType = type;
 					//处理，只有在首页的时候才显示有统计数据
