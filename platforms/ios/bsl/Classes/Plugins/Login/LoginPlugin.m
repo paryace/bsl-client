@@ -183,7 +183,6 @@
 -(void)itemDidSelected:(NSIndexPath *)indexPath
 {
     
-    
     NSDictionary *dictionary = [_options objectAtIndex:indexPath.row];
     NSString *systemId = [dictionary valueForKey:@"systemId"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -327,8 +326,6 @@
             }
             if(![message boolValue]&& nil != tips)
             {
-                
-                
                 if(command)
                 {
                     NSRange range = [tips rangeOfString:@"帐号或密码错误"];
@@ -448,7 +445,7 @@
                 NSNumber* number =  [messageDictionary objectForKey:@"loginOK"];
                 if ([number boolValue])
                 {
-                    
+            
                     if(command)
                     {
                         NSMutableDictionary *json = [NSMutableDictionary dictionary];

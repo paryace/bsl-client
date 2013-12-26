@@ -34,15 +34,15 @@
     self.aCubeWebViewController.view.frame = self.view.bounds;
     self.aCubeWebViewController.view.hidden=YES;
     self.aCubeWebViewController.webView.scrollView.bounces=NO;
-    NSLog(@"[DeviceRegister_IphoneControllerViewController] start load WebView date = %@",[NSDate date]);
+//    NSLog(@"[DeviceRegister_IphoneControllerViewController] start load WebView date = %@",[NSDate date]);
     
     //预加载
     NSString *url = [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"com.csair.deviceregist/index.html"] absoluteString];
-    NSLog(@"[DeviceRegister_IphoneControllerViewController] page url = %@",url);
+//    NSLog(@"[DeviceRegister_IphoneControllerViewController] page url = %@",url);
     [self.aCubeWebViewController loadWebPageWithUrl: url didFinishBlock: ^(){
         //显示页面
         [self performSelector:@selector(showWebViewController) withObject:nil afterDelay:0.7f];
-        NSLog(@"[DeviceRegister_IphoneControllerViewController]   显示页面");
+//        NSLog(@"[DeviceRegister_IphoneControllerViewController]   显示页面");
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popMe) name:@"PopDeviceRegistView" object:nil];
 //        [self.navigationController pushViewController:self animated:NO];
         
@@ -63,7 +63,7 @@
     self.aCubeWebViewController.closeButton.hidden = YES;
     [self.aCubeWebViewController viewWillAppear:NO];
     [self.aCubeWebViewController viewDidAppear:NO];
-    NSLog(@"finish load WebView date = %@",[NSDate date]);
+//    NSLog(@"finish load WebView date = %@",[NSDate date]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,8 +73,16 @@
 }
 
 -(void)popMe{
-    NSLog(@"[DeviceRegister_IphoneControllerViewController] popMe");
-    [self.navigationController popViewControllerAnimated:YES];
+//    NSLog(@"[DeviceRegister_IphoneControllerViewController] popMe");
+    
+    if([self.navigationController modalPresentationStyle]  == UIModalPresentationFormSheet)
+    {
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

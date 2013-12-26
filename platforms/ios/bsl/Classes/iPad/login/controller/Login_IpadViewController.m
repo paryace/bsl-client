@@ -9,6 +9,9 @@
 #import "Login_IpadViewController.h"
 #import "CubeWebViewController.h"
 #import "NSFileManager+Extra.h"
+#import "UIDevice+IdentifierAddition.h"
+#import "ASIHttpRequest.h"
+#import "DeviceRegister_IphoneControllerViewController.h"
 
 @interface Login_IpadViewController (){
     BOOL isDisappear;
@@ -65,7 +68,41 @@
         UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"登陆模块加载失败。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
     }];
+    [self deviceRegist];
 }
+
+-(void)deviceRegist{
+    NSString *deviceID = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    NSString *checkDRUrl = [NSString stringWithFormat:@"%@/%@%@?appKey=%@",kServerURLString,@"csair-extension/api/deviceRegInfo/check/",deviceID,kAPPKey];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:checkDRUrl]];
+    __block ASIHTTPRequest * _request = request;
+    //    NSLog([NSString stringWithFormat:@"%@%@",@"[AppDelegate]-deviceRegist  url-> ",checkDRUrl]);
+    [request setCompletionBlock:^(void){
+        NSLog(@"[Login_IphoneViewController] -deviceRegist  设备注册返回值 : %@",[_request responseString]);
+        if([@"false" isEqual:[_request responseString]]){
+            NSLog(@"设备未注册");
+            //            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
+            DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:drController];
+            nav.modalPresentationStyle = UIModalPresentationFormSheet;
+            drController.navigationController.navigationBarHidden = YES;
+            [self presentViewController:nav animated:YES completion:nil];
+
+            
+            
+            //            drController.navigationController = self.navigationController;
+//            [self.navigationController pushViewController:drController animated:YES];
+        }
+    }];
+    [request setFailedBlock:^(void){
+        NSLog(@"设备注册失败");
+    }];
+    
+    [request setRequestMethod:@"GET"];
+    [request startAsynchronous];
+    
+}
+
 
 -(void)showWebViewController{
     aCubeWebViewController.view.hidden=NO;

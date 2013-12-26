@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import "HTTPRequest.h"
-#import "HTTPRequest.h"
 #import "JSONKit.h"
 #import "AppDelegate.h"
 #import "UIDevice+IdentifierAddition.h"

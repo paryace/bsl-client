@@ -103,7 +103,7 @@
         UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0,0,UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ? 320:640,44)];
         //添加退出登陆按钮
         
-        UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ? 14:28, 0, UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ? 292: 484, 44)];
+        UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ? 14:28, 0, UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPhone ? 292: 464, 44)];
         
         [btn setBackgroundImage:[UIImage imageNamed:@"setting_exitBg.png"] forState:UIControlStateNormal];
         [btn setTitle:@"登出当前账号" forState:UIControlStateNormal];

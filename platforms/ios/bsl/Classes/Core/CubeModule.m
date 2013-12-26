@@ -183,6 +183,11 @@ NSString *const CubeModuleDeleteDidFailNotification = @"CubeModuleDeleteDidFailN
                     [self downloadFinished:destURL];
                 }
             }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"文件下载不完整请重新下载" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alertView show];
+            }
         }
         if(!success){
             if(index<3){
