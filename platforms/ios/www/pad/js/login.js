@@ -69,10 +69,10 @@ $("#LoginBtn").click(function() {
 		//alert("")
 		isRemember = "false";
 	}
-	if(isRemember === 'false')
-    {
-        $("#realpsw").val("");
-    }
+	// if(isRemember === 'false')
+ //    {
+ //        $("#realpsw").val("");
+ //    }
 
 	//是否启用离线登陆
 	var isOffLine = $('#isOffLine:checked').val();
