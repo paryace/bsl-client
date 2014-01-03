@@ -73,8 +73,8 @@
     NSString* userPass =  [command.arguments objectAtIndex:1];
     NSString* userSwithch =  [command.arguments objectAtIndex:2];
 
-//    NSString* isOffLogin =[command.arguments objectAtIndex:3];
-    NSString* isOffLogin = @"false";
+    NSString* isOffLogin =[command.arguments objectAtIndex:3];
+//    NSString* isOffLogin = @"false";
     _password = userPass;
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if ([userSwithch boolValue]) {
@@ -570,6 +570,9 @@
                         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:json.JSONString];
                         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                     }
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:messageAlert delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    [alertView show];
+                    alertView = nil;
                 }
                 
             }

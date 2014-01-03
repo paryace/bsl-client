@@ -43,7 +43,7 @@ $("#search_del").click(function() {
 var cordovaExec = function(plugin, action, parameters, callback) {
 	cordova.exec(function(data) {
 		if (callback !== undefined) {
-			callback();
+			callback(data);
 		}
 	}, function(err) {
 		//alert(err);
@@ -227,11 +227,15 @@ $(".menuItem").tap(function() {
 
 
 	} else if (type === "module") {
-		$(".moduleManageBar").css("display", "block");
+		
 		//$('.account_content').hide();
 		activeModuleManageBarItem("uninstall");
 		//点击模块管理，加载未安装模块列表(先同步，再获取未安装列表)
-		cordovaExec("CubeModuleOperator", "sync", [], function() {
+		cordovaExec("CubeModuleOperator", "sync", ['manager'], function(data) {
+            if(data !== '1')
+            {
+                $(".moduleManageBar").css("display", "block");
+            }
 			loadModuleList("CubeModuleList", "uninstallList", "uninstall");
 		});
 
@@ -393,10 +397,10 @@ var loadModuleList = function(plugin, action, type, callback) {
 		var mainContent = $('<div id="mainContent" class="mainContent"><div id="scroller"><ul class="scrollContent nav nav-list bs-docs-sidenav affix-top"></ul></div></div>');
 		$(".middleContent").append(mainContent);
 		var allModuleContentHtml = "";
-
+        
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
-
+                     
 			var array = [];
 			for(var category in data){
 				array.push({"key":category,"value":data[category]});
@@ -576,7 +580,7 @@ var app = {
 					});
 				}, function(err) {}, "CubePackageName", "getPackageName", []);
 			} else {
-				loadModuleList("CubeModuleList", "mainList", "main", function() {
+                    loadModuleList("CubeModuleList", "mainList", "main", function() {
 					myScroll.refresh();
 					checkTheme();
 					$(".bottomMenu").show();

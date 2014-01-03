@@ -83,6 +83,7 @@
             NSLog(@"设备未注册");
             //            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
             DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
+            drController.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:drController];
             nav.modalPresentationStyle = UIModalPresentationFormSheet;
             drController.navigationController.navigationBarHidden = YES;

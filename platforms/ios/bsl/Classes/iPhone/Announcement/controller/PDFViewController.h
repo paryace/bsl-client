@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AttachMents.h"
-@interface PDFViewController : UIViewController
+@interface PDFViewController : UIViewController<UIWebViewDelegate,UIScrollViewDelegate>
 {
     UIWebView *webview;
     UITextView *label;

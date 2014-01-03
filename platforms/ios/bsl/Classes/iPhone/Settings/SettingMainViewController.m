@@ -329,6 +329,7 @@
         
         
         NSString * moduleIndex = [[[module runtimeURL] URLByAppendingPathComponent:@"index.html"] absoluteString];
+        NSLog(@"%@",[NSString stringWithFormat:@"%@#%@/settings", moduleIndex, module.identifier]);
         cubeWebViewController.startPage = [NSString stringWithFormat:@"%@#%@/settings", moduleIndex, module.identifier];
         
         [cubeWebViewController loadWebPageWithModuleIdentifier:module.identifier didFinishBlock: ^(){

@@ -34,6 +34,7 @@
     self.aCubeWebViewController.view.frame = self.view.bounds;
     self.aCubeWebViewController.view.hidden=YES;
     self.aCubeWebViewController.webView.scrollView.bounces=NO;
+//    self.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
 //    NSLog(@"[DeviceRegister_IphoneControllerViewController] start load WebView date = %@",[NSDate date]);
     
     //预加载

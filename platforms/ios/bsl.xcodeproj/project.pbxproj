@@ -44,7 +44,6 @@
 		180B7F6A1818A9B90091E3AE /* DownLoadingDetialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D801417E8BFBA0067A023 /* DownLoadingDetialViewController.xib */; };
 		180B7F6B1818A9B90091E3AE /* bottleReceiverVoiceNodePlaying003@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968625C17EE898300C84A6A /* bottleReceiverVoiceNodePlaying003@2x.png */; };
 		180B7F6C1818A9B90091E3AE /* FPDocContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C2581803AB0F00B874B8 /* FPDocContentViewController.xib */; };
-		180B7F6D1818A9B90091E3AE /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B8241806587800668DED /* Default-Landscape~ipad.png */; };
 		180B7F6E1818A9B90091E3AE /* DownloadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D801717E8BFBA0067A023 /* DownloadingViewController.xib */; };
 		180B7F6F1818A9B90091E3AE /* shake_-transportphoto_without_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3968624317EE898300C84A6A /* shake_-transportphoto_without_icon@2x.png */; };
 		180B7F701818A9B90091E3AE /* FunctionDetialInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D801A17E8BFBA0067A023 /* FunctionDetialInfoViewController.xib */; };
@@ -377,7 +376,6 @@
 		180B80B81818A9B90091E3AE /* btn_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D9E80017F26A87001ED6F5 /* btn_remove.png */; };
 		180B80B91818A9B90091E3AE /* RightButtonItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C3C31803AB1100B874B8 /* RightButtonItem.png */; };
 		180B80BA1818A9B90091E3AE /* f096.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844017E8C77E0067A023 /* f096.png */; };
-		180B80BB1818A9B90091E3AE /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B81D1806503500668DED /* Default-Landscape@2x~ipad.png */; };
 		180B80BC1818A9B90091E3AE /* f097.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844117E8C77E0067A023 /* f097.png */; };
 		180B80BD1818A9B90091E3AE /* f098.png in Resources */ = {isa = PBXBuildFile; fileRef = F54D844217E8C77E0067A023 /* f098.png */; };
 		180B80BE1818A9B90091E3AE /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E9C1F21803AB0E00B874B8 /* About.xib */; };
@@ -959,7 +957,6 @@
 		180DCF1B183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
 		180DCF1C183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
 		180DCF1D183C509600CAB8C9 /* UserQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 180DCF17183C509600CAB8C9 /* UserQueue.m */; };
-		180F2374180D1A170037751C /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B81D1806503500668DED /* Default-Landscape@2x~ipad.png */; };
 		180F2380180D237D0037751C /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F2376180D237D0037751C /* 114.png */; };
 		180F2381180D237D0037751C /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F2377180D237D0037751C /* 120.png */; };
 		180F2382180D237D0037751C /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = 180F2378180D237D0037751C /* 144.png */; };
@@ -1004,6 +1001,10 @@
 		18617A3B182A822200D85380 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18617A35182A822200D85380 /* PDFViewController.m */; };
 		188487F41807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
 		188487F51807A41E0039F67F /* CubeAccountPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 188487F31807A41E0039F67F /* CubeAccountPlugin.m */; };
+		188850C018728842002BC104 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 188850BE18728842002BC104 /* Default-Landscape~ipad.png */; };
+		188850C118728842002BC104 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 188850BE18728842002BC104 /* Default-Landscape~ipad.png */; };
+		188850C218728842002BC104 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 188850BF18728842002BC104 /* Default-Landscape@2x~ipad.png */; };
+		188850C318728842002BC104 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 188850BF18728842002BC104 /* Default-Landscape@2x~ipad.png */; };
 		18A5D18218407D2400E3F089 /* nav_add_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C8C17F007FC00F9CA68 /* nav_add_btn_active@2x.png */; };
 		18A5D18318407D2400E3F089 /* MoreIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54D81BD17E8BFBB0067A023 /* MoreIconButton.xib */; };
 		18A5D18418407D2400E3F089 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A96C9117F007FC00F9CA68 /* nav_bg@2x.png */; };
@@ -1649,7 +1650,6 @@
 		39C0B8221806503500668DED /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B81D1806503500668DED /* Default-Landscape@2x~ipad.png */; };
 		39C0B8251806587800668DED /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B8241806587800668DED /* Default-Landscape~ipad.png */; };
 		39C0B8261806587800668DED /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B8241806587800668DED /* Default-Landscape~ipad.png */; };
-		39C0B8271806587800668DED /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 39C0B8241806587800668DED /* Default-Landscape~ipad.png */; };
 		39D9E80217F26A87001ED6F5 /* btn_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D9E80017F26A87001ED6F5 /* btn_remove.png */; };
 		39D9E80317F26A87001ED6F5 /* btn_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D9E80017F26A87001ED6F5 /* btn_remove.png */; };
 		39D9E80417F26A87001ED6F5 /* btn_remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 39D9E80017F26A87001ED6F5 /* btn_remove.png */; };
@@ -4103,6 +4103,8 @@
 		18617A3F182C7BDB00D85380 /* cube1108.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cube1108.xcdatamodel; sourceTree = "<group>"; };
 		188487F21807A41E0039F67F /* CubeAccountPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeAccountPlugin.h; path = CubeAccount/CubeAccountPlugin.h; sourceTree = "<group>"; };
 		188487F31807A41E0039F67F /* CubeAccountPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CubeAccountPlugin.m; path = CubeAccount/CubeAccountPlugin.m; sourceTree = "<group>"; };
+		188850BE18728842002BC104 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		188850BF18728842002BC104 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		18A5D1851840A30B00E3F089 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		18A5D1871840A3B600E3F089 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		18A5D1881840A3B600E3F089 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -5621,6 +5623,8 @@
 		180F2375180D237D0037751C /* impc_default_icon */ = {
 			isa = PBXGroup;
 			children = (
+				188850BE18728842002BC104 /* Default-Landscape~ipad.png */,
+				188850BF18728842002BC104 /* Default-Landscape@2x~ipad.png */,
 				180F2376180D237D0037751C /* 114.png */,
 				180F2377180D237D0037751C /* 120.png */,
 				180F2378180D237D0037751C /* 144.png */,
@@ -8608,7 +8612,6 @@
 				180B7F6A1818A9B90091E3AE /* DownLoadingDetialViewController.xib in Resources */,
 				180B7F6B1818A9B90091E3AE /* bottleReceiverVoiceNodePlaying003@2x.png in Resources */,
 				180B7F6C1818A9B90091E3AE /* FPDocContentViewController.xib in Resources */,
-				180B7F6D1818A9B90091E3AE /* Default-Landscape~ipad.png in Resources */,
 				180B7F6E1818A9B90091E3AE /* DownloadingViewController.xib in Resources */,
 				180B7F6F1818A9B90091E3AE /* shake_-transportphoto_without_icon@2x.png in Resources */,
 				180B7F701818A9B90091E3AE /* FunctionDetialInfoViewController.xib in Resources */,
@@ -8863,10 +8866,12 @@
 				180B80611818A9B90091E3AE /* f061.png in Resources */,
 				180B80621818A9B90091E3AE /* btn_remove@2x.png in Resources */,
 				180B80631818A9B90091E3AE /* emotions_big.png in Resources */,
+				188850C318728842002BC104 /* Default-Landscape@2x~ipad.png in Resources */,
 				180B80641818A9B90091E3AE /* nav_back_active@2x.png in Resources */,
 				180B80651818A9B90091E3AE /* (null) in Resources */,
 				180B80661818A9B90091E3AE /* f062.png in Resources */,
 				180B80671818A9B90091E3AE /* UnreadAgreement@2x.png in Resources */,
+				188850C118728842002BC104 /* Default-Landscape~ipad.png in Resources */,
 				180B80681818A9B90091E3AE /* (null) in Resources */,
 				180B80691818A9B90091E3AE /* Cell_Top.png in Resources */,
 				180B806A1818A9B90091E3AE /* StarsForeground.png in Resources */,
@@ -8953,7 +8958,6 @@
 				180B80B81818A9B90091E3AE /* btn_remove.png in Resources */,
 				180B80B91818A9B90091E3AE /* RightButtonItem.png in Resources */,
 				180B80BA1818A9B90091E3AE /* f096.png in Resources */,
-				180B80BB1818A9B90091E3AE /* Default-Landscape@2x~ipad.png in Resources */,
 				180B80BC1818A9B90091E3AE /* f097.png in Resources */,
 				180B80BD1818A9B90091E3AE /* f098.png in Resources */,
 				180B80BE1818A9B90091E3AE /* About.xib in Resources */,
@@ -9526,7 +9530,6 @@
 				39D9E82817F27C03001ED6F5 /* DownLoadingDetialViewController.xib in Resources */,
 				39D9E82917F27C03001ED6F5 /* bottleReceiverVoiceNodePlaying003@2x.png in Resources */,
 				18E9C4A21803AB1200B874B8 /* FPDocContentViewController.xib in Resources */,
-				39C0B8271806587800668DED /* Default-Landscape~ipad.png in Resources */,
 				39D9E82A17F27C03001ED6F5 /* DownloadingViewController.xib in Resources */,
 				39D9E82B17F27C03001ED6F5 /* shake_-transportphoto_without_icon@2x.png in Resources */,
 				39D9E82C17F27C03001ED6F5 /* FunctionDetialInfoViewController.xib in Resources */,
@@ -9662,6 +9665,7 @@
 				180F2382180D237D0037751C /* 144.png in Resources */,
 				39D9E89F17F27C03001ED6F5 /* f016.png in Resources */,
 				39D9E8A017F27C03001ED6F5 /* f017.png in Resources */,
+				188850C018728842002BC104 /* Default-Landscape~ipad.png in Resources */,
 				180F2380180D237D0037751C /* 114.png in Resources */,
 				18E9C5801803AB1200B874B8 /* NewFunctionPush_iPad.xml in Resources */,
 				39D9E8A117F27C03001ED6F5 /* f018.png in Resources */,
@@ -9846,7 +9850,6 @@
 				39D9E92717F27C03001ED6F5 /* btn_remove.png in Resources */,
 				18E9C5721803AB1200B874B8 /* RightButtonItem.png in Resources */,
 				39D9E92B17F27C03001ED6F5 /* f096.png in Resources */,
-				180F2374180D1A170037751C /* Default-Landscape@2x~ipad.png in Resources */,
 				39D9E92C17F27C03001ED6F5 /* f097.png in Resources */,
 				39D9E92D17F27C03001ED6F5 /* f098.png in Resources */,
 				18E9C4641803AB1200B874B8 /* About.xib in Resources */,
@@ -9924,6 +9927,7 @@
 				39D9E98817F27C03001ED6F5 /* amp_land_6.png in Resources */,
 				39D9E98917F27C03001ED6F5 /* amp_land_7.png in Resources */,
 				18E9C4BD1803AB1200B874B8 /* LoginViewCell_Pad.xib in Resources */,
+				188850C218728842002BC104 /* Default-Landscape@2x~ipad.png in Resources */,
 				18AFE18018287E30000462DB /* image_default.png in Resources */,
 				18E9C56A1803AB1200B874B8 /* btn_share_blue.png in Resources */,
 				39D9E98B17F27C03001ED6F5 /* right_button_active@2x.png in Resources */,

@@ -36,10 +36,10 @@
     float  tableViewHeight;
 
 }
-
+@property (strong,nonatomic) UIPopoverController *popover;
 @property (strong,nonatomic) NSString* messageId;
 @property(strong,nonatomic) NSString* chatName;
 @property(nonatomic,assign) BOOL isGroupChat;
 @property(nonatomic,assign) BOOL isQuit;
-
++(instancetype)getInstance;
 @end
