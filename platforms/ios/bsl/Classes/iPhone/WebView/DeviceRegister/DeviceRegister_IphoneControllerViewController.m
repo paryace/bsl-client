@@ -76,9 +76,9 @@
 -(void)popMe{
 //    NSLog(@"[DeviceRegister_IphoneControllerViewController] popMe");
     
-    if([self.navigationController modalPresentationStyle]  == UIModalPresentationFormSheet)
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        [self.navigationController dismissModalViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissPopover" object:nil];
     }
     else
     {

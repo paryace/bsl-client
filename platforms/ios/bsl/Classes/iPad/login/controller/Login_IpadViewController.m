@@ -47,7 +47,7 @@
     }
 
     [self.view addSubview:bgImageView];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissPopover) name:@"dismissPopover" object:nil];
     [aCubeWebViewController.view removeFromSuperview];
     aCubeWebViewController=nil;
 
@@ -83,12 +83,20 @@
             NSLog(@"设备未注册");
             //            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
             DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
-            drController.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
-            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:drController];
-            nav.modalPresentationStyle = UIModalPresentationFormSheet;
-            drController.navigationController.navigationBarHidden = YES;
-            [self presentViewController:nav animated:YES completion:nil];
-
+            popover = [[UIPopoverController alloc]initWithContentViewController:drController];
+            popover.popoverContentSize = CGSizeMake(400, 600);
+//            popover.backgroundColor = [UIColor clearColor];
+            popover.delegate = self;
+            if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+                [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+                drController.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
+            }
+            else
+            {
+                [drController.aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.clientWidth=400px;"];
+            }
+            popover.passthroughViews = [NSArray arrayWithObjects:self.view, nil];
+            [popover presentPopoverFromRect:CGRectMake(500, 400, 0, 0) inView:self.view permittedArrowDirections:0 animated:YES];
             
             
             //            drController.navigationController = self.navigationController;
@@ -132,6 +140,13 @@
     }
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"clearPsw()"];
 
+}
+
+
+-(void)dismissPopover
+{
+    [popover dismissPopoverAnimated:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dismissPopover" object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

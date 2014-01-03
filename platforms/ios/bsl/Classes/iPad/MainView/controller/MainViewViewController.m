@@ -81,6 +81,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFinishedNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFailedNotification object:nil];
         
+        
         //刷新webview
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadWebpage) name:@"reload_web_page" object:nil];
         
