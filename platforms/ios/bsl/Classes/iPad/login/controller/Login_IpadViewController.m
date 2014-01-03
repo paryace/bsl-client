@@ -83,18 +83,30 @@
             NSLog(@"设备未注册");
             //            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
             DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
+            CGRect frame =  drController.view.frame;
+            frame.size.width = 400;
+            frame.size.height = 600;
+            drController.view.frame = frame;
+            
             popover = [[UIPopoverController alloc]initWithContentViewController:drController];
+//            CGRect frame = drController.view.frame;
             popover.popoverContentSize = CGSizeMake(400, 600);
-//            popover.backgroundColor = [UIColor clearColor];
+//            frame.size.height = 600;
+//            frame.size.width= 400;
+//            drController.view.frame = frame;
+            if([popover respondsToSelector:@selector(setBackgroundColor:)])
+            {
+                popover.backgroundColor = [UIColor clearColor];
+            }
             popover.delegate = self;
             if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
                 [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-                drController.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
+//                drController.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
+                
             }
-            else
-            {
-                [drController.aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.clientWidth=400px;"];
-            }
+//            [drController.aCubeWebViewController.webView.scrollView setContentSize:CGSizeMake(400, 600)];
+            [drController.aCubeWebViewController.webView.scrollView setBounces:NO];
+            [drController.aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"alert(document.documentElement.scrollWidth);"];
             popover.passthroughViews = [NSArray arrayWithObjects:self.view, nil];
             [popover presentPopoverFromRect:CGRectMake(500, 400, 0, 0) inView:self.view permittedArrowDirections:0 animated:YES];
             

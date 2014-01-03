@@ -47,7 +47,14 @@
     return self;
 }
 -(void)checkDRFinish{
-    [self.navigationController popViewControllerAnimated:YES];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissPopover" object:nil];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
 }
 

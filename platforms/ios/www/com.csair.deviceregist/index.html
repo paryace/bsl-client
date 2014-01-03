@@ -3,8 +3,8 @@
   <head> 
     <title>设备注册</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="height=device-height, initial-scale=1;"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="height=device-height,width=device-width, initial-scale=1;"/>
+    <meta name="apple-mobile-web-app-capable" content="no">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     <script type="text/javascript" src="../cordova.js"></script>
@@ -89,7 +89,7 @@
     </style>
 
   </head>
-<body>
+<body >
     <div class="content">
     <img src="images/logo.png" style="width:200px;margin-bottom:10px">
     <div style="color:white;margin-bottom:5px;">为了正常的系统使用,您需要进行设备注册</div>
@@ -139,5 +139,10 @@
       </div>
   </div>
 </div>
+    <script>
+        document.body.addEventListener("touchstart",function(e){
+                                       e.preventDefault();
+                                       });
+        </script>
 </body>
 </html>
