@@ -39,9 +39,13 @@ static const NSString *const kLoadIconOperationKey = @"kLoadIconOperationKey";
     self.iconImage.iconLabel.text = @"";
     self.newestVersion.text=_curCubeModlue.version;
     self.describeText.text= [_curCubeModlue.releaseNote stringByTrimmingCharactersInSet:[NSCharacterSet illegalCharacterSet]];
-    _configButton.hidden=([_curCubeModlue.local length ] > 0);
     self.iconUrlArr = [[NSMutableArray alloc] init];
-    
+
+    if([[NSUserDefaults standardUserDefaults]boolForKey:@"isOffLogin"]){
+        _configButton.hidden= YES;
+    }else{
+        _configButton.hidden=([_curCubeModlue.local length ] > 0);
+    }
     
     if (_buttonStatus==InstallButtonStateUninstall) {
         _curTitle=EBTNINSTALL;
