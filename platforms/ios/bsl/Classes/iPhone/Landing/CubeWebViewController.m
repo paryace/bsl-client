@@ -422,6 +422,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     if(!self.alwaysShowNavigationBar)
         [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
 }
 
 
@@ -446,6 +447,12 @@
     }
     self.alertViewLink = nil;
 }
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return UIInterfaceOrientationLandscapeLeft | UIInterfaceOrientationLandscapeRight;
+    
+}
+
 
 @end
 

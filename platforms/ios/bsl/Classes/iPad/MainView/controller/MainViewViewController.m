@@ -756,8 +756,9 @@
     
     
     CGRect frame = self.view.frame;
-    frame.size.width =CGRectGetHeight(self.view.frame)/2+2;
-    frame.size.height= CGRectGetWidth(self.view.frame);
+    frame.size.width =CGRectGetWidth(self.view.frame)/2+2;
+    frame.size.height= CGRectGetHeight(self.view.frame);
+    
     
     [bCubeWebViewController.view removeFromSuperview];
     bCubeWebViewController=nil;
@@ -837,9 +838,12 @@
     }
     
     CGRect frame = vc.view.frame;
+    
     frame.origin.y=top;
+
     frame.size.width =CGRectGetWidth(self.view.frame)/2;
-    frame.size.height= CGRectGetWidth(self.view.frame)-top;
+    frame.size.height= CGRectGetHeight(self.view.frame)-top;
+
     vc.view.frame = frame;
     
     self.detailController = nil;

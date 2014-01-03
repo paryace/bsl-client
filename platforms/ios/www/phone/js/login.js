@@ -69,11 +69,11 @@ $("#LoginBtn").click(function() {
 	if (isRemember === undefined) {
 		isRemember = "false";
 	}
-    if(isRemember === 'false')
-    {
-        $("#realpsw").val("");
-
-    }
+    // if(isRemember === 'false')
+    // {
+    //     $("#realpsw").val("");
+    //     $("#password").val("");
+    // }
 	//是否启用离线登陆
 	var isOffLine = $('#isOffLine:checked').val();
 	if(isOffLine === undefined){
