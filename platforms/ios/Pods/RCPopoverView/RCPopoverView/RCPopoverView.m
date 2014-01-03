@@ -69,8 +69,8 @@
     if (view) {
         _popoverView = view;
     }
-    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    [self.popoverView addGestureRecognizer:recognizer];
+//    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//    [self.popoverView addGestureRecognizer:recognizer];
     
     if ([RCPopoverView isVisible]) {
         [RCPopoverView dismiss];

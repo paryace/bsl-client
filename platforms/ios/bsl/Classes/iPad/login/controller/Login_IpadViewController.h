@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class CubeWebViewController;
-@interface Login_IpadViewController : UIViewController{
+@interface Login_IpadViewController : UIViewController<UIPopoverControllerDelegate>{
     CubeWebViewController *aCubeWebViewController;
+    UIPopoverController *popover;
 }
 
 

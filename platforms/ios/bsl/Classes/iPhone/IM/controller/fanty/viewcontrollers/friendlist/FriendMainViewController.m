@@ -35,7 +35,7 @@
 -(id)init{
     self=[super init];
     if(self){
-        self.title=@"即时通讯";
+        [self setTitle:@"即时通讯"];
         if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
             self.edgesForExtendedLayout = UIRectEdgeNone;
             self.extendedLayoutIncludesOpaqueBars = NO;
@@ -91,7 +91,7 @@
         UIView* vv=[[UIView alloc] initWithFrame:CGRectMake(floor(0.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
         
         UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(floor(-10.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
-        label.text = self.title;
+        label.text = @"即时通讯";
         label.font =[UIFont boldSystemFontOfSize:20];
         label.textColor= [UIColor whiteColor];
         label.backgroundColor = [UIColor clearColor];

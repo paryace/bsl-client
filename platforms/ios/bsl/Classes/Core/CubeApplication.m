@@ -785,6 +785,10 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     
     NSMutableArray *moduleArray = [[NSMutableArray alloc] initWithCapacity:[modules count]];
     for (CubeModule *module in modules) {
+        if([module.identifier isEqualToString:@"com.csair.deviceregist"])
+        {
+            continue;
+        }
         [moduleArray addObject:[module dictionary]];
     }
     [json setObject:moduleArray forKey:@"modules"];

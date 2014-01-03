@@ -34,6 +34,7 @@
     self.aCubeWebViewController.view.frame = self.view.bounds;
     self.aCubeWebViewController.view.hidden=YES;
     self.aCubeWebViewController.webView.scrollView.bounces=NO;
+//    self.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
 //    NSLog(@"[DeviceRegister_IphoneControllerViewController] start load WebView date = %@",[NSDate date]);
     
     //预加载
@@ -75,9 +76,9 @@
 -(void)popMe{
 //    NSLog(@"[DeviceRegister_IphoneControllerViewController] popMe");
     
-    if([self.navigationController modalPresentationStyle]  == UIModalPresentationFormSheet)
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        [self.navigationController dismissModalViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissPopover" object:nil];
     }
     else
     {

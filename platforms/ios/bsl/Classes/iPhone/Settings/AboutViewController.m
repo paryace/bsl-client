@@ -34,6 +34,13 @@
     
     NSString *deviceID = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     self.driviceIdLabel.text = deviceID;
+    UIImageView *imageView = (UIImageView*)[self.view viewWithTag:100];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        CGRect frame = imageView.frame;
+        frame.size.height =114*2;
+        imageView.frame = frame;
+    }
 
 }
 

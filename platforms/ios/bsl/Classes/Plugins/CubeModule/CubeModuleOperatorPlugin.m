@@ -168,14 +168,20 @@
     }
     else
     {
+        CDVPluginResult*  pluginResult;
         if(command.arguments.count >0)
         {
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"离线登录不能管理模块" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alertView show];
             alertView = nil;
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"1"];
         }
-        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK ];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.cdvCommand.callbackId];
+        else
+        {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        }
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         
     }
     

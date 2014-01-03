@@ -40,9 +40,9 @@
 -(void)iMOffLine;
 -(void)IMOnLine;
 @end
-
+static ChatMainViewController *instance;
 @implementation ChatMainViewController
-
+@synthesize popover;
 @synthesize messageId;
 @synthesize chatName;
 @synthesize isGroupChat;
@@ -62,10 +62,14 @@
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(iMOffLine) name:@"XMPPSTREAMIMOFFLINE" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver: self selector:@selector(IMOnLine) name:@"XMPPSTREAMIMONLINE" object:nil];
         [UserQueue instance];
+        instance = self;
     }
     return self;
 }
-
++(instancetype)getInstance
+{
+    return instance;
+}
 - (void)viewDidLoad{
     [super viewDidLoad];
     
@@ -129,7 +133,7 @@
         UIView* vv=[[UIView alloc] initWithFrame:CGRectMake(floor(0.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
         
         UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(floor(-80.0f), floor(0.0f), floor(self.view.frame.size.width), floor(44.0f))];
-        label.text = self.title;
+        label.text = self.chatName;
         label.font =[UIFont boldSystemFontOfSize:20];
         label.textColor= [UIColor whiteColor];
         label.backgroundColor = [UIColor clearColor];
@@ -143,6 +147,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+
 }
 
 
@@ -231,7 +236,6 @@
     
     //if([[obj class] isSubclassOfClass:[MessageEntity class]]){
         MessageEntity *messageEntity = (MessageEntity*)[messageArray objectAtIndex:[indexPath row]];
-NSLog(@"-----%@",[messageEntity zhName]);
         if([messageEntity.type isEqualToString:@"voice"]){
             VoiceCell *cell = (VoiceCell*)[_tableView dequeueReusableCellWithIdentifier:@"voice_cell"];
             if(cell == nil){
@@ -566,7 +570,6 @@ NSLog(@"-----%@",[messageEntity zhName]);
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     picker.delegate=nil;
-    
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     
     if ([mediaType isEqualToString:@"public.image"]){
@@ -617,7 +620,6 @@ NSLog(@"-----%@",[messageEntity zhName]);
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     picker.delegate=nil;
-    
     if(popover!=nil){
         popover.delegate=nil;
         [popover dismissPopoverAnimated:NO];

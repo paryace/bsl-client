@@ -37,7 +37,10 @@
 -(NSString*)zhName
 {
     if([self.name length]>0){
-        return [[UserQueue instance].userCache valueForKey:self.name]?[[UserQueue instance].userCache valueForKey:self.name]:self.name;
+        
+        NSString *name = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+        NSString *zhName = [[NSUserDefaults standardUserDefaults] valueForKey:@"zhName"];
+        return [[UserQueue instance].userCache valueForKey:self.name]?[[UserQueue instance].userCache valueForKey:self.name]: [self.name rangeOfString:name].location != NSNotFound?       zhName:self.name;
     }
     return self.name;
 }

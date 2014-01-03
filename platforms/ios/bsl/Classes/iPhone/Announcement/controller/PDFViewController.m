@@ -120,14 +120,42 @@
             {
                 webview.multipleTouchEnabled = YES;
                 webview.scalesPageToFit = YES;
+                [webview.scrollView setZoomScale:0.1];
                 webview.backgroundColor = [UIColor whiteColor];
                 NSString *file = [realArray objectAtIndex:0];
                 NSString *realPath = [path stringByAppendingPathComponent:file];
+                UIImage *image  = [[UIImage alloc]initWithContentsOfFile:realPath];
+                
+                float width = 0.0f;
+                if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+                {
+                    int height = [[UIApplication sharedApplication]keyWindow].frame.size.height;
+                    if(height/2>image.size.width)
+                    {
+                        width = image.size.width;
+                    }
+                    else
+                    {
+                        width = image.size.width/2 - 20;
+                    }
+                }
+                else
+                {
+                    if(image.size.width > self.view.frame.size.width)
+                    {
+                        width = image.size.width/2 - 20;
+                    }
+                    else
+                    {
+                        width = image.size.width;
+                    }
+                }
                 NSURL *url = [NSURL fileURLWithPath:realPath];
-                NSString* showHtml = @"<html><head></head><body><img src='data:image/png;base64,%@'/></body></html>";
+                NSString* showHtml = @"<html><head></head><body><img src='data:image/png;base64,%@'       width='%f'/></body></html>";
                 NSData* imageData = [[NSData alloc] initWithContentsOfURL:url];
                 NSString* imageString = [imageData base64Encoding];
-                [webview loadHTMLString:[NSString stringWithFormat:showHtml, imageString] baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+                [webview loadHTMLString:[NSString stringWithFormat:showHtml, imageString,width] baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+                
             }
         }
     }
@@ -153,17 +181,61 @@
 //    }
 
 }
-
+- (void)webViewDidFinishLoad:(UIWebView *)aWebView {
+//    CGRect frame = aWebView.frame;
+//    frame.size.height = 1;
+//    aWebView.frame = frame;
+//    CGSize fittingSize = [aWebView sizeThatFits:CGSizeZero];
+//    frame.size = fittingSize;
+//    aWebView.frame = frame;
+//    
+//    NSLog(@"size: %f, %f", fittingSize.width, fittingSize.height);
+//    NSString *str = [NSString stringWithFormat:@"document.documentElement.clientWidth=%f",320.0f];
+//    [aWebView stringByEvaluatingJavaScriptFromString:@"alert(document.documentElement.clientWidth);"];
+}
 -(void)initWebView
 {
-    webview = [[UIWebView alloc]initWithFrame:self.view.frame ];
-    CGRect frame = webview.frame;
-    frame.size.height =  frame.size.height - self.navigationController.navigationBar.frame.size.height;
-    frame.origin.y = 0;
-    webview.frame = frame;
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        int width = [[UIApplication sharedApplication]keyWindow].frame.size.width;
+        int height = [[UIApplication sharedApplication]keyWindow].frame.size.height;
+//        NSLog(@"%d------------%d",width,height);
+//        NSLog(@"%@",self.view);
+        webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, height/2, width) ];
+    }
+    else
+    {
+         webview = [[UIWebView alloc]initWithFrame:self.view.frame ];
+    }
+   
+//    CGRect frame = webview.frame;
+//    NSLog(@"%@",webview);
+    webview.delegate = self;
+//    webview.scrollView.bounces= NO;
+    [webview setScalesPageToFit:YES];
+    webview.scrollView.showsHorizontalScrollIndicator=NO;
+    webview.scrollView.showsVerticalScrollIndicator=NO;
+    webview.scrollView.delegate = self;
+//    [[[webview subviews] lastObject] setZoomScale:0.1];
+    //webview.scrollView.scrollEnabled = NO;
+   
+//    frame.size.height =  frame.size.height - self.navigationController.navigationBar.frame.size.height;
+//    frame.origin.y = 0;
+//    webview.frame = frame;
+//    [webview sizeThatFits:CGSizeMake(frame.size.width, frame.size.height)];
     [self.view addSubview:webview];
     
 }
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale{
+    
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView{
+    //NSLog(@"scrollViewDidZoom %f",scrollview.zoomScale);
+}
+
 
 -(void)loadDocument:(NSString *)documentName inView:(UIWebView *)myWebView
 {

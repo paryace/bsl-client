@@ -81,6 +81,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFinishedNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moduleSysFinsh) name:CubeSyncFailedNotification object:nil];
         
+        
         //刷新webview
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadWebpage) name:@"reload_web_page" object:nil];
         
@@ -117,6 +118,7 @@
     aCubeWebViewController.startPage =   [[[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"pad/main.html"] absoluteString];
     
     CGRect rect=self.view.bounds;
+
     if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
         rect.origin.y=20.0f;
         rect.size.height-=20.0f;
@@ -529,6 +531,26 @@
         [request startAsynchronous];
         [self logout];
     }
+    if(alertView.tag ==100 && buttonIndex == 0)
+    {
+        CubeModule *module = [[CubeApplication currentApplication] moduleForIdentifier:self.selectedModule];
+        //需要下载的模块
+        NSArray *missingModules = [[module missingDependencies] objectForKey:kMissingDependencyNeedInstallKey];
+        for (NSString *missingModule in missingModules) {
+            CubeModule *am = [[CubeApplication currentApplication] availableModuleForIdentifier:missingModule];
+            am.isDownloading = YES;
+            [[CubeApplication currentApplication] installModule:am];
+        }
+        
+        //需要升级的模块
+        NSArray *needUpgradeModules = [[module missingDependencies] objectForKey:kMissingDependencyNeedUpgradeKey];
+        for (NSString *needUpgradeModule in needUpgradeModules) {
+            CubeModule *am = [[CubeApplication currentApplication] updatableModuleModuleForIdentifier:needUpgradeModule];
+            am.isDownloading = YES;
+            [[CubeApplication currentApplication] installModule:am];
+        }
+
+    }
 }
 
 -(void)logout{
@@ -695,7 +717,7 @@
                 for ( NSString *dependency in needInstall) {
                     CubeModule *m = [[CubeApplication currentApplication] availableModuleForIdentifier:dependency];
                     if(m!=nil)
-                        [message appendFormat:@"%@\n", m.name];
+                        [message appendFormat:@"%@(build:%d)\n", m.name,m.build];
                     else
                         [message appendFormat:@"%@\n", dependency];
                 }
@@ -708,7 +730,7 @@
                 for ( NSString *dependency in needUpgrade) {
                     CubeModule *m = [[CubeApplication currentApplication] moduleForIdentifier:dependency];
                     if(m!=nil)
-                        [message appendFormat:@"%@\n", m.name];
+                        [message appendFormat:@"%@(build:%d)\n", m.name,m.build];
                     else
                         [message appendFormat:@"%@\n", dependency];
                 }
@@ -719,10 +741,11 @@
             failedAlert=nil;
             
             [singleAlert dismissWithClickedButtonIndex:0 animated:NO];
-            singleAlert = [[UIAlertView alloc] initWithTitle:@"缺少依赖模块"
+            singleAlert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@ 缺少依赖模块",module.name]
                                                      message:message
                                                     delegate:self
                                            cancelButtonTitle:@"确定" otherButtonTitles:/*@"安装", */nil];
+            singleAlert.tag = 100;
             [singleAlert show];
             
             message=nil;
@@ -817,11 +840,10 @@
     CGRect frame = vc.view.frame;
     
     frame.origin.y=top;
-    frame.size.width =CGRectGetWidth(self.view.frame)/2+2.0f;
+
+    frame.size.width =CGRectGetWidth(self.view.frame)/2;
     frame.size.height= CGRectGetHeight(self.view.frame)-top;
-    
-    
-    
+
     vc.view.frame = frame;
     
     self.detailController = nil;

@@ -85,8 +85,8 @@
         addButton=[UIButton buttonWithType:UIButtonTypeCustom];
         [addButton addTarget:self action:@selector(showCameraOrNot) forControlEvents:UIControlEventTouchUpInside];
 
-        UIImage* chatImg=[UIImage imageNamed:@"ToolViewInputVoice.png"];
-        UIImage* chatHLImg=[UIImage imageNamed:@"ToolViewInputVoiceHL.png"];
+        UIImage* chatImg=[UIImage imageNamed:@"ToolViewInputText.png"];
+        UIImage* chatHLImg=[UIImage imageNamed:@"ToolViewInputTextHL.png"];
 
         UIImage* emoctionImg=[UIImage imageNamed:@"ToolViewEmotion.png"];
         UIImage* emoctionHLImg=[UIImage imageNamed:@"ToolViewEmotionHL.png"];
@@ -240,11 +240,19 @@
     chatButton.enabled=NO;
 }
 
--(NSString*)text{
+-(NSString*)text
+{
     if([textView isKindOfClass:[ScrollTextView class]])
+    {
+        [((ScrollTextView*)textView) becomeFirstResponder];
         return ((ScrollTextView*)textView).text;
+    }
     else
+    {
+        [((UITextView*)textView) becomeFirstResponder];
         return ((UITextView*)textView).text;
+    }
+       
 }
 
 -(void)setText:(NSString *)value{
