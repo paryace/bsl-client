@@ -41,20 +41,18 @@
         _commandDelegate = [[CubeCommandDelegate alloc] initWithViewController:self];
         // Uncomment to override the CDVCommandQueue used
         // _commandQueue = [[MainCommandQueue alloc] initWithViewController:self];
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
+//        if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
+//        {
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
+//        }
+        
         
     }
     return self;
 }
 -(void)checkDRFinish{
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissPopover" object:nil];
-    }
-    else
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
 }
 

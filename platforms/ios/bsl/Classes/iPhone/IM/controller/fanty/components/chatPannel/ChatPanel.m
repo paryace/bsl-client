@@ -15,7 +15,7 @@
 #define  PANNEL_HEIGHT  52.0f
 #define  EC_PANEL_height 216.0f
 #define TEXT_BG_HEIGHT    42.0f
-#define TEXT_VIEW_HEIGHT  36.0f
+#define TEXT_VIEW_HEIGHT  40.0f
 
 
 @interface ChatPanel()<ScrollTextViewDelegate,EmoctionPanelDelegate,CameraPanelDelegate,UITextViewDelegate>
@@ -142,7 +142,7 @@
             UITextView* __textView=[[UITextView alloc] initWithFrame:rect];
             __textView.delegate=self;
             __textView.clipsToBounds=YES;
-            __textView.font = [UIFont systemFontOfSize:16.0f];
+            __textView.font = [UIFont systemFontOfSize:13.0f];
             __textView.backgroundColor=[UIColor clearColor];
             __textView.textColor=[UIColor blackColor];
             __textView.returnKeyType=UIReturnKeySend;
@@ -240,8 +240,7 @@
     chatButton.enabled=NO;
 }
 
--(NSString*)text
-{
+-(NSString*)text{
     if([textView isKindOfClass:[ScrollTextView class]])
     {
         [((ScrollTextView*)textView) becomeFirstResponder];
@@ -574,6 +573,11 @@
 #pragma mark textview delegate
 
 
+-(CGSize)maxWidth:(UITextView *)_textView{
+    CGSize size=[_textView.text sizeWithFont:_textView.font constrainedToSize:_textView.contentSize lineBreakMode:NSLineBreakByCharWrapping ];
+    return size;
+}
+
 
 - (BOOL)textView:(UITextView *)__textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)__text{
     
@@ -605,13 +609,14 @@
     if([__textView.text length]<1){
         height=TEXT_VIEW_HEIGHT;
     }
-    
+//    CGSize size = [self maxWidth:__textView];
+//    NSLog(@"%f------%f",size.height,size.width);
     if(height>112.0f)
         height=112.0f;
     if(currentHeight==0)
         currentHeight=height;
     if(currentHeight!=height){
-        float diff=currentHeight-height;
+        float diff= currentHeight - height;
         currentHeight=height;
         
         CGRect rect=self.frame;
@@ -635,7 +640,10 @@
     
 }
 
-
+-(void)textViewDidBeginEditing:(UITextView *)__textView
+{
+    NSLog(@"ddddd");
+}
 
 #pragma mark emoctionpanel  delegate
 -(void)addEmoction:(EmoctionPanel*)emoction text:(NSString*)___text{
@@ -649,6 +657,7 @@
     }
     else{
         UITextView* __textView=(UITextView*)textView;
+        __textView.delegate = self;
         NSString* tempText=[__textView.text stringByAppendingString:___text];
         if([tempText length]<self.limitMaxNumber)
             __textView.text = tempText;

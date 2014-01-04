@@ -47,7 +47,7 @@
     }
 
     [self.view addSubview:bgImageView];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissPopover) name:@"dismissPopover" object:nil];
+
     [aCubeWebViewController.view removeFromSuperview];
     aCubeWebViewController=nil;
 
@@ -84,32 +84,11 @@
             //            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkDRFinish) name:@"DeviceRegistFinished" object:nil];
             DeviceRegister_IphoneControllerViewController *drController = [[DeviceRegister_IphoneControllerViewController alloc] init];
             
-            popover = [[UIPopoverController alloc]initWithContentViewController:drController];
-//            CGRect frame = drController.view.frame;
-            popover.popoverContentSize = CGSizeMake(800, 600);
-//            frame.size.height = 600;
-//            frame.size.width= 400;
-//            drController.view.frame = frame;
-            if([popover respondsToSelector:@selector(setBackgroundColor:)])
-            {
-                popover.backgroundColor = [UIColor clearColor];
-            }
-            popover.delegate = self;
-            CGRect frame =  drController.view.frame;
-            frame.size.width = 800;
-            frame.size.height = 600;
-            drController.view.frame = frame;
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:drController];
+            nav.modalPresentationStyle = UIModalPresentationFormSheet;
+            drController.navigationController.navigationBarHidden = YES;
+            [self presentViewController:nav animated:YES completion:nil];
             
-            if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
-                [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-//                drController.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
-                
-            }
-//            [drController.aCubeWebViewController.webView.scrollView setContentSize:CGSizeMake(400, 600)];
-            [drController.aCubeWebViewController.webView.scrollView setBounces:NO];
-//            [drController.aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"alert(document.documentElement.scrollWidth);"];
-            popover.passthroughViews = [NSArray arrayWithObjects:self.view, nil];
-            [popover presentPopoverFromRect:CGRectMake(500, 400, 0, 0) inView:self.view permittedArrowDirections:0 animated:YES];
             
             
             //            drController.navigationController = self.navigationController;
@@ -153,13 +132,6 @@
     }
     [aCubeWebViewController.webView stringByEvaluatingJavaScriptFromString:@"clearPsw()"];
 
-}
-
-
--(void)dismissPopover
-{
-    [popover dismissPopoverAnimated:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"dismissPopover" object:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

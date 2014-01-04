@@ -126,35 +126,58 @@
                 NSString *realPath = [path stringByAppendingPathComponent:file];
                 UIImage *image  = [[UIImage alloc]initWithContentsOfFile:realPath];
                 
-                float width = 0.0f;
+//                float width = 0.0f;
+//                if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//                {
+//                    int height = [[UIApplication sharedApplication]keyWindow].frame.size.height;
+//                    if(height/2>image.size.width)
+//                    {
+//                        width = image.size.width;
+//                    }
+//                    else
+//                    {
+//                        width = image.size.width/2 - 20;
+//                    }
+//                }
+//                else
+//                {
+//                    if(image.size.width > self.view.frame.size.width)
+//                    {
+//                        width = image.size.width/2 - 20;
+//                    }
+//                    else
+//                    {
+//                        width = image.size.width;
+//                    }
+//                }
+                NSString *content;
                 if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
                 {
                     int height = [[UIApplication sharedApplication]keyWindow].frame.size.height;
                     if(height/2>image.size.width)
                     {
-                        width = image.size.width;
+                        content= @"";
                     }
-                    else
-                    {
-                        width = image.size.width/2 - 20;
+                    else{
+                        content =@" width=90%";
                     }
                 }
                 else
                 {
                     if(image.size.width > self.view.frame.size.width)
                     {
-                        width = image.size.width/2 - 20;
+                        content = @" width=90%";
                     }
                     else
                     {
-                        width = image.size.width;
+                        content= @"";
                     }
                 }
                 NSURL *url = [NSURL fileURLWithPath:realPath];
-                NSString* showHtml = @"<html><head></head><body><img src='data:image/png;base64,%@'       width='%f'/></body></html>";
+                NSString* showHtml = @"<html><head><style type=\"text/css\">.aligncenter{clear:both;display:block;margin:auto}</style></head><body><img src='data:image/png;base64,%@' %@ class=\"aligncenter\"/></body></html>";
                 NSData* imageData = [[NSData alloc] initWithContentsOfURL:url];
                 NSString* imageString = [imageData base64Encoding];
-                [webview loadHTMLString:[NSString stringWithFormat:showHtml, imageString,width] baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+                [webview loadHTMLString:[NSString stringWithFormat:showHtml,imageString,content] baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
                 
             }
         }
@@ -202,11 +225,14 @@
         int height = [[UIApplication sharedApplication]keyWindow].frame.size.height;
 //        NSLog(@"%d------------%d",width,height);
 //        NSLog(@"%@",self.view);
-        webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, height/2, width) ];
+        webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, height/2, width - 44) ];
     }
     else
     {
-         webview = [[UIWebView alloc]initWithFrame:self.view.frame ];
+        CGRect frame = self.view.frame;
+        frame.origin.y= 0;
+        frame.size.height = self.view.frame.size.height -44;
+         webview = [[UIWebView alloc]initWithFrame:frame ];
     }
    
 //    CGRect frame = webview.frame;

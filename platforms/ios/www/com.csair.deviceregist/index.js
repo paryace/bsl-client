@@ -30,6 +30,21 @@ function testPhone(phoneNum){
 	return pat.test(phoneNum);
 }
 
+function updateMeta()
+{
+
+    var meta = document.getElementsByTagName('meta');
+    for(var i=0;i<meta.length;i++){
+        if(meta[i].getAttribute('name') == 'viewport')
+        {
+            var content = meta[i].getAttribute('content');
+            content += ',width=400';
+            meta[i].setAttribute('content',content);
+        }
+    }
+}
+
+
 //测试用
 function testData(){
 	$("input[name=staffCode]").val("743337");

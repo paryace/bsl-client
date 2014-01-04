@@ -34,7 +34,6 @@
     self.aCubeWebViewController.view.frame = self.view.bounds;
     self.aCubeWebViewController.view.hidden=YES;
     self.aCubeWebViewController.webView.scrollView.bounces=NO;
-//    self.aCubeWebViewController.webView.scrollView.scrollEnabled = NO;
 //    NSLog(@"[DeviceRegister_IphoneControllerViewController] start load WebView date = %@",[NSDate date]);
     
     //预加载
@@ -55,7 +54,15 @@
     
 }
 -(void)checkDRFinish{
-    [self.navigationController popViewControllerAnimated:YES];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DeviceRegistFinished" object:nil];
 }
 
@@ -78,7 +85,7 @@
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissPopover" object:nil];
+        [self.navigationController dismissModalViewControllerAnimated:YES];
     }
     else
     {
