@@ -57,6 +57,10 @@
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         [self.navigationController dismissModalViewControllerAnimated:YES];
+        if([[[UIDevice currentDevice] systemVersion]floatValue] <7.0)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOW_SETTING_VIEW" object:nil];
+        }
     }
     else
     {
@@ -86,6 +90,10 @@
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         [self.navigationController dismissModalViewControllerAnimated:YES];
+        if([[[UIDevice currentDevice] systemVersion]floatValue] <7.0)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SHOW_SETTING_VIEW" object:nil];
+        }
     }
     else
     {

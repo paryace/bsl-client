@@ -55,6 +55,7 @@
 
 - (void)printMultitaskingInfo;
 - (void)createGapView;
+- (void)createGapView:(CGRect)frame;
 - (UIWebView*)newCordovaViewWithFrame:(CGRect)bounds;
 
 - (void)javascriptAlert:(NSString*)text;

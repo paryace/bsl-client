@@ -24,6 +24,7 @@ typedef void (^DidErrorPreloadBlock)(void);
 - (void)loadWebPageWithModuleIdentifier:(NSString *)moduleIdentifier didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock;
 - (void)loadRequest:(NSURLRequest*)request withFrame:(CGRect)frame didFinishBlock:(DidFinishPreloadBlock)didFinishBlock;
 
+- (void)loadWebPageWithModuleIdentifier:(NSString *)moduleIdentifier withFrame:(CGRect)frame didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock;
 
 - (void)loadRequest:(NSURLRequest*)request withFrame:(CGRect)frame didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock;
 

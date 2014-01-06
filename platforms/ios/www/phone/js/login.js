@@ -80,6 +80,13 @@ $("#LoginBtn").click(function() {
 		isOffLine = "false";
 	}
 	cordova.exec(function(data) {
+        if(data === 'false')
+        {
+            password="";
+            $("#realpsw").val("");
+            $("#password").val("");
+            return;
+        }
 		data = $.parseJSON(data);
 		if (data.isSuccess === true) {
 			$("#LoginBtn").removeAttr("disabled");

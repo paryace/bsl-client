@@ -212,6 +212,20 @@
     
 }
 
+- (void)loadWebPageWithModuleIdentifier:(NSString *)moduleIdentifier withFrame:(CGRect)frame didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock
+{
+    self.didFinishPreloadBlock = didFinishBlock;
+    self.didErrorPreloadBlock = didErrorBolock;
+    if (!self.webView) {
+        
+        self.webView.delegate = self;
+        [self createGapView:frame];
+        
+    }
+
+}
+
+
 
 - (void)loadWebPageWithModuleIdentifier:(NSString *)moduleIdentifier didFinishBlock:(DidFinishPreloadBlock)didFinishBlock didErrorBlock:(DidErrorPreloadBlock)didErrorBolock;
 {

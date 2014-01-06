@@ -504,7 +504,7 @@
             
             //查询到数据库中未显示的消息条数
             [MessageRecord createModuleBadge:@"com.foss.chat" num: [XMPPSqlManager getMessageCount]];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"module_badgeCount_change" object:self];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"module_badgeCount_change" object:self];
             if(uqID==nil){
                 uqID=[NSString stringWithFormat:@"rect_%f",[[NSDate date] timeIntervalSince1970]];
             }

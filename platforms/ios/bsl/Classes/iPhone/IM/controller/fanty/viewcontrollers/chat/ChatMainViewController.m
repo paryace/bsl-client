@@ -146,11 +146,15 @@ static ChatMainViewController *instance;
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+    fetchController.delegate = self;
 
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+     fetchController.delegate=nil;
+}
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     [SVProgressHUD dismiss];
@@ -975,5 +979,6 @@ static ChatMainViewController *instance;
     chatPanel.frame=rect;
     chatPanel.superViewHeight=self.view.frame.size.height;
 }
+
 
 @end

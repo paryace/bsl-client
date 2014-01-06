@@ -82,6 +82,13 @@ $("#LoginBtn").click(function() {
 
 	cordova.exec(function(data) {
 		console.log("ddddddddd"+data);
+        if(data === 'false')
+        {
+            password="";
+            $("#realpsw").val("");
+            $("#password").val("");
+            return;
+        }
 		data = $.parseJSON(data);
 		if (data.isSuccess === true) {
 			$("#LoginBtn").removeAttr("disabled");

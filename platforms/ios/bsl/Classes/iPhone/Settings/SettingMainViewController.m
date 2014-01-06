@@ -15,7 +15,7 @@
 #import "IconButton.h"
 #import "NSFileManager+Extra.h"
 #import "JSONKit.h"
-
+#import "DeviceRegister_IphoneControllerViewController.h"
 #define BUNDLE_CFG_URL [[NSBundle mainBundle] URLForResource:@"Cube" withExtension:@"json"]
 
 @interface SettingMainViewController ()<UITableViewDataSource,UITableViewDelegate,CheckUpdateDelegate,UIAlertViewDelegate>
@@ -325,17 +325,40 @@
         cubeWebViewController=nil;
         cubeWebViewController  = [[CubeWebViewController alloc] init];
         cubeWebViewController.showCloseButton=YES;
-        cubeWebViewController.title=module.name;
+        cubeWebViewController.title =module.name;
         
         
+//        float top=0.0f;
+//        if([[[UIDevice currentDevice] systemVersion] floatValue]>=7){
+//            top=20.0f;
+//        }
+//        __block  CGRect frame = self.navigationController.view.frame;
+//        frame.origin.y=0;
+//        frame.origin.x=0;
+//        frame.size.width =CGRectGetWidth(self.navigationController.view.frame);
+//        frame.size.height= CGRectGetHeight(self.navigationController.view.frame)-top;
+//        cubeWebViewController.view.frame = frame;
+        
+        if([[[UIDevice currentDevice]systemVersion]floatValue]<7.0)
+        {
+        
+            if([module.identifier isEqualToString:@"com.csair.deviceregist"])
+            {
+                DeviceRegister_IphoneControllerViewController *controller =  [[DeviceRegister_IphoneControllerViewController alloc]init];
+                self.navigationController.navigationBarHidden = YES;
+                [self.navigationController pushViewController:controller animated:YES];
+                return;
+            }
+        }
         NSString * moduleIndex = [[[module runtimeURL] URLByAppendingPathComponent:@"index.html"] absoluteString];
         NSLog(@"%@",[NSString stringWithFormat:@"%@#%@/settings", moduleIndex, module.identifier]);
         cubeWebViewController.startPage = [NSString stringWithFormat:@"%@#%@/settings", moduleIndex, module.identifier];
-        
+//        CGRect frame = CGRectMake(0, 0, 512, 768);
         [cubeWebViewController loadWebPageWithModuleIdentifier:module.identifier didFinishBlock: ^(){
             NSLog(@"finish loading");
             if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
             {
+                [cubeWebViewController.webView reload];
                 [self.navigationController.navigationBar setHidden:YES];
                 [self.navigationController pushViewController:cubeWebViewController animated:YES];
             }

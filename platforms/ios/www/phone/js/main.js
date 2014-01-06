@@ -4,7 +4,7 @@ var packageName;
 var cordovaExec = function(plugin, action, parameters, callback) {
 	cordova.exec(function(data) {
 		if (callback !== undefined) {
-			callback();
+			callback(data);
 		}
 	}, function(err) {
 		//alert(err);
@@ -886,8 +886,12 @@ $('#manager_btn')
 
 		console.log("点击");
 
-		cordovaExec("CubeModuleOperator", "sync", ["manager"], function() {
+		cordovaExec("CubeModuleOperator", "sync", ["manager"], function(data) {
 			console.log("开始同步");
+            if(data == 1)
+            {
+                    return;
+            }
 			$('#manager_btn').removeClass("disabled");
 			loadModuleList("CubeModuleList", "uninstallList", "uninstall", function() {
 				console.log("222");

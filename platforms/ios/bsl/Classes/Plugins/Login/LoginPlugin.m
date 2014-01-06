@@ -107,6 +107,11 @@
     }
     [defaults synchronize];
     _command = command;
+    if(command)
+    {
+        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userSwithch];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
     if(![isOffLogin boolValue])
     {
         
@@ -160,10 +165,16 @@
                 [_options addObjectsFromArray:[tmpDict allValues]];
                 if(_options.count>0)
                 {
+//                    if(command)
+//                    {
+//                        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userSwithch];
+//                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//                    }
                     MultiSystemsView *view = [[MultiSystemsView alloc]initWithFrame:CGRectZero];
                     [view initWithDataSource:_options];
                     view.multiDelegate = self;
                     [RCPopoverView showWithView:view];
+                    
                     
                 }
                 else
@@ -171,6 +182,11 @@
                     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [alertView show];
                     alertView = nil;
+                    if(command)
+                    {
+                        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                    }
                 }
                 
             }
@@ -194,9 +210,13 @@
     [RCPopoverView dismiss];
     if([defaults boolForKey:@"isOffLogin"])
     {
+        if([swithIsOn boolValue])
+        {
+            
+            [defaults setObject:userPass forKey:@"loginPassword"];
+        }
         [defaults setObject:@"" forKey:@"token"];
         [defaults setObject:userName forKey:@"loginUsername"];
-        [defaults setObject:userPass forKey:@"loginPassword"];
         [defaults setObject:userName forKey:@"LoginUser"];
         [defaults setValue:systemId forKey:@"systemId"];
         [defaults synchronize];

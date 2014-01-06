@@ -556,6 +556,28 @@
     }
 }
 
+- (void)createGapView:(CGRect)frame
+{
+    CGRect webViewBounds = frame;
+    
+    webViewBounds.origin = frame.origin;
+    
+    if (!self.webView) {
+        self.webView = [self newCordovaViewWithFrame:webViewBounds];
+        self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        
+        [self.view addSubview:self.webView];
+        [self.view sendSubviewToBack:self.webView];
+        
+        _webViewDelegate = [[CDVWebViewDelegate alloc] initWithDelegate:self];
+        self.webView.delegate = _webViewDelegate;
+        
+        // register this viewcontroller with the NSURLProtocol, only after the User-Agent is set
+        [CDVURLProtocol registerViewController:self];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     // iterate through all the plugin objects, and call hasPendingOperation
