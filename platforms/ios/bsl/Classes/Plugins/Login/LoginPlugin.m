@@ -107,11 +107,11 @@
     }
     [defaults synchronize];
     _command = command;
-    if(command)
-    {
-        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userSwithch];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }
+//    if(command)
+//    {
+//        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userSwithch];
+//        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//    }
     if(![isOffLogin boolValue])
     {
         
