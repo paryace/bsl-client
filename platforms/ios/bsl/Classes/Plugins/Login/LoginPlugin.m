@@ -16,6 +16,8 @@
 #import "NSString+MD5Addition.h"
 #import "RCPopoverView.h"
 #import "Utility.h"
+static int count;
+static CDVInvokedUrlCommand *_command;
 @implementation LoginPlugin
 /**
  *	@author 	张国东
@@ -107,11 +109,11 @@
     }
     [defaults synchronize];
     _command = command;
-    if(command)
-    {
-        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userSwithch];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }
+//    if(command)
+//    {
+//        CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:userSwithch];
+//        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+//    }
     if(![isOffLogin boolValue])
     {
         
@@ -135,9 +137,21 @@
             NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"username=%@",userName]];
             if(userArray.count==0)
             {
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alertView show];
-                alertView = nil;
+                if(count == 3)
+                {
+                    count = 0;
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"输入错误密码超过3次禁止离线登录，离线信息已被清除" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alertView show];
+                    alertView = nil;
+                    
+                }
+                else
+                {
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alertView show];
+                    alertView = nil;
+                    
+                }
                 return;
             }
             else
@@ -179,9 +193,21 @@
                 }
                 else
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                    [alertView show];
-                    alertView = nil;
+                    if(count == 3)
+                    {
+                        count = 0;
+                        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"输入错误密码超过3次禁止离线登录，离线信息已被清除" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                        [alertView show];
+                        alertView = nil;
+                        
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"用户未曾登录过应用，不能使用离线登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                        [alertView show];
+                        alertView = nil;
+                        
+                    }
                     if(command)
                     {
                         CDVPluginResult*  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
@@ -225,6 +251,16 @@
         NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"md5Str=%@ and username=%@",md5Str,userName]];
         if(userArray.count == 0)
         {
+            count++;
+            if(count == 3)
+            {
+                NSArray *userArray = [MultiUserInfo findByPredicate:[NSPredicate predicateWithFormat:@"systemId=%@ and username=%@",systemId,userName]];
+                for(MultiUserInfo *user in userArray)
+                {
+                    [user remove];
+                }
+                
+            }
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"帐号或密码错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alertView show];
             alertView = nil;

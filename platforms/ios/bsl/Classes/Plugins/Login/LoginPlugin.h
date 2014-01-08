@@ -14,7 +14,6 @@
     ASIHTTPRequest* httRequest;
     NSMutableArray *_options;
     NSString *_password;
-    CDVInvokedUrlCommand *_command;
 }
 //获取用户保存本地的数据
 -(void)getAccountMessage:(CDVInvokedUrlCommand*)command;

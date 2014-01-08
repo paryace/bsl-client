@@ -82,12 +82,11 @@ $("#LoginBtn").click(function() {
 
 	cordova.exec(function(data) {
 		console.log("ddddddddd"+data);
-        if(data === 'false')
+        if(isRemember === 'false')
         {
             password="";
             $("#realpsw").val("");
             $("#password").val("");
-            return;
         }
 		data = $.parseJSON(data);
 		if (data.isSuccess === true) {
@@ -95,7 +94,12 @@ $("#LoginBtn").click(function() {
 		}
 	}, function(err) {
 		err = $.parseJSON(err);
-
+        if(isRemember === 'false')
+        {
+            password="";
+            $("#realpsw").val("");
+            $("#password").val("");
+        }
 		var tip = err.message;
         if(tip.indexOf("用户不存在") != -1)
         {
