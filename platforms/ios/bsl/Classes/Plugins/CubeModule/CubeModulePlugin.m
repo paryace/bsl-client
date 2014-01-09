@@ -45,6 +45,7 @@
 -(void)installList:(CDVInvokedUrlCommand*)command
 {
     CubeApplication *cubeApp = [CubeApplication currentApplication];
+    [cubeApp removeGlobalApplication];
     
     NSMutableDictionary *moduleCategoryDictionary = [self getCategoryFromArray:cubeApp.modules];
     
