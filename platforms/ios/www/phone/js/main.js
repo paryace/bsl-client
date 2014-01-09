@@ -882,16 +882,16 @@ $('#manager_btn')
 
 		//跳到管理界面
 		// $("window").trigger("toManage");
-		changesys.onGoingIntoManage();
 
 		console.log("点击");
 
 		cordovaExec("CubeModuleOperator", "sync", ["manager"], function(data) {
 			console.log("开始同步");
-            if(data == 1)
+            if(data === '1')
             {
-                    return;
+                return;
             }
+            changesys.onGoingIntoManage();
 			$('#manager_btn').removeClass("disabled");
 			loadModuleList("CubeModuleList", "uninstallList", "uninstall", function() {
 				console.log("222");

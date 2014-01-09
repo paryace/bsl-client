@@ -372,6 +372,8 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     if ([FS fileExistsAtPath:[[NSFileManager wwwRuntimeDirectory] path]]) {
         success = [fm removeItemAtURL:[NSFileManager wwwRuntimeDirectory] error:&error];
         if (!success) NSLog(@"删除www目录失败,%@", error);
+        else
+            NSLog(@"删除www目录成功");
     }
     
     //create directory
