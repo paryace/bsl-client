@@ -11,5 +11,5 @@
 @interface CommonUtils : NSObject
 +(BOOL)isOffLineLogin;
 +(NSString *)currentUser;
-
++(void)scanFileAndDeleteAtPath:(int)days;
 @end

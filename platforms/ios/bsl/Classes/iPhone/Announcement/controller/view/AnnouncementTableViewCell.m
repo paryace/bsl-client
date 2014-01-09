@@ -172,7 +172,7 @@
             NSString*fileName = [[dict valueForKey:@"fileName"] lowercaseString];
             NSString*fileId = [dict valueForKey:@"fileId"];
             NSString*fileSize =  [dict valueForKey:@"fileSize"];
-            NSLog(@"=======%@",fileName);
+//            NSLog(@"=======%@",fileName);
             //判断文件类型
             UIImage *image;
             if([fileName hasSuffix:@"pdf"])
@@ -234,7 +234,7 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     // 输出点击的view的类名
-    NSLog(@"---%@", NSStringFromClass([touch.view class]));
+//    NSLog(@"---%@", NSStringFromClass([touch.view class]));
     
     // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件
     if ([NSStringFromClass([touch.view class]) isEqualToString:@"AnnouncementTableViewCell"]) {

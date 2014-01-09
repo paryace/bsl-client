@@ -15,7 +15,7 @@
 	const unsigned char *dataBuffer = [self bytes];
 	int i;
 	for (i = 0; i < [self length]; ++i) {
-		[stringBuffer appendFormat:@"%02X", (unsigned long)dataBuffer[i]];
+		[stringBuffer appendFormat:@"%02lX", (unsigned long)dataBuffer[i]];
 	}
 	return [stringBuffer copy];
 }
