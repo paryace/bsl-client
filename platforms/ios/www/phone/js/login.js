@@ -80,7 +80,7 @@ $("#LoginBtn").click(function() {
 		isOffLine = "false";
 	}
 	cordova.exec(function(data) {
-        if(isRemember === 'false')
+        if(data === 'false')
         {
             password="";
             $("#realpsw").val("");
@@ -158,7 +158,7 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-	
+        
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
 			$("#username").val(data.username);

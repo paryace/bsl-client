@@ -318,6 +318,27 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     
     
     
+    NSURL * changesys_windowWWWUrl = [[NSFileManager wwwBundleDirectory] URLByAppendingPathComponent:@"changesys_window.html"];
+    NSURL * changesys_windowFolderWWWUrl =  [[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"changesys_window.html"];
+    
+    if ([FS fileExistsAtPath:[changesys_windowFolderWWWUrl path] ]) {
+        //如果文件存在  则删除文件
+        [FS removeItemAtURL:changesys_windowFolderWWWUrl error:nil];
+    }
+    [FS copyItemAtURL:changesys_windowWWWUrl toURL:changesys_windowFolderWWWUrl error:&error];
+    
+    
+    
+    NSURL * cordova_pluginsWWWUrl = [[NSFileManager wwwBundleDirectory] URLByAppendingPathComponent:@"cordova_plugins.js"];
+    NSURL * cordova_pluginsFolderWWWUrl =  [[NSFileManager wwwRuntimeDirectory] URLByAppendingPathComponent:@"cordova_plugins.js"];
+    
+    if ([FS fileExistsAtPath:[cordova_pluginsFolderWWWUrl path] ]) {
+        //如果文件存在  则删除文件
+        [FS removeItemAtURL:cordova_pluginsFolderWWWUrl error:nil];
+    }
+    [FS copyItemAtURL:cordova_pluginsWWWUrl toURL:cordova_pluginsFolderWWWUrl error:&error];
+    
+    
     //=======================  替换pad版文件
     
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -356,7 +377,123 @@ NSString *const CubeTokenTimeOutNotification = @"CubeTokenTimeOutNotification";
     
     //=======================
     
+    //=======================  替换plugins目录
     
+    
+    
+    if ([FS fileExistsAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/plugins"] ]) {
+        [fm removeItemAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/plugins"] error:&error];
+        if (error) NSLog(@"删除www目录失败,%@", error);
+    }
+    
+    //create directory
+    [fm createDirectoryAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/plugins"] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    
+    [fm copyFolderAtPath:[[[NSFileManager wwwBundleDirectory] path] stringByAppendingString:@"/plugins" ] toPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/plugins"]  error:&error];
+    
+    //=======================
+
+    //=======================  替换vender目录
+    
+    
+    
+    if ([FS fileExistsAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/vender"] ]) {
+        [fm removeItemAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/vender"] error:&error];
+        if (error) NSLog(@"删除www目录失败,%@", error);
+    }
+    
+    //create directory
+    [fm createDirectoryAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/vender"] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    
+    [fm copyFolderAtPath:[[[NSFileManager wwwBundleDirectory] path] stringByAppendingString:@"/vender" ] toPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/vender"]  error:&error];
+    
+    //=======================
+
+    //=======================  替换js目录
+    
+    
+    
+    if ([FS fileExistsAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/js"] ]) {
+        [fm removeItemAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/js"] error:&error];
+        if (error) NSLog(@"删除www目录失败,%@", error);
+    }
+    
+    //create directory
+    [fm createDirectoryAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/js"] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    
+    [fm copyFolderAtPath:[[[NSFileManager wwwBundleDirectory] path] stringByAppendingString:@"/js" ] toPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/js"]  error:&error];
+    
+    //=======================
+
+    //=======================  替换css目录
+    
+    
+    
+    if ([FS fileExistsAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/css"] ]) {
+        [fm removeItemAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/css"] error:&error];
+        if (error) NSLog(@"删除www目录失败,%@", error);
+    }
+    
+    //create directory
+    [fm createDirectoryAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/css"] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    
+    [fm copyFolderAtPath:[[[NSFileManager wwwBundleDirectory] path] stringByAppendingString:@"/css" ] toPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/css"]  error:&error];
+    
+    //=======================
+
+    //=======================  替换img目录
+    
+    
+    
+    if ([FS fileExistsAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/img"] ]) {
+        [fm removeItemAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/img"] error:&error];
+        if (error) NSLog(@"删除www目录失败,%@", error);
+    }
+    
+    //create directory
+    [fm createDirectoryAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/img"] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    
+    [fm copyFolderAtPath:[[[NSFileManager wwwBundleDirectory] path] stringByAppendingString:@"/img" ] toPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/img"]  error:&error];
+    
+    //=======================
+    //=======================  替换com.csair.deviceregist目录
+    
+    
+    
+    if ([FS fileExistsAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/com.csair.deviceregist"] ]) {
+        [fm removeItemAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/com.csair.deviceregist"] error:&error];
+        if (error) NSLog(@"删除www目录失败,%@", error);
+    }
+    
+    //create directory
+    [fm createDirectoryAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/com.csair.deviceregist"] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    
+    [fm copyFolderAtPath:[[[NSFileManager wwwBundleDirectory] path] stringByAppendingString:@"/com.csair.deviceregist" ] toPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/com.csair.deviceregist"]  error:&error];
+    
+    //=======================
+
+    //=======================  替换spec目录
+    
+    
+    
+    if ([FS fileExistsAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/spec"] ]) {
+        [fm removeItemAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/spec"] error:&error];
+        if (error) NSLog(@"删除www目录失败,%@", error);
+    }
+    
+    //create directory
+    [fm createDirectoryAtPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/spec"] withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    
+    [fm copyFolderAtPath:[[[NSFileManager wwwBundleDirectory] path] stringByAppendingString:@"/spec" ] toPath:[[[NSFileManager wwwRuntimeDirectory] path] stringByAppendingString:@"/spec"]  error:&error];
+    
+    //=======================
     
     NSLog(@"安装js文件完成");
 }
