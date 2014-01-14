@@ -158,7 +158,7 @@ var app = {
 		app.receivedEvent('deviceready');
 	},
 	receivedEvent: function(id) {
-	
+        
 		cordova.exec(function(data) {
 			data = $.parseJSON(data);
 			$("#username").val(data.username);

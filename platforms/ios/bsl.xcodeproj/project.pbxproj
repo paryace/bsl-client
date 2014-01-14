@@ -981,6 +981,18 @@
 		181C601318489965002F2F5E /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 181C600D18489965002F2F5E /* CommonUtils.m */; };
 		18240E0D1803C6C400846FF9 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 18240E0C1803C6C400846FF9 /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18240E0F1803D04400846FF9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18240E0E1803D04400846FF9 /* CoreTelephony.framework */; };
+		183A2D5118837F25009C1D0E /* SecuritySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */; };
+		183A2D5218837F25009C1D0E /* SecuritySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */; };
+		183A2D5318837F25009C1D0E /* SecuritySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */; };
+		183A2D5418837F25009C1D0E /* SecuritySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */; };
+		183A2D5518837F25009C1D0E /* SecuritySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */; };
+		183A2D5618837F25009C1D0E /* SecuritySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */; };
+		183A2D5F1883973E009C1D0E /* text_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A2D5E1883973E009C1D0E /* text_bg.png */; };
+		183A2D601883973E009C1D0E /* text_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A2D5E1883973E009C1D0E /* text_bg.png */; };
+		183A2D611883973E009C1D0E /* text_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A2D5E1883973E009C1D0E /* text_bg.png */; };
+		183A2D621883973E009C1D0E /* text_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A2D5E1883973E009C1D0E /* text_bg.png */; };
+		183A2D631883973E009C1D0E /* text_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A2D5E1883973E009C1D0E /* text_bg.png */; };
+		183A2D641883973E009C1D0E /* text_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 183A2D5E1883973E009C1D0E /* text_bg.png */; };
 		184750F1186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
 		184750F2186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
 		184750F3186013DC00CD3826 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 184750F0186013DC00CD3826 /* NSData+AES256.m */; };
@@ -4094,6 +4106,10 @@
 		18240E0C1803C6C400846FF9 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		18240E0E1803D04400846FF9 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		18240E111804EBFC00846FF9 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		183A2D4F18837F24009C1D0E /* SecuritySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecuritySettingsViewController.h; sourceTree = "<group>"; };
+		183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecuritySettingsViewController.m; sourceTree = "<group>"; };
+		183A2D5E1883973E009C1D0E /* text_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_bg.png; sourceTree = "<group>"; };
+		183A2D651883C5A5009C1D0E /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		184750EF186013DC00CD3826 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
 		184750F0186013DC00CD3826 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
 		18617A2C182A304600D85380 /* ImageAttachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAttachViewController.h; sourceTree = "<group>"; };
@@ -6902,6 +6918,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				183A2D651883C5A5009C1D0E /* libicucore.dylib */,
 				18A5D1851840A30B00E3F089 /* Security.framework */,
 				18E023891821FF5B00AB6215 /* MapKit.framework */,
 				18240E0E1803D04400846FF9 /* CoreTelephony.framework */,
@@ -7834,6 +7851,8 @@
 				F54D813B17E8BFBA0067A023 /* SetttingIMViewController.h */,
 				F54D813C17E8BFBA0067A023 /* SetttingIMViewController.m */,
 				F54D813D17E8BFBA0067A023 /* SetttingIMViewController.xib */,
+				183A2D4F18837F24009C1D0E /* SecuritySettingsViewController.h */,
+				183A2D5018837F24009C1D0E /* SecuritySettingsViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -8201,6 +8220,7 @@
 		F54D847217E8C77E0067A023 /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				183A2D5E1883973E009C1D0E /* text_bg.png */,
 				F54D847317E8C77E0067A023 /* setting_about.png */,
 				F54D847417E8C77E0067A023 /* setting_about_logo.png */,
 				F54D847517E8C77E0067A023 /* setting_exitBg.png */,
@@ -8626,6 +8646,7 @@
 				180B7F791818A9B90091E3AE /* DownloadingTableViewCell.xib in Resources */,
 				180B7F7A1818A9B90091E3AE /* IphoneDownloadingTableViewCell.xib in Resources */,
 				180B7F7B1818A9B90091E3AE /* iphoneMenuView.xib in Resources */,
+				183A2D641883973E009C1D0E /* text_bg.png in Resources */,
 				180B7F7C1818A9B90091E3AE /* ManifestTableViewCell_Pad.xib in Resources */,
 				180B7F7D1818A9B90091E3AE /* MenuView.xib in Resources */,
 				180B7F7E1818A9B90091E3AE /* XMPPShowImageViewController.xib in Resources */,
@@ -9316,6 +9337,7 @@
 				F54D84DE17E8C77E0067A023 /* f041.png in Resources */,
 				18AFE1AE1828F01B000462DB /* check_icon.png in Resources */,
 				F54D84DF17E8C77E0067A023 /* f042.png in Resources */,
+				183A2D5F1883973E009C1D0E /* text_bg.png in Resources */,
 				F54D84E017E8C77E0067A023 /* f043.png in Resources */,
 				F54D84E117E8C77E0067A023 /* f044.png in Resources */,
 				F54D84E217E8C77E0067A023 /* f045.png in Resources */,
@@ -9661,6 +9683,7 @@
 				180F2385180D237D0037751C /* 72.png in Resources */,
 				18E9C58B1803AB1200B874B8 /* 飞行计算器_phone.png in Resources */,
 				39D9E89E17F27C03001ED6F5 /* f015.png in Resources */,
+				183A2D621883973E009C1D0E /* text_bg.png in Resources */,
 				18AFE18918287E30000462DB /* word_default.png in Resources */,
 				180F2382180D237D0037751C /* 144.png in Resources */,
 				39D9E89F17F27C03001ED6F5 /* f016.png in Resources */,
@@ -10036,6 +10059,7 @@
 				39E0512317F00AEA00BCF7F8 /* DetailViewController.xib in Resources */,
 				39E0512417F00AEA00BCF7F8 /* iphoneLadingViewNew.xib in Resources */,
 				39E0512517F00AEA00BCF7F8 /* iphoneMsgListCell.xib in Resources */,
+				183A2D601883973E009C1D0E /* text_bg.png in Resources */,
 				39E0512617F00AEA00BCF7F8 /* local_icon.png in Resources */,
 				39E0512917F00AEA00BCF7F8 /* MsgListCell.xib in Resources */,
 				39E0512A17F00AEA00BCF7F8 /* h.png in Resources */,
@@ -10627,6 +10651,7 @@
 				39E9C561180EBAAA004CEF1D /* amp_land_4.png in Resources */,
 				39E9C562180EBAAA004CEF1D /* amp_land_5.png in Resources */,
 				39E9C563180EBAAA004CEF1D /* amp_land_6.png in Resources */,
+				183A2D631883973E009C1D0E /* text_bg.png in Resources */,
 				39E9C564180EBAAA004CEF1D /* amp_land_7.png in Resources */,
 				39E9C566180EBAAA004CEF1D /* right_button_active@2x.png in Resources */,
 				39E9C567180EBAAA004CEF1D /* amp_land_8.png in Resources */,
@@ -10967,6 +10992,7 @@
 				39FF0B1A17F13CBB0086B76C /* amp_land_4.png in Resources */,
 				39FF0B1B17F13CBB0086B76C /* amp_land_5.png in Resources */,
 				39FF0B1C17F13CBB0086B76C /* amp_land_6.png in Resources */,
+				183A2D611883973E009C1D0E /* text_bg.png in Resources */,
 				39FF0B1D17F13CBB0086B76C /* amp_land_7.png in Resources */,
 				39FF0B1F17F13CBB0086B76C /* right_button_active@2x.png in Resources */,
 				39FF0B2017F13CBB0086B76C /* amp_land_8.png in Resources */,
@@ -11495,6 +11521,7 @@
 				180B823E1818A9B90091E3AE /* iphoneVoiceDetailViewController.m in Sources */,
 				180B823F1818A9B90091E3AE /* CubeWebViewController.m in Sources */,
 				180B82401818A9B90091E3AE /* DetailViewController.m in Sources */,
+				183A2D5618837F25009C1D0E /* SecuritySettingsViewController.m in Sources */,
 				180B82411818A9B90091E3AE /* BaseQuery.m in Sources */,
 				180B82421818A9B90091E3AE /* PilotAppDelegate.m in Sources */,
 				180B82431818A9B90091E3AE /* MessagesViewController.m in Sources */,
@@ -11723,6 +11750,7 @@
 				180DCF18183C509600CAB8C9 /* UserQueue.m in Sources */,
 				F54D82DE17E8BFBB0067A023 /* DownloadingTableViewCell.m in Sources */,
 				18617A36182A822200D85380 /* PDFViewController.m in Sources */,
+				183A2D5118837F25009C1D0E /* SecuritySettingsViewController.m in Sources */,
 				F54D82E017E8BFBB0067A023 /* FunctionDetailScrollView.m in Sources */,
 				F5A96C4717F006B400F9CA68 /* CDVNotification.m in Sources */,
 				F54D82E117E8BFBB0067A023 /* FunctionDetailScrollViewWrapper.m in Sources */,
@@ -12197,6 +12225,7 @@
 				39D9EA5417F27C03001ED6F5 /* DownloadManager.m in Sources */,
 				18E9C5141803AB1200B874B8 /* CMap.m in Sources */,
 				18E9C5451803AB1200B874B8 /* UIViewController+UserInterfaceIdiom.m in Sources */,
+				183A2D5418837F25009C1D0E /* SecuritySettingsViewController.m in Sources */,
 				39D9EA5517F27C03001ED6F5 /* InstallButton.m in Sources */,
 				18E9C4F41803AB1200B874B8 /* WeatherMap.m in Sources */,
 				39D9EA5617F27C03001ED6F5 /* LongPressButton.m in Sources */,
@@ -12314,6 +12343,7 @@
 				39E052C617F00AEA00BCF7F8 /* MenuView.m in Sources */,
 				39E052C917F00AEA00BCF7F8 /* ChatCell.m in Sources */,
 				39E052CA17F00AEA00BCF7F8 /* CDVVibration.m in Sources */,
+				183A2D5218837F25009C1D0E /* SecuritySettingsViewController.m in Sources */,
 				39E052CB17F00AEA00BCF7F8 /* ChatImageCell.m in Sources */,
 				39E052CC17F00AEA00BCF7F8 /* ContactCell.m in Sources */,
 				39E052CD17F00AEA00BCF7F8 /* ContactCheckBoxCell.m in Sources */,
@@ -12500,6 +12530,7 @@
 				39E9C5C6180EBAAA004CEF1D /* MenuView.m in Sources */,
 				39E9C5C7180EBAAA004CEF1D /* ChatCell.m in Sources */,
 				39E9C5C8180EBAAA004CEF1D /* CDVVibration.m in Sources */,
+				183A2D5518837F25009C1D0E /* SecuritySettingsViewController.m in Sources */,
 				39E9C5C9180EBAAA004CEF1D /* ChatImageCell.m in Sources */,
 				39E9C5CA180EBAAA004CEF1D /* ContactCell.m in Sources */,
 				39E9C5CB180EBAAA004CEF1D /* ContactCheckBoxCell.m in Sources */,
@@ -12686,6 +12717,7 @@
 				39FF0B8017F13CBB0086B76C /* MenuView.m in Sources */,
 				39FF0B8317F13CBB0086B76C /* ChatCell.m in Sources */,
 				39FF0B8417F13CBB0086B76C /* CDVVibration.m in Sources */,
+				183A2D5318837F25009C1D0E /* SecuritySettingsViewController.m in Sources */,
 				39FF0B8517F13CBB0086B76C /* ChatImageCell.m in Sources */,
 				39FF0B8617F13CBB0086B76C /* ContactCell.m in Sources */,
 				39FF0B8717F13CBB0086B76C /* ContactCheckBoxCell.m in Sources */,

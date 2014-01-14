@@ -16,6 +16,7 @@
 #import "NSFileManager+Extra.h"
 #import "JSONKit.h"
 #import "DeviceRegister_IphoneControllerViewController.h"
+#import "SecuritySettingsViewController.h"
 #define BUNDLE_CFG_URL [[NSBundle mainBundle] URLForResource:@"Cube" withExtension:@"json"]
 
 @interface SettingMainViewController ()<UITableViewDataSource,UITableViewDelegate,CheckUpdateDelegate,UIAlertViewDelegate>
@@ -68,11 +69,12 @@
         NSArray* array1 = [[NSArray alloc]initWithObjects:@"更新版本",@"setting_update.png", nil];
         NSArray* array2 = [[NSArray alloc]initWithObjects:@"关于我们",@"setting_about.png", nil];
         NSArray* array3 = [[NSArray alloc]initWithObjects:@"即时通讯",@"setting_about.png", nil];
-        
+        NSArray* array4 = [[NSArray alloc]initWithObjects:@"安全设置",@"setting_about.png", nil];
         
         [firstArray addObject:array1];
         [firstArray addObject:array2];
         [firstArray addObject:array3];
+        [firstArray addObject:array4];
         
         [settingSource addObject:firstArray];
         
@@ -257,6 +259,11 @@
         }else if(indexPath.row == 2){
             SetttingIMViewController* setttingIMViewController = [[SetttingIMViewController alloc]initWithNibName:@"SetttingIMViewController" bundle:nil];
             [self.navigationController pushViewController:setttingIMViewController animated:YES];
+        }
+        else if (indexPath.row == 3)
+        {
+            SecuritySettingsViewController *controller = (SecuritySettingsViewController*)[[NSClassFromString(@"SecuritySettingsViewController")alloc]init];
+            [self.navigationController pushViewController:controller animated:YES];
         }
     }
     //    else if(indexPath.section == 1){

@@ -58,6 +58,7 @@
 #import "ServerAPI.h"
 #import "MultiUserInfo.h"
 #import "SystemInfo.h"
+#import "CommonUtils.h"
 #define RUNTIME_CFG_USER_URL(A,B) [[NSFileManager applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"Cube_%@_%@.json",A,B]]
 
 /**
@@ -138,6 +139,11 @@ void uncaughtExceptionHandler(NSException*exception){
             user.loginFlag = [NSNumber numberWithBool:NO];
             [user save];
         }
+        int value = 3;
+        if ([[NSUserDefaults standardUserDefaults]valueForKey:@"day_time"]) {
+             value = (int)[[NSUserDefaults standardUserDefaults]valueForKey:@"day_time"];
+        }
+        [CommonUtils scanFileAndDeleteAtPath:value];
     });
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
