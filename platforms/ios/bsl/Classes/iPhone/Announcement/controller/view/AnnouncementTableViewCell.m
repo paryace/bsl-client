@@ -248,6 +248,7 @@
     AttachmentImageView *view = (AttachmentImageView*)sender.view;
     currentFileId = view.fileId;
     AttachMents *attachment = [AttachMents getByPredicate:[NSPredicate predicateWithFormat:@"fileId=%@",currentFileId]];
+//    attachment = nil;
     if(!attachment)
     {
         attachment = [AttachMents insert];
@@ -255,10 +256,10 @@
         attachment.fileId = currentFileId;
         attachment.fileSize = [NSNumber numberWithFloat:[view.fileSize floatValue]];
         [attachment downloadFile:currentFileId];
-        [attachment save];
-        NSString *tips = [NSString stringWithFormat:@"你确定要打开:%@?",[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]];
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-        [alertView show];
+//        [attachment save];
+//        NSString *tips = [NSString stringWithFormat:@"你确定要打开:%@?",[view.fileName stringByAppendingFormat:@"(%@kb)",view.fileSize]];
+//        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+//        [alertView show];
     }
     else
     {

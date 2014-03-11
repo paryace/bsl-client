@@ -66,12 +66,18 @@
                 {
                     content = [NSString stringWithContentsOfFile:realPath encoding: 0x80000631 error:&error];
                 }
+                
                 UITextView *textView = [[UITextView alloc]initWithFrame:self.view.frame];
                 textView.text = content;
+                CGRect frame = textView.frame;
+                frame.origin.y = 0;
+                textView.frame= frame;
                 textView.textColor = [UIColor blackColor];
                 textView.backgroundColor = [UIColor clearColor];
                 textView.font = [UIFont systemFontOfSize:14];
                 textView.editable = NO;
+                textView.showsVerticalScrollIndicator = YES;
+                textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
                 [self.view addSubview:textView];
 //                //下面两行协助 UIWebView 背景透明化，这两属性可以在 xib 中进行设置
 //                webview.backgroundColor = [UIColor clearColor];//但是这个属性必须用代码设置，光 xib 设置不行
@@ -86,6 +92,10 @@
 //                NSString *webviewText = @"<style>body{margin:0;background-color:transparent;font:14px/18px Custom-Font-Name}</style>";
 //                NSString *htmlString = [webviewText stringByAppendingFormat:@"%@",content];
 //                [webview loadHTMLString:htmlString baseURL:nil]; //在 WebView 中显示本地的字符串
+            }
+            else
+            {
+                
             }
         }
         else if([fileName hasSuffix:@"pdf"])

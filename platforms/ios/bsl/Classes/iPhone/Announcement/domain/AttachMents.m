@@ -10,7 +10,6 @@
 #import "ServerAPI.h"
 #import "SVProgressHUD.h"
 @implementation AttachMents
-
 @dynamic announceId;
 @dynamic fileId;
 @dynamic fileName;
@@ -18,7 +17,12 @@
 @dynamic filePath;
 -(void)downloadFile:(NSString*)attachId
 {
+    if(![SVProgressHUD isVisible])
+    {
+        [SVProgressHUD showWithStatus:@"文件下载中" maskType:SVProgressHUDMaskTypeBlack];
+    }
     NSString *url = [ServerAPI urlForAttachmentId:attachId];
+    NSLog(@"-------------%@",url);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     if([[self.fileName lowercaseString] hasSuffix:@"pdf"])
     {
@@ -36,22 +40,44 @@
         [fm createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
     }
     filePath = [filePath stringByAppendingPathComponent:attachId];
+    NSLog(@"----------%@",filePath);
+    __block ASIHTTPRequest *_request = request;
     [request setDownloadDestinationPath:filePath];
-    [request setDidFinishSelector:@selector(finish:)];
-    [request setDidFailSelector:@selector(failed:)];
-    request.delegate = self;
+//    [request setDidFinishSelector:@selector(finish:)];
+//    [request setDidFailSelector:@selector(failed:)];
+//    request.delegate = self;
+    [request setCompletionBlock:^{
+        if([SVProgressHUD isVisible])
+        {
+            [SVProgressHUD dismiss];
+        }
+        NSLog(@"下载成功");
+        [self save];
+        NSString *tips = [NSString stringWithFormat:@"你确定要打开:%@?",[self.fileName stringByAppendingFormat:@"(%@kb)",self.fileSize]];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:tips delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        [alertView show];
+    }];
+    [request setFailedBlock:^{
+        if([SVProgressHUD isVisible])
+        {
+            [SVProgressHUD dismiss];
+        }
+        NSLog(@"%d",[_request responseStatusCode]);
+        NSLog(@"%@",[_request error]);
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"文件下载失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        [alertView show];
+    }];
     [request startAsynchronous];
 }
--(void)finish:(ASIHTTPRequest *)request
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"下载成功");
+    if(buttonIndex == 0)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FILE_DOWNLOAD_END" object:self];
+    }
 }
 
--(void)failed:(ASIHTTPRequest *)request
-{
-    NSLog(@"下载失败");
-    NSLog(@"%d",[request responseStatusCode]);
-}
 -(NSString *)downloadFileForPath:(NSString*)attachId
 {
     if(![SVProgressHUD isVisible])

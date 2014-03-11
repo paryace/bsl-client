@@ -11,7 +11,7 @@
 #import "NSManagedObject+Repository.h"
 
 #import "ASIHTTPRequest.h"
-@interface AttachMents : NSManagedObject<ASIHTTPRequestDelegate>
+@interface AttachMents : NSManagedObject<UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSString * announceId;
 @property (nonatomic, strong) NSString * fileId;

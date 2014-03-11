@@ -34,12 +34,18 @@
         // Custom initialization
         [self setTitle:@"公告"];
         //覆盖屏蔽右边控制
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFileNotify:) name:@"FILE_DOWNLOAD_END" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:ANNOUNCEMENT_DID_SAVE_NOTIFICATION object:nil];
 
     }
     return self;
 }
+-(void)openFileNotify:(NSNotification*)noty
+{
+    AttachMents *file = (AttachMents*)noty.object;
+    [self openFile:file.fileId];
+}
+
 -(void)openFile:(NSString*)attachmentId
 {
     @autoreleasepool {
@@ -187,6 +193,9 @@
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"FILE_DOWNLOAD_END" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ANNOUNCEMENT_DID_SAVE_NOTIFICATION object:nil];
+    
 }
 
 #pragma mark - Table view data source

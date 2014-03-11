@@ -133,18 +133,18 @@ void uncaughtExceptionHandler(NSException*exception){
         }
         
     }
-    dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
-        NSArray * userarray = [MultiUserInfo findAll];
-        for (MultiUserInfo *user in userarray) {
-            user.loginFlag = [NSNumber numberWithBool:NO];
-            [user save];
-        }
-        int value = 3;
-        if ([[NSUserDefaults standardUserDefaults]valueForKey:@"day_time"]) {
-             value = (int)[[NSUserDefaults standardUserDefaults]valueForKey:@"day_time"];
-        }
-        [CommonUtils scanFileAndDeleteAtPath:value];
-    });
+//    dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
+//        NSArray * userarray = [MultiUserInfo findAll];
+//        for (MultiUserInfo *user in userarray) {
+//            user.loginFlag = [NSNumber numberWithBool:NO];
+//            [user save];
+//        }
+//        int value = 3;
+//        if ([[NSUserDefaults standardUserDefaults]valueForKey:@"day_time"]) {
+//             value = (int)[[NSUserDefaults standardUserDefaults]valueForKey:@"day_time"];
+//        }
+//        [CommonUtils scanFileAndDeleteAtPath:value];
+//    });
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     UpdateChecker *__uc = [[UpdateChecker alloc] initWithDelegate:nil];

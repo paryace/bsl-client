@@ -69,12 +69,12 @@
         NSArray* array1 = [[NSArray alloc]initWithObjects:@"更新版本",@"setting_update.png", nil];
         NSArray* array2 = [[NSArray alloc]initWithObjects:@"关于我们",@"setting_about.png", nil];
         NSArray* array3 = [[NSArray alloc]initWithObjects:@"即时通讯",@"setting_about.png", nil];
-        NSArray* array4 = [[NSArray alloc]initWithObjects:@"安全设置",@"setting_about.png", nil];
+//        NSArray* array4 = [[NSArray alloc]initWithObjects:@"安全设置",@"setting_about.png", nil];
         
         [firstArray addObject:array1];
         [firstArray addObject:array2];
         [firstArray addObject:array3];
-        [firstArray addObject:array4];
+//        [firstArray addObject:array4];
         
         [settingSource addObject:firstArray];
         
