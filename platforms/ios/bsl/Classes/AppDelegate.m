@@ -657,17 +657,17 @@ void uncaughtExceptionHandler(NSException*exception){
 //         UINavigationController *__navControl =[[[NSBundle mainBundle] loadNibNamed:@"MainNewWindow" owner:self options:nil] objectAtIndex:0];
 //        self.window.rootViewController = __navControl;
         main.navController=self.navControl;
-        UIView* view=main.view;
-        view=nil;
-        main=nil;  
+//        UIView* view=main.view;
+//        view=nil;
+        main=nil;
     }else{
         
         [self.navControl popToRootViewControllerAnimated:NO];
         MainViewViewController* main=[[MainViewViewController alloc] init];
         main.navController=self.navControl;
         //this isvery import
-        UIView* view=main.view;
-        view=nil;
+//        UIView* view=main.view;
+//        view=nil;
         //
         main=nil;
     }
@@ -684,8 +684,8 @@ void uncaughtExceptionHandler(NSException*exception){
         //         UINavigationController *__navControl =[[[NSBundle mainBundle] loadNibNamed:@"MainNewWindow" owner:self options:nil] objectAtIndex:0];
         //        self.window.rootViewController = __navControl;
         main.navController=self.navControl;
-        UIView* view=main.view;
-        view=nil;
+//        UIView* view=main.view;
+//        view=nil;
         main=nil;
     }else{
         
@@ -693,8 +693,8 @@ void uncaughtExceptionHandler(NSException*exception){
         MainViewViewController* main=[[MainViewViewController alloc] init];
         main.navController=self.navControl;
         //this isvery import
-        UIView* view=main.view;
-        view=nil;
+//        UIView* view=main.view;
+//        view=nil;
         //
         main=nil;
     }

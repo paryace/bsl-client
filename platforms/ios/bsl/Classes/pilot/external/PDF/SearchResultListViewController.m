@@ -218,13 +218,13 @@ static const  NSUInteger kMaximumResultNumber = 30;  //搜索结果最大数量
     if (self.navigationItem.rightBarButtonItem==nil) {
         self.searchBar.showsCancelButton=YES;
         
-        UIButton* cancelButton;
+//        UIButton* cancelButton;
         
         for(id view in [self.searchBar subviews])
         {
             if([view isKindOfClass:[UIButton class]])
             {
-                cancelButton=view;
+//                cancelButton=view;
                 spinner.frame=[(UIButton*)view bounds];
                 [view addSubview:spinner];
                 [view setTitle:@"" forState:UIControlStateNormal ];
